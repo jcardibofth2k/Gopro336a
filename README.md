@@ -17,3 +17,11 @@ Class renamer enabled
 
 6th, Loaded into gradle project, and Continued manual remap using refactoring tools in Intelij
 ```
+
+#For Skids
+
+
+
+
+
+#For Contributors
