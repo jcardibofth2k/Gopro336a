@@ -20,6 +20,9 @@ Class renamer enabled
 
 # For Skids
 
+Skid it.
+
+As stated earlier, this deobf is remapped. Dont get the remaped "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
 
 
 
