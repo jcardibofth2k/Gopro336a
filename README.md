@@ -27,7 +27,7 @@ Skid it.
 
 It is NOT buildable (and never will be unless someone else does it)
 
-As stated earlier, this deobf is remapped. Dont get the remaped "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
+As stated earlier, this deobf is remapped to the minecraft mappings. Dont get the remaped "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
 
 Skiding is cringe
 
