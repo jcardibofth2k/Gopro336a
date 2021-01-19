@@ -1,7 +1,8 @@
 # Konas-Deobf-Remap
 Konas Client
 
-Deobfuscated and partialy remaped
+Deobfuscated and partialy remaped manually
+
 This is a WIP and contributions to improve this will be accepted
 
 ```
