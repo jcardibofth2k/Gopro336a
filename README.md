@@ -44,6 +44,6 @@ Some obfuscators will rename classes, fields(variables), and methods to differen
 
 No disrespect, but when theres obf, I gotta deobf. 
 
-DMCA = cope, and it will just be reposted elsewhere so no point.
+DMCA = cope, and it will just be reposted by others so no point.
 
 DMCA if ur a pedophile, a registered sex offender, british and if you groom children :^)
