@@ -34,7 +34,7 @@ Skiding is cringe
 
 Any contributions to this deobf+remap will be GREATLY apperciated. This deobf has many, many, other classes, methods, and fields that still use the Gerneric names. Manually remapping an entire client like this is alot for 1 person to do (I have a life), and can become dulling. Contributions can consist of refactoring of Classes, Fields, and Methods to names that make sense. Intelij Ideas's refactoing tool works well for this.
 
-The reason this is a gradle project even though it is not ment to be built is because that was the easiest way to setup an eviorment with all the dependencies.
+The reason this is a gradle project even though it is not ment to be built is because that was the easiest way to setup an eviorment with all the dependencies. The deobfuscated files are excluded from the build process.
 
 # What is manual remaping?
 
