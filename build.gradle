@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+sourceSets{
+    main {
+        java {
+            exclude 'me/darki/**'
+            exclude 'net/minecraft/**'
+            exclude 'us/myles/**'
+            exclude 'mcp/**'
+            exclude 'dev/tigr'
+            exclude 'com/**'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/EventDispatcher-v1.1.jar')
+    implementation files('libs/reflections-0.10.jar')
+    implementation files('libs/slick.jar')
+    implementation files('libs/snakeyaml-1.9.jar')
+    implementation files('libs/forge-1.12.2-14.23.5.2847-PROJECT(Zenith-main)-binpatched.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

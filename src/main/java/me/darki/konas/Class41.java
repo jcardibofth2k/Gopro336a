@@ -1,0 +1,14 @@
+package me.darki.konas;
+
+public class Class41
+extends CancelableEvent {
+    public boolean Field164 = false;
+
+    public void Method277(boolean bl) {
+        this.Field164 = bl;
+    }
+
+    public boolean Method278() {
+        return this.Field164;
+    }
+}
