@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import me.darki.konas.*;
 import me.darki.konas.command.commands.fontCommand;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.gui.FontRenderer;
@@ -28,7 +29,7 @@ extends Module {
     public static Setting<Boolean> Field1392 = new Setting<>("PotionIcons", false);
     public static Setting<Boolean> Field1393 = new Setting<>("Blur", false);
     public static Setting<Boolean> Field1394 = new Setting<>("BlurEverything", true).Method1191(Field1393::getValue);
-    public Setting<Boolean> Field1395 = new Class530("CustomFont", true, new Class159(this));
+    public Setting<Boolean> Field1395 = new IdkWhatThisSettingThingDoes("CustomFont", true, new Class159(this));
     public static Setting<Boolean> Field1396 = new Setting<>("Hotbar", true);
     public static Setting<Boolean> Field1397 = new Setting<>("XPBar", true);
     public static Setting<Class165> Field1398 = new Setting<>("ArmorMode", Class165.BOTH);

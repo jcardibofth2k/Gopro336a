@@ -3,7 +3,7 @@ package me.darki.konas.module.render;
 import com.google.common.primitives.Ints;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.ColorValue;
 import me.darki.konas.Class460;
 import me.darki.konas.Class492;

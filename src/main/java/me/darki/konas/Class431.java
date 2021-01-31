@@ -5,6 +5,7 @@ import io.netty.util.internal.ConcurrentSet;
 import java.awt.Color;
 import java.util.Set;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.renderer.GlStateManager;

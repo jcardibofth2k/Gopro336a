@@ -6,8 +6,8 @@ import me.darki.konas.Class167;
 import me.darki.konas.Class419;
 import me.darki.konas.ColorValue;
 import me.darki.konas.Class46;
-import me.darki.konas.Class493;
-import me.darki.konas.Class495;
+import me.darki.konas.Chams;
+import me.darki.konas.ChamsGlintMode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelPlayer;
@@ -42,7 +42,7 @@ public abstract class MixinRenderPlayer {
 
     @Inject(method={"doRender"}, at={@At(value="HEAD")})
     private void Method3(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
-        if (Class167.Method1610(Class419.class).Method1651() && entity == Minecraft.getMinecraft().player) {
+        if (Class167.Method1610(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
             this.Field3 = entity.prevRotationYawHead;
             this.Field5 = entity.prevRotationPitch;
             this.Field0 = entity.rotationPitch;
@@ -58,7 +58,7 @@ public abstract class MixinRenderPlayer {
 
     @Inject(method={"doRender"}, at={@At(value="RETURN")})
     private void Method4(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
-        if (Class167.Method1610(Class419.class).Method1651() && entity == Minecraft.getMinecraft().player) {
+        if (Class167.Method1610(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
             this.Field4 = entity.rotationYawHead;
             this.Field6 = entity.rotationPitch;
             entity.rotationPitch = this.Field0;
@@ -101,7 +101,7 @@ public abstract class MixinRenderPlayer {
             GL11.glPopAttrib();
             this.Field7 = false;
         }
-        if (Class493.Field2141.getValue() != Class495.NONE && Class167.Method1610(Class493.class).Method1651()) {
+        if (Chams.hGlint.getValue() != ChamsGlintMode.NONE && Class167.Method1610(Chams.class).isEnabled()) {
             ModelPlayer modelplayer = this.Method1();
             this.Method2(clientPlayer);
             GlStateManager.enableBlend();
@@ -109,21 +109,21 @@ public abstract class MixinRenderPlayer {
             modelplayer.isSneak = false;
             modelplayer.setRotationAngles(0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0625f, (Entity)clientPlayer);
             GlStateManager.pushMatrix();
-            Minecraft.getMinecraft().getRenderManager().renderEngine.bindTexture(Class493.Field2141.getValue() == Class495.CUSTOM ? Class493.Field2146 : Class493.Field2145);
+            Minecraft.getMinecraft().getRenderManager().renderEngine.bindTexture(Chams.hGlint.getValue() == ChamsGlintMode.CUSTOM ? Chams.location1 : Chams.location);
             GL11.glPushAttrib((int)1048575);
             GL11.glPolygonMode((int)1032, (int)6914);
             GL11.glDisable((int)2896);
             GL11.glDisable((int)2929);
             GL11.glEnable((int)3042);
-            GL11.glColor4f((float)((float)((ColorValue)Class493.Field2144.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)Class493.Field2144.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)Class493.Field2144.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)Class493.Field2144.getValue()).Method782() / 255.0f));
+            GL11.glColor4f((float)((float)((ColorValue) Chams.hGlintColor.getValue()).Method769() / 255.0f), (float)((float)((ColorValue) Chams.hGlintColor.getValue()).Method770() / 255.0f), (float)((float)((ColorValue) Chams.hGlintColor.getValue()).Method779() / 255.0f), (float)((float)((ColorValue) Chams.hGlintColor.getValue()).Method782() / 255.0f));
             GlStateManager.blendFunc((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_COLOR, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE);
             for (int i = 0; i < 2; ++i) {
                 GlStateManager.matrixMode((int)5890);
                 GlStateManager.loadIdentity();
-                float tScale = 0.33333334f * ((Float)Class493.Field2143.getValue()).floatValue();
+                float tScale = 0.33333334f * ((Float) Chams.hGlintScale.getValue()).floatValue();
                 GlStateManager.scale((float)tScale, (float)tScale, (float)tScale);
                 GlStateManager.rotate((float)(30.0f - (float)i * 60.0f), (float)0.0f, (float)0.0f, (float)1.0f);
-                GlStateManager.translate((float)0.0f, (float)(((float)clientPlayer.ticksExisted + Minecraft.getMinecraft().getRenderPartialTicks()) * (0.001f + (float)i * 0.003f) * ((Float)Class493.Field2142.getValue()).floatValue()), (float)0.0f);
+                GlStateManager.translate((float)0.0f, (float)(((float)clientPlayer.ticksExisted + Minecraft.getMinecraft().getRenderPartialTicks()) * (0.001f + (float)i * 0.003f) * ((Float) Chams.hGlintSpeed.getValue()).floatValue()), (float)0.0f);
                 GlStateManager.matrixMode((int)5888);
                 modelplayer.bipedRightArm.rotateAngleX = 0.0f;
                 modelplayer.bipedRightArm.render(0.0625f);
@@ -134,7 +134,7 @@ public abstract class MixinRenderPlayer {
             GlStateManager.loadIdentity();
             GlStateManager.matrixMode((int)5888);
             GlStateManager.blendFunc((GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-            GL11.glScalef((float)(1.0f / ((Float)Class493.Field2135.getValue()).floatValue()), (float)(1.0f / ((Float)Class493.Field2135.getValue()).floatValue()), (float)(1.0f / ((Float)Class493.Field2135.getValue()).floatValue()));
+            GL11.glScalef((float)(1.0f / ((Float) Chams.scale.getValue()).floatValue()), (float)(1.0f / ((Float) Chams.scale.getValue()).floatValue()), (float)(1.0f / ((Float) Chams.scale.getValue()).floatValue()));
             GL11.glPopAttrib();
             GL11.glPopMatrix();
             GlStateManager.disableBlend();

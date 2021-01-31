@@ -1,7 +1,7 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.TickEvent;
 import me.darki.konas.MathUtil;
 import me.darki.konas.module.Module;

@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
 import me.darki.konas.mixin.mixins.IRenderManager;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;

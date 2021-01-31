@@ -2,6 +2,7 @@ package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.mixin.mixins.ISPacketCloseWindow;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

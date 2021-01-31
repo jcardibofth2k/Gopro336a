@@ -178,7 +178,7 @@ public class Class523 {
         if (Module.mc.world == null) {
             return;
         }
-        if (!Class167.Method1610(Class406.class).Method1651()) {
+        if (!Class167.Method1610(Class406.class).isEnabled()) {
             return;
         }
         AxisAlignedBB axisAlignedBB = Module.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Module.mc.world, blockPos).offset(blockPos);

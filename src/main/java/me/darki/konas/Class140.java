@@ -16,7 +16,7 @@ extends Element {
         if (Class140.mc.player == null || Class140.mc.world == null) {
             return;
         }
-        if (!Class167.Method1610(ElytraFly.class).Method1651() || !ElytraFly.Method976()) {
+        if (!Class167.Method1610(ElytraFly.class).isEnabled() || !ElytraFly.Method976()) {
             return;
         }
         RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322() / 2.0f, Class140.mc.player.rotationPitch <= 0.0f ? -14974014 : -15441777);

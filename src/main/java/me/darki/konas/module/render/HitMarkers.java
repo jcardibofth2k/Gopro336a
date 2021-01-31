@@ -13,6 +13,7 @@ import javax.sound.sampled.Control;
 import javax.sound.sampled.FloatControl;
 
 import me.darki.konas.*;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;

@@ -32,7 +32,7 @@ public class MixinRenderItem {
 
     @ModifyArg(method={"renderEffect"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/renderer/RenderItem;renderModel(Lnet/minecraft/client/renderer/block/model/IBakedModel;I)V"), index=1)
     public int Method1887(int in) {
-        if (Class167.Method1610(Class478.class).Method1651()) {
+        if (Class167.Method1610(Class478.class).isEnabled()) {
             return ((ColorValue)Class478.Field2508.getValue()).Method774();
         }
         return in;

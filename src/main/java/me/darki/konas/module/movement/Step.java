@@ -2,6 +2,7 @@ package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.*;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
@@ -37,7 +38,7 @@ extends Module {
             return;
         }
         Module module = Class167.Method1612("Speed");
-        if (module != null && module.Method1651() && ((Boolean) speedDisable.getValue()).booleanValue()) {
+        if (module != null && module.isEnabled() && ((Boolean) speedDisable.getValue()).booleanValue()) {
             this.toggle();
         }
         if (Step.mc.player.getRidingEntity() != null) {
@@ -170,10 +171,10 @@ extends Module {
     @Subscriber
     public void onUpdate(UpdateEvent updateEvent) {
         Module module = Class167.Method1612("Speed");
-        if (module != null && module.Method1651() && ((Boolean) speedDisable.getValue()).booleanValue()) {
+        if (module != null && module.isEnabled() && ((Boolean) speedDisable.getValue()).booleanValue()) {
             this.toggle();
         }
-        if (((Boolean) reverse.getValue()).booleanValue() && !Class167.Method1610(Class337.class).Method1651() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
+        if (((Boolean) reverse.getValue()).booleanValue() && !Class167.Method1610(Class337.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
             if (!Step.mc.player.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
                 Step.mc.player.motionY = -3.0;
             }

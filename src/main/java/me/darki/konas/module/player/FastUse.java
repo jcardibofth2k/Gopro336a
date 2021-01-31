@@ -3,6 +3,7 @@ package me.darki.konas.module.player;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.*;
 import me.darki.konas.mixin.mixins.IMinecraft;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.item.Item;

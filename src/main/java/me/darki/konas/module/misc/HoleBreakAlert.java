@@ -2,7 +2,7 @@ package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Objects;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.PacketEvent;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;

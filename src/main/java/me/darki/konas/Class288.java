@@ -6,6 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
@@ -105,7 +106,7 @@ extends Module {
         if (!(!((Boolean)Field1699.getValue()).booleanValue() || Class288.mc.player.onGround && Class288.mc.player.collidedVertically)) {
             return;
         }
-        if (Class167.Method1610(PacketFly.class).Method1651()) {
+        if (Class167.Method1610(PacketFly.class).isEnabled()) {
             return;
         }
         if (this.Field1706 < (Integer)Field1695.getValue()) {

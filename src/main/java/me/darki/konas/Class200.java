@@ -3,6 +3,7 @@ package me.darki.konas;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.ClickGUIModule;
 import net.minecraft.client.Minecraft;

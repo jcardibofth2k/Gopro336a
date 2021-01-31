@@ -2,13 +2,13 @@ package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class147;
 import me.darki.konas.Class193;
 import me.darki.konas.Class24;
 import me.darki.konas.Class262;
 import me.darki.konas.Class356;
-import me.darki.konas.Class530;
+import me.darki.konas.IdkWhatThisSettingThingDoes;
 import me.darki.konas.TickEvent;
 import me.darki.konas.Class644;
 import me.darki.konas.Class658;
@@ -33,7 +33,7 @@ import org.lwjgl.input.Keyboard;
 public class GuiMove
 extends Module {
     public Setting<Boolean> Field2005 = new Setting<>("Strict", false);
-    public Class530<Boolean> Field2006 = new Class530("Crouch", false, new Class356(this));
+    public IdkWhatThisSettingThingDoes<Boolean> Field2006 = new IdkWhatThisSettingThingDoes("Crouch", false, new Class356(this));
     public ArrayList<KeyBinding> Field2007 = new ArrayList();
 
     public static ArrayList Method1835(GuiMove guiMove) {

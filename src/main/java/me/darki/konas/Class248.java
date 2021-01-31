@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 
 public class Class248

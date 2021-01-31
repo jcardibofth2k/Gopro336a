@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import me.darki.konas.mixin.mixins.IRenderManager;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.renderer.GlStateManager;

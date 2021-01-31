@@ -30,7 +30,7 @@ extends Command {
             ChatUtil.Method1034("Invalid key", new Object[0]);
             return;
         }
-        module.Method1641(n);
+        module.setBind(n);
         ChatUtil.Method1033("Bound (h)%s(r) to (h)%s", module.getName(), Keyboard.getKeyName((int)n));
     }
 

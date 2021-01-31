@@ -36,7 +36,7 @@ public class Class109 {
         for (Field var6_6 : var1_1.getClass().getDeclaredFields()) {
             if (!Setting.class.isAssignableFrom(var6_6.getType())) continue;
             var6_6.setAccessible(true);
-            v0 = Class530.class;
+            v0 = IdkWhatThisSettingThingDoes.class;
             v1 = var6_6;
             v2 = v1.getType();
             v3 = v0.isAssignableFrom(v2);
@@ -45,7 +45,7 @@ public class Class109 {
             v5 = var6_6;
             v6 = var1_1;
             v7 = v5.get(v6);
-            v8 = (Class530)v7;
+            v8 = (IdkWhatThisSettingThingDoes)v7;
             v4.add(v8);
             continue;
 lbl28:

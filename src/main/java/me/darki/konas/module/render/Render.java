@@ -1,6 +1,6 @@
 package me.darki.konas.module.render;
 
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 

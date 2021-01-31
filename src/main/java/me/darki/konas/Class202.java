@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 
@@ -8,8 +9,8 @@ public class Class202
 extends Module {
     public Class566 Field677 = new Class566();
     public static boolean Field678 = true;
-    public Class530<Boolean> Field679 = new Class530("Cute", false, new Class181(this));
-    public Class530<Boolean> Field680 = new Class530("Invite", true, new Class205(this));
+    public IdkWhatThisSettingThingDoes<Boolean> Field679 = new IdkWhatThisSettingThingDoes("Cute", false, new Class181(this));
+    public IdkWhatThisSettingThingDoes<Boolean> Field680 = new IdkWhatThisSettingThingDoes("Invite", true, new Class205(this));
 
     @Override
     public void onDisable() {
@@ -19,7 +20,7 @@ extends Module {
         NewGui.INSTANCE.Field1140.Method594();
     }
 
-    public static Class530 Method740(Class202 class202) {
+    public static IdkWhatThisSettingThingDoes Method740(Class202 class202) {
         return class202.Field679;
     }
 
@@ -46,7 +47,7 @@ extends Module {
         }
     }
 
-    public static Class530 Method742(Class202 class202) {
+    public static IdkWhatThisSettingThingDoes Method742(Class202 class202) {
         return class202.Field680;
     }
 }

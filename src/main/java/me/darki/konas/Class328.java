@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 import java.util.List;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.network.play.server.SPacketSoundEffect;

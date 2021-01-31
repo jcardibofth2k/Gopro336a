@@ -10,6 +10,7 @@ import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderGlobal;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.mixin.mixins.IShaderGroup;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
@@ -682,7 +683,7 @@ extends Module {
     }
 
     public static void Method1326(EntityPlayer entityPlayer, ModelPlayer modelPlayer, float f) {
-        if (!((Boolean) skeleton.getValue()).booleanValue() || !Class167.Method1612("ESP").Method1651()) {
+        if (!((Boolean) skeleton.getValue()).booleanValue() || !Class167.Method1612("ESP").isEnabled()) {
             return;
         }
         GlStateManager.pushMatrix();

@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
 import me.darki.konas.Class167;
-import me.darki.konas.AutoWalk;
+import me.darki.konas.module.movement.AutoWalk;
 import me.darki.konas.Class501;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
@@ -62,7 +62,7 @@ extends Command {
             class3992.Field1812 = class501;
             autoWalk.Field1812.Method1422();
             autoWalk.pathFind.setValue(Boolean.valueOf(true));
-            if (autoWalk.Method1651()) break block17;
+            if (autoWalk.isEnabled()) break block17;
             autoWalk.toggle();
         }
     }

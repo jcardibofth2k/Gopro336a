@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.misc.MiddleClick;
 import me.darki.konas.setting.Setting;
@@ -15,7 +16,7 @@ extends Module {
 
     @Subscriber
     public void Method584(Class33 class33) {
-        if (Class331.mc.gameSettings.keyBindPickBlock.isKeyDown() && Class167.Method1610(MiddleClick.class).Method1651()) {
+        if (Class331.mc.gameSettings.keyBindPickBlock.isKeyDown() && Class167.Method1610(MiddleClick.class).isEnabled()) {
             return;
         }
         if (!(!((Boolean)this.Field514.getValue()).booleanValue() || Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || ((Boolean)this.Field515.getValue()).booleanValue() && Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {

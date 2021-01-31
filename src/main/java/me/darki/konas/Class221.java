@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.stream.Collectors;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
@@ -200,7 +201,7 @@ extends Module {
                 return;
             }
             if (((Boolean)this.Field234.getValue()).booleanValue()) {
-                if (Class167.Method1610(AutoCrystal.class).Method1651()) {
+                if (Class167.Method1610(AutoCrystal.class).isEnabled()) {
                     this.Method387(Items.END_CRYSTAL);
                     return;
                 }

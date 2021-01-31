@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.audio.ISound;
@@ -35,13 +36,13 @@ extends Module {
     public int Field1410 = 0;
     public Setting<Boolean> Field1411 = new Setting<>("Modules", true);
     public Setting<Boolean> Field1412 = new Setting<>("2b2tKick", false);
-    public Class530<Boolean> Field1413 = new Class530("KillStreak", false, this::Method145);
+    public IdkWhatThisSettingThingDoes<Boolean> Field1413 = new IdkWhatThisSettingThingDoes("KillStreak", false, this::Method145);
     public Setting<Boolean> Field1414 = new Setting<>("Donkeys", false);
     public Setting<Boolean> Field1415 = new Setting<>("Llamas", false);
     public Setting<Boolean> Field1416 = new Setting<>("Slimes", false);
     public Setting<Boolean> Field1417 = new Setting<>("Ghasts", false);
     public Setting<Boolean> Field1418 = new Setting<>("Sound", true);
-    public Class530<Boolean> Field1419 = new Class530("SystemTray", false, this::Method1469);
+    public IdkWhatThisSettingThingDoes<Boolean> Field1419 = new IdkWhatThisSettingThingDoes("SystemTray", false, this::Method1469);
     public ArrayList<Entity> Field1420 = new ArrayList();
     public Class566 Field1421 = new Class566();
     public HashMap<Long, Boolean> Field1422 = new Class175(this);

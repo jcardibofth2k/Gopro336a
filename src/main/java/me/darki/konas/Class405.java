@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.gui.GuiDownloadTerrain;

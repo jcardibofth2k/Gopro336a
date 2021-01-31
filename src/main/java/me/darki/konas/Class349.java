@@ -3,6 +3,7 @@ package me.darki.konas;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.List;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.AxisAlignedBB;

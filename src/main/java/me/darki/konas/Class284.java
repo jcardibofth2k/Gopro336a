@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.gui.GuiDisconnected;

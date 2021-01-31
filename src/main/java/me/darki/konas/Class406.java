@@ -8,6 +8,7 @@ import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IPlayerControllerMP;
 import me.darki.konas.mixin.mixins.IRenderGlobal;
 import me.darki.konas.mixin.mixins.IRenderManager;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityPlayerSP;

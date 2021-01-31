@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Objects;
 
 import me.darki.konas.mixin.mixins.IItemRenderer;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityPlayerSP;

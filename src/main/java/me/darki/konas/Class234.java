@@ -130,7 +130,7 @@ extends Class215 {
                 f6 += 16.0f + class215.Method476();
                 continue;
             }
-            if (!(setting.getValue() instanceof Class524)) continue;
+            if (!(setting.getValue() instanceof PlayerPreview)) continue;
             class215 = new Class250(setting, this.Method486(), this.Method492(), 16.0f, f6, this.Method489() - 32.0f, 200.0f);
             this.Field2455.add(class215);
             f6 += 16.0f + class215.Method476();

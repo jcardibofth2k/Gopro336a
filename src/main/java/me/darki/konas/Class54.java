@@ -17,11 +17,11 @@ public class Class54 {
         }
         for (Module module : Class167.Method1619()) {
             if (!module.Method1630()) continue;
-            if (MathUtil.Method1087(module.Method1646()) && !module.Method1651()) {
+            if (MathUtil.Method1087(module.Method1646()) && !module.isEnabled()) {
                 module.toggle();
                 continue;
             }
-            if (MathUtil.Method1087(module.Method1646()) || !module.Method1651()) continue;
+            if (MathUtil.Method1087(module.Method1646()) || !module.isEnabled()) continue;
             module.toggle();
         }
     }
@@ -38,7 +38,7 @@ public class Class54 {
             if (object.Method1630() || object.Method1646() != class653.Method1164()) continue;
             object.toggle();
         }
-        if (Class167.Method1610(Class191.class).Method1651()) {
+        if (Class167.Method1610(Class191.class).isEnabled()) {
             for (Class152 class152 : Class157.Method1704()) {
                 if (class152.Method1757() != class653.Method1164()) continue;
                 Field201 = true;

@@ -33,7 +33,7 @@ public class MixinLayerArmorBase {
 
     @Redirect(method={"renderEnchantedGlint"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V"))
     private static void Method893(float colorRed, float colorGreen, float colorBlue, float colorAlpha) {
-        if (colorBlue == 0.608f && Class167.Method1610(Class478.class).Method1651()) {
+        if (colorBlue == 0.608f && Class167.Method1610(Class478.class).isEnabled()) {
             GlStateManager.color((float)((float)((ColorValue)Class478.Field2508.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)Class478.Field2508.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)Class478.Field2508.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)Class478.Field2508.getValue()).Method782() / 255.0f));
         } else {
             GlStateManager.color((float)colorRed, (float)colorGreen, (float)colorBlue, (float)colorAlpha);

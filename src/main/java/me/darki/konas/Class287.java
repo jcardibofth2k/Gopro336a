@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import me.darki.konas.mixin.mixins.IInventoryPlayer;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityOtherPlayerMP;

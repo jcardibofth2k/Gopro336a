@@ -2,6 +2,7 @@ package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.mixin.mixins.IRenderManager;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.util.math.Interpolation;

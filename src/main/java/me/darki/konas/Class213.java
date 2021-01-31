@@ -1,5 +1,6 @@
 package me.darki.konas;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.module.client.NewGui;
 

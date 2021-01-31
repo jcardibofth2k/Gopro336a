@@ -52,7 +52,7 @@ public class MixinBlock {
         if (Class167.Method1610(XRay.class) == null) {
             return;
         }
-        if (Class167.Method1610(XRay.class).Method1651()) {
+        if (Class167.Method1610(XRay.class).isEnabled()) {
             info.setReturnValue((Object)((Class443) XRay.blocks.getValue()).Method682().contains((Block)Block.class.cast(this)));
             info.cancel();
         }

@@ -10,6 +10,7 @@ import java.util.Map;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.fontCommand;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
@@ -78,7 +79,7 @@ extends Module {
     public static Setting<Double> Field951 = new Setting<>("YOffset", 0.2, 1.0, 0.0, 0.05).setParentSetting(Field942);
     public static Setting<ParentSetting> Field952 = new Setting<>("Misc", new ParentSetting(false));
     public static Setting<Boolean> Field953 = new Setting<>("SelfNametag", false).setParentSetting(Field952);
-    public static Setting<Class427> Field954 = new Class530("Font", Class427.VANILLA, new Class404());
+    public static Setting<Class427> Field954 = new IdkWhatThisSettingThingDoes("Font", Class427.VANILLA, new Class404());
     public DecimalFormat Field955 = new DecimalFormat("#.##");
     public static ICamera Field956 = new Frustum();
     public static Class552 Field957 = new Class555(fontCommand.Field1351, 20.0f);
@@ -402,7 +403,7 @@ lbl78:
         double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
         d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
         double d2 = (Double)Field945.getValue() * d;
-        if (Class167.Method1610(Zoom.class).Method1651()) {
+        if (Class167.Method1610(Zoom.class).isEnabled()) {
             d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
         }
         if (Field954.getValue() != Class427.HIGHRES) {
@@ -457,7 +458,7 @@ lbl78:
         if (Field954.getValue() != Class427.HIGHRES) {
             GL11.glScaled((double)(1.0 / d2), (double)(1.0 / d2), (double)1.0);
             d2 = (Double)Field945.getValue() * d;
-            if (Class167.Method1610(Zoom.class).Method1651()) {
+            if (Class167.Method1610(Zoom.class).isEnabled()) {
                 d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
             }
             GL11.glScaled((double)d2, (double)d2, (double)1.0);

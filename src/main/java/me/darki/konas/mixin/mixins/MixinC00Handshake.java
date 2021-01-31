@@ -24,7 +24,7 @@ public class MixinC00Handshake {
 
     @Inject(method={"writePacketData"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method446(PacketBuffer buf, CallbackInfo info) {
-        if (Class167.Method1610(Class178.class).Method1651()) {
+        if (Class167.Method1610(Class178.class).isEnabled()) {
             System.out.println("Cancelling packet data");
             info.cancel();
             buf.writeVarInt(this.Field269);

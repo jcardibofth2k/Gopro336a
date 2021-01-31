@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.stream.Stream;
 
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.setting.Setting;
@@ -74,7 +75,7 @@ extends Module {
         if (updateEvent.isCanceled() || !Class496.Method1966()) {
             return;
         }
-        if (Class167.Method1610(PacketFly.class).Method1651()) {
+        if (Class167.Method1610(PacketFly.class).isEnabled()) {
             return;
         }
         if (this.Field1385 < (Integer)Field1383.getValue()) {

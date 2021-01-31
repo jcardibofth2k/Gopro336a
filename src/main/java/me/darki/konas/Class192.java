@@ -8,8 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;

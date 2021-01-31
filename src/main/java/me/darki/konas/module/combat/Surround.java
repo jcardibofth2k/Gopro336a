@@ -4,7 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.PacketEvent;
 import me.darki.konas.Class475;
 import me.darki.konas.RotationUtil;
@@ -233,7 +233,7 @@ extends Module {
         Field2433 = false;
         this.Field2438 = 0;
         this.Field2439 = this.getBlockInHotbar();
-        if (!this.Method1651()) {
+        if (!this.isEnabled()) {
             return true;
         }
         if (this.Field2439 == -1) {

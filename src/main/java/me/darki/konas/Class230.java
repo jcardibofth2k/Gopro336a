@@ -2,6 +2,7 @@ package me.darki.konas;
 
 import java.util.HashMap;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
 import net.minecraft.client.Minecraft;

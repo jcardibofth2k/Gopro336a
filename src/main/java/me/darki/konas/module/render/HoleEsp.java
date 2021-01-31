@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class28;
 import me.darki.konas.Class408;
 import me.darki.konas.Class409;

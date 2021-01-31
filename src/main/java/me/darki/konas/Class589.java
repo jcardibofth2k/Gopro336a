@@ -1,5 +1,7 @@
 package me.darki.konas;
 
+import me.darki.konas.module.misc.Announcer;
+import me.darki.konas.module.misc.AutoGG;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Keyboard;
 import com.google.gson.JsonParser;
@@ -214,7 +216,7 @@ public class Class589
     public static JsonObject Method2226(final Module module) {
         final JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("Bind", GameSettings.getKeyDisplayString(module.Method1646()));
-        jsonObject.addProperty("Enabled", Boolean.valueOf(module.Method1651()));
+        jsonObject.addProperty("Enabled", Boolean.valueOf(module.isEnabled()));
         jsonObject.addProperty("Visible", Boolean.valueOf(module.Method1635()));
         if (Class167.Method1615(module) != null) {
             for (final Setting setting : Class167.Method1615(module)) {
@@ -694,8 +696,8 @@ public class Class589
         if (module != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(module.getName());
             try {
-                module.Method1641(Method2262(asJsonObject.getAsJsonPrimitive("Bind").getAsString()));
-                if (module.Method1651() != asJsonObject.getAsJsonPrimitive("Enabled").getAsBoolean()) {
+                module.setBind(Method2262(asJsonObject.getAsJsonPrimitive("Bind").getAsString()));
+                if (module.isEnabled() != asJsonObject.getAsJsonPrimitive("Enabled").getAsBoolean()) {
                     module.toggle();
                 }
                 module.Method1634(asJsonObject.getAsJsonPrimitive("Visible").getAsBoolean());

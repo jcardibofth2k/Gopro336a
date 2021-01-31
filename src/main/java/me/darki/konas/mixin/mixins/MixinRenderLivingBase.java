@@ -5,7 +5,7 @@ import me.darki.konas.Class122;
 import me.darki.konas.Class129;
 import me.darki.konas.Class139;
 import me.darki.konas.Class167;
-import me.darki.konas.Class493;
+import me.darki.konas.Chams;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
@@ -47,7 +47,7 @@ extends Render {
             EventDispatcher.Companion.dispatch(pre);
         }
         if (!pre.isCanceled()) {
-            if (Class167.Method1610(Class493.class).Method1651() || Class167.Method1610(ESP.class).Method1651()) {
+            if (Class167.Method1610(Chams.class).isEnabled() || Class167.Method1610(ESP.class).isEnabled()) {
                 boolean flag1;
                 boolean flag = this.Method35(entity);
                 boolean bl = flag1 = !flag && !entity.isInvisibleToPlayer((EntityPlayer)Minecraft.getMinecraft().player);
@@ -62,7 +62,7 @@ extends Render {
                     if (flag1) {
                         GlStateManager.enableBlendProfile((GlStateManager.Profile)GlStateManager.Profile.TRANSPARENT_MODEL);
                     }
-                    if ((Class167.Method1610(Class493.class).Method1651() || Class493.Field2147) && !ESP.Field1342 && Class493.Method1952(this.Field16, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor)) {
+                    if ((Class167.Method1610(Chams.class).isEnabled() || Chams.Field2147) && !ESP.Field1342 && Chams.Method1952(this.Field16, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor)) {
                         if (!ESP.Field1342) {
                             Class122 post = new Class122(renderLivingBase.getMainModel(), (Entity)entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
                             EventDispatcher.Companion.dispatch(post);

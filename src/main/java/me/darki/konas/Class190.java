@@ -21,7 +21,7 @@ extends Class183 {
     public boolean Method106(int n, int n2, int n3) {
         super.Method106(n, n2, n3);
         if (this.Method103()) {
-            this.Method146().Method1641(n3 - 100);
+            this.Method146().setBind(n3 - 100);
             this.Method104(false);
             return true;
         }
@@ -33,7 +33,7 @@ extends Class183 {
         }
         if (bl && n3 == 1) {
             Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
-            this.Method146().Method1640(!this.Method146().Method1630());
+            this.Method146().setHoldBind(!this.Method146().Method1630());
             return true;
         }
         return false;
@@ -45,11 +45,11 @@ extends Class183 {
             super.Method102(c, n);
             if (!this.Method103()) break block1;
             if (n == 1) {
-                this.Method146().Method1641(0);
+                this.Method146().setBind(0);
                 this.Method104(false);
                 return;
             }
-            this.Method146().Method1641(n);
+            this.Method146().setBind(n);
             this.Method104(false);
         }
     }

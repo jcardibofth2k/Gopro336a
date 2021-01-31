@@ -3,6 +3,7 @@ package me.darki.konas;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.init.MobEffects;
@@ -12,7 +13,7 @@ import net.minecraft.potion.PotionEffect;
 public class Class503
 extends Module {
     public float Field1371;
-    public Class530<Class505> Field1372 = new Class530("Mode", Class505.NORMAL, this::Method1442);
+    public IdkWhatThisSettingThingDoes<Class505> Field1372 = new IdkWhatThisSettingThingDoes("Mode", Class505.NORMAL, this::Method1442);
     public Setting<Boolean> Field1373 = new Setting<>("Sine", false).Method1191(this::Method394);
     public Setting<Boolean> Field1374 = new Setting<>("Cancel", false).Method1191(this::Method388);
     public long Field1375;

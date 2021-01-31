@@ -12,6 +12,7 @@ import java.util.Random;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.Party;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;

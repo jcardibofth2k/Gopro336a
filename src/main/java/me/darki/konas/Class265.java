@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.setting.Setting;

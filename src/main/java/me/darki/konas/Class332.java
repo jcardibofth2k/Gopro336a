@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 
 public class Class332

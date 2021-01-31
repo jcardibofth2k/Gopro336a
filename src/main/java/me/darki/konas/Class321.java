@@ -20,6 +20,7 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.mixin.mixins.IChatLine;
 import me.darki.konas.mixin.mixins.IGuiNewChat;
 import me.darki.konas.mixin.mixins.ISPacketChat;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -36,7 +37,7 @@ extends Module {
     public DataInputStream Field647;
     public DataOutputStream Field648;
     public String Field649;
-    public Class530<Class324> Field650;
+    public IdkWhatThisSettingThingDoes<Class324> Field650;
     public Setting<Boolean> Field651;
     public String Field652 = "kcr";
     public ConcurrentHashMap<String, String> Field653;
@@ -82,7 +83,7 @@ extends Module {
         if (Class321.mc.player == null || Class321.mc.world == null) {
             return;
         }
-        if (Class167.Method1610(Class297.class).Method1651()) {
+        if (Class167.Method1610(Class297.class).isEnabled()) {
             Class167.Method1610(Class297.class).Method1647(false);
         }
         ArrayList<ChatLine> arrayList = new ArrayList<ChatLine>(((IGuiNewChat)Class321.mc.ingameGUI.getChatGUI()).Method244());
@@ -222,7 +223,7 @@ extends Module {
         super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC, new String[0]);
         this.Field644 = new Class566();
         this.Field649 = null;
-        this.Field650 = new Class530("Mode", Class324.ROT13, this::Method718);
+        this.Field650 = new IdkWhatThisSettingThingDoes("Mode", Class324.ROT13, this::Method718);
         this.Field651 = new Setting<>("Encrypt", true);
         this.Field652 = "kcr";
         this.Field653 = new ConcurrentHashMap();

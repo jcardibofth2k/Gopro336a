@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class167;
 import me.darki.konas.Class24;
 import me.darki.konas.Class308;
 import me.darki.konas.Class311;
 import me.darki.konas.Class327;
 import me.darki.konas.Class330;
-import me.darki.konas.AntiBot;
+import me.darki.konas.module.misc.AntiBot;
 import me.darki.konas.ColorValue;
 import me.darki.konas.UpdateEvent;
 import me.darki.konas.Class473;
@@ -323,7 +323,7 @@ extends Module {
         List list;
         if (((Boolean)Field465.getValue()).booleanValue() && (list = Class167.Method1610(AutoCrystal.class)) != null) {
             AutoCrystal autoCrystal = (AutoCrystal)((Object)list);
-            if (((Module)((Object)list)).Method1651()) {
+            if (((Module)((Object)list)).isEnabled()) {
                 if (((Boolean)Field466.getValue()).booleanValue()) {
                     if (autoCrystal.Method1554() != null || autoCrystal.Method1573() != null) {
                         this.Field484 = null;

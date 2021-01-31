@@ -3,6 +3,7 @@ package me.darki.konas;
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.buffer.Unpooled;
 import me.darki.konas.mixin.mixins.ICPacketCustomPayload;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.client.CPacketCustomPayload;

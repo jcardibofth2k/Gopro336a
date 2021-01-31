@@ -65,7 +65,7 @@ extends Command {
                     }
                     EntityPlayer entityPlayer = Minecraft.getMinecraft().world.getPlayerEntityByName(stringArray[2]);
                     Class492.Method1990(entityPlayer.getName(), entityPlayer.getUniqueID().toString().replace("-", ""));
-                    if (Class167.Method1610(Class299.class).Method1651() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
+                    if (Class167.Method1610(Class299.class).isEnabled() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + stringArray[2] + "&f as friend");
@@ -75,7 +75,7 @@ extends Command {
                         return;
                     }
                     Class492.Method1990(Class509.Method1351(Class509.Method1349(stringArray[2])), Class509.Method1349(stringArray[2]));
-                    if (Class167.Method1610(Class299.class).Method1651() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
+                    if (Class167.Method1610(Class299.class).isEnabled() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + Class509.Method1351(Class509.Method1349(stringArray[2])) + "&f as friend");

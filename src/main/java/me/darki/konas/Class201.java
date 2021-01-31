@@ -185,10 +185,10 @@ extends Class183 {
                 class183.Method1472(f2);
                 f2 += class183.Method1481();
             }
-            int n4 = n3 = this.Field620.Method1651() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
+            int n4 = n3 = this.Field620.isEnabled() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
             if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue()) {
                 if (Class201.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-                    n3 = this.Field620.Method1651() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
+                    n3 = this.Field620.isEnabled() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
                 }
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);

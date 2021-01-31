@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.lang.invoke.LambdaMetafactory;
 import java.util.LinkedList;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.multiplayer.WorldClient;

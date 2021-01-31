@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import me.darki.konas.gui.hud.Element;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.client.NewGui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;

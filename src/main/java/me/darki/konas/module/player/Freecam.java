@@ -1,7 +1,7 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class119;
 import me.darki.konas.Class392;
 import me.darki.konas.Class398;
@@ -54,7 +54,7 @@ extends Module {
         }
         if (this.Field2464 != (n = Freecam.mc.player.ticksExisted)) {
             this.Field2464 = n;
-            this.Field2463 = this.Method1651() ? (MathUtil.Method1087(((Class537)Field2458.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
+            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(((Class537)Field2458.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
         }
         return this.Field2463;
     }

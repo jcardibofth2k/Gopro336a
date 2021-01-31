@@ -2,6 +2,7 @@ package me.darki.konas;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.mixin.mixins.ICPacketPlayerTryUseItemOnBlock;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.util.EnumFacing;

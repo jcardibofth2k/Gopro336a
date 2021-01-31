@@ -3,6 +3,7 @@ package me.darki.konas;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.HashMap;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;

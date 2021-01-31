@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 import java.util.List;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
@@ -437,7 +438,7 @@ extends Module {
 
     @Subscriber(priority=11)
     public void Method948(Class56 class56) {
-        if (!Class167.Method1610(Sprint.class).Method1651() && (((Boolean)Field902.getValue()).booleanValue() && Class304.mc.gameSettings.keyBindSneak.isKeyDown() || !((Boolean)Field901.getValue()).booleanValue())) {
+        if (!Class167.Method1610(Sprint.class).isEnabled() && (((Boolean)Field902.getValue()).booleanValue() && Class304.mc.gameSettings.keyBindSneak.isKeyDown() || !((Boolean)Field901.getValue()).booleanValue())) {
             Class304.mc.player.setSprinting(false);
         }
         int n = (Boolean)Field902.getValue() != false && Keyboard.isKeyDown((int)56) ? 2 : 1;

@@ -5,7 +5,7 @@ import cookiedragon.eventsystem.EventDispatcher;
 import java.awt.TrayIcon;
 import java.util.ArrayList;
 import java.util.Collections;
-import me.darki.konas.Category;
+
 import me.darki.konas.Class167;
 import me.darki.konas.Class184;
 import me.darki.konas.Keybind;
@@ -78,7 +78,7 @@ public abstract class Module {
     }
 
     public boolean Method1632() {
-        return Class167.Method1610(Class184.class).Method1651();
+        return Class167.Method1610(Class184.class).isEnabled();
     }
 
     public void Method1633(int n, int n2) {
@@ -103,7 +103,7 @@ public abstract class Module {
             if (Module.mc.player == null || Module.mc.world == null) {
                 return;
             }
-            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").Method1651()) break block1;
+            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").isEnabled()) break block1;
             Logger.Method1120(module.getName() + Command.Field122 + "a enabled");
         }
     }
@@ -112,7 +112,7 @@ public abstract class Module {
         block0: {
             boolean bl;
             Class184 class184 = (Class184)Class167.Method1610(Class184.class);
-            if (class184 == null || !class184.Method1651() || !(bl = ((Boolean)Class167.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
+            if (class184 == null || !class184.isEnabled() || !(bl = ((Boolean)Class167.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
             class184.Method1468(this.getName(), string, messageType);
         }
     }
@@ -133,15 +133,15 @@ public abstract class Module {
         return this.Field1718;
     }
 
-    public Category Method1639() {
+    public Category getCategory() {
         return this.category;
     }
 
-    public void Method1640(boolean bl) {
+    public void setHoldBind(boolean bl) {
         this.holdBind.setValue(Boolean.valueOf(bl));
     }
 
-    public void Method1641(int n) {
+    public void setBind(int n) {
         this.Bind.setValue(new Keybind(n));
     }
 
@@ -158,7 +158,7 @@ public abstract class Module {
             if (Module.mc.player == null || Module.mc.world == null) {
                 return;
             }
-            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").Method1651()) break block1;
+            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").isEnabled()) break block1;
             Logger.Method1120(module.getName() + Command.Field122 + "c disabled");
         }
     }
@@ -193,11 +193,11 @@ public abstract class Module {
         this.Field1718 = arrayList;
     }
 
-    public void Method1650(String string) {
+    public void setDescription(String string) {
         this.description = string;
     }
 
-    public boolean Method1651() {
+    public boolean isEnabled() {
         return this.enabled;
     }
 

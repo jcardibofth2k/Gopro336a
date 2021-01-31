@@ -3,6 +3,7 @@ package me.darki.konas;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.client.gui.Gui;
 
@@ -131,7 +132,7 @@ extends Gui {
                 RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.Field2503.getValue()).Method774());
                 n2 = 67;
             }
-            if (module.Method1651()) {
+            if (module.isEnabled()) {
                 n = ((ColorValue)Class115.Field2504.getValue()).Method774();
             }
             Class557.Method801(module.getName(), (int)f + n2, (int)f2 + (int)(this.Field539 + 2.0f), n);

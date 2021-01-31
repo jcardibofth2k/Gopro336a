@@ -5,6 +5,7 @@ import java.awt.TrayIcon;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
@@ -75,7 +76,7 @@ extends Module {
     public void Method134() {
         Class284 class284 = (Class284)Class167.Method1610(Class284.class);
         if (class284 != null) {
-            if (class284.Method1651()) {
+            if (class284.isEnabled()) {
                 class284.toggle();
             }
         }

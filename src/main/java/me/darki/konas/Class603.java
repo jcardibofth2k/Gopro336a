@@ -61,7 +61,7 @@ public class Class603 {
         Field130.add(new Class576());
         Field130.add(new fontCommand());
         Field130.add(new WaypointCommand());
-        Field130.add(new Class579());
+        Field130.add(new SpammerCommand());
         Field130.add(new xrayCommand());
         Field130.add(new bookCommand());
         Field130.add(new Party());
@@ -70,7 +70,7 @@ public class Class603 {
         Field130.add(new moduleConfigCommand());
         Field130.add(new Class575());
         Field130.add(new Class600());
-        Field130.add(new Class582());
+        Field130.add(new SeisureCommand());
         Field130.add(new Class577());
         Field130.add(new nameMcCommand());
         Field130.add(new Class593());

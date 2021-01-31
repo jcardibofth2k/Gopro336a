@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import me.darki.konas.*;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;

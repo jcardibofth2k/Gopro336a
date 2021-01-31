@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.IGuiEditSign;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockSign;

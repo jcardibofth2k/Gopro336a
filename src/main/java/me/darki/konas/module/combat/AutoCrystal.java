@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class167;
 import me.darki.konas.PacketEvent;
 import me.darki.konas.ACComfirmMode;
@@ -481,7 +481,7 @@ extends Module {
                             bl2 = false;
                         }
                         if (vec3d2 != null && dArray != null) {
-                            if (!bl2 && bl || !(AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d3) < AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d2))) continue;
+                            if (!bl2 && bl || !(AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d3) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d2))) continue;
                             vec3d2 = vec3d3;
                             dArray = dArray2;
                             continue;
@@ -501,7 +501,7 @@ extends Module {
     }
 
     public void Method1561() {
-        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < ((Float) health.getValue()).floatValue() || (Boolean) killAura.getValue() != false && Class167.Method1610(KillAura.class).Method1651() || (Boolean) pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).Method1651() || (Boolean) gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || ((Boolean) mining.getValue()).booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < ((Float) health.getValue()).floatValue() || (Boolean) killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || (Boolean) pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || (Boolean) gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || ((Boolean) mining.getValue()).booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
             this.Field1620 = null;
             return;
         }
@@ -663,7 +663,7 @@ extends Module {
                 this.Field1639.put((EntityPlayer)sPacketEntityStatus.getEntity((World)AutoCrystal.mc.world), new Class566());
                 break block14;
             }
-            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !((Boolean) disableOnTP.getValue()).booleanValue() || Class167.Method1610(PacketFly.class).Method1651()) break block14;
+            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !((Boolean) disableOnTP.getValue()).booleanValue() || Class167.Method1610(PacketFly.class).isEnabled()) break block14;
             this.toggle();
         }
     }
@@ -717,7 +717,7 @@ extends Module {
             if (this.Field1638.containsKey(sPacketSpawnObject.getEntityID())) {
                 return;
             }
-            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < ((Float) health.getValue()).floatValue() || (Boolean) killAura.getValue() != false && Class167.Method1610(KillAura.class).Method1651() || (Boolean) pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).Method1651() || (Boolean) gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || ((Boolean) mining.getValue()).booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < ((Float) health.getValue()).floatValue() || (Boolean) killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || (Boolean) pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || (Boolean) gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || ((Boolean) mining.getValue()).booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
                 this.Field1620 = null;
                 return;
             }
@@ -1054,7 +1054,7 @@ extends Module {
             FastUse.Field1871 = true;
             this.Field1636 = true;
             if (this.Field1627 == null) {
-                Class545.Method996(blockPos, AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0), this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, enumFacing, true);
+                Class545.Method996(blockPos, AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0), this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, enumFacing, true);
             } else {
                 AutoCrystal.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos, enumFacing, this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, (float)(this.Field1627.hitVec.x - (double)blockPos.getX()), (float)(this.Field1627.hitVec.y - (double)blockPos.getY()), (float)(this.Field1627.hitVec.z - (double)blockPos.getZ())));
                 AutoCrystal.mc.player.connection.sendPacket((Packet)new CPacketAnimation(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
@@ -1123,7 +1123,7 @@ extends Module {
             for (d8 = d10; d8 <= d11; d8 += d9) {
                 for (d7 = d10; d7 <= d11; d7 += d9) {
                     for (d6 = d10; d6 <= d11; d6 += d9) {
-                        vec3d4 = new Vec3d((Vec3i)blockPos).add(d8, d7, d6);
+                        vec3d4 = new Vec3d((Vec3i)blockPos).addVector(d8, d7, d6);
                         d5 = vec3d6.distanceTo(vec3d4);
                         d4 = vec3d4.x - vec3d6.x;
                         d3 = vec3d4.y - vec3d6.y;
@@ -1135,7 +1135,7 @@ extends Module {
                         f2 = -MathHelper.cos((float)((float)(-dArray2[1] * 0.01745329238474369)));
                         f = MathHelper.sin((float)((float)(-dArray2[1] * 0.01745329238474369)));
                         vec3d3 = new Vec3d((double)(f3 * f2), (double)f, (double)(f4 * f2));
-                        vec3d2 = vec3d6.add(vec3d3.x * d5, vec3d3.y * d5, vec3d3.z * d5);
+                        vec3d2 = vec3d6.addVector(vec3d3.x * d5, vec3d3.y * d5, vec3d3.z * d5);
                         rayTraceResult = AutoCrystal.mc.world.rayTraceBlocks(vec3d6, vec3d2, false, true, false);
                         if (!(((Float) placeWalls.getValue()).floatValue() >= ((Float) placeRange.getValue()).floatValue())) {
                             if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK || !rayTraceResult.getBlockPos().equals((Object)blockPos)) continue;
@@ -1143,7 +1143,7 @@ extends Module {
                         vec3d = vec3d4;
                         dArray = dArray2;
                         if (vec3d5 != null && dArray3 != null && (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK || enumFacing == null)) {
-                            if (!(AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d5))) continue;
+                            if (!(AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d5))) continue;
                             vec3d5 = vec3d;
                             dArray3 = dArray;
                             if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) continue;
@@ -1169,7 +1169,7 @@ extends Module {
                 for (d8 = d10; d8 <= d11; d8 += d9) {
                     for (d7 = d10; d7 <= d11; d7 += d9) {
                         for (d6 = d10; d6 <= d11; d6 += d9) {
-                            vec3d4 = new Vec3d((Vec3i)blockPos).add(d8, d7, d6);
+                            vec3d4 = new Vec3d((Vec3i)blockPos).addVector(d8, d7, d6);
                             d5 = vec3d6.distanceTo(vec3d4);
                             d4 = vec3d4.x - vec3d6.x;
                             d3 = vec3d4.y - vec3d6.y;
@@ -1181,13 +1181,13 @@ extends Module {
                             f2 = -MathHelper.cos((float)((float)(-dArray2[1] * 0.01745329238474369)));
                             f = MathHelper.sin((float)((float)(-dArray2[1] * 0.01745329238474369)));
                             vec3d3 = new Vec3d((double)(f3 * f2), (double)f, (double)(f4 * f2));
-                            vec3d2 = vec3d6.add(vec3d3.x * d5, vec3d3.y * d5, vec3d3.z * d5);
+                            vec3d2 = vec3d6.addVector(vec3d3.x * d5, vec3d3.y * d5, vec3d3.z * d5);
                             rayTraceResult = AutoCrystal.mc.world.rayTraceBlocks(vec3d6, vec3d2, false, true, true);
                             if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) continue;
                             vec3d = vec3d4;
                             dArray = dArray2;
                             if (vec3d5 != null && dArray3 != null && (rayTraceResult != null && rayTraceResult.typeOfHit == RayTraceResult.Type.BLOCK || enumFacing == null)) {
-                                if (!(AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d5))) continue;
+                                if (!(AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d5))) continue;
                                 vec3d5 = vec3d;
                                 dArray3 = dArray;
                                 if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) continue;
@@ -1220,7 +1220,7 @@ extends Module {
             for (EnumFacing enumFacing3 : EnumFacing.values()) {
                 vec3d = new Vec3d((double)blockPos.getX() + 0.5 + (double)enumFacing3.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing3.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing3.getDirectionVec().getZ() * 0.5);
                 RayTraceResult rayTraceResult = AutoCrystal.mc.world.rayTraceBlocks(new Vec3d(AutoCrystal.mc.player.posX, AutoCrystal.mc.player.posY + (double)AutoCrystal.mc.player.getEyeHeight(), AutoCrystal.mc.player.posZ), vec3d, false, true, false);
-                if (rayTraceResult == null || !rayTraceResult.typeOfHit.equals((Object)RayTraceResult.Type.BLOCK) || !rayTraceResult.getBlockPos().equals((Object)blockPos) || vec3d7 != null && !(AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d7))) continue;
+                if (rayTraceResult == null || !rayTraceResult.typeOfHit.equals((Object)RayTraceResult.Type.BLOCK) || !rayTraceResult.getBlockPos().equals((Object)blockPos) || vec3d7 != null && !(AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d7))) continue;
                 vec3d7 = vec3d;
                 enumFacing2 = enumFacing3;
                 this.Field1627 = rayTraceResult;
@@ -1233,7 +1233,7 @@ extends Module {
             }
             for (EnumFacing enumFacing3 : EnumFacing.values()) {
                 vec3d = new Vec3d((double)blockPos.getX() + 0.5 + (double)enumFacing3.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing3.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing3.getDirectionVec().getZ() * 0.5);
-                if (vec3d7 != null && !(AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().add(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d7))) continue;
+                if (vec3d7 != null && !(AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, (double)AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d7))) continue;
                 vec3d7 = vec3d;
                 enumFacing2 = enumFacing3;
             }

@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.StreamSupport;
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class167;
 import me.darki.konas.PacketEvent;
 import me.darki.konas.module.movement.PacketFly;
@@ -48,20 +48,20 @@ import net.minecraft.util.math.Vec3i;
 
 public class HoleFill
 extends Module {
-    public static Setting<Boolean> Field1031 = new Setting<>("Rotate", true);
-    public static Setting<Boolean> Field1032 = new Setting<>("Swing", true);
-    public static Setting<Double> Field1033 = new Setting<>("Range", 5.0, 6.0, 1.0, 0.1);
-    public static Setting<Boolean> Field1034 = new Setting<>("StrictDirection", false);
-    public static Setting<Integer> Field1035 = new Setting<>("ActionShift", 1, 3, 1, 1);
-    public static Setting<Integer> Field1036 = new Setting<>("ActionInterval", 0, 5, 0, 1);
-    public static Setting<Boolean> Field1037 = new Setting<>("RayTrace", false);
-    public static Setting<Boolean> Field1038 = new Setting<>("Double", false);
-    public static Setting<Boolean> Field1039 = new Setting<>("JumpDisable", false);
-    public static Setting<Boolean> Field1040 = new Setting<>("Filter", false);
-    public static Setting<Class443> Field1041 = new Setting<>("ValidBlocks", new Class443(new String[0]));
-    public static Setting<Class305> Field1042 = new Setting<>("Smart", Class305.ALWAYS);
-    public static Setting<Double> Field1043 = new Setting<>("EnemyRange", 10.0, 15.0, 1.0, 0.5);
-    public static Setting<Boolean> Field1044 = new Setting<>("DisableWhenNone", false);
+    public static Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public static Setting<Boolean> swing = new Setting<>("Swing", true);
+    public static Setting<Double> range = new Setting<>("Range", 5.0, 6.0, 1.0, 0.1);
+    public static Setting<Boolean> strictDirection = new Setting<>("StrictDirection", false);
+    public static Setting<Integer> actionShift = new Setting<>("ActionShift", 1, 3, 1, 1);
+    public static Setting<Integer> actionInterval = new Setting<>("ActionInterval", 0, 5, 0, 1);
+    public static Setting<Boolean> rayTrace = new Setting<>("RayTrace", false);
+    public static Setting<Boolean> aDouble = new Setting<>("Double", false);
+    public static Setting<Boolean> jumpDisable = new Setting<>("JumpDisable", false);
+    public static Setting<Boolean> filter = new Setting<>("Filter", false);
+    public static Setting<Class443> validBlocks = new Setting<>("ValidBlocks", new Class443(new String[0]));
+    public static Setting<Class305> smart = new Setting<>("Smart", Class305.ALWAYS);
+    public static Setting<Double> enemyRange = new Setting<>("EnemyRange", 10.0, 15.0, 1.0, 0.5);
+    public static Setting<Boolean> disableWhenNone = new Setting<>("DisableWhenNone", false);
     public Map<BlockPos, Long> Field1045 = new ConcurrentHashMap<BlockPos, Long>();
     public Class490 Field1046 = null;
     public int Field1047;
@@ -70,15 +70,15 @@ extends Module {
     public int Field1050 = 0;
 
     public static boolean Method122(EntityPlayer entityPlayer) {
-        return (double)HoleFill.mc.player.getDistance((Entity)entityPlayer) < (Double)Field1043.getValue();
+        return (double)HoleFill.mc.player.getDistance((Entity)entityPlayer) < (Double) enemyRange.getValue();
     }
 
     public static boolean Method512(BlockPos blockPos) {
-        return Class496.Method1970(blockPos, (Boolean)Field1034.getValue(), (Boolean)Field1037.getValue(), true);
+        return Class496.Method1970(blockPos, (Boolean) strictDirection.getValue(), (Boolean) rayTrace.getValue(), true);
     }
 
     public static Float Method1051(EntityPlayer entityPlayer, BlockPos blockPos) {
-        return Float.valueOf(Field1042.getValue() != Class305.NONE && entityPlayer != null ? MathHelper.sqrt((double)HoleFill.mc.player.getDistanceSq((Entity)entityPlayer)) : MathHelper.sqrt((double)HoleFill.mc.player.getDistanceSq(blockPos)));
+        return Float.valueOf(smart.getValue() != Class305.NONE && entityPlayer != null ? MathHelper.sqrt((double)HoleFill.mc.player.getDistanceSq((Entity)entityPlayer)) : MathHelper.sqrt((double)HoleFill.mc.player.getDistanceSq(blockPos)));
     }
 
     public void Method1052(int n, BlockPos blockPos, Long l) {
@@ -89,8 +89,8 @@ extends Module {
 
     public boolean Method1053(Item item) {
         if (item instanceof ItemBlock) {
-            if (((Boolean)Field1040.getValue()).booleanValue()) {
-                return ((Class443)Field1041.getValue()).Method682().contains(((ItemBlock)item).getBlock());
+            if (((Boolean) filter.getValue()).booleanValue()) {
+                return ((Class443) validBlocks.getValue()).Method682().contains(((ItemBlock)item).getBlock());
             }
             return true;
         }
@@ -102,19 +102,19 @@ extends Module {
         block8: {
             block7: {
                 this.Field1046 = null;
-                if (((Boolean)Field1039.getValue()).booleanValue() && HoleFill.mc.player.prevPosY < HoleFill.mc.player.posY) {
+                if (((Boolean) jumpDisable.getValue()).booleanValue() && HoleFill.mc.player.prevPosY < HoleFill.mc.player.posY) {
                     this.toggle();
                 }
-                if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)Field1031.getValue())) {
+                if (updateEvent.isCanceled() || !Class496.Method1959((Boolean) rotate.getValue())) {
                     return;
                 }
-                if (Class167.Method1610(PacketFly.class).Method1651()) {
+                if (Class167.Method1610(PacketFly.class).isEnabled()) {
                     return;
                 }
-                if (this.Field1050 < (Integer)Field1036.getValue()) {
+                if (this.Field1050 < (Integer) actionInterval.getValue()) {
                     ++this.Field1050;
                 }
-                if (this.Field1050 < (Integer)Field1036.getValue()) {
+                if (this.Field1050 < (Integer) actionInterval.getValue()) {
                     return;
                 }
                 int n = this.Method524();
@@ -122,15 +122,15 @@ extends Module {
                 if (n == -1) {
                     return;
                 }
-                this.Field1048 = Lists.newArrayList(BlockPos.getAllInBox((BlockPos)HoleFill.mc.player.getPosition().add(-((Double)Field1033.getValue()).doubleValue(), -((Double)Field1033.getValue()).doubleValue(), -((Double)Field1033.getValue()).doubleValue()), (BlockPos)HoleFill.mc.player.getPosition().add(((Double)Field1033.getValue()).doubleValue(), ((Double)Field1033.getValue()).doubleValue(), ((Double)Field1033.getValue()).doubleValue())));
+                this.Field1048 = Lists.newArrayList(BlockPos.getAllInBox((BlockPos)HoleFill.mc.player.getPosition().add(-((Double) range.getValue()).doubleValue(), -((Double) range.getValue()).doubleValue(), -((Double) range.getValue()).doubleValue()), (BlockPos)HoleFill.mc.player.getPosition().add(((Double) range.getValue()).doubleValue(), ((Double) range.getValue()).doubleValue(), ((Double) range.getValue()).doubleValue())));
                 int n2 = Class475.Method2142();
                 this.Field1049.forEach((arg_0, arg_1) -> this.Method1052(n2, arg_0, arg_1));
-                if (Field1042.getValue() == Class305.TARGET && this.Method1054() == null) {
+                if (smart.getValue() == Class305.TARGET && this.Method1054() == null) {
                     return;
                 }
                 BlockPos blockPos = StreamSupport.stream(this.Field1048.spliterator(), false).filter(this::Method515).filter(HoleFill::Method526).filter(HoleFill::Method512).min(Comparator.comparing(HoleFill::Method1055)).orElse(null);
                 if (blockPos == null) break block7;
-                this.Field1046 = Class496.Method1964(blockPos, (Boolean)Field1031.getValue(), false, (Boolean)Field1034.getValue(), (Boolean)Field1037.getValue());
+                this.Field1046 = Class496.Method1964(blockPos, (Boolean) rotate.getValue(), false, (Boolean) strictDirection.getValue(), (Boolean) rayTrace.getValue());
                 if (this.Field1046 == null) break block8;
                 this.Field1050 = 0;
                 this.Field1047 = n;
@@ -138,7 +138,7 @@ extends Module {
                 this.Field1049.put(blockPos, System.currentTimeMillis());
                 break block8;
             }
-            if (!((Boolean)Field1044.getValue()).booleanValue()) break block8;
+            if (!((Boolean) disableWhenNone.getValue()).booleanValue()) break block8;
             this.toggle();
         }
     }
@@ -164,7 +164,7 @@ extends Module {
     }
 
     public static boolean Method526(BlockPos blockPos) {
-        return HoleFill.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) <= (Double)Field1033.getValue();
+        return HoleFill.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) <= (Double) range.getValue();
     }
 
     public static Float Method1055(BlockPos blockPos) {
@@ -177,8 +177,8 @@ extends Module {
             this.toggle();
             return;
         }
-        this.Field1048 = Lists.newArrayList(BlockPos.getAllInBox((BlockPos)HoleFill.mc.player.getPosition().add(-((Double)Field1033.getValue()).doubleValue(), -((Double)Field1033.getValue()).doubleValue(), -((Double)Field1033.getValue()).doubleValue()), (BlockPos)HoleFill.mc.player.getPosition().add(((Double)Field1033.getValue()).doubleValue(), ((Double)Field1033.getValue()).doubleValue(), ((Double)Field1033.getValue()).doubleValue())));
-        this.Field1050 = (Integer)Field1036.getValue();
+        this.Field1048 = Lists.newArrayList(BlockPos.getAllInBox((BlockPos)HoleFill.mc.player.getPosition().add(-((Double) range.getValue()).doubleValue(), -((Double) range.getValue()).doubleValue(), -((Double) range.getValue()).doubleValue()), (BlockPos)HoleFill.mc.player.getPosition().add(((Double) range.getValue()).doubleValue(), ((Double) range.getValue()).doubleValue(), ((Double) range.getValue()).doubleValue())));
+        this.Field1050 = (Integer) actionInterval.getValue();
     }
 
     @Subscriber
@@ -228,19 +228,21 @@ extends Module {
             if (bl3) {
                 HoleFill.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)HoleFill.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
-            Vec3d vec3d = new Vec3d((Vec3i)this.Field1046.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
-            Class496.Method1969(this.Field1046.Method1982(), vec3d, EnumHand.MAIN_HAND, this.Field1046.Method1980(), true, (Boolean)Field1032.getValue());
+            //Vec3d vec3d = new Vec3d((Vec3i)this.Field1046.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
+            Vec3d vec3d = new Vec3d((Vec3i)this.Field1046.Method1982()).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
+            Class496.Method1969(this.Field1046.Method1982(), vec3d, EnumHand.MAIN_HAND, this.Field1046.Method1980(), true, (Boolean) swing.getValue());
             double d = HoleFill.mc.player.posX - ((IEntityPlayerSP)HoleFill.mc.player).Method232();
             double d2 = HoleFill.mc.player.posY - ((IEntityPlayerSP)HoleFill.mc.player).Method234();
             double d3 = HoleFill.mc.player.posZ - ((IEntityPlayerSP)HoleFill.mc.player).Method236();
             boolean bl4 = d * d + d2 * d2 + d3 * d3 > 9.0E-4;
-            for (int i = 0; i < (Integer)Field1035.getValue() - 1 && !bl4; ++i) {
+            for (int i = 0; i < (Integer) actionShift.getValue() - 1 && !bl4; ++i) {
                 Class490 class490;
                 EntityPlayer entityPlayer = this.Method1054();
                 BlockPos blockPos = StreamSupport.stream(this.Field1048.spliterator(), false).filter(this::Method515).min(Comparator.comparing(arg_0 -> HoleFill.Method1051(entityPlayer, arg_0))).orElse(null);
-                if (blockPos == null || !Class496.Method1967(blockPos, (Boolean)Field1034.getValue()) || (class490 = Class496.Method1968(blockPos, (Boolean)Field1031.getValue(), true, (Boolean)Field1034.getValue())) == null) break;
-                Vec3d vec3d2 = new Vec3d((Vec3i)class490.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(class490.Method1980().getDirectionVec()).scale(0.5));
-                Class496.Method1969(class490.Method1982(), vec3d2, EnumHand.MAIN_HAND, class490.Method1980(), true, (Boolean)Field1032.getValue());
+                if (blockPos == null || !Class496.Method1967(blockPos, (Boolean) strictDirection.getValue()) || (class490 = Class496.Method1968(blockPos, (Boolean) rotate.getValue(), true, (Boolean) strictDirection.getValue())) == null) break;
+                //Vec3d vec3d2 = new Vec3d((Vec3i)class490.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(class490.Method1980().getDirectionVec()).scale(0.5));
+                Vec3d vec3d2 = new Vec3d((Vec3i)class490.Method1982()).addVector(0.5, 0.5, 0.5).add(new Vec3d(class490.Method1980().getDirectionVec()).scale(0.5));
+                Class496.Method1969(class490.Method1982(), vec3d2, EnumHand.MAIN_HAND, class490.Method1980(), true, (Boolean) swing.getValue());
                 this.Field1049.put(blockPos, System.currentTimeMillis());
                 this.Field1045.put(blockPos, System.currentTimeMillis());
             }
@@ -276,7 +278,7 @@ extends Module {
             if (entity instanceof EntityItem || entity instanceof EntityXPOrb || entity instanceof EntityArrow) continue;
             return false;
         }
-        if (((Boolean)Field1038.getValue()).booleanValue()) {
+        if (((Boolean) aDouble.getValue()).booleanValue()) {
             BlockPos blockPos2 = Class545.Method1007(blockPos);
             if (blockPos2 == null) {
                 blockPos2 = Class545.Method995(blockPos);

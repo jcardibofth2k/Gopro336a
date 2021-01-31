@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class Class250
 extends Class215 {
-    public Setting<Class524> Field2184;
+    public Setting<PlayerPreview> Field2184;
 
     @Override
     public void Method497(int n, int n2, float f) {
@@ -34,13 +34,13 @@ extends Class215 {
         this.Method1985((int)(this.Method486() + this.Method489() / 2.0f), (int)(this.Method492() + this.Method476() - 10.0f), 100, n, n2, (EntityPlayer)entityOtherPlayerMP, true, true);
     }
 
-    public Class250(Setting<Class524> setting, float f, float f2, float f3, float f4, float f5, float f6) {
+    public Class250(Setting<PlayerPreview> setting, float f, float f2, float f3, float f4, float f5, float f6) {
         super(setting.Method1183(), f, f2, f3, f4, f5, f6);
         this.Field2184 = setting;
     }
 
     public void Method1985(int n, int n2, int n3, float f, float f2, EntityPlayer entityPlayer, boolean bl, boolean bl2) {
-        Class493.Field2147 = true;
+        Chams.Field2147 = true;
         ESP.Field1339 = true;
         GlStateManager.pushMatrix();
         GlStateManager.enableDepth();
@@ -93,6 +93,6 @@ extends Class215 {
         GlStateManager.disableDepth();
         GlStateManager.popMatrix();
         ESP.Field1339 = false;
-        Class493.Field2147 = false;
+        Chams.Field2147 = false;
     }
 }

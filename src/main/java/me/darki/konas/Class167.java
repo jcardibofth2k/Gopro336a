@@ -9,6 +9,8 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Collectors;
+
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.launchwrapper.Launch;
@@ -48,7 +50,7 @@ public class Class167 {
         while(var0.hasNext()) {
             Module var1 = (Module)var0.next();
             if (!var1.isValidViaFabricVers()) {
-                if (var1.Method1651()) {
+                if (var1.isEnabled()) {
                     var1.toggle();
                 }
 
@@ -60,7 +62,7 @@ public class Class167 {
 
     public static void Method1609(ArrayList var0, Module var1) {
         Object var10000 = null;
-        if (var1.Method1651()) {
+        if (var1.isEnabled()) {
             var0.add(var1);
         }
 
@@ -137,8 +139,8 @@ public class Class167 {
                 var6.setAccessible(true);
 
                 try {
-                    if (Class530.class.isAssignableFrom(var6.getType())) {
-                        var2.add((Class530)var6.get(var1));
+                    if (IdkWhatThisSettingThingDoes.class.isAssignableFrom(var6.getType())) {
+                        var2.add((IdkWhatThisSettingThingDoes)var6.get(var1));
                     } else {
                         var2.add((Setting)var6.get(var1));
                     }
@@ -192,7 +194,7 @@ public class Class167 {
 
     public static void Method1618(Category var0, ArrayList var1, Module var2) {
         Object var10000 = null;
-        if (var2.Method1639() == var0) {
+        if (var2.getCategory() == var0) {
             var1.add(var2);
         }
 
@@ -236,6 +238,6 @@ public class Class167 {
 
     public static boolean Method1621(Module var0) {
         Object var10000 = null;
-        return var0.Method1651();
+        return var0.isEnabled();
     }
 }

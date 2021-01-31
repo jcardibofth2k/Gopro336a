@@ -4,7 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import me.darki.konas.Category;
+import me.darki.konas.module.Category;
 import me.darki.konas.Class24;
 import me.darki.konas.Class566;
 import me.darki.konas.TickEvent;
