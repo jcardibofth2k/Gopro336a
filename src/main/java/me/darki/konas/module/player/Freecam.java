@@ -21,11 +21,11 @@ import net.minecraftforge.event.world.WorldEvent;
 
 public class Freecam
 extends Module {
-    public static Setting<Class537> Field2458 = new Setting<>("Control", new Class537(56));
-    public Setting<Boolean> Field2459 = new Setting<>("Follow", false);
-    public Setting<Boolean> Field2460 = new Setting<>("CopyInv", false);
-    public Setting<Float> Field2461 = new Setting<>("HSpeed", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.2f), Float.valueOf(0.1f));
-    public Setting<Float> Field2462 = new Setting<>("VSpeed", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.2f), Float.valueOf(0.1f));
+    public static Setting<Class537> control = new Setting<>("Control", new Class537(56));
+    public Setting<Boolean> follow = new Setting<>("Follow", false);
+    public Setting<Boolean> copyInv = new Setting<>("CopyInv", false);
+    public Setting<Float> hSpeed = new Setting<>("HSpeed", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.2f), Float.valueOf(0.1f));
+    public Setting<Float> vSpeed = new Setting<>("VSpeed", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.2f), Float.valueOf(0.1f));
     public Entity Field2463 = null;
     public int Field2464 = -1;
     public Entity Field2465 = null;
@@ -54,7 +54,7 @@ extends Module {
         }
         if (this.Field2464 != (n = Freecam.mc.player.ticksExisted)) {
             this.Field2464 = n;
-            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(((Class537)Field2458.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
+            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(((Class537) control.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
         }
         return this.Field2463;
     }
@@ -80,7 +80,7 @@ extends Module {
         if (Freecam.mc.player == null) {
             return;
         }
-        this.Field2466 = new KonasPlayer((Boolean)this.Field2460.getValue(), (Boolean)this.Field2459.getValue(), ((Float)this.Field2461.getValue()).floatValue(), ((Float)this.Field2462.getValue()).floatValue());
+        this.Field2466 = new KonasPlayer((Boolean)this.copyInv.getValue(), (Boolean)this.follow.getValue(), ((Float)this.hSpeed.getValue()).floatValue(), ((Float)this.vSpeed.getValue()).floatValue());
         this.Field2466.movementInput = this.Field2467;
         Freecam.mc.player.movementInput = this.Field2468;
         Freecam.mc.world.addEntityToWorld(-921, (Entity)this.Field2466);
@@ -90,14 +90,14 @@ extends Module {
     }
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         if (Freecam.mc.player == null || Freecam.mc.world == null) {
             return;
         }
-        this.Field2466.Method400((Boolean)this.Field2460.getValue());
-        this.Field2466.Method407((Boolean)this.Field2459.getValue());
-        this.Field2466.Method406(((Float)this.Field2461.getValue()).floatValue());
-        this.Field2466.Method402(((Float)this.Field2462.getValue()).floatValue());
+        this.Field2466.Method400((Boolean)this.copyInv.getValue());
+        this.Field2466.Method407((Boolean)this.follow.getValue());
+        this.Field2466.Method406(((Float)this.hSpeed.getValue()).floatValue());
+        this.Field2466.Method402(((Float)this.vSpeed.getValue()).floatValue());
     }
 
     @Subscriber

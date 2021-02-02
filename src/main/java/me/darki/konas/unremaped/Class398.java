@@ -4,12 +4,17 @@ import me.darki.konas.module.player.Freecam;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.MovementInputFromOptions;
 
-public class Class392
+public class Class398
 extends MovementInputFromOptions {
-    public Freecam Field1986;
+    public Freecam Field1819;
+
+    public Class398(Freecam freecam, GameSettings gameSettings) {
+        this.Field1819 = freecam;
+        super(gameSettings);
+    }
 
     public void updatePlayerMoveState() {
-        if (!MathUtil.Method1087(((Class537)Freecam.Field2458.getValue()).Method851())) {
+        if (MathUtil.Method1087(((Class537)Freecam.control.getValue()).Method851())) {
             super.updatePlayerMoveState();
         } else {
             this.moveStrafe = 0.0f;
@@ -21,10 +26,5 @@ extends MovementInputFromOptions {
             this.jump = false;
             this.sneak = false;
         }
-    }
-
-    public Class392(Freecam freecam, GameSettings gameSettings) {
-        this.Field1986 = freecam;
-        super(gameSettings);
     }
 }

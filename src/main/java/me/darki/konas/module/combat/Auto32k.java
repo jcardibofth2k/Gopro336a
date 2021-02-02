@@ -70,7 +70,7 @@ extends Module {
     public Class566 Field1513 = new Class566();
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         int n;
         int n2;
         if (Auto32k.mc.player == null || Auto32k.mc.world == null) {

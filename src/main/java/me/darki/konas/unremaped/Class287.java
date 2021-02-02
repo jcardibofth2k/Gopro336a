@@ -45,7 +45,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         block0: {
             if (this.Field1745 != null && !this.Field1745.isEmpty()) break block0;
             this.toggle();

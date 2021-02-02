@@ -13,7 +13,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         Blocks.ICE.slipperiness = 0.4f;
         Blocks.FROSTED_ICE.slipperiness = 0.4f;
         Blocks.PACKED_ICE.slipperiness = 0.4f;

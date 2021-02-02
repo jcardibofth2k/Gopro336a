@@ -76,7 +76,7 @@ extends Module {
     public boolean Field1011 = false;
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         if (ElytraFly.mc.world == null || ElytraFly.mc.player == null) {
             return;
         }
