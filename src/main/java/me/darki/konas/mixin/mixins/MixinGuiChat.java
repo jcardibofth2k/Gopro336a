@@ -23,7 +23,7 @@ public class MixinGuiChat {
             return;
         }
         if (this.Field17.getText().replaceAll(" ", "").startsWith(Command.Method190())) {
-            Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new KonasGuiChat(this.Field17.getText()));
+            Minecraft.getMinecraft().displayGuiScreen(new KonasGuiChat(this.Field17.getText()));
         }
     }
 }

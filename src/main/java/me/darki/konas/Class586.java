@@ -21,7 +21,7 @@ extends Command {
                 EntityPlayerSP entityPlayerSP = Class586.Field123.player;
                 String string = stringArray[1];
                 double d = Double.parseDouble(string);
-                double d2 = MathHelper.wrapDegrees((double)d);
+                double d2 = MathHelper.wrapDegrees(d);
                 try {
                     entityPlayerSP.rotationYaw = (float)d2;
                 }
@@ -44,7 +44,7 @@ extends Command {
             double d8 = Math.atan2(d4, d7);
             double d9 = Math.toDegrees(d8);
             double d10 = d9 + 90.0;
-            double d11 = MathHelper.wrapDegrees((double)d10);
+            double d11 = MathHelper.wrapDegrees(d10);
             try {
                 entityPlayerSP.rotationYaw = (float)d11;
             }

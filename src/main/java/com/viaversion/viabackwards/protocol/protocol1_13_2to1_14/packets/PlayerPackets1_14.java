@@ -16,31 +16,31 @@ public class PlayerPackets1_14 extends RewriterBase {
    }
 
    protected void registerPackets() {
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SERVER_DIFFICULTY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SERVER_DIFFICULTY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.BOOLEAN, Type.NOTHING);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.OPEN_SIGN_EDITOR, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.OPEN_SIGN_EDITOR, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION1_14, Type.POSITION);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.QUERY_BLOCK_NBT, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.QUERY_BLOCK_NBT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.POSITION, Type.POSITION1_14);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.PLAYER_DIGGING, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.PLAYER_DIGGING, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.POSITION, Type.POSITION1_14);
             this.map(Type.BYTE);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.RECIPE_BOOK_DATA, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.RECIPE_BOOK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler(new PacketHandler() {
@@ -63,22 +63,22 @@ public class PlayerPackets1_14 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.UPDATE_COMMAND_BLOCK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.UPDATE_COMMAND_BLOCK, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION, Type.POSITION1_14);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.UPDATE_STRUCTURE_BLOCK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.UPDATE_STRUCTURE_BLOCK, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION, Type.POSITION1_14);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.UPDATE_SIGN, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.UPDATE_SIGN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION, Type.POSITION1_14);
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerServerbound(ServerboundPackets1_13.PLAYER_BLOCK_PLACEMENT, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.PLAYER_BLOCK_PLACEMENT, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {

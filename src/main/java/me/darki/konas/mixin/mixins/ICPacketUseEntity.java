@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketUseEntity.class})
 public interface ICPacketUseEntity {
     @Accessor(value="entityId")
-    public void Method506(int var1);
+    void Method506(int var1);
 
     @Accessor(value="action")
-    public void Method507(CPacketUseEntity.Action var1);
+    void Method507(CPacketUseEntity.Action var1);
 }

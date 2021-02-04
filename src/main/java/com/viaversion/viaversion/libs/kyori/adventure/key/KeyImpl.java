@@ -25,8 +25,8 @@ final class KeyImpl implements Key {
       } else if (!valueValid(value)) {
          throw new InvalidKeyException(namespace, value, String.format("Non [a-z0-9/._-] character in value of Key[%s]", asString(namespace, value)));
       } else {
-         this.namespace = (String)Objects.requireNonNull(namespace, "namespace");
-         this.value = (String)Objects.requireNonNull(value, "value");
+         this.namespace = Objects.requireNonNull(namespace, "namespace");
+         this.value = Objects.requireNonNull(value, "value");
       }
    }
 

@@ -21,22 +21,22 @@ public class ShaderUtil {
             n2 = n;
         }
         catch (Exception exception) {
-            ARBShaderObjects.glDeleteObjectARB((int)n3);
+            ARBShaderObjects.glDeleteObjectARB(n3);
             throw exception;
         }
-        int n4 = ARBShaderObjects.glCreateShaderObjectARB((int)n2);
+        int n4 = ARBShaderObjects.glCreateShaderObjectARB(n2);
         n3 = n4;
         if (n3 == 0) {
             return 0;
         }
         int n5 = n3;
         String string2 = string;
-        ARBShaderObjects.glShaderSourceARB((int)n5, (CharSequence)string2);
+        ARBShaderObjects.glShaderSourceARB(n5, string2);
         int n6 = n3;
-        ARBShaderObjects.glCompileShaderARB((int)n6);
+        ARBShaderObjects.glCompileShaderARB(n6);
         int n7 = n3;
         int n8 = 35713;
-        int n9 = ARBShaderObjects.glGetObjectParameteriARB((int)n7, (int)n8);
+        int n9 = ARBShaderObjects.glGetObjectParameteriARB(n7, n8);
         if (n9 != 0) return n3;
         RuntimeException runtimeException2 = runtimeException;
         RuntimeException runtimeException3 = runtimeException;
@@ -61,8 +61,7 @@ public class ShaderUtil {
         if (n5 < n) return false;
         if (n5 > n3) return false;
         if (n6 < n2) return false;
-        if (n6 > n4) return false;
-        return true;
+        return n6 <= n4;
     }
 
     public static double[] Method839(Entity entity) {
@@ -98,7 +97,7 @@ public class ShaderUtil {
     }
 
     public static String Method845(int n) {
-        return ARBShaderObjects.glGetInfoLogARB((int)n, (int)ARBShaderObjects.glGetObjectParameteriARB((int)n, (int)35716));
+        return ARBShaderObjects.glGetInfoLogARB(n, ARBShaderObjects.glGetObjectParameteriARB(n, 35716));
     }
 
     public static double Method846(Entity entity) {

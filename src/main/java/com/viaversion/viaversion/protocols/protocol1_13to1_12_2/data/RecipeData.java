@@ -18,7 +18,7 @@ public class RecipeData {
       InputStreamReader reader = new InputStreamReader(stream);
 
       try {
-         recipes = (Map)GsonUtil.getGson().fromJson((Reader)reader, (Type)(new TypeToken() {
+         recipes = (Map)GsonUtil.getGson().fromJson(reader, (new TypeToken() {
          }).getType());
       } finally {
          try {

@@ -35,11 +35,11 @@ public class InventoryPackets1_13_2 {
                      int size = (Short)wrapper.passthrough(Type.UNSIGNED_BYTE);
 
                      for(int i = 0; i < size; ++i) {
-                        wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
-                        wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                        wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                        wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                         boolean secondItem = (Boolean)wrapper.passthrough(Type.BOOLEAN);
                         if (secondItem) {
-                           wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                           wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                         }
 
                         wrapper.passthrough(Type.BOOLEAN);
@@ -75,15 +75,15 @@ public class InventoryPackets1_13_2 {
                         ingredientsNo = (Integer)wrapper.passthrough(Type.VAR_INT);
 
                         for(i1 = 0; i1 < ingredientsNo; ++i1) {
-                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
                         }
 
-                        wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                        wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                      } else if (!type.equals("crafting_shaped")) {
                         if (type.equals("smelting")) {
                            wrapper.passthrough(Type.STRING);
-                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
-                           wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                            wrapper.passthrough(Type.FLOAT);
                            wrapper.passthrough(Type.VAR_INT);
                         }
@@ -92,10 +92,10 @@ public class InventoryPackets1_13_2 {
                         wrapper.passthrough(Type.STRING);
 
                         for(i1 = 0; i1 < ingredientsNo; ++i1) {
-                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
                         }
 
-                        wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                        wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                      }
                   }
 

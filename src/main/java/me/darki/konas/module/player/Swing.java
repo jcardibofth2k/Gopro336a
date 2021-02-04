@@ -1,6 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.Class24;
+import me.darki.konas.Class395;
 import me.darki.konas.mixin.mixins.ICPacketAnimation;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -16,7 +18,7 @@ extends Module {
     public Setting<Boolean> render = new Setting<>("Render", false);
 
     public Swing() {
-        super("Swing", "Modifies swinging behavior", Category.PLAYER, new String[0]);
+        super("Swing", "Modifies swinging behavior", Category.PLAYER);
     }
 
     public int Method464() {
@@ -40,7 +42,7 @@ extends Module {
         }
         if (!(class24.getPacket() instanceof CPacketAnimation)) return;
         if (this.mode.getValue() == Class395.CANCEL) {
-            if (!((Boolean)this.strict.getValue()).booleanValue() || Swing.mc.playerController.getIsHittingBlock()) {
+            if (!this.strict.getValue().booleanValue() || Swing.mc.playerController.getIsHittingBlock()) {
                 class24.Cancel();
             }
         } else if (this.mode.getValue() == Class395.OFFHAND) {
@@ -53,7 +55,7 @@ extends Module {
             cPacketAnimation = (CPacketAnimation)class24.getPacket();
             ((ICPacketAnimation)cPacketAnimation).Method1602(cPacketAnimation.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
         }
-        if ((Boolean)this.render.getValue() == false) return;
+        if (this.render.getValue() == false) return;
         cPacketAnimation = ((CPacketAnimation)class24.getPacket()).getHand();
         try {
             if (Swing.mc.player.isSwingInProgress && Swing.mc.player.swingProgressInt < this.Method464() / 2) {

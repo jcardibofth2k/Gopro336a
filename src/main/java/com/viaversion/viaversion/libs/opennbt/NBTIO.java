@@ -32,10 +32,10 @@ public class NBTIO {
    public static CompoundTag readFile(File file, boolean compressed, boolean littleEndian) throws IOException {
       InputStream in = new FileInputStream(file);
       if (compressed) {
-         in = new GZIPInputStream((InputStream)in);
+         in = new GZIPInputStream(in);
       }
 
-      Tag tag = readTag((InputStream)in, littleEndian);
+      Tag tag = readTag(in, littleEndian);
       if (!(tag instanceof CompoundTag)) {
          throw new IOException("Root tag is not a CompoundTag!");
       } else {
@@ -66,11 +66,11 @@ public class NBTIO {
 
       OutputStream out = new FileOutputStream(file);
       if (compressed) {
-         out = new GZIPOutputStream((OutputStream)out);
+         out = new GZIPOutputStream(out);
       }
 
-      writeTag((OutputStream)out, tag, littleEndian);
-      ((OutputStream)out).close();
+      writeTag(out, tag, littleEndian);
+      out.close();
    }
 
    public static CompoundTag readTag(InputStream in) throws IOException {
@@ -78,7 +78,7 @@ public class NBTIO {
    }
 
    public static CompoundTag readTag(InputStream in, boolean littleEndian) throws IOException {
-      return readTag((DataInput)((DataInput)(littleEndian ? new com.viaversion.viaversion.libs.opennbt.NBTIO.LittleEndianDataInputStream(in, (1)null) : new DataInputStream(in))));
+      return readTag((DataInput)(littleEndian ? new NBTIO.LittleEndianDataInputStream(in, (1) null) : new DataInputStream(in))))
    }
 
    public static CompoundTag readTag(DataInput in) throws IOException {
@@ -98,7 +98,7 @@ public class NBTIO {
    }
 
    public static void writeTag(OutputStream out, CompoundTag tag, boolean littleEndian) throws IOException {
-      writeTag((DataOutput)((DataOutput)(littleEndian ? new com.viaversion.viaversion.libs.opennbt.NBTIO.LittleEndianDataOutputStream(out, (1)null) : new DataOutputStream(out))), tag);
+      writeTag((DataOutput)((DataOutput)(littleEndian ? new com.viaversion.viaversion.libs.opennbt.NBTIO.LittleEndianDataOutputStream(out, (1)null) : new DataOutputStream(out))), tag)
    }
 
    public static void writeTag(DataOutput out, CompoundTag tag) throws IOException {

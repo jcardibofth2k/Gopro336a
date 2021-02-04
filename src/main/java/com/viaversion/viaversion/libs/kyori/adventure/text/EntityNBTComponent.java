@@ -13,7 +13,7 @@ public interface EntityNBTComponent extends NBTComponent, ScopedComponent {
    @NotNull
    EntityNBTComponent selector(@NotNull final String selector);
 
-   public interface Builder extends NBTComponentBuilder {
+   interface Builder extends NBTComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       EntityNBTComponent.Builder selector(@NotNull final String selector);

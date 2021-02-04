@@ -45,10 +45,10 @@ public class Logger {
         class5322(string7);
         int n2 = n;
         try {
-            guiNewChat.printChatMessageWithOptionalDeletion((ITextComponent)class5323, n2);
+            guiNewChat.printChatMessageWithOptionalDeletion(class5323, n2);
         }
         catch (ConcurrentModificationException concurrentModificationException) {
-            Minecraft.getMinecraft().player.sendMessage((ITextComponent)new Class538("&7[&5Konas&7]&f " + string.replaceAll("\u00c2\u00a7", "\u00a7")));
+            Minecraft.getMinecraft().player.sendMessage(new Class538("&7[&5Konas&7]&f " + string.replaceAll("\u00c2\u00a7", "\u00a7")));
         }
     }
 
@@ -56,18 +56,18 @@ public class Logger {
         if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
             return;
         }
-        if (Class54.Field201 && ((Boolean)Class191.Field111.getValue()).booleanValue()) {
+        if (Class54.Field201 && Class191.Field111.getValue().booleanValue()) {
             Logger.Method1117(string, 4444);
             return;
         }
-        Minecraft.getMinecraft().player.sendMessage((ITextComponent)new Class539("&7[&5Konas&7]&f " + string.replaceAll("\u00c2\u00a7", "\u00a7")));
+        Minecraft.getMinecraft().player.sendMessage(new Class539("&7[&5Konas&7]&f " + string.replaceAll("\u00c2\u00a7", "\u00a7")));
     }
 
     public static void Method1119(String string) {
         if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
             return;
         }
-        Minecraft.getMinecraft().player.sendMessage((ITextComponent)new Class533("&7[&5Konas&7]&f &c" + string.replaceAll("\u00c2\u00a7", "\u00a7")));
+        Minecraft.getMinecraft().player.sendMessage(new Class533("&7[&5Konas&7]&f &c" + string.replaceAll("\u00c2\u00a7", "\u00a7")));
     }
 
     public static void Method1120(String string) {

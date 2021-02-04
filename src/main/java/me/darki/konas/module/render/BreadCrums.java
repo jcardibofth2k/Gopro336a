@@ -27,11 +27,11 @@ extends Module {
         if (BreadCrums.mc.player == null || BreadCrums.mc.world == null) {
             return;
         }
-        GL11.glBlendFunc((int)770, (int)771);
-        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-        GlStateManager.glLineWidth((float)1.5f);
+        GL11.glBlendFunc(770, 771);
+        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.glLineWidth(1.5f);
         GlStateManager.disableTexture2D();
-        GlStateManager.depthMask((boolean)false);
+        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
         GlStateManager.disableDepth();
         GlStateManager.disableLighting();
@@ -39,31 +39,31 @@ extends Module {
         GlStateManager.enableAlpha();
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GL11.glEnable((int)2848);
+        GL11.glEnable(2848);
         GlStateManager.disableDepth();
         GlStateManager.disableTexture2D();
-        GL11.glHint((int)3154, (int)4354);
-        GlStateManager.depthMask((boolean)false);
-        GlStateManager.color((float)((float)((ColorValue)this.color.getValue()).Method775().getRed() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getGreen() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getBlue() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getAlpha() / 255.0f));
+        GL11.glHint(3154, 4354);
+        GlStateManager.depthMask(false);
+        GlStateManager.color((float) this.color.getValue().Method775().getRed() / 255.0f, (float) this.color.getValue().Method775().getGreen() / 255.0f, (float) this.color.getValue().Method775().getBlue() / 255.0f, (float) this.color.getValue().Method775().getAlpha() / 255.0f);
         double d = BreadCrums.mc.player.lastTickPosX + (BreadCrums.mc.player.posX - BreadCrums.mc.player.lastTickPosX) * (double)class89.Method436();
         double d2 = BreadCrums.mc.player.lastTickPosY + (BreadCrums.mc.player.posY - BreadCrums.mc.player.lastTickPosY) * (double)class89.Method436();
         double d3 = BreadCrums.mc.player.lastTickPosZ + (BreadCrums.mc.player.posZ - BreadCrums.mc.player.lastTickPosZ) * (double)class89.Method436();
-        GL11.glBegin((int)3);
+        GL11.glBegin(3);
         for (Vec3d vec3d : arrayList) {
             Vec3d vec3d2 = vec3d.subtract(d, d2, d3);
-            GL11.glVertex3d((double)vec3d2.x, (double)vec3d2.y, (double)vec3d2.z);
+            GL11.glVertex3d(vec3d2.x, vec3d2.y, vec3d2.z);
         }
         GL11.glEnd();
         GL11.glPopMatrix();
         GlStateManager.enableCull();
-        GlStateManager.depthMask((boolean)true);
+        GlStateManager.depthMask(true);
         GlStateManager.enableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.enableDepth();
     }
 
     public BreadCrums() {
-        super("Breadcrumbs", Category.RENDER, new String[0]);
+        super("Breadcrumbs", Category.RENDER);
     }
 
     @Subscriber
@@ -78,14 +78,14 @@ extends Module {
                 if (BreadCrums.mc.player == null || BreadCrums.mc.world == null) {
                     return;
                 }
-                if (((Boolean) onlyRender.getValue()).booleanValue()) {
+                if (onlyRender.getValue().booleanValue()) {
                     return;
                 }
                 if (BreadCrums.mc.player.posX != BreadCrums.mc.player.lastTickPosX) break block6;
                 if (BreadCrums.mc.player.posY == BreadCrums.mc.player.lastTickPosY && BreadCrums.mc.player.posZ == BreadCrums.mc.player.lastTickPosZ) break block7;
             }
             arrayList.add(BreadCrums.mc.player.getPositionVector());
-            if (arrayList.size() >= (Integer)this.maxVertices.getValue() * 10000) {
+            if (arrayList.size() >= this.maxVertices.getValue() * 10000) {
                 arrayList.remove(0);
                 arrayList.remove(1);
             }

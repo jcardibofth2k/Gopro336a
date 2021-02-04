@@ -9,32 +9,32 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value={EntityRenderer.class})
 public interface IEntityRenderer {
     @Invoker(value="setupCameraTransform")
-    public void Method1908(float var1, int var2);
+    void Method1908(float var1, int var2);
 
     @Invoker(value="orientCamera")
-    public void Method1909(float var1);
+    void Method1909(float var1);
 
     @Invoker(value="getFOVModifier")
-    public float Method1910(float var1, boolean var2);
+    float Method1910(float var1, boolean var2);
 
     @Invoker(value="updateFogColor")
-    public void Method1911(float var1);
+    void Method1911(float var1);
 
     @Accessor(value="lightmapColors")
-    public int[] Method1912();
+    int[] Method1912();
 
     @Accessor(value="lightmapTexture")
-    public DynamicTexture Method1913();
+    DynamicTexture Method1913();
 
     @Accessor(value="torchFlickerX")
-    public float Method1914();
+    float Method1914();
 
     @Accessor(value="renderEndNanoTime")
-    public long Method1915();
+    long Method1915();
 
     @Accessor(value="cameraZoom")
-    public double Method1916();
+    double Method1916();
 
     @Accessor(value="cameraZoom")
-    public void Method1917(double var1);
+    void Method1917(double var1);
 }

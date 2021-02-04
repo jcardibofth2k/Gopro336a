@@ -13,7 +13,7 @@ extends Module {
     public boolean Field2318 = false;
 
     public Sprint() {
-        super("Sprint", "Makes you Sprint!", 0, Category.MOVEMENT, new String[0]);
+        super("Sprint", "Makes you Sprint!", 0, Category.MOVEMENT);
     }
 
     @Subscriber
@@ -30,7 +30,7 @@ extends Module {
     @Subscriber
     public void Method2050(Class27 class27) {
         MovementInput movementInput = class27.Method218();
-        switch (Class344.Field2631[((SprintMode)((Object) mode.getValue())).ordinal()]) {
+        switch (Class344.Field2631[mode.getValue().ordinal()]) {
             case 1: {
                 this.Field2318 = movementInput.moveForward > 0.0f;
                 break;

@@ -2,7 +2,7 @@ package me.darki.konas;
 
 import me.darki.konas.SyntaxChunk;
 
-public class Class620
+public class MuteCommandOptions
 extends SyntaxChunk {
     public String Method177(String string) {
         if (string.toLowerCase().startsWith("a")) {
@@ -11,13 +11,17 @@ extends SyntaxChunk {
         if (string.toLowerCase().startsWith("d")) {
             return "del";
         }
+        if (string.toLowerCase().startsWith("c")) {
+            return "clear";
+        }
         if (string.toLowerCase().startsWith("l")) {
             return "list";
         }
         return string;
     }
 
-    public Class620(String string) {
+    public
+    MuteCommandOptions(String string) {
         super(string);
     }
 }

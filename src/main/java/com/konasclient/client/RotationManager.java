@@ -56,6 +56,6 @@ public class RotationManager {
       RotationManager var0 = new RotationManager();
       INSTANCE = var0;
       boolean var1 = false;
-      mixinCache = (List)(new ArrayList());
+      mixinCache = new ArrayList();
    }
 }

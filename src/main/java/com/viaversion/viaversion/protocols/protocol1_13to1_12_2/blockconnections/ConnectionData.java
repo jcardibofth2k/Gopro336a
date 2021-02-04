@@ -50,7 +50,7 @@ public class ConnectionData {
          ConnectionHandler handler = (ConnectionHandler)connectionHandlerMap.get(blockState);
          if (handler != null) {
             int newBlockState = handler.connect(user, pos, blockState);
-            PacketWrapper blockUpdatePacket = PacketWrapper.create(11, (ByteBuf)null, user);
+            PacketWrapper blockUpdatePacket = PacketWrapper.create(11, null, user);
             blockUpdatePacket.write(Type.POSITION, pos);
             blockUpdatePacket.write(Type.VAR_INT, newBlockState);
 
@@ -113,10 +113,10 @@ public class ConnectionData {
                }
 
                if (!updates.isEmpty()) {
-                  PacketWrapper wrapper = PacketWrapper.create(15, (ByteBuf)null, user);
+                  PacketWrapper wrapper = PacketWrapper.create(15, null, user);
                   wrapper.write(Type.INT, chunkX + chunkDeltaX);
                   wrapper.write(Type.INT, chunkZ + chunkDeltaZ);
-                  wrapper.write(Type.BLOCK_CHANGE_RECORD_ARRAY, (BlockChangeRecord[])updates.toArray(EMPTY_RECORDS));
+                  wrapper.write(Type.BLOCK_CHANGE_RECORD_ARRAY, updates.toArray(EMPTY_RECORDS));
 
                   try {
                      wrapper.send(Protocol1_13To1_12_2.class);
@@ -161,8 +161,8 @@ public class ConnectionData {
    }
 
    public static void connectBlocks(UserConnection user, Chunk chunk) {
-      long xOff = (long)(chunk.getX() << 4);
-      long zOff = (long)(chunk.getZ() << 4);
+      long xOff = chunk.getX() << 4;
+      long zOff = chunk.getZ() << 4;
 
       for(int i = 0; i < chunk.getSections().length; ++i) {
          ChunkSection section = chunk.getSections()[i];
@@ -178,7 +178,7 @@ public class ConnectionData {
             }
 
             if (willConnect) {
-               long yOff = (long)(i << 4);
+               long yOff = i << 4;
 
                for(int y = 0; y < 16; ++y) {
                   for(int z = 0; z < 16; ++z) {

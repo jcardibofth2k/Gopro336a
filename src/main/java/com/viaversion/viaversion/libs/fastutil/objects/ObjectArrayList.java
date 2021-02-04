@@ -123,7 +123,7 @@ public class ObjectArrayList extends AbstractObjectList implements RandomAccess,
    private void grow(int capacity) {
       if (capacity > this.field_77.length) {
          if (this.field_77 != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            capacity = (int)Math.max(Math.min((long)this.field_77.length + (long)(this.field_77.length >> 1), 2147483639L), (long)capacity);
+            capacity = (int)Math.max(Math.min((long)this.field_77.length + (long)(this.field_77.length >> 1), 2147483639L), capacity);
          } else if (capacity < 10) {
             capacity = 10;
          }
@@ -236,7 +236,7 @@ public class ObjectArrayList extends AbstractObjectList implements RandomAccess,
    }
 
    public void clear() {
-      Arrays.fill(this.field_77, 0, this.size, (Object)null);
+      Arrays.fill(this.field_77, 0, this.size, null);
       this.size = 0;
 
       assert this.size <= this.field_77.length;
@@ -253,9 +253,9 @@ public class ObjectArrayList extends AbstractObjectList implements RandomAccess,
       }
 
       if (size > this.size) {
-         Arrays.fill(this.field_77, this.size, size, (Object)null);
+         Arrays.fill(this.field_77, this.size, size, null);
       } else {
-         Arrays.fill(this.field_77, size, this.size, (Object)null);
+         Arrays.fill(this.field_77, size, this.size, null);
       }
 
       this.size = size;
@@ -324,7 +324,7 @@ public class ObjectArrayList extends AbstractObjectList implements RandomAccess,
          }
       }
 
-      Arrays.fill(a, j, this.size, (Object)null);
+      Arrays.fill(a, j, this.size, null);
       boolean modified = this.size != j;
       this.size = j;
       return modified;
@@ -332,7 +332,7 @@ public class ObjectArrayList extends AbstractObjectList implements RandomAccess,
 
    public ObjectListIterator listIterator(int index) {
       this.ensureIndex(index);
-      return new 1(this, index);
+      return new 1(this, index)
    }
 
    public void sort(Comparator comp) {

@@ -10,12 +10,12 @@ import me.darki.konas.setting.Setting;
 
 public class XRay
 extends Module {
-    public static Setting<Class443> blocks = new Setting<>("Blocks", new Class443(new String[0]));
+    public static Setting<Class443> blocks = new Setting<>("Blocks", new Class443());
 
     @Subscriber
     public void Method585(Class83 class83) {
         block0: {
-            if (((Class443) blocks.getValue()).Method682().contains(class83.Method449())) break block0;
+            if (blocks.getValue().Method682().contains(class83.Method449())) break block0;
             class83.setCanceled(true);
         }
     }
@@ -31,7 +31,7 @@ extends Module {
     }
 
     public XRay() {
-        super("XRay", "Makes most blocks invisible so you can see ores", Category.RENDER, new String[0]);
+        super("XRay", "Makes most blocks invisible so you can see ores", Category.RENDER);
     }
 
     @Override

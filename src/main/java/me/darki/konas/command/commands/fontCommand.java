@@ -33,7 +33,7 @@ extends Command {
         Class548.Method1018(ClickGUIModule.Field1536);
         Class425.Field957 = new Class555(stringArray[1], 20.0f);
         Class425.Field958 = new Class555(stringArray[1], 60.0f);
-        Class425.Method955((Class427)((Object)Class425.Field954.getValue()));
+        Class425.Method955(Class425.Field954.getValue());
         Class247.Field2262 = new Class555(stringArray[1], 18.0f);
         Class247.Field2261 = new Class555(stringArray[1], 16.0f);
     }

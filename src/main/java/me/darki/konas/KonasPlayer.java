@@ -93,11 +93,11 @@ extends EntityPlayerSP {
     public void Method405(float f, float f2, float f3) {
         float f4 = f * f + f2 * f2 + f3 * f3;
         if (f4 >= 1.0E-4f) {
-            if ((f4 = MathHelper.sqrt((float)f4)) < 1.0f) {
+            if ((f4 = MathHelper.sqrt(f4)) < 1.0f) {
                 f4 = 1.0f;
             }
-            float f5 = MathHelper.sin((float)(this.rotationYaw * ((float)Math.PI / 180)));
-            float f6 = MathHelper.cos((float)(this.rotationYaw * ((float)Math.PI / 180)));
+            float f5 = MathHelper.sin(this.rotationYaw * ((float)Math.PI / 180));
+            float f6 = MathHelper.cos(this.rotationYaw * ((float)Math.PI / 180));
             this.motionX = ((f *= (f4 /= 2.0f)) * f6 - (f3 *= f4) * f5) * this.Field255;
             this.motionY = (double)(f2 *= f4) * (double)this.Field256;
             this.motionZ = (f3 * f6 + f * f5) * this.Field255;
@@ -176,7 +176,7 @@ extends EntityPlayerSP {
     }
 
     public KonasPlayer(boolean bl, boolean bl2, float f, float f2) {
-        super(Minecraft.getMinecraft(), (World)Minecraft.getMinecraft().world, Minecraft.getMinecraft().getConnection(), Minecraft.getMinecraft().player.getStatFileWriter(), Minecraft.getMinecraft().player.getRecipeBook());
+        super(Minecraft.getMinecraft(), Minecraft.getMinecraft().world, Minecraft.getMinecraft().getConnection(), Minecraft.getMinecraft().player.getStatFileWriter(), Minecraft.getMinecraft().player.getRecipeBook());
         this.Field253 = bl;
         this.Field254 = bl2;
         this.Field255 = f;

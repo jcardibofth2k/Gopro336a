@@ -26,7 +26,7 @@ public abstract class AbstractObjectCollection extends AbstractCollection implem
          if (this == k) {
             s.append("(this collection)");
          } else {
-            s.append(String.valueOf(k));
+            s.append(k);
          }
       }
 

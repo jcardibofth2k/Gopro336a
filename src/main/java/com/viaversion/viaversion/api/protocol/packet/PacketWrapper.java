@@ -13,7 +13,7 @@ public interface PacketWrapper {
    int PASSTHROUGH_ID = 1000;
 
    static PacketWrapper create(PacketType packetType, UserConnection connection) {
-      return create(packetType.getId(), (ByteBuf)null, connection);
+      return create(packetType.getId(), null, connection);
    }
 
    static PacketWrapper create(PacketType packetType, @Nullable ByteBuf inputBuffer, UserConnection connection) {

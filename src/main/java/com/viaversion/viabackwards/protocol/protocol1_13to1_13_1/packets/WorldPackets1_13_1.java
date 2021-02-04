@@ -15,7 +15,7 @@ import com.viaversion.viaversion.rewriter.BlockRewriter;
 public class WorldPackets1_13_1 {
    public static void register(final Protocol protocol) {
       BlockRewriter blockRewriter = new BlockRewriter(protocol, Type.POSITION);
-      protocol.registerClientbound(ClientboundPackets1_13.CHUNK_DATA, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -36,7 +36,7 @@ public class WorldPackets1_13_1 {
                }
             });
          }
-      }));
+      });
       blockRewriter.registerBlockAction(ClientboundPackets1_13.BLOCK_ACTION);
       blockRewriter.registerBlockChange(ClientboundPackets1_13.BLOCK_CHANGE);
       blockRewriter.registerMultiBlockChange(ClientboundPackets1_13.MULTI_BLOCK_CHANGE);

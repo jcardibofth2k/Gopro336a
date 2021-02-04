@@ -23,7 +23,7 @@ extends Enum {
     }
 
     public static Class486[] Method2039() {
-        return (Class486[])Field2252.clone();
+        return Field2252.clone();
     }
 
     static {

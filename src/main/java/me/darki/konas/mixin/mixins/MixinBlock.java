@@ -33,7 +33,7 @@ public class MixinBlock {
             return;
         }
         Block block = (Block)this;
-        this.Field2008 = event = Class643.Method1240(block, pos, block.getCollisionBoundingBox(state, (IBlockAccess)world, pos), collidingBoxes, entity);
+        this.Field2008 = event = Class643.Method1240(block, pos, block.getCollisionBoundingBox(state, world, pos), collidingBoxes, entity);
         EventDispatcher.Companion.dispatch(event);
     }
 
@@ -53,7 +53,7 @@ public class MixinBlock {
             return;
         }
         if (Class167.Method1610(XRay.class).isEnabled()) {
-            info.setReturnValue((Object)((Class443) XRay.blocks.getValue()).Method682().contains((Block)Block.class.cast(this)));
+            info.setReturnValue(((Class443) XRay.blocks.getValue()).Method682().contains(Block.class.cast(this)));
             info.cancel();
         }
     }

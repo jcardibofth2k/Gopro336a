@@ -27,7 +27,7 @@ public final class Protocol1_17To1_17_1 extends BackwardsProtocol {
    }
 
    protected void registerPackets() {
-      this.registerClientbound(ClientboundPackets1_17_1.REMOVE_ENTITIES, (ClientboundPacketType)null, new PacketRemapper() {
+      this.registerClientbound(ClientboundPackets1_17_1.REMOVE_ENTITIES, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int[] entityIds = (int[])wrapper.read(Type.VAR_INT_ARRAY_PRIMITIVE);
@@ -68,7 +68,7 @@ public final class Protocol1_17To1_17_1 extends BackwardsProtocol {
                short containerId = (Short)wrapper.passthrough(Type.UNSIGNED_BYTE);
                int stateId = (Integer)wrapper.read(Type.VAR_INT);
                ((InventoryStateIds)wrapper.user().get(InventoryStateIds.class)).setStateId(containerId, stateId);
-               wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY, (Item[])wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
+               wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY, wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT));
                wrapper.read(Type.FLAT_VAR_INT_ITEM);
             });
          }

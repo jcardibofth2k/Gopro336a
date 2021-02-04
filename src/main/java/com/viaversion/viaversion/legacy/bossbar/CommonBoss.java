@@ -213,7 +213,7 @@ public class CommonBoss implements BossBar {
 
    private PacketWrapper getPacket(com.viaversion.viaversion.legacy.bossbar.CommonBoss.UpdateAction action, UserConnection connection) {
       try {
-         PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_9.BOSSBAR, (ByteBuf)null, connection);
+         PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_9.BOSSBAR, null, connection);
          wrapper.write(Type.UUID, this.uuid);
          wrapper.write(Type.VAR_INT, action.getId());
          switch(1.$SwitchMap$com$viaversion$viaversion$legacy$bossbar$CommonBoss$UpdateAction[action.ordinal()]) {

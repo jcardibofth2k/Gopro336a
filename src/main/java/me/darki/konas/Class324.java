@@ -20,7 +20,7 @@ extends Enum {
     }
 
     public static Class324[] Method730() {
-        return (Class324[])Field661.clone();
+        return Field661.clone();
     }
 
     static {

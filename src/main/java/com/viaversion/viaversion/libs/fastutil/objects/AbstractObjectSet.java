@@ -15,7 +15,7 @@ public abstract class AbstractObjectSet extends AbstractObjectCollection impleme
          return false;
       } else {
          Set s = (Set)o;
-         return s.size() != this.size() ? false : this.containsAll(s);
+         return s.size() == this.size() && this.containsAll(s);
       }
    }
 

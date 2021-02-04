@@ -5,7 +5,7 @@ import me.darki.konas.Class122;
 import me.darki.konas.Class129;
 import me.darki.konas.Class139;
 import me.darki.konas.Class167;
-import me.darki.konas.Chams;
+import me.darki.konas.module.render.Chams;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
@@ -60,7 +60,7 @@ extends Render {
                         return;
                     }
                     if (flag1) {
-                        GlStateManager.enableBlendProfile((GlStateManager.Profile)GlStateManager.Profile.TRANSPARENT_MODEL);
+                        GlStateManager.enableBlendProfile(GlStateManager.Profile.TRANSPARENT_MODEL);
                     }
                     if ((Class167.Method1610(Chams.class).isEnabled() || Chams.Field2147) && !ESP.Field1342 && Chams.Method1952(this.Field16, entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor)) {
                         if (!ESP.Field1342) {
@@ -71,7 +71,7 @@ extends Render {
                     }
                     this.Field16.render(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
                     if (flag1) {
-                        GlStateManager.disableBlendProfile((GlStateManager.Profile)GlStateManager.Profile.TRANSPARENT_MODEL);
+                        GlStateManager.disableBlendProfile(GlStateManager.Profile.TRANSPARENT_MODEL);
                     }
                 }
             } else {

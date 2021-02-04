@@ -74,7 +74,7 @@ extends Module {
     }
 
     public String Method2133(Class357 class357, int n) {
-        String string = (Boolean)this.advertisement.getValue() != false ? " thanks to Konas!" : "!";
+        String string = this.advertisement.getValue() != false ? " thanks to Konas!" : "!";
         String string2 = n > 1 ? "s" : "";
         switch (Class350.Field2538[class357.ordinal()]) {
             case 1: {
@@ -102,7 +102,7 @@ extends Module {
                 return "I just walked " + n + " block" + string2 + string;
             }
         }
-        return "I just did " + (Object)((Object)class357) + " " + n + " time" + string2 + string;
+        return "I just did " + class357 + " " + n + " time" + string2 + string;
     }
 
     public void Method714(String string) {
@@ -114,8 +114,8 @@ extends Module {
     }
 
     public void Method2135(Class357 class357) {
-        if (this.Field2495.containsKey((Object)class357)) {
-            this.Field2495.put(class357, this.Field2495.get((Object)class357) + 1);
+        if (this.Field2495.containsKey(class357)) {
+            this.Field2495.put(class357, this.Field2495.get(class357) + 1);
         } else {
             this.Field2495.put(class357, 1);
         }
@@ -124,7 +124,7 @@ extends Module {
     @Subscriber
     public void Method2136(LivingEvent.LivingJumpEvent livingJumpEvent) {
         block0: {
-            if (!livingJumpEvent.getEntityLiving().equals((Object) Announcer.mc.player)) break block0;
+            if (!livingJumpEvent.getEntityLiving().equals(Announcer.mc.player)) break block0;
             this.Method2135(Class357.JUMP);
         }
     }
@@ -140,7 +140,7 @@ extends Module {
     @Subscriber
     public void Method2138(PlayerEvent.ItemCraftedEvent itemCraftedEvent) {
         block0: {
-            if (!itemCraftedEvent.player.equals((Object) Announcer.mc.player)) break block0;
+            if (!itemCraftedEvent.player.equals(Announcer.mc.player)) break block0;
             this.Method2135(Class357.CRAFT);
         }
     }
@@ -148,7 +148,7 @@ extends Module {
     @Subscriber
     public void Method2139(PlayerEvent.ItemPickupEvent itemPickupEvent) {
         block0: {
-            if (!itemPickupEvent.player.equals((Object) Announcer.mc.player)) break block0;
+            if (!itemPickupEvent.player.equals(Announcer.mc.player)) break block0;
             this.Method2135(Class357.PICKUP);
         }
     }
@@ -159,7 +159,7 @@ extends Module {
             if (Announcer.mc.player == null || Announcer.mc.world == null) {
                 return;
             }
-            if (!((Boolean)this.welcome.getValue()).booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class16.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(((Float)this.welcomeDelay.getValue()).floatValue() * 1000.0f) || !this.Field2494.Method737(((Float)this.globalDelay.getValue()).floatValue() * 1000.0f)) break block1;
+            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class16.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f)) break block1;
             this.Method2134(class16.Method211());
             this.Field2492.Method739();
             this.Field2494.Method739();
@@ -173,7 +173,7 @@ extends Module {
             if (Announcer.mc.player == null || Announcer.mc.world == null) {
                 return;
             }
-            if (!((Boolean)this.welcome.getValue()).booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class15.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(((Float)this.welcomeDelay.getValue()).floatValue() * 1000.0f) || !this.Field2494.Method737(((Float)this.globalDelay.getValue()).floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(class15.Method209())) == null) break block1;
+            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class15.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(class15.Method209())) == null) break block1;
             this.Method714(entityPlayer.getName());
             this.Field2492.Method739();
             this.Field2494.Method739();
@@ -185,7 +185,7 @@ extends Module {
         if (Announcer.mc.player == null || Announcer.mc.world == null) {
             return;
         }
-        if (((Boolean)this.announce.getValue()).booleanValue() && this.Field2494.Method737(((Float)this.globalDelay.getValue()).floatValue() * 1000.0f) && this.Field2493.Method737(((Float)this.announceDelay.getValue()).floatValue() * 1000.0f)) {
+        if (this.announce.getValue().booleanValue() && this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) && this.Field2493.Method737(this.announceDelay.getValue().floatValue() * 1000.0f)) {
             double d = this.Method1170(Field2496, Field2497, Field2498);
             if (d > 0.0 && d < 5000.0 && Announcer.mc.player.ticksExisted > 1000) {
                 this.Field2495.put(Class357.WALK, (int)d);
@@ -200,8 +200,8 @@ extends Module {
             for (int i = 0; i < this.Field2495.entrySet().size(); ++i) {
                 if (i != n) continue;
                 ArrayList<Map.Entry<Class357, Integer>> arrayList = new ArrayList<Map.Entry<Class357, Integer>>(this.Field2495.entrySet());
-                Map.Entry entry = (Map.Entry)arrayList.get(i);
-                Announcer.mc.player.sendChatMessage(this.Method2133((Class357)((Object)entry.getKey()), (Integer)entry.getValue()));
+                Map.Entry entry = arrayList.get(i);
+                Announcer.mc.player.sendChatMessage(this.Method2133((Class357) entry.getKey(), (Integer)entry.getValue()));
                 this.Field2493.Method739();
                 this.Field2494.Method739();
                 this.Field2495.clear();

@@ -89,7 +89,7 @@ public class class_107 implements IMixinConfigPlugin {
 
    public class_107() {
       boolean var2 = false;
-      List var3 = (List)(new ArrayList());
+      List var3 = new ArrayList();
       this.field_355 = var3;
    }
 }

@@ -16,7 +16,7 @@ public abstract class AbstractInt2ObjectMap extends AbstractInt2ObjectFunction i
    }
 
    public boolean containsValue(Object v) {
-      return this.values().contains(v);
+      return this.containsValue(v);
    }
 
    public boolean containsKey(int k) {
@@ -99,7 +99,7 @@ public abstract class AbstractInt2ObjectMap extends AbstractInt2ObjectFunction i
       int h = 0;
       int n = this.size();
 
-      for(ObjectIterator i = Int2ObjectMaps.fastIterator(this); n-- != 0; h += ((Int2ObjectMap.Entry)i.next()).hashCode()) {
+      for(ObjectIterator i = Int2ObjectMaps.fastIterator(this); n-- != 0; h += i.next().hashCode()) {
       }
 
       return h;
@@ -112,7 +112,7 @@ public abstract class AbstractInt2ObjectMap extends AbstractInt2ObjectFunction i
          return false;
       } else {
          Map m = (Map)o;
-         return m.size() != this.size() ? false : this.int2ObjectEntrySet().containsAll(m.entrySet());
+         return m.size() == this.size() && this.int2ObjectEntrySet().containsAll(m.entrySet());
       }
    }
 
@@ -131,12 +131,12 @@ public abstract class AbstractInt2ObjectMap extends AbstractInt2ObjectFunction i
          }
 
          Int2ObjectMap.Entry e = (Int2ObjectMap.Entry)i.next();
-         s.append(String.valueOf(e.getIntKey()));
+         s.append(e.getIntKey());
          s.append("=>");
          if (this == e.getValue()) {
             s.append("(this map)");
          } else {
-            s.append(String.valueOf(e.getValue()));
+            s.append(e.getValue());
          }
       }
 

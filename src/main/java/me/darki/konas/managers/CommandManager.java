@@ -1,8 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.managers;
 
 import java.util.ArrayList;
 
+import me.darki.konas.*;
 import me.darki.konas.command.Command;
+import me.darki.konas.command.commands.WaypointCommand;
 import me.darki.konas.command.commands.HClip;
 import me.darki.konas.command.commands.Party;
 import me.darki.konas.command.commands.backupCommand;
@@ -30,7 +32,7 @@ import me.darki.konas.command.commands.rubberFillCommand;
 import me.darki.konas.command.commands.settingsCommand;
 import me.darki.konas.command.commands.xrayCommand;
 
-public class Class603 {
+public class CommandManager {
     public static ArrayList<Command> Field130 = new ArrayList();
 
     public static void Method206() {

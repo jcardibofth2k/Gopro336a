@@ -73,7 +73,7 @@ public final class Gson {
    final List builderHierarchyFactories;
 
    public Gson() {
-      this(Excluder.DEFAULT, FieldNamingPolicy.IDENTITY, Collections.emptyMap(), false, false, false, true, false, false, false, LongSerializationPolicy.DEFAULT, (String)null, 2, 2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+      this(Excluder.DEFAULT, FieldNamingPolicy.IDENTITY, Collections.emptyMap(), false, false, false, true, false, false, false, LongSerializationPolicy.DEFAULT, null, 2, 2, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
    }
 
    Gson(Excluder excluder, FieldNamingStrategy fieldNamingStrategy, Map instanceCreators, boolean serializeNulls, boolean complexMapKeySerialization, boolean generateNonExecutableGson, boolean htmlSafe, boolean prettyPrinting, boolean lenient, boolean serializeSpecialFloatingPointValues, LongSerializationPolicy longSerializationPolicy, String datePattern, int dateStyle, int timeStyle, List builderFactories, List builderHierarchyFactories, List factoriesToBeAdded) {
@@ -203,7 +203,7 @@ public final class Gson {
                out.nullValue();
             } else {
                float floatValue = value.floatValue();
-               Gson.checkValidFloatingPoint((double)floatValue);
+               Gson.checkValidFloatingPoint(floatValue);
                out.value(value);
             }
          }
@@ -298,13 +298,13 @@ public final class Gson {
             requiresThreadLocalCleanup = true;
          }
 
-         Gson.FutureTypeAdapter ongoingCall = (Gson.FutureTypeAdapter)((Map)threadCalls).get(type);
+         Gson.FutureTypeAdapter ongoingCall = (Gson.FutureTypeAdapter) threadCalls.get(type);
          if (ongoingCall != null) {
             return ongoingCall;
          } else {
             try {
                Gson.FutureTypeAdapter call = new Gson.FutureTypeAdapter();
-               ((Map)threadCalls).put(type, call);
+               threadCalls.put(type, call);
                Iterator var7 = this.factories.iterator();
 
                TypeAdapter candidate;
@@ -322,7 +322,7 @@ public final class Gson {
                TypeAdapter var10 = candidate;
                return var10;
             } finally {
-               ((Map)threadCalls).remove(type);
+               threadCalls.remove(type);
                if (requiresThreadLocalCleanup) {
                   this.calls.remove();
                }
@@ -362,30 +362,30 @@ public final class Gson {
    }
 
    public JsonElement toJsonTree(Object src) {
-      return (JsonElement)(src == null ? JsonNull.INSTANCE : this.toJsonTree(src, src.getClass()));
+      return src == null ? JsonNull.INSTANCE : this.toJsonTree(src, src.getClass());
    }
 
    public JsonElement toJsonTree(Object src, Type typeOfSrc) {
       JsonTreeWriter writer = new JsonTreeWriter();
-      this.toJson(src, typeOfSrc, (JsonWriter)writer);
+      this.toJson(src, typeOfSrc, writer);
       return writer.get();
    }
 
    public String toJson(Object src) {
-      return src == null ? this.toJson((JsonElement)JsonNull.INSTANCE) : this.toJson((Object)src, (Type)src.getClass());
+      return src == null ? this.toJson(JsonNull.INSTANCE) : this.toJson(src, src.getClass());
    }
 
    public String toJson(Object src, Type typeOfSrc) {
       StringWriter writer = new StringWriter();
-      this.toJson(src, typeOfSrc, (Appendable)writer);
+      this.toJson(src, typeOfSrc, writer);
       return writer.toString();
    }
 
    public void toJson(Object src, Appendable writer) throws JsonIOException {
       if (src != null) {
-         this.toJson(src, src.getClass(), (Appendable)writer);
+         this.toJson(src, src.getClass(), writer);
       } else {
-         this.toJson((JsonElement)JsonNull.INSTANCE, (Appendable)writer);
+         this.toJson(JsonNull.INSTANCE, writer);
       }
 
    }
@@ -413,8 +413,7 @@ public final class Gson {
       } catch (IOException var14) {
          throw new JsonIOException(var14);
       } catch (AssertionError var15) {
-         AssertionError error = new AssertionError("AssertionError (GSON 2.8.7): " + var15.getMessage());
-         error.initCause(var15);
+         AssertionError error = new AssertionError("AssertionError (GSON 2.8.7): " + var15.getMessage(), var15);
          throw error;
       } finally {
          writer.setLenient(oldLenient);
@@ -426,7 +425,7 @@ public final class Gson {
 
    public String toJson(JsonElement jsonElement) {
       StringWriter writer = new StringWriter();
-      this.toJson((JsonElement)jsonElement, (Appendable)writer);
+      this.toJson(jsonElement, writer);
       return writer.toString();
    }
 
@@ -472,8 +471,7 @@ public final class Gson {
       } catch (IOException var12) {
          throw new JsonIOException(var12);
       } catch (AssertionError var13) {
-         AssertionError error = new AssertionError("AssertionError (GSON 2.8.7): " + var13.getMessage());
-         error.initCause(var13);
+         AssertionError error = new AssertionError("AssertionError (GSON 2.8.7): " + var13.getMessage(), var13);
          throw error;
       } finally {
          writer.setLenient(oldLenient);
@@ -484,7 +482,7 @@ public final class Gson {
    }
 
    public Object fromJson(String json, Class classOfT) throws JsonSyntaxException {
-      Object object = this.fromJson((String)json, (Type)classOfT);
+      Object object = this.fromJson(json, (Type)classOfT);
       return Primitives.wrap(classOfT).cast(object);
    }
 
@@ -493,14 +491,14 @@ public final class Gson {
          return null;
       } else {
          StringReader reader = new StringReader(json);
-         Object target = this.fromJson((Reader)reader, (Type)typeOfT);
+         Object target = this.fromJson(reader, typeOfT);
          return target;
       }
    }
 
    public Object fromJson(Reader json, Class classOfT) throws JsonSyntaxException, JsonIOException {
       JsonReader jsonReader = this.newJsonReader(json);
-      Object object = this.fromJson((JsonReader)jsonReader, (Type)classOfT);
+      Object object = this.fromJson(jsonReader, classOfT);
       assertFullConsumption(object, jsonReader);
       return Primitives.wrap(classOfT).cast(object);
    }
@@ -548,8 +546,7 @@ public final class Gson {
          } catch (IOException var17) {
             throw new JsonSyntaxException(var17);
          } catch (AssertionError var18) {
-            error = new AssertionError("AssertionError (GSON 2.8.7): " + var18.getMessage());
-            error.initCause(var18);
+            error = new AssertionError("AssertionError (GSON 2.8.7): " + var18.getMessage(), var18);
             throw error;
          }
 
@@ -562,12 +559,12 @@ public final class Gson {
    }
 
    public Object fromJson(JsonElement json, Class classOfT) throws JsonSyntaxException {
-      Object object = this.fromJson((JsonElement)json, (Type)classOfT);
+      Object object = this.fromJson(json, (Type)classOfT);
       return Primitives.wrap(classOfT).cast(object);
    }
 
    public Object fromJson(JsonElement json, Type typeOfT) throws JsonSyntaxException {
-      return json == null ? null : this.fromJson((JsonReader)(new JsonTreeReader(json)), (Type)typeOfT);
+      return json == null ? null : this.fromJson(new JsonTreeReader(json), typeOfT);
    }
 
    public String toString() {

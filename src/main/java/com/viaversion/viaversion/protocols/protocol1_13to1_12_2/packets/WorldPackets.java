@@ -36,7 +36,7 @@ public class WorldPackets {
    private static final IntSet VALID_BIOMES = new IntOpenHashSet(70, 1.0F);
 
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_12_1.SPAWN_PAINTING, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_12_1.SPAWN_PAINTING, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -49,12 +49,12 @@ public class WorldPackets {
                      Via.getPlatform().getLogger().warning("Could not find painting motive: " + motive + " falling back to default (0)");
                   }
 
-                  wrapper.write(Type.VAR_INT, (Integer)id.orElse(0));
+                  wrapper.write(Type.VAR_INT, id.orElse(0));
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_ENTITY_DATA, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_ENTITY_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -81,8 +81,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_ACTION, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_ACTION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -127,8 +127,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_CHANGE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.VAR_INT);
@@ -152,8 +152,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.MULTI_BLOCK_CHANGE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.MULTI_BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.INT);
@@ -212,8 +212,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.EXPLOSION, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.EXPLOSION, new PacketRemapper() {
          public void registerMap() {
             if (Via.getConfig().isServersideBlockConnections()) {
                this.map(Type.FLOAT);
@@ -248,8 +248,8 @@ public class WorldPackets {
                });
             }
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.UNLOAD_CHUNK, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.UNLOAD_CHUNK, new PacketRemapper() {
          public void registerMap() {
             if (Via.getConfig().isServersideBlockConnections()) {
                this.handler(new PacketHandler() {
@@ -262,8 +262,8 @@ public class WorldPackets {
             }
 
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.NAMED_SOUND, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.NAMED_SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -274,8 +274,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.CHUNK_DATA, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -376,7 +376,7 @@ public class WorldPackets {
 
                   while(var18.hasNext()) {
                      CompoundTag tag = (CompoundTag)var18.next();
-                     newId = provider.transform(wrapper.user(), (Position)null, tag, false);
+                     newId = provider.transform(wrapper.user(), null, tag, false);
                      if (newId != -1) {
                         y = ((NumberTag)tag.get("x")).asInt();
                         z = ((NumberTag)tag.get("y")).asInt();
@@ -407,8 +407,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_12_1.SPAWN_PARTICLE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_12_1.SPAWN_PARTICLE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.BOOLEAN);
@@ -474,7 +474,7 @@ public class WorldPackets {
                }
             });
          }
-      }));
+      });
    }
 
    public static int toNewId(int oldId) {

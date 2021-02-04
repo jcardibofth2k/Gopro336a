@@ -145,7 +145,7 @@ public class ListTag extends Tag implements Iterable {
          return true;
       } else if (o != null && this.getClass() == o.getClass()) {
          ListTag tags = (ListTag)o;
-         return !Objects.equals(this.type, tags.type) ? false : this.value.equals(tags.value);
+         return Objects.equals(this.type, tags.type) && this.value.equals(tags.value);
       } else {
          return false;
       }

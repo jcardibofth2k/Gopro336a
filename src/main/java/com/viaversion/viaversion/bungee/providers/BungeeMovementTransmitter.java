@@ -20,7 +20,7 @@ public class BungeeMovementTransmitter extends MovementTransmitterProvider {
 
    public void sendPlayer(UserConnection userConnection) {
       if (userConnection.getProtocolInfo().getState() == State.PLAY) {
-         PacketWrapper wrapper = PacketWrapper.create(3, (ByteBuf)null, userConnection);
+         PacketWrapper wrapper = PacketWrapper.create(3, null, userConnection);
          wrapper.write(Type.BOOLEAN, ((MovementTracker)userConnection.get(MovementTracker.class)).isGround());
 
          try {

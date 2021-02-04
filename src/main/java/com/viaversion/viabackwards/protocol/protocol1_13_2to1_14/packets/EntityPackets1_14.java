@@ -41,7 +41,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
       super.addTrackedEntity(wrapper, entityId, type);
       if (type == Entity1_14Types.PAINTING) {
          Position position = (Position)wrapper.get(Type.POSITION, 0);
-         this.positionHandler.cacheEntityPosition(wrapper, (double)position.getX(), (double)position.getY(), (double)position.getZ(), true, false);
+         this.positionHandler.cacheEntityPosition(wrapper, position.getX(), position.getY(), position.getZ(), true, false);
       } else if (wrapper.getId() != ClientboundPackets1_14.JOIN_GAME.getId()) {
          this.positionHandler.cacheEntityPosition(wrapper, true, false);
       }
@@ -50,7 +50,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
 
    protected void registerPackets() {
       this.positionHandler = new EntityPositionHandler(this, EntityPositionStorage1_14.class, EntityPositionStorage1_14::new);
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.ENTITY_STATUS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.ENTITY_STATUS, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int entityId = (Integer)wrapper.passthrough(Type.INT);
@@ -63,7 +63,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
                         PacketWrapper equipmentPacket = wrapper.create(ClientboundPackets1_13.ENTITY_EQUIPMENT);
                         equipmentPacket.write(Type.VAR_INT, entityId);
                         equipmentPacket.write(Type.VAR_INT, i);
-                        equipmentPacket.write(Type.FLAT_VAR_INT_ITEM, (Object)null);
+                        equipmentPacket.write(Type.FLAT_VAR_INT_ITEM, null);
                         equipmentPacket.send(Protocol1_13_2To1_14.class);
                      }
 
@@ -72,7 +72,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.ENTITY_TELEPORT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.ENTITY_TELEPORT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.DOUBLE);
@@ -99,9 +99,9 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       };
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.ENTITY_POSITION, relativeMoveHandler);
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.ENTITY_POSITION_AND_ROTATION, relativeMoveHandler);
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.ENTITY_POSITION, relativeMoveHandler);
+      this.protocol.registerClientbound(ClientboundPackets1_14.ENTITY_POSITION_AND_ROTATION, relativeMoveHandler);
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -149,7 +149,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
                         wrapper.set(Type.INT, 0, Integer.valueOf(data));
                      }
                   } else {
-                     objectType = (Entity1_13Types.ObjectType)Entity1_13Types.ObjectType.fromEntityType(entityType).orElse((Object)null);
+                     objectType = (Entity1_13Types.ObjectType)Entity1_13Types.ObjectType.fromEntityType(entityType).orElse(null);
                   }
 
                   if (objectType != null) {
@@ -168,7 +168,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -206,7 +206,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             this.handler(EntityPackets1_14.this.getMobSpawnRewriter(Types1_13_2.METADATA_LIST));
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_EXPERIENCE_ORB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_EXPERIENCE_ORB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.DOUBLE);
@@ -217,7 +217,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_GLOBAL_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_GLOBAL_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.BYTE);
@@ -229,7 +229,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_PAINTING, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_PAINTING, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -241,7 +241,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -259,7 +259,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
       });
       this.registerRemoveEntities(ClientboundPackets1_14.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_14.ENTITY_METADATA, Types1_14.METADATA_LIST, Types1_13_2.METADATA_LIST);
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -276,7 +276,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler(new PacketHandler() {
@@ -388,7 +388,7 @@ public class EntityPackets1_14 extends LegacyEntityRewriter {
          if (index == 12) {
             Position position = (Position)meta.getValue();
             if (position != null) {
-               PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_13.USE_BED, (ByteBuf)null, event.user());
+               PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_13.USE_BED, null, event.user());
                wrapper.write(Type.VAR_INT, event.entityId());
                wrapper.write(Type.POSITION, position);
 

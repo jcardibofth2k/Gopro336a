@@ -50,7 +50,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
    }
 
    private List getFieldNames(Field f) {
-      SerializedName annotation = (SerializedName)f.getAnnotation(SerializedName.class);
+      SerializedName annotation = f.getAnnotation(SerializedName.class);
       String serializedName;
       if (annotation == null) {
          serializedName = this.fieldNamingPolicy.translateName(f);
@@ -88,7 +88,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
 
    private ReflectiveTypeAdapterFactory.BoundField createBoundField(final Gson context, final Field field, String name, final TypeToken fieldType, boolean serialize, boolean deserialize) {
       final boolean isPrimitive = Primitives.isPrimitive(fieldType.getRawType());
-      JsonAdapter annotation = (JsonAdapter)field.getAnnotation(JsonAdapter.class);
+      JsonAdapter annotation = field.getAnnotation(JsonAdapter.class);
       final TypeAdapter mapped = null;
       if (annotation != null) {
          mapped = this.jsonAdapterFactory.getTypeAdapter(this.constructorConstructor, context, fieldType, annotation);
@@ -103,7 +103,7 @@ public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory {
          void write(JsonWriter writer, Object value) throws IOException, IllegalAccessException {
             Object fieldValue = field.get(value);
             TypeAdapter t = jsonAdapterPresent ? mapped : new TypeAdapterRuntimeTypeWrapper(context, mapped, fieldType.getType());
-            ((TypeAdapter)t).write(writer, fieldValue);
+            t.write(writer, fieldValue);
          }
 
          void read(JsonReader reader, Object value) throws IOException, IllegalAccessException {

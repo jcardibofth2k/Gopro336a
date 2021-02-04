@@ -29,7 +29,7 @@ extends Module {
                 PacketBuffer packetBuffer2 = new PacketBuffer(Unpooled.buffer());
                 packetBuffer2.writeInt(Field2629);
                 packetBuffer2.writeInt(n2);
-                Class223.mc.player.connection.sendPacket((Packet)new CPacketCustomPayload("MC|Beacon", packetBuffer2));
+                Class223.mc.player.connection.sendPacket(new CPacketCustomPayload("MC|Beacon", packetBuffer2));
                 this.Field2630 = true;
             }
         }

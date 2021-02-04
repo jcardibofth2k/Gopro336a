@@ -25,7 +25,7 @@ public class CommandBlockStorage implements StorableObject {
       }
 
       Map blocks = (Map)this.storedCommandBlocks.get(chunkPos);
-      if (!blocks.containsKey(position) || !((CompoundTag)blocks.get(position)).equals(tag)) {
+      if (!blocks.containsKey(position) || !blocks.get(position).equals(tag)) {
          blocks.put(position, tag);
       }
    }

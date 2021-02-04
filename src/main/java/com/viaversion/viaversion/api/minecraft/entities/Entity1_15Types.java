@@ -138,12 +138,12 @@ public enum Entity1_15Types implements EntityType {
    private final int field_164;
    private final EntityType parent;
 
-   private Entity1_15Types(int id) {
+   Entity1_15Types(int id) {
       this.field_164 = id;
       this.parent = null;
    }
 
-   private Entity1_15Types(int id, EntityType parent) {
+   Entity1_15Types(int id, EntityType parent) {
       this.field_164 = id;
       this.parent = parent;
    }

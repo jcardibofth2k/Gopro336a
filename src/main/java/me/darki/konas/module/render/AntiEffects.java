@@ -13,16 +13,16 @@ extends Module {
     public Setting<Boolean> jumpBoost = new Setting<>("JumpBoost", true);
 
     public AntiEffects() {
-        super("AntiEffects", "Removes unwanted effects from the player", Category.PLAYER, new String[0]);
+        super("AntiEffects", "Removes unwanted effects from the player", Category.PLAYER);
     }
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
         if (AntiEffects.mc.player != null) {
-            if (((Boolean)this.levitation.getValue()).booleanValue() && AntiEffects.mc.player.isPotionActive(MobEffects.LEVITATION)) {
+            if (this.levitation.getValue().booleanValue() && AntiEffects.mc.player.isPotionActive(MobEffects.LEVITATION)) {
                 AntiEffects.mc.player.removeActivePotionEffect(MobEffects.LEVITATION);
             }
-            if (((Boolean)this.jumpBoost.getValue()).booleanValue() && AntiEffects.mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
+            if (this.jumpBoost.getValue().booleanValue() && AntiEffects.mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
                 AntiEffects.mc.player.removeActivePotionEffect(MobEffects.JUMP_BOOST);
             }
         }

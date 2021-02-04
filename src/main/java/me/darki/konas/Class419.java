@@ -22,7 +22,7 @@ extends Module {
     }
 
     public Class419() {
-        super("PacketRender", Category.RENDER, new String[0]);
+        super("PacketRender", Category.RENDER);
     }
 
     public static float Method1115() {

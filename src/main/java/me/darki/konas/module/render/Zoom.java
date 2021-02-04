@@ -17,7 +17,7 @@ extends Module {
     }
 
     public Zoom() {
-        super("Zoom", "Zoom in properly, not with perspective modification", Category.RENDER, new String[0]);
+        super("Zoom", "Zoom in properly, not with perspective modification", Category.RENDER);
     }
 
     @Override

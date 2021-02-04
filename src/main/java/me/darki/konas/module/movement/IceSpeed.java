@@ -9,7 +9,7 @@ import net.minecraft.init.Blocks;
 public class IceSpeed
 extends Module {
     public IceSpeed() {
-        super("IceSpeed", Category.MOVEMENT, new String[0]);
+        super("IceSpeed", Category.MOVEMENT);
     }
 
     @Subscriber

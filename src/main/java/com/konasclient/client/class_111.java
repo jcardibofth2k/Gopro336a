@@ -31,7 +31,7 @@ public class class_111 {
    @NotNull
    public static String field_359 = "0.10";
    // $FF: renamed from: c com.konasclient.client.1
-   public static class_109 field_360 = new class_109((DefaultConstructorMarker)null);
+   public static class_109 field_360 = new class_109(null);
 
    // $FF: renamed from: c () com.konasclient.loader.LoaderMod
    public LoaderMod method_428() {

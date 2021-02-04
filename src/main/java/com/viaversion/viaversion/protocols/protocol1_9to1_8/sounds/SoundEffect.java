@@ -258,14 +258,14 @@ public enum SoundEffect {
    private final boolean breaksound;
    private static final Map effects = new HashMap();
 
-   private SoundEffect(String name, String newname, SoundCategory cat) {
+   SoundEffect(String name, String newname, SoundCategory cat) {
       this.category = cat;
       this.newName = newname;
       this.name = name;
       this.breaksound = name.startsWith("dig.");
    }
 
-   private SoundEffect(String name, String newname, SoundCategory cat, boolean shouldIgnore) {
+   SoundEffect(String name, String newname, SoundCategory cat, boolean shouldIgnore) {
       this.category = cat;
       this.newName = newname;
       this.name = name;

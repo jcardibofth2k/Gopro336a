@@ -20,7 +20,7 @@ extends Enum {
     }
 
     public static Class163[] Method1654() {
-        return (Class163[])Field1732.clone();
+        return Field1732.clone();
     }
 
     public static Class163 Method1655(String string) {

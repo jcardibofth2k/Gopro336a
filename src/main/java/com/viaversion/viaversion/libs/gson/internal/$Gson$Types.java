@@ -56,7 +56,7 @@ public final class $Gson$Types {
    public static Type canonicalize(Type type) {
       if (type instanceof Class) {
          Class c = (Class)type;
-         return (Type)(c.isArray() ? new $Gson$Types.GenericArrayTypeImpl(canonicalize(c.getComponentType())) : c);
+         return c.isArray() ? new GenericArrayTypeImpl(canonicalize(c.getComponentType())) : c;
       } else if (type instanceof ParameterizedType) {
          ParameterizedType p = (ParameterizedType)type;
          return new $Gson$Types.ParameterizedTypeImpl(p.getOwnerType(), p.getRawType(), p.getActualTypeArguments());
@@ -194,7 +194,7 @@ public final class $Gson$Types {
    }
 
    public static Type getArrayComponentType(Type array) {
-      return (Type)(array instanceof GenericArrayType ? ((GenericArrayType)array).getGenericComponentType() : ((Class)array).getComponentType());
+      return array instanceof GenericArrayType ? ((GenericArrayType)array).getGenericComponentType() : ((Class)array).getComponentType();
    }
 
    public static Type getCollectionElementType(Type context, Class contextRawType) {
@@ -203,7 +203,7 @@ public final class $Gson$Types {
          collectionType = ((WildcardType)collectionType).getUpperBounds()[0];
       }
 
-      return (Type)(collectionType instanceof ParameterizedType ? ((ParameterizedType)collectionType).getActualTypeArguments()[0] : Object.class);
+      return collectionType instanceof ParameterizedType ? ((ParameterizedType)collectionType).getActualTypeArguments()[0] : Object.class;
    }
 
    public static Type[] getMapKeyAndValueTypes(Type context, Class contextRawType) {
@@ -246,7 +246,7 @@ public final class $Gson$Types {
             Class original = (Class)toResolve;
             Type componentType = original.getComponentType();
             newOwnerType = resolve(context, contextRawType, componentType, visitedTypeVariables);
-            return (Type)(componentType == newOwnerType ? original : arrayOf(newOwnerType));
+            return componentType == newOwnerType ? original : arrayOf(newOwnerType);
          }
 
          Type ownerType;
@@ -269,7 +269,7 @@ public final class $Gson$Types {
                Type resolvedTypeArgument = resolve(context, contextRawType, args[t], visitedTypeVariables);
                if (resolvedTypeArgument != args[t]) {
                   if (!changed) {
-                     args = (Type[])args.clone();
+                     args = args.clone();
                      changed = true;
                   }
 
@@ -428,7 +428,7 @@ public final class $Gson$Types {
 
          this.ownerType = ownerType == null ? null : $Gson$Types.canonicalize(ownerType);
          this.rawType = $Gson$Types.canonicalize(rawType);
-         this.typeArguments = (Type[])typeArguments.clone();
+         this.typeArguments = typeArguments.clone();
          int t = 0;
 
          for(int length = this.typeArguments.length; t < length; ++t) {
@@ -440,7 +440,7 @@ public final class $Gson$Types {
       }
 
       public Type[] getActualTypeArguments() {
-         return (Type[])this.typeArguments.clone();
+         return this.typeArguments.clone();
       }
 
       public Type getRawType() {

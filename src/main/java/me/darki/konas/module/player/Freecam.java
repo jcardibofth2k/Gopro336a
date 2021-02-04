@@ -39,7 +39,7 @@ extends Module {
             return;
         }
         if (this.Field2466 != null) {
-            Freecam.mc.world.removeEntity((Entity)this.Field2466);
+            Freecam.mc.world.removeEntity(this.Field2466);
         }
         this.Field2466 = null;
         Freecam.mc.player.movementInput = new MovementInputFromOptions(Freecam.mc.gameSettings);
@@ -54,7 +54,7 @@ extends Module {
         }
         if (this.Field2464 != (n = Freecam.mc.player.ticksExisted)) {
             this.Field2464 = n;
-            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(((Class537)Field2458.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
+            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(Field2458.getValue().Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
         }
         return this.Field2463;
     }
@@ -65,7 +65,7 @@ extends Module {
     }
 
     public Freecam() {
-        super("Freecam", "Control your camera separately to your body", Category.PLAYER, new String[0]);
+        super("Freecam", "Control your camera separately to your body", Category.PLAYER);
         this.Field2467 = new Class392(this, Freecam.mc.gameSettings);
         this.Field2468 = new Class398(this, Freecam.mc.gameSettings);
     }
@@ -80,12 +80,12 @@ extends Module {
         if (Freecam.mc.player == null) {
             return;
         }
-        this.Field2466 = new KonasPlayer((Boolean)this.Field2460.getValue(), (Boolean)this.Field2459.getValue(), ((Float)this.Field2461.getValue()).floatValue(), ((Float)this.Field2462.getValue()).floatValue());
+        this.Field2466 = new KonasPlayer(this.Field2460.getValue(), this.Field2459.getValue(), this.Field2461.getValue().floatValue(), this.Field2462.getValue().floatValue());
         this.Field2466.movementInput = this.Field2467;
         Freecam.mc.player.movementInput = this.Field2468;
-        Freecam.mc.world.addEntityToWorld(-921, (Entity)this.Field2466);
+        Freecam.mc.world.addEntityToWorld(-921, this.Field2466);
         this.Field2465 = mc.getRenderViewEntity();
-        mc.setRenderViewEntity((Entity)this.Field2466);
+        mc.setRenderViewEntity(this.Field2466);
         Freecam.mc.renderChunksMany = false;
     }
 
@@ -94,15 +94,15 @@ extends Module {
         if (Freecam.mc.player == null || Freecam.mc.world == null) {
             return;
         }
-        this.Field2466.Method400((Boolean)this.Field2460.getValue());
-        this.Field2466.Method407((Boolean)this.Field2459.getValue());
-        this.Field2466.Method406(((Float)this.Field2461.getValue()).floatValue());
-        this.Field2466.Method402(((Float)this.Field2462.getValue()).floatValue());
+        this.Field2466.Method400(this.Field2460.getValue());
+        this.Field2466.Method407(this.Field2459.getValue());
+        this.Field2466.Method406(this.Field2461.getValue().floatValue());
+        this.Field2466.Method402(this.Field2462.getValue().floatValue());
     }
 
     @Subscriber
     public void Method1656(WorldEvent.Unload unload) {
-        mc.setRenderViewEntity((Entity)Freecam.mc.player);
+        mc.setRenderViewEntity(Freecam.mc.player);
         this.toggle();
     }
 
@@ -110,7 +110,7 @@ extends Module {
     public void Method2121(Class49 class49) {
         block0: {
             if (this.Method2118() == null) break block0;
-            class49.Method274((Entity)((EntityPlayerSP)this.Method2118()));
+            class49.Method274(this.Method2118());
         }
     }
 }

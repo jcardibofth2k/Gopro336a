@@ -8,7 +8,7 @@ import me.darki.konas.Class469;
 import me.darki.konas.Class492;
 import me.darki.konas.Class509;
 import me.darki.konas.Class595;
-import me.darki.konas.Class620;
+import me.darki.konas.FriendCommandOptions;
 import me.darki.konas.Class645;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
@@ -22,7 +22,7 @@ extends Command {
     }
 
     public friendCommand() {
-        super("friend", "Add and remove friends", new Class620("<add/del/list>"), new Class595("[name]"));
+        super("friend", "Add and remove friends", new FriendCommandOptions("<add/del/list>"), new Class595("[name]"));
     }
 
     @Override
@@ -65,7 +65,7 @@ extends Command {
                     }
                     EntityPlayer entityPlayer = Minecraft.getMinecraft().world.getPlayerEntityByName(stringArray[2]);
                     Class492.Method1990(entityPlayer.getName(), entityPlayer.getUniqueID().toString().replace("-", ""));
-                    if (Class167.Method1610(Class299.class).isEnabled() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
+                    if (Class167.Method1610(Class299.class).isEnabled() && Class299.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + stringArray[2] + "&f as friend");
@@ -75,7 +75,7 @@ extends Command {
                         return;
                     }
                     Class492.Method1990(Class509.Method1351(Class509.Method1349(stringArray[2])), Class509.Method1349(stringArray[2]));
-                    if (Class167.Method1610(Class299.class).isEnabled() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
+                    if (Class167.Method1610(Class299.class).isEnabled() && Class299.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + Class509.Method1351(Class509.Method1349(stringArray[2])) + "&f as friend");

@@ -53,7 +53,7 @@ extends GuiListExtended {
             ArrayList<Class170> arrayList = this.Field1766;
             boolean bl = false;
             for (n3 = 0; n3 < this.Field1766.size(); ++n3) {
-                if (!this.Field1766.get((int)n3).Field1542.Method311()) continue;
+                if (!this.Field1766.get(n3).Field1542.Method311()) continue;
                 Collections.swap(this.Field1766, 0, n3);
                 bl = true;
                 break;
@@ -67,51 +67,51 @@ extends GuiListExtended {
             this.overlayBackground(0, this.top, 255, 255);
             this.overlayBackground(this.bottom, this.height, 255, 255);
             GlStateManager.enableBlend();
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ZERO, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ZERO, GlStateManager.DestFactor.ONE);
             GlStateManager.disableAlpha();
-            GlStateManager.shadeModel((int)7425);
+            GlStateManager.shadeModel(7425);
             GlStateManager.disableTexture2D();
             bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-            bufferBuilder.pos((double)this.left, (double)(this.top + 4), 0.0).tex(0.0, 1.0).color(0, 0, 0, 0).endVertex();
-            bufferBuilder.pos((double)this.right, (double)(this.top + 4), 0.0).tex(1.0, 1.0).color(0, 0, 0, 0).endVertex();
-            bufferBuilder.pos((double)this.right, (double)this.top, 0.0).tex(1.0, 0.0).color(0, 0, 0, 255).endVertex();
-            bufferBuilder.pos((double)this.left, (double)this.top, 0.0).tex(0.0, 0.0).color(0, 0, 0, 255).endVertex();
+            bufferBuilder.pos(this.left, this.top + 4, 0.0).tex(0.0, 1.0).color(0, 0, 0, 0).endVertex();
+            bufferBuilder.pos(this.right, this.top + 4, 0.0).tex(1.0, 1.0).color(0, 0, 0, 0).endVertex();
+            bufferBuilder.pos(this.right, this.top, 0.0).tex(1.0, 0.0).color(0, 0, 0, 255).endVertex();
+            bufferBuilder.pos(this.left, this.top, 0.0).tex(0.0, 0.0).color(0, 0, 0, 255).endVertex();
             tessellator.draw();
             bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-            bufferBuilder.pos((double)this.left, (double)this.bottom, 0.0).tex(0.0, 1.0).color(0, 0, 0, 255).endVertex();
-            bufferBuilder.pos((double)this.right, (double)this.bottom, 0.0).tex(1.0, 1.0).color(0, 0, 0, 255).endVertex();
-            bufferBuilder.pos((double)this.right, (double)(this.bottom - 4), 0.0).tex(1.0, 0.0).color(0, 0, 0, 0).endVertex();
-            bufferBuilder.pos((double)this.left, (double)(this.bottom - 4), 0.0).tex(0.0, 0.0).color(0, 0, 0, 0).endVertex();
+            bufferBuilder.pos(this.left, this.bottom, 0.0).tex(0.0, 1.0).color(0, 0, 0, 255).endVertex();
+            bufferBuilder.pos(this.right, this.bottom, 0.0).tex(1.0, 1.0).color(0, 0, 0, 255).endVertex();
+            bufferBuilder.pos(this.right, this.bottom - 4, 0.0).tex(1.0, 0.0).color(0, 0, 0, 0).endVertex();
+            bufferBuilder.pos(this.left, this.bottom - 4, 0.0).tex(0.0, 0.0).color(0, 0, 0, 0).endVertex();
             tessellator.draw();
             n3 = this.getMaxScroll();
             if (n3 > 0) {
                 int n8 = (this.bottom - this.top) * (this.bottom - this.top) / this.getContentHeight();
-                int n9 = (int)this.amountScrolled * (this.bottom - this.top - (n8 = MathHelper.clamp((int)n8, (int)32, (int)(this.bottom - this.top - 8)))) / n3 + this.top;
+                int n9 = (int)this.amountScrolled * (this.bottom - this.top - (n8 = MathHelper.clamp(n8, 32, this.bottom - this.top - 8))) / n3 + this.top;
                 if (n9 < this.top) {
                     n9 = this.top;
                 }
                 bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-                bufferBuilder.pos((double)n4, (double)this.bottom, 0.0).tex(0.0, 1.0).color(0, 0, 0, 255).endVertex();
-                bufferBuilder.pos((double)n5, (double)this.bottom, 0.0).tex(1.0, 1.0).color(0, 0, 0, 255).endVertex();
-                bufferBuilder.pos((double)n5, (double)this.top, 0.0).tex(1.0, 0.0).color(0, 0, 0, 255).endVertex();
-                bufferBuilder.pos((double)n4, (double)this.top, 0.0).tex(0.0, 0.0).color(0, 0, 0, 255).endVertex();
+                bufferBuilder.pos(n4, this.bottom, 0.0).tex(0.0, 1.0).color(0, 0, 0, 255).endVertex();
+                bufferBuilder.pos(n5, this.bottom, 0.0).tex(1.0, 1.0).color(0, 0, 0, 255).endVertex();
+                bufferBuilder.pos(n5, this.top, 0.0).tex(1.0, 0.0).color(0, 0, 0, 255).endVertex();
+                bufferBuilder.pos(n4, this.top, 0.0).tex(0.0, 0.0).color(0, 0, 0, 255).endVertex();
                 tessellator.draw();
                 bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-                bufferBuilder.pos((double)n4, (double)(n9 + n8), 0.0).tex(0.0, 1.0).color(128, 128, 128, 255).endVertex();
-                bufferBuilder.pos((double)n5, (double)(n9 + n8), 0.0).tex(1.0, 1.0).color(128, 128, 128, 255).endVertex();
-                bufferBuilder.pos((double)n5, (double)n9, 0.0).tex(1.0, 0.0).color(128, 128, 128, 255).endVertex();
-                bufferBuilder.pos((double)n4, (double)n9, 0.0).tex(0.0, 0.0).color(128, 128, 128, 255).endVertex();
+                bufferBuilder.pos(n4, n9 + n8, 0.0).tex(0.0, 1.0).color(128, 128, 128, 255).endVertex();
+                bufferBuilder.pos(n5, n9 + n8, 0.0).tex(1.0, 1.0).color(128, 128, 128, 255).endVertex();
+                bufferBuilder.pos(n5, n9, 0.0).tex(1.0, 0.0).color(128, 128, 128, 255).endVertex();
+                bufferBuilder.pos(n4, n9, 0.0).tex(0.0, 0.0).color(128, 128, 128, 255).endVertex();
                 tessellator.draw();
                 bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-                bufferBuilder.pos((double)n4, (double)(n9 + n8 - 1), 0.0).tex(0.0, 1.0).color(192, 192, 192, 255).endVertex();
-                bufferBuilder.pos((double)(n5 - 1), (double)(n9 + n8 - 1), 0.0).tex(1.0, 1.0).color(192, 192, 192, 255).endVertex();
-                bufferBuilder.pos((double)(n5 - 1), (double)n9, 0.0).tex(1.0, 0.0).color(192, 192, 192, 255).endVertex();
-                bufferBuilder.pos((double)n4, (double)n9, 0.0).tex(0.0, 0.0).color(192, 192, 192, 255).endVertex();
+                bufferBuilder.pos(n4, n9 + n8 - 1, 0.0).tex(0.0, 1.0).color(192, 192, 192, 255).endVertex();
+                bufferBuilder.pos(n5 - 1, n9 + n8 - 1, 0.0).tex(1.0, 1.0).color(192, 192, 192, 255).endVertex();
+                bufferBuilder.pos(n5 - 1, n9, 0.0).tex(1.0, 0.0).color(192, 192, 192, 255).endVertex();
+                bufferBuilder.pos(n4, n9, 0.0).tex(0.0, 0.0).color(192, 192, 192, 255).endVertex();
                 tessellator.draw();
             }
             this.renderDecorations(n, n2);
             GlStateManager.enableTexture2D();
-            GlStateManager.shadeModel((int)7424);
+            GlStateManager.shadeModel(7424);
             GlStateManager.enableAlpha();
             GlStateManager.disableBlend();
         }
@@ -156,13 +156,13 @@ extends GuiListExtended {
     public void Method1670(float f, double d, double d2, double d3) {
         BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         this.mc.getTextureManager().bindTexture(Gui.OPTIONS_BACKGROUND);
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         float f2 = 32.0f;
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-        bufferBuilder.pos((double)f, d3, 0.0).tex((double)(f / f2), d3 / (double)f2).color(20, 20, 20, 255).endVertex();
+        bufferBuilder.pos(f, d3, 0.0).tex(f / f2, d3 / (double)f2).color(20, 20, 20, 255).endVertex();
         bufferBuilder.pos(d, d3, 0.0).tex(d / (double)f2, d3 / (double)f2).color(20, 20, 20, 255).endVertex();
         bufferBuilder.pos(d, d2, 0.0).tex(d / (double)f2, d2 / (double)f2).color(20, 20, 20, 255).endVertex();
-        bufferBuilder.pos((double)f, d2, 0.0).tex((double)(f / f2), d2 / (double)f2).color(20, 20, 20, 255).endVertex();
+        bufferBuilder.pos(f, d2, 0.0).tex(f / f2, d2 / (double)f2).color(20, 20, 20, 255).endVertex();
         Tessellator.getInstance().draw();
     }
 

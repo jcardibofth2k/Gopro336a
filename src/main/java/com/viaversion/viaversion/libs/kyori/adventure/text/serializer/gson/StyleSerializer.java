@@ -158,7 +158,7 @@ final class StyleSerializer implements JsonDeserializer, JsonSerializer {
    private Codec.Decoder decoder(final JsonDeserializationContext ctx) {
       return (string) -> {
          JsonReader reader = new JsonReader(new StringReader(string));
-         return (Component)ctx.deserialize(Streams.parse(reader), Component.class);
+         return ctx.deserialize(Streams.parse(reader), Component.class);
       };
    }
 
@@ -233,7 +233,7 @@ final class StyleSerializer implements JsonDeserializer, JsonSerializer {
             throw new JsonSyntaxException(var6);
          }
 
-         return (JsonElement)(serialized == null ? JsonNull.INSTANCE : context.serialize(serialized));
+         return serialized == null ? JsonNull.INSTANCE : context.serialize(serialized);
       } else {
          return JsonNull.INSTANCE;
       }

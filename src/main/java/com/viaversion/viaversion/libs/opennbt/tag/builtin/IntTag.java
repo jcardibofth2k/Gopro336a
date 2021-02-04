@@ -67,7 +67,7 @@ public class IntTag extends NumberTag {
    }
 
    public long asLong() {
-      return (long)this.value;
+      return this.value;
    }
 
    public float asFloat() {
@@ -75,7 +75,7 @@ public class IntTag extends NumberTag {
    }
 
    public double asDouble() {
-      return (double)this.value;
+      return this.value;
    }
 
    public int getTagId() {

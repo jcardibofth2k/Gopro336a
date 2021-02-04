@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketChatMessage.class})
 public interface ICPacketChatMessage {
     @Accessor(value="message")
-    public void Method0(String var1);
+    void Method0(String var1);
 }

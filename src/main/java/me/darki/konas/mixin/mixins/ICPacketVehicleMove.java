@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketVehicleMove.class})
 public interface ICPacketVehicleMove {
     @Accessor(value="y")
-    public void Method337(double var1);
+    void Method337(double var1);
 
     @Accessor(value="y")
-    public double Method338();
+    double Method338();
 }

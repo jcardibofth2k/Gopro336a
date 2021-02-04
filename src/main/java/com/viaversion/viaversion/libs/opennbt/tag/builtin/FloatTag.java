@@ -75,7 +75,7 @@ public class FloatTag extends NumberTag {
    }
 
    public double asDouble() {
-      return (double)this.value;
+      return this.value;
    }
 
    public int getTagId() {

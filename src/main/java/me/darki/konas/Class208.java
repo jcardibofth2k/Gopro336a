@@ -38,12 +38,12 @@ extends Module {
     public int Field552;
 
     public Class208() {
-        super("Tooltips", "Enchances inventory tooltips", Category.CLIENT, new String[0]);
+        super("Tooltips", "Enchances inventory tooltips", Category.CLIENT);
     }
 
     @Subscriber
     public void Method624(ItemTooltipEvent itemTooltipEvent) {
-        if (((Boolean)Field550.getValue()).booleanValue() && itemTooltipEvent.getItemStack().getItem() instanceof ItemMap) {
+        if (Field550.getValue().booleanValue() && itemTooltipEvent.getItemStack().getItem() instanceof ItemMap) {
             itemTooltipEvent.getToolTip().clear();
             itemTooltipEvent.getToolTip().add(itemTooltipEvent.getItemStack().getDisplayName());
         }
@@ -52,14 +52,14 @@ extends Module {
     @Subscriber
     public void Method625(Class44 class44) {
         block3: {
-            if (!((Boolean)Field550.getValue()).booleanValue() || !(class44.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
+            if (!Field550.getValue().booleanValue() || !(class44.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
             Slot slot = ((GuiContainer)class44.Method272()).getSlotUnderMouse();
             if (slot == null || !slot.getHasStack()) {
                 return;
             }
             ItemStack itemStack = slot.getStack();
             if (itemStack.getItem() instanceof ItemMap) {
-                MapData mapData = ((ItemMap)itemStack.getItem()).getMapData(itemStack, (World)Class208.mc.world);
+                MapData mapData = ((ItemMap)itemStack.getItem()).getMapData(itemStack, Class208.mc.world);
                 if (mapData == null) {
                     return;
                 }
@@ -68,8 +68,8 @@ extends Module {
                 mc.getTextureManager().bindTexture(new ResourceLocation("textures/map/map_background.png"));
                 Tessellator tessellator = Tessellator.getInstance();
                 BufferBuilder bufferBuilder = tessellator.getBuffer();
-                GlStateManager.translate((double)this.Field551, (double)((double)this.Field552 - 72.0), (double)0.0);
-                GlStateManager.scale((double)0.5, (double)0.5, (double)1.0);
+                GlStateManager.translate(this.Field551, (double)this.Field552 - 72.0, 0.0);
+                GlStateManager.scale(0.5, 0.5, 1.0);
                 bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
                 bufferBuilder.pos(-7.0, 135.0, 0.0).tex(0.0, 1.0).endVertex();
                 bufferBuilder.pos(135.0, 135.0, 0.0).tex(1.0, 1.0).endVertex();
@@ -85,7 +85,7 @@ extends Module {
 
     @Subscriber
     public void Method626(Class136 class136) {
-        if (((Boolean)Field550.getValue()).booleanValue() && class136.Method1926().getItem() instanceof ItemMap) {
+        if (Field550.getValue().booleanValue() && class136.Method1926().getItem() instanceof ItemMap) {
             this.Field551 = class136.Method1928();
             this.Field552 = class136.Method1927();
         }
@@ -98,14 +98,14 @@ extends Module {
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableLighting();
         GlStateManager.disableDepth();
-        if (((Boolean)Field546.getValue()).booleanValue()) {
+        if (Field546.getValue().booleanValue()) {
             NBTTagCompound nBTTagCompound2;
             int n3 = 144;
             int n4 = n + 12;
             int n5 = n2 - 12;
             int n6 = 48 + Class557.Method802();
             Class208.mc.getRenderItem().zLevel = 300.0f;
-            Color color = (Boolean)Field547.getValue() != false ? new Color(((ColorValue)Field548.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
+            Color color = Field547.getValue() != false ? new Color(Field548.getValue().Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             this.Method629((double)n4 - 8.5, n5 - 3, 0.0, 0.0, n3 + 3, n6 + 6, color);
             Class208.mc.fontRenderer.drawString(itemStack.getDisplayName(), n + 8, n2 - 12, 0xFFFFFF);
             GlStateManager.enableBlend();
@@ -114,10 +114,10 @@ extends Module {
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             RenderHelper.enableGUIStandardItemLighting();
-            GlStateManager.scale((double)0.75, (double)0.75, (double)0.75);
+            GlStateManager.scale(0.75, 0.75, 0.75);
             if (nBTTagCompound != null && !(nBTTagCompound2 = nBTTagCompound.getCompoundTag("BlockEntityTag")).isEmpty() && nBTTagCompound2.getTagList("Items", 10) != null) {
-                NonNullList nonNullList = NonNullList.withSize((int)27, (Object)ItemStack.EMPTY);
-                ItemStackHelper.loadAllItems((NBTTagCompound)nBTTagCompound2, (NonNullList)nonNullList);
+                NonNullList nonNullList = NonNullList.withSize(27, (Object)ItemStack.EMPTY);
+                ItemStackHelper.loadAllItems(nBTTagCompound2, nonNullList);
                 for (int i = 0; i < nonNullList.size(); ++i) {
                     int n7 = n + i % 9 * 15 + 11;
                     int n8 = n2 + i / 9 * 15 - 11 + 10;
@@ -128,7 +128,7 @@ extends Module {
                     mc.getRenderItem().renderItemOverlayIntoGUI(Class208.mc.fontRenderer, itemStack2, n7, n8, null);
                 }
             }
-            GlStateManager.scale((double)-0.75, (double)-0.75, (double)-0.75);
+            GlStateManager.scale(-0.75, -0.75, -0.75);
             RenderHelper.disableStandardItemLighting();
             Class208.mc.getRenderItem().zLevel = 0.0f;
         } else {
@@ -137,9 +137,9 @@ extends Module {
             int n10 = n2 - 12;
             int n11 = 48 + Class557.Method802();
             Class208.mc.getRenderItem().zLevel = 300.0f;
-            Color color = (Boolean)Field547.getValue() != false ? new Color(((ColorValue)Field548.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
+            Color color = Field547.getValue() != false ? new Color(Field548.getValue().Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             Color color2 = new Color(color.getRed(), color.getGreen(), color.getBlue(), 150);
-            GuiScreen.drawRect((int)(n9 - 3), (int)(n10 - 3), (int)((int)((float)n9 + f + 3.0f)), (int)(n10 + n11 + 3), (int)color2.getRGB());
+            GuiScreen.drawRect(n9 - 3, n10 - 3, (int)((float)n9 + f + 3.0f), n10 + n11 + 3, color2.getRGB());
             ItemStack itemStack3 = itemStack;
             String string = itemStack3.getDisplayName();
             float f2 = n + 12;
@@ -159,8 +159,8 @@ extends Module {
             RenderHelper.enableGUIStandardItemLighting();
             if (nBTTagCompound != null) {
                 NBTTagCompound nBTTagCompound3 = nBTTagCompound.getCompoundTag("BlockEntityTag");
-                NonNullList nonNullList = NonNullList.withSize((int)27, (Object)ItemStack.EMPTY);
-                ItemStackHelper.loadAllItems((NBTTagCompound)nBTTagCompound3, (NonNullList)nonNullList);
+                NonNullList nonNullList = NonNullList.withSize(27, (Object)ItemStack.EMPTY);
+                ItemStackHelper.loadAllItems(nBTTagCompound3, nonNullList);
                 for (int i = 0; i < nonNullList.size(); ++i) {
                     int n13 = n + i % 9 * 16 + 11;
                     int n14 = n2 + i / 9 * 16 - 11 + 8;
@@ -181,7 +181,7 @@ extends Module {
     @Subscriber
     public void Method628(Class116 class116) {
         block0: {
-            if (!((Boolean)Field549.getValue()).booleanValue() || !(class116.Method2102().getItem() instanceof ItemShulkerBox)) break block0;
+            if (!Field549.getValue().booleanValue() || !(class116.Method2102().getItem() instanceof ItemShulkerBox)) break block0;
             this.Method627(class116.Method2102(), class116.Method2103(), class116.Method2101());
             class116.setCanceled(true);
         }
@@ -192,10 +192,10 @@ extends Module {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         mc.getTextureManager().bindTexture(new ResourceLocation("konas/textures/container.png"));
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
-        bufferBuilder.pos(d, d2 + d6, 69.0).tex((double)((float)d3 * 0.00683593f), (double)((float)(d4 + d6) * 0.015676616f)).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
-        bufferBuilder.pos(d + d5, d2 + d6, 69.0).tex((double)((float)(d3 + d5) * 0.0068f), (double)((float)(d4 + d6) * 0.015676616f)).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
-        bufferBuilder.pos(d + d5, d2 + 0.0, 69.0).tex((double)((float)(d3 + d5) * 0.0068f), (double)((float)d4 * 0.015676616f)).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
-        bufferBuilder.pos(d, d2 + 0.0, 69.0).tex((double)((float)d3 * 0.00683593f), (double)((float)d4 * 0.015676616f)).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
+        bufferBuilder.pos(d, d2 + d6, 69.0).tex((float)d3 * 0.00683593f, (float)(d4 + d6) * 0.015676616f).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
+        bufferBuilder.pos(d + d5, d2 + d6, 69.0).tex((float)(d3 + d5) * 0.0068f, (float)(d4 + d6) * 0.015676616f).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
+        bufferBuilder.pos(d + d5, d2 + 0.0, 69.0).tex((float)(d3 + d5) * 0.0068f, (float)d4 * 0.015676616f).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
+        bufferBuilder.pos(d, d2 + 0.0, 69.0).tex((float)d3 * 0.00683593f, (float)d4 * 0.015676616f).color(color.getRed(), color.getGreen(), color.getBlue(), 255).endVertex();
         tessellator.draw();
     }
 }

@@ -39,7 +39,7 @@ extends GuiBeacon {
                 for (Potion potion : potionArray2 = potionArray[i]) {
                     Class162 class162 = new Class162(this, n, this.guiLeft - 27, n2, potion, 0);
                     this.buttonList.add(class162);
-                    if (potion == Potion.getPotionById((int)Class223.Field2629)) {
+                    if (potion == Potion.getPotionById(Class223.Field2629)) {
                         class162.Method118(true);
                     }
                     n2 += 27;
@@ -57,7 +57,7 @@ extends GuiBeacon {
             if (class162.Method111()) {
                 return;
             }
-            int n = Potion.getIdFromPotion((Potion)Class162.Method1688(class162));
+            int n = Potion.getIdFromPotion(Class162.Method1688(class162));
             if (Class162.Method1687(class162) < 3) {
                 Class223.Field2629 = n;
             }

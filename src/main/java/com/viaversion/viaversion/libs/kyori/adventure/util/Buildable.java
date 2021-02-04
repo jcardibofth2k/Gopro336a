@@ -25,7 +25,7 @@ public interface Buildable {
    @NotNull
    Buildable.Builder toBuilder();
 
-   public interface Builder {
+   interface Builder {
       @Contract(
          value = "-> new",
          pure = true

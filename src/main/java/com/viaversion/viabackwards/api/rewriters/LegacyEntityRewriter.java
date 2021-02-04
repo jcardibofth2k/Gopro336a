@@ -45,7 +45,7 @@ public abstract class LegacyEntityRewriter extends EntityRewriterBase {
    }
 
    protected void registerRespawn(ClientboundPacketType packetType) {
-      ((BackwardsProtocol)this.protocol).registerClientbound(packetType, new PacketRemapper() {
+      this.protocol.registerClientbound(packetType, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler((wrapper) -> {
@@ -57,7 +57,7 @@ public abstract class LegacyEntityRewriter extends EntityRewriterBase {
    }
 
    protected void registerJoinGame(ClientboundPacketType packetType, final EntityType playerType) {
-      ((BackwardsProtocol)this.protocol).registerClientbound(packetType, new PacketRemapper() {
+      this.protocol.registerClientbound(packetType, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -72,7 +72,7 @@ public abstract class LegacyEntityRewriter extends EntityRewriterBase {
    }
 
    public void registerMetadataRewriter(ClientboundPacketType packetType, final Type oldMetaType, final Type newMetaType) {
-      ((BackwardsProtocol)this.protocol).registerClientbound(packetType, new PacketRemapper() {
+      this.protocol.registerClientbound(packetType, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             if (oldMetaType != null) {
@@ -90,7 +90,7 @@ public abstract class LegacyEntityRewriter extends EntityRewriterBase {
    }
 
    public void registerMetadataRewriter(ClientboundPacketType packetType, Type metaType) {
-      this.registerMetadataRewriter(packetType, (Type)null, metaType);
+      this.registerMetadataRewriter(packetType, null, metaType);
    }
 
    protected PacketHandler getMobSpawnRewriter(Type metaType) {
@@ -126,7 +126,7 @@ public abstract class LegacyEntityRewriter extends EntityRewriterBase {
 
    protected PacketHandler getObjectRewriter(Function objectGetter) {
       return (wrapper) -> {
-         ObjectType type = (ObjectType)objectGetter.apply((Byte)wrapper.get(Type.BYTE, 0));
+         ObjectType type = (ObjectType)objectGetter.apply(wrapper.get(Type.BYTE, 0));
          if (type == null) {
             ViaBackwards.getPlatform().getLogger().warning("Could not find Entity Type" + wrapper.get(Type.BYTE, 0));
          } else {

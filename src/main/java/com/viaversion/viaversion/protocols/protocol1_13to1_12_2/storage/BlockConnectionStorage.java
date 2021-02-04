@@ -64,7 +64,7 @@ public class BlockConnectionStorage implements StorableObject {
             }
 
             if (allZero) {
-               map.setValue((Object)null);
+               map.setValue(null);
             }
          }
 
@@ -73,7 +73,7 @@ public class BlockConnectionStorage implements StorableObject {
          i = var13.length;
 
          for(int var11 = 0; var11 < i; ++var11) {
-            short entry = (short)var13[var11];
+            short entry = var13[var11];
             if (entry != 0) {
                return;
             }
@@ -97,7 +97,7 @@ public class BlockConnectionStorage implements StorableObject {
    private Pair getChunkSection(long index, boolean requireNibbleArray) {
       Pair map = (Pair)this.blockStorage.get(index);
       if (map == null) {
-         map = new Pair(new byte[4096], (Object)null);
+         map = new Pair(new byte[4096], null);
          this.blockStorage.put(index, map);
       }
 

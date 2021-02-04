@@ -65,7 +65,7 @@ extends Module {
             }
             if (this.Field2197 == -2) {
                 for (int i = 0; i < 3; ++i) {
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, i, 0, ClickType.QUICK_MOVE, (EntityPlayer) AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, i, 0, ClickType.QUICK_MOVE, AutoBrew.mc.player);
                     if (((IGuiBrewingStand)guiBrewingStand).Method21().getStackInSlot(i).isEmpty()) continue;
                     this.toggle();
                     return;
@@ -76,7 +76,7 @@ extends Module {
                 for (int i = 0; i < 3; ++i) {
                     int n = -1;
                     for (int j = 5; j < AutoBrew.mc.player.openContainer.getInventory().size(); ++j) {
-                        if (!(((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(j)).getItem() instanceof ItemPotion) || !PotionUtils.getPotionFromItem((ItemStack)((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(j))).getNamePrefixed("").equalsIgnoreCase("water")) continue;
+                        if (!(AutoBrew.mc.player.openContainer.getInventory().get(j).getItem() instanceof ItemPotion) || !PotionUtils.getPotionFromItem(AutoBrew.mc.player.openContainer.getInventory().get(j)).getNamePrefixed("").equalsIgnoreCase("water")) continue;
                         n = j;
                         break;
                     }
@@ -85,16 +85,16 @@ extends Module {
                         this.toggle();
                         return;
                     }
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, i, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, i, 0, ClickType.PICKUP, AutoBrew.mc.player);
                 }
                 ++this.Field2197;
                 this.Field2199 = 0;
-            } else if (this.Field2197 < ((PotionUtil) AutoBrew.type.getValue()).Field2031.length) {
-                if (((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(4)).isEmpty()) {
+            } else if (this.Field2197 < AutoBrew.type.getValue().Field2031.length) {
+                if (AutoBrew.mc.player.openContainer.getInventory().get(4).isEmpty()) {
                     int n = -1;
                     for (int i = 5; i < AutoBrew.mc.player.openContainer.getInventory().size(); ++i) {
-                        if (((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(i)).getItem() != Items.BLAZE_POWDER) continue;
+                        if (AutoBrew.mc.player.openContainer.getInventory().get(i).getItem() != Items.BLAZE_POWDER) continue;
                         n = i;
                         break;
                     }
@@ -103,15 +103,15 @@ extends Module {
                         this.toggle();
                         return;
                     }
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 4, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 4, 0, ClickType.PICKUP, AutoBrew.mc.player);
                     this.Field2199 = 0;
                     return;
                 }
-                Item item = ((PotionUtil) AutoBrew.type.getValue()).Field2031[this.Field2197];
+                Item item = AutoBrew.type.getValue().Field2031[this.Field2197];
                 int n = -69;
                 for (int i = 5; i < AutoBrew.mc.player.openContainer.getInventory().size(); ++i) {
-                    if (!((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(i)).getItem().equals(item)) continue;
+                    if (!AutoBrew.mc.player.openContainer.getInventory().get(i).getItem().equals(item)) continue;
                     n = i;
                     break;
                 }
@@ -120,17 +120,17 @@ extends Module {
                     this.toggle();
                     return;
                 }
-                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 3, 1, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
+                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
+                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 3, 1, ClickType.PICKUP, AutoBrew.mc.player);
+                AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
                 ++this.Field2197;
                 this.Field2199 = 0;
-            } else if (this.Field2197 == ((PotionUtil) AutoBrew.type.getValue()).Field2031.length) {
+            } else if (this.Field2197 == AutoBrew.type.getValue().Field2031.length) {
                 if (mod.getValue() != Class388.NONE) {
                     Item item = mod.getValue() == Class388.SPLASH ? Items.GUNPOWDER : Items.DRAGON_BREATH;
                     int n = -1;
                     for (int i = 5; i < AutoBrew.mc.player.openContainer.getInventory().size(); ++i) {
-                        if (((ItemStack) AutoBrew.mc.player.openContainer.getInventory().get(i)).getItem() != item) continue;
+                        if (AutoBrew.mc.player.openContainer.getInventory().get(i).getItem() != item) continue;
                         n = i;
                         break;
                     }
@@ -139,9 +139,9 @@ extends Module {
                         this.toggle();
                         return;
                     }
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 3, 1, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
-                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, (EntityPlayer) AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, 3, 1, ClickType.PICKUP, AutoBrew.mc.player);
+                    AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, n, 0, ClickType.PICKUP, AutoBrew.mc.player);
                 }
                 ++this.Field2197;
                 this.Field2199 = 0;
@@ -151,16 +151,16 @@ extends Module {
             }
         } else {
             this.Field2198 = false;
-            if (((Boolean) autoOpen.getValue()).booleanValue() && !this.Field2201 && this.Field2200.Method737(150.0)) {
+            if (autoOpen.getValue().booleanValue() && !this.Field2201 && this.Field2200.Method737(150.0)) {
                 this.Field2200.Method739();
                 List<BlockPos> list = Class545.Method1003(AutoBrew.mc.player.getPosition(), 4);
                 BlockPos blockPos = list.stream().filter(AutoBrew::Method515).min(Comparator.comparing(AutoBrew::Method127)).orElse(null);
                 if (blockPos != null) {
-                    MathUtil.Method1081(new Vec3d((double)blockPos.getX(), (double)blockPos.getY() + 0.5, (double)blockPos.getZ()));
-                    AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos, EnumFacing.UP, new Vec3d((double)blockPos.getX(), (double)blockPos.getY() + 0.5, (double)blockPos.getZ()), EnumHand.MAIN_HAND);
+                    MathUtil.Method1081(new Vec3d(blockPos.getX(), (double)blockPos.getY() + 0.5, blockPos.getZ()));
+                    AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos, EnumFacing.UP, new Vec3d(blockPos.getX(), (double)blockPos.getY() + 0.5, blockPos.getZ()), EnumHand.MAIN_HAND);
                     AutoBrew.mc.player.swingArm(EnumHand.MAIN_HAND);
                     this.Field2201 = true;
-                } else if (((Boolean) autoPlace.getValue()).booleanValue() && !this.Field2202) {
+                } else if (autoPlace.getValue().booleanValue() && !this.Field2202) {
                     int n = this.Method464();
                     if (n == -1) {
                         Logger.Method1118("You don't have a brewing stand");
@@ -174,23 +174,23 @@ extends Module {
                         AutoBrew.mc.playerController.updateController();
                         BlockPos blockPos3 = optional.get().Field1089;
                         EnumFacing enumFacing = optional.get().Field1090;
-                        double[] dArray = Class545.Method1008(blockPos3.getX(), blockPos3.getY(), blockPos3.getZ(), enumFacing, (EntityPlayer) AutoBrew.mc.player);
-                        AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation((float)dArray[0], (float)dArray[1], AutoBrew.mc.player.onGround));
+                        double[] dArray = Class545.Method1008(blockPos3.getX(), blockPos3.getY(), blockPos3.getZ(), enumFacing, AutoBrew.mc.player);
+                        AutoBrew.mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float)dArray[0], (float)dArray[1], AutoBrew.mc.player.onGround));
                         boolean bl = AutoBrew.mc.player.isSprinting();
                         boolean bl2 = Class545.Method1004(blockPos3);
                         if (bl) {
-                            AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoBrew.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+                            AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
                         }
                         if (bl2) {
-                            AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoBrew.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+                            AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.START_SNEAKING));
                         }
-                        AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos3, enumFacing, new Vec3d((Vec3i)blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
-                        AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
+                        AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos3, enumFacing, new Vec3d(blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
+                        AutoBrew.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                         if (bl2) {
-                            AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoBrew.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+                            AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
                         }
                         if (bl) {
-                            AutoBrew.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoBrew.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                            AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                         }
                         this.Field2202 = true;
                         return;
@@ -203,7 +203,7 @@ extends Module {
     @Override
     public void onDisable() {
         block0: {
-            if (AutoBrew.mc.player == null || AutoBrew.mc.world == null || !((Boolean) autoClose.getValue()).booleanValue() || !(AutoBrew.mc.currentScreen instanceof GuiBrewingStand)) break block0;
+            if (AutoBrew.mc.player == null || AutoBrew.mc.world == null || !autoClose.getValue().booleanValue() || !(AutoBrew.mc.currentScreen instanceof GuiBrewingStand)) break block0;
             AutoBrew.mc.player.closeScreen();
         }
     }
@@ -216,7 +216,7 @@ extends Module {
     }
 
     public AutoBrew() {
-        ("AutoBrew", Category.MISC, new String[0]);
+        ("AutoBrew", Category.MISC, new String[0])
     }
 
     public int Method464() {

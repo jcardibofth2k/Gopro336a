@@ -344,8 +344,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -366,7 +366,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -377,7 +377,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -415,8 +415,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -456,7 +456,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      byte[][] base = (byte[][])Arrays.copyOf(array, baseLength);
+      byte[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -499,7 +499,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         byte[][] base = (byte[][])Arrays.copyOf(array, baseLength);
+         byte[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = ByteArrays.trim(base[baseLength - 1], residual);
@@ -526,9 +526,9 @@ public class BigArrays {
    }
 
    public static byte[][] copy(byte[][] array) {
-      byte[][] base = (byte[][])array.clone();
+      byte[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (byte[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -719,8 +719,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -741,7 +741,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -752,7 +752,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -790,8 +790,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -831,7 +831,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      int[][] base = (int[][])Arrays.copyOf(array, baseLength);
+      int[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -874,7 +874,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         int[][] base = (int[][])Arrays.copyOf(array, baseLength);
+         int[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = IntArrays.trim(base[baseLength - 1], residual);
@@ -901,9 +901,9 @@ public class BigArrays {
    }
 
    public static int[][] copy(int[][] array) {
-      int[][] base = (int[][])array.clone();
+      int[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (int[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -981,7 +981,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -1094,8 +1094,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1116,7 +1116,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -1127,7 +1127,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1165,8 +1165,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -1206,7 +1206,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      long[][] base = (long[][])Arrays.copyOf(array, baseLength);
+      long[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -1249,7 +1249,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         long[][] base = (long[][])Arrays.copyOf(array, baseLength);
+         long[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = LongArrays.trim(base[baseLength - 1], residual);
@@ -1276,9 +1276,9 @@ public class BigArrays {
    }
 
    public static long[][] copy(long[][] array) {
-      long[][] base = (long[][])array.clone();
+      long[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (long[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -1356,7 +1356,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -1469,8 +1469,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1491,7 +1491,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -1502,7 +1502,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1540,8 +1540,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -1581,7 +1581,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      double[][] base = (double[][])Arrays.copyOf(array, baseLength);
+      double[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -1624,7 +1624,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         double[][] base = (double[][])Arrays.copyOf(array, baseLength);
+         double[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = DoubleArrays.trim(base[baseLength - 1], residual);
@@ -1651,9 +1651,9 @@ public class BigArrays {
    }
 
    public static double[][] copy(double[][] array) {
-      double[][] base = (double[][])array.clone();
+      double[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (double[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -1731,7 +1731,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -1824,8 +1824,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1846,7 +1846,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -1857,7 +1857,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -1895,8 +1895,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -1936,7 +1936,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      boolean[][] base = (boolean[][])Arrays.copyOf(array, baseLength);
+      boolean[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -1979,7 +1979,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         boolean[][] base = (boolean[][])Arrays.copyOf(array, baseLength);
+         boolean[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = BooleanArrays.trim(base[baseLength - 1], residual);
@@ -2006,9 +2006,9 @@ public class BigArrays {
    }
 
    public static boolean[][] copy(boolean[][] array) {
-      boolean[][] base = (boolean[][])array.clone();
+      boolean[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (boolean[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -2086,7 +2086,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -2199,8 +2199,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -2221,7 +2221,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -2232,7 +2232,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -2270,8 +2270,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -2311,7 +2311,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      short[][] base = (short[][])Arrays.copyOf(array, baseLength);
+      short[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -2354,7 +2354,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         short[][] base = (short[][])Arrays.copyOf(array, baseLength);
+         short[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = ShortArrays.trim(base[baseLength - 1], residual);
@@ -2381,9 +2381,9 @@ public class BigArrays {
    }
 
    public static short[][] copy(short[][] array) {
-      short[][] base = (short[][])array.clone();
+      short[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (short[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -2574,8 +2574,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -2596,7 +2596,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -2607,7 +2607,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -2645,8 +2645,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -2686,7 +2686,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      char[][] base = (char[][])Arrays.copyOf(array, baseLength);
+      char[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -2729,7 +2729,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         char[][] base = (char[][])Arrays.copyOf(array, baseLength);
+         char[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = CharArrays.trim(base[baseLength - 1], residual);
@@ -2756,9 +2756,9 @@ public class BigArrays {
    }
 
    public static char[][] copy(char[][] array) {
-      char[][] base = (char[][])array.clone();
+      char[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (char[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -2836,7 +2836,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -2949,8 +2949,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -2971,7 +2971,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -2982,7 +2982,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -3020,8 +3020,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -3061,7 +3061,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      float[][] base = (float[][])Arrays.copyOf(array, baseLength);
+      float[][] base = Arrays.copyOf(array, baseLength);
       int residual = (int)(length & 134217727L);
       int i;
       if (residual != 0) {
@@ -3104,7 +3104,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         float[][] base = (float[][])Arrays.copyOf(array, baseLength);
+         float[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = FloatArrays.trim(base[baseLength - 1], residual);
@@ -3131,9 +3131,9 @@ public class BigArrays {
    }
 
    public static float[][] copy(float[][] array) {
-      float[][] base = (float[][])array.clone();
+      float[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (float[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -3211,7 +3211,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }
@@ -3304,8 +3304,8 @@ public class BigArrays {
          destSegment = segment(destPos);
          srcDispl = displacement(srcPos);
 
-         for(destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-            l = (int)Math.min(length, (long)Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
+         for(destDispl = displacement(destPos); length > 0L; length -= l) {
+            l = (int)Math.min(length, Math.min(srcArray[srcSegment].length - srcDispl, destArray[destSegment].length - destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -3326,7 +3326,7 @@ public class BigArrays {
          destSegment = segment(destPos + length);
          srcDispl = displacement(srcPos + length);
 
-         for(destDispl = displacement(destPos + length); length > 0L; length -= (long)l) {
+         for(destDispl = displacement(destPos + length); length > 0L; length -= l) {
             if (srcDispl == 0) {
                srcDispl = 134217728;
                --srcSegment;
@@ -3337,7 +3337,7 @@ public class BigArrays {
                --destSegment;
             }
 
-            l = (int)Math.min(length, (long)Math.min(srcDispl, destDispl));
+            l = (int)Math.min(length, Math.min(srcDispl, destDispl));
             if (l == 0) {
                throw new ArrayIndexOutOfBoundsException();
             }
@@ -3375,8 +3375,8 @@ public class BigArrays {
       int destSegment = segment(destPos);
 
       int l;
-      for(int destDispl = displacement(destPos); length > 0L; length -= (long)l) {
-         l = (int)Math.min((long)(destArray[destSegment].length - destDispl), length);
+      for(int destDispl = displacement(destPos); length > 0L; length -= l) {
+         l = (int)Math.min(destArray[destSegment].length - destDispl, length);
          if (l == 0) {
             throw new ArrayIndexOutOfBoundsException();
          }
@@ -3421,7 +3421,7 @@ public class BigArrays {
       ensureLength(length);
       int valid = array.length - (array.length != 0 && (array.length <= 0 || array[array.length - 1].length != 134217728) ? 1 : 0);
       int baseLength = (int)(length + 134217727L >>> 27);
-      Object[][] base = (Object[][])Arrays.copyOf(array, baseLength);
+      Object[][] base = Arrays.copyOf(array, baseLength);
       Class componentType = array.getClass().getComponentType();
       int residual = (int)(length & 134217727L);
       int i;
@@ -3465,7 +3465,7 @@ public class BigArrays {
          return array;
       } else {
          int baseLength = (int)(length + 134217727L >>> 27);
-         Object[][] base = (Object[][])Arrays.copyOf(array, baseLength);
+         Object[][] base = Arrays.copyOf(array, baseLength);
          int residual = (int)(length & 134217727L);
          if (residual != 0) {
             base[baseLength - 1] = ObjectArrays.trim(base[baseLength - 1], residual);
@@ -3492,9 +3492,9 @@ public class BigArrays {
    }
 
    public static Object[][] copy(Object[][] array) {
-      Object[][] base = (Object[][])array.clone();
+      Object[][] base = array.clone();
 
-      for(int i = base.length; i-- != 0; base[i] = (Object[])array[i].clone()) {
+      for(int i = base.length; i-- != 0; base[i] = array[i].clone()) {
       }
 
       return base;
@@ -3572,7 +3572,7 @@ public class BigArrays {
             long i = 0L;
 
             while(true) {
-               b.append(String.valueOf(get(a, i)));
+               b.append(get(a, i));
                if (i == last) {
                   return b.append(']').toString();
                }

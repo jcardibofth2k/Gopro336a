@@ -10,5 +10,5 @@ public enum JsonToken {
    NUMBER,
    BOOLEAN,
    NULL,
-   END_DOCUMENT;
+   END_DOCUMENT
 }

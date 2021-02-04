@@ -12,7 +12,7 @@ extends Enum {
     }
 
     public static Class447[] Method634() {
-        return (Class447[])Field561.clone();
+        return Field561.clone();
     }
 
     /*

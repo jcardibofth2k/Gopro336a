@@ -14,7 +14,7 @@ public class TranslateRewriter {
          JsonObject obj = (JsonObject)element;
          JsonElement translate = obj.get("translate");
          if (translate != null && translate.getAsString().startsWith("chat.type.achievement")) {
-            achievementTextRewriter.processText((JsonElement)obj);
+            achievementTextRewriter.processText(obj);
          }
       }
 

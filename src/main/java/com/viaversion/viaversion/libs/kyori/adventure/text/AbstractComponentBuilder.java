@@ -149,7 +149,7 @@ abstract class AbstractComponentBuilder implements ComponentBuilder {
          while(it.hasNext()) {
             Component child = (Component)it.next();
             if (child instanceof BuildableComponent) {
-               BuildableComponent mappedChild = (BuildableComponent)function.apply((BuildableComponent)child);
+               BuildableComponent mappedChild = (BuildableComponent)function.apply(child);
                if (child != mappedChild) {
                   it.set(mappedChild);
                }
@@ -170,7 +170,7 @@ abstract class AbstractComponentBuilder implements ComponentBuilder {
          while(it.hasNext()) {
             Component child = (Component)it.next();
             if (child instanceof BuildableComponent) {
-               BuildableComponent mappedChild = (BuildableComponent)function.apply((BuildableComponent)child);
+               BuildableComponent mappedChild = (BuildableComponent)function.apply(child);
                if (mappedChild.children().isEmpty()) {
                   if (child != mappedChild) {
                      it.set(mappedChild);

@@ -55,7 +55,7 @@ extends Module {
                     }
                     return;
                 }
-                if (AutoTool.mc.playerController.getIsHittingBlock() || !this.Field2026 || ((Boolean)this.strict.getValue()).booleanValue() && !this.Field2025.Method737(100.0)) break block4;
+                if (AutoTool.mc.playerController.getIsHittingBlock() || !this.Field2026 || this.strict.getValue().booleanValue() && !this.Field2025.Method737(100.0)) break block4;
                 this.Method1851(this.Field2027, true);
                 break block5;
             }
@@ -79,12 +79,12 @@ extends Module {
     }
 
     public AutoTool() {
-        super("AutoTool", "Swap to the best tool when mining and attacking", Category.PLAYER, new String[0]);
+        super("AutoTool", "Swap to the best tool when mining and attacking", Category.PLAYER);
     }
 
     @Subscriber
     public void Method1847(Class30 class30) {
-        if (AutoTool.mc.player == null || AutoTool.mc.world == null || !((Boolean)this.weapons.getValue()).booleanValue()) {
+        if (AutoTool.mc.player == null || AutoTool.mc.world == null || !this.weapons.getValue().booleanValue()) {
             return;
         }
         this.Method1851(this.Method1848(class30.Method293()), false);
@@ -98,13 +98,13 @@ extends Module {
             ItemStack itemStack = AutoTool.mc.player.inventory.getStackInSlot(i);
             if (itemStack.isEmpty() || itemStack.getItem() == Items.AIR) continue;
             if (itemStack.getItem() instanceof ItemSword) {
-                f2 = ((ItemSword)itemStack.getItem()).getAttackDamage() + EnchantmentHelper.getModifierForCreature((ItemStack)itemStack, (EnumCreatureAttribute)(entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED));
+                f2 = ((ItemSword)itemStack.getItem()).getAttackDamage() + EnchantmentHelper.getModifierForCreature(itemStack, entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED);
                 if (!(f2 > f)) continue;
                 f = f2;
                 n = i;
                 continue;
             }
-            if (!(itemStack.getItem() instanceof ItemTool) || !((f2 = ((IItemTool)itemStack.getItem()).Method262() + EnchantmentHelper.getModifierForCreature((ItemStack)itemStack, (EnumCreatureAttribute)(entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED))) > f)) continue;
+            if (!(itemStack.getItem() instanceof ItemTool) || !((f2 = ((IItemTool)itemStack.getItem()).Method262() + EnchantmentHelper.getModifierForCreature(itemStack, entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED)) > f)) continue;
             f = f2;
             n = i;
         }
@@ -127,7 +127,7 @@ extends Module {
             int n2;
             float f;
             ItemStack itemStack = AutoTool.mc.player.inventory.getStackInSlot(i);
-            if (itemStack.isEmpty() || itemStack.getItem() == Items.AIR || !((f = itemStack.getDestroySpeed(iBlockState)) > 1.0f) || !((double)(f = (float)((double)f + ((n2 = EnchantmentHelper.getEnchantmentLevel((Enchantment)Enchantments.EFFICIENCY, (ItemStack)itemStack)) > 0 ? Math.pow(n2, 2.0) + 1.0 : 0.0))) > d)) continue;
+            if (itemStack.isEmpty() || itemStack.getItem() == Items.AIR || !((f = itemStack.getDestroySpeed(iBlockState)) > 1.0f) || !((double)(f = (float)((double)f + ((n2 = EnchantmentHelper.getEnchantmentLevel(Enchantments.EFFICIENCY, itemStack)) > 0 ? Math.pow(n2, 2.0) + 1.0 : 0.0))) > d)) continue;
             d = f;
             n = i;
         }
@@ -144,7 +144,7 @@ extends Module {
                 this.Field2027 = -1;
             }
             AutoTool.mc.player.inventory.currentItem = n;
-            AutoTool.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(AutoTool.mc.player.inventory.currentItem));
+            AutoTool.mc.player.connection.sendPacket(new CPacketHeldItemChange(AutoTool.mc.player.inventory.currentItem));
         }
         this.Field2025.Method739();
     }

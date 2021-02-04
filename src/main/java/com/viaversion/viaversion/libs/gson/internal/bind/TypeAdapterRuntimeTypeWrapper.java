@@ -46,6 +46,6 @@ final class TypeAdapterRuntimeTypeWrapper extends TypeAdapter {
          type = value.getClass();
       }
 
-      return (Type)type;
+      return type;
    }
 }

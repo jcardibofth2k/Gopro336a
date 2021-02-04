@@ -8,7 +8,7 @@ public enum Environment {
    // $FF: renamed from: id int
    private final int field_135;
 
-   private Environment(int id) {
+   Environment(int id) {
       this.field_135 = id;
    }
 

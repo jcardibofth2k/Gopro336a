@@ -32,7 +32,7 @@ public final class WorldPackets {
       blockRewriter.registerBlockChange(ClientboundPackets1_16_2.BLOCK_CHANGE);
       blockRewriter.registerVarLongMultiBlockChange(ClientboundPackets1_16_2.MULTI_BLOCK_CHANGE);
       blockRewriter.registerAcknowledgePlayerDigging(ClientboundPackets1_16_2.ACKNOWLEDGE_PLAYER_DIGGING);
-      protocol.registerClientbound(ClientboundPackets1_16_2.WORLD_BORDER, (ClientboundPacketType)null, new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_16_2.WORLD_BORDER, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int type = (Integer)wrapper.read(Type.VAR_INT);
@@ -86,7 +86,7 @@ public final class WorldPackets {
 
             for(int i = 0; i < 18; ++i) {
                if (this.isSet(bitMask, i)) {
-                  light.add((byte[])wrapper.read(Type.BYTE_ARRAY_PRIMITIVE));
+                  light.add(wrapper.read(Type.BYTE_ARRAY_PRIMITIVE));
                }
             }
 

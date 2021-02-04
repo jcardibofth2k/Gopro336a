@@ -19,14 +19,14 @@ public class MixinGuiNewChat {
         Class647 event = new Class647();
         EventDispatcher.Companion.dispatch(event);
         if (!event.isCanceled()) {
-            Gui.drawRect((int)left, (int)top, (int)right, (int)bottom, (int)color);
+            Gui.drawRect(left, top, right, bottom, color);
         }
     }
 
     @Inject(method={"calculateChatboxHeight"}, at={@At(value="HEAD")}, cancellable=true)
     private static void Method1583(float scale, CallbackInfoReturnable<Integer> cir) {
-        Class55 event = new Class55(MathHelper.floor((float)(scale * 160.0f + 20.0f)));
+        Class55 event = new Class55(MathHelper.floor(scale * 160.0f + 20.0f));
         EventDispatcher.Companion.dispatch(event);
-        cir.setReturnValue((Object)event.Method342());
+        cir.setReturnValue(event.Method342());
     }
 }

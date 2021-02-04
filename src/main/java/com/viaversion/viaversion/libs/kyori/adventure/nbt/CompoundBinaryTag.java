@@ -14,7 +14,7 @@ public interface CompoundBinaryTag extends BinaryTag, CompoundTagSetter, Iterabl
 
    @NotNull
    static CompoundBinaryTag from(@NotNull final Map tags) {
-      return (CompoundBinaryTag)(tags.isEmpty() ? empty() : new CompoundBinaryTagImpl(new HashMap(tags)));
+      return tags.isEmpty() ? empty() : new CompoundBinaryTagImpl(new HashMap(tags));
    }
 
    @NotNull
@@ -127,7 +127,7 @@ public interface CompoundBinaryTag extends BinaryTag, CompoundTagSetter, Iterabl
    @NotNull
    long[] getLongArray(@NotNull final String key, @NotNull final long[] defaultValue);
 
-   public interface Builder extends CompoundTagSetter {
+   interface Builder extends CompoundTagSetter {
       @NotNull
       CompoundBinaryTag build();
    }

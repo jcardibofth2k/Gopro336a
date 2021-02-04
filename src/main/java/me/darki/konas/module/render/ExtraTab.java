@@ -29,11 +29,11 @@ extends Module {
     }
 
     public static boolean Method1445(NetworkPlayerInfo networkPlayerInfo) {
-        return (Boolean) onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
+        return onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
     }
 
     public static boolean Method1446(NetworkPlayerInfo networkPlayerInfo) {
-        return (Boolean) onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
+        return onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
     }
 
     public ExtraTab() {
@@ -47,17 +47,17 @@ extends Module {
     public static List<NetworkPlayerInfo> Method1448(List<NetworkPlayerInfo> list, List<NetworkPlayerInfo> list2) {
         if (Class167.Method1610(ExtraTab.class).isEnabled()) {
             if (sortMode.getValue() == ExtraTabMode.VANILLA) {
-                return list.stream().filter(ExtraTab::Method1446).limit(((Integer) maxSize.getValue()).intValue()).collect(Collectors.toList());
+                return list.stream().filter(ExtraTab::Method1446).limit(maxSize.getValue().intValue()).collect(Collectors.toList());
             }
             if (sortMode.getValue() == ExtraTabMode.PING) {
-                return list.stream().filter(ExtraTab::Method1449).sorted(Comparator.comparing(NetworkPlayerInfo::func_178853_c)).limit(((Integer) maxSize.getValue()).intValue()).collect(Collectors.toList());
+                return list.stream().filter(ExtraTab::Method1449).sorted(Comparator.comparing(NetworkPlayerInfo::func_178853_c)).limit(maxSize.getValue().intValue()).collect(Collectors.toList());
             }
-            return list.stream().filter(ExtraTab::Method1445).sorted(Comparator.comparing(ExtraTab::Method1447)).limit(((Integer) maxSize.getValue()).intValue()).collect(Collectors.toList());
+            return list.stream().filter(ExtraTab::Method1445).sorted(Comparator.comparing(ExtraTab::Method1447)).limit(maxSize.getValue().intValue()).collect(Collectors.toList());
         }
         return list2;
     }
 
     public static boolean Method1449(NetworkPlayerInfo networkPlayerInfo) {
-        return (Boolean) onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
+        return onlyFriends.getValue() == false || Class492.Method1988(networkPlayerInfo.getGameProfile().getId().toString());
     }
 }

@@ -45,36 +45,36 @@ extends Module {
     @Subscriber
     public void Method123(Class50 class50) {
         if (this.Field1893 != null) {
-            AutoMount.mc.playerController.interactWithEntity((EntityPlayer) AutoMount.mc.player, this.Field1893, EnumHand.MAIN_HAND);
+            AutoMount.mc.playerController.interactWithEntity(AutoMount.mc.player, this.Field1893, EnumHand.MAIN_HAND);
             this.Field1893 = null;
         }
     }
 
     public boolean Method386(Entity entity) {
         AbstractHorse abstractHorse;
-        if (entity.getDistance((Entity) AutoMount.mc.player) > (float)((Integer) range.getValue()).intValue()) {
+        if (entity.getDistance(AutoMount.mc.player) > (float) range.getValue().intValue()) {
             return false;
         }
         if (entity instanceof AbstractHorse && (abstractHorse = (AbstractHorse)entity).isChild()) {
             return false;
         }
-        if (entity instanceof EntityBoat && ((Boolean) boats.getValue()).booleanValue()) {
+        if (entity instanceof EntityBoat && boats.getValue().booleanValue()) {
             return true;
         }
-        if (entity instanceof EntitySkeletonHorse && ((Boolean) skeletonHorses.getValue()).booleanValue()) {
+        if (entity instanceof EntitySkeletonHorse && skeletonHorses.getValue().booleanValue()) {
             return true;
         }
-        if (entity instanceof EntityHorse && ((Boolean) horses.getValue()).booleanValue()) {
+        if (entity instanceof EntityHorse && horses.getValue().booleanValue()) {
             return true;
         }
-        if (entity instanceof EntityDonkey && ((Boolean) donkeys.getValue()).booleanValue()) {
+        if (entity instanceof EntityDonkey && donkeys.getValue().booleanValue()) {
             return true;
         }
-        if (entity instanceof EntityPig && ((Boolean) pigs.getValue()).booleanValue()) {
+        if (entity instanceof EntityPig && pigs.getValue().booleanValue()) {
             abstractHorse = (EntityPig)entity;
             return abstractHorse.getSaddled();
         }
-        if (entity instanceof EntityLlama && ((Boolean) llamas.getValue()).booleanValue()) {
+        if (entity instanceof EntityLlama && llamas.getValue().booleanValue()) {
             abstractHorse = (EntityLlama)entity;
             return !abstractHorse.isChild();
         }
@@ -87,13 +87,13 @@ extends Module {
             if (AutoMount.mc.player.isRiding()) {
                 return;
             }
-            if (!this.Field1889.Method737(((Float) delay.getValue()).floatValue() * 1000.0f)) {
+            if (!this.Field1889.Method737(delay.getValue().floatValue() * 1000.0f)) {
                 return;
             }
             this.Field1889.Method739();
             this.Field1893 = AutoMount.mc.world.loadedEntityList.stream().filter(this::Method384).min(Comparator.comparing(AutoMount::Method389)).orElse(null);
-            if (!((Boolean) rotate.getValue()).booleanValue() || this.Field1893 == null) break block2;
-            double[] dArray = MathUtil.Method1088(this.Field1893.posX, this.Field1893.posY, this.Field1893.posZ, (EntityPlayer) AutoMount.mc.player);
+            if (!rotate.getValue().booleanValue() || this.Field1893 == null) break block2;
+            double[] dArray = MathUtil.Method1088(this.Field1893.posX, this.Field1893.posY, this.Field1893.posZ, AutoMount.mc.player);
             this.Field1891 = (float)dArray[0];
             this.Field1892 = (float)dArray[1];
             this.Field1890.Method739();
@@ -111,19 +111,19 @@ extends Module {
                 cPacketPlayer = (CPacketPlayer)class24.getPacket();
                 if (class24.getPacket() instanceof CPacketPlayer.Position) {
                     class24.setCanceled(true);
-                    AutoMount.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(AutoMount.mc.player.posX), cPacketPlayer.getY(AutoMount.mc.player.posY), cPacketPlayer.getZ(AutoMount.mc.player.posZ), this.Field1891, this.Field1892, cPacketPlayer.isOnGround()));
+                    AutoMount.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(cPacketPlayer.getX(AutoMount.mc.player.posX), cPacketPlayer.getY(AutoMount.mc.player.posY), cPacketPlayer.getZ(AutoMount.mc.player.posZ), this.Field1891, this.Field1892, cPacketPlayer.isOnGround()));
                 } else {
                     ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field1891);
                     ((ICPacketPlayer)cPacketPlayer).Method1697(this.Field1892);
                 }
             }
-            if (!((Boolean) bypass.getValue()).booleanValue() || !(class24.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity)class24.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
+            if (!bypass.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity)class24.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
             class24.Cancel();
         }
     }
 
     public AutoMount() {
-        super("AutoMount", Category.MISC, new String[0]);
+        super("AutoMount", Category.MISC);
     }
 
     public boolean Method384(Entity entity) {

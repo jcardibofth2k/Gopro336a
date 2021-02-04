@@ -26,7 +26,7 @@ public final class Object2IntMaps {
 
    public static ObjectIterable fastIterable(Object2IntMap map) {
       ObjectSet entries = map.object2IntEntrySet();
-      return (ObjectIterable)(entries instanceof Object2IntMap.FastEntrySet ? new 1(entries) : entries);
+      return (ObjectIterable)(entries instanceof Object2IntMap.FastEntrySet ? new 1(entries) : entries)
    }
 
    public static Object2IntMap emptyMap() {

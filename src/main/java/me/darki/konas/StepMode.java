@@ -22,7 +22,7 @@ extends Enum {
     }
 
     public static StepMode[] Method1931() {
-        return (StepMode[])Field2075.clone();
+        return Field2075.clone();
     }
 
     public static StepMode Method1932(String string) {

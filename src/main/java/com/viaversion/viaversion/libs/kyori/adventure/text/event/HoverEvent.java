@@ -37,12 +37,12 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
 
    @NotNull
    public static HoverEvent showItem(@NotNull final Key item, @Range(from = 0L,to = 2147483647L) final int count) {
-      return showItem((Key)item, count, (BinaryTagHolder)null);
+      return showItem(item, count, null);
    }
 
    @NotNull
    public static HoverEvent showItem(@NotNull final Keyed item, @Range(from = 0L,to = 2147483647L) final int count) {
-      return showItem((Keyed)item, count, (BinaryTagHolder)null);
+      return showItem(item, count, null);
    }
 
    @NotNull
@@ -62,12 +62,12 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
 
    @NotNull
    public static HoverEvent showEntity(@NotNull final Key type, @NotNull final UUID id) {
-      return showEntity((Key)type, id, (Component)null);
+      return showEntity(type, id, null);
    }
 
    @NotNull
    public static HoverEvent showEntity(@NotNull final Keyed type, @NotNull final UUID id) {
-      return showEntity((Keyed)type, id, (Component)null);
+      return showEntity(type, id, null);
    }
 
    @NotNull
@@ -91,7 +91,7 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
    }
 
    private HoverEvent(@NotNull final HoverEvent.Action action, @NotNull final Object value) {
-      this.action = (HoverEvent.Action)Objects.requireNonNull(action, "action");
+      this.action = Objects.requireNonNull(action, "action");
       this.value = Objects.requireNonNull(value, "value");
    }
 
@@ -204,9 +204,9 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
       }
 
       static {
-         NAMES = Index.create((Function)((constant) -> {
+         NAMES = Index.create((constant) -> {
             return constant.name;
-         }), (Object[])(SHOW_TEXT, SHOW_ITEM, SHOW_ENTITY));
+         }, SHOW_TEXT, SHOW_ITEM, SHOW_ENTITY))
       }
 
       @FunctionalInterface
@@ -225,25 +225,25 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Key, int) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowItem
       @NotNull
       public static HoverEvent.ShowItem method_414(@NotNull final Key item, @Range(from = 0L,to = 2147483647L) final int count) {
-         return method_416(item, count, (BinaryTagHolder)null);
+         return method_416(item, count, null);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Keyed, int) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowItem
       @NotNull
       public static HoverEvent.ShowItem method_415(@NotNull final Keyed item, @Range(from = 0L,to = 2147483647L) final int count) {
-         return method_417(item, count, (BinaryTagHolder)null);
+         return method_417(item, count, null);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Key, int, com.viaversion.viaversion.libs.kyori.adventure.nbt.api.BinaryTagHolder) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowItem
       @NotNull
       public static HoverEvent.ShowItem method_416(@NotNull final Key item, @Range(from = 0L,to = 2147483647L) final int count, @Nullable final BinaryTagHolder nbt) {
-         return new HoverEvent.ShowItem((Key)Objects.requireNonNull(item, "item"), count, nbt);
+         return new HoverEvent.ShowItem(Objects.requireNonNull(item, "item"), count, nbt);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Keyed, int, com.viaversion.viaversion.libs.kyori.adventure.nbt.api.BinaryTagHolder) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowItem
       @NotNull
       public static HoverEvent.ShowItem method_417(@NotNull final Keyed item, @Range(from = 0L,to = 2147483647L) final int count, @Nullable final BinaryTagHolder nbt) {
-         return new HoverEvent.ShowItem(((Keyed)Objects.requireNonNull(item, "item")).key(), count, nbt);
+         return new HoverEvent.ShowItem(Objects.requireNonNull(item, "item").key(), count, nbt);
       }
 
       private ShowItem(@NotNull final Key item, @Range(from = 0L,to = 2147483647L) final int count, @Nullable final BinaryTagHolder nbt) {
@@ -259,7 +259,7 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
 
       @NotNull
       public HoverEvent.ShowItem item(@NotNull final Key item) {
-         return ((Key)Objects.requireNonNull(item, "item")).equals(this.item) ? this : new HoverEvent.ShowItem(item, this.count, this.nbt);
+         return Objects.requireNonNull(item, "item").equals(this.item) ? this : new HoverEvent.ShowItem(item, this.count, this.nbt);
       }
 
       @Range(
@@ -322,25 +322,25 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Key, java.util.UUID) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowEntity
       @NotNull
       public static HoverEvent.ShowEntity method_2668(@NotNull final Key type, @NotNull final UUID id) {
-         return method_2670(type, id, (Component)null);
+         return method_2670(type, id, null);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Keyed, java.util.UUID) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowEntity
       @NotNull
       public static HoverEvent.ShowEntity method_2669(@NotNull final Keyed type, @NotNull final UUID id) {
-         return method_2671(type, id, (Component)null);
+         return method_2671(type, id, null);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Key, java.util.UUID, com.viaversion.viaversion.libs.kyori.adventure.text.Component) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowEntity
       @NotNull
       public static HoverEvent.ShowEntity method_2670(@NotNull final Key type, @NotNull final UUID id, @Nullable final Component name) {
-         return new HoverEvent.ShowEntity((Key)Objects.requireNonNull(type, "type"), (UUID)Objects.requireNonNull(id, "id"), name);
+         return new HoverEvent.ShowEntity(Objects.requireNonNull(type, "type"), Objects.requireNonNull(id, "id"), name);
       }
 
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.key.Keyed, java.util.UUID, com.viaversion.viaversion.libs.kyori.adventure.text.Component) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowEntity
       @NotNull
       public static HoverEvent.ShowEntity method_2671(@NotNull final Keyed type, @NotNull final UUID id, @Nullable final Component name) {
-         return new HoverEvent.ShowEntity(((Keyed)Objects.requireNonNull(type, "type")).key(), (UUID)Objects.requireNonNull(id, "id"), name);
+         return new HoverEvent.ShowEntity(Objects.requireNonNull(type, "type").key(), Objects.requireNonNull(id, "id"), name);
       }
 
       private ShowEntity(@NotNull final Key type, @NotNull final UUID id, @Nullable final Component name) {
@@ -356,12 +356,12 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
 
       @NotNull
       public HoverEvent.ShowEntity type(@NotNull final Key type) {
-         return ((Key)Objects.requireNonNull(type, "type")).equals(this.type) ? this : new HoverEvent.ShowEntity(type, this.field_3215, this.name);
+         return Objects.requireNonNull(type, "type").equals(this.type) ? this : new HoverEvent.ShowEntity(type, this.field_3215, this.name);
       }
 
       @NotNull
       public HoverEvent.ShowEntity type(@NotNull final Keyed type) {
-         return this.type(((Keyed)Objects.requireNonNull(type, "type")).key());
+         return this.type(Objects.requireNonNull(type, "type").key());
       }
 
       // $FF: renamed from: id () java.util.UUID
@@ -373,7 +373,7 @@ public final class HoverEvent implements Examinable, HoverEventSource, StyleBuil
       // $FF: renamed from: id (java.util.UUID) com.viaversion.viaversion.libs.kyori.adventure.text.event.HoverEvent$ShowEntity
       @NotNull
       public HoverEvent.ShowEntity method_2673(@NotNull final UUID id) {
-         return ((UUID)Objects.requireNonNull(id)).equals(this.field_3215) ? this : new HoverEvent.ShowEntity(this.type, id, this.name);
+         return Objects.requireNonNull(id).equals(this.field_3215) ? this : new HoverEvent.ShowEntity(this.type, id, this.name);
       }
 
       @Nullable

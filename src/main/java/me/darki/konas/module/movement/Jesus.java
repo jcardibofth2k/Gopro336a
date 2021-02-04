@@ -31,8 +31,8 @@ extends Module {
     public float Field788;
 
     public static IBlockState Method834(Class<? extends Block> clazz, int n) {
-        for (int i = MathHelper.floor((double) Jesus.mc.player.getEntityBoundingBox().minX); i < MathHelper.ceil((double) Jesus.mc.player.getEntityBoundingBox().maxX); ++i) {
-            for (int j = MathHelper.floor((double) Jesus.mc.player.getEntityBoundingBox().minZ); j < MathHelper.ceil((double) Jesus.mc.player.getEntityBoundingBox().maxZ); ++j) {
+        for (int i = MathHelper.floor(Jesus.mc.player.getEntityBoundingBox().minX); i < MathHelper.ceil(Jesus.mc.player.getEntityBoundingBox().maxX); ++i) {
+            for (int j = MathHelper.floor(Jesus.mc.player.getEntityBoundingBox().minZ); j < MathHelper.ceil(Jesus.mc.player.getEntityBoundingBox().maxZ); ++j) {
                 IBlockState iBlockState = Jesus.mc.world.getBlockState(new BlockPos(i, n, j));
                 if (!clazz.isInstance(iBlockState.getBlock())) continue;
                 return iBlockState;
@@ -45,11 +45,11 @@ extends Module {
         if (Jesus.mc.player.fallDistance >= 3.0f) {
             return false;
         }
-        AxisAlignedBB axisAlignedBB = Jesus.mc.player.getRidingEntity() != null ? Jesus.mc.player.getRidingEntity().getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, (double)-0.05f, 0.0) : Jesus.mc.player.getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, (double)-0.05f, 0.0);
+        AxisAlignedBB axisAlignedBB = Jesus.mc.player.getRidingEntity() != null ? Jesus.mc.player.getRidingEntity().getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, -0.05f, 0.0) : Jesus.mc.player.getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, -0.05f, 0.0);
         boolean bl = false;
         int n = (int)axisAlignedBB.minY;
-        for (int i = MathHelper.floor((double)axisAlignedBB.minX); i < MathHelper.floor((double)(axisAlignedBB.maxX + 1.0)); ++i) {
-            for (int j = MathHelper.floor((double)axisAlignedBB.minZ); j < MathHelper.floor((double)(axisAlignedBB.maxZ + 1.0)); ++j) {
+        for (int i = MathHelper.floor(axisAlignedBB.minX); i < MathHelper.floor(axisAlignedBB.maxX + 1.0); ++i) {
+            for (int j = MathHelper.floor(axisAlignedBB.minZ); j < MathHelper.floor(axisAlignedBB.maxZ + 1.0); ++j) {
                 Block block = Jesus.mc.world.getBlockState(new BlockPos(i, n, j)).getBlock();
                 if (block == Blocks.AIR) continue;
                 if (!(block instanceof BlockLiquid)) {
@@ -65,7 +65,7 @@ extends Module {
     public void Method135(UpdateEvent updateEvent) {
         if (mode.getValue() == Class435.TRAMPOLINE) {
             boolean bl;
-            int n = MathHelper.floor((double)(Jesus.mc.player.getEntityBoundingBox().minY - 0.2));
+            int n = MathHelper.floor(Jesus.mc.player.getEntityBoundingBox().minY - 0.2);
             boolean bl2 = bl = Jesus.Method834(BlockLiquid.class, n) != null;
             if (bl && !Jesus.mc.player.isSneaking()) {
                 Jesus.mc.player.onGround = false;
@@ -82,7 +82,7 @@ extends Module {
             if (Jesus.mc.player.isInWater() || Jesus.mc.player.isInLava()) {
                 Jesus.mc.player.motionY = 0.1;
             }
-            if (!Jesus.mc.player.isInLava() && (!Jesus.mc.player.isInWater() || ((Boolean) boost.getValue()).booleanValue()) && block instanceof BlockLiquid && Jesus.mc.player.motionY < 0.2) {
+            if (!Jesus.mc.player.isInLava() && (!Jesus.mc.player.isInWater() || boost.getValue().booleanValue()) && block instanceof BlockLiquid && Jesus.mc.player.motionY < 0.2) {
                 Jesus.mc.player.motionY = 0.5;
                 this.Field786 = true;
             }
@@ -113,8 +113,8 @@ extends Module {
         boolean bl = false;
         AxisAlignedBB axisAlignedBB = Jesus.mc.player.getRidingEntity() != null ? Jesus.mc.player.getRidingEntity().getEntityBoundingBox() : Jesus.mc.player.getEntityBoundingBox();
         int n = (int)axisAlignedBB.minY;
-        for (int i = MathHelper.floor((double)axisAlignedBB.minX); i < MathHelper.floor((double)axisAlignedBB.maxX) + 1; ++i) {
-            for (int j = MathHelper.floor((double)axisAlignedBB.minZ); j < MathHelper.floor((double)axisAlignedBB.maxZ) + 1; ++j) {
+        for (int i = MathHelper.floor(axisAlignedBB.minX); i < MathHelper.floor(axisAlignedBB.maxX) + 1; ++i) {
+            for (int j = MathHelper.floor(axisAlignedBB.minZ); j < MathHelper.floor(axisAlignedBB.maxZ) + 1; ++j) {
                 Block block = Jesus.mc.world.getBlockState(new BlockPos(i, n, j)).getBlock();
                 if (block instanceof BlockAir) continue;
                 if (!(block instanceof BlockLiquid)) {
@@ -142,11 +142,11 @@ extends Module {
                     return;
                 }
                 if (mode.getValue() != Class435.SOLID) break block17;
-                if (!(class24.getPacket() instanceof CPacketPlayer) || Jesus.mc.player.ticksExisted <= 20 || !((Class435)((Object) mode.getValue())).equals((Object)Class435.SOLID) || Jesus.mc.player.getRidingEntity() != null || Jesus.mc.gameSettings.keyBindJump.isKeyDown() || !(Jesus.mc.player.fallDistance < 3.0f)) break block18;
+                if (!(class24.getPacket() instanceof CPacketPlayer) || Jesus.mc.player.ticksExisted <= 20 || !mode.getValue().equals(Class435.SOLID) || Jesus.mc.player.getRidingEntity() != null || Jesus.mc.gameSettings.keyBindJump.isKeyDown() || !(Jesus.mc.player.fallDistance < 3.0f)) break block18;
                 CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
                 if (!Jesus.Method393() || Jesus.Method394()) break block17;
                 ((ICPacketPlayer)cPacketPlayer).Method1700(false);
-                if (((Boolean) strict.getValue()).booleanValue()) {
+                if (strict.getValue().booleanValue()) {
                     this.Field788 += 0.12f;
                     if (this.Field788 > 0.4f) {
                         this.Field788 = 0.2f;
@@ -157,7 +157,7 @@ extends Module {
                 }
                 break block17;
             }
-            if (!(class24.getPacket() instanceof CPacketVehicleMove) || !((Boolean) strict.getValue()).booleanValue() || !((Boolean) entityJesus.getValue()).booleanValue()) break block17;
+            if (!(class24.getPacket() instanceof CPacketVehicleMove) || !strict.getValue().booleanValue() || !entityJesus.getValue().booleanValue()) break block17;
             CPacketVehicleMove cPacketVehicleMove = (CPacketVehicleMove)class24.getPacket();
             if (Jesus.Method393() && Jesus.mc.player.fallDistance < 3.0f && !Jesus.mc.player.movementInput.jump && !Jesus.Method394() && !Jesus.mc.player.isSneaking()) {
                 double d = cPacketVehicleMove.getY();
@@ -184,13 +184,13 @@ extends Module {
     @Subscriber
     public void Method836(Class643 class643) {
         block0: {
-            if (!(class643.Method1245() instanceof BlockLiquid) || class643.Method1243() != Jesus.mc.player || !((double)class643.Method1244().getY() <= Jesus.mc.player.posY) || Jesus.Method834(BlockLiquid.class, MathHelper.floor((double)(Jesus.mc.player.getEntityBoundingBox().minY + 0.01))) == null || Jesus.Method834(BlockLiquid.class, MathHelper.floor((double)(Jesus.mc.player.getEntityBoundingBox().minY - 0.02))) == null || !(Jesus.mc.player.fallDistance < 3.0f) || Jesus.mc.player.isSneaking()) break block0;
+            if (!(class643.Method1245() instanceof BlockLiquid) || class643.Method1243() != Jesus.mc.player || !((double)class643.Method1244().getY() <= Jesus.mc.player.posY) || Jesus.Method834(BlockLiquid.class, MathHelper.floor(Jesus.mc.player.getEntityBoundingBox().minY + 0.01)) == null || Jesus.Method834(BlockLiquid.class, MathHelper.floor(Jesus.mc.player.getEntityBoundingBox().minY - 0.02)) == null || !(Jesus.mc.player.fallDistance < 3.0f) || Jesus.mc.player.isSneaking()) break block0;
             class643.Method1239(Block.FULL_BLOCK_AABB);
         }
     }
 
     public Jesus() {
-        super("Jesus", Category.MOVEMENT, new String[0]);
+        super("Jesus", Category.MOVEMENT);
     }
 
     @Subscriber
@@ -201,7 +201,7 @@ extends Module {
         if (!Jesus.mc.player.movementInput.sneak && !Jesus.mc.player.movementInput.jump && Jesus.Method394()) {
             Jesus.mc.player.motionY = 0.1;
         }
-        if (Jesus.Method393() && Jesus.mc.player.fallDistance < 3.0f && !Jesus.mc.player.movementInput.jump && !Jesus.Method394() && !Jesus.mc.player.isSneaking() && ((Boolean) glide.getValue()).booleanValue()) {
+        if (Jesus.Method393() && Jesus.mc.player.fallDistance < 3.0f && !Jesus.mc.player.movementInput.jump && !Jesus.Method394() && !Jesus.mc.player.isSneaking() && glide.getValue().booleanValue()) {
             switch (this.Field787) {
                 case 0: {
                     Jesus.mc.player.motionX *= 1.1;

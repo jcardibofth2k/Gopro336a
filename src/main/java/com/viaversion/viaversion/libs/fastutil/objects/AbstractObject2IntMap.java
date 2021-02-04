@@ -99,7 +99,7 @@ public abstract class AbstractObject2IntMap extends AbstractObject2IntFunction i
       int h = 0;
       int n = this.size();
 
-      for(ObjectIterator i = Object2IntMaps.fastIterator(this); n-- != 0; h += ((Object2IntMap.Entry)i.next()).hashCode()) {
+      for(ObjectIterator i = Object2IntMaps.fastIterator(this); n-- != 0; h += i.next().hashCode()) {
       }
 
       return h;
@@ -112,7 +112,7 @@ public abstract class AbstractObject2IntMap extends AbstractObject2IntFunction i
          return false;
       } else {
          Map m = (Map)o;
-         return m.size() != this.size() ? false : this.object2IntEntrySet().containsAll(m.entrySet());
+         return m.size() == this.size() && this.object2IntEntrySet().containsAll(m.entrySet());
       }
    }
 
@@ -134,11 +134,11 @@ public abstract class AbstractObject2IntMap extends AbstractObject2IntFunction i
          if (this == e.getKey()) {
             s.append("(this map)");
          } else {
-            s.append(String.valueOf(e.getKey()));
+            s.append(e.getKey());
          }
 
          s.append("=>");
-         s.append(String.valueOf(e.getIntValue()));
+         s.append(e.getIntValue());
       }
 
       s.append("}");

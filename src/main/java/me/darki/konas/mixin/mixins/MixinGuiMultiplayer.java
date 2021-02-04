@@ -18,7 +18,7 @@ public abstract class MixinGuiMultiplayer
 extends GuiScreen {
     @Inject(method={"createButtons"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method279(CallbackInfo ci) {
-        IGuiScreen screen = (IGuiScreen)((Object)this);
+        IGuiScreen screen = (IGuiScreen) this;
         List<GuiButton> buttonList = screen.Method2086();
         if (!new File(Minecraft.getMinecraft().gameDir, "novia").exists()) {
             buttonList.add(new Class261(1200, this.width / 2 + 4 + 76 + 76, this.height - 28, 105, 20));

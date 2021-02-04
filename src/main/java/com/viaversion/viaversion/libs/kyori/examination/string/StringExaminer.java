@@ -43,15 +43,15 @@ public class StringExaminer extends AbstractExaminer {
 
    @NonNull
    protected String examinable(@NonNull final String name, @NonNull final Stream properties) {
-      return name + (String)properties.map((property) -> {
-         return (String)property.getKey() + '=' + (String)property.getValue();
+      return name + properties.map((property) -> {
+         return property.getKey() + '=' + (String)property.getValue();
       }).collect(COMMA_CURLY);
    }
 
    @NonNull
    protected String map(@NonNull final Map map, @NonNull final Stream entries) {
       return (String)entries.map((entry) -> {
-         return (String)entry.getKey() + '=' + (String)entry.getValue();
+         return entry.getKey() + '=' + (String)entry.getValue();
       }).collect(COMMA_CURLY);
    }
 

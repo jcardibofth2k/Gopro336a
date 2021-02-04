@@ -75,7 +75,7 @@ public final class ConstructorConstructor {
             public Object construct() {
                try {
                   Object[] args = null;
-                  return constructor.newInstance((Object[])args);
+                  return constructor.newInstance(args);
                } catch (InstantiationException var2) {
                   throw new RuntimeException("Failed to invoke " + constructor + " with no args", var2);
                } catch (InvocationTargetException var3) {
@@ -106,7 +106,7 @@ public final class ConstructorConstructor {
                      if (elementType instanceof Class) {
                         return EnumSet.noneOf((Class)elementType);
                      } else {
-                        throw new JsonIOException("Invalid EnumSet type: " + type.toString());
+                        throw new JsonIOException("Invalid EnumSet type: " + type);
                      }
                   } else {
                      throw new JsonIOException("Invalid EnumSet type: " + type.toString());

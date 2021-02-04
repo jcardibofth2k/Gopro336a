@@ -8,7 +8,7 @@ extends Enum {
     public static Class305[] Field1018;
 
     public static Class305[] Method1024() {
-        return (Class305[])Field1018.clone();
+        return Field1018.clone();
     }
 
     public static Class305 Method1025(String string) {

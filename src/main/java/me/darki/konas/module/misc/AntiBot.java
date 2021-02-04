@@ -25,7 +25,7 @@ extends Module {
     }
 
     public AntiBot() {
-        super("AntiBot", Category.MISC, new String[0]);
+        super("AntiBot", Category.MISC);
     }
 
     public static void Method1318(Entity entity) {
@@ -36,7 +36,7 @@ extends Module {
 
     public boolean Method138(EntityPlayer entityPlayer) {
         NetworkPlayerInfo networkPlayerInfo = mc.getConnection().getPlayerInfo(entityPlayer.getGameProfile().getId());
-        return networkPlayerInfo == null || networkPlayerInfo.getResponseTime() <= 0 && !entityPlayer.equals((Object) AntiBot.mc.player) && networkPlayerInfo.getGameProfile() == null && entityPlayer.hasCustomName();
+        return networkPlayerInfo == null || networkPlayerInfo.getResponseTime() <= 0 && !entityPlayer.equals(AntiBot.mc.player) && networkPlayerInfo.getGameProfile() == null && entityPlayer.hasCustomName();
     }
 
     public static boolean Method395(Entity entity) {

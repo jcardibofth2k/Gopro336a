@@ -17,7 +17,7 @@ public interface CompoundTagSetter {
 
    @NotNull
    default Object remove(@NotNull final String key) {
-      return this.remove(key, (Consumer)null);
+      return this.remove(key, null);
    }
 
    @NotNull

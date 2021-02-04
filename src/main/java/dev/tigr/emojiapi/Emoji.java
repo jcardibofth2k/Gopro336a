@@ -1,7 +1,7 @@
 package dev.tigr.emojiapi;
 
 public class Emoji {
-   private String name;
+   private final String name;
 
    public Emoji(String name) {
       this.name = name;

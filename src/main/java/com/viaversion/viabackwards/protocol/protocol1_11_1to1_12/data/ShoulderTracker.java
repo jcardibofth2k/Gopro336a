@@ -20,7 +20,7 @@ public class ShoulderTracker extends StoredObject {
    }
 
    public void update() {
-      PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_12.CHAT_MESSAGE, (ByteBuf)null, this.getUser());
+      PacketWrapper wrapper = PacketWrapper.create(ClientboundPackets1_12.CHAT_MESSAGE, null, this.getUser());
       wrapper.write(Type.COMPONENT, Protocol1_9To1_8.fixJson(this.generateString()));
       wrapper.write(Type.BYTE, (byte)2);
 

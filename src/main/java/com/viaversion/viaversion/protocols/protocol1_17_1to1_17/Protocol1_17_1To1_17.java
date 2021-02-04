@@ -40,8 +40,8 @@ public final class Protocol1_17_1To1_17 extends AbstractProtocol {
             this.map(Type.UNSIGNED_BYTE);
             this.create(Type.VAR_INT, 0);
             this.handler((wrapper) -> {
-               wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY));
-               wrapper.write(Type.FLAT_VAR_INT_ITEM, (Object)null);
+               wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_VAR_INT_ITEM_ARRAY));
+               wrapper.write(Type.FLAT_VAR_INT_ITEM, null);
             });
          }
       });

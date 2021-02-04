@@ -71,7 +71,7 @@ extends Class215 {
             if (!class213.Method494(n, n2, n3)) continue;
             return true;
         }
-        if (this.Field2516 != null ? this.Field2516.Method494(n, n2, n3) : this.Field2528.get((Object)this.Field2514).Method494(n, n2, n3)) {
+        if (this.Field2516 != null ? this.Field2516.Method494(n, n2, n3) : this.Field2528.get(this.Field2514).Method494(n, n2, n3)) {
             return true;
         }
         if (this.Field2515.Method494(n, n2, n3)) {
@@ -99,7 +99,7 @@ extends Class215 {
     public void Method2174(Category category) {
         this.Field2516 = null;
         this.Field2514 = category;
-        this.Field2528.get((Object)category).Method2171();
+        this.Field2528.get(category).Method2171();
     }
 
     @Override
@@ -181,7 +181,7 @@ extends Class215 {
         if (this.Field2516 != null) {
             this.Field2516.Method497(n, n2, f);
         } else {
-            this.Field2528.get((Object)this.Field2514).Method497(n, n2, f);
+            this.Field2528.get(this.Field2514).Method497(n, n2, f);
         }
         this.Field2515.Method497(n, n2, f);
         Class247.Field2262.Method863("0.10.2 for Minecraft 1.12.2", this.Method486() + 8.0f, (int)(this.Method492() + this.Method476() - 12.0f - Class247.Field2262.Method831("konasclient.com") / 2.0f), Field324);

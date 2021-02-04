@@ -19,10 +19,10 @@ public class MetadataRewriter1_13_1To1_13 extends EntityRewriter {
    protected void handleMetadata(int entityId, EntityType type, Metadata metadata, List metadatas, UserConnection connection) {
       int data;
       if (metadata.metaType() == MetaType1_13.Slot) {
-         ((Protocol1_13_1To1_13)this.protocol).getItemRewriter().handleItemToClient((Item)metadata.getValue());
+         this.protocol.getItemRewriter().handleItemToClient((Item)metadata.getValue());
       } else if (metadata.metaType() == MetaType1_13.BlockID) {
          data = (Integer)metadata.getValue();
-         metadata.setValue(((Protocol1_13_1To1_13)this.protocol).getMappingData().getNewBlockStateId(data));
+         metadata.setValue(this.protocol.getMappingData().getNewBlockStateId(data));
       } else if (metadata.metaType() == MetaType1_13.PARTICLE) {
          this.rewriteParticle((Particle)metadata.getValue());
       }
@@ -30,7 +30,7 @@ public class MetadataRewriter1_13_1To1_13 extends EntityRewriter {
       if (type != null) {
          if (type.isOrHasParent(Entity1_13Types.EntityType.MINECART_ABSTRACT) && metadata.method_71() == 9) {
             data = (Integer)metadata.getValue();
-            metadata.setValue(((Protocol1_13_1To1_13)this.protocol).getMappingData().getNewBlockStateId(data));
+            metadata.setValue(this.protocol.getMappingData().getNewBlockStateId(data));
          } else if (type.isOrHasParent(Entity1_13Types.EntityType.ABSTRACT_ARROW) && metadata.method_71() >= 7) {
             metadata.setId(metadata.method_71() + 1);
          }

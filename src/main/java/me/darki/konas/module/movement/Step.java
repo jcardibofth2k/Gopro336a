@@ -38,13 +38,13 @@ extends Module {
             return;
         }
         Module module = Class167.Method1612("Speed");
-        if (module != null && module.isEnabled() && ((Boolean) speedDisable.getValue()).booleanValue()) {
+        if (module != null && module.isEnabled() && speedDisable.getValue().booleanValue()) {
             this.toggle();
         }
         if (Step.mc.player.getRidingEntity() != null) {
             this.Field2160.Method739();
         }
-        if (((Boolean) useTimer.getValue()).booleanValue()) {
+        if (useTimer.getValue().booleanValue()) {
             if (this.Field2158 == 0) {
                 NewGui.INSTANCE.Field1134.Method749(this);
             } else {
@@ -56,7 +56,7 @@ extends Module {
     }
 
     public Step() {
-        super("Step", "Instantly steps up blocks", 0, Category.PLAYER, new String[0]);
+        super("Step", "Instantly steps up blocks", 0, Category.PLAYER);
     }
 
     public boolean Method394() {
@@ -77,9 +77,9 @@ extends Module {
             f += 90.0f * f2;
         }
         float f3 = (float)Math.toRadians(f);
-        double d = (double)(-MathHelper.sin((float)f3)) * 0.4;
-        double d2 = (double)MathHelper.cos((float)f3) * 0.4;
-        return Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(d, 1.001335979112147, d2)).isEmpty();
+        double d = (double)(-MathHelper.sin(f3)) * 0.4;
+        double d2 = (double)MathHelper.cos(f3) * 0.4;
+        return Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(d, 1.001335979112147, d2)).isEmpty();
     }
 
     @Override
@@ -117,20 +117,20 @@ extends Module {
             f += 90.0f * f2;
         }
         float f3 = (float)Math.toRadians(f);
-        double d2 = (double)(-MathHelper.sin((float)f3)) * 0.4;
-        double d3 = (double)MathHelper.cos((float)f3) * 0.4;
+        double d2 = (double)(-MathHelper.sin(f3)) * 0.4;
+        double d3 = (double)MathHelper.cos(f3) * 0.4;
         AxisAlignedBB axisAlignedBB = Step.mc.player.getEntityBoundingBox().offset(0.0, 0.05, 0.0).grow(0.05);
-        axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.maxY + (double)((Float) stepHeight.getValue()).floatValue());
-        for (AxisAlignedBB axisAlignedBB2 : Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, axisAlignedBB)) {
+        axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.maxY + (double) stepHeight.getValue().floatValue());
+        for (AxisAlignedBB axisAlignedBB2 : Step.mc.world.getCollisionBoxes(Step.mc.player, axisAlignedBB)) {
             if (!(axisAlignedBB2.maxY > d)) continue;
             d = axisAlignedBB2.maxY;
         }
-        return (d -= Step.mc.player.posY) > 0.0 && d <= (double)((Float) stepHeight.getValue()).floatValue() ? d : 0.0;
+        return (d -= Step.mc.player.posY) > 0.0 && d <= (double) stepHeight.getValue().floatValue() ? d : 0.0;
     }
 
     @Subscriber
     public void moveEvent(MoveEvent moveEvent) {
-        if (mode.getValue() != StepMode.MOTION || !((Boolean) upwards.getValue()).booleanValue()) {
+        if (mode.getValue() != StepMode.MOTION || !upwards.getValue().booleanValue()) {
             return;
         }
         if (!Step.mc.player.collidedHorizontally) {
@@ -162,8 +162,8 @@ extends Module {
             }
             float f3 = (float)Math.toRadians(f);
             moveEvent.setY(0.24813599859094704);
-            moveEvent.setX((double)(-MathHelper.sin((float)f3)) * 0.7);
-            moveEvent.setZ((double)MathHelper.cos((float)f3) * 0.7);
+            moveEvent.setX((double)(-MathHelper.sin(f3)) * 0.7);
+            moveEvent.setZ((double)MathHelper.cos(f3) * 0.7);
             this.Field2159 = 0;
         }
     }
@@ -171,18 +171,18 @@ extends Module {
     @Subscriber
     public void onUpdate(UpdateEvent updateEvent) {
         Module module = Class167.Method1612("Speed");
-        if (module != null && module.isEnabled() && ((Boolean) speedDisable.getValue()).booleanValue()) {
+        if (module != null && module.isEnabled() && speedDisable.getValue().booleanValue()) {
             this.toggle();
         }
-        if (((Boolean) reverse.getValue()).booleanValue() && !Class167.Method1610(Class337.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
-            if (!Step.mc.player.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
+        if (reverse.getValue().booleanValue() && !Class167.Method1610(Class337.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
+            if (!Step.mc.player.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
                 Step.mc.player.motionY = -3.0;
             }
         }
         this.Field2157 = Step.mc.player.onGround;
-        if (((Boolean) upwards.getValue()).booleanValue() && !Step.mc.player.isInWater() && Step.mc.player.onGround && !Step.mc.player.isOnLadder() && !Step.mc.player.movementInput.jump && Step.mc.player.collidedVertically && (double) Step.mc.player.fallDistance < 0.1) {
+        if (upwards.getValue().booleanValue() && !Step.mc.player.isInWater() && Step.mc.player.onGround && !Step.mc.player.isOnLadder() && !Step.mc.player.movementInput.jump && Step.mc.player.collidedVertically && (double) Step.mc.player.fallDistance < 0.1) {
             if (mode.getValue() == StepMode.VANILLA) {
-                Step.mc.player.stepHeight = ((Float) stepHeight.getValue()).floatValue();
+                Step.mc.player.stepHeight = stepHeight.getValue().floatValue();
             } else if (mode.getValue() == StepMode.NORMAL) {
                 if (!this.Field2160.Method737(320.0)) {
                     return;
@@ -192,71 +192,71 @@ extends Module {
                     return;
                 }
                 if (this.Field2161 <= 1.0) {
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.75, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.75, Step.mc.player.posZ, Step.mc.player.onGround));
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 1.0, Step.mc.player.posZ);
                     return;
                 }
-                if (this.Field2161 <= (double)((Float) stepHeight.getValue()).floatValue() && this.Field2161 <= 1.5) {
+                if (this.Field2161 <= (double) stepHeight.getValue().floatValue() && this.Field2161 <= 1.5) {
                     updateEvent.setCanceled(true);
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.75, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.0, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.16, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.23, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.2, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.75, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.0, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.16, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.23, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.2, Step.mc.player.posZ, Step.mc.player.onGround));
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + this.Field2161, Step.mc.player.posZ);
                     return;
                 }
-                if (this.Field2161 <= (double)((Float) stepHeight.getValue()).floatValue()) {
+                if (this.Field2161 <= (double) stepHeight.getValue().floatValue()) {
                     updateEvent.setCanceled(true);
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.7800000000000002, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.63, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.51, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.9, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.21, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.45, Step.mc.player.posZ, Step.mc.player.onGround));
-                    Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.43, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.42, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.7800000000000002, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.63, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.51, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 0.9, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.21, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.45, Step.mc.player.posZ, Step.mc.player.onGround));
+                    Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + 1.43, Step.mc.player.posZ, Step.mc.player.onGround));
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + this.Field2161, Step.mc.player.posZ);
                 }
             } else if (mode.getValue() == StepMode.NCP) {
                 double[] dArray = MathUtil.Method1086(0.1);
-                if (Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.0, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 0.6, dArray[1])).isEmpty() && (double)((Float) stepHeight.getValue()).floatValue() >= 1.0) {
+                if (Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.0, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 0.6, dArray[1])).isEmpty() && (double) stepHeight.getValue().floatValue() >= 1.0) {
                     for (double d : Field2162) {
-                        Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
+                        Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
-                    if (((Boolean) useTimer.getValue()).booleanValue()) {
+                    if (useTimer.getValue().booleanValue()) {
                         NewGui.INSTANCE.Field1134.Method746(this, 15, 0.6f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 1.0, Step.mc.player.posZ);
                     this.Field2158 = 1;
                 }
-                if (Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.6, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.4, dArray[1])).isEmpty() && (double)((Float) stepHeight.getValue()).floatValue() >= 1.5) {
+                if (Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.6, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.4, dArray[1])).isEmpty() && (double) stepHeight.getValue().floatValue() >= 1.5) {
                     for (double d : Field2163) {
-                        Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
+                        Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
-                    if (((Boolean) useTimer.getValue()).booleanValue()) {
+                    if (useTimer.getValue().booleanValue()) {
                         NewGui.INSTANCE.Field1134.Method746(this, 15, 0.35f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 1.5, Step.mc.player.posZ);
                     this.Field2158 = 1;
                 }
-                if (Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.1, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.9, dArray[1])).isEmpty() && (double)((Float) stepHeight.getValue()).floatValue() >= 2.0) {
+                if (Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.1, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.9, dArray[1])).isEmpty() && (double) stepHeight.getValue().floatValue() >= 2.0) {
                     for (double d : Field2164) {
-                        Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
+                        Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
-                    if (((Boolean) useTimer.getValue()).booleanValue()) {
+                    if (useTimer.getValue().booleanValue()) {
                         NewGui.INSTANCE.Field1134.Method746(this, 15, 0.25f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 2.0, Step.mc.player.posZ);
                     this.Field2158 = 2;
                 }
-                if (Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.6, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes((Entity) Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.4, dArray[1])).isEmpty() && (double)((Float) stepHeight.getValue()).floatValue() >= 2.5) {
+                if (Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.6, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 2.4, dArray[1])).isEmpty() && (double) stepHeight.getValue().floatValue() >= 2.5) {
                     for (double d : Field2165) {
-                        Step.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
+                        Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
-                    if (((Boolean) useTimer.getValue()).booleanValue()) {
+                    if (useTimer.getValue().booleanValue()) {
                         NewGui.INSTANCE.Field1134.Method746(this, 15, 0.15f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 2.5, Step.mc.player.posZ);
@@ -273,7 +273,7 @@ extends Module {
         block1: {
             if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook)) break block1;
             this.Field2160.Method739();
-            if (((Boolean) autoDisable.getValue()).booleanValue()) {
+            if (autoDisable.getValue().booleanValue()) {
                 this.toggle();
             }
         }

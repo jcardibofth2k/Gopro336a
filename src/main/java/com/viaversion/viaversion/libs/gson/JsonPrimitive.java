@@ -41,7 +41,7 @@ public final class JsonPrimitive extends JsonElement {
    }
 
    public Number getAsNumber() {
-      return (Number)(this.value instanceof String ? new LazilyParsedNumber((String)this.value) : (Number)this.value);
+      return this.value instanceof String ? new LazilyParsedNumber((String)this.value) : (Number)this.value;
    }
 
    public boolean isString() {

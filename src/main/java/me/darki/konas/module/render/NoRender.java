@@ -76,13 +76,13 @@ extends Module {
     }
 
     public NoRender() {
-        super("NoRender", Category.RENDER, new String[0]);
+        super("NoRender", Category.RENDER);
     }
 
     @Subscriber
     public void Method1126(Class142 class142) {
         block0: {
-            if (!((Boolean)this.Field1124.getValue()).booleanValue()) break block0;
+            if (!this.Field1124.getValue().booleanValue()) break block0;
             class142.setCanceled(true);
         }
     }
@@ -99,19 +99,19 @@ extends Module {
                             break block1;
                         }
                         if (this.Field1107.getValue() != Class417.SELECT) break block1;
-                        if (class569.Method663() != EntityEquipmentSlot.HEAD || !((Boolean)this.Field1108.getValue()).booleanValue()) break block2;
+                        if (class569.Method663() != EntityEquipmentSlot.HEAD || !this.Field1108.getValue().booleanValue()) break block2;
                         class569.Cancel();
                         break block1;
                     }
-                    if (class569.Method663() != EntityEquipmentSlot.CHEST || !((Boolean)this.Field1109.getValue()).booleanValue()) break block3;
+                    if (class569.Method663() != EntityEquipmentSlot.CHEST || !this.Field1109.getValue().booleanValue()) break block3;
                     class569.Cancel();
                     break block1;
                 }
-                if (class569.Method663() != EntityEquipmentSlot.LEGS || !((Boolean)this.Field1110.getValue()).booleanValue()) break block4;
+                if (class569.Method663() != EntityEquipmentSlot.LEGS || !this.Field1110.getValue().booleanValue()) break block4;
                 class569.Cancel();
                 break block1;
             }
-            if (class569.Method663() != EntityEquipmentSlot.FEET || !((Boolean)this.Field1111.getValue()).booleanValue()) break block1;
+            if (class569.Method663() != EntityEquipmentSlot.FEET || !this.Field1111.getValue().booleanValue()) break block1;
             class569.Cancel();
         }
     }
@@ -130,7 +130,7 @@ extends Module {
     @Subscriber
     public void Method1128(Class137 class137) {
         block0: {
-            if (!((Boolean)this.Field1123.getValue()).booleanValue()) break block0;
+            if (!this.Field1123.getValue().booleanValue()) break block0;
             class137.Cancel();
         }
     }
@@ -143,7 +143,7 @@ extends Module {
     @Subscriber
     public void Method1129(Class106 class106) {
         block0: {
-            if (!((Boolean)this.Field1125.getValue()).booleanValue()) break block0;
+            if (!this.Field1125.getValue().booleanValue()) break block0;
             class106.Cancel();
         }
     }
@@ -155,7 +155,7 @@ extends Module {
     @Subscriber
     public void Method1130(Class93 class93) {
         block0: {
-            if (!((Boolean)this.Field1101.getValue()).booleanValue()) break block0;
+            if (!this.Field1101.getValue().booleanValue()) break block0;
             class93.Cancel();
         }
     }
@@ -163,7 +163,7 @@ extends Module {
     @Subscriber
     public void Method1131(Class94 class94) {
         block0: {
-            if (!((Boolean)this.Field1122.getValue()).booleanValue()) break block0;
+            if (!this.Field1122.getValue().booleanValue()) break block0;
             class94.Cancel();
         }
     }
@@ -173,7 +173,7 @@ extends Module {
         if (NoRender.mc.world == null || NoRender.mc.player == null) {
             return;
         }
-        if (((Boolean)this.Field1127.getValue()).booleanValue()) {
+        if (this.Field1127.getValue().booleanValue()) {
             if (this.Field1128 == null) {
                 this.Field1128 = NoRender.mc.gameSettings.chatVisibility;
             }
@@ -182,7 +182,7 @@ extends Module {
             NoRender.mc.gameSettings.chatVisibility = this.Field1128;
             this.Field1128 = null;
         }
-        if (((Boolean)this.Field1102.getValue()).booleanValue()) {
+        if (this.Field1102.getValue().booleanValue()) {
             if ((double)((IWorld)NoRender.mc.world).Method220() > 0.9) {
                 this.Method1645("Thunder");
             } else if ((double)((IWorld)NoRender.mc.world).Method220() > 0.2) {
@@ -198,7 +198,7 @@ extends Module {
     @Subscriber
     public void Method1132(Class79 class79) {
         block0: {
-            if (!((Boolean)this.Field1102.getValue()).booleanValue()) break block0;
+            if (!this.Field1102.getValue().booleanValue()) break block0;
             class79.Cancel();
         }
     }
@@ -206,16 +206,16 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         block3: {
-            if (packetEvent.getPacket() instanceof SPacketSpawnGlobalEntity && ((Boolean)this.Field1103.getValue()).booleanValue() && ((SPacketSpawnGlobalEntity) packetEvent.getPacket()).getType() == 1) {
+            if (packetEvent.getPacket() instanceof SPacketSpawnGlobalEntity && this.Field1103.getValue().booleanValue() && ((SPacketSpawnGlobalEntity) packetEvent.getPacket()).getType() == 1) {
                 packetEvent.setCanceled(true);
             }
-            if (packetEvent.getPacket() instanceof SPacketMaps && ((Boolean)this.Field1124.getValue()).booleanValue()) {
+            if (packetEvent.getPacket() instanceof SPacketMaps && this.Field1124.getValue().booleanValue()) {
                 packetEvent.setCanceled(true);
             }
-            if (((Boolean)this.Field1106.getValue()).booleanValue() && (packetEvent.getPacket() instanceof SPacketSpawnMob && ((SPacketSpawnMob) packetEvent.getPacket()).getEntityType() == 65 || packetEvent.getPacket() instanceof SPacketSoundEffect && Field1100.contains(((SPacketSoundEffect) packetEvent.getPacket()).getSound()))) {
+            if (this.Field1106.getValue().booleanValue() && (packetEvent.getPacket() instanceof SPacketSpawnMob && ((SPacketSpawnMob) packetEvent.getPacket()).getEntityType() == 65 || packetEvent.getPacket() instanceof SPacketSoundEffect && Field1100.contains(((SPacketSoundEffect) packetEvent.getPacket()).getSound()))) {
                 packetEvent.Cancel();
             }
-            if (!(packetEvent.getPacket() instanceof SPacketSpawnMob && (Boolean)this.Field1113.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && (Boolean)this.Field1114.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnExperienceOrb && (Boolean)this.Field1115.getValue() != false || packetEvent.getPacket() instanceof SPacketExplosion && (Boolean)this.Field1116.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && (Boolean)this.Field1118.getValue() != false && ((SPacketSpawnObject) packetEvent.getPacket()).getType() == 2) && (!(packetEvent.getPacket() instanceof SPacketSpawnObject) || !((Boolean)this.Field1117.getValue()).booleanValue() || ((SPacketSpawnObject) packetEvent.getPacket()).getType() != 76)) break block3;
+            if (!(packetEvent.getPacket() instanceof SPacketSpawnMob && this.Field1113.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.Field1114.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnExperienceOrb && this.Field1115.getValue() != false || packetEvent.getPacket() instanceof SPacketExplosion && this.Field1116.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.Field1118.getValue() != false && ((SPacketSpawnObject) packetEvent.getPacket()).getType() == 2) && (!(packetEvent.getPacket() instanceof SPacketSpawnObject) || !this.Field1117.getValue().booleanValue() || ((SPacketSpawnObject) packetEvent.getPacket()).getType() != 76)) break block3;
             packetEvent.Cancel();
         }
     }
@@ -226,17 +226,17 @@ extends Module {
             boolean bl = false;
             switch (class148.Method1825()) {
                 case FIRE: {
-                    if (!((Boolean)this.Field1104.getValue()).booleanValue()) break;
+                    if (!this.Field1104.getValue().booleanValue()) break;
                     bl = true;
                     break;
                 }
                 case WATER: {
-                    if (!((Boolean)this.Field1119.getValue()).booleanValue()) break;
+                    if (!this.Field1119.getValue().booleanValue()) break;
                     bl = true;
                     break;
                 }
                 case BLOCK: {
-                    if (!((Boolean)this.Field1121.getValue()).booleanValue()) break;
+                    if (!this.Field1121.getValue().booleanValue()) break;
                     bl = true;
                 }
             }
@@ -247,7 +247,7 @@ extends Module {
 
     public void Method134() {
         block0: {
-            if (!((Boolean)this.Field1106.getValue()).booleanValue() || NoRender.mc.player == null || NoRender.mc.world == null) break block0;
+            if (!this.Field1106.getValue().booleanValue() || NoRender.mc.player == null || NoRender.mc.world == null) break block0;
             NoRender.mc.world.getLoadedEntityList().stream().filter(NoRender::Method513).forEach(NoRender::Method561);
         }
     }
@@ -255,7 +255,7 @@ extends Module {
     @Subscriber
     public void Method1134(Class131 class131) {
         block0: {
-            if (!((Boolean)this.Field1112.getValue()).booleanValue()) break block0;
+            if (!this.Field1112.getValue().booleanValue()) break block0;
             class131.setCanceled(true);
         }
     }
@@ -263,7 +263,7 @@ extends Module {
     @Subscriber
     public void Method1135(Class13 class13) {
         block0: {
-            if (!((Boolean)this.Field1117.getValue()).booleanValue() || !(class13.Method261() instanceof ParticleFirework.Overlay) && !(class13.Method261() instanceof ParticleFirework.Spark) && !(class13.Method261() instanceof ParticleFirework.Starter)) break block0;
+            if (!this.Field1117.getValue().booleanValue() || !(class13.Method261() instanceof ParticleFirework.Overlay) && !(class13.Method261() instanceof ParticleFirework.Spark) && !(class13.Method261() instanceof ParticleFirework.Starter)) break block0;
             class13.setCanceled(true);
         }
     }
@@ -271,7 +271,7 @@ extends Module {
     @Subscriber
     public void Method1136(Class113 class113) {
         block0: {
-            if (!((Boolean)this.Field1120.getValue()).booleanValue() || !class113.Method348().getMaterial().equals(Material.LAVA)) break block0;
+            if (!this.Field1120.getValue().booleanValue() || !class113.Method348().getMaterial().equals(Material.LAVA)) break block0;
             class113.Cancel();
         }
     }
@@ -279,7 +279,7 @@ extends Module {
     @Subscriber
     public void Method1137(Class642 class642) {
         block0: {
-            if (!((Boolean)this.Field1105.getValue()).booleanValue()) break block0;
+            if (!this.Field1105.getValue().booleanValue()) break block0;
             class642.Cancel();
         }
     }

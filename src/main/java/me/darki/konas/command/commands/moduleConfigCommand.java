@@ -2,7 +2,7 @@ package me.darki.konas.command.commands;
 
 import java.io.File;
 import me.darki.konas.Class167;
-import me.darki.konas.ChatUtil;
+import me.darki.konas.util.ChatUtil;
 import me.darki.konas.Class589;
 import me.darki.konas.Class605;
 import me.darki.konas.SyntaxChunk;
@@ -17,7 +17,7 @@ extends Command {
     @Override
     public void Method174(String[] stringArray) {
         if (stringArray.length != this.Method189().size() + 1) {
-            ChatUtil.Method1034(this.Method191(), new Object[0]);
+            ChatUtil.Method1034(this.Method191());
             return;
         }
         File file = new File(Class589.Field2608, stringArray[3] + ".json");
@@ -60,7 +60,7 @@ extends Command {
                 break;
             }
             default: {
-                ChatUtil.Method1034(this.Method191(), new Object[0]);
+                ChatUtil.Method1034(this.Method191());
                 break;
             }
         }

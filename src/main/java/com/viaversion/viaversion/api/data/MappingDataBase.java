@@ -100,7 +100,7 @@ public class MappingDataBase implements MappingData {
                JsonElement element = (JsonElement)var11.next();
                String stringId = element.getAsString();
                if (!typeMapping.containsKey(stringId) && !typeMapping.containsKey(stringId = stringId.replace("minecraft:", ""))) {
-                  this.getLogger().warning(type + " Tags contains invalid type identifier " + stringId + " in tag " + (String)entry.getKey());
+                  this.getLogger().warning(type + " Tags contains invalid type identifier " + stringId + " in tag " + entry.getKey());
                } else {
                   entries[i++] = typeMapping.getInt(stringId);
                }

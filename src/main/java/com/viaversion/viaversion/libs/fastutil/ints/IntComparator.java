@@ -26,7 +26,7 @@ public interface IntComparator extends Comparator {
    }
 
    default Comparator thenComparing(Comparator second) {
-      return (Comparator)(second instanceof IntComparator ? this.thenComparing((IntComparator)second) : super.thenComparing(second));
+      return second instanceof IntComparator ? this.thenComparing((IntComparator)second) : super.thenComparing(second);
    }
 
    // $FF: synthetic method

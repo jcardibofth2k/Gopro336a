@@ -39,18 +39,18 @@ public class BaseProtocol1_7 extends AbstractSimpleProtocol {
                      JsonElement json = (JsonElement)GsonUtil.getGson().fromJson(originalStatus, JsonElement.class);
                      int protocolVersion = 0;
                      JsonObject version;
-                     if (((JsonElement)json).isJsonObject()) {
-                        if (((JsonElement)json).getAsJsonObject().has("version")) {
-                           version = ((JsonElement)json).getAsJsonObject().get("version").getAsJsonObject();
+                     if (json.isJsonObject()) {
+                        if (json.getAsJsonObject().has("version")) {
+                           version = json.getAsJsonObject().get("version").getAsJsonObject();
                            if (version.has("protocol")) {
                               protocolVersion = Long.valueOf(version.get("protocol").getAsLong()).intValue();
                            }
                         } else {
-                           ((JsonElement)json).getAsJsonObject().add("version", version = new JsonObject());
+                           json.getAsJsonObject().add("version", version = new JsonObject());
                         }
                      } else {
                         json = new JsonObject();
-                        ((JsonElement)json).getAsJsonObject().add("version", version = new JsonObject());
+                        json.getAsJsonObject().add("version", version = new JsonObject());
                      }
 
                      if (Via.getConfig().isSendSupportedVersions()) {
@@ -77,17 +77,17 @@ public class BaseProtocol1_7 extends AbstractSimpleProtocol {
                      if (protocols != null) {
                         if (protocolVersion == closestServerProtocol || protocolVersion == 0) {
                            ProtocolVersion prot = ProtocolVersion.getProtocol(info.getProtocolVersion());
-                           version.addProperty("protocol", (Number)prot.getOriginalVersion());
+                           version.addProperty("protocol", prot.getOriginalVersion());
                         }
                      } else {
                         wrapper.user().setActive(false);
                      }
 
                      if (Via.getConfig().getBlockedProtocols().contains(info.getProtocolVersion())) {
-                        version.addProperty("protocol", (int)-1);
+                        version.addProperty("protocol", -1);
                      }
 
-                     wrapper.set(Type.STRING, 0, GsonUtil.getGson().toJson((JsonElement)json));
+                     wrapper.set(Type.STRING, 0, GsonUtil.getGson().toJson(json));
                   } catch (JsonParseException var11) {
                      var11.printStackTrace();
                   }
@@ -140,7 +140,7 @@ public class BaseProtocol1_7 extends AbstractSimpleProtocol {
                         return;
                      }
 
-                     PacketWrapper disconnectPacket = PacketWrapper.create(0, (ByteBuf)null, wrapper.user());
+                     PacketWrapper disconnectPacket = PacketWrapper.create(0, null, wrapper.user());
                      Protocol1_9To1_8.FIX_JSON.write(disconnectPacket, ChatColorUtil.translateAlternateColorCodes(Via.getConfig().getBlockedDisconnectMsg()));
                      wrapper.cancel();
                      ChannelFuture future = disconnectPacket.sendFuture(BaseProtocol.class);

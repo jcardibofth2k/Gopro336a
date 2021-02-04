@@ -34,7 +34,7 @@ public abstract class IntCollections$EmptyCollection extends AbstractIntCollecti
       if (o == this) {
          return true;
       } else {
-         return !(o instanceof Collection) ? false : ((Collection)o).isEmpty();
+         return o instanceof Collection && ((Collection) o).isEmpty();
       }
    }
 

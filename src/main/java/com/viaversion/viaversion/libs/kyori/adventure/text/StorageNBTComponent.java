@@ -14,7 +14,7 @@ public interface StorageNBTComponent extends NBTComponent, ScopedComponent {
    @NotNull
    StorageNBTComponent storage(@NotNull final Key storage);
 
-   public interface Builder extends NBTComponentBuilder {
+   interface Builder extends NBTComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       StorageNBTComponent.Builder storage(@NotNull final Key storage);

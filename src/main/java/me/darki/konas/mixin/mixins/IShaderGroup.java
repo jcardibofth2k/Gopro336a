@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={ShaderGroup.class})
 public interface IShaderGroup {
     @Accessor(value="listShaders")
-    public List<Shader> Method1220();
+    List<Shader> Method1220();
 }

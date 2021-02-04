@@ -1,6 +1,8 @@
 package me.darki.konas;
 
 import me.darki.konas.command.Command;
+import me.darki.konas.managers.CommandManager;
+import me.darki.konas.util.ChatUtil;
 
 public class Class574
 extends Command {
@@ -10,12 +12,12 @@ extends Command {
 
     @Override
     public void Method174(String[] stringArray) {
-        ChatUtil.Method1033("(b)Commands:", new Object[0]);
+        ChatUtil.Method1033("(b)Commands:");
         ChatUtil.Method1031();
-        Class603.Method207().forEach(Class574::Method553);
+        CommandManager.Method207().forEach(Class574::Method553);
     }
 
     public Class574() {
-        super("commands", "List all commands", new SyntaxChunk[0]);
+        super("commands", "List all commands");
     }
 }

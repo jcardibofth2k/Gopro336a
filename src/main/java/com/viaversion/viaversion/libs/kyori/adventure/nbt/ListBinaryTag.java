@@ -149,7 +149,7 @@ public interface ListBinaryTag extends ListTagSetter, BinaryTag, Iterable {
 
    @NotNull
    default ListBinaryTag getList(@Range(from = 0L,to = 2147483647L) final int index) {
-      return this.getList(index, (BinaryTagType)null, empty());
+      return this.getList(index, null, empty());
    }
 
    @NotNull
@@ -159,7 +159,7 @@ public interface ListBinaryTag extends ListTagSetter, BinaryTag, Iterable {
 
    @NotNull
    default ListBinaryTag getList(@Range(from = 0L,to = 2147483647L) final int index, @NotNull final ListBinaryTag defaultValue) {
-      return this.getList(index, (BinaryTagType)null, defaultValue);
+      return this.getList(index, null, defaultValue);
    }
 
    @NotNull

@@ -73,7 +73,7 @@ public class MetaFilter {
          } else if (this.filterFamily != that.filterFamily) {
             return false;
          } else {
-            return !this.handler.equals(that.handler) ? false : Objects.equals(this.type, that.type);
+            return this.handler.equals(that.handler) && Objects.equals(this.type, that.type);
          }
       } else {
          return false;

@@ -90,7 +90,7 @@ public class TypeToken {
             t = classType;
          }
 
-         return isAssignableFrom((Type)t, (ParameterizedType)toGenericComponentType, new HashMap());
+         return isAssignableFrom(t, (ParameterizedType)toGenericComponentType, new HashMap());
       }
    }
 
@@ -172,7 +172,7 @@ public class TypeToken {
          exceptionMessage.append(clazz.getName()).append(", ");
       }
 
-      exceptionMessage.append("but got: ").append(token.getClass().getName()).append(", for type token: ").append(token.toString()).append('.');
+      exceptionMessage.append("but got: ").append(token.getClass().getName()).append(", for type token: ").append(token).append('.');
       return new AssertionError(exceptionMessage.toString());
    }
 
@@ -201,7 +201,7 @@ public class TypeToken {
    }
 
    public static TypeToken getParameterized(Type rawType, Type... typeArguments) {
-      return new TypeToken($Gson$Types.newParameterizedTypeWithOwner((Type)null, rawType, typeArguments));
+      return new TypeToken($Gson$Types.newParameterizedTypeWithOwner(null, rawType, typeArguments));
    }
 
    public static TypeToken getArray(Type componentType) {

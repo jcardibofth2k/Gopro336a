@@ -62,7 +62,7 @@ public class ComponentRewriter1_13 extends ComponentRewriter {
 
                JsonArray array = new JsonArray();
                JsonObject object = new JsonObject();
-               array.add((JsonElement)object);
+               array.add(object);
 
                try {
                   String serializedNBT = BinaryTagIO.writeString(tag);

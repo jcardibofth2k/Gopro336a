@@ -23,7 +23,7 @@ public class MetadataRewriter1_16To1_15_2 extends EntityRewriter {
       metadata.setMetaType(MetaType1_16.byId(metadata.metaType().typeId()));
       int data;
       if (metadata.metaType() == MetaType1_16.ITEM) {
-         ((Protocol1_16To1_15_2)this.protocol).getItemRewriter().handleItemToClient((Item)metadata.getValue());
+         this.protocol.getItemRewriter().handleItemToClient((Item)metadata.getValue());
       } else if (metadata.metaType() == MetaType1_16.BLOCK_STATE) {
          data = (Integer)metadata.getValue();
          metadata.setValue(((Protocol1_16To1_15_2)this.protocol).getMappingData().getNewBlockStateId(data));

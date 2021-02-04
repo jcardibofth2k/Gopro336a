@@ -72,7 +72,7 @@ public class Protocol1_12To1_11_1 extends AbstractProtocol {
                public void handle(PacketWrapper wrapper) throws Exception {
                   if (Via.getConfig().is1_12NBTArrayFix()) {
                      try {
-                        JsonElement obj = (JsonElement)Protocol1_9To1_8.FIX_JSON.transform((PacketWrapper)null, ((JsonElement)wrapper.passthrough(Type.COMPONENT)).toString());
+                        JsonElement obj = (JsonElement)Protocol1_9To1_8.FIX_JSON.transform(null, wrapper.passthrough(Type.COMPONENT).toString());
                         TranslateRewriter.toClient(obj, wrapper.user());
                         ChatItemRewriter.toClient(obj, wrapper.user());
                         wrapper.set(Type.COMPONENT, 0, obj);

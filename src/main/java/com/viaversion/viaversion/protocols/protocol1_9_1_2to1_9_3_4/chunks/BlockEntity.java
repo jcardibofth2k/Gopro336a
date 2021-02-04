@@ -51,7 +51,7 @@ public class BlockEntity {
    }
 
    private static void updateBlockEntity(Position pos, short id, CompoundTag tag, UserConnection connection) throws Exception {
-      PacketWrapper wrapper = PacketWrapper.create(9, (ByteBuf)null, connection);
+      PacketWrapper wrapper = PacketWrapper.create(9, null, connection);
       wrapper.write(Type.POSITION, pos);
       wrapper.write(Type.UNSIGNED_BYTE, id);
       wrapper.write(Type.NBT, tag);

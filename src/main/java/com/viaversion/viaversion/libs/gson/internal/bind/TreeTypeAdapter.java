@@ -61,16 +61,16 @@ public final class TreeTypeAdapter extends TypeAdapter {
    }
 
    public static TypeAdapterFactory newFactory(TypeToken exactType, Object typeAdapter) {
-      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, exactType, false, (Class)null);
+      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, exactType, false, null);
    }
 
    public static TypeAdapterFactory newFactoryWithMatchRawType(TypeToken exactType, Object typeAdapter) {
       boolean matchRawType = exactType.getType() == exactType.getRawType();
-      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, exactType, matchRawType, (Class)null);
+      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, exactType, matchRawType, null);
    }
 
    public static TypeAdapterFactory newTypeHierarchyFactory(Class hierarchyType, Object typeAdapter) {
-      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, (TypeToken)null, false, hierarchyType);
+      return new TreeTypeAdapter.SingleTypeFactory(typeAdapter, null, false, hierarchyType);
    }
 
    private final class GsonContextImpl implements JsonSerializationContext, JsonDeserializationContext {

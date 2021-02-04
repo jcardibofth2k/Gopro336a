@@ -15,7 +15,7 @@ public class MixinBlockLiquid {
     public void Method39(IBlockState state, boolean hitIfLiquid, CallbackInfoReturnable<Boolean> info) {
         Class655 liquidCanCollideCheckEvent = EventDispatcher.Companion.dispatch(new Class655());
         if (liquidCanCollideCheckEvent.isCanceled()) {
-            info.setReturnValue((Object)true);
+            info.setReturnValue(true);
         }
     }
 }

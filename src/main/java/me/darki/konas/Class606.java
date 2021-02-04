@@ -8,7 +8,7 @@ extends SyntaxChunk {
     public String Method177(String string) {
         for (int i = 0; i < 84; ++i) {
             int n = i;
-            String string2 = Keyboard.getKeyName((int)n);
+            String string2 = Keyboard.getKeyName(n);
             String string3 = string2.toLowerCase();
             String string4 = string;
             String string5 = string4.toLowerCase();
@@ -16,7 +16,7 @@ extends SyntaxChunk {
             if (!bl) continue;
             int n2 = i;
             try {
-                return Keyboard.getKeyName((int)n2);
+                return Keyboard.getKeyName(n2);
             }
             catch (NullPointerException nullPointerException) {
                 nullPointerException.printStackTrace();

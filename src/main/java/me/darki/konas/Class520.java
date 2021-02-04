@@ -1,7 +1,7 @@
 package me.darki.konas;
 
 public interface Class520 {
-    public int Method851();
+    int Method851();
 
-    public void Method850(int var1);
+    void Method850(int var1);
 }

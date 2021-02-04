@@ -8,7 +8,7 @@ extends Enum {
     public static ACTargetMode[] Field1768;
 
     public static ACTargetMode[] Method1674() {
-        return (ACTargetMode[])Field1768.clone();
+        return Field1768.clone();
     }
 
     public static ACTargetMode Method1675(String string) {

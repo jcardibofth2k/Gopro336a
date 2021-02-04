@@ -52,7 +52,7 @@ public interface LegacyComponentSerializer extends ComponentSerializer, Buildabl
    @NotNull
    String serialize(@NotNull final Component component);
 
-   public interface Builder extends Buildable.Builder {
+   interface Builder extends Buildable.Builder {
       @NotNull
       LegacyComponentSerializer.Builder character(final char legacyCharacter);
 
@@ -85,7 +85,7 @@ public interface LegacyComponentSerializer extends ComponentSerializer, Buildabl
    }
 
    @Internal
-   public interface Provider {
+   interface Provider {
       @Internal
       @NotNull
       LegacyComponentSerializer legacyAmpersand();

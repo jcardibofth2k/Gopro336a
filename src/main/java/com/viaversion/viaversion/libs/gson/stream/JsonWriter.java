@@ -359,7 +359,7 @@ public class JsonWriter implements Closeable, Flushable {
       REPLACEMENT_CHARS[10] = "\\n";
       REPLACEMENT_CHARS[13] = "\\r";
       REPLACEMENT_CHARS[12] = "\\f";
-      HTML_SAFE_REPLACEMENT_CHARS = (String[])REPLACEMENT_CHARS.clone();
+      HTML_SAFE_REPLACEMENT_CHARS = REPLACEMENT_CHARS.clone();
       HTML_SAFE_REPLACEMENT_CHARS[60] = "\\u003c";
       HTML_SAFE_REPLACEMENT_CHARS[62] = "\\u003e";
       HTML_SAFE_REPLACEMENT_CHARS[38] = "\\u0026";

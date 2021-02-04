@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketCustomPayload.class})
 public interface ICPacketCustomPayload {
     @Accessor(value="data")
-    public void Method1801(PacketBuffer var1);
+    void Method1801(PacketBuffer var1);
 }

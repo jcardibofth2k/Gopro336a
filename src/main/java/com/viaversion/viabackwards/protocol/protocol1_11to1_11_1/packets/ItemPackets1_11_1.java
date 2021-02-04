@@ -24,7 +24,7 @@ public class ItemPackets1_11_1 extends LegacyBlockItemRewriter {
       this.registerSetSlot(ClientboundPackets1_9_3.SET_SLOT, Type.ITEM);
       this.registerWindowItems(ClientboundPackets1_9_3.WINDOW_ITEMS, Type.ITEM_ARRAY);
       this.registerEntityEquipment(ClientboundPackets1_9_3.ENTITY_EQUIPMENT, Type.ITEM);
-      ((Protocol1_11To1_11_1)this.protocol).registerClientbound(ClientboundPackets1_9_3.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {

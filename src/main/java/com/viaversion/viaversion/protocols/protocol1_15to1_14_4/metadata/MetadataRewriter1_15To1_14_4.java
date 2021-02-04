@@ -21,7 +21,7 @@ public class MetadataRewriter1_15To1_14_4 extends EntityRewriter {
    public void handleMetadata(int entityId, EntityType type, Metadata metadata, List metadatas, UserConnection connection) throws Exception {
       int data;
       if (metadata.metaType() == MetaType1_14.Slot) {
-         ((Protocol1_15To1_14_4)this.protocol).getItemRewriter().handleItemToClient((Item)metadata.getValue());
+         this.protocol.getItemRewriter().handleItemToClient((Item)metadata.getValue());
       } else if (metadata.metaType() == MetaType1_14.BlockID) {
          data = (Integer)metadata.getValue();
          metadata.setValue(((Protocol1_15To1_14_4)this.protocol).getMappingData().getNewBlockStateId(data));

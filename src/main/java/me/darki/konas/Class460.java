@@ -11,7 +11,7 @@ extends Enum {
     }
 
     public static Class460[] Method382() {
-        return (Class460[])Field231.clone();
+        return Field231.clone();
     }
 
     /*

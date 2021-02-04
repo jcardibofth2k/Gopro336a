@@ -29,7 +29,7 @@ public enum MetaType1_17 implements MetaType {
    private final int typeId;
    private final Type type;
 
-   private MetaType1_17(int typeId, Type type) {
+   MetaType1_17(int typeId, Type type) {
       this.typeId = typeId;
       this.type = type;
    }

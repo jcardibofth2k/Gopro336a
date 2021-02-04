@@ -53,17 +53,17 @@ public class Class542 {
                     float f = (float)Math.toDegrees(Math.atan2(d3, d)) - 90.0f;
                     float f2 = (float)(-Math.toDegrees(Math.atan2(d2, d4)));
                     float[] fArray = new float[2];
-                    fArray[0] = Class542.Field1025.player.rotationYaw + MathHelper.wrapDegrees((float)(f - Class542.Field1025.player.rotationYaw));
-                    fArray[1] = Class542.Field1025.player.rotationPitch + MathHelper.wrapDegrees((float)(f2 - Class542.Field1025.player.rotationPitch));
+                    fArray[0] = Class542.Field1025.player.rotationYaw + MathHelper.wrapDegrees(f - Class542.Field1025.player.rotationYaw);
+                    fArray[1] = Class542.Field1025.player.rotationPitch + MathHelper.wrapDegrees(f2 - Class542.Field1025.player.rotationPitch);
                     float[] fArray2 = fArray;
                     rotation(fArray2[0], fArray2[1], Class542.Field1025.player.onGround);
-                    Class542.Field1025.player.connection.sendPacket((Packet)rotation);
+                    Class542.Field1025.player.connection.sendPacket(rotation);
                 }
                 if (bl) {
                     CPacketEntityAction cPacketEntityAction;
                     Class542.Field1025.player.setSneaking(true);
                     cPacketEntityAction((Entity)Class542.Field1025.player, CPacketEntityAction.Action.START_SNEAKING);
-                    Class542.Field1025.player.connection.sendPacket((Packet)cPacketEntityAction);
+                    Class542.Field1025.player.connection.sendPacket(cPacketEntityAction);
                 }
                 boolean bl5 = false;
                 Class542.Field1025.playerController.updateController();
@@ -76,7 +76,7 @@ public class Class542 {
                 if (bl) {
                     CPacketEntityAction cPacketEntityAction;
                     cPacketEntityAction((Entity)Class542.Field1025.player, CPacketEntityAction.Action.STOP_SNEAKING);
-                    Class542.Field1025.player.connection.sendPacket((Packet)cPacketEntityAction);
+                    Class542.Field1025.player.connection.sendPacket(cPacketEntityAction);
                 }
                 if (!bl5) continue;
                 boolean bl6 = true;
@@ -94,7 +94,7 @@ public class Class542 {
         for (EnumFacing enumFacing : EnumFacing.values()) {
             BlockPos blockPos2 = blockPos.offset(enumFacing);
             Block block2 = Class542.Field1025.world.getBlockState(blockPos2).getBlock();
-            if (block2 == Blocks.AIR || block2 instanceof BlockLiquid || !block.canPlaceBlockAt((World)Class542.Field1025.world, blockPos)) continue;
+            if (block2 == Blocks.AIR || block2 instanceof BlockLiquid || !block.canPlaceBlockAt(Class542.Field1025.world, blockPos)) continue;
             if (bl) {
                 if (!Class542.Field1025.world.checkNoEntityCollision(new AxisAlignedBB(blockPos))) continue;
                 return true;
@@ -114,15 +114,15 @@ public class Class542 {
             Vec3d vec3d2;
             BlockPos blockPos2 = blockPos.offset(enumFacing2);
             EnumFacing enumFacing3 = enumFacing2.getOpposite();
-            if (Class542.Field1025.world.getBlockState(blockPos2).getBlock() == Blocks.AIR || Class542.Field1025.world.getBlockState(blockPos2).getBlock() instanceof BlockLiquid || vec3d.squareDistanceTo(vec3d2 = new Vec3d((Vec3i)blockPos2).add(0.9, 0.9, 0.9).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5))) > 18.0625) continue;
+            if (Class542.Field1025.world.getBlockState(blockPos2).getBlock() == Blocks.AIR || Class542.Field1025.world.getBlockState(blockPos2).getBlock() instanceof BlockLiquid || vec3d.squareDistanceTo(vec3d2 = new Vec3d(blockPos2).add(0.9, 0.9, 0.9).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5))) > 18.0625) continue;
             double d = vec3d2.x - vec3d.x;
             double d2 = vec3d2.y - vec3d.y;
             double d3 = vec3d2.z - vec3d.z;
             double d4 = Math.sqrt(d * d + d3 * d3);
             float f = (float)Math.toDegrees(Math.atan2(d3, d)) - 90.0f;
             float f2 = (float)(-Math.toDegrees(Math.atan2(d2, d4)));
-            float[] fArray = new float[]{Class542.Field1025.player.rotationYaw + MathHelper.wrapDegrees((float)(f - Class542.Field1025.player.rotationYaw)), Class542.Field1025.player.rotationPitch + MathHelper.wrapDegrees((float)(f2 - Class542.Field1025.player.rotationPitch))};
-            Class542.Field1025.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(fArray[0], fArray[1], Class542.Field1025.player.onGround));
+            float[] fArray = new float[]{Class542.Field1025.player.rotationYaw + MathHelper.wrapDegrees(f - Class542.Field1025.player.rotationYaw), Class542.Field1025.player.rotationPitch + MathHelper.wrapDegrees(f2 - Class542.Field1025.player.rotationPitch)};
+            Class542.Field1025.player.connection.sendPacket(new CPacketPlayer.Rotation(fArray[0], fArray[1], Class542.Field1025.player.onGround));
             Class542.Field1025.player.setSneaking(true);
             if (Class542.Field1025.playerController.processRightClickBlock(Class542.Field1025.player, Class542.Field1025.world, blockPos2, enumFacing, vec3d2, EnumHand.MAIN_HAND) != EnumActionResult.FAIL) {
                 Class542.Field1025.player.swingArm(EnumHand.MAIN_HAND);

@@ -15,7 +15,7 @@ import com.viaversion.viaversion.protocols.protocol1_9_3to1_9_1_2.ServerboundPac
 import com.viaversion.viaversion.protocols.protocol1_9_3to1_9_1_2.storage.ClientWorld;
 
 public class Protocol1_10To1_11 extends BackwardsProtocol {
-   public static final BackwardsMappings MAPPINGS = new BackwardsMappings("1.11", "1.10", (Class)null, true);
+   public static final BackwardsMappings MAPPINGS = new BackwardsMappings("1.11", "1.10", null, true);
    private final EntityPackets1_11 entityPackets = new EntityPackets1_11(this);
    private BlockItemPackets1_11 blockItemPackets;
 

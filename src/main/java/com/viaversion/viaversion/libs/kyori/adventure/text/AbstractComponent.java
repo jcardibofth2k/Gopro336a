@@ -53,7 +53,7 @@ public abstract class AbstractComponent implements Component {
       if (!(config instanceof TextReplacementConfigImpl)) {
          throw new IllegalArgumentException("Provided replacement was a custom TextReplacementConfig implementation, which is not supported.");
       } else {
-         return TextReplacementRenderer.INSTANCE.render(this, (State)((TextReplacementConfigImpl)config).createState());
+         return TextReplacementRenderer.INSTANCE.render(this, ((TextReplacementConfigImpl)config).createState());
       }
    }
 

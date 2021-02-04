@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.util;
 
 import java.util.regex.Pattern;
 
@@ -39,7 +39,7 @@ extends Enum {
      * WARNING - void declaration
      */
     public ColorUtil() {
-        this((String)var1_-1, (int)var2_-1, (char)var3_1, false);
+        this(var1_ -1, (int)var2_-1, (char)var3_1, false);
         void var3_1;
         void var2_-1;
         void var1_-1;
@@ -63,7 +63,7 @@ extends Enum {
     }
 
     public static ColorUtil[] Method931() {
-        return (ColorUtil[])Field872.clone();
+        return Field872.clone();
     }
 
     public static String Method932(String string) {

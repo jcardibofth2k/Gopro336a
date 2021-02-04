@@ -15,7 +15,7 @@ public abstract class MixinEntityLivingBase
 extends MixinEntity {
     @Inject(method={"travel"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method1880(float strafe, float vertical, float forward, CallbackInfo ci) {
-        Class32 event = Class32.Method281((Entity)((EntityLivingBase)this));
+        Class32 event = Class32.Method281((EntityLivingBase)this);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             ci.cancel();

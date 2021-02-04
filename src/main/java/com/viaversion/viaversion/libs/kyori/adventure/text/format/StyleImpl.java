@@ -78,7 +78,7 @@ final class StyleImpl implements Style {
 
    @NotNull
    public Style colorIfAbsent(@Nullable final TextColor color) {
-      return (Style)(this.color == null ? this.color(color) : this);
+      return this.color == null ? this.color(color) : this;
    }
 
    @NotNull
@@ -230,7 +230,7 @@ final class StyleImpl implements Style {
    }
 
    static {
-      EMPTY = new StyleImpl((Key)null, (TextColor)null, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, (ClickEvent)null, (HoverEvent)null, (String)null);
+      EMPTY = new StyleImpl(null, null, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, null, null, null);
       DECORATIONS = TextDecoration.values();
    }
 

@@ -45,8 +45,8 @@ final class TextReplacementRenderer implements ComponentRenderer {
                         builder = (ComponentLike)state.replacement.apply(matcher, (TextComponent.Builder)Component.text().content(matcher.group()).style(component.style()));
                         modified = builder == null ? Component.empty() : builder.asComponent();
                         if (children == null) {
-                           children = new ArrayList(oldChildrenSize + ((Component)modified).children().size());
-                           children.addAll(((Component)modified).children());
+                           children = new ArrayList(oldChildrenSize + modified.children().size());
+                           children.addAll(modified.children());
                         }
                      } else {
                         modified = Component.text("", component.style());
@@ -110,16 +110,16 @@ final class TextReplacementRenderer implements ComponentRenderer {
             }
 
             if (newArgs != null) {
-               modified = ((TranslatableComponent)component).args((List)newArgs);
+               modified = ((TranslatableComponent)component).args(newArgs);
             }
          }
 
          if (state.running) {
-            HoverEvent event = ((Component)modified).style().hoverEvent();
+            HoverEvent event = modified.style().hoverEvent();
             if (event != null) {
                HoverEvent rendered = event.withRenderedValue(this, state);
                if (event != rendered) {
-                  modified = ((Component)modified).style((s) -> {
+                  modified = modified.style((s) -> {
                      s.hoverEvent(rendered);
                   });
                }
@@ -151,7 +151,7 @@ final class TextReplacementRenderer implements ComponentRenderer {
          }
 
          state.firstMatch = prevFirstMatch;
-         return (Component)(children != null ? ((Component)modified).children(children) : modified);
+         return children != null ? modified.children(children) : modified;
       }
    }
 }

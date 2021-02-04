@@ -18,7 +18,7 @@ extends Module {
     public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(-16776961)).Method1191(colorize::getValue);
 
     public Sky() {
-        super("Sky", Category.RENDER, new String[0]);
+        super("Sky", Category.RENDER);
     }
 
     @Subscriber
@@ -26,7 +26,7 @@ extends Module {
         block2: {
             if (this.timeMode.getValue() == Class436.NONE) break block2;
             if (this.timeMode.getValue() == Class436.STATIC) {
-                class85.Method457(((Integer)this.time.getValue()).intValue());
+                class85.Method457(this.time.getValue().intValue());
             } else {
                 ZonedDateTime zonedDateTime = ZonedDateTime.now();
                 Instant instant = zonedDateTime.toLocalDate().atStartOfDay(zonedDateTime.getZone()).toInstant();
@@ -41,8 +41,8 @@ extends Module {
     @Subscriber
     public void Method873(Class58 class58) {
         block0: {
-            if (!((Boolean) colorize.getValue()).booleanValue()) break block0;
-            float[] fArray = Class556.Method806(((ColorValue) color.getValue()).Method774());
+            if (!colorize.getValue().booleanValue()) break block0;
+            float[] fArray = Class556.Method806(color.getValue().Method774());
             class58.Method341(fArray[0]);
             class58.Method294(fArray[1]);
             class58.Method344(fArray[2]);
@@ -52,7 +52,7 @@ extends Module {
     @Subscriber
     public void Method874(Class64 class64) {
         block0: {
-            if (!((Boolean) colorize.getValue()).booleanValue()) break block0;
+            if (!colorize.getValue().booleanValue()) break block0;
             class64.Method294(0.0f);
             class64.setCanceled(true);
         }

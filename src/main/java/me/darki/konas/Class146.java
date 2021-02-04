@@ -53,11 +53,11 @@ extends Element {
     }
 
     public String Method1818(PotionEffect potionEffect) {
-        return this.Method1819(potionEffect) + " " + Potion.getPotionDurationString((PotionEffect)potionEffect, (float)1.0f);
+        return this.Method1819(potionEffect) + " " + Potion.getPotionDurationString(potionEffect, 1.0f);
     }
 
     public String Method1819(PotionEffect potionEffect) {
-        return I18n.format((String)potionEffect.getEffectName(), (Object[])new Object[0]);
+        return I18n.format(potionEffect.getEffectName());
     }
 
     public void Method1820(AtomicReference atomicReference, AtomicInteger atomicInteger, PotionEffect potionEffect) {

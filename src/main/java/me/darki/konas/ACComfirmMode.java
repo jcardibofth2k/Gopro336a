@@ -12,7 +12,7 @@ extends Enum {
     }
 
     public static ACComfirmMode[] Method1465() {
-        return (ACComfirmMode[])Field1406.clone();
+        return Field1406.clone();
     }
 
     /*

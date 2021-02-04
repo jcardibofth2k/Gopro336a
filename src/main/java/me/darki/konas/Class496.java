@@ -44,17 +44,17 @@ public class Class496 {
             boolean bl2 = Class496.Field2166.player.isSprinting();
             boolean bl3 = Class545.Method1004(class490.Method1982());
             if (bl2) {
-                Class496.Field2166.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class496.Field2166.player, CPacketEntityAction.Action.STOP_SPRINTING));
+                Class496.Field2166.player.connection.sendPacket(new CPacketEntityAction(Class496.Field2166.player, CPacketEntityAction.Action.STOP_SPRINTING));
             }
             if (bl3) {
-                Class496.Field2166.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class496.Field2166.player, CPacketEntityAction.Action.START_SNEAKING));
+                Class496.Field2166.player.connection.sendPacket(new CPacketEntityAction(Class496.Field2166.player, CPacketEntityAction.Action.START_SNEAKING));
             }
             Class496.Method1957(class490, enumHand, bl);
             if (bl3) {
-                Class496.Field2166.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class496.Field2166.player, CPacketEntityAction.Action.STOP_SNEAKING));
+                Class496.Field2166.player.connection.sendPacket(new CPacketEntityAction(Class496.Field2166.player, CPacketEntityAction.Action.STOP_SNEAKING));
             }
             if (!bl2) break block3;
-            Class496.Field2166.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class496.Field2166.player, CPacketEntityAction.Action.START_SPRINTING));
+            Class496.Field2166.player.connection.sendPacket(new CPacketEntityAction(Class496.Field2166.player, CPacketEntityAction.Action.START_SPRINTING));
         }
     }
 
@@ -83,7 +83,7 @@ public class Class496 {
             IBlockState iBlockState;
             BlockPos blockPos2;
             if (bl2) {
-                blockPos2 = new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
+                blockPos2 = new Vec3d(blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
                 iBlockState = Class496.Field2166.world.rayTraceBlocks(Class496.Field2166.player.getPositionEyes(1.0f), (Vec3d)blockPos2);
                 if (iBlockState != null && iBlockState.typeOfHit != RayTraceResult.Type.MISS) {
                     System.out.println("weary");
@@ -132,7 +132,7 @@ public class Class496 {
             object = RotationUtil.Method1946(Class496.Field2166.player.getPositionEyes(Field2166.getRenderPartialTicks()), vec3d);
             if (!bl) break block4;
             if (bl2) {
-                Class496.Field2166.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation((float)object[0], (float)object[1], Class496.Field2166.player.onGround));
+                Class496.Field2166.player.connection.sendPacket(new CPacketPlayer.Rotation((float)object[0], (float)object[1], Class496.Field2166.player.onGround));
                 ((IEntityPlayerSP)Class496.Field2166.player).Method237((float)object[0]);
                 ((IEntityPlayerSP)Class496.Field2166.player).Method239((float)object[1]);
             } else {
@@ -163,12 +163,12 @@ public class Class496 {
             float f = (float)(vec3d.x - (double)blockPos.getX());
             float f2 = (float)(vec3d.y - (double)blockPos.getY());
             float f3 = (float)(vec3d.z - (double)blockPos.getZ());
-            Class496.Field2166.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos, enumFacing, enumHand, f, f2, f3));
+            Class496.Field2166.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos, enumFacing, enumHand, f, f2, f3));
         } else {
             Class496.Field2166.playerController.processRightClickBlock(Class496.Field2166.player, Class496.Field2166.world, blockPos, enumFacing, vec3d, enumHand);
         }
         if (bl2) {
-            Class496.Field2166.player.connection.sendPacket((Packet)new CPacketAnimation(enumHand));
+            Class496.Field2166.player.connection.sendPacket(new CPacketAnimation(enumHand));
         }
         ((IMinecraft)Field2166).Method57(4);
     }
@@ -213,6 +213,6 @@ public class Class496 {
     }
 
     public static boolean Method1972(BlockPos blockPos) {
-        return Class496.Field2166.world.rayTraceBlocks(new Vec3d(Class496.Field2166.player.posX, Class496.Field2166.player.posY + (double)Class496.Field2166.player.getEyeHeight(), Class496.Field2166.player.posZ), new Vec3d((double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ()), false, true, false) == null;
+        return Class496.Field2166.world.rayTraceBlocks(new Vec3d(Class496.Field2166.player.posX, Class496.Field2166.player.posY + (double)Class496.Field2166.player.getEyeHeight(), Class496.Field2166.player.posZ), new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()), false, true, false) == null;
     }
 }

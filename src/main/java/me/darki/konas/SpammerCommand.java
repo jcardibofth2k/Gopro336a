@@ -12,11 +12,11 @@ extends Command {
     public void Method174(String[] stringArray) {
         if (stringArray.length == this.Method189().size()) {
             if (stringArray[1].equalsIgnoreCase("list")) {
-                if (((Class526) Spammer.spamFileList.getValue()).Method1225().isEmpty()) {
+                if (Spammer.spamFileList.getValue().Method1225().isEmpty()) {
                     Logger.Method1118("You don't have any spammer files loaded");
                 } else {
                     Logger.Method1118("Spammer Files:");
-                    for (String string : ((Class526)Spammer.spamFileList.getValue()).Method1225()) {
+                    for (String string : Spammer.spamFileList.getValue().Method1225()) {
                         Logger.Method1118(string);
                     }
                 }
@@ -29,19 +29,19 @@ extends Command {
         }
         if (stringArray[1].equalsIgnoreCase("add")) {
             String string = stringArray[2].replaceAll(".txt", "") + ".txt";
-            if (((Class526)Spammer.spamFileList.getValue()).Method1225().contains(string)) {
+            if (Spammer.spamFileList.getValue().Method1225().contains(string)) {
                 Logger.Method1118("This Spammer File has already been added!");
                 return;
             }
-            ((Class526)Spammer.spamFileList.getValue()).Method1227(string);
+            Spammer.spamFileList.getValue().Method1227(string);
             Logger.Method1118("Added Spammer File: \u00c2\u00a7b" + string);
         } else if (stringArray[1].equalsIgnoreCase("del")) {
             String string = stringArray[2].replaceAll(".txt", "") + ".txt";
-                if (!((Class526)Spammer.spamFileList.getValue()).Method1225().contains(string)) {
+                if (!Spammer.spamFileList.getValue().Method1225().contains(string)) {
                 Logger.Method1118("Couldn't find this Spammer File!");
                 return;
             }
-            ((Class526)Spammer.spamFileList.getValue()).Method1228(string);
+            Spammer.spamFileList.getValue().Method1228(string);
             Logger.Method1118("Deleted Spammer File: \u00c2\u00a7b" + string);
         } else {
             Logger.Method1119(this.Method191());

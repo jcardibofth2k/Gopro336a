@@ -36,7 +36,7 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         block0: {
-            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !((Boolean) autoDisable.getValue()).booleanValue()) break block0;
+            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !autoDisable.getValue().booleanValue()) break block0;
             this.toggle();
         }
     }
@@ -62,21 +62,21 @@ extends Module {
         if (LongJump.mc.player != mc.getRenderViewEntity()) {
             return;
         }
-        switch (Class441.Field723[((Class459)((Object) mode.getValue())).ordinal()]) {
+        switch (Class441.Field723[mode.getValue().ordinal()]) {
             case 1: {
                 if (LongJump.mc.player.moveStrafing <= 0.0f && LongJump.mc.player.moveForward <= 0.0f) {
                     this.Field344 = 1;
                 }
                 if (this.Method504(LongJump.mc.player.posY - (double)((int) LongJump.mc.player.posY), 3) == 0.943) {
-                    LongJump.mc.player.motionY -= 0.0157 * (double)((Float) glide.getValue()).floatValue();
-                    moveEvent.setY(moveEvent.getY() - 0.0157 * (double)((Float) glide.getValue()).floatValue());
+                    LongJump.mc.player.motionY -= 0.0157 * (double) glide.getValue().floatValue();
+                    moveEvent.setY(moveEvent.getY() - 0.0157 * (double) glide.getValue().floatValue());
                 }
                 if (this.Field344 == 1 && (LongJump.mc.player.moveForward != 0.0f || LongJump.mc.player.moveStrafing != 0.0f)) {
                     this.Field344 = 2;
-                    this.Field345 = (double)((Float) speed.getValue()).floatValue() * LongJump.Method505() - 0.01;
+                    this.Field345 = (double) speed.getValue().floatValue() * LongJump.Method505() - 0.01;
                 } else if (this.Field344 == 2) {
-                    LongJump.mc.player.motionY = 0.0848 * (double)((Float) modifier.getValue()).floatValue();
-                    moveEvent.setY(0.0848 * (double)((Float) modifier.getValue()).floatValue());
+                    LongJump.mc.player.motionY = 0.0848 * (double) modifier.getValue().floatValue();
+                    moveEvent.setY(0.0848 * (double) modifier.getValue().floatValue());
                     this.Field344 = 3;
                     this.Field345 *= 2.149802;
                 } else if (this.Field344 == 3) {
@@ -84,7 +84,7 @@ extends Module {
                     this.Field341 = 0.66 * this.Field342;
                     this.Field345 = this.Field342 - this.Field341;
                 } else {
-                    if (LongJump.mc.world.getCollisionBoxes((Entity) LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, LongJump.mc.player.motionY, 0.0)).size() > 0 || LongJump.mc.player.collidedVertically) {
+                    if (LongJump.mc.world.getCollisionBoxes(LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, LongJump.mc.player.motionY, 0.0)).size() > 0 || LongJump.mc.player.collidedVertically) {
                         this.Field344 = 1;
                     }
                     this.Field345 = this.Field342 - this.Field342 / 159.0;
@@ -133,11 +133,11 @@ extends Module {
                     if (this.Field343 == 1) {
                         if (LongJump.mc.player.moveForward != 0.0f || LongJump.mc.player.moveStrafing != 0.0f) {
                             this.Field343 = 2;
-                            this.Field345 = (double)((Float) speed.getValue()).floatValue() * LongJump.Method505() - 0.01;
+                            this.Field345 = (double) speed.getValue().floatValue() * LongJump.Method505() - 0.01;
                         }
                     } else if (this.Field343 == 2) {
                         this.Field343 = 3;
-                        if (!((Boolean) shortJump.getValue()).booleanValue()) {
+                        if (!shortJump.getValue().booleanValue()) {
                             LongJump.mc.player.motionY = 0.424;
                         }
                         moveEvent.setY(0.424);
@@ -147,7 +147,7 @@ extends Module {
                         double d = 0.66 * (this.Field342 - LongJump.Method505());
                         this.Field345 = this.Field342 - d;
                     } else {
-                        if (LongJump.mc.world.getCollisionBoxes((Entity) LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, LongJump.mc.player.motionY, 0.0)).size() > 0 || LongJump.mc.player.collidedVertically) {
+                        if (LongJump.mc.world.getCollisionBoxes(LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, LongJump.mc.player.motionY, 0.0)).size() > 0 || LongJump.mc.player.collidedVertically) {
                             this.Field343 = 1;
                         }
                         this.Field345 = this.Field342 - this.Field342 / 159.0;
@@ -187,7 +187,7 @@ extends Module {
                 } else if (!LongJump.mc.player.onGround && this.Field340 != 0) {
                     --this.Field340;
                 }
-                if (((Boolean) shortJump.getValue()).booleanValue()) {
+                if (shortJump.getValue().booleanValue()) {
                     if (this.Field337.Method737(35.0)) {
                         this.Field339 = true;
                     }
@@ -222,7 +222,7 @@ extends Module {
     }
 
     public LongJump() {
-        super("LongJump", Category.MOVEMENT, new String[0]);
+        super("LongJump", Category.MOVEMENT);
     }
 
     public double Method504(double d, int n) {
@@ -250,7 +250,7 @@ extends Module {
                 if (LongJump.mc.player.onGround) {
                     this.Field346 = false;
                 }
-            } else if (groundCheck.getValue() == Class438.EDGEJUMP && LongJump.mc.player.onGround && !LongJump.mc.player.isSneaking() && LongJump.mc.world.getCollisionBoxes((Entity) LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, 0.0, 0.0).shrink(0.001)).isEmpty()) {
+            } else if (groundCheck.getValue() == Class438.EDGEJUMP && LongJump.mc.player.onGround && !LongJump.mc.player.isSneaking() && LongJump.mc.world.getCollisionBoxes(LongJump.mc.player, LongJump.mc.player.getEntityBoundingBox().offset(0.0, 0.0, 0.0).shrink(0.001)).isEmpty()) {
                 this.Field346 = false;
             }
         } else if (mode.getValue() == Class459.NORMAL) {

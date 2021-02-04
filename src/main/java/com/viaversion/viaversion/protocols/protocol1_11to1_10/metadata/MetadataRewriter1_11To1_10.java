@@ -99,7 +99,7 @@ public class MetadataRewriter1_11To1_10 extends EntityRewriter {
                      tracker.addHologram(entityId);
 
                      try {
-                        PacketWrapper wrapper = PacketWrapper.create(37, (ByteBuf)null, connection);
+                        PacketWrapper wrapper = PacketWrapper.create(37, null, connection);
                         wrapper.write(Type.VAR_INT, entityId);
                         wrapper.write(Type.SHORT, Short.valueOf((short)0));
                         wrapper.write(Type.SHORT, (short)((int)(128.0D * -Via.getConfig().getHologramYOffset() * 32.0D)));

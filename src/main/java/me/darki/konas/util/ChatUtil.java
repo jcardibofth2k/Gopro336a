@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.util;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
+import me.darki.konas.Class544;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.ITextComponent;
 
@@ -38,7 +39,7 @@ public class ChatUtil {
             string2 = string2 + chatFormatting.toString();
         }
         string2 = string2 + ChatUtil.Method1029(string, chatFormatting, objectArray);
-        ChatUtil.Field1020.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion((ITextComponent)new Class544(string2), n);
+        ChatUtil.Field1020.ingameGUI.getChatGUI().printChatMessageWithOptionalDeletion(new Class544(string2), n);
     }
 
     public static void Method1033(String string, Object ... objectArray) {

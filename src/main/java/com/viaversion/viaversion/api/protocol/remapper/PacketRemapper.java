@@ -45,7 +45,7 @@ public abstract class PacketRemapper {
    }
 
    public void map(Type oldType, ValueTransformer transformer) {
-      this.map((ValueReader)(new TypeRemapper(oldType)), (ValueWriter)transformer);
+      this.map(new TypeRemapper(oldType), transformer);
    }
 
    public void map(ValueReader inputReader, ValueWriter outputWriter) {

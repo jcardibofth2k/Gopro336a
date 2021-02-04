@@ -12,7 +12,7 @@ public enum LongSerializationPolicy {
       }
    };
 
-   private LongSerializationPolicy() {
+   LongSerializationPolicy() {
    }
 
    public abstract JsonElement serialize(Long var1);

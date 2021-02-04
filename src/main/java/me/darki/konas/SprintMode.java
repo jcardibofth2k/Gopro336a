@@ -24,6 +24,6 @@ extends Enum {
     }
 
     public static SprintMode[] Method398() {
-        return (SprintMode[])Field251.clone();
+        return Field251.clone();
     }
 }

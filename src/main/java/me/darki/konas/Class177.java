@@ -19,8 +19,8 @@ extends Class183 {
         super.Method106(n, n2, n3);
         boolean bl = Class177.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl && n3 == 0) {
-            Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
-            this.Method583().setValue(Boolean.valueOf((Boolean)this.Method583().getValue() == false));
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            this.Method583().setValue(Boolean.valueOf(this.Method583().getValue() == false));
             return true;
         }
         return false;
@@ -30,13 +30,13 @@ extends Class183 {
     public void Method105(int n, int n2, float f) {
         int n3;
         super.Method105(n, n2, f);
-        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-        int n4 = n3 = (Boolean)this.Method583().getValue() != false ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().darker().getRGB() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-        if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class177.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-            n3 = (Boolean)this.Method583().getValue() != false ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().getRGB() : new Color(96, 96, 96, 100).hashCode();
+        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ClickGUIModule.color.getValue().Method774());
+        int n4 = n3 = this.Method583().getValue() != false ? ClickGUIModule.color.getValue().Method775().darker().getRGB() : ClickGUIModule.secondary.getValue().Method774();
+        if (ClickGUIModule.hover.getValue().booleanValue() && Class177.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+            n3 = this.Method583().getValue() != false ? ClickGUIModule.color.getValue().Method775().brighter().getRGB() : new Color(96, 96, 96, 100).hashCode();
         }
         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
-        Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
+        Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f - 0.5f), ClickGUIModule.fony.getValue().Method774());
     }
 
     public Class177(Setting<Boolean> setting, float f, float f2, float f3, float f4, float f5, float f6) {

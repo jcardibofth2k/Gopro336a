@@ -30,7 +30,7 @@ public class Protocol1_9_3To1_9_1_2 extends AbstractProtocol {
    }
 
    protected void registerPackets() {
-      this.registerClientbound(ClientboundPackets1_9.UPDATE_SIGN, (ClientboundPacketType)null, new PacketRemapper() {
+      this.registerClientbound(ClientboundPackets1_9.UPDATE_SIGN, null, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -85,7 +85,7 @@ public class Protocol1_9_3To1_9_1_2 extends AbstractProtocol {
                      }
                   }
 
-                  wrapper.write(Type.NBT_ARRAY, (CompoundTag[])chunk.getBlockEntities().toArray(new CompoundTag[0]));
+                  wrapper.write(Type.NBT_ARRAY, chunk.getBlockEntities().toArray(new CompoundTag[0]));
                }
             });
          }

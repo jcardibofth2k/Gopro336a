@@ -58,7 +58,7 @@ public interface Int2ObjectFunction extends Function, IntFunction {
    /** @deprecated */
    @Deprecated
    default boolean containsKey(Object key) {
-      return key == null ? false : this.containsKey((Integer)key);
+      return key != null && this.containsKey(key);
    }
 
    default void defaultReturnValue(Object rv) {

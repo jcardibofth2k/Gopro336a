@@ -51,10 +51,10 @@ extends Class183 {
     @Override
     public void Method105(int n, int n2, float f) {
         super.Method105(n, n2, f);
-        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-        int n3 = Class198.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481()) ? new Color(96, 96, 96, 100).hashCode() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
+        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ClickGUIModule.color.getValue().Method774());
+        int n3 = Class198.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481()) ? new Color(96, 96, 96, 100).hashCode() : ClickGUIModule.secondary.getValue().Method774();
         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
-        Class548.Method1016(this.Method103() ? "Press new bind..." : this.Method1480() + ": " + GameSettings.getKeyDisplayString((int)((Class537)this.Field48.getValue()).Method851()), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method103() ? "Press new bind..." : this.Method1480() + ": " + GameSettings.getKeyDisplayString((int)((Class537)this.Field48.getValue()).Method851())) / 2.0f - 0.5f), 0xFFFFFF);
+        Class548.Method1016(this.Method103() ? "Press new bind..." : this.Method1480() + ": " + GameSettings.getKeyDisplayString(((Class537)this.Field48.getValue()).Method851()), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method103() ? "Press new bind..." : this.Method1480() + ": " + GameSettings.getKeyDisplayString(((Class537)this.Field48.getValue()).Method851())) / 2.0f - 0.5f), 0xFFFFFF);
     }
 
     @Override
@@ -67,7 +67,7 @@ extends Class183 {
         }
         boolean bl = Class198.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl && n3 == 0) {
-            Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             this.Method104(!this.Method103());
             return true;
         }

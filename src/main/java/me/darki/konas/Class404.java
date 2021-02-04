@@ -11,6 +11,6 @@ implements Class529 {
     }
 
     public void Method630(Object object) {
-        this.Method1229((Class427)((Object)object));
+        this.Method1229((Class427) object);
     }
 }

@@ -44,7 +44,7 @@ extends Module {
     public Class566 Field2043 = new Class566();
 
     public static boolean Method1855(Class482 class482) {
-        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals((Object)EntityEquipmentSlot.LEGS);
+        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals(EntityEquipmentSlot.LEGS);
     }
 
     @Subscriber
@@ -61,24 +61,24 @@ extends Module {
             if (!this.Field2043.Method737(350.0)) {
                 return;
             }
-            if (AutoArmor.mc.player.ticksExisted % ((Integer) delay.getValue() + 1) != 0) {
+            if (AutoArmor.mc.player.ticksExisted % (delay.getValue() + 1) != 0) {
                 return;
             }
-            if (((Boolean) strict.getValue()).booleanValue() && (AutoArmor.mc.player.motionX != 0.0 || AutoArmor.mc.player.motionZ != 0.0)) {
+            if (strict.getValue().booleanValue() && (AutoArmor.mc.player.motionX != 0.0 || AutoArmor.mc.player.motionZ != 0.0)) {
                 return;
             }
-            if (((Boolean) pauseWhenSafe.getValue()).booleanValue() && (object = AutoArmor.mc.world.loadedEntityList.stream().filter(AutoArmor::Method386).collect(Collectors.toList())).isEmpty()) {
+            if (pauseWhenSafe.getValue().booleanValue() && (object = AutoArmor.mc.world.loadedEntityList.stream().filter(AutoArmor::Method386).collect(Collectors.toList())).isEmpty()) {
                 return;
             }
             if (AutoMend.Field1952 && Class167.Method1612("AutoMend").isEnabled()) {
                 return;
             }
-            if (((Boolean) allowMend.getValue()).booleanValue() && !this.Field2041.Method737(500.0)) {
+            if (allowMend.getValue().booleanValue() && !this.Field2041.Method737(500.0)) {
                 for (int i = 0; i < AutoArmor.mc.player.inventory.armorInventory.size(); ++i) {
-                    ItemStack itemStack = (ItemStack) AutoArmor.mc.player.inventory.armorInventory.get(i);
+                    ItemStack itemStack = AutoArmor.mc.player.inventory.armorInventory.get(i);
                     if (itemStack.getEnchantmentTagList() != null) {
                         boolean bl2 = false;
-                        for (Map.Entry entry : EnchantmentHelper.getEnchantments((ItemStack)itemStack).entrySet()) {
+                        for (Map.Entry entry : EnchantmentHelper.getEnchantments(itemStack).entrySet()) {
                             if (!((Enchantment)entry.getKey()).getName().contains("mending")) continue;
                             bl2 = true;
                             break;
@@ -104,8 +104,8 @@ extends Module {
                 this.Field2042 = false;
                 return;
             }
-            boolean bl3 = (Boolean) elytraPrio.getValue();
-            if (((Boolean) smart.getValue()).booleanValue() && !Class167.Method1610(ElytraFly.class).isEnabled()) {
+            boolean bl3 = elytraPrio.getValue();
+            if (smart.getValue().booleanValue() && !Class167.Method1610(ElytraFly.class).isEnabled()) {
                 bl3 = false;
             }
             HashSet<Class482> hashSet = new HashSet<Class482>();
@@ -124,10 +124,10 @@ extends Module {
             Item item2 = AutoArmor.mc.player.inventory.getStackInSlot(38).getItem();
             Item item3 = AutoArmor.mc.player.inventory.getStackInSlot(37).getItem();
             Item item4 = AutoArmor.mc.player.inventory.getStackInSlot(36).getItem();
-            boolean bl5 = item.equals(Items.AIR) || !bl4 && (Boolean) armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(39).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(39)) >= (double)((Float) depletion.getValue()).floatValue();
-            boolean bl6 = item2.equals(Items.AIR) || !bl4 && (Boolean) armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(38).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(38)) >= (double)((Float) depletion.getValue()).floatValue();
-            boolean bl7 = item3.equals(Items.AIR) || !bl4 && (Boolean) armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(37).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(37)) >= (double)((Float) depletion.getValue()).floatValue();
-            boolean bl8 = bl = item4.equals(Items.AIR) || !bl4 && (Boolean) armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(36).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(36)) >= (double)((Float) depletion.getValue()).floatValue();
+            boolean bl5 = item.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(39).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(39)) >= (double) depletion.getValue().floatValue();
+            boolean bl6 = item2.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(38).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(38)) >= (double) depletion.getValue().floatValue();
+            boolean bl7 = item3.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(37).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(37)) >= (double) depletion.getValue().floatValue();
+            boolean bl8 = bl = item4.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(36).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(36)) >= (double) depletion.getValue().floatValue();
             if (bl5 && !((AtomicBoolean)object).get()) {
                 list.stream().filter(AutoArmor::Method1864).filter(AutoArmor::Method1871).findFirst().ifPresent(arg_0 -> this.Method1874((AtomicBoolean)object, arg_0));
             }
@@ -183,11 +183,11 @@ extends Module {
     }
 
     public static boolean Method1862(Class482 class482) {
-        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals((Object)EntityEquipmentSlot.FEET);
+        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals(EntityEquipmentSlot.FEET);
     }
 
     public static boolean Method1863(Class482 class482) {
-        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals((Object)EntityEquipmentSlot.CHEST);
+        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals(EntityEquipmentSlot.CHEST);
     }
 
     public static boolean Method1864(Class482 class482) {
@@ -208,7 +208,7 @@ extends Module {
     }
 
     public static boolean Method386(Entity entity) {
-        return entity instanceof EntityPlayer && !entity.equals((Object) AutoArmor.mc.player) && AutoArmor.mc.player.getDistance(entity) <= 6.0f || entity instanceof EntityEnderCrystal && AutoArmor.mc.player.getDistance(entity) <= 12.0f;
+        return entity instanceof EntityPlayer && !entity.equals(AutoArmor.mc.player) && AutoArmor.mc.player.getDistance(entity) <= 6.0f || entity instanceof EntityEnderCrystal && AutoArmor.mc.player.getDistance(entity) <= 12.0f;
     }
 
     public void Method1868(AtomicBoolean atomicBoolean, Class482 class482) {
@@ -225,11 +225,11 @@ extends Module {
     }
 
     public AutoArmor() {
-        super("AutoArmor", "Automatically equips armor", Category.PLAYER, new String[0]);
+        super("AutoArmor", "Automatically equips armor", Category.PLAYER);
     }
 
     public static boolean Method1871(Class482 class482) {
-        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals((Object)EntityEquipmentSlot.HEAD);
+        return ((ItemArmor)class482.Field2350.getItem()).armorType.equals(EntityEquipmentSlot.HEAD);
     }
 
     public static int Method1872(Class482 class482) {
@@ -237,7 +237,7 @@ extends Module {
     }
 
     public static boolean Method1873(Class482 class482) {
-        return (Boolean) armorSaver.getValue() == false || class482.Field2350.getItem().getDurabilityForDisplay(class482.Field2350) < (double)((Float) depletion.getValue()).floatValue();
+        return armorSaver.getValue() == false || class482.Field2350.getItem().getDurabilityForDisplay(class482.Field2350) < (double) depletion.getValue().floatValue();
     }
 
     public void Method1874(AtomicBoolean atomicBoolean, Class482 class482) {
@@ -246,9 +246,9 @@ extends Module {
     }
 
     public void Method1248(int n, int n2) {
-        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer) AutoArmor.mc.player);
-        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n2, 0, ClickType.PICKUP, (EntityPlayer) AutoArmor.mc.player);
-        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer) AutoArmor.mc.player);
+        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, AutoArmor.mc.player);
+        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n2, 0, ClickType.PICKUP, AutoArmor.mc.player);
+        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, AutoArmor.mc.player);
         this.Field2042 = true;
     }
 
@@ -273,7 +273,7 @@ extends Module {
     }
 
     public void Method562(int n) {
-        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n, 0, ClickType.QUICK_MOVE, (EntityPlayer) AutoArmor.mc.player);
+        AutoArmor.mc.playerController.windowClick(AutoArmor.mc.player.inventoryContainer.windowId, n, 0, ClickType.QUICK_MOVE, AutoArmor.mc.player);
     }
 
     public static int Method1878(Class482 class482) {

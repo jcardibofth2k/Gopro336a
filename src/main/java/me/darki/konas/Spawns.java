@@ -39,7 +39,7 @@ extends Module {
     @Subscriber
     public void Method135(UpdateEvent updateEvent) {
         block0: {
-            if (Spawns.mc.player.ticksExisted % 20 != 0 || !((Boolean) onlyOwn.getValue()).booleanValue()) break block0;
+            if (Spawns.mc.player.ticksExisted % 20 != 0 || !onlyOwn.getValue().booleanValue()) break block0;
             this.Field756.forEach(this::Method792);
         }
     }
@@ -51,14 +51,14 @@ extends Module {
     }
 
     public Spawns() {
-        super("Spawns", "Renders entity spawning", Category.RENDER, new String[0]);
+        super("Spawns", "Renders entity spawning", Category.RENDER);
     }
 
     @Subscriber
     public void Method139(Class89 class89) {
         for (Class442 class442 : this.Field755) {
             int n;
-            if ((float)(System.currentTimeMillis() - Class442.Method722(class442)) > 1000.0f * ((Float) duration.getValue()).floatValue()) {
+            if ((float)(System.currentTimeMillis() - Class442.Method722(class442)) > 1000.0f * duration.getValue().floatValue()) {
                 this.Field755.remove(class442);
                 continue;
             }
@@ -67,22 +67,22 @@ extends Module {
             GlStateManager.disableTexture2D();
             GlStateManager.disableDepth();
             GlStateManager.disableLighting();
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
-            float[] fArray = Color.RGBtoHSB(((ColorValue) color.getValue()).Method769(), ((ColorValue) color.getValue()).Method770(), ((ColorValue) color.getValue()).Method779(), null);
+            float[] fArray = Color.RGBtoHSB(color.getValue().Method769(), color.getValue().Method770(), color.getValue().Method779(), null);
             float f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
             int n2 = Color.getHSBColor(f, fArray[1], fArray[2]).getRGB();
             ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-            double d = Class442.Method719((Class442)class442).x - iRenderManager.Method69();
-            double d2 = Class442.Method719((Class442)class442).y - iRenderManager.Method70();
-            double d3 = Class442.Method719((Class442)class442).z - iRenderManager.Method71();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-            GL11.glLineWidth((float)((Float) width.getValue()).floatValue());
-            GL11.glEnable((int)2848);
-            GL11.glHint((int)3154, (int)4354);
-            GL11.glBegin((int)1);
+            double d = Class442.Method719(class442).x - iRenderManager.Method69();
+            double d2 = Class442.Method719(class442).y - iRenderManager.Method70();
+            double d3 = Class442.Method719(class442).z - iRenderManager.Method71();
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+            GL11.glLineWidth(width.getValue().floatValue());
+            GL11.glEnable(2848);
+            GL11.glHint(3154, 4354);
+            GL11.glBegin(1);
             for (n = 0; n <= 360; ++n) {
-                Vec3d vec3d = new Vec3d(d + Math.sin((double)n * Math.PI / 180.0) * (double)Class442.Method720(class442), d2 + (double)(Class442.Method721(class442) * ((float)(System.currentTimeMillis() - Class442.Method722(class442)) / (1000.0f * ((Float) duration.getValue()).floatValue()))), d3 + Math.cos((double)n * Math.PI / 180.0) * (double)Class442.Method720(class442));
+                Vec3d vec3d = new Vec3d(d + Math.sin((double)n * Math.PI / 180.0) * (double)Class442.Method720(class442), d2 + (double)(Class442.Method721(class442) * ((float)(System.currentTimeMillis() - Class442.Method722(class442)) / (1000.0f * duration.getValue().floatValue()))), d3 + Math.cos((double)n * Math.PI / 180.0) * (double)Class442.Method720(class442));
                 arrayList.add(vec3d);
             }
             for (n = 0; n < arrayList.size() - 1; ++n) {
@@ -90,19 +90,19 @@ extends Module {
                 int n4 = n2 >> 16 & 0xFF;
                 int n5 = n2 >> 8 & 0xFF;
                 int n6 = n2 & 0xFF;
-                if (((ColorValue) color.getValue()).Method783()) {
-                    GL11.glColor4f((float)((float)n4 / 255.0f), (float)((float)n5 / 255.0f), (float)((float)n6 / 255.0f), (float)((float)n3 / 255.0f));
+                if (color.getValue().Method783()) {
+                    GL11.glColor4f((float)n4 / 255.0f, (float)n5 / 255.0f, (float)n6 / 255.0f, (float)n3 / 255.0f);
                 } else {
-                    GL11.glColor4f((float)((float)((ColorValue) color.getValue()).Method769() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method770() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method779() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method782() / 255.0f));
+                    GL11.glColor4f((float) color.getValue().Method769() / 255.0f, (float) color.getValue().Method770() / 255.0f, (float) color.getValue().Method779() / 255.0f, (float) color.getValue().Method782() / 255.0f);
                 }
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)n)).x, (double)((Vec3d)arrayList.get((int)n)).y, (double)((Vec3d)arrayList.get((int)n)).z);
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)(n + 1))).x, (double)((Vec3d)arrayList.get((int)(n + 1))).y, (double)((Vec3d)arrayList.get((int)(n + 1))).z);
+                GL11.glVertex3d(arrayList.get(n).x, arrayList.get(n).y, arrayList.get(n).z);
+                GL11.glVertex3d(arrayList.get(n + 1).x, arrayList.get(n + 1).y, arrayList.get(n + 1).z);
                 n2 = Color.getHSBColor(f += 0.0027777778f, fArray[1], fArray[2]).getRGB();
             }
             GL11.glEnd();
-            GL11.glDisable((int)2848);
+            GL11.glDisable(2848);
             GlStateManager.enableLighting();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
@@ -114,8 +114,8 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         EntityLivingBase entityLivingBase;
         if (packetEvent.getPacket() instanceof SPacketSpawnObject) {
-            if (((SPacketSpawnObject) packetEvent.getPacket()).getType() == 51 && ((Boolean) crystals.getValue()).booleanValue()) {
-                if (((Boolean) onlyOwn.getValue()).booleanValue()) {
+            if (((SPacketSpawnObject) packetEvent.getPacket()).getType() == 51 && crystals.getValue().booleanValue()) {
+                if (onlyOwn.getValue().booleanValue()) {
                     BlockPos blockPos = new BlockPos(((SPacketSpawnObject) packetEvent.getPacket()).getX(), ((SPacketSpawnObject) packetEvent.getPacket()).getY(), ((SPacketSpawnObject) packetEvent.getPacket()).getZ()).down();
                     if (this.Field756.containsKey(blockPos)) {
                         this.Field756.remove(blockPos);
@@ -124,19 +124,19 @@ extends Module {
                 } else {
                     this.Field755.add(new Class442(new Vec3d(((SPacketSpawnObject) packetEvent.getPacket()).getX(), ((SPacketSpawnObject) packetEvent.getPacket()).getY(), ((SPacketSpawnObject) packetEvent.getPacket()).getZ()), 1.5f, 0.5f));
                 }
-            } else if (((SPacketSpawnObject) packetEvent.getPacket()).getType() == 1 && ((Boolean) boats.getValue()).booleanValue()) {
+            } else if (((SPacketSpawnObject) packetEvent.getPacket()).getType() == 1 && boats.getValue().booleanValue()) {
                 this.Field755.add(new Class442(new Vec3d(((SPacketSpawnObject) packetEvent.getPacket()).getX(), ((SPacketSpawnObject) packetEvent.getPacket()).getY(), ((SPacketSpawnObject) packetEvent.getPacket()).getZ()), 1.0f, 0.75f));
             }
-        } else if (packetEvent.getPacket() instanceof SPacketSpawnPlayer && ((Boolean) players.getValue()).booleanValue()) {
+        } else if (packetEvent.getPacket() instanceof SPacketSpawnPlayer && players.getValue().booleanValue()) {
             this.Field755.add(new Class442(new Vec3d(((SPacketSpawnPlayer) packetEvent.getPacket()).getX(), ((SPacketSpawnPlayer) packetEvent.getPacket()).getY(), ((SPacketSpawnPlayer) packetEvent.getPacket()).getZ()), 1.8f, 0.5f));
-        } else if (packetEvent.getPacket() instanceof SPacketSpawnMob && ((Boolean) mobs.getValue()).booleanValue() && (entityLivingBase = (EntityLivingBase)EntityList.createEntityByID((int)((SPacketSpawnMob) packetEvent.getPacket()).getEntityType(), (World) Spawns.mc.world)) != null) {
+        } else if (packetEvent.getPacket() instanceof SPacketSpawnMob && mobs.getValue().booleanValue() && (entityLivingBase = (EntityLivingBase)EntityList.createEntityByID(((SPacketSpawnMob) packetEvent.getPacket()).getEntityType(), Spawns.mc.world)) != null) {
             this.Field755.add(new Class442(new Vec3d(((SPacketSpawnMob) packetEvent.getPacket()).getX(), ((SPacketSpawnMob) packetEvent.getPacket()).getY(), ((SPacketSpawnMob) packetEvent.getPacket()).getZ()), entityLivingBase.height, entityLivingBase.width / 2.0f));
         }
     }
 
     @Subscriber
     public void Method536(Class24 class24) {
-        if (class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && ((Boolean) onlyOwn.getValue()).booleanValue() && Spawns.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal) {
+        if (class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && onlyOwn.getValue().booleanValue() && Spawns.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal) {
             this.Field756.put(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getPos(), System.currentTimeMillis());
         }
     }

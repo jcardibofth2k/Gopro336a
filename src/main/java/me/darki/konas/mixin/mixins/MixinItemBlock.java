@@ -28,13 +28,13 @@ public abstract class MixinItemBlock {
         Class11 event = new Class11(player, worldIn, pos, facing, hitX, hitY, hitZ);
         if (event.isCanceled()) {
             ItemStack itemstack;
-            if (!this.Method152().isReplaceable((IBlockAccess)worldIn, pos)) {
+            if (!this.Method152().isReplaceable(worldIn, pos)) {
                 pos = pos.offset(facing);
             }
-            if (!(itemstack = player.getHeldItem(hand)).isEmpty() && player.canPlayerEdit(pos, facing, itemstack) && worldIn.mayPlace(this.Method152(), pos, false, facing, (Entity)player)) {
-                cir.setReturnValue((Object)EnumActionResult.SUCCESS);
+            if (!(itemstack = player.getHeldItem(hand)).isEmpty() && player.canPlayerEdit(pos, facing, itemstack) && worldIn.mayPlace(this.Method152(), pos, false, facing, player)) {
+                cir.setReturnValue(EnumActionResult.SUCCESS);
             } else {
-                cir.setReturnValue((Object)EnumActionResult.FAIL);
+                cir.setReturnValue(EnumActionResult.FAIL);
             }
         }
     }

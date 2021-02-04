@@ -22,7 +22,8 @@ public class Entity1_13Types {
       }
    }
 
-   public static enum ObjectType implements com.viaversion.viaversion.api.minecraft.entities.ObjectType {
+   public
+   enum ObjectType implements com.viaversion.viaversion.api.minecraft.entities.ObjectType {
       BOAT(1, Entity1_13Types.EntityType.BOAT),
       ITEM(2, Entity1_13Types.EntityType.ITEM),
       AREA_EFFECT_CLOUD(3, Entity1_13Types.EntityType.AREA_EFFECT_CLOUD),
@@ -57,7 +58,7 @@ public class Entity1_13Types {
       private final int field_59;
       private final Entity1_13Types.EntityType type;
 
-      private ObjectType(int id, Entity1_13Types.EntityType type) {
+      ObjectType(int id, Entity1_13Types.EntityType type) {
          this.field_59 = id;
          this.type = type;
       }
@@ -105,7 +106,8 @@ public class Entity1_13Types {
       }
    }
 
-   public static enum EntityType implements com.viaversion.viaversion.api.minecraft.entities.EntityType {
+   public
+   enum EntityType implements com.viaversion.viaversion.api.minecraft.entities.EntityType {
       ENTITY(-1),
       AREA_EFFECT_CLOUD(0, ENTITY),
       END_CRYSTAL(16, ENTITY),
@@ -233,12 +235,12 @@ public class Entity1_13Types {
       private final int field_114;
       private final Entity1_13Types.EntityType parent;
 
-      private EntityType(int id) {
+      EntityType(int id) {
          this.field_114 = id;
          this.parent = null;
       }
 
-      private EntityType(int id, Entity1_13Types.EntityType parent) {
+      EntityType(int id, Entity1_13Types.EntityType parent) {
          this.field_114 = id;
          this.parent = parent;
       }

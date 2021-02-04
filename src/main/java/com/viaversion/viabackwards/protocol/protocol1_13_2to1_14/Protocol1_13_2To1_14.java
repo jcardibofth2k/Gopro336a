@@ -111,7 +111,7 @@ public class Protocol1_13_2To1_14 extends BackwardsProtocol {
             });
          }
       });
-      this.registerClientbound(ClientboundPackets1_14.UPDATE_LIGHT, (ClientboundPacketType)null, new PacketRemapper() {
+      this.registerClientbound(ClientboundPackets1_14.UPDATE_LIGHT, null, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {

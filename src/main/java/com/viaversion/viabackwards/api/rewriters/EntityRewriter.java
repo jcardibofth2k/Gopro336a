@@ -20,7 +20,7 @@ public abstract class EntityRewriter extends EntityRewriterBase {
    }
 
    public void registerTrackerWithData(ClientboundPacketType packetType, final EntityType fallingBlockType) {
-      ((BackwardsProtocol)this.protocol).registerClientbound(packetType, new PacketRemapper() {
+      this.protocol.registerClientbound(packetType, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -48,7 +48,7 @@ public abstract class EntityRewriter extends EntityRewriterBase {
    }
 
    public void registerSpawnTracker(ClientboundPacketType packetType) {
-      ((BackwardsProtocol)this.protocol).registerClientbound(packetType, new PacketRemapper() {
+      this.protocol.registerClientbound(packetType, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);

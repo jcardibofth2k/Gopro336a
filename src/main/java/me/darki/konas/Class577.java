@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import me.darki.konas.module.render.BreadCrums;
+import me.darki.konas.util.ChatUtil;
 import net.minecraft.util.math.Vec3d;
 import java.io.FileWriter;
 import me.darki.konas.command.Logger;
@@ -117,7 +118,7 @@ public class Class577 extends Command
                     break Label_1192;
                 }
                 case 3: {
-                    ChatUtil.Method1033("(h)Saved Breadcrums:", new Object[0]);
+                    ChatUtil.Method1033("(h)Saved Breadcrums:");
                     if (Class577.Field490.listFiles() != null) {
                         Arrays.stream(Class577.Field490.listFiles()).filter(Class577::Method566).collect((Collector<? super File, ?, List<? super File>>)Collectors.toList()).forEach((Consumer<? super Object>)Class577::Method565);
                         break;
@@ -144,6 +145,6 @@ public class Class577 extends Command
     }
     
     public Class577() {
-        super("Breadcrums", "Load and save breadcrums", new SyntaxChunk[] { new SyntaxChunk("<save/load/list/clear>"), new SyntaxChunk("<name>") });
+        super("Breadcrums", "Load and save breadcrums", new SyntaxChunk("<save/load/list/clear>"), new SyntaxChunk("<name>"));
     }
 }

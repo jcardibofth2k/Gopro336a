@@ -74,8 +74,8 @@ public abstract class MixinFontRenderer {
                 if (index == -1) continue;
                 int x = this.Method54(text.substring(0, index));
                 Minecraft.getMinecraft().getTextureManager().bindTexture(Emojis.getEmoji(emoji));
-                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)this.Field28);
-                Gui.drawScaledCustomSizeModalRect((int)((int)(this.Field29 + (float)x)), (int)((int)this.Field30), (float)0.0f, (float)0.0f, (int)size, (int)size, (int)size, (int)size, (float)size, (float)size);
+                GlStateManager.color(1.0f, 1.0f, 1.0f, this.Field28);
+                Gui.drawScaledCustomSizeModalRect((int)(this.Field29 + (float)x), (int)this.Field30, 0.0f, 0.0f, size, size, size, size, (float)size, (float)size);
             }
             text = text.replaceFirst(":" + emoji.getName() + ":", "  ");
         }

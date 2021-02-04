@@ -49,7 +49,7 @@ public class InventoryPackets extends ItemRewriter {
    public void registerPackets() {
       this.registerSetCooldown(ClientboundPackets1_13.COOLDOWN);
       this.registerAdvancements(ClientboundPackets1_13.ADVANCEMENTS, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_14To1_13_2)this.protocol).registerClientbound(ClientboundPackets1_13.OPEN_WINDOW, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.OPEN_WINDOW, null, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -191,7 +191,7 @@ public class InventoryPackets extends ItemRewriter {
       });
       this.registerWindowItems(ClientboundPackets1_13.WINDOW_ITEMS, Type.FLAT_VAR_INT_ITEM_ARRAY);
       this.registerSetSlot(ClientboundPackets1_13.SET_SLOT, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_14To1_13_2)this.protocol).registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -242,7 +242,7 @@ public class InventoryPackets extends ItemRewriter {
       });
       this.registerEntityEquipment(ClientboundPackets1_13.ENTITY_EQUIPMENT, Type.FLAT_VAR_INT_ITEM);
       final RecipeRewriter recipeRewriter = new RecipeRewriter1_13_2(this.protocol);
-      ((Protocol1_14To1_13_2)this.protocol).registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int size = (Integer)wrapper.passthrough(Type.VAR_INT);
@@ -265,7 +265,7 @@ public class InventoryPackets extends ItemRewriter {
          }
       });
       this.registerClickWindow(ServerboundPackets1_14.CLICK_WINDOW, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_14To1_13_2)this.protocol).registerServerbound(ServerboundPackets1_14.SELECT_TRADE, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_14.SELECT_TRADE, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {

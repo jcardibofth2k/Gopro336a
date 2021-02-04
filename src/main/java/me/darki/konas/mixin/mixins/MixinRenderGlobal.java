@@ -20,7 +20,7 @@ public class MixinRenderGlobal {
         Vec3d sky = Minecraft.getMinecraft().world.getSkyColor(entityIn, partialTicks);
         Class58 event = new Class58((float)sky.x, (float)sky.y, (float)sky.z);
         EventDispatcher.Companion.dispatch(event);
-        return new Vec3d((double)event.Method213(), (double)event.Method215(), (double)event.Method214());
+        return new Vec3d(event.Method213(), event.Method215(), event.Method214());
     }
 
     @ModifyVariable(method={"setupTerrain"}, at=@At(value="HEAD"))

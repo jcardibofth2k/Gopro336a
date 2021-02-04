@@ -78,7 +78,7 @@ public class IntArrayTag extends Tag {
    }
 
    public final IntArrayTag clone() {
-      return new IntArrayTag((int[])this.value.clone());
+      return new IntArrayTag(this.value.clone());
    }
 
    public int getTagId() {

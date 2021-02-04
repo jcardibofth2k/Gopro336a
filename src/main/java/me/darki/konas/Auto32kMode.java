@@ -11,7 +11,7 @@ extends Enum {
     }
 
     public static Auto32kMode[] Method1496() {
-        return (Auto32kMode[])Field1438.clone();
+        return Field1438.clone();
     }
 
     /*

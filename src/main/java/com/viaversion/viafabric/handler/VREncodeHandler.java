@@ -58,7 +58,7 @@ public class VREncodeHandler extends MessageToMessageEncoder {
    public void encode(ChannelHandlerContext ctx, ByteBuf bytebuf, List out) throws Exception {
       Object var10000 = null;
       if (!this.info.checkOutgoingPacket()) {
-         throw CancelEncoderException.generate((Throwable)null);
+         throw CancelEncoderException.generate(null);
       } else if (!this.info.shouldTransformPacket()) {
          out.add(bytebuf.retain());
       } else {

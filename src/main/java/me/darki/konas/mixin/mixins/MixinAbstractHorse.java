@@ -16,7 +16,7 @@ public class MixinAbstractHorse {
         Class60 entitySteerEvent = Class60.Method323((AbstractHorse)this);
         EventDispatcher.Companion.dispatch(entitySteerEvent);
         if (entitySteerEvent.isCanceled()) {
-            ci.setReturnValue((Object)true);
+            ci.setReturnValue(true);
         }
     }
 
@@ -25,7 +25,7 @@ public class MixinAbstractHorse {
         Class72 horseSaddledEvent = new Class72((AbstractHorse)this);
         EventDispatcher.Companion.dispatch(horseSaddledEvent);
         if (horseSaddledEvent.isCanceled()) {
-            ci.setReturnValue((Object)true);
+            ci.setReturnValue(true);
         }
     }
 }

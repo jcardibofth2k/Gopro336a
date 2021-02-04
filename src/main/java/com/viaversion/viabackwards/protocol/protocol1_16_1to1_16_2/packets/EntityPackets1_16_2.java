@@ -31,7 +31,7 @@ public class EntityPackets1_16_2 extends EntityRewriter {
       this.registerTracker(ClientboundPackets1_16_2.SPAWN_PLAYER, Entity1_16_2Types.PLAYER);
       this.registerRemoveEntities(ClientboundPackets1_16_2.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_16_2.ENTITY_METADATA, Types1_16.METADATA_LIST);
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler((wrapper) -> {
@@ -60,7 +60,7 @@ public class EntityPackets1_16_2 extends EntityRewriter {
             this.handler(EntityPackets1_16_2.this.getTrackerHandler(Entity1_16_2Types.PLAYER, Type.INT));
          }
       });
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                CompoundTag dimensionData = (CompoundTag)wrapper.read(Type.NBT);

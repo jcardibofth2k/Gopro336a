@@ -26,7 +26,7 @@ public class ChatPackets1_12 extends RewriterBase {
    }
 
    protected void registerPackets() {
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.CHAT_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.CHAT_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                JsonElement element = (JsonElement)wrapper.passthrough(Type.COMPONENT);

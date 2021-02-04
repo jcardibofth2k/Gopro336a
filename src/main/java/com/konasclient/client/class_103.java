@@ -24,7 +24,7 @@ public class class_103 extends Lambda implements Function0 {
       boolean var3 = false;
       boolean var5 = false;
       var1.setAccessible(true);
-      Object var10000 = var1.get((Object)null);
+      Object var10000 = var1.get(null);
       if (var10000 == null) {
          throw new TypeCastException("null cannot be cast to non-null type sun.misc.Unsafe");
       } else {

@@ -29,11 +29,11 @@ public enum MetaIndex {
    STAND_LL_POS(Entity1_10Types.EntityType.ARMOR_STAND, 15, MetaType1_8.Rotation, MetaType1_9.Vector3F),
    STAND_RL_POS(Entity1_10Types.EntityType.ARMOR_STAND, 16, MetaType1_8.Rotation, MetaType1_9.Vector3F),
    PLAYER_SKIN_FLAGS(Entity1_10Types.EntityType.ENTITY_HUMAN, 10, MetaType1_8.Byte, 12, MetaType1_9.Byte),
-   PLAYER_HUMAN_BYTE(Entity1_10Types.EntityType.ENTITY_HUMAN, 16, MetaType1_8.Byte, (MetaType1_9)null),
+   PLAYER_HUMAN_BYTE(Entity1_10Types.EntityType.ENTITY_HUMAN, 16, MetaType1_8.Byte, null),
    PLAYER_ADDITIONAL_HEARTS(Entity1_10Types.EntityType.ENTITY_HUMAN, 17, MetaType1_8.Float, 10, MetaType1_9.Float),
    PLAYER_SCORE(Entity1_10Types.EntityType.ENTITY_HUMAN, 18, MetaType1_8.Int, 11, MetaType1_9.VarInt),
    PLAYER_HAND(Entity1_10Types.EntityType.ENTITY_HUMAN, -1, MetaType1_8.NonExistent, 5, MetaType1_9.Byte),
-   SOMETHING_ANTICHEAT_PLUGINS_FOR_SOME_REASON_USE(Entity1_10Types.EntityType.ENTITY_HUMAN, 11, MetaType1_8.Byte, (MetaType1_9)null),
+   SOMETHING_ANTICHEAT_PLUGINS_FOR_SOME_REASON_USE(Entity1_10Types.EntityType.ENTITY_HUMAN, 11, MetaType1_8.Byte, null),
    HORSE_INFO(Entity1_10Types.EntityType.HORSE, 16, MetaType1_8.Int, 12, MetaType1_9.Byte),
    HORSE_TYPE(Entity1_10Types.EntityType.HORSE, 19, MetaType1_8.Byte, 13, MetaType1_9.VarInt),
    HORSE_SUBTYPE(Entity1_10Types.EntityType.HORSE, 20, MetaType1_8.Int, 14, MetaType1_9.VarInt),
@@ -51,7 +51,7 @@ public enum MetaIndex {
    SHEEP_COLOR(Entity1_10Types.EntityType.SHEEP, 16, MetaType1_8.Byte, 12, MetaType1_9.Byte),
    VILLAGER_PROFESSION(Entity1_10Types.EntityType.VILLAGER, 16, MetaType1_8.Int, 12, MetaType1_9.VarInt),
    ENDERMAN_BLOCKSTATE(Entity1_10Types.EntityType.ENDERMAN, 16, MetaType1_8.Short, 11, MetaType1_9.BlockID),
-   ENDERMAN_BLOCKDATA(Entity1_10Types.EntityType.ENDERMAN, 17, MetaType1_8.Byte, (MetaType1_9)null),
+   ENDERMAN_BLOCKDATA(Entity1_10Types.EntityType.ENDERMAN, 17, MetaType1_8.Byte, null),
    ENDERMAN_ISSCREAMING(Entity1_10Types.EntityType.ENDERMAN, 18, MetaType1_8.Byte, 12, MetaType1_9.Boolean),
    ZOMBIE_ISCHILD(Entity1_10Types.EntityType.ZOMBIE, 12, MetaType1_8.Byte, 11, MetaType1_9.Boolean),
    ZOMBIE_ISVILLAGER(Entity1_10Types.EntityType.ZOMBIE, 13, MetaType1_8.Byte, 12, MetaType1_9.VarInt),
@@ -70,8 +70,8 @@ public enum MetaIndex {
    WITHER_TARGET2(Entity1_10Types.EntityType.WITHER, 18, MetaType1_8.Int, 12, MetaType1_9.VarInt),
    WITHER_TARGET3(Entity1_10Types.EntityType.WITHER, 19, MetaType1_8.Int, 13, MetaType1_9.VarInt),
    WITHER_INVULN_TIME(Entity1_10Types.EntityType.WITHER, 20, MetaType1_8.Int, 14, MetaType1_9.VarInt),
-   WITHER_PROPERTIES(Entity1_10Types.EntityType.WITHER, 10, MetaType1_8.Byte, (MetaType1_9)null),
-   WITHER_UNKNOWN(Entity1_10Types.EntityType.WITHER, 11, MetaType1_8.NonExistent, (MetaType1_9)null),
+   WITHER_PROPERTIES(Entity1_10Types.EntityType.WITHER, 10, MetaType1_8.Byte, null),
+   WITHER_UNKNOWN(Entity1_10Types.EntityType.WITHER, 11, MetaType1_8.NonExistent, null),
    WITHERSKULL_INVULN(Entity1_10Types.EntityType.WITHER_SKULL, 10, MetaType1_8.Byte, 5, MetaType1_9.Boolean),
    GUARDIAN_INFO(Entity1_10Types.EntityType.GUARDIAN, 16, MetaType1_8.Int, 11, MetaType1_9.Byte),
    GUARDIAN_TARGET(Entity1_10Types.EntityType.GUARDIAN, 17, MetaType1_8.Int, 12, MetaType1_9.VarInt),
@@ -92,10 +92,10 @@ public enum MetaIndex {
    FIREWORK_INFO(Entity1_10Types.EntityType.FIREWORK, 8, MetaType1_8.Slot, 5, MetaType1_9.Slot),
    ITEMFRAME_ITEM(Entity1_10Types.EntityType.ITEM_FRAME, 8, MetaType1_8.Slot, 5, MetaType1_9.Slot),
    ITEMFRAME_ROTATION(Entity1_10Types.EntityType.ITEM_FRAME, 9, MetaType1_8.Byte, 6, MetaType1_9.VarInt),
-   ENDERCRYSTAL_HEALTH(Entity1_10Types.EntityType.ENDER_CRYSTAL, 8, MetaType1_8.Int, (MetaType1_9)null),
-   ENDERDRAGON_UNKNOWN(Entity1_10Types.EntityType.ENDER_DRAGON, 5, MetaType1_8.Byte, (MetaType1_9)null),
-   ENDERDRAGON_NAME(Entity1_10Types.EntityType.ENDER_DRAGON, 10, MetaType1_8.String, (MetaType1_9)null),
-   ENDERDRAGON_FLAG(Entity1_10Types.EntityType.ENDER_DRAGON, 15, MetaType1_8.Byte, (MetaType1_9)null),
+   ENDERCRYSTAL_HEALTH(Entity1_10Types.EntityType.ENDER_CRYSTAL, 8, MetaType1_8.Int, null),
+   ENDERDRAGON_UNKNOWN(Entity1_10Types.EntityType.ENDER_DRAGON, 5, MetaType1_8.Byte, null),
+   ENDERDRAGON_NAME(Entity1_10Types.EntityType.ENDER_DRAGON, 10, MetaType1_8.String, null),
+   ENDERDRAGON_FLAG(Entity1_10Types.EntityType.ENDER_DRAGON, 15, MetaType1_8.Byte, null),
    ENDERDRAGON_PHASE(Entity1_10Types.EntityType.ENDER_DRAGON, 11, MetaType1_8.Byte, MetaType1_9.VarInt);
 
    private static final HashMap metadataRewrites = new HashMap();
@@ -105,7 +105,7 @@ public enum MetaIndex {
    private final MetaType1_8 oldType;
    private final int index;
 
-   private MetaIndex(Entity1_10Types.EntityType type, int index, MetaType1_8 oldType, @Nullable MetaType1_9 newType) {
+   MetaIndex(Entity1_10Types.EntityType type, int index, MetaType1_8 oldType, @Nullable MetaType1_9 newType) {
       this.clazz = type;
       this.index = index;
       this.newIndex = index;
@@ -113,7 +113,7 @@ public enum MetaIndex {
       this.newType = newType;
    }
 
-   private MetaIndex(Entity1_10Types.EntityType type, int index, MetaType1_8 oldType, int newIndex, @Nullable MetaType1_9 newType) {
+   MetaIndex(Entity1_10Types.EntityType type, int index, MetaType1_8 oldType, int newIndex, @Nullable MetaType1_9 newType) {
       this.clazz = type;
       this.index = index;
       this.oldType = oldType;

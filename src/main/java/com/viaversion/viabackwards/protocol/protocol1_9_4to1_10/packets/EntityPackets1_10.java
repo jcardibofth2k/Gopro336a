@@ -26,7 +26,7 @@ public class EntityPackets1_10 extends LegacyEntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_9_4To1_10)this.protocol).registerClientbound(ClientboundPackets1_9_3.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -39,7 +39,7 @@ public class EntityPackets1_10 extends LegacyEntityRewriter {
             this.map(Type.INT);
             this.handler(EntityPackets1_10.this.getObjectTrackerHandler());
             this.handler(EntityPackets1_10.this.getObjectRewriter((id) -> {
-               return (ObjectType)Entity1_11Types.ObjectType.findById(id).orElse((Object)null);
+               return Entity1_11Types.ObjectType.findById(id).orElse(null);
             }));
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -62,7 +62,7 @@ public class EntityPackets1_10 extends LegacyEntityRewriter {
       });
       this.registerTracker(ClientboundPackets1_9_3.SPAWN_EXPERIENCE_ORB, Entity1_10Types.EntityType.EXPERIENCE_ORB);
       this.registerTracker(ClientboundPackets1_9_3.SPAWN_GLOBAL_ENTITY, Entity1_10Types.EntityType.WEATHER);
-      ((Protocol1_9_4To1_10)this.protocol).registerClientbound(ClientboundPackets1_9_3.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -100,7 +100,7 @@ public class EntityPackets1_10 extends LegacyEntityRewriter {
       this.registerTracker(ClientboundPackets1_9_3.SPAWN_PAINTING, Entity1_10Types.EntityType.PAINTING);
       this.registerJoinGame(ClientboundPackets1_9_3.JOIN_GAME, Entity1_10Types.EntityType.PLAYER);
       this.registerRespawn(ClientboundPackets1_9_3.RESPAWN);
-      ((Protocol1_9_4To1_10)this.protocol).registerClientbound(ClientboundPackets1_9_3.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);

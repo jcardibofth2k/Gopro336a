@@ -56,7 +56,7 @@ extends Element {
     }
 
     public void Method2098(float[] fArray, float[] fArray2, Entity entity) {
-        Class557.Method801(this.Method2099((EntityLivingBase)entity), this.Method2320(), this.Method2324() + fArray[0], ((ColorValue)this.Field2382.getValue()).Method774());
+        Class557.Method801(this.Method2099((EntityLivingBase)entity), this.Method2320(), this.Method2324() + fArray[0], this.Field2382.getValue().Method774());
         fArray[0] = fArray[0] + Class557.Method799(this.Method2099((EntityLivingBase)entity));
         if (Class557.Method800(this.Method2099((EntityLivingBase)entity)) > fArray2[0]) {
             fArray2[0] = Class557.Method800(this.Method2099((EntityLivingBase)entity));
@@ -67,12 +67,12 @@ extends Element {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         String string = " (" + (entityLivingBase.getHealth() + entityLivingBase.getAbsorptionAmount()) + ")";
         String string2 = " [" + entityLivingBase.getEntityId() + "]";
-        String string3 = " \u00c2\u00a7c" + decimalFormat.format(MobRadar.mc.player.getDistance((Entity)entityLivingBase));
+        String string3 = " \u00c2\u00a7c" + decimalFormat.format(MobRadar.mc.player.getDistance(entityLivingBase));
         String string4 = " \u00c2\u00a7rXYZ " + entityLivingBase.getPosition().getX() + " " + entityLivingBase.getPosition().getY() + " " + entityLivingBase.getPosition().getZ();
-        return entityLivingBase.getName() + ((Boolean)Field2391.getValue() != false ? string : "") + ((Boolean)Field2392.getValue() != false ? string2 : "") + ((Boolean)Field2393.getValue() != false ? string3 : "") + (((Boolean)Field2394.getValue()).booleanValue() ? string4 : "");
+        return entityLivingBase.getName() + (Field2391.getValue() != false ? string : "") + (Field2392.getValue() != false ? string2 : "") + (Field2393.getValue() != false ? string3 : "") + (Field2394.getValue().booleanValue() ? string4 : "");
     }
 
     public static boolean Method2100(Entity entity) {
-        return (Boolean)Field2383.getValue() != false && entity instanceof EntityGhast || (Boolean)Field2384.getValue() != false && entity instanceof EntitySlime || (Boolean)Field2385.getValue() != false && entity instanceof EntityDonkey || (Boolean)Field2386.getValue() != false && entity instanceof EntityLlama || (Boolean)Field2387.getValue() != false && entity instanceof EntityOcelot || (Boolean)Field2388.getValue() != false && entity instanceof EntityWolf || (Boolean)Field2389.getValue() != false && entity instanceof EntityParrot;
+        return Field2383.getValue() != false && entity instanceof EntityGhast || Field2384.getValue() != false && entity instanceof EntitySlime || Field2385.getValue() != false && entity instanceof EntityDonkey || Field2386.getValue() != false && entity instanceof EntityLlama || Field2387.getValue() != false && entity instanceof EntityOcelot || Field2388.getValue() != false && entity instanceof EntityWolf || Field2389.getValue() != false && entity instanceof EntityParrot;
     }
 }

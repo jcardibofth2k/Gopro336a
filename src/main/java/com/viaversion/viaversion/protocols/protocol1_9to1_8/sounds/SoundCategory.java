@@ -16,7 +16,7 @@ public enum SoundCategory {
    // $FF: renamed from: id int
    private final int field_3222;
 
-   private SoundCategory(String name, int id) {
+   SoundCategory(String name, int id) {
       this.name = name;
       this.field_3222 = id;
    }

@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketAnimation.class})
 public interface ICPacketAnimation {
     @Accessor(value="hand")
-    public void Method1602(EnumHand var1);
+    void Method1602(EnumHand var1);
 }

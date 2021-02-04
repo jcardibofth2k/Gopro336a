@@ -141,7 +141,7 @@ public abstract class AbstractIntCollection extends AbstractCollection implement
          }
 
          int k = i.nextInt();
-         s.append(String.valueOf(k));
+         s.append(k);
       }
 
       s.append("}");

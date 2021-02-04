@@ -9,7 +9,7 @@ public class JLoggerToLog4j extends Logger {
    public org.apache.logging.log4j.Logger base;
 
    public JLoggerToLog4j(org.apache.logging.log4j.Logger logger) {
-      super("logger", (String)null);
+      super("logger", null);
       this.base = logger;
    }
 

@@ -31,7 +31,7 @@ public class Class54 {
         if (class653.Method1164() == 0) {
             return;
         }
-        if (Keyboard.isKeyDown((int)61)) {
+        if (Keyboard.isKeyDown(61)) {
             return;
         }
         for (Module object : Class167.Method1619()) {

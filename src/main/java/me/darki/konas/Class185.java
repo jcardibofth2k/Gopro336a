@@ -35,7 +35,7 @@ extends Module {
     public int Field1387 = -1;
 
     public Class185() {
-        super("AutoAnvil", "Automatically places anvils above people's heads to break their helmet", Category.COMBAT, new String[0]);
+        super("AutoAnvil", "Automatically places anvils above people's heads to break their helmet", Category.COMBAT);
     }
 
     @Subscriber(priority=8)
@@ -46,13 +46,13 @@ extends Module {
             int n = Class185.mc.player.inventory.currentItem;
             if (bl) {
                 Class185.mc.player.inventory.currentItem = this.Field1387;
-                Class185.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1387));
+                Class185.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1387));
             }
             Class496.Method1958(this.Field1386, EnumHand.MAIN_HAND, true);
             this.Field1385 = 0;
             if (bl) {
                 Class185.mc.player.inventory.currentItem = n;
-                Class185.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                Class185.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
         }
     }
@@ -61,11 +61,11 @@ extends Module {
     public void onEnable() {
         this.Field1386 = null;
         this.Field1387 = -1;
-        this.Field1385 = (Integer)Field1383.getValue();
+        this.Field1385 = Field1383.getValue();
     }
 
     public static boolean Method122(EntityPlayer entityPlayer) {
-        return !Class546.Method963((Entity)entityPlayer);
+        return !Class546.Method963(entityPlayer);
     }
 
     @Subscriber(priority=40)
@@ -78,18 +78,18 @@ extends Module {
         if (Class167.Method1610(PacketFly.class).isEnabled()) {
             return;
         }
-        if (this.Field1385 < (Integer)Field1383.getValue()) {
+        if (this.Field1385 < Field1383.getValue()) {
             ++this.Field1385;
         }
-        if (this.Field1385 < (Integer)Field1383.getValue()) {
+        if (this.Field1385 < Field1383.getValue()) {
             return;
         }
         EntityPlayer entityPlayer = this.Method1453();
         if (entityPlayer == null) {
             return;
         }
-        if (((Boolean)Field1380.getValue()).booleanValue() && !(Class185.mc.world.getBlockState(new BlockPos((Entity)entityPlayer)).getBlock() instanceof BlockPressurePlate)) {
-            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer), true);
+        if (Field1380.getValue().booleanValue() && !(Class185.mc.world.getBlockState(new BlockPos(entityPlayer)).getBlock() instanceof BlockPressurePlate)) {
+            this.Field1386 = Class496.Method1962(new BlockPos(entityPlayer), true);
             if (this.Field1386 != null) {
                 int n = this.Method464();
                 if (n == -1) {
@@ -102,8 +102,8 @@ extends Module {
                 return;
             }
         }
-        for (int i = 0; i < (Integer)Field1382.getValue(); ++i) {
-            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer).up((Integer)Field1381.getValue() + i), true);
+        for (int i = 0; i < Field1382.getValue(); ++i) {
+            this.Field1386 = Class496.Method1962(new BlockPos(entityPlayer).up(Field1381.getValue() + i), true);
             if (this.Field1386 == null) continue;
             int n = this.Method524();
             if (n == -1) {
@@ -121,7 +121,7 @@ extends Module {
         int n = -1;
         for (int i = 0; i < 9; ++i) {
             Item item = Class185.mc.player.inventory.getStackInSlot(i).getItem();
-            Block block = Block.getBlockFromItem((Item)item);
+            Block block = Block.getBlockFromItem(item);
             if (!(block instanceof BlockPressurePlate)) continue;
             n = i;
             break;
@@ -136,7 +136,7 @@ extends Module {
     }
 
     public static boolean Method126(EntityPlayer entityPlayer) {
-        return (double)Class185.mc.player.getDistance((Entity)entityPlayer) < (Double)Field1384.getValue();
+        return (double)Class185.mc.player.getDistance(entityPlayer) < Field1384.getValue();
     }
 
     public static boolean Method128(EntityPlayer entityPlayer) {
@@ -151,7 +151,7 @@ extends Module {
         int n = -1;
         for (int i = 0; i < 9; ++i) {
             Item item = Class185.mc.player.inventory.getStackInSlot(i).getItem();
-            Block block = Block.getBlockFromItem((Item)item);
+            Block block = Block.getBlockFromItem(item);
             if (!(block instanceof BlockAnvil)) continue;
             n = i;
             break;
@@ -168,7 +168,7 @@ extends Module {
     }
 
     public static Float Method1452(EntityPlayer entityPlayer) {
-        return Float.valueOf(Class185.mc.player.getDistance((Entity)entityPlayer));
+        return Float.valueOf(Class185.mc.player.getDistance(entityPlayer));
     }
 
     public EntityPlayer Method1453() {

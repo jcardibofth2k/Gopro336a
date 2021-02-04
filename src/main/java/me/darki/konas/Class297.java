@@ -25,7 +25,7 @@ extends Module {
         if (string.startsWith("/") || string.startsWith(Command.Method190())) {
             return;
         }
-        if ((string = string + ((Boolean)this.Field1516.getValue() != false ? Field1515 : Field1514)).length() >= 256) {
+        if ((string = string + (this.Field1516.getValue() != false ? Field1515 : Field1514)).length() >= 256) {
             string = string.substring(0, 256);
         }
         class648.Method86(string);

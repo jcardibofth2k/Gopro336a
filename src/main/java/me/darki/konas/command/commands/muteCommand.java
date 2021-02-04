@@ -2,14 +2,14 @@ package me.darki.konas.command.commands;
 
 import me.darki.konas.Class484;
 import me.darki.konas.Class595;
-import me.darki.konas.Class614;
+import me.darki.konas.MuteCommandOptions;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
 public class muteCommand
 extends Command {
     public muteCommand() {
-        super("mute", "Mute or unmute people", new Class614("<add/del/clear/list>"), new Class595("[name]"));
+        super("mute", "Mute or unmute people", new MuteCommandOptions("<add/del/clear/list>"), new Class595("[name]"));
     }
 
     public static void Method175(StringBuilder stringBuilder, String string) {

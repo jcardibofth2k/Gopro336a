@@ -19,7 +19,7 @@ extends Module {
         if (Class331.mc.gameSettings.keyBindPickBlock.isKeyDown() && Class167.Method1610(MiddleClick.class).isEnabled()) {
             return;
         }
-        if (!(!((Boolean)this.Field514.getValue()).booleanValue() || Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || ((Boolean)this.Field515.getValue()).booleanValue() && Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {
+        if (!(!this.Field514.getValue().booleanValue() || Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || this.Field515.getValue().booleanValue() && Class331.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {
             return;
         }
         class33.setCanceled(true);

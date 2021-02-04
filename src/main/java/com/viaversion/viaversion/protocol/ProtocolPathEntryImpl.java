@@ -25,7 +25,7 @@ public class ProtocolPathEntryImpl implements ProtocolPathEntry {
          return true;
       } else if (o != null && this.getClass() == o.getClass()) {
          ProtocolPathEntryImpl that = (ProtocolPathEntryImpl)o;
-         return this.outputProtocolVersion != that.outputProtocolVersion ? false : this.protocol.equals(that.protocol);
+         return this.outputProtocolVersion == that.outputProtocolVersion && this.protocol.equals(that.protocol);
       } else {
          return false;
       }

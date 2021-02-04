@@ -20,7 +20,7 @@ public interface SelectorComponent extends BuildableComponent, ScopedComponent {
    @NotNull
    SelectorComponent separator(@Nullable final ComponentLike separator);
 
-   public interface Builder extends ComponentBuilder {
+   interface Builder extends ComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       SelectorComponent.Builder pattern(@NotNull final String pattern);

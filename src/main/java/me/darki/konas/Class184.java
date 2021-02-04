@@ -89,7 +89,7 @@ extends Module {
     }
 
     public Class184() {
-        super("Notify", "Notifies you of various things", Category.CLIENT, new String[0]);
+        super("Notify", "Notifies you of various things", Category.CLIENT);
     }
 
     public void Method145(Boolean bl) {
@@ -148,36 +148,36 @@ extends Module {
 
     @Subscriber
     public void Method974(TickEvent tickEvent) {
-        if (!((Boolean)this.Field1417.getValue()).booleanValue() && !((Boolean)this.Field1414.getValue()).booleanValue() && !((Boolean)this.Field1415.getValue()).booleanValue() && !((Boolean)this.Field1416.getValue()).booleanValue() || Class184.mc.player == null || Class184.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
+        if (!this.Field1417.getValue().booleanValue() && !this.Field1414.getValue().booleanValue() && !this.Field1415.getValue().booleanValue() && !this.Field1416.getValue().booleanValue() || Class184.mc.player == null || Class184.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
             return;
         }
         for (Entity entity : Class184.mc.world.loadedEntityList) {
-            if (entity instanceof EntityDonkey && ((Boolean)this.Field1414.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntityDonkey && this.Field1414.getValue().booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bDonkey &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
-                mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
+                if (!this.Field1418.getValue().booleanValue()) continue;
+                mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f));
                 continue;
             }
-            if (entity instanceof EntityLlama && ((Boolean)this.Field1415.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntityLlama && this.Field1415.getValue().booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bLlama &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
-                mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
+                if (!this.Field1418.getValue().booleanValue()) continue;
+                mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f));
                 continue;
             }
-            if (entity instanceof EntitySlime && ((Boolean)this.Field1416.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntitySlime && this.Field1416.getValue().booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bSlime &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
-                mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
+                if (!this.Field1418.getValue().booleanValue()) continue;
+                mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f));
                 continue;
             }
-            if (!(entity instanceof EntityGhast) || !((Boolean)this.Field1417.getValue()).booleanValue() || this.Field1420.contains(entity)) continue;
+            if (!(entity instanceof EntityGhast) || !this.Field1417.getValue().booleanValue() || this.Field1420.contains(entity)) continue;
             Logger.Method1118("Found &bGhast &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
             this.Field1420.add(entity);
-            if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
-            mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
+            if (!this.Field1418.getValue().booleanValue()) continue;
+            mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.ENTITY_PLAYER_LEVELUP, 1.0f));
         }
     }
 
@@ -190,7 +190,7 @@ extends Module {
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
-        if (Class184.mc.player == null || Class184.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || !((Boolean)this.Field1412.getValue()).booleanValue()) {
+        if (Class184.mc.player == null || Class184.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || !this.Field1412.getValue().booleanValue()) {
             return;
         }
         if (this.Field1421.Method737(2.07E7) && !this.Field1422.get(20700000L).booleanValue()) {

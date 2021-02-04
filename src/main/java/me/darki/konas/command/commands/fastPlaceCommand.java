@@ -20,10 +20,10 @@ extends Command {
     public void Method174(String[] stringArray) {
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
-                if (!((Class443) FastUse.whitelist.getValue()).Method684().isEmpty()) {
+                if (!FastUse.whitelist.getValue().Method684().isEmpty()) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("\n");
-                    ((Class443) FastUse.whitelist.getValue()).Method684().forEach(arg_0 -> fastPlaceCommand.Method175(stringBuilder, arg_0));
+                    FastUse.whitelist.getValue().Method684().forEach(arg_0 -> fastPlaceCommand.Method175(stringBuilder, arg_0));
                     Logger.Method1118(stringBuilder.toString());
                 } else {
                     Logger.Method1118("You dont have any blocks added :(");
@@ -38,12 +38,12 @@ extends Command {
             return;
         }
         if (stringArray[1].equalsIgnoreCase("add")) {
-            ((Class443) FastUse.whitelist.getValue()).Method681(stringArray[2]);
+            FastUse.whitelist.getValue().Method681(stringArray[2]);
         } else if (stringArray[1].equalsIgnoreCase("del")) {
-            ((Class443) FastUse.whitelist.getValue()).Method677(stringArray[2]);
+            FastUse.whitelist.getValue().Method677(stringArray[2]);
         } else {
             Logger.Method1118(this.Method191());
         }
-        ((Class443) FastUse.whitelist.getValue()).Method680();
+        FastUse.whitelist.getValue().Method680();
     }
 }

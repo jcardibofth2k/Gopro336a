@@ -16,7 +16,7 @@ extends Enum {
     }
 
     public static Category[] Method1764() {
-        return (Category[])Field1872.clone();
+        return Field1872.clone();
     }
 
     /*

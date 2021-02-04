@@ -147,7 +147,7 @@ public final class Protocol1_16_4To1_17 extends BackwardsProtocol {
             this.map(Type.FLOAT);
             this.map(Type.FLOAT);
             this.handler((wrapper) -> {
-               wrapper.write(Type.INT, (Integer)wrapper.read(Type.VAR_INT));
+               wrapper.write(Type.INT, wrapper.read(Type.VAR_INT));
             });
          }
       });
@@ -159,7 +159,7 @@ public final class Protocol1_16_4To1_17 extends BackwardsProtocol {
             });
          }
       });
-      this.registerClientbound(ClientboundPackets1_17.PING, (ClientboundPacketType)null, new PacketRemapper() {
+      this.registerClientbound(ClientboundPackets1_17.PING, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.cancel();

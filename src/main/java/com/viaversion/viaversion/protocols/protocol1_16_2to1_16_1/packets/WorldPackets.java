@@ -25,7 +25,7 @@ public class WorldPackets {
       blockRewriter.registerBlockAction(ClientboundPackets1_16.BLOCK_ACTION);
       blockRewriter.registerBlockChange(ClientboundPackets1_16.BLOCK_CHANGE);
       blockRewriter.registerAcknowledgePlayerDigging(ClientboundPackets1_16.ACKNOWLEDGE_PLAYER_DIGGING);
-      protocol.registerClientbound(ClientboundPackets1_16.CHUNK_DATA, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_16.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                Chunk chunk = (Chunk)wrapper.read(new Chunk1_16Type());
@@ -43,8 +43,8 @@ public class WorldPackets {
 
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_16.MULTI_BLOCK_CHANGE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_16.MULTI_BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.cancel();
@@ -63,11 +63,11 @@ public class WorldPackets {
                   int chunkY = record.getY() >> 4;
                   List list = sectionRecords[chunkY];
                   if (list == null) {
-                     sectionRecords[chunkY] = (List)(list = new ArrayList());
+                     sectionRecords[chunkY] = list = new ArrayList();
                   }
 
                   int blockId = protocol.getMappingData().getNewBlockStateId(record.getBlockId());
-                  ((List)list).add(new BlockChangeRecord1_16_2(record.getSectionX(), record.getSectionY(), record.getSectionZ(), blockId));
+                  list.add(new BlockChangeRecord1_16_2(record.getSectionX(), record.getSectionY(), record.getSectionZ(), blockId));
                }
 
                for(int chunkYx = 0; chunkYx < sectionRecords.length; ++chunkYx) {
@@ -76,14 +76,14 @@ public class WorldPackets {
                      PacketWrapper newPacket = wrapper.create(ClientboundPackets1_16_2.MULTI_BLOCK_CHANGE);
                      newPacket.write(Type.LONG, chunkPosition | (long)chunkYx & 1048575L);
                      newPacket.write(Type.BOOLEAN, false);
-                     newPacket.write(Type.VAR_LONG_BLOCK_CHANGE_RECORD_ARRAY, (BlockChangeRecord[])sectionRecord.toArray(WorldPackets.EMPTY_RECORDS));
+                     newPacket.write(Type.VAR_LONG_BLOCK_CHANGE_RECORD_ARRAY, sectionRecord.toArray(WorldPackets.EMPTY_RECORDS));
                      newPacket.send(Protocol1_16_2To1_16_1.class);
                   }
                }
 
             });
          }
-      }));
+      });
       blockRewriter.registerEffect(ClientboundPackets1_16.EFFECT, 1010, 2001);
    }
 }

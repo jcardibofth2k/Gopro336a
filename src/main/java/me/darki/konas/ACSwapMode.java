@@ -25,6 +25,6 @@ extends Enum {
     }
 
     public static ACSwapMode[] Method1690() {
-        return (ACSwapMode[])Field1791.clone();
+        return Field1791.clone();
     }
 }

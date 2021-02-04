@@ -71,7 +71,7 @@ public abstract class TypeAdapter {
    }
 
    public final Object fromJson(String json) throws IOException {
-      return this.fromJson((Reader)(new StringReader(json)));
+      return this.fromJson(new StringReader(json));
    }
 
    public final Object fromJsonTree(JsonElement jsonTree) {

@@ -447,7 +447,7 @@ public class JsonReader implements Closeable {
                   last = 7;
                }
             } else {
-               value = (long)(-(c - 48));
+               value = -(c - 48);
                last = 2;
             }
          }
@@ -606,7 +606,7 @@ public class JsonReader implements Closeable {
                throw new IllegalStateException("Expected a double but was " + this.peek() + this.locationString());
             }
          } else {
-            this.peekedString = this.nextQuotedValue((char)(p == 8 ? '\'' : '"'));
+            this.peekedString = this.nextQuotedValue(p == 8 ? '\'' : '"');
          }
 
          this.peeked = 11;
@@ -645,7 +645,7 @@ public class JsonReader implements Closeable {
             if (p == 10) {
                this.peekedString = this.nextUnquotedValue();
             } else {
-               this.peekedString = this.nextQuotedValue((char)(p == 8 ? '\'' : '"'));
+               this.peekedString = this.nextQuotedValue(p == 8 ? '\'' : '"');
             }
 
             try {
@@ -874,7 +874,7 @@ public class JsonReader implements Closeable {
             if (p == 10) {
                this.peekedString = this.nextUnquotedValue();
             } else {
-               this.peekedString = this.nextQuotedValue((char)(p == 8 ? '\'' : '"'));
+               this.peekedString = this.nextQuotedValue(p == 8 ? '\'' : '"');
             }
 
             try {
@@ -956,7 +956,7 @@ public class JsonReader implements Closeable {
          int newLength = this.stackSize * 2;
          this.stack = Arrays.copyOf(this.stack, newLength);
          this.pathIndices = Arrays.copyOf(this.pathIndices, newLength);
-         this.pathNames = (String[])Arrays.copyOf(this.pathNames, newLength);
+         this.pathNames = Arrays.copyOf(this.pathNames, newLength);
       }
 
       this.stack[this.stackSize++] = newTop;

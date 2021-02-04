@@ -44,7 +44,7 @@ public abstract class Module {
     }
 
     public boolean Method1630() {
-        return (Boolean)this.holdBind.getValue();
+        return this.holdBind.getValue();
     }
 
     public void toggle() {
@@ -71,7 +71,7 @@ public abstract class Module {
 
     public Module(String string, int n, Category category, String ... stringArray) {
         this.name = string;
-        ((Keybind)this.Bind.getValue()).Method850(n);
+        this.Bind.getValue().Method850(n);
         this.category = category;
         Collections.addAll(this.Field1718, stringArray);
         EventDispatcher.Companion.register(this);
@@ -120,7 +120,7 @@ public abstract class Module {
     public Module(String string, String string2, int n, Category category, String ... stringArray) {
         this.name = string;
         this.description = string2;
-        ((Keybind)this.Bind.getValue()).Method850(n);
+        this.Bind.getValue().Method850(n);
         this.category = category;
         Collections.addAll(this.Field1718, stringArray);
         EventDispatcher.Companion.register(this);
@@ -168,7 +168,7 @@ public abstract class Module {
     }
 
     public int Method1646() {
-        return ((Keybind)this.Bind.getValue()).Method851();
+        return this.Bind.getValue().Method851();
     }
 
     public Module(String string, Category category, String ... stringArray) {

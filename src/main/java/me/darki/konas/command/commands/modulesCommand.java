@@ -10,11 +10,11 @@ import org.lwjgl.input.Keyboard;
 public class modulesCommand
 extends Command {
     public modulesCommand() {
-        super("modules", "List all modules including their given keybinds", new SyntaxChunk[0]);
+        super("modules", "List all modules including their given keybinds");
     }
 
     public static void Method1335(Module module) {
-        Logger.Method1118(module.getName() + (module.Method1646() != 0 ? " [&b" + Keyboard.getKeyName((int)module.Method1646()) + "&f]" : ""));
+        Logger.Method1118(module.getName() + (module.Method1646() != 0 ? " [&b" + Keyboard.getKeyName(module.Method1646()) + "&f]" : ""));
     }
 
     @Override

@@ -40,14 +40,14 @@ extends Module {
             if (Spammer.mc.player == null || Spammer.mc.world == null) {
                 return;
             }
-            if (!this.Field794.Method737(((Float)this.delay.getValue()).floatValue() * 1000.0f)) break block8;
+            if (!this.Field794.Method737(this.delay.getValue().floatValue() * 1000.0f)) break block8;
             if (arrayList.isEmpty()) {
                 this.Method124();
-                Logger.Method1119("Caution: Spammer file '" + ((Class526) spamFileList.getValue()).Method1225().get(Field796) + "' is empty!");
+                Logger.Method1119("Caution: Spammer file '" + spamFileList.getValue().Method1225().get(Field796) + "' is empty!");
                 this.Field794.Method739();
                 return;
             }
-            if (((Boolean)this.random.getValue()).booleanValue()) {
+            if (this.random.getValue().booleanValue()) {
                 if (arrayList1.size() == arrayList.size()) {
                     ++Field796;
                     this.Method124();
@@ -69,7 +69,7 @@ extends Module {
                 string = arrayList.get(Field798);
                 ++Field798;
             }
-            if (((Boolean)this.antiAntiSpam.getValue()).booleanValue()) {
+            if (this.antiAntiSpam.getValue().booleanValue()) {
                 string = string + " " + new Random().nextInt(69420);
             }
             Spammer.mc.player.sendChatMessage(string);
@@ -78,18 +78,18 @@ extends Module {
     }
 
     public void Method124() {
-        if (((Class526) spamFileList.getValue()).Method1225().size() == 0) {
+        if (spamFileList.getValue().Method1225().size() == 0) {
             Logger.Method1119("You don't have any Spammer Files loaded. Load some with the Spammer Command");
             this.toggle();
             return;
         }
-        if (Field796 >= ((Class526) spamFileList.getValue()).Method1225().size()) {
+        if (Field796 >= spamFileList.getValue().Method1225().size()) {
             Field796 = 0;
         }
-        Class589.Method2277(((Class526) spamFileList.getValue()).Method1225().get(Field796), true);
+        Class589.Method2277(spamFileList.getValue().Method1225().get(Field796), true);
     }
 
     public Spammer() {
-        super("Spammer", Category.MISC, new String[0]);
+        super("Spammer", Category.MISC);
     }
 }

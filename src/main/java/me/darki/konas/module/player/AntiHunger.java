@@ -26,14 +26,14 @@ extends Module {
         CPacketEntityAction cPacketEntityAction;
         if (class24.getPacket() instanceof CPacketEntityAction) {
             cPacketEntityAction = (CPacketEntityAction)class24.getPacket();
-            if (((Boolean) sprint.getValue()).booleanValue() && (cPacketEntityAction.getAction() == CPacketEntityAction.Action.START_SPRINTING || cPacketEntityAction.getAction() == CPacketEntityAction.Action.STOP_SPRINTING)) {
+            if (sprint.getValue().booleanValue() && (cPacketEntityAction.getAction() == CPacketEntityAction.Action.START_SPRINTING || cPacketEntityAction.getAction() == CPacketEntityAction.Action.STOP_SPRINTING)) {
                 class24.setCanceled(true);
             }
         }
         if (class24.getPacket() instanceof CPacketPlayer) {
             cPacketEntityAction = (CPacketPlayer)class24.getPacket();
             boolean bl = AntiHunger.mc.player.onGround;
-            if (((Boolean) ground.getValue()).booleanValue() && this.Field2015 && bl) {
+            if (ground.getValue().booleanValue() && this.Field2015 && bl) {
                 if (cPacketEntityAction.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).Method1702() ? 0.0 : AntiHunger.mc.player.posY)) {
                     ((ICPacketPlayer)cPacketEntityAction).Method1700(false);
                 }
@@ -45,16 +45,16 @@ extends Module {
     @Override
     public void onDisable() {
         block0: {
-            if (!((Boolean) sprint.getValue()).booleanValue() || AntiHunger.mc.player == null || !AntiHunger.mc.player.isSprinting()) break block0;
-            AntiHunger.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AntiHunger.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+            if (!sprint.getValue().booleanValue() || AntiHunger.mc.player == null || !AntiHunger.mc.player.isSprinting()) break block0;
+            AntiHunger.mc.player.connection.sendPacket(new CPacketEntityAction(AntiHunger.mc.player, CPacketEntityAction.Action.START_SPRINTING));
         }
     }
 
     @Override
     public void onEnable() {
         block0: {
-            if (!((Boolean) sprint.getValue()).booleanValue() || AntiHunger.mc.player == null) break block0;
-            AntiHunger.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AntiHunger.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+            if (!sprint.getValue().booleanValue() || AntiHunger.mc.player == null) break block0;
+            AntiHunger.mc.player.connection.sendPacket(new CPacketEntityAction(AntiHunger.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
         }
     }
 }

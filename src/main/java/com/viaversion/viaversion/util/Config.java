@@ -65,7 +65,7 @@ public abstract class Config implements ConfigurationProvider {
             FileInputStream input = new FileInputStream(location);
 
             try {
-               config = (Map)((Yaml)YAML.get()).load((InputStream)input);
+               config = (Map)((Yaml)YAML.get()).load(input);
             } catch (Throwable var11) {
                try {
                   input.close();
@@ -94,7 +94,7 @@ public abstract class Config implements ConfigurationProvider {
          InputStream stream = jarConfigFile.openStream();
 
          try {
-            defaults = (Map)((Yaml)YAML.get()).load(stream);
+            defaults = ((Yaml)YAML.get()).load(stream);
             Iterator var7 = unsupported.iterator();
 
             while(var7.hasNext()) {
@@ -102,12 +102,12 @@ public abstract class Config implements ConfigurationProvider {
                ((Map)defaults).remove(option);
             }
 
-            var7 = ((Map)config).entrySet().iterator();
+            var7 = config.entrySet().iterator();
 
             while(var7.hasNext()) {
                Entry entry = (Entry)var7.next();
                if (((Map)defaults).containsKey(entry.getKey()) && !unsupported.contains(entry.getKey())) {
-                  ((Map)defaults).put((String)entry.getKey(), entry.getValue());
+                  ((Map)defaults).put(entry.getKey(), entry.getValue());
                }
             }
          } catch (Throwable var14) {
@@ -202,7 +202,7 @@ public abstract class Config implements ConfigurationProvider {
 
    public List getIntegerList(String key) {
       Object o = this.config.get(key);
-      return (List)(o != null ? (List)o : new ArrayList());
+      return o != null ? (List)o : new ArrayList();
    }
 
    @Nullable

@@ -2,9 +2,9 @@ package me.darki.konas;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import me.darki.konas.Class603;
-import me.darki.konas.SyntaxChunk;
+
 import me.darki.konas.command.Command;
+import me.darki.konas.managers.CommandManager;
 import me.darki.konas.mixin.mixins.IGuiTextField;
 import net.minecraft.client.gui.GuiChat;
 import org.lwjgl.opengl.GL11;
@@ -15,7 +15,7 @@ extends GuiChat {
 
     public void drawScreen(int n, int n2, float f) {
         block2: {
-            KonasGuiChat.drawRect((int)2, (int)(this.height - 14), (int)(this.width - 2), (int)(this.height - 2), (int)Integer.MIN_VALUE);
+            KonasGuiChat.drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
             int n3 = ((IGuiTextField)this.inputField).Method1603().getStringWidth(this.inputField.getText() + "") + 4;
             int n4 = this.inputField.getEnableBackgroundDrawing() ? this.inputField.y + (this.inputField.height - 8) / 2 : this.inputField.y;
             ((IGuiTextField)this.inputField).Method1603().drawStringWithShadow(this.Method1450(this.inputField.getText()), (float)n3, (float)n4, 0x606060);
@@ -23,31 +23,31 @@ extends GuiChat {
             if (!this.Field1379) {
                 return;
             }
-            boolean bl = GL11.glIsEnabled((int)3042);
-            boolean bl2 = GL11.glIsEnabled((int)3553);
-            GL11.glDisable((int)3042);
-            GL11.glDisable((int)3553);
-            GL11.glColor3f((float)1.0f, (float)0.33333334f, (float)1.0f);
-            GL11.glLineWidth((float)2.0f);
-            GL11.glBegin((int)1);
+            boolean bl = GL11.glIsEnabled(3042);
+            boolean bl2 = GL11.glIsEnabled(3553);
+            GL11.glDisable(3042);
+            GL11.glDisable(3553);
+            GL11.glColor3f(1.0f, 0.33333334f, 1.0f);
+            GL11.glLineWidth(2.0f);
+            GL11.glBegin(1);
             int n5 = this.inputField.x - 2;
             int n6 = this.inputField.y - 2;
             int n7 = this.inputField.width;
             int n8 = this.inputField.height;
-            GL11.glVertex2d((double)n5, (double)n6);
-            GL11.glVertex2d((double)(n5 + n7), (double)n6);
-            GL11.glVertex2d((double)(n5 + n7), (double)n6);
-            GL11.glVertex2d((double)(n5 + n7), (double)(n6 + n8));
-            GL11.glVertex2d((double)(n5 + n7), (double)(n6 + n8));
-            GL11.glVertex2d((double)n5, (double)(n6 + n8));
-            GL11.glVertex2d((double)n5, (double)(n6 + n8));
-            GL11.glVertex2d((double)n5, (double)n6);
+            GL11.glVertex2d(n5, n6);
+            GL11.glVertex2d(n5 + n7, n6);
+            GL11.glVertex2d(n5 + n7, n6);
+            GL11.glVertex2d(n5 + n7, n6 + n8);
+            GL11.glVertex2d(n5 + n7, n6 + n8);
+            GL11.glVertex2d(n5, n6 + n8);
+            GL11.glVertex2d(n5, n6 + n8);
+            GL11.glVertex2d(n5, n6);
             GL11.glEnd();
             if (bl) {
-                GL11.glEnable((int)3042);
+                GL11.glEnable(3042);
             }
             if (!bl2) break block2;
-            GL11.glEnable((int)3553);
+            GL11.glEnable(3553);
         }
     }
 
@@ -64,7 +64,7 @@ extends GuiChat {
         }
         String[] stringArray = this.inputField.getText().split(" ");
         if (stringArray.length > 1 || this.inputField.getText().length() > 2 && this.inputField.getText().endsWith(" ")) {
-            Command command = Class603.Method208(stringArray[0]);
+            Command command = CommandManager.Method208(stringArray[0]);
             if (command != null) {
                 ArrayList<SyntaxChunk> arrayList = command.Method189();
                 StringBuilder stringBuilder = new StringBuilder();
@@ -93,7 +93,7 @@ extends GuiChat {
                 return stringBuilder.toString();
             }
         } else if (stringArray.length == 1) {
-            for (Command command : Class603.Method207()) {
+            for (Command command : CommandManager.Method207()) {
                 if (!command.Method186().toLowerCase().startsWith(stringArray[0].substring(1).toLowerCase())) continue;
                 String string5 = command.Method186();
                 string5 = string5.substring(stringArray[0].substring(1).length());
@@ -121,7 +121,7 @@ extends GuiChat {
                     System.out.println(stringArray.length);
                     if (stringArray.length > 1) {
                         SyntaxChunk syntaxChunk;
-                        Command command = Class603.Method208(stringArray[0]);
+                        Command command = CommandManager.Method208(stringArray[0]);
                         if (command != null && stringArray.length - 2 <= command.Method189().size() - 1 && (syntaxChunk = command.Method189().get(stringArray.length - 2)) != null) {
                             String string = stringArray[stringArray.length - 1];
                             String string2 = syntaxChunk.Method940(string);
@@ -131,7 +131,7 @@ extends GuiChat {
                             this.inputField.setText(string3);
                         }
                     } else if (stringArray.length == 1) {
-                        for (Command command : Class603.Method207()) {
+                        for (Command command : CommandManager.Method207()) {
                             String string = command.Method198(stringArray[0].substring(1).toLowerCase());
                             if (string == null) continue;
                             this.inputField.setText(Command.Method190() + string);

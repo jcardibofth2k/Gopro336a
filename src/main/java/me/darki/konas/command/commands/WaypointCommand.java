@@ -1,8 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.command.commands;
 
 import java.text.DecimalFormat;
 import java.util.Map;
 
+import me.darki.konas.*;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,7 @@ extends Command {
 
     @Override
     public void Method174(String[] stringArray) {
-        Waypoints waypoints = (Waypoints)Class167.Method1610(Waypoints.class);
+        Waypoints waypoints = (Waypoints) Class167.Method1610(Waypoints.class);
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
                 StringBuilder stringBuilder = new StringBuilder();

@@ -19,7 +19,7 @@ public class MixinBlockFluidRenderer {
         Class83 event = new Class83(blockState.getBlock());
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
-            info.setReturnValue((Object)false);
+            info.setReturnValue(false);
             info.cancel();
         }
     }

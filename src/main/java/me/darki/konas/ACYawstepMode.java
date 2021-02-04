@@ -25,6 +25,6 @@ extends Enum {
     }
 
     public static ACYawstepMode[] Method1503() {
-        return (ACYawstepMode[])Field1466.clone();
+        return Field1466.clone();
     }
 }

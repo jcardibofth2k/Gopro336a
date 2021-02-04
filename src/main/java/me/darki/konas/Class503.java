@@ -85,7 +85,7 @@ extends Module {
             return;
         }
         if (this.Field1372.getValue() == Class505.GAMMA) {
-            Class503.mc.gameSettings.gammaSetting = (Boolean)this.Field1373.getValue() != false ? this.Field1371 + 20.0f * Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field1375) / 1000.0f) : this.Field1371 + 20.0f;
+            Class503.mc.gameSettings.gammaSetting = this.Field1373.getValue() != false ? this.Field1371 + 20.0f * Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field1375) / 1000.0f) : this.Field1371 + 20.0f;
         } else if (this.Field1372.getValue() == Class505.NORMAL) {
             Arrays.fill(Class503.mc.world.provider.getLightBrightnessTable(), 1.0f);
         } else {
@@ -94,13 +94,13 @@ extends Module {
     }
 
     public Class503() {
-        super("FullBright", "Makes everything bright", 0, Category.RENDER, new String[0]);
+        super("FullBright", "Makes everything bright", 0, Category.RENDER);
     }
 
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         block1: {
-            if (!(packetEvent.getPacket() instanceof SPacketEntityEffect) || !((Boolean)this.Field1374.getValue()).booleanValue()) break block1;
+            if (!(packetEvent.getPacket() instanceof SPacketEntityEffect) || !this.Field1374.getValue().booleanValue()) break block1;
             SPacketEntityEffect sPacketEntityEffect = (SPacketEntityEffect) packetEvent.getPacket();
             if (Class503.mc.player != null && sPacketEntityEffect.getEntityId() == Class503.mc.player.getEntityId() && (sPacketEntityEffect.getEffectId() == 9 || sPacketEntityEffect.getEffectId() == 15)) {
                 packetEvent.setCanceled(true);

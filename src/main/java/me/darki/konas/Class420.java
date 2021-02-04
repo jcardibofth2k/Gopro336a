@@ -41,6 +41,6 @@ extends Enum {
     }
 
     public static Class420[] Method1049() {
-        return (Class420[])Field1030.clone();
+        return Field1030.clone();
     }
 }

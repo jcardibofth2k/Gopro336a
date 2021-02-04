@@ -48,7 +48,7 @@ final class ShowItemSerializer implements JsonDeserializer, JsonSerializer {
       json.add("id", context.serialize(src.item()));
       int count = src.count();
       if (count != 1) {
-         json.addProperty("count", (Number)count);
+         json.addProperty("count", count);
       }
 
       BinaryTagHolder nbt = src.nbt();

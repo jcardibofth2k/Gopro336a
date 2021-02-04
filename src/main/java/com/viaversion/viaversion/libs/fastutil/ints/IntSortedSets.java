@@ -11,7 +11,7 @@ public final class IntSortedSets {
    }
 
    public static IntSortedSet singleton(int element) {
-      return new IntSortedSets.Singleton(element, (1)null);
+      return new IntSortedSets.Singleton(element, (1)null)
    }
 
    public static IntSortedSet singleton(int element, IntComparator comparator) {
@@ -19,7 +19,7 @@ public final class IntSortedSets {
    }
 
    public static IntSortedSet singleton(Object element) {
-      return new IntSortedSets.Singleton((Integer)element, (1)null);
+      return new IntSortedSets.Singleton((Integer)element, (1)null)
    }
 
    public static IntSortedSet singleton(Object element, IntComparator comparator) {
@@ -48,7 +48,7 @@ public final class IntSortedSets {
       }
 
       private Singleton(int element) {
-         this(element, (IntComparator)null);
+         this(element, null);
       }
 
       final int compare(int k1, int k2) {
@@ -69,15 +69,15 @@ public final class IntSortedSets {
       }
 
       public IntSortedSet subSet(int from, int to) {
-         return (IntSortedSet)(this.compare(from, this.element) <= 0 && this.compare(this.element, to) < 0 ? this : IntSortedSets.EMPTY_SET);
+         return this.compare(from, this.element) <= 0 && this.compare(this.element, to) < 0 ? this : IntSortedSets.EMPTY_SET;
       }
 
       public IntSortedSet headSet(int to) {
-         return (IntSortedSet)(this.compare(this.element, to) < 0 ? this : IntSortedSets.EMPTY_SET);
+         return this.compare(this.element, to) < 0 ? this : IntSortedSets.EMPTY_SET;
       }
 
       public IntSortedSet tailSet(int from) {
-         return (IntSortedSet)(this.compare(from, this.element) <= 0 ? this : IntSortedSets.EMPTY_SET);
+         return this.compare(from, this.element) <= 0 ? this : IntSortedSets.EMPTY_SET;
       }
 
       public int firstInt() {

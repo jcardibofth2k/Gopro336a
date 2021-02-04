@@ -29,7 +29,7 @@ extends Module {
             if (!this.Field2641) return;
             if (!this.Field2642.Method737(1000.0)) return;
             this.Field2641 = false;
-            Class225.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class225.mc.player.posX, Class225.mc.player.posY + 0.1, Class225.mc.player.posZ, false));
+            Class225.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class225.mc.player.posX, Class225.mc.player.posY + 0.1, Class225.mc.player.posZ, false));
             return;
         }
         this.Field2641 = true;
@@ -42,7 +42,7 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block0: {
-            if (!((Boolean)this.Field2640.getValue()).booleanValue() || !MathUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
+            if (!this.Field2640.getValue().booleanValue() || !MathUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
             moveEvent.setY(-0.01);
         }
     }

@@ -41,11 +41,11 @@ extends Module {
                 Slot slot = guiChest.inventorySlots.getSlot(i);
                 if (!slot.getHasStack()) continue;
                 Random random = new Random();
-                if (!this.Field2177.Method737((Integer)this.Field2175.getValue() + ((Boolean)this.Field2176.getValue() != false ? random.nextInt((Integer)this.Field2175.getValue()) : 0))) continue;
-                ChestStealer.mc.playerController.windowClick(containerChest.windowId, i, 0, ClickType.QUICK_MOVE, (EntityPlayer)ChestStealer.mc.player);
+                if (!this.Field2177.Method737(this.Field2175.getValue() + (this.Field2176.getValue() != false ? random.nextInt(this.Field2175.getValue()) : 0))) continue;
+                ChestStealer.mc.playerController.windowClick(containerChest.windowId, i, 0, ClickType.QUICK_MOVE, ChestStealer.mc.player);
                 this.Field2177.Method739();
             }
-            if (this.Method1975((Container)containerChest)) {
+            if (this.Method1975(containerChest)) {
                 ChestStealer.mc.player.closeScreen();
             }
         }

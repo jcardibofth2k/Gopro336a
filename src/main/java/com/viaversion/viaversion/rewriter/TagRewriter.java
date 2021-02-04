@@ -131,7 +131,7 @@ public class TagRewriter {
             if (type != null) {
                this.handle(wrapper, this.getRewriter(type), this.getNewTags(type));
             } else {
-               this.handle(wrapper, (IdRewriteFunction)null, (List)null);
+               this.handle(wrapper, null, null);
             }
          }
 

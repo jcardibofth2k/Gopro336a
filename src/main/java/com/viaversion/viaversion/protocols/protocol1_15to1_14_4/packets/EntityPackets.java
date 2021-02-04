@@ -62,7 +62,7 @@ public class EntityPackets {
       wrapper.send(Protocol1_15To1_14_4.class);
       wrapper.cancel();
       rewriter.handleMetadata(entityId, metadata, wrapper.user());
-      PacketWrapper metadataPacket = PacketWrapper.create(ClientboundPackets1_15.ENTITY_METADATA, (UserConnection)wrapper.user());
+      PacketWrapper metadataPacket = PacketWrapper.create(ClientboundPackets1_15.ENTITY_METADATA, wrapper.user());
       metadataPacket.write(Type.VAR_INT, entityId);
       metadataPacket.write(Types1_14.METADATA_LIST, metadata);
       metadataPacket.send(Protocol1_15To1_14_4.class);

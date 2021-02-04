@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.module.render;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -78,59 +79,59 @@ extends Module {
         if (entity == null) {
             return false;
         }
-        if (entity.isInvisible() && !((Boolean) invis.getValue()).booleanValue()) {
+        if (entity.isInvisible() && !invis.getValue().booleanValue()) {
             return false;
         }
-        if (entity.equals((Object) Chams.mc.player) && !((Boolean) self.getValue()).booleanValue()) {
+        if (entity.equals(Chams.mc.player) && !self.getValue().booleanValue()) {
             return false;
         }
-        if (entity instanceof EntityPlayer && !((Boolean) players.getValue()).booleanValue()) {
+        if (entity instanceof EntityPlayer && !players.getValue().booleanValue()) {
             return false;
         }
-        if (Chams.Method386(entity) && !((Boolean) animals.getValue()).booleanValue()) {
+        if (Chams.Method386(entity) && !animals.getValue().booleanValue()) {
             return false;
         }
-        return Chams.Method386(entity) || entity instanceof EntityPlayer || (Boolean) monsters.getValue() != false;
+        return Chams.Method386(entity) || entity instanceof EntityPlayer || monsters.getValue() != false;
     }
 
     public static void Method1948(ColorValue colorValue, ModelBase modelBase, Entity entity, float f, float f2, float f3, float f4, float f5, float f6, float f7) {
         GL11.glPushMatrix();
-        GL11.glPushAttrib((int)1048575);
-        GL11.glPolygonMode((int)1032, (int)6914);
-        GL11.glDisable((int)2896);
-        GL11.glDisable((int)2929);
-        GL11.glEnable((int)3042);
+        GL11.glPushAttrib(1048575);
+        GL11.glPolygonMode(1032, 6914);
+        GL11.glDisable(2896);
+        GL11.glDisable(2929);
+        GL11.glEnable(3042);
         Minecraft.getMinecraft().getRenderManager().renderEngine.bindTexture(glint.getValue() == ChamsGlintMode.CUSTOM ? location1 : location);
-        GL11.glPolygonMode((int)1032, (int)6914);
-        GL11.glDisable((int)2896);
-        GL11.glDisable((int)2929);
-        GL11.glEnable((int)3042);
-        GL11.glColor4f((float)((float) colorValue.Method769() / 255.0f), (float)((float) colorValue.Method770() / 255.0f), (float)((float) colorValue.Method779() / 255.0f), (float)((float) colorValue.Method782() / 255.0f));
-        GlStateManager.blendFunc((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_COLOR, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE);
+        GL11.glPolygonMode(1032, 6914);
+        GL11.glDisable(2896);
+        GL11.glDisable(2929);
+        GL11.glEnable(3042);
+        GL11.glColor4f((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f);
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_COLOR, GlStateManager.DestFactor.ONE);
         for (int i = 0; i < 2; ++i) {
-            GlStateManager.matrixMode((int)5890);
+            GlStateManager.matrixMode(5890);
             GlStateManager.loadIdentity();
-            float f8 = 0.33333334f * ((Float) glintScale.getValue()).floatValue();
-            GlStateManager.scale((float)f8, (float)f8, (float)f8);
-            GlStateManager.rotate((float)(30.0f - (float)i * 60.0f), (float)0.0f, (float)0.0f, (float)1.0f);
-            GlStateManager.translate((float)0.0f, (float)(((float)entity.ticksExisted + mc.getRenderPartialTicks()) * (0.001f + (float)i * 0.003f) * ((Float) glintSpeed.getValue()).floatValue()), (float)0.0f);
-            GlStateManager.matrixMode((int)5888);
-            GL11.glTranslatef((float)f7, (float)f7, (float)f7);
-            GlStateManager.color((float)((float) colorValue.Method769() / 255.0f), (float)((float) colorValue.Method770() / 255.0f), (float)((float) colorValue.Method779() / 255.0f), (float)((float) colorValue.Method782() / 255.0f));
-            if (((Boolean) glintDepth.getValue()).booleanValue()) {
-                GL11.glDepthMask((boolean)true);
-                GL11.glEnable((int)2929);
+            float f8 = 0.33333334f * glintScale.getValue().floatValue();
+            GlStateManager.scale(f8, f8, f8);
+            GlStateManager.rotate(30.0f - (float)i * 60.0f, 0.0f, 0.0f, 1.0f);
+            GlStateManager.translate(0.0f, ((float)entity.ticksExisted + mc.getRenderPartialTicks()) * (0.001f + (float)i * 0.003f) * glintSpeed.getValue().floatValue(), 0.0f);
+            GlStateManager.matrixMode(5888);
+            GL11.glTranslatef(f7, f7, f7);
+            GlStateManager.color((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f);
+            if (glintDepth.getValue().booleanValue()) {
+                GL11.glDepthMask(true);
+                GL11.glEnable(2929);
             }
             modelBase.render(entity, f, f2, f3, f4, f5, f6);
-            if (!((Boolean) glintDepth.getValue()).booleanValue()) continue;
-            GL11.glDisable((int)2929);
-            GL11.glDepthMask((boolean)false);
+            if (!glintDepth.getValue().booleanValue()) continue;
+            GL11.glDisable(2929);
+            GL11.glDepthMask(false);
         }
-        GlStateManager.matrixMode((int)5890);
+        GlStateManager.matrixMode(5890);
         GlStateManager.loadIdentity();
-        GlStateManager.matrixMode((int)5888);
-        GlStateManager.blendFunc((GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.matrixMode(5888);
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glPopAttrib();
         GL11.glPopMatrix();
     }
@@ -138,39 +139,39 @@ extends Module {
     @Subscriber
     public void Method1949(Class102 class102) {
         block0: {
-            if (!((Boolean) hands.getValue()).booleanValue()) break block0;
-            class102.Method341(((ColorValue) handColor.getValue()).Method769());
-            class102.Method344(((ColorValue) handColor.getValue()).Method770());
-            class102.Method1102(((ColorValue) handColor.getValue()).Method779());
-            class102.Method294(((ColorValue) handColor.getValue()).Method782());
+            if (!hands.getValue().booleanValue()) break block0;
+            class102.Method341(handColor.getValue().Method769());
+            class102.Method344(handColor.getValue().Method770());
+            class102.Method1102(handColor.getValue().Method779());
+            class102.Method294(handColor.getValue().Method782());
             class102.setCanceled(true);
         }
     }
 
     public static void Method1950(ColorValue colorValue, ModelBase modelBase, Entity entity, float f, float f2, float f3, float f4, float f5, float f6, float f7) {
         GL11.glPushMatrix();
-        GL11.glPushAttrib((int)1048575);
-        GL11.glPolygonMode((int)1032, (int)6914);
-        GL11.glDisable((int)3553);
-        if (((Boolean) lighting.getValue()).booleanValue()) {
-            GL11.glEnable((int)2896);
+        GL11.glPushAttrib(1048575);
+        GL11.glPolygonMode(1032, 6914);
+        GL11.glDisable(3553);
+        if (lighting.getValue().booleanValue()) {
+            GL11.glEnable(2896);
         } else {
-            GL11.glDisable((int)2896);
+            GL11.glDisable(2896);
         }
-        GL11.glDisable((int)2929);
-        GL11.glEnable((int)2848);
-        GL11.glEnable((int)3042);
-        GL11.glBlendFunc((int)770, (int)771);
-        GL11.glTranslatef((float)f7, (float)f7, (float)f7);
-        GlStateManager.color((float)((float) colorValue.Method769() / 255.0f), (float)((float) colorValue.Method770() / 255.0f), (float)((float) colorValue.Method779() / 255.0f), (float)((float) colorValue.Method782() / 255.0f));
-        if (((Boolean) fillDepth.getValue()).booleanValue()) {
-            GL11.glDepthMask((boolean)true);
-            GL11.glEnable((int)2929);
+        GL11.glDisable(2929);
+        GL11.glEnable(2848);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glTranslatef(f7, f7, f7);
+        GlStateManager.color((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f);
+        if (fillDepth.getValue().booleanValue()) {
+            GL11.glDepthMask(true);
+            GL11.glEnable(2929);
         }
         modelBase.render(entity, f, f2, f3, f4, f5, f6);
-        if (((Boolean) fillDepth.getValue()).booleanValue()) {
-            GL11.glDisable((int)2929);
-            GL11.glDepthMask((boolean)false);
+        if (fillDepth.getValue().booleanValue()) {
+            GL11.glDisable(2929);
+            GL11.glDepthMask(false);
         }
         GlStateManager.resetColor();
         GL11.glPopAttrib();
@@ -179,25 +180,25 @@ extends Module {
 
     public static void Method1951(ColorValue colorValue, float f, ModelBase modelBase, Entity entity, float f2, float f3, float f4, float f5, float f6, float f7, float f8) {
         GL11.glPushMatrix();
-        GL11.glPushAttrib((int)1048575);
-        GL11.glPolygonMode((int)1032, (int)6913);
-        GL11.glDisable((int)3553);
-        GL11.glDisable((int)2896);
-        GL11.glDisable((int)2929);
-        GL11.glEnable((int)2848);
-        GL11.glEnable((int)3042);
-        GL11.glBlendFunc((int)770, (int)771);
-        GL11.glTranslatef((float)f8, (float)f8, (float)f8);
-        GlStateManager.color((float)((float) colorValue.Method769() / 255.0f), (float)((float) colorValue.Method770() / 255.0f), (float)((float) colorValue.Method779() / 255.0f), (float)((float) colorValue.Method782() / 255.0f));
-        GlStateManager.glLineWidth((float)f);
-        if (((Boolean) outlineDepth.getValue()).booleanValue()) {
-            GL11.glDepthMask((boolean)true);
-            GL11.glEnable((int)2929);
+        GL11.glPushAttrib(1048575);
+        GL11.glPolygonMode(1032, 6913);
+        GL11.glDisable(3553);
+        GL11.glDisable(2896);
+        GL11.glDisable(2929);
+        GL11.glEnable(2848);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glTranslatef(f8, f8, f8);
+        GlStateManager.color((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f);
+        GlStateManager.glLineWidth(f);
+        if (outlineDepth.getValue().booleanValue()) {
+            GL11.glDepthMask(true);
+            GL11.glEnable(2929);
         }
         modelBase.render(entity, f2, f3, f4, f5, f6, f7);
-        if (((Boolean) outlineDepth.getValue()).booleanValue()) {
-            GL11.glDisable((int)2929);
-            GL11.glDepthMask((boolean)false);
+        if (outlineDepth.getValue().booleanValue()) {
+            GL11.glDisable(2929);
+            GL11.glDepthMask(false);
         }
         GlStateManager.resetColor();
         GL11.glPopAttrib();
@@ -210,28 +211,28 @@ extends Module {
         }
         boolean bl = Chams.mc.gameSettings.fancyGraphics;
         Chams.mc.gameSettings.fancyGraphics = false;
-        if (((Boolean) render.getValue()).booleanValue()) {
-            if (!((Boolean) renderDepth.getValue()).booleanValue()) {
-                OpenGlHelper.setLightmapTextureCoords((int)OpenGlHelper.lightmapTexUnit, (float)240.0f, (float)240.0f);
-                GL11.glEnable((int)32823);
-                GL11.glPolygonOffset((float)1.0f, (float)-1100000.0f);
+        if (render.getValue().booleanValue()) {
+            if (!renderDepth.getValue().booleanValue()) {
+                OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0f, 240.0f);
+                GL11.glEnable(32823);
+                GL11.glPolygonOffset(1.0f, -1100000.0f);
             }
             modelBase.render(entity, f, f2, f3, f4, f5, f6);
-            if (!((Boolean) renderDepth.getValue()).booleanValue()) {
-                GL11.glDisable((int)32823);
-                GL11.glPolygonOffset((float)1.0f, (float)1100000.0f);
+            if (!renderDepth.getValue().booleanValue()) {
+                GL11.glDisable(32823);
+                GL11.glPolygonOffset(1.0f, 1100000.0f);
             }
         }
         float f7 = Chams.mc.gameSettings.gammaSetting;
         Chams.mc.gameSettings.gammaSetting = 10000.0f;
-        if (((Boolean) fill.getValue()).booleanValue()) {
-            Chams.Method1950((ColorValue) fillColor.getValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
+        if (fill.getValue().booleanValue()) {
+            Chams.Method1950(fillColor.getValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
         }
-        if (((Boolean) outline.getValue()).booleanValue()) {
-            Chams.Method1951((ColorValue) gOutlineColor.getValue(), ((Float) width.getValue()).floatValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
+        if (outline.getValue().booleanValue()) {
+            Chams.Method1951(gOutlineColor.getValue(), width.getValue().floatValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
         }
         if (glint.getValue() != ChamsGlintMode.NONE) {
-            Chams.Method1948((ColorValue) glintColor.getValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
+            Chams.Method1948(glintColor.getValue(), modelBase, entity, f, f2, f3, f4, f5, f6, 0.0f);
         }
         try {
             Chams.mc.gameSettings.fancyGraphics = bl;
@@ -244,7 +245,7 @@ extends Module {
     }
 
     public Chams() {
-        super("Chams", "Makes you see entities through walls", Category.RENDER, new String[0]);
+        super("Chams", "Makes you see entities through walls", Category.RENDER);
     }
 
     public static boolean Method386(Entity entity) {

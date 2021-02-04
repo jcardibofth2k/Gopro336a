@@ -27,7 +27,7 @@ extends GuiScreen {
         block0: {
             super.mouseClicked(n, n2, n3);
             if (!this.Field2000.Method494(n, n2, n3)) break block0;
-            this.mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+            this.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
         }
     }
 

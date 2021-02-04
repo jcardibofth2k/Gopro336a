@@ -39,10 +39,10 @@ extends Class215 {
             }
         }
         Class247.Method2043(this.Field2545, Field319);
-        GL11.glEnable((int)3089);
+        GL11.glEnable(3089);
         RenderUtil2.Method1339(new ScaledResolution(Minecraft.getMinecraft()), this.Method486(), this.Method492(), this.Method489(), this.Method476());
         this.Field2543.forEach(arg_0 -> this.Method2183(n, n2, f, arg_0));
-        GL11.glDisable((int)3089);
+        GL11.glDisable(3089);
     }
 
     public void Method2171() {

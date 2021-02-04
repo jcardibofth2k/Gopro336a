@@ -72,7 +72,7 @@ public abstract class AbstractObjectList extends AbstractObjectCollection implem
 
    public ObjectListIterator listIterator(int index) {
       this.ensureIndex(index);
-      return new 1(this, index);
+      return new 1(this, index)
    }
 
    public boolean contains(Object k) {
@@ -113,7 +113,7 @@ public abstract class AbstractObjectList extends AbstractObjectCollection implem
       int i = this.size();
       if (size > i) {
          while(i++ < size) {
-            this.add((Object)null);
+            this.add(null);
          }
       } else {
          while(i-- != size) {
@@ -303,7 +303,7 @@ public abstract class AbstractObjectList extends AbstractObjectCollection implem
          if (this == k) {
             s.append("(this list)");
          } else {
-            s.append(String.valueOf(k));
+            s.append(k);
          }
       }
 

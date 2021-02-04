@@ -54,16 +54,16 @@ extends Element {
 
     public void Method2125(int n, int n2, ItemStack itemStack) {
         GL11.glPushMatrix();
-        GL11.glDepthMask((boolean)true);
-        GlStateManager.clear((int)256);
+        GL11.glDepthMask(true);
+        GlStateManager.clear(256);
         GlStateManager.disableDepth();
         GlStateManager.enableDepth();
         RenderHelper.enableStandardItemLighting();
         Class112.mc.getRenderItem().zLevel = -100.0f;
-        GlStateManager.scale((float)1.0f, (float)1.0f, (float)0.01f);
+        GlStateManager.scale(1.0f, 1.0f, 0.01f);
         mc.getRenderItem().renderItemAndEffectIntoGUI(itemStack, n, n2);
         Class112.mc.getRenderItem().zLevel = 0.0f;
-        GlStateManager.scale((float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.scale(1.0f, 1.0f, 1.0f);
         RenderHelper.disableStandardItemLighting();
         GlStateManager.enableAlpha();
         GlStateManager.disableBlend();
@@ -105,10 +105,10 @@ extends Element {
         if (entityPlayer2 == null || entityPlayer2.isDead || entityPlayer2.getHealth() <= 0.0f) {
             return;
         }
-        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2648.getValue()).Method774(), false);
-        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2649.getValue()).Method774(), true);
+        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), this.Field2648.getValue().Method774(), false);
+        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), this.Field2649.getValue().Method774(), true);
         Field2472 = true;
-        MathUtil.Method1090((int)this.Method2320() + 50, (int)this.Method2324() + 100, 50, -30.0f, 0.0f, entityPlayer2, (Boolean)this.Field2470.getValue(), (Boolean)this.Field2471.getValue());
+        MathUtil.Method1090((int)this.Method2320() + 50, (int)this.Method2324() + 100, 50, -30.0f, 0.0f, entityPlayer2, this.Field2470.getValue(), this.Field2471.getValue());
         Field2472 = false;
         Class557.Method801(entityPlayer2.getDisplayNameString() + this.Method2124(entityPlayer2) + this.Method2126(entityPlayer2), (int)this.Method2320() + 100, (int)this.Method2324() + (int)this.Field2469, Color.WHITE.hashCode());
         DecimalFormat decimalFormat = new DecimalFormat("##");
@@ -124,7 +124,7 @@ extends Element {
         this.Method2125((int)this.Method2320() + 116, (int)this.Method2324() + (int)(this.Field2469 * 6.0f), entityPlayer2.getHeldItemOffhand());
         int n2 = 100;
         for (int i = 3; i >= 0; --i) {
-            ItemStack itemStack = (ItemStack)entityPlayer2.inventory.armorInventory.get(i);
+            ItemStack itemStack = entityPlayer2.inventory.armorInventory.get(i);
             this.Method2125((int)(this.Method2320() + (float)n2), (int)this.Method2324() + (int)(this.Field2469 * 7.0f + 6.0f), itemStack);
             n2 += 16;
         }
@@ -139,7 +139,7 @@ extends Element {
     }
 
     public int Method2128(float f) {
-        return MathHelper.hsvToRGB((float)(Math.max(0.0f, f) / 3.0f), (float)1.0f, (float)1.0f);
+        return MathHelper.hsvToRGB(Math.max(0.0f, f) / 3.0f, 1.0f, 1.0f);
     }
 
     public float Method2129(EntityPlayer entityPlayer) {
@@ -159,12 +159,12 @@ extends Element {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate((int)770, (int)771, (int)1, (int)0);
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         bufferBuilder.begin(bl ? 2 : 7, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos((double)f, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos((double)f3, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos((double)f3, (double)f2, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos((double)f, (double)f2, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos(f, f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos(f3, f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos(f3, f2, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos(f, f2, 0.0).color(f6, f7, f8, f5).endVertex();
         tessellator.draw();
         GlStateManager.disableBlend();
         GlStateManager.enableTexture2D();
@@ -173,7 +173,7 @@ extends Element {
 
     public Class112() {
         super("Target", 200.0f, 600.0f, 200.0f, 105.0f);
-        ((ColorValue)this.Field2648.getValue()).Method771(Integer.MIN_VALUE);
-        ((ColorValue)this.Field2649.getValue()).Method771(-805306368);
+        this.Field2648.getValue().Method771(Integer.MIN_VALUE);
+        this.Field2649.getValue().Method771(-805306368);
     }
 }

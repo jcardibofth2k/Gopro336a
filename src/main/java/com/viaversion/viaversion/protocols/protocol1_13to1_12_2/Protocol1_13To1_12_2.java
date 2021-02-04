@@ -91,7 +91,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                         json.addProperty("favicon", json.get("favicon").getAsString().replace("\n", ""));
                      }
 
-                     wrapper.set(Type.STRING, 0, GsonUtil.getGson().toJson((JsonElement)json));
+                     wrapper.set(Type.STRING, 0, GsonUtil.getGson().toJson(json));
                   } catch (JsonParseException var4) {
                      var4.printStackTrace();
                   }
@@ -403,7 +403,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                      wrapper.passthrough(Type.BYTE);
                      byte direction = (byte)(directionAndType & 15);
                      wrapper.write(Type.BYTE, direction);
-                     wrapper.write(Type.OPTIONAL_COMPONENT, (Object)null);
+                     wrapper.write(Type.OPTIONAL_COMPONENT, null);
                   }
 
                }
@@ -437,7 +437,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                   }
 
                   if (action == 0) {
-                     wrapper.create(ClientboundPackets1_13.DECLARE_RECIPES, (PacketHandler)(new PacketHandler() {
+                     wrapper.create(ClientboundPackets1_13.DECLARE_RECIPES, new PacketHandler() {
                         public void handle(PacketWrapper wrapper) throws Exception {
                            wrapper.write(Type.VAR_INT, RecipeData.recipes.size());
                            Iterator var2 = RecipeData.recipes.entrySet().iterator();
@@ -445,7 +445,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                            while(true) {
                               while(var2.hasNext()) {
                                  Entry entry = (Entry)var2.next();
-                                 wrapper.write(Type.STRING, (String)entry.getKey());
+                                 wrapper.write(Type.STRING, entry.getKey());
                                  wrapper.write(Type.STRING, ((RecipeData.Recipe)entry.getValue()).getType());
                                  String var4 = ((RecipeData.Recipe)entry.getValue()).getType();
                                  byte var5 = -1;
@@ -481,7 +481,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
 
                                     for(var8 = 0; var8 < ix; ++var8) {
                                        ingredient = var12[var8];
-                                       clonex = (Item[])ingredient.clone();
+                                       clonex = ingredient.clone();
 
                                        for(i = 0; i < clonex.length; ++i) {
                                           if (clonex[i] != null) {
@@ -503,7 +503,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
 
                                     for(var8 = 0; var8 < ix; ++var8) {
                                        ingredient = var12[var8];
-                                       clonex = (Item[])ingredient.clone();
+                                       clonex = ingredient.clone();
 
                                        for(i = 0; i < clonex.length; ++i) {
                                           if (clonex[i] != null) {
@@ -518,7 +518,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                                     break;
                                  case 2:
                                     wrapper.write(Type.STRING, ((RecipeData.Recipe)entry.getValue()).getGroup());
-                                    Item[] clone = (Item[])((RecipeData.Recipe)entry.getValue()).getIngredient().clone();
+                                    Item[] clone = ((RecipeData.Recipe)entry.getValue()).getIngredient().clone();
 
                                     for(ix = 0; ix < clone.length; ++ix) {
                                        if (clone[ix] != null) {
@@ -536,7 +536,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
                               return;
                            }
                         }
-                     })).send(Protocol1_13To1_12_2.class);
+                     }).send(Protocol1_13To1_12_2.class);
                   }
 
                }
@@ -731,7 +731,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   wrapper.write(Type.BOOLEAN, false);
-                  wrapper.write(Type.OPTIONAL_POSITION, (Object)null);
+                  wrapper.write(Type.OPTIONAL_POSITION, null);
                   if (!wrapper.isCancelled() && Via.getConfig().get1_13TabCompleteDelay() > 0) {
                      TabCompleteTracker tracker = (TabCompleteTracker)wrapper.user().get(TabCompleteTracker.class);
                      wrapper.cancel();
@@ -1026,7 +1026,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
          wrapper.write(Type.INT, position.getZ());
       };
       SEND_DECLARE_COMMANDS_AND_TAGS = (w) -> {
-         w.create(ClientboundPackets1_13.DECLARE_COMMANDS, (PacketHandler)((wrapper) -> {
+         w.create(ClientboundPackets1_13.DECLARE_COMMANDS, (wrapper) -> {
             wrapper.write(Type.VAR_INT, 2);
             wrapper.write(Type.BYTE, (byte)0);
             wrapper.write(Type.VAR_INT_ARRAY_PRIMITIVE, new int[]{1});
@@ -1037,15 +1037,15 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
             wrapper.write(Type.VAR_INT, 2);
             wrapper.write(Type.STRING, "minecraft:ask_server");
             wrapper.write(Type.VAR_INT, 0);
-         })).scheduleSend(Protocol1_13To1_12_2.class);
-         w.create(ClientboundPackets1_13.TAGS, (PacketHandler)((wrapper) -> {
+         }).scheduleSend(Protocol1_13To1_12_2.class);
+         w.create(ClientboundPackets1_13.TAGS, (wrapper) -> {
             wrapper.write(Type.VAR_INT, MAPPINGS.getBlockTags().size());
             Iterator var1 = MAPPINGS.getBlockTags().entrySet().iterator();
 
             Entry tag;
             while(var1.hasNext()) {
                tag = (Entry)var1.next();
-               wrapper.write(Type.STRING, (String)tag.getKey());
+               wrapper.write(Type.STRING, tag.getKey());
                wrapper.write(Type.VAR_INT_ARRAY_PRIMITIVE, toPrimitive((Integer[])tag.getValue()));
             }
 
@@ -1054,7 +1054,7 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
 
             while(var1.hasNext()) {
                tag = (Entry)var1.next();
-               wrapper.write(Type.STRING, (String)tag.getKey());
+               wrapper.write(Type.STRING, tag.getKey());
                wrapper.write(Type.VAR_INT_ARRAY_PRIMITIVE, toPrimitive((Integer[])tag.getValue()));
             }
 
@@ -1063,11 +1063,11 @@ public class Protocol1_13To1_12_2 extends AbstractProtocol {
 
             while(var1.hasNext()) {
                tag = (Entry)var1.next();
-               wrapper.write(Type.STRING, (String)tag.getKey());
+               wrapper.write(Type.STRING, tag.getKey());
                wrapper.write(Type.VAR_INT_ARRAY_PRIMITIVE, toPrimitive((Integer[])tag.getValue()));
             }
 
-         })).scheduleSend(Protocol1_13To1_12_2.class);
+         }).scheduleSend(Protocol1_13To1_12_2.class);
       };
    }
 }

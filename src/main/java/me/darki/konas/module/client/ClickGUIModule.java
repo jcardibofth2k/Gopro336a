@@ -27,20 +27,20 @@ extends Module {
     public static Class555 Field1536 = new Class555(fontCommand.Field1351, 17.0f);
 
     public ClickGUIModule() {
-        super("ClickGUI", "Default Konas GUI", 21, Category.CLIENT, new String[0]);
+        super("ClickGUI", "Default Konas GUI", 21, Category.CLIENT);
     }
 
     public static boolean Method394() {
-        return (Boolean) animate.getValue() == false && (Boolean) outline.getValue() != false;
+        return animate.getValue() == false && outline.getValue() != false;
     }
 
     public static boolean Method393() {
-        return (Boolean) animate.getValue() == false;
+        return animate.getValue() == false;
     }
 
     @Override
     public void onEnable() {
         this.toggle();
-        mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1130);
+        mc.displayGuiScreen(NewGui.INSTANCE.Field1130);
     }
 }

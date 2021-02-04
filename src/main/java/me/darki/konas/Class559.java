@@ -70,8 +70,7 @@ public class Class559 {
         if ((double)Double.compare(class559.Field770, this.Field770) != 0.0) return false;
         if (this.Field771 != class559.Field771) return false;
         if (this.Field773 != class559.Field773) return false;
-        if (!this.Field772.equalsIgnoreCase(class559.Method813())) return false;
-        return true;
+        return this.Field772.equalsIgnoreCase(class559.Method813());
     }
 
     public String toString() {
@@ -132,7 +131,7 @@ public class Class559 {
         double d2 = class559.Method821() - this.Field768 * d;
         double d3 = class559.Method820() - this.Field769 * d;
         double d4 = class559.Method818() - this.Field770 * d;
-        return MathHelper.sqrt((double)(d2 * d2 + d3 * d3 + d4 * d4));
+        return MathHelper.sqrt(d2 * d2 + d3 * d3 + d4 * d4);
     }
 
     public double Method818() {

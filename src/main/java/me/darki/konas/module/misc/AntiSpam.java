@@ -17,19 +17,19 @@ extends Module {
     public static Setting<Boolean> Field2070 = new Setting<>("Announcer", true);
 
     public boolean Method1925(String string) {
-        if (((Boolean)Field2068.getValue()).booleanValue()) {
+        if (Field2068.getValue().booleanValue()) {
             for (String string2 : Field2065) {
                 if (!string.contains(string2)) continue;
                 return true;
             }
         }
-        if (((Boolean)Field2070.getValue()).booleanValue()) {
+        if (Field2070.getValue().booleanValue()) {
             for (String string2 : Field2067) {
                 if (!string.contains(string2)) continue;
                 return true;
             }
         }
-        if (((Boolean)Field2069.getValue()).booleanValue()) {
+        if (Field2069.getValue().booleanValue()) {
             for (String string2 : Field2066) {
                 if (!string.contains(string2)) continue;
                 return true;

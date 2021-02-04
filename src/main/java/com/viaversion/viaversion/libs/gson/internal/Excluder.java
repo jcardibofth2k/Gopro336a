@@ -118,14 +118,14 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
    public boolean excludeField(Field field, boolean serialize) {
       if ((this.modifiers & field.getModifiers()) != 0) {
          return true;
-      } else if (this.version != -1.0D && !this.isValidVersion((Since)field.getAnnotation(Since.class), (Until)field.getAnnotation(Until.class))) {
+      } else if (this.version != -1.0D && !this.isValidVersion(field.getAnnotation(Since.class), field.getAnnotation(Until.class))) {
          return true;
       } else if (field.isSynthetic()) {
          return true;
       } else {
          if (this.requireExpose) {
             label69: {
-               Expose annotation = (Expose)field.getAnnotation(Expose.class);
+               Expose annotation = field.getAnnotation(Expose.class);
                if (annotation != null) {
                   if (serialize) {
                      if (annotation.serialize()) {
@@ -212,9 +212,7 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
    private boolean isValidSince(Since annotation) {
       if (annotation != null) {
          double annotationVersion = annotation.value();
-         if (annotationVersion > this.version) {
-            return false;
-         }
+         return !(annotationVersion > this.version);
       }
 
       return true;
@@ -223,9 +221,7 @@ public final class Excluder implements TypeAdapterFactory, Cloneable {
    private boolean isValidUntil(Until annotation) {
       if (annotation != null) {
          double annotationVersion = annotation.value();
-         if (annotationVersion <= this.version) {
-            return false;
-         }
+         return !(annotationVersion <= this.version);
       }
 
       return true;

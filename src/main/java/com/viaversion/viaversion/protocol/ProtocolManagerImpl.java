@@ -282,7 +282,7 @@ public class ProtocolManagerImpl implements ProtocolManager {
                         } while(this.onlyCheckLoweringPathEntries && Math.abs(serverVersion - translatedToVersion) > Math.abs(serverVersion - clientVersion));
 
                         Int2ObjectSortedMap newCurrent = new Int2ObjectLinkedOpenHashMap(current);
-                        newCurrent.put(translatedToVersion, (Protocol)entry.getValue());
+                        newCurrent.put(translatedToVersion, entry.getValue());
                         newCurrent = this.getProtocolPath(newCurrent, translatedToVersion, serverVersion);
                      } while(newCurrent == null);
                   } while(shortest != null && newCurrent.size() >= shortest.size());
@@ -337,7 +337,7 @@ public class ProtocolManagerImpl implements ProtocolManager {
          IntBidirectionalIterator var3 = this.serverProtocolVersion.supportedVersions().iterator();
 
          while(var3.hasNext()) {
-            int protocolVersion = (Integer)var3.next();
+            int protocolVersion = var3.next();
             if (map.containsKey(protocolVersion)) {
                return true;
             }

@@ -25,6 +25,6 @@ extends Enum {
     }
 
     public static Class364[] Method2064() {
-        return (Class364[])Field2352.clone();
+        return Field2352.clone();
     }
 }

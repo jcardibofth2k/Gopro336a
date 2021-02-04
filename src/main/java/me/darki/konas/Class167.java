@@ -54,7 +54,7 @@ public class Class167 {
                     var1.toggle();
                 }
 
-                EventDispatcher.Companion.unsubscribe((Object)var1);
+                EventDispatcher.Companion.unsubscribe(var1);
             }
         }
 
@@ -140,9 +140,9 @@ public class Class167 {
 
                 try {
                     if (IdkWhatThisSettingThingDoes.class.isAssignableFrom(var6.getType())) {
-                        var2.add((IdkWhatThisSettingThingDoes)var6.get(var1));
+                        var2.add(var6.get(var1));
                     } else {
-                        var2.add((Setting)var6.get(var1));
+                        var2.add(var6.get(var1));
                     }
                 } catch (IllegalAccessException var9) {
                     var9.printStackTrace();
@@ -159,7 +159,7 @@ public class Class167 {
                 var6.setAccessible(true);
 
                 try {
-                    var2.add((Setting)var6.get(var1));
+                    var2.add(var6.get(var1));
                 } catch (IllegalAccessException var8) {
                     var8.printStackTrace();
                 }
@@ -217,7 +217,7 @@ public class Class167 {
                 var0 = false;
             }
 
-            for(int var2 = 2; (double)var2 <= Math.sqrt((double)var1); ++var2) {
+            for(int var2 = 2; (double)var2 <= Math.sqrt(var1); ++var2) {
                 if (var1 % var2 == 0) {
                     var0 = false;
                     break;

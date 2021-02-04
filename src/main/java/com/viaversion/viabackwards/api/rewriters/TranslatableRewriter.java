@@ -26,12 +26,12 @@ public class TranslatableRewriter extends ComponentRewriter {
       while(var1.hasNext()) {
          Entry entry = (Entry)var1.next();
          Map versionMappings = new HashMap();
-         TRANSLATABLES.put((String)entry.getKey(), versionMappings);
+         TRANSLATABLES.put(entry.getKey(), versionMappings);
          Iterator var4 = ((JsonElement)entry.getValue()).getAsJsonObject().entrySet().iterator();
 
          while(var4.hasNext()) {
             Entry translationEntry = (Entry)var4.next();
-            versionMappings.put((String)translationEntry.getKey(), ((JsonElement)translationEntry.getValue()).getAsString());
+            versionMappings.put(translationEntry.getKey(), ((JsonElement)translationEntry.getValue()).getAsString());
          }
       }
 

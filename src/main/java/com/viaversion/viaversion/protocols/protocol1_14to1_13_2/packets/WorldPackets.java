@@ -34,7 +34,7 @@ public class WorldPackets {
    public static int caveAir;
 
    public static void register(final Protocol1_14To1_13_2 protocol) {
-      BlockRewriter blockRewriter = new BlockRewriter(protocol, (Type)null);
+      BlockRewriter blockRewriter = new BlockRewriter(protocol, null);
       protocol.registerClientbound(ClientboundPackets1_13.BLOCK_BREAK_ANIMATION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
@@ -237,7 +237,7 @@ public class WorldPackets {
                   for(int var15 = 0; var15 < var14; ++var15) {
                      ChunkSection sectionxx = var25[var15];
                      if (sectionxx != null) {
-                        sectionxx.setLight((ChunkSectionLight)null);
+                        sectionxx.setLight(null);
                      }
                   }
 
@@ -358,14 +358,14 @@ public class WorldPackets {
    }
 
    private static void sendViewDistancePacket(UserConnection connection) throws Exception {
-      PacketWrapper setViewDistance = PacketWrapper.create(ClientboundPackets1_14.UPDATE_VIEW_DISTANCE, (ByteBuf)null, connection);
+      PacketWrapper setViewDistance = PacketWrapper.create(ClientboundPackets1_14.UPDATE_VIEW_DISTANCE, null, connection);
       setViewDistance.write(Type.VAR_INT, 64);
       setViewDistance.send(Protocol1_14To1_13_2.class);
    }
 
    private static long[] encodeHeightMap(int[] heightMap) {
       return CompactArrayUtil.createCompactArray(9, heightMap.length, (i) -> {
-         return (long)heightMap[i];
+         return heightMap[i];
       });
    }
 

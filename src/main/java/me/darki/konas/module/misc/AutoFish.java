@@ -39,7 +39,7 @@ extends Module {
                     this.Field2086 = false;
                     this.Field2087 = false;
                 }
-            } else if (((Boolean) cast.getValue()).booleanValue() && this.Field2088.Method737(4500.0)) {
+            } else if (cast.getValue().booleanValue() && this.Field2088.Method737(4500.0)) {
                 ((IMinecraft)mc).Method60();
                 this.Field2088.Method739();
                 this.Field2086 = false;
@@ -68,7 +68,7 @@ extends Module {
 
     @Override
     public String Method756() {
-        return ((Class376)((Object) mode.getValue())).toString().charAt(0) + ((Class376)((Object) mode.getValue())).toString().substring(1).toLowerCase();
+        return mode.getValue().toString().charAt(0) + mode.getValue().toString().substring(1).toLowerCase();
     }
 
     public boolean Method394() {

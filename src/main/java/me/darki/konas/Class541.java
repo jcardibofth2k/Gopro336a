@@ -11,7 +11,7 @@ public class Class541 {
         if (Math.pow(f5, 2.0) < 20.0) {
             return f2;
         }
-        float f6 = f5 * MathHelper.clamp((float)(f3 * f4), (float)0.0f, (float)1.0f);
+        float f6 = f5 * MathHelper.clamp(f3 * f4, 0.0f, 1.0f);
         return f + f6;
     }
 }

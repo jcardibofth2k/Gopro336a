@@ -9,7 +9,7 @@ import com.viaversion.viaversion.protocols.protocol1_14to1_13_2.ClientboundPacke
 
 public class Protocol1_14_3To1_14_2 extends AbstractProtocol {
    public Protocol1_14_3To1_14_2() {
-      super(ClientboundPackets1_14.class, ClientboundPackets1_14.class, (Class)null, (Class)null);
+      super(ClientboundPackets1_14.class, ClientboundPackets1_14.class, null, null);
    }
 
    protected void registerPackets() {

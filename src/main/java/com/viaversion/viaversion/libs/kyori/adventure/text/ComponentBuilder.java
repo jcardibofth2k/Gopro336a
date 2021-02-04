@@ -29,7 +29,7 @@ public interface ComponentBuilder extends Buildable.Builder, ComponentBuilderApp
    @Contract("_ -> this")
    @NotNull
    default ComponentBuilder append(@NotNull final ComponentBuilder builder) {
-      return this.append((Component)builder.build());
+      return this.append(builder.build());
    }
 
    @Contract("_ -> this")

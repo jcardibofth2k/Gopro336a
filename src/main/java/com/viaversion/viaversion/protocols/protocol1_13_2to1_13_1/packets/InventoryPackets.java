@@ -11,20 +11,20 @@ import com.viaversion.viaversion.protocols.protocol1_13to1_12_2.ServerboundPacke
 
 public class InventoryPackets {
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_13.SET_SLOT, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.SET_SLOT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
             this.map(Type.FLAT_ITEM, Type.FLAT_VAR_INT_ITEM);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.WINDOW_ITEMS, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.WINDOW_ITEMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.FLAT_ITEM_ARRAY, Type.FLAT_VAR_INT_ITEM_ARRAY);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -35,11 +35,11 @@ public class InventoryPackets {
                      int size = (Short)wrapper.passthrough(Type.UNSIGNED_BYTE);
 
                      for(int i = 0; i < size; ++i) {
-                        wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
-                        wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                        wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
+                        wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                         boolean secondItem = (Boolean)wrapper.passthrough(Type.BOOLEAN);
                         if (secondItem) {
-                           wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                           wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                         }
 
                         wrapper.passthrough(Type.BOOLEAN);
@@ -51,15 +51,15 @@ public class InventoryPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.ENTITY_EQUIPMENT, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.ENTITY_EQUIPMENT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.VAR_INT);
             this.map(Type.FLAT_ITEM, Type.FLAT_VAR_INT_ITEM);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -75,15 +75,15 @@ public class InventoryPackets {
                         ingredientsNo = (Integer)wrapper.passthrough(Type.VAR_INT);
 
                         for(i1 = 0; i1 < ingredientsNo; ++i1) {
-                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
                         }
 
-                        wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                        wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                      } else if (!type.equals("crafting_shaped")) {
                         if (type.equals("smelting")) {
                            wrapper.passthrough(Type.STRING);
-                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
-                           wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                            wrapper.passthrough(Type.FLOAT);
                            wrapper.passthrough(Type.VAR_INT);
                         }
@@ -92,17 +92,17 @@ public class InventoryPackets {
                         wrapper.passthrough(Type.STRING);
 
                         for(i1 = 0; i1 < ingredientsNo; ++i1) {
-                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, (Item[])wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
+                           wrapper.write(Type.FLAT_VAR_INT_ITEM_ARRAY_VAR_INT, wrapper.read(Type.FLAT_ITEM_ARRAY_VAR_INT));
                         }
 
-                        wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                        wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                      }
                   }
 
                }
             });
          }
-      }));
+      });
       protocol.registerServerbound(ServerboundPackets1_13.CLICK_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);

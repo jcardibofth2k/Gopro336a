@@ -82,7 +82,7 @@ public final class Chunk1_17Type extends Type {
          buf.release();
       }
 
-      Type.NBT_ARRAY.write(output, (CompoundTag[])chunk.getBlockEntities().toArray(EMPTY_COMPOUNDS));
+      Type.NBT_ARRAY.write(output, chunk.getBlockEntities().toArray(EMPTY_COMPOUNDS));
    }
 
    public Class getBaseClass() {

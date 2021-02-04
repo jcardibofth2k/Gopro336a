@@ -27,7 +27,7 @@ public final class EntityPackets extends EntityRewriter {
       this.registerTracker(ClientboundPackets1_16_2.SPAWN_MOB);
       this.registerTracker(ClientboundPackets1_16_2.SPAWN_PLAYER, Entity1_17Types.PLAYER);
       this.registerMetadataRewriter(ClientboundPackets1_16_2.ENTITY_METADATA, Types1_16.METADATA_LIST, Types1_17.METADATA_LIST);
-      ((Protocol1_17To1_16_4)this.protocol).registerClientbound(ClientboundPackets1_16_2.DESTROY_ENTITIES, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.DESTROY_ENTITIES, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int[] entityIds = (int[])wrapper.read(Type.VAR_INT_ARRAY_PRIMITIVE);
@@ -47,15 +47,15 @@ public final class EntityPackets extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerClientbound(ClientboundPackets1_16_2.ENTITY_PROPERTIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.ENTITY_PROPERTIES, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler((wrapper) -> {
-               wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
+               wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerClientbound(ClientboundPackets1_16_2.PLAYER_POSITION, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.PLAYER_POSITION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.DOUBLE);
             this.map(Type.DOUBLE);
@@ -69,7 +69,7 @@ public final class EntityPackets extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerClientbound(ClientboundPackets1_16_2.COMBAT_EVENT, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.COMBAT_EVENT, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int type = (Integer)wrapper.read(Type.VAR_INT);
@@ -92,7 +92,7 @@ public final class EntityPackets extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).cancelClientbound(ClientboundPackets1_16_2.ENTITY_MOVEMENT);
+      this.protocol.cancelClientbound(ClientboundPackets1_16_2.ENTITY_MOVEMENT);
    }
 
    protected void registerRewrites() {
@@ -110,7 +110,7 @@ public final class EntityPackets extends EntityRewriter {
       this.filter().filterFamily(Entity1_17Types.ENTITY).addIndex(7);
       this.filter().filterFamily(Entity1_17Types.MINECART_ABSTRACT).index(11).handler((event, meta) -> {
          int data = (Integer)meta.getValue();
-         meta.setValue(((Protocol1_17To1_16_4)this.protocol).getMappingData().getNewBlockStateId(data));
+         meta.setValue(this.protocol.getMappingData().getNewBlockStateId(data));
       });
       this.filter().type(Entity1_17Types.SHULKER).removeIndex(17);
    }

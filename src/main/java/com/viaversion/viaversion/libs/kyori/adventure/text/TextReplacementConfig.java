@@ -21,7 +21,7 @@ public interface TextReplacementConfig extends Buildable, Examinable {
    @NotNull
    Pattern matchPattern();
 
-   public interface Builder extends Buildable.Builder {
+   interface Builder extends Buildable.Builder {
       @Contract("_ -> this")
       default TextReplacementConfig.Builder matchLiteral(final String literal) {
          return this.match(Pattern.compile(literal, 16));
@@ -85,7 +85,7 @@ public interface TextReplacementConfig extends Buildable, Examinable {
       default TextReplacementConfig.Builder replacement(@NotNull final Function replacement) {
          Objects.requireNonNull(replacement, "replacement");
          return this.replacement((result, input) -> {
-            return (ComponentLike)replacement.apply(input);
+            return replacement.apply(input);
          });
       }
 

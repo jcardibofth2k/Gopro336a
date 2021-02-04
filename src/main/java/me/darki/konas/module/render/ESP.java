@@ -116,8 +116,8 @@ extends Module {
 
     public static void Method1314(BufferBuilder bufferBuilder, float f) {
         GlStateManager.pushMatrix();
-        GlStateManager.translate((double)0.0, (double)((double)f + 0.55), (double)0.0);
-        int n = ((ColorValue) playerColor.getValue()).Method773(100);
+        GlStateManager.translate(0.0, (double)f + 0.55, 0.0);
+        int n = playerColor.getValue().Method773(100);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(-0.375, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.375, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
@@ -127,19 +127,19 @@ extends Module {
 
     public Integer Method1315(Entity entity) {
         if (entity instanceof EntityPlayer) {
-            if (((Boolean) show_targets.getValue()).booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
+            if (show_targets.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
                 int n = NewGui.INSTANCE.Field1133.Method428(entity);
                 return new Color(255, n / 5, (int)((double)n / 1.0493)).hashCode();
             }
-            return ((ColorValue) playerColor.getValue()).Method774();
+            return playerColor.getValue().Method774();
         }
         if (entity instanceof IMob) {
-            return ((ColorValue) colorValueSetting.getValue()).Method774();
+            return colorValueSetting.getValue().Method774();
         }
         if (entity instanceof IAnimals || entity instanceof INpc) {
-            return ((ColorValue) animalColor.getValue()).Method774();
+            return animalColor.getValue().Method774();
         }
-        return ((ColorValue)Field1314.getValue()).Method774();
+        return Field1314.getValue().Method774();
     }
 
     public static boolean Method539() {
@@ -164,10 +164,10 @@ extends Module {
 
     public static void Method1317(BufferBuilder bufferBuilder, float f) {
         GlStateManager.pushMatrix();
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.translate((double)0.0, (double)f, (double)0.0);
-        int n = ((ColorValue) playerColor.getValue()).Method773(300);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(100);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.translate(0.0, f, 0.0);
+        int n = playerColor.getValue().Method773(300);
+        int n2 = playerColor.getValue().Method773(100);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.0, 0.55, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
@@ -179,24 +179,24 @@ extends Module {
         if (Field1339) {
             return false;
         }
-        if (entity instanceof EntityEnderCrystal && ((Boolean) crystals.getValue()).booleanValue() && mode.getValue() == Class486.SHADER) {
+        if (entity instanceof EntityEnderCrystal && crystals.getValue().booleanValue() && mode.getValue() == Class486.SHADER) {
             return true;
         }
-        if (entity instanceof EntityPlayer && ((Boolean) players.getValue()).booleanValue() && entity != ESP.mc.player && entity != mc.getRenderViewEntity() && !Class546.Method963(entity)) {
+        if (entity instanceof EntityPlayer && players.getValue().booleanValue() && entity != ESP.mc.player && entity != mc.getRenderViewEntity() && !Class546.Method963(entity)) {
             return true;
         }
-        if (entity instanceof IAnimals && ((Boolean) animals.getValue()).booleanValue()) {
+        if (entity instanceof IAnimals && animals.getValue().booleanValue()) {
             return true;
         }
-        return entity instanceof IMob && (Boolean) mobs.getValue() != false;
+        return entity instanceof IMob && mobs.getValue() != false;
     }
 
     public ESP() {
-        ("ESP", 0, Category.RENDER, new String[0]);
+        ("ESP", 0, Category.RENDER, new String[0])
     }
 
     public static void Method1318(Entity entity) {
-        GL11.glEnable((int)3553);
+        GL11.glEnable(3553);
         double[] dArray = ShaderUtil.Method839(entity);
         double d = dArray[0];
         double d2 = dArray[1];
@@ -208,7 +208,7 @@ extends Module {
             render.doRender(entity, d, d2, d3, 0.0f, mc.getRenderPartialTicks());
             Field1342 = false;
         }
-        GL11.glDisable((int)3553);
+        GL11.glDisable(3553);
         GL11.glPopMatrix();
     }
 
@@ -223,7 +223,7 @@ extends Module {
                 return;
             }
             if (mode.getValue() != Class486.OUTLINE || !this.Method386(class129.Method2040())) break block1;
-            Class519.Method1299(((Float) width.getValue()).intValue());
+            Class519.Method1299(width.getValue().intValue());
             class129.Method2041().render(class129.Method2040(), class129.Method260(), class129.Method1108(), class129.Method213(), class129.Method214(), class129.Method258(), class129.Method340());
             Class519.Method1295();
             class129.Method2041().render(class129.Method2040(), class129.Method260(), class129.Method1108(), class129.Method213(), class129.Method214(), class129.Method258(), class129.Method340());
@@ -235,7 +235,7 @@ extends Module {
     }
 
     public static boolean Method535() {
-        return (Boolean) shaderFill.getValue() != false && mode.getValue() == Class486.SHADER;
+        return shaderFill.getValue() != false && mode.getValue() == Class486.SHADER;
     }
 
     public void Method1320() {
@@ -253,74 +253,74 @@ extends Module {
                 this.Field1341 = new Class554(this.Field1340);
             }
         }
-        if ((Double) quality.getValue() != Class554.Field627) {
-            Class554.Field627 = (Double) quality.getValue();
+        if (quality.getValue() != Class554.Field627) {
+            Class554.Field627 = quality.getValue();
             this.Field1341.Method686();
             this.Field1341 = new Class554(this.Field1340);
         } else if (this.Field1341 == null) {
             this.Field1341 = new Class554(this.Field1340);
         }
         GL11.glPushMatrix();
-        GL11.glEnable((int)3042);
-        GL11.glBlendFunc((int)770, (int)771);
-        GL11.glDisable((int)3553);
-        GL11.glEnable((int)2848);
-        GL11.glHint((int)3154, (int)4354);
-        GL11.glDisable((int)2929);
-        GL11.glDisable((int)2896);
-        GL11.glDepthMask((boolean)false);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glDisable(3553);
+        GL11.glEnable(2848);
+        GL11.glHint(3154, 4354);
+        GL11.glDisable(2929);
+        GL11.glDisable(2896);
+        GL11.glDepthMask(false);
         ((IEntityRenderer) ESP.mc.entityRenderer).Method1908(mc.getRenderPartialTicks(), 0);
-        GL11.glMatrixMode((int)5888);
+        GL11.glMatrixMode(5888);
         this.Field1340.bindFramebuffer(false);
-        GL11.glClearColor((float)0.0f, (float)0.0f, (float)0.0f, (float)0.0f);
-        GL11.glClear((int)16640);
+        GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        GL11.glClear(16640);
         ESP.mc.entityRenderer.disableLightmap();
         RenderHelper.disableStandardItemLighting();
         ESP.mc.world.loadedEntityList.stream().filter(this::Method386).forEach(ESP::Method1318);
         ESP.mc.entityRenderer.disableLightmap();
         RenderHelper.disableStandardItemLighting();
         ESP.mc.entityRenderer.setupOverlayRendering();
-        GL11.glEnable((int)3042);
-        GL11.glBlendFunc((int)770, (int)771);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
         this.Field1341.Method689();
         this.Field1340.unbindFramebuffer();
         mc.getFramebuffer().bindFramebuffer(true);
-        GL11.glScaled((double)(1.0 / Class564.Field627), (double)(1.0 / Class564.Field627), (double)(1.0 / Class564.Field627));
-        GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GL11.glEnable((int)3553);
-        GL11.glBindTexture((int)3553, (int)this.Field1341.Method685());
-        GL11.glBegin((int)4);
-        GL11.glTexCoord2d((double)0.0, (double)1.0);
-        GL11.glVertex2d((double)0.0, (double)0.0);
-        GL11.glTexCoord2d((double)0.0, (double)0.0);
-        GL11.glVertex2d((double)0.0, (double)((double)scaledResolution.getScaledHeight() * Class554.Field627));
-        GL11.glTexCoord2d((double)1.0, (double)0.0);
-        GL11.glVertex2d((double)((double)scaledResolution.getScaledWidth() * Class554.Field627), (double)((double)scaledResolution.getScaledHeight() * Class554.Field627));
-        GL11.glTexCoord2d((double)1.0, (double)0.0);
-        GL11.glVertex2d((double)((double)scaledResolution.getScaledWidth() * Class554.Field627), (double)((double)scaledResolution.getScaledHeight() * Class554.Field627));
-        GL11.glTexCoord2d((double)1.0, (double)1.0);
-        GL11.glVertex2d((double)((double)scaledResolution.getScaledWidth() * Class554.Field627), (double)0.0);
-        GL11.glTexCoord2d((double)0.0, (double)1.0);
-        GL11.glVertex2d((double)0.0, (double)0.0);
+        GL11.glScaled(1.0 / Class564.Field627, 1.0 / Class564.Field627, 1.0 / Class564.Field627);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        GL11.glEnable(3553);
+        GL11.glBindTexture(3553, this.Field1341.Method685());
+        GL11.glBegin(4);
+        GL11.glTexCoord2d(0.0, 1.0);
+        GL11.glVertex2d(0.0, 0.0);
+        GL11.glTexCoord2d(0.0, 0.0);
+        GL11.glVertex2d(0.0, (double)scaledResolution.getScaledHeight() * Class554.Field627);
+        GL11.glTexCoord2d(1.0, 0.0);
+        GL11.glVertex2d((double)scaledResolution.getScaledWidth() * Class554.Field627, (double)scaledResolution.getScaledHeight() * Class554.Field627);
+        GL11.glTexCoord2d(1.0, 0.0);
+        GL11.glVertex2d((double)scaledResolution.getScaledWidth() * Class554.Field627, (double)scaledResolution.getScaledHeight() * Class554.Field627);
+        GL11.glTexCoord2d(1.0, 1.0);
+        GL11.glVertex2d((double)scaledResolution.getScaledWidth() * Class554.Field627, 0.0);
+        GL11.glTexCoord2d(0.0, 1.0);
+        GL11.glVertex2d(0.0, 0.0);
         GL11.glEnd();
-        GL11.glScaled((double)Class564.Field627, (double)Class564.Field627, (double)Class564.Field627);
-        GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GL11.glScaled(Class564.Field627, Class564.Field627, Class564.Field627);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         mc.getFramebuffer().bindFramebuffer(false);
         RenderHelper.enableStandardItemLighting();
-        GL11.glDepthMask((boolean)true);
-        GL11.glEnable((int)2929);
-        GL11.glDisable((int)2848);
-        GL11.glEnable((int)3553);
-        GL11.glDisable((int)3042);
+        GL11.glDepthMask(true);
+        GL11.glEnable(2929);
+        GL11.glDisable(2848);
+        GL11.glEnable(3553);
+        GL11.glDisable(3042);
         GL11.glPopMatrix();
     }
 
     public static void Method1321(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f) {
-        GL11.glRotatef((float)(entityPlayer.isSneaking() ? 25.0f : 0.0f), (float)1.0f, (float)0.0f, (float)0.0f);
-        GlStateManager.translate((double)0.0, (double)(entityPlayer.isSneaking() ? -0.16175 : 0.0), (double)(entityPlayer.isSneaking() ? -0.48025 : 0.0));
+        GL11.glRotatef(entityPlayer.isSneaking() ? 25.0f : 0.0f, 1.0f, 0.0f, 0.0f);
+        GlStateManager.translate(0.0, entityPlayer.isSneaking() ? -0.16175 : 0.0, entityPlayer.isSneaking() ? -0.48025 : 0.0);
         GlStateManager.pushMatrix();
-        GlStateManager.translate((double)0.0, (double)f, (double)0.0);
-        int n = ((ColorValue) playerColor.getValue()).Method773(300);
+        GlStateManager.translate(0.0, f, 0.0);
+        int n = playerColor.getValue().Method773(300);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(-0.125, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.125, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
@@ -336,21 +336,21 @@ extends Module {
                 f = 3.0f;
             }
             float f2 = 1.0f / (f / 3.0f);
-            GL11.glBlendFunc((int)770, (int)771);
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+            GL11.glBlendFunc(770, 771);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.enableBlend();
             GlStateManager.disableDepth();
             GlStateManager.disableLighting();
             GlStateManager.disableCull();
             GlStateManager.enableAlpha();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f);
             GlStateManager.pushMatrix();
             Vec3d vec3d = new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).add(new Vec3d((entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()));
-            GlStateManager.translate((double)(vec3d.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(vec3d.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(vec3d.z - ((IRenderManager)mc.getRenderManager()).Method71()));
-            GlStateManager.glNormal3f((float)0.0f, (float)1.0f, (float)0.0f);
-            GlStateManager.rotate((float)(-ESP.mc.getRenderManager().playerViewY), (float)0.0f, (float)1.0f, (float)0.0f);
+            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d.z - ((IRenderManager)mc.getRenderManager()).Method71());
+            GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
+            GlStateManager.rotate(-ESP.mc.getRenderManager().playerViewY, 0.0f, 1.0f, 0.0f);
             Minecraft minecraft = mc;
             RenderManager renderManager = minecraft.getRenderManager();
             float f3 = renderManager.options.thirdPersonView == 2 ? -1 : 1;
@@ -358,59 +358,59 @@ extends Module {
             float f5 = 0.0f;
             float f6 = 0.0f;
             try {
-                GlStateManager.rotate((float)f3, (float)f4, (float)f5, (float)f6);
+                GlStateManager.rotate(f3, f4, f5, f6);
             }
             catch (NullPointerException nullPointerException) {
-                GlStateManager.rotate((float)1.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GlStateManager.rotate(1.0f, 1.0f, 0.0f, 0.0f);
             }
             int n = this.Method1315(entity);
             float f7 = (float)(n >> 16 & 0xFF) / 255.0f;
             float f8 = (float)(n >> 8 & 0xFF) / 255.0f;
             float f9 = (float)(n & 0xFF) / 255.0f;
-            GL11.glColor4f((float)f7, (float)f8, (float)f9, (float)1.0f);
-            GL11.glLineWidth((float)(3.0f * f2));
-            GL11.glEnable((int)2848);
-            GL11.glBegin((int)2);
-            GL11.glVertex2d((double)((double)(-entity.width) * 1.2), (double)(-((double)entity.height * 0.2)));
-            GL11.glVertex2d((double)((double)(-entity.width) * 1.2), (double)((double)entity.height * 1.2));
-            GL11.glVertex2d((double)((double)entity.width * 1.2), (double)((double)entity.height * 1.2));
-            GL11.glVertex2d((double)((double)entity.width * 1.2), (double)(-((double)entity.height * 0.2)));
+            GL11.glColor4f(f7, f8, f9, 1.0f);
+            GL11.glLineWidth(3.0f * f2);
+            GL11.glEnable(2848);
+            GL11.glBegin(2);
+            GL11.glVertex2d((double)(-entity.width) * 1.2, -((double)entity.height * 0.2));
+            GL11.glVertex2d((double)(-entity.width) * 1.2, (double)entity.height * 1.2);
+            GL11.glVertex2d((double)entity.width * 1.2, (double)entity.height * 1.2);
+            GL11.glVertex2d((double)entity.width * 1.2, -((double)entity.height * 0.2));
             GL11.glEnd();
             if (entity instanceof EntityLivingBase) {
-                GL11.glColor4f((float)0.0f, (float)0.0f, (float)0.0f, (float)0.3f);
-                GL11.glLineWidth((float)(5.0f * f2));
-                GL11.glBegin((int)1);
-                GL11.glVertex2d((double)((double)entity.width * 1.4), (double)((double)entity.height * 1.2));
-                GL11.glVertex2d((double)((double)entity.width * 1.4), (double)(-((double)entity.height * 0.2)));
+                GL11.glColor4f(0.0f, 0.0f, 0.0f, 0.3f);
+                GL11.glLineWidth(5.0f * f2);
+                GL11.glBegin(1);
+                GL11.glVertex2d((double)entity.width * 1.4, (double)entity.height * 1.2);
+                GL11.glVertex2d((double)entity.width * 1.4, -((double)entity.height * 0.2));
                 GL11.glEnd();
-                GL11.glColor4f((float)0.0f, (float)1.0f, (float)0.0f, (float)1.0f);
+                GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
                 float f10 = ((EntityLivingBase)entity).getHealth() / ((EntityLivingBase)entity).getMaxHealth();
-                GL11.glBegin((int)1);
-                GL11.glVertex2d((double)((double)entity.width * 1.4), (double)((double)entity.height * 1.2 * (double)f10));
-                GL11.glVertex2d((double)((double)entity.width * 1.4), (double)(-((double)entity.height * 0.2)));
+                GL11.glBegin(1);
+                GL11.glVertex2d((double)entity.width * 1.4, (double)entity.height * 1.2 * (double)f10);
+                GL11.glVertex2d((double)entity.width * 1.4, -((double)entity.height * 0.2));
                 GL11.glEnd();
                 float f11 = ((EntityLivingBase)entity).getAbsorptionAmount() / 16.0f;
                 if (f11 > 0.0f) {
-                    GL11.glColor4f((float)0.0f, (float)0.0f, (float)0.0f, (float)0.3f);
-                    GL11.glBegin((int)1);
-                    GL11.glVertex2d((double)((double)entity.width * 1.6), (double)((double)entity.height * 0.92));
-                    GL11.glVertex2d((double)((double)entity.width * 1.6), (double)(-((double)entity.height * 0.2)));
+                    GL11.glColor4f(0.0f, 0.0f, 0.0f, 0.3f);
+                    GL11.glBegin(1);
+                    GL11.glVertex2d((double)entity.width * 1.6, (double)entity.height * 0.92);
+                    GL11.glVertex2d((double)entity.width * 1.6, -((double)entity.height * 0.2));
                     GL11.glEnd();
-                    GL11.glColor4f((float)0.0f, (float)1.0f, (float)0.0f, (float)1.0f);
-                    GL11.glColor4f((float)1.0f, (float)1.0f, (float)0.0f, (float)1.0f);
-                    GL11.glBegin((int)1);
-                    GL11.glVertex2d((double)((double)entity.width * 1.6), (double)((double)entity.height * 0.92 * (double)f11));
-                    GL11.glVertex2d((double)((double)entity.width * 1.6), (double)(-((double)entity.height * 0.2)));
+                    GL11.glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+                    GL11.glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
+                    GL11.glBegin(1);
+                    GL11.glVertex2d((double)entity.width * 1.6, (double)entity.height * 0.92 * (double)f11);
+                    GL11.glVertex2d((double)entity.width * 1.6, -((double)entity.height * 0.2));
                     GL11.glEnd();
                 }
             }
             GlStateManager.enableCull();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.enableBlend();
             GlStateManager.enableDepth();
             GlStateManager.resetColor();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.popMatrix();
         }
     }
@@ -421,139 +421,139 @@ extends Module {
         if (ESP.mc.world == null || ESP.mc.player == null) {
             return;
         }
-        if (((Boolean)Field1311.getValue()).booleanValue()) {
+        if (Field1311.getValue().booleanValue()) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
             for (Entity object : ESP.mc.world.loadedEntityList) {
                 if (!(object instanceof EntityEnderPearl) || !((double)mc.getRenderViewEntity().getDistance(object) < 250.0)) continue;
-                Class516.Method1280(object, ((ColorValue)Field1312.getValue()).Method774(), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth((float)1.0f);
-                Class516.Method1257(object, ((ColorValue)Field1312.getValue()).Method774(), class89.Method436());
+                Class516.Method1280(object, Field1312.getValue().Method774(), class89.Method436());
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                GlStateManager.glLineWidth(1.0f);
+                Class516.Method1257(object, Field1312.getValue().Method774(), class89.Method436());
             }
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (((Boolean) csgo.getValue()).booleanValue()) {
+        if (csgo.getValue().booleanValue()) {
             if (mc.getRenderManager() == null) {
                 return;
             }
             ESP.mc.world.loadedEntityList.stream().filter(ESP::Method395).forEach(this::Method1322);
-            GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         }
         if (mode.getValue() == Class486.BOX) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
             for (Entity entity : ESP.mc.world.loadedEntityList) {
                 if (entity == ESP.mc.player || !this.Method386(entity)) continue;
                 Class516.Method1280(entity, this.Method1315(entity), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth((float)1.0f);
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                GlStateManager.glLineWidth(1.0f);
                 Class516.Method1257(entity, this.Method1315(entity), class89.Method436());
             }
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (((Boolean)Field1313.getValue()).booleanValue()) {
+        if (Field1313.getValue().booleanValue()) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
             for (Entity entity : ESP.mc.world.loadedEntityList) {
                 if (entity == ESP.mc.player || !(entity instanceof EntityItem)) continue;
                 Class516.Method1280(entity, this.Method1315(entity), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth((float)1.0f);
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                GlStateManager.glLineWidth(1.0f);
                 Class516.Method1257(entity, this.Method1315(entity), class89.Method436());
             }
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (((Boolean)Field1324.getValue()).booleanValue()) {
+        if (Field1324.getValue().booleanValue()) {
             int n;
             if (Field1325.getValue() == Class483.LINE) {
                 GlStateManager.pushMatrix();
                 Class516.Method1289();
                 GlStateManager.enableBlend();
-                GlStateManager.glLineWidth((float)((Float)Field1331.getValue()).floatValue());
+                GlStateManager.glLineWidth(Field1331.getValue().floatValue());
                 GlStateManager.disableTexture2D();
-                GlStateManager.depthMask((boolean)false);
+                GlStateManager.depthMask(false);
                 GlStateManager.disableDepth();
-                GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                 for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = new AxisAlignedBB((double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ(), (double)(blockPos.getX() + 1), (double)blockPos.getY(), (double)(blockPos.getZ() + 1));
-                    n = ((ColorValue)Field1327.getValue()).Method774();
+                    axisAlignedBB = new AxisAlignedBB(blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockPos.getX() + 1, blockPos.getY(), blockPos.getZ() + 1);
+                    n = Field1327.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = ((ColorValue)Field1329.getValue()).Method774();
+                        n = Field1329.getValue().Method774();
                     }
                     Class516.Method1281(axisAlignedBB, n);
                 }
-                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+                GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
                 GlStateManager.enableDepth();
-                GlStateManager.depthMask((boolean)true);
+                GlStateManager.depthMask(true);
                 GlStateManager.enableTexture2D();
                 GlStateManager.disableBlend();
                 Class516.Method1261();
                 GlStateManager.popMatrix();
             } else if (Field1325.getValue() == Class483.OUTLINE) {
                 for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess) ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + (Double)Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
-                    n = ((ColorValue)Field1327.getValue()).Method774();
+                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
+                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    n = Field1327.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = ((ColorValue)Field1329.getValue()).Method774();
+                        n = Field1329.getValue().Method774();
                     }
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, n, ((Float)Field1331.getValue()).floatValue());
+                    Class523.Method1215(axisAlignedBB, n, Field1331.getValue().floatValue());
                     Class523.Method1214();
                 }
             } else {
                 for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess) ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + (Double)Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
-                    n = ((ColorValue)Field1326.getValue()).Method774();
+                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
+                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    n = Field1326.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = ((ColorValue)Field1328.getValue()).Method774();
+                        n = Field1328.getValue().Method774();
                     }
                     Class523.Method1216();
                     Class523.Method1217(axisAlignedBB, n);
                     Class523.Method1214();
-                    n = ((ColorValue)Field1327.getValue()).Method774();
+                    n = Field1327.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = ((ColorValue)Field1329.getValue()).Method774();
+                        n = Field1329.getValue().Method774();
                     }
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, n, ((Float)Field1331.getValue()).floatValue());
+                    Class523.Method1215(axisAlignedBB, n, Field1331.getValue().floatValue());
                     Class523.Method1214();
                 }
             }
         }
-        if (((Boolean)Field1333.getValue()).booleanValue()) {
+        if (Field1333.getValue().booleanValue()) {
             if (mc.getRenderViewEntity() == null) {
                 return;
             }
@@ -563,49 +563,49 @@ extends Module {
             GlStateManager.disableTexture2D();
             GlStateManager.disableAlpha();
             GlStateManager.disableDepth();
-            GlStateManager.depthMask((boolean)false);
-            GlStateManager.glLineWidth((float)2.0f);
+            GlStateManager.depthMask(false);
+            GlStateManager.glLineWidth(2.0f);
             for (Class479 class479 : this.Field1338) {
-                axisAlignedBB = new AxisAlignedBB((double)class479.Method2109(), 0.0, (double)class479.Method2107(), (double)(class479.Method2109() + 16), 0.0, (double)(class479.Method2107() + 16));
+                axisAlignedBB = new AxisAlignedBB(class479.Method2109(), 0.0, class479.Method2107(), class479.Method2109() + 16, 0.0, class479.Method2107() + 16);
                 GlStateManager.pushMatrix();
                 if (Field1336.isBoundingBoxInFrustum(axisAlignedBB)) {
                     double d = ESP.mc.getRenderViewEntity().lastTickPosX + (ESP.mc.getRenderViewEntity().posX - ESP.mc.getRenderViewEntity().lastTickPosX) * (double)class89.Method436();
                     double d2 = ESP.mc.getRenderViewEntity().lastTickPosY + (ESP.mc.getRenderViewEntity().posY - ESP.mc.getRenderViewEntity().lastTickPosY) * (double)class89.Method436();
                     double d3 = ESP.mc.getRenderViewEntity().lastTickPosZ + (ESP.mc.getRenderViewEntity().posZ - ESP.mc.getRenderViewEntity().lastTickPosZ) * (double)class89.Method436();
-                    Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)Field1334.getValue()).Method774());
+                    Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, Field1334.getValue().Method774());
                 }
                 GlStateManager.popMatrix();
             }
-            GlStateManager.glLineWidth((float)1.0f);
+            GlStateManager.glLineWidth(1.0f);
             GlStateManager.enableTexture2D();
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableAlpha();
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (!((Boolean)Field1316.getValue()).booleanValue()) {
+        if (!Field1316.getValue().booleanValue()) {
             return;
         }
         if (Field1317.getValue() == Class483.LINE) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
-            GlStateManager.glLineWidth((float)((Float)Field1318.getValue()).floatValue());
+            GlStateManager.glLineWidth(Field1318.getValue().floatValue());
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             for (TileEntity tileEntity : ESP.mc.world.loadedTileEntityList) {
                 axisAlignedBB = tileEntity.getPos();
                 IBlockState iBlockState = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB);
                 Integer n = this.Method1331(tileEntity);
                 if (n == null) continue;
-                Class516.Method1285(iBlockState.getSelectedBoundingBox((World) ESP.mc.world, (BlockPos)axisAlignedBB), new Color(n));
+                Class516.Method1285(iBlockState.getSelectedBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB), new Color(n));
             }
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.disableBlend();
             Class516.Method1261();
@@ -615,10 +615,10 @@ extends Module {
                 axisAlignedBB = tileEntity.getPos();
                 Integer n = this.Method1331(tileEntity);
                 if (n == null) continue;
-                AxisAlignedBB axisAlignedBB2 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox((IBlockAccess) ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
+                AxisAlignedBB axisAlignedBB2 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
                 axisAlignedBB2 = axisAlignedBB2.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                 Class523.Method1216();
-                Class523.Method1215(axisAlignedBB2, n, ((Float)Field1318.getValue()).floatValue());
+                Class523.Method1215(axisAlignedBB2, n, Field1318.getValue().floatValue());
                 Class523.Method1214();
             }
         } else {
@@ -626,13 +626,13 @@ extends Module {
                 axisAlignedBB = tileEntity.getPos();
                 Integer n = this.Method1331(tileEntity);
                 if (n == null) continue;
-                AxisAlignedBB axisAlignedBB3 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox((IBlockAccess) ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
+                AxisAlignedBB axisAlignedBB3 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
                 axisAlignedBB3 = axisAlignedBB3.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                 Class523.Method1216();
                 Class523.Method1217(axisAlignedBB3, n);
                 Class523.Method1214();
                 Class523.Method1216();
-                Class523.Method1215(axisAlignedBB3, n, ((Float)Field1318.getValue()).floatValue());
+                Class523.Method1215(axisAlignedBB3, n, Field1318.getValue().floatValue());
                 Class523.Method1214();
             }
         }
@@ -645,18 +645,18 @@ extends Module {
 
     public static void Method1324(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f, ModelRenderer modelRenderer) {
         GlStateManager.pushMatrix();
-        GlStateManager.translate((double)0.375, (double)((double)f + 0.55), (double)0.0);
+        GlStateManager.translate(0.375, (double)f + 0.55, 0.0);
         if (modelRenderer.rotateAngleX != 0.0f) {
-            GlStateManager.rotate((float)(modelRenderer.rotateAngleX * 57.295776f), (float)1.0f, (float)0.0f, (float)0.0f);
+            GlStateManager.rotate(modelRenderer.rotateAngleX * 57.295776f, 1.0f, 0.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleY != 0.0f) {
-            GlStateManager.rotate((float)(modelRenderer.rotateAngleY * 57.295776f), (float)0.0f, (float)1.0f, (float)0.0f);
+            GlStateManager.rotate(modelRenderer.rotateAngleY * 57.295776f, 0.0f, 1.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleZ != 0.0f) {
-            GlStateManager.rotate((float)(-modelRenderer.rotateAngleZ * 57.295776f), (float)0.0f, (float)0.0f, (float)1.0f);
+            GlStateManager.rotate(-modelRenderer.rotateAngleZ * 57.295776f, 0.0f, 0.0f, 1.0f);
         }
-        int n = ((ColorValue) playerColor.getValue()).Method773(100);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(300);
+        int n = playerColor.getValue().Method773(100);
+        int n2 = playerColor.getValue().Method773(300);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.0, -0.5, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
@@ -665,15 +665,15 @@ extends Module {
     }
 
     public static void Method1325(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f, float f2, ModelRenderer modelRenderer) {
-        GL11.glRotatef((float)(f2 - entityPlayer.rotationYawHead), (float)0.0f, (float)1.0f, (float)0.0f);
+        GL11.glRotatef(f2 - entityPlayer.rotationYawHead, 0.0f, 1.0f, 0.0f);
         GlStateManager.pushMatrix();
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.translate((double)0.0, (double)((double)f + 0.55), (double)0.0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.translate(0.0, (double)f + 0.55, 0.0);
         if (modelRenderer.rotateAngleX != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleX * 57.295776f), (float)1.0f, (float)0.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleX * 57.295776f, 1.0f, 0.0f, 0.0f);
         }
-        int n = ((ColorValue) playerColor.getValue()).Method773(100);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(0);
+        int n = playerColor.getValue().Method773(100);
+        int n2 = playerColor.getValue().Method773(0);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.0, 0.3, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
@@ -683,18 +683,18 @@ extends Module {
     }
 
     public static void Method1326(EntityPlayer entityPlayer, ModelPlayer modelPlayer, float f) {
-        if (!((Boolean) skeleton.getValue()).booleanValue() || !Class167.Method1612("ESP").isEnabled()) {
+        if (!skeleton.getValue().booleanValue() || !Class167.Method1612("ESP").isEnabled()) {
             return;
         }
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GL11.glEnable((int)2848);
+        GL11.glEnable(2848);
         GlStateManager.disableDepth();
         GlStateManager.disableTexture2D();
-        GL11.glHint((int)3154, (int)4354);
-        GlStateManager.depthMask((boolean)false);
-        GL11.glEnable((int)2903);
-        GL11.glDisable((int)2848);
+        GL11.glHint(3154, 4354);
+        GlStateManager.depthMask(false);
+        GL11.glEnable(2903);
+        GL11.glDisable(2848);
         double d = entityPlayer.lastTickPosX + (entityPlayer.posX - entityPlayer.lastTickPosX) * (double)f;
         double d2 = entityPlayer.lastTickPosY + (entityPlayer.posY - entityPlayer.lastTickPosY) * (double)f;
         double d3 = entityPlayer.lastTickPosZ + (entityPlayer.posZ - entityPlayer.lastTickPosZ) * (double)f;
@@ -702,12 +702,12 @@ extends Module {
         if (!Field1336.isBoundingBoxInFrustum(entityPlayer.getEntityBoundingBox()) || entityPlayer.isDead || !entityPlayer.isEntityAlive() || entityPlayer.isPlayerSleeping()) {
             return;
         }
-        GL11.glEnable((int)2848);
-        GL11.glLineWidth((float)2.0f);
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.translate((double)(d - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(d2 - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(d3 - ((IRenderManager)mc.getRenderManager()).Method71()));
+        GL11.glEnable(2848);
+        GL11.glLineWidth(2.0f);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).Method69(), d2 - ((IRenderManager)mc.getRenderManager()).Method70(), d3 - ((IRenderManager)mc.getRenderManager()).Method71());
         float f2 = entityPlayer.prevRenderYawOffset + (entityPlayer.renderYawOffset - entityPlayer.prevRenderYawOffset) * f;
-        GL11.glRotatef((float)(-f2), (float)0.0f, (float)1.0f, (float)0.0f);
+        GL11.glRotatef(-f2, 0.0f, 1.0f, 0.0f);
         float f3 = entityPlayer.isSneaking() ? 0.6f : 0.75f;
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
@@ -719,34 +719,34 @@ extends Module {
         ESP.Method1321(bufferBuilder, entityPlayer, f3);
         ESP.Method1317(bufferBuilder, f3);
         ESP.Method1314(bufferBuilder, f3);
-        Gui.drawRect((int)0, (int)0, (int)0, (int)0, (int)0);
+        Gui.drawRect(0, 0, 0, 0, 0);
         GlStateManager.disableBlend();
         GlStateManager.enableTexture2D();
-        GL11.glDisable((int)2848);
+        GL11.glDisable(2848);
         GlStateManager.enableDepth();
         GlStateManager.popMatrix();
-        GlStateManager.depthMask((boolean)true);
+        GlStateManager.depthMask(true);
     }
 
     public static void Method1327(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f, ModelRenderer modelRenderer) {
-        GlStateManager.translate((double)0.0, (double)0.0, (double)(entityPlayer.isSneaking() ? 0.25 : 0.0));
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.translate(0.0, 0.0, entityPlayer.isSneaking() ? 0.25 : 0.0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         GlStateManager.pushMatrix();
-        GlStateManager.translate((double)0.0, (double)(entityPlayer.isSneaking() ? -0.05 : 0.0), (double)(entityPlayer.isSneaking() ? -0.01725 : 0.0));
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.translate(0.0, entityPlayer.isSneaking() ? -0.05 : 0.0, entityPlayer.isSneaking() ? -0.01725 : 0.0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         GlStateManager.pushMatrix();
-        GlStateManager.translate((double)-0.375, (double)((double)f + 0.55), (double)0.0);
+        GlStateManager.translate(-0.375, (double)f + 0.55, 0.0);
         if (modelRenderer.rotateAngleX != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleX * 57.295776f), (float)1.0f, (float)0.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleX * 57.295776f, 1.0f, 0.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleY != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleY * 57.295776f), (float)0.0f, (float)1.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleY * 57.295776f, 0.0f, 1.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleZ != 0.0f) {
-            GL11.glRotatef((float)(-modelRenderer.rotateAngleZ * 57.295776f), (float)0.0f, (float)0.0f, (float)1.0f);
+            GL11.glRotatef(-modelRenderer.rotateAngleZ * 57.295776f, 0.0f, 0.0f, 1.0f);
         }
-        int n = ((ColorValue) playerColor.getValue()).Method773(100);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(300);
+        int n = playerColor.getValue().Method773(100);
+        int n2 = playerColor.getValue().Method773(300);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
         bufferBuilder.pos(0.0, -0.5, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
@@ -772,7 +772,7 @@ extends Module {
     }
 
     public static boolean Method388() {
-        return (Boolean) shaderOutline.getValue() != false && mode.getValue() == Class486.SHADER;
+        return shaderOutline.getValue() != false && mode.getValue() == Class486.SHADER;
     }
 
     static {
@@ -852,39 +852,39 @@ extends Module {
     }
 
     public static void Method1330(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f, ModelRenderer modelRenderer) {
-        GlStateManager.translate((double)0.0, (double)0.0, (double)(entityPlayer.isSneaking() ? -0.235 : 0.0));
+        GlStateManager.translate(0.0, 0.0, entityPlayer.isSneaking() ? -0.235 : 0.0);
         GlStateManager.pushMatrix();
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.translate((double)-0.125, (double)f, (double)0.0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.translate(-0.125, f, 0.0);
         if (modelRenderer.rotateAngleX != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleX * 57.295776f), (float)1.0f, (float)0.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleX * 57.295776f, 1.0f, 0.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleY != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleY * 57.295776f), (float)0.0f, (float)1.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleY * 57.295776f, 0.0f, 1.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleZ != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleZ * 57.295776f), (float)0.0f, (float)0.0f, (float)1.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleZ * 57.295776f, 0.0f, 0.0f, 1.0f);
         }
-        int n = ((ColorValue) playerColor.getValue()).Method773(300);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(500);
+        int n = playerColor.getValue().Method773(300);
+        int n2 = playerColor.getValue().Method773(500);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
-        bufferBuilder.pos(0.0, (double)(-f), 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
+        bufferBuilder.pos(0.0, -f, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
         Tessellator.getInstance().draw();
         GlStateManager.popMatrix();
     }
 
     public Integer Method1331(TileEntity tileEntity) {
         Integer n;
-        if (((Boolean)Field1319.getValue()).booleanValue()) {
+        if (Field1319.getValue().booleanValue()) {
             if (tileEntity instanceof TileEntityChest) {
-                return ((ColorValue)Field1320.getValue()).Method774();
+                return Field1320.getValue().Method774();
             }
             if (tileEntity instanceof TileEntityEnderChest) {
-                return ((ColorValue)Field1321.getValue()).Method774();
+                return Field1321.getValue().Method774();
             }
             if (tileEntity instanceof TileEntityFurnace || tileEntity instanceof TileEntityHopper || tileEntity instanceof TileEntityDispenser) {
-                return ((ColorValue)Field1322.getValue()).Method774();
+                return Field1322.getValue().Method774();
             }
         }
         if ((n = this.Method1316(tileEntity)) == null) {
@@ -901,29 +901,29 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         SPacketChunkData sPacketChunkData;
         Class479 class479;
-        if (packetEvent.getPacket() instanceof SPacketChunkData && !this.Field1338.contains(class479 = new Class479((sPacketChunkData = (SPacketChunkData) packetEvent.getPacket()).getChunkX() * 16, sPacketChunkData.getChunkZ() * 16)) && this.Method1323((Long)Field1335.getValue(), sPacketChunkData.getChunkX(), sPacketChunkData.getChunkZ()) && ESP.mc.player.dimension == 0) {
+        if (packetEvent.getPacket() instanceof SPacketChunkData && !this.Field1338.contains(class479 = new Class479((sPacketChunkData = (SPacketChunkData) packetEvent.getPacket()).getChunkX() * 16, sPacketChunkData.getChunkZ() * 16)) && this.Method1323(Field1335.getValue(), sPacketChunkData.getChunkX(), sPacketChunkData.getChunkZ()) && ESP.mc.player.dimension == 0) {
             this.Field1338.add(class479);
         }
     }
 
     public static void Method1332(BufferBuilder bufferBuilder, EntityPlayer entityPlayer, float f, ModelRenderer modelRenderer) {
         GlStateManager.pushMatrix();
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.translate((double)0.125, (double)f, (double)0.0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.translate(0.125, f, 0.0);
         if (modelRenderer.rotateAngleX != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleX * 57.295776f), (float)1.0f, (float)0.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleX * 57.295776f, 1.0f, 0.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleY != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleY * 57.295776f), (float)0.0f, (float)1.0f, (float)0.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleY * 57.295776f, 0.0f, 1.0f, 0.0f);
         }
         if (modelRenderer.rotateAngleZ != 0.0f) {
-            GL11.glRotatef((float)(modelRenderer.rotateAngleZ * 57.295776f), (float)0.0f, (float)0.0f, (float)1.0f);
+            GL11.glRotatef(modelRenderer.rotateAngleZ * 57.295776f, 0.0f, 0.0f, 1.0f);
         }
-        int n = ((ColorValue) playerColor.getValue()).Method773(300);
-        int n2 = ((ColorValue) playerColor.getValue()).Method773(500);
+        int n = playerColor.getValue().Method773(300);
+        int n2 = playerColor.getValue().Method773(500);
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         bufferBuilder.pos(0.0, 0.0, 0.0).color(n >> 16 & 0xFF, n >> 8 & 0xFF, n & 0xFF, n >> 24 & 0xFF).endVertex();
-        bufferBuilder.pos(0.0, (double)(-f), 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
+        bufferBuilder.pos(0.0, -f, 0.0).color(n2 >> 16 & 0xFF, n2 >> 8 & 0xFF, n2 & 0xFF, n2 >> 24 & 0xFF).endVertex();
         Tessellator.getInstance().draw();
         GlStateManager.popMatrix();
     }
@@ -947,7 +947,7 @@ extends Module {
     }
 
     public static boolean Method393() {
-        return (Boolean) shaderOutline.getValue() != false && mode.getValue() == Class486.SHADER;
+        return shaderOutline.getValue() != false && mode.getValue() == Class486.SHADER;
     }
 
     @Subscriber
@@ -955,7 +955,7 @@ extends Module {
         if (ESP.mc.world == null || ESP.mc.player == null) {
             return;
         }
-        if (((Class486)((Object) mode.getValue())).equals((Object)Class486.GLOW)) {
+        if (mode.getValue().equals(Class486.GLOW)) {
             ((IShaderGroup)((IRenderGlobal) ESP.mc.renderGlobal).Method73()).Method1220().forEach(ESP::Method1334);
             for (Object object : ESP.mc.world.loadedEntityList) {
                 if (object.getTeam() == null) {
@@ -969,11 +969,11 @@ extends Module {
                 object.setGlowing(false);
             }
         }
-        if (((Boolean)Field1324.getValue()).booleanValue()) {
+        if (Field1324.getValue().booleanValue()) {
             this.Field1337.clear();
-            if (ESP.mc.player.posY < (double)((Integer)Field1330.getValue()).intValue()) {
+            if (ESP.mc.player.posY < (double) Field1330.getValue().intValue()) {
                 Object object;
-                Iterable iterable = BlockPos.getAllInBox((BlockPos)new BlockPos(ESP.mc.player.posX - 6.0, 0.0, ESP.mc.player.posZ - 6.0), (BlockPos)new BlockPos(ESP.mc.player.posX + 6.0, 0.0, ESP.mc.player.posZ + 6.0));
+                Iterable iterable = BlockPos.getAllInBox(new BlockPos(ESP.mc.player.posX - 6.0, 0.0, ESP.mc.player.posZ - 6.0), new BlockPos(ESP.mc.player.posX + 6.0, 0.0, ESP.mc.player.posZ + 6.0));
                 object = iterable.iterator();
                 while (object.hasNext()) {
                     IBlockState iBlockState;
@@ -991,7 +991,7 @@ extends Module {
         block0: {
             ShaderUniform shaderUniform = shader.getShaderManager().getShaderUniform("Radius");
             if (shaderUniform == null) break block0;
-            shaderUniform.set(((Float) width.getValue()).floatValue());
+            shaderUniform.set(width.getValue().floatValue());
         }
     }
 

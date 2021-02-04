@@ -21,7 +21,7 @@ final class TranslatableComponentImpl extends AbstractComponent implements Trans
 
    TranslatableComponentImpl(@NotNull final List children, @NotNull final Style style, @NotNull final String key, @NotNull final List args) {
       super(children, style);
-      this.key = (String)Objects.requireNonNull(key, "key");
+      this.key = Objects.requireNonNull(key, "key");
       this.args = ComponentLike.asComponents(args);
    }
 
@@ -32,7 +32,7 @@ final class TranslatableComponentImpl extends AbstractComponent implements Trans
 
    @NotNull
    public TranslatableComponent key(@NotNull final String key) {
-      return Objects.equals(this.key, key) ? this : new TranslatableComponentImpl(this.children, this.style, (String)Objects.requireNonNull(key, "key"), this.args);
+      return Objects.equals(this.key, key) ? this : new TranslatableComponentImpl(this.children, this.style, Objects.requireNonNull(key, "key"), this.args);
    }
 
    @NotNull
@@ -117,7 +117,7 @@ final class TranslatableComponentImpl extends AbstractComponent implements Trans
 
       @NotNull
       public TranslatableComponent.Builder args(@NotNull final ComponentBuilder... args) {
-         return args.length == 0 ? this.args(Collections.emptyList()) : this.args((List)Stream.of(args).map(ComponentBuilder::build).collect(Collectors.toList()));
+         return args.length == 0 ? this.args(Collections.emptyList()) : this.args(Stream.of(args).map(ComponentBuilder::build).collect(Collectors.toList()));
       }
 
       @NotNull

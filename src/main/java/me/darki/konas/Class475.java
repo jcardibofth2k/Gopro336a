@@ -95,13 +95,13 @@ public class Class475
             if (Class475.Field2499.world.getBlockState(add).getBlock() != Blocks.AIR || Class475.Field2499.world.getBlockState(add2).getBlock() != Blocks.AIR) {
                 return false;
             }
-            final Iterator iterator = Class475.Field2499.world.getEntitiesWithinAABB((Class)Entity.class, new AxisAlignedBB(add)).iterator();
+            final Iterator iterator = Class475.Field2499.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(add)).iterator();
             while (iterator.hasNext()) {
                 if (!(iterator.next() instanceof EntityEnderCrystal)) {
                     return false;
                 }
             }
-            final Iterator iterator2 = Class475.Field2499.world.getEntitiesWithinAABB((Class)Entity.class, new AxisAlignedBB(add2)).iterator();
+            final Iterator iterator2 = Class475.Field2499.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(add2)).iterator();
             while (iterator2.hasNext()) {
                 if (!(iterator2.next() instanceof EntityEnderCrystal)) {
                     return false;
@@ -154,8 +154,8 @@ public class Class475
                 block = Blocks.AIR;
                 blockState = Blocks.AIR.getBlockState().getBaseState();
             }
-            if ((!b2 || blockState.getCollisionBoundingBox((IBlockAccess)Class475.Field2499.world, blockPos) != Block.NULL_AABB) && block.canCollideCheck(blockState, b)) {
-                final RayTraceResult collisionRayTrace = blockState.collisionRayTrace((World)Class475.Field2499.world, blockPos, vec3d, vec3d2);
+            if ((!b2 || blockState.getCollisionBoundingBox(Class475.Field2499.world, blockPos) != Block.NULL_AABB) && block.canCollideCheck(blockState, b)) {
+                final RayTraceResult collisionRayTrace = blockState.collisionRayTrace(Class475.Field2499.world, blockPos, vec3d, vec3d2);
                 if (collisionRayTrace != null) {
                     return collisionRayTrace;
                 }
@@ -249,11 +249,11 @@ public class Class475
                                 block2 = Blocks.AIR;
                                 blockState2 = Blocks.AIR.getBlockState().getBaseState();
                             }
-                            if (b2 && blockState2.getMaterial() != Material.PORTAL && blockState2.getCollisionBoundingBox((IBlockAccess)Class475.Field2499.world, blockPos2) == Block.NULL_AABB) {
+                            if (b2 && blockState2.getMaterial() != Material.PORTAL && blockState2.getCollisionBoundingBox(Class475.Field2499.world, blockPos2) == Block.NULL_AABB) {
                                 continue;
                             }
                             if (block2.canCollideCheck(blockState2, b)) {
-                                final RayTraceResult collisionRayTrace2 = blockState2.collisionRayTrace((World)Class475.Field2499.world, blockPos2, vec3d, vec3d2);
+                                final RayTraceResult collisionRayTrace2 = blockState2.collisionRayTrace(Class475.Field2499.world, blockPos2, vec3d, vec3d2);
                                 if (collisionRayTrace2 != null) {
                                     return collisionRayTrace2;
                                 }
@@ -294,15 +294,15 @@ public class Class475
     
     public static float Method2150(final double n, final double n2, final double n3, final Entity entity) {
         final float n4 = 12.0f;
-        final double n5 = Method2153(entity, ((int)AutoCrystal.predictTicks.getValue() > 0) ? ((int)AutoCrystal.predictTicks.getValue()) : 0).distanceTo(new Vec3d(n, n2, n3)) / n4;
+        final double n5 = Method2153(entity, (AutoCrystal.predictTicks.getValue() > 0) ? AutoCrystal.predictTicks.getValue() : 0).distanceTo(new Vec3d(n, n2, n3)) / n4;
         final Vec3d vec3d = new Vec3d(n, n2, n3);
         double n6 = 0.0;
         try {
             if (AutoCrystal.predictDestruction.getValue()) {
-                n6 = Method2155(vec3d, ((int)AutoCrystal.predictTicks.getValue() > 0) ? entity.getEntityBoundingBox().offset(Method2144(entity, (int)AutoCrystal.predictTicks.getValue())) : entity.getEntityBoundingBox());
+                n6 = Method2155(vec3d, (AutoCrystal.predictTicks.getValue() > 0) ? entity.getEntityBoundingBox().offset(Method2144(entity, AutoCrystal.predictTicks.getValue())) : entity.getEntityBoundingBox());
             }
             else {
-                n6 = entity.world.getBlockDensity(vec3d, ((int)AutoCrystal.predictTicks.getValue() > 0) ? entity.getEntityBoundingBox().offset(Method2144(entity, (int)AutoCrystal.predictTicks.getValue())) : entity.getEntityBoundingBox());
+                n6 = entity.world.getBlockDensity(vec3d, (AutoCrystal.predictTicks.getValue() > 0) ? entity.getEntityBoundingBox().offset(Method2144(entity, AutoCrystal.predictTicks.getValue())) : entity.getEntityBoundingBox());
             }
         }
         catch (Exception ex) {}
@@ -310,7 +310,7 @@ public class Class475
         final float n8 = (float)(int)((n7 * n7 + n7) / 2.0 * 7.0 * n4 + 1.0);
         double n9 = 1.0;
         if (entity instanceof EntityLivingBase) {
-            n9 = Method2149((EntityLivingBase)entity, Method2140(n8), new Explosion((World)Class475.Field2499.world, (Entity)Class475.Field2499.player, n, n2, n3, 6.0f, false, true));
+            n9 = Method2149((EntityLivingBase)entity, Method2140(n8), new Explosion(Class475.Field2499.world, Class475.Field2499.player, n, n2, n3, 6.0f, false, true));
         }
         return (float)n9;
     }
@@ -324,7 +324,7 @@ public class Class475
             for (double n4 = n2; n4 <= n3; n4 += n) {
                 for (double n5 = n2; n5 <= n3; n5 += n) {
                     for (double n6 = n2; n6 <= n3; n6 += n) {
-                        final Vec3d add = new Vec3d((Vec3i)blockPos).add(n4, n5, n6);
+                        final Vec3d add = new Vec3d(blockPos).add(n4, n5, n6);
                         final double distanceTo = vec3d.distanceTo(add);
                         final double x = add.x - vec3d.x;
                         final double y = add.y - vec3d.y;
@@ -333,9 +333,9 @@ public class Class475
                         final float cos = MathHelper.cos((float)(-array[0] * 0.01745329238474369 - 3.1415927410125732));
                         final float sin = MathHelper.sin((float)(-array[0] * 0.01745329238474369 - 3.1415927410125732));
                         final float n7 = -MathHelper.cos((float)(-array[1] * 0.01745329238474369));
-                        final Vec3d vec3d2 = new Vec3d((double)(sin * n7), (double)MathHelper.sin((float)(-array[1] * 0.01745329238474369)), (double)(cos * n7));
+                        final Vec3d vec3d2 = new Vec3d(sin * n7, MathHelper.sin((float)(-array[1] * 0.01745329238474369)), cos * n7);
                         final RayTraceResult rayTraceBlocks = Class475.Field2499.world.rayTraceBlocks(vec3d, vec3d.add(vec3d2.x * distanceTo, vec3d2.y * distanceTo, vec3d2.z * distanceTo), false, false, false);
-                        if (rayTraceBlocks != null && rayTraceBlocks.typeOfHit == RayTraceResult$Type.BLOCK && rayTraceBlocks.getBlockPos().equals((Object)blockPos)) {
+                        if (rayTraceBlocks != null && rayTraceBlocks.typeOfHit == RayTraceResult$Type.BLOCK && rayTraceBlocks.getBlockPos().equals(blockPos)) {
                             return true;
                         }
                     }
@@ -345,7 +345,7 @@ public class Class475
         }
         for (final EnumFacing enumFacing : EnumFacing.values()) {
             final RayTraceResult rayTraceBlocks2 = Class475.Field2499.world.rayTraceBlocks(new Vec3d(Class475.Field2499.player.posX, Class475.Field2499.player.posY + Class475.Field2499.player.getEyeHeight(), Class475.Field2499.player.posZ), new Vec3d(blockPos.getX() + 0.5 + enumFacing.getDirectionVec().getX() * 0.5, blockPos.getY() + 0.5 + enumFacing.getDirectionVec().getY() * 0.5, blockPos.getZ() + 0.5 + enumFacing.getDirectionVec().getZ() * 0.5), false, true, false);
-            if (rayTraceBlocks2 != null && rayTraceBlocks2.typeOfHit.equals((Object)RayTraceResult$Type.BLOCK) && rayTraceBlocks2.getBlockPos().equals((Object)blockPos)) {
+            if (rayTraceBlocks2 != null && rayTraceBlocks2.typeOfHit.equals((Object)RayTraceResult$Type.BLOCK) && rayTraceBlocks2.getBlockPos().equals(blockPos)) {
                 return true;
             }
         }

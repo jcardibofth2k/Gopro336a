@@ -29,7 +29,7 @@ public class PistonHandler implements BackwardsBlockEntityProvider.BackwardsBloc
          try {
             Field field = ConnectionData.class.getDeclaredField("keyToId");
             field.setAccessible(true);
-            keyToId = (Map)field.get((Object)null);
+            keyToId = (Map)field.get(null);
          } catch (NoSuchFieldException | IllegalAccessException var5) {
             var5.printStackTrace();
             return;
@@ -106,7 +106,7 @@ public class PistonHandler implements BackwardsBlockEntityProvider.BackwardsBloc
             while(var5.hasNext()) {
                Entry entry = (Entry)var5.next();
                if (entry.getValue() instanceof StringTag) {
-                  joiner.add((String)entry.getKey() + "=" + ((StringTag)entry.getValue()).getValue());
+                  joiner.add(entry.getKey() + "=" + ((StringTag)entry.getValue()).getValue());
                }
             }
 

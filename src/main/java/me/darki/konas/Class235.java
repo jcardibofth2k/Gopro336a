@@ -6,6 +6,7 @@ import java.awt.TrayIcon;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.ChatUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 
@@ -20,9 +21,9 @@ extends Module {
             return;
         }
         for (EntityPlayer entityPlayer : Class235.mc.world.playerEntities) {
-            if (((Boolean)this.Field2511.getValue()).booleanValue() && entityPlayer == Class235.mc.player || Class546.Method963((Entity)entityPlayer) || entityPlayer.getHealth() > 0.0f || !Class87.Field262.containsKey(entityPlayer.getName())) continue;
+            if (this.Field2511.getValue().booleanValue() && entityPlayer == Class235.mc.player || Class546.Method963(entityPlayer) || entityPlayer.getHealth() > 0.0f || !Class87.Field262.containsKey(entityPlayer.getName())) continue;
             ChatUtil.Method1035(entityPlayer.getEntityId(), "(h)%s(r) died after popping (h)%s(r) totem%s!", entityPlayer.getName(), Class87.Field262.get(entityPlayer.getName()), Class87.Field262.get(entityPlayer.getName()) > 1 ? "s" : "");
-            if (!((Boolean)this.Field2512.getValue()).booleanValue()) continue;
+            if (!this.Field2512.getValue().booleanValue()) continue;
             this.Method1637(entityPlayer.getName() + " died after popping " + Class87.Field262.get(entityPlayer.getName()) + " totems!", TrayIcon.MessageType.INFO);
         }
     }
@@ -35,11 +36,11 @@ extends Module {
     @Subscriber
     public void Method1500(Class43 class43) {
         block1: {
-            if (((Boolean)this.Field2511.getValue()).booleanValue() && class43.Method265() == Class235.mc.player) {
+            if (this.Field2511.getValue().booleanValue() && class43.Method265() == Class235.mc.player) {
                 return;
             }
             ChatUtil.Method1035(class43.Method265().getEntityId(), "(h)%s(r) popped (h)%s(r) totem%s!", class43.Method265().getName(), class43.Method264(), class43.Method264() > 1 ? "s" : "");
-            if (!((Boolean)this.Field2512.getValue()).booleanValue()) break block1;
+            if (!this.Field2512.getValue().booleanValue()) break block1;
             this.Method1637(class43.Method265().getName() + " popped " + class43.Method264() + " totem" + (class43.Method264() > 1 ? "s" : "") + "!", TrayIcon.MessageType.NONE);
         }
     }

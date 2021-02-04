@@ -82,7 +82,7 @@ public class Version implements Comparable {
    }
 
    public int hashCode() {
-      int result = Objects.hash(new Object[]{this.tag});
+      int result = Objects.hash(this.tag);
       result = 31 * result + Arrays.hashCode(this.parts);
       return result;
    }

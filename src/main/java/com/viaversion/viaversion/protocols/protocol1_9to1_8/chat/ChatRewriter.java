@@ -17,7 +17,7 @@ public class ChatRewriter {
          gameModeObject.addProperty("color", "gray");
          gameModeObject.addProperty("italic", true);
          JsonArray array = new JsonArray();
-         array.add((JsonElement)gameModeObject);
+         array.add(gameModeObject);
          obj.add("with", array);
       }
 

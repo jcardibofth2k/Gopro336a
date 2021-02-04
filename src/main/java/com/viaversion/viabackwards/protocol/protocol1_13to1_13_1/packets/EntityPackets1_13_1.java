@@ -22,7 +22,7 @@ public class EntityPackets1_13_1 extends LegacyEntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_13To1_13_1)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -54,7 +54,7 @@ public class EntityPackets1_13_1 extends LegacyEntityRewriter {
       });
       this.registerTracker(ClientboundPackets1_13.SPAWN_EXPERIENCE_ORB, Entity1_13Types.EntityType.EXPERIENCE_ORB);
       this.registerTracker(ClientboundPackets1_13.SPAWN_GLOBAL_ENTITY, Entity1_13Types.EntityType.LIGHTNING_BOLT);
-      ((Protocol1_13To1_13_1)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -78,7 +78,7 @@ public class EntityPackets1_13_1 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_13To1_13_1)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -101,7 +101,7 @@ public class EntityPackets1_13_1 extends LegacyEntityRewriter {
    protected void registerRewrites() {
       this.filter().handler((event, meta) -> {
          if (meta.metaType() == MetaType1_13.Slot) {
-            ((Protocol1_13To1_13_1)this.protocol).getItemRewriter().handleItemToClient((Item)meta.getValue());
+            this.protocol.getItemRewriter().handleItemToClient((Item)meta.getValue());
          } else if (meta.metaType() == MetaType1_13.BlockID) {
             int data = (Integer)meta.getValue();
             meta.setValue(((Protocol1_13To1_13_1)this.protocol).getMappingData().getNewBlockStateId(data));

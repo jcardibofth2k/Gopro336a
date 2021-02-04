@@ -21,7 +21,7 @@ public class MixinBlockPortal {
         Class52 event = new Class52(state, source, pos);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)Field114);
+            cir.setReturnValue(Field114);
         }
     }
 }

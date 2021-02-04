@@ -26,10 +26,7 @@ extends GuiScreen {
             Vec3d vec3d2 = NewGui.INSTANCE.Field1137.Method2026(vec3d);
             boolean bl = Class492.Method1989(this.Field2011.getName());
             boolean bl2 = Party.Field2509.contains(this.Field2011.getName());
-            boolean bl3 = false;
-            if (this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp")) {
-                bl3 = true;
-            }
+            boolean bl3 = this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp");
             float f2 = Math.max(Class557.Method800(bl ? "Unfriend" : "Friend"), Class557.Method800(bl2 ? "Unparty" : "Party"));
             float f3 = 8.0f + Class557.Method799(bl ? "Unfriend" : "Friend") + Class557.Method799(bl2 ? "Unparty" : "Party");
             if (bl3) {
@@ -60,10 +57,7 @@ extends GuiScreen {
                     vec3d = NewGui.INSTANCE.Field1137.Method2026(vec3d2);
                     bl3 = Class492.Method1989(this.Field2011.getName());
                     bl2 = Party.Field2509.contains(this.Field2011.getName());
-                    bl = false;
-                    if (this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp")) {
-                        bl = true;
-                    }
+                    bl = this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp");
                     if (n3 != 0) break block5;
                     if (!Class262.Method1842(n, n2, (float)vec3d.x - Class557.Method800(bl3 ? "Unfriend" : "Friend") / 2.0f, (float)vec3d.y, Class557.Method800(bl3 ? "Unfriend" : "Friend"), Class557.Method799(bl3 ? "Unfriend" : "Friend"))) break block6;
                     if (bl3) {
@@ -71,7 +65,7 @@ extends GuiScreen {
                     } else {
                         Class492.Method1990(this.Field2011.getName(), this.Field2011.getUniqueID().toString().replace("-", ""));
                     }
-                    this.mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+                    this.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                     this.mc.displayGuiScreen(null);
                     break block5;
                 }
@@ -81,14 +75,14 @@ extends GuiScreen {
                 } else {
                     Party.Field2509.add(this.Field2011.getName());
                 }
-                this.mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+                this.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                 this.mc.displayGuiScreen(null);
                 break block5;
             }
             if (!bl || !Class262.Method1842(n, n2, (float)vec3d.x - Class557.Method800(bl2 ? "Unparty" : "Party") / 2.0f, (float)vec3d.y + 4.0f + Class557.Method799(bl3 ? "Unfriend" : "Friend") + 4.0f + Class557.Method799(bl2 ? "Unparty" : "Party"), Class557.Method800("Duel"), Class557.Method799("Duel"))) break block5;
-            this.mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+            this.mc.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
             this.mc.displayGuiScreen(null);
-            this.mc.player.connection.sendPacket((Packet)new CPacketChatMessage("/duel " + this.Field2011.getName()));
+            this.mc.player.connection.sendPacket(new CPacketChatMessage("/duel " + this.Field2011.getName()));
         }
     }
 

@@ -76,7 +76,7 @@ public final class Metadata {
          if (this.field_154 != metadata.field_154) {
             return false;
          } else {
-            return this.metaType != this.metaType ? false : Objects.equals(this.value, metadata.value);
+            return this.metaType == this.metaType && Objects.equals(this.value, metadata.value);
          }
       } else {
          return false;

@@ -59,7 +59,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TextComponent join(@NotNull final ComponentLike separator, @NotNull final ComponentLike... components) {
-      return join(separator, (Iterable)Arrays.asList(components));
+      return join(separator, Arrays.asList(components));
    }
 
    @Contract(
@@ -139,7 +139,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static BlockNBTComponent blockNBT(@NotNull final String nbtPath, final boolean interpret, @NotNull final BlockNBTComponent.Pos pos) {
-      return blockNBT(nbtPath, interpret, (ComponentLike)null, pos);
+      return blockNBT(nbtPath, interpret, null, pos);
    }
 
    @Contract(
@@ -250,7 +250,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static ScoreComponent score(@NotNull final String name, @NotNull final String objective) {
-      return score(name, objective, (String)null);
+      return score(name, objective, null);
    }
 
    /** @deprecated */
@@ -284,7 +284,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static SelectorComponent selector(@NotNull final String pattern) {
-      return selector(pattern, (ComponentLike)null);
+      return selector(pattern, null);
    }
 
    @Contract(
@@ -325,7 +325,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static StorageNBTComponent storageNBT(@NotNull final String nbtPath, final boolean interpret, @NotNull final Key storage) {
-      return storageNBT(nbtPath, interpret, (ComponentLike)null, storage);
+      return storageNBT(nbtPath, interpret, null, storage);
    }
 
    @Contract(
@@ -357,7 +357,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TextComponent text(@NotNull final String content) {
-      return (TextComponent)(content.isEmpty() ? empty() : new TextComponentImpl(Collections.emptyList(), Style.empty(), content));
+      return content.isEmpty() ? empty() : new TextComponentImpl(Collections.emptyList(), Style.empty(), content);
    }
 
    @Contract(
@@ -698,7 +698,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), Style.empty());
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), Style.empty());
    }
 
    @Contract(
@@ -716,7 +716,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @NotNull final Style style) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), style);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), style);
    }
 
    @Contract(
@@ -734,7 +734,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color);
    }
 
    @Contract(
@@ -752,7 +752,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final TextDecoration... decorations) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, decorations);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, decorations);
    }
 
    @Contract(
@@ -770,7 +770,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final Set decorations) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, decorations);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, decorations);
    }
 
    @Contract(
@@ -788,7 +788,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @NotNull final ComponentLike... args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), args);
    }
 
    @Contract(
@@ -806,7 +806,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @NotNull final Style style, @NotNull final ComponentLike... args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), style, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), style, args);
    }
 
    @Contract(
@@ -824,7 +824,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final ComponentLike... args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, args);
    }
 
    @Contract(
@@ -842,7 +842,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final Set decorations, @NotNull final ComponentLike... args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, decorations, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, decorations, args);
    }
 
    @Contract(
@@ -860,7 +860,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @NotNull final List args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), args);
    }
 
    @Contract(
@@ -878,7 +878,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @NotNull final Style style, @NotNull final List args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), style, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), style, args);
    }
 
    @Contract(
@@ -894,7 +894,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
       pure = true
    )
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final List args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, args);
    }
 
    @Contract(
@@ -912,7 +912,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    static TranslatableComponent translatable(@NotNull final Translatable translatable, @Nullable final TextColor color, @NotNull final Set decorations, @NotNull final List args) {
-      return translatable(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey(), color, decorations, args);
+      return translatable(Objects.requireNonNull(translatable, "translatable").translationKey(), color, decorations, args);
    }
 
    @NotNull
@@ -996,7 +996,7 @@ public interface Component extends ComponentBuilderApplicable, ComponentLike, Ex
    )
    @NotNull
    default Component append(@NotNull final ComponentBuilder builder) {
-      return this.append((Component)builder.build());
+      return this.append(builder.build());
    }
 
    @NotNull

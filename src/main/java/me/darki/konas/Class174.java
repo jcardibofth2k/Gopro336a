@@ -137,7 +137,7 @@ extends Class183 {
                     this.Method1510();
                 }
             } else {
-                Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+                Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                 this.Method104(!this.Method1505());
             }
             return true;
@@ -156,21 +156,21 @@ extends Class183 {
             int n3;
             super.Method105(n, n2, f);
             float[] fArray = Color.RGBtoHSB(this.Field1469, this.Field1470, this.Field1471, null);
-            RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), 12.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-            RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), 12.0f, ((ColorValue) ClickGUIModule.secondary.getValue()).Method774());
-            int n4 = n3 = this.Method1505() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().darker().getRGB() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class174.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-                n3 = this.Method1505() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().getRGB() : new Color(96, 96, 96, 100).hashCode();
+            RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), 12.0f, ClickGUIModule.color.getValue().Method774());
+            RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), 12.0f, ClickGUIModule.secondary.getValue().Method774());
+            int n4 = n3 = this.Method1505() ? ClickGUIModule.color.getValue().Method775().darker().getRGB() : ClickGUIModule.secondary.getValue().Method774();
+            if (ClickGUIModule.hover.getValue().booleanValue() && Class174.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+                n3 = this.Method1505() ? ClickGUIModule.color.getValue().Method775().brighter().getRGB() : new Color(96, 96, 96, 100).hashCode();
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), 12.0f, n3);
-            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + 6.0f - (float)(Class548.Method1020() / 2) - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
-            Class548.Method1016(this.Method1505() ? "-" : "+", (int)(this.Method1475() + this.Method1479() - 5.0f - Class548.Method1022(this.Method1505() ? "-" : "+")), (int)(this.Method1476() + 6.0f - Class548.Method1023(this.Method1505() ? "-" : "+") / 2.0f - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
+            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + 6.0f - (float)(Class548.Method1020() / 2) - 0.5f), ClickGUIModule.fony.getValue().Method774());
+            Class548.Method1016(this.Method1505() ? "-" : "+", (int)(this.Method1475() + this.Method1479() - 5.0f - Class548.Method1022(this.Method1505() ? "-" : "+")), (int)(this.Method1476() + 6.0f - Class548.Method1023(this.Method1505() ? "-" : "+") / 2.0f - 0.5f), ClickGUIModule.fony.getValue().Method774());
             if (!this.Field1481) break block3;
-            RenderUtil2.Method1338(this.Method1475(), this.Method1476() + 17.0f, 46.0f, 28.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method1475(), this.Method1476() + 17.0f, 46.0f, 28.0f, ClickGUIModule.color.getValue().Method774());
             this.Field1477 = this.Method1475() + 1.0f;
             this.Field1478 = this.Method1476() + 18.0f;
             Class516.Method1277(this.Field1477, this.Field1478, this.Field1477 + this.Field1480, this.Field1478 + this.Field1479, Color.getHSBColor(fArray[0], 0.0f, 0.0f).getRGB(), Color.getHSBColor(fArray[0], 0.0f, 1.0f).getRGB(), Color.getHSBColor(fArray[0], 1.0f, 0.0f).getRGB(), Color.getHSBColor(fArray[0], 1.0f, 1.0f).getRGB());
-            RenderUtil2.Method1338(this.Method1475(), this.Method1476() + 47.0f, 46.0f, 12.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method1475(), this.Method1476() + 47.0f, 46.0f, 12.0f, ClickGUIModule.color.getValue().Method774());
             this.Field1474 = this.Method1475() + 1.0f;
             this.Field1475 = this.Method1476() + 48.0f;
             float f2 = 0.0f;
@@ -178,7 +178,7 @@ extends Class183 {
                 Class516.Method1275(this.Field1474 + f2, this.Field1475, this.Field1474 + this.Field1473 + f2, this.Field1475 + this.Field1476, Color.getHSBColor(f2 / this.Field1472, 1.0f, 1.0f).getRGB(), Color.getHSBColor((f2 + this.Field1473) / this.Field1472, 1.0f, 1.0f).getRGB());
                 f2 += this.Field1473;
             }
-            RenderUtil2.Method1338(this.Method1475() + 45.0f, this.Method1476() + 47.0f, 1.0f, 12.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method1475() + 45.0f, this.Method1476() + 47.0f, 1.0f, 12.0f, ClickGUIModule.color.getValue().Method774());
             int n5 = 0xFF000000 | (this.Field1469 & 0xFF) << 16 | (this.Field1470 & 0xFF) << 8 | this.Field1471 & 0xFF;
             int n6 = 0 | (this.Field1469 & 0xFF) << 16 | (this.Field1470 & 0xFF) << 8 | this.Field1471 & 0xFF;
             float f3 = this.Method1475() + this.Method1479() - 11.0f;
@@ -198,7 +198,7 @@ extends Class183 {
             int n8 = (int)(this.Field1474 + (float)((int)(fArray[0] * this.Field1472)));
             RenderUtil2.Method1338(n8, this.Field1475, 2.0f, this.Field1476, n7);
             int n9 = (int)(f6 + f4 - (float)((int)((float)this.Field1468 / 255.0f * f6)));
-            RenderUtil2.Method1338(f3, MathHelper.clamp((float)((float)n9 - 1.0f), (float)f4, (float)(f4 + f6)), f5, 2.0f, n7);
+            RenderUtil2.Method1338(f3, MathHelper.clamp((float)n9 - 1.0f, f4, f4 + f6), f5, 2.0f, n7);
             int n10 = (int)(this.Field1477 + (float)((int)(fArray[1] * this.Field1480)));
             int n11 = (int)(this.Field1479 + this.Field1478 - (float)((int)(fArray[2] * this.Field1479)));
             RenderUtil2.Method1338((float)n10 - 1.0f, (float)n11 - 1.0f, 2.0f, 2.0f, n7);

@@ -23,7 +23,7 @@ extends Gui {
         if (this.Field538.size() != 0) {
             Class84 class84 = Class84.CATEGORY;
             for (Class84 class842 : Class84.Method460()) {
-                if (class842.equals((Object)this.Field543)) {
+                if (class842.equals(this.Field543)) {
                     this.Field543 = class84;
                     break;
                 }
@@ -47,7 +47,7 @@ extends Gui {
                 if (this.Field543 != Class84.CATEGORY) break block5;
                 Category category = Category.Method1764()[Category.Method1764().length - 1];
                 for (Category category2 : Category.Method1764()) {
-                    if (category2.equals((Object)this.Field544)) {
+                    if (category2.equals(this.Field544)) {
                         this.Field544 = category;
                         break block4;
                     }
@@ -90,7 +90,7 @@ extends Gui {
         if (this.Field543 == Class84.CATEGORY) {
             int n = 0;
             for (Category category : Category.Method1764()) {
-                if (category.equals((Object)this.Field544)) {
+                if (category.equals(this.Field544)) {
                     n = 1;
                     continue;
                 }
@@ -129,11 +129,11 @@ extends Gui {
             RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, nArray[0], Class557.Method802() + 3, new Color(43, 43, 43, 200).hashCode());
             int n2 = 65;
             if (this.Field545 == arrayList.indexOf(module)) {
-                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.Field2503.getValue()).Method774());
+                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, Class115.Field2503.getValue().Method774());
                 n2 = 67;
             }
             if (module.isEnabled()) {
-                n = ((ColorValue)Class115.Field2504.getValue()).Method774();
+                n = Class115.Field2504.getValue().Method774();
             }
             Class557.Method801(module.getName(), (int)f + n2, (int)f2 + (int)(this.Field539 + 2.0f), n);
             this.Field539 += (float)(Class557.Method802() + 3);
@@ -155,12 +155,12 @@ extends Gui {
             int n = new Color(43, 43, 43, 200).hashCode();
             int n2 = 6;
             RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 57.0f, Class557.Method802() + 3, n);
-            if (category2.equals((Object)category)) {
-                RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.Field2503.getValue()).Method774());
+            if (category2.equals(category)) {
+                RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, Class115.Field2503.getValue().Method774());
                 n2 = 8;
                 this.Field542 = this.Field539;
             }
-            Class557.Method801(category2.toString().substring(0, 1).toUpperCase() + category2.toString().substring(1).toLowerCase(), (int)(f + (float)n2), (int)((float)((int)f2) + (this.Field539 + 2.0f)), category2.equals((Object)this.Field544) ? ((ColorValue)Class115.Field2503.getValue()).Method774() : Color.white.hashCode());
+            Class557.Method801(category2.toString().substring(0, 1).toUpperCase() + category2.toString().substring(1).toLowerCase(), (int)(f + (float)n2), (int)((float)((int)f2) + (this.Field539 + 2.0f)), category2.equals(this.Field544) ? Class115.Field2503.getValue().Method774() : Color.white.hashCode());
             this.Field539 += (float)(Class557.Method802() + 3);
         }
         this.Method617(this.Field537 + 1.0f + (float)((Class557.Method802() + 3) * Category.Method1764().length));
@@ -172,7 +172,7 @@ extends Gui {
             int n = 0;
             if (this.Field538.size() == 0) break block3;
             for (Class84 class84 : Class84.Method460()) {
-                if (class84.equals((Object)this.Field543)) {
+                if (class84.equals(this.Field543)) {
                     n = 1;
                     continue;
                 }

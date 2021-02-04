@@ -62,7 +62,7 @@ extends Module {
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
                                 this.Field1241 = var2_2.getTeleportId();
-                                if ((Integer)Class405.Field1240.getValue() <= 0) break block10;
+                                if (Class405.Field1240.getValue() <= 0) break block10;
                                 if (this.Field1242 != null) break block11;
                                 this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                                 this.Field1243 = 1;
@@ -70,14 +70,14 @@ extends Module {
                             }
                             if (!MathUtil.Method1080()) break block12;
                             v0 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
-                            if (!(this.Method1221(this.Field1242, v0) < (double)((Float)Class405.Field1237.getValue()).floatValue() * 0.8)) break block12;
+                            if (!(this.Method1221(this.Field1242, v0) < (double) Class405.Field1237.getValue().floatValue() * 0.8)) break block12;
                             this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                             ++this.Field1243;
                             break block10;
                         }
                         if (!Class405.mc.gameSettings.keyBindJump.isKeyDown() && !Class405.mc.gameSettings.keyBindSneak.isKeyDown()) break block13;
                         v1 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
-                        if (!(this.Method1223(this.Field1242, v1) < (double)((Float)Class405.Field1238.getValue()).floatValue() * 0.5)) break block13;
+                        if (!(this.Method1223(this.Field1242, v1) < (double) Class405.Field1238.getValue().floatValue() * 0.5)) break block13;
                         this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                         ++this.Field1243;
                         break block10;
@@ -99,7 +99,7 @@ extends Module {
                         this.Field1243 = 1;
                     }
                 }
-                if ((Integer)Class405.Field1240.getValue() > 0 && this.Field1243 > (Integer)Class405.Field1240.getValue()) {
+                if (Class405.Field1240.getValue() > 0 && this.Field1243 > Class405.Field1240.getValue()) {
                     return;
                 }
                 if (Class405.mc.player.isEntityAlive() && Class405.mc.world.isBlockLoaded(new BlockPos(Class405.mc.player.posX, Class405.mc.player.posY, Class405.mc.player.posZ)) && !(Class405.mc.currentScreen instanceof GuiDownloadTerrain)) {
@@ -107,14 +107,14 @@ extends Module {
                         this.Field1241 = var2_2.getTeleportId();
                         return;
                     }
-                    if (!((Boolean)Class405.Field1233.getValue()).booleanValue()) {
-                        Class405.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(var2_2.getTeleportId()));
+                    if (!Class405.Field1233.getValue().booleanValue()) {
+                        Class405.mc.player.connection.sendPacket(new CPacketConfirmTeleport(var2_2.getTeleportId()));
                     }
                     var1_1.setCanceled(true);
                 }
             }
             if (!(var1_1.getPacket() instanceof SPacketMoveVehicle) || !Class405.mc.player.isRiding()) break block14;
-            if (((Boolean)Class405.Field1235.getValue()).booleanValue()) {
+            if (Class405.Field1235.getValue().booleanValue()) {
                 this.Field1244.set(true);
             } else {
                 var1_1.setCanceled(true);
@@ -125,7 +125,7 @@ extends Module {
     public double Method1221(Vec3d vec3d, Vec3d vec3d2) {
         double d = vec3d.x - vec3d2.x;
         double d2 = vec3d.z - vec3d2.z;
-        return MathHelper.sqrt((double)(d * d + d2 * d2));
+        return MathHelper.sqrt(d * d + d2 * d2);
     }
 
     @Subscriber
@@ -137,19 +137,19 @@ extends Module {
                         this.toggle();
                         return;
                     }
-                    if (!((Boolean)Field1234.getValue()).booleanValue()) {
+                    if (!Field1234.getValue().booleanValue()) {
                         return;
                     }
                     if (!(class24.getPacket() instanceof CPacketVehicleMove)) break block2;
                     if (!Class405.mc.player.isRiding() || Class405.mc.player.ticksExisted % 2 != 0) break block3;
-                    Class405.mc.playerController.interactWithEntity((EntityPlayer)Class405.mc.player, Class405.mc.player.getRidingEntity(), (Boolean)Field1236.getValue() != false ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+                    Class405.mc.playerController.interactWithEntity(Class405.mc.player, Class405.mc.player.getRidingEntity(), Field1236.getValue() != false ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
                     break block3;
                 }
                 if (!(class24.getPacket() instanceof CPacketPlayer.Rotation) || !Class405.mc.player.isRiding()) break block4;
                 class24.Cancel();
                 break block3;
             }
-            if (!(class24.getPacket() instanceof CPacketInput) || ((Boolean)Field1235.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 2 != 0) break block3;
+            if (!(class24.getPacket() instanceof CPacketInput) || Field1235.getValue().booleanValue() && Class405.mc.player.ticksExisted % 2 != 0) break block3;
             class24.Cancel();
         }
     }
@@ -175,7 +175,7 @@ extends Module {
 
     public double Method1223(Vec3d vec3d, Vec3d vec3d2) {
         double d = vec3d.y - vec3d2.y;
-        return MathHelper.sqrt((double)(d * d));
+        return MathHelper.sqrt(d * d);
     }
 
     public Class405() {
@@ -195,7 +195,7 @@ extends Module {
             double d2 = 0.0;
             double d3 = 0.0;
             if (MathUtil.Method1080()) {
-                double[] dArray = MathUtil.Method1086(((Float)Field1237.getValue()).floatValue());
+                double[] dArray = MathUtil.Method1086(Field1237.getValue().floatValue());
                 d = dArray[0];
                 d3 = dArray[1];
             } else {
@@ -203,33 +203,33 @@ extends Module {
                 d3 = 0.0;
             }
             if (Class405.mc.gameSettings.keyBindJump.isKeyDown()) {
-                d2 = ((Float)Field1238.getValue()).floatValue();
-                if (((Boolean)Field1232.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 20 == 0) {
+                d2 = Field1238.getValue().floatValue();
+                if (Field1232.getValue().booleanValue() && Class405.mc.player.ticksExisted % 20 == 0) {
                     d2 = -0.04;
                 }
             } else if (Class405.mc.gameSettings.keyBindSneak.isKeyDown()) {
-                d2 = -((Float)Field1238.getValue()).floatValue();
-            } else if (((Boolean)Field1232.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 4 == 0) {
+                d2 = -Field1238.getValue().floatValue();
+            } else if (Field1232.getValue().booleanValue() && Class405.mc.player.ticksExisted % 4 == 0) {
                 d2 = -0.04;
             }
-            if (((Boolean)Field1231.getValue()).booleanValue()) {
+            if (Field1231.getValue().booleanValue()) {
                 entityBoat.rotationYaw = Class405.mc.player.rotationYaw;
             }
-            if ((Integer)Field1239.getValue() > 0 && !Class405.mc.world.isBlockLoaded(new BlockPos(entityBoat.posX + d * (double)((Integer)Field1239.getValue()).intValue(), entityBoat.posY + d2 * (double)((Integer)Field1239.getValue()).intValue(), entityBoat.posZ + d3 * (double)((Integer)Field1239.getValue()).intValue()), false)) {
+            if (Field1239.getValue() > 0 && !Class405.mc.world.isBlockLoaded(new BlockPos(entityBoat.posX + d * (double) Field1239.getValue().intValue(), entityBoat.posY + d2 * (double) Field1239.getValue().intValue(), entityBoat.posZ + d3 * (double) Field1239.getValue().intValue()), false)) {
                 d = 0.0;
                 d3 = 0.0;
             }
-            if (!((Boolean)Field1235.getValue()).booleanValue() || Class405.mc.player.ticksExisted % 2 != 0) {
-                if (this.Field1244.get() && ((Boolean)Field1235.getValue()).booleanValue()) {
+            if (!Field1235.getValue().booleanValue() || Class405.mc.player.ticksExisted % 2 != 0) {
+                if (this.Field1244.get() && Field1235.getValue().booleanValue()) {
                     entityBoat.setVelocity(0.0, 0.0, 0.0);
                     this.Field1244.set(false);
                 } else {
                     entityBoat.setVelocity(d, d2, d3);
                 }
             }
-            if (((Boolean)Field1233.getValue()).booleanValue()) {
+            if (Field1233.getValue().booleanValue()) {
                 ++this.Field1241;
-                Class405.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(this.Field1241));
+                Class405.mc.player.connection.sendPacket(new CPacketConfirmTeleport(this.Field1241));
             }
             class21.setCanceled(true);
         }

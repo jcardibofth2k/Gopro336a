@@ -45,7 +45,7 @@ extends Module {
         if (!this.Field1964.Method737(350.0)) {
             return;
         }
-        if (((Boolean) itemSaver.getValue()).booleanValue()) {
+        if (itemSaver.getValue().booleanValue()) {
             n = 0;
             EnumHand[] enumHandArray = EnumHand.values();
             block4: for (int i = 0; i < enumHandArray.length; ++i) {
@@ -56,12 +56,12 @@ extends Module {
                 if (!itemStack.isItemStackDamageable() || itemStack.getItemDamage() != item.getMaxDamage(itemStack)) continue;
                 switch (enumHand) {
                     case MAIN_HAND: {
-                        HotbarRefil.mc.playerController.windowClick(HotbarRefil.mc.player.inventoryContainer.windowId, HotbarRefil.mc.player.inventory.currentItem + 36, 0, ClickType.QUICK_MOVE, (EntityPlayer) HotbarRefil.mc.player);
+                        HotbarRefil.mc.playerController.windowClick(HotbarRefil.mc.player.inventoryContainer.windowId, HotbarRefil.mc.player.inventory.currentItem + 36, 0, ClickType.QUICK_MOVE, HotbarRefil.mc.player);
                         n = 1;
                         continue block4;
                     }
                     case OFF_HAND: {
-                        HotbarRefil.mc.playerController.windowClick(HotbarRefil.mc.player.inventoryContainer.windowId, 45, 1, ClickType.QUICK_MOVE, (EntityPlayer) HotbarRefil.mc.player);
+                        HotbarRefil.mc.playerController.windowClick(HotbarRefil.mc.player.inventoryContainer.windowId, 45, 1, ClickType.QUICK_MOVE, HotbarRefil.mc.player);
                         n = 1;
                     }
                 }
@@ -71,11 +71,11 @@ extends Module {
                 return;
             }
         }
-        if (this.Field1963 > (Integer)this.delay.getValue() * 2) {
+        if (this.Field1963 > this.delay.getValue() * 2) {
             if (!HotbarRefil.mc.player.inventory.getItemStack().isEmpty()) {
                 for (n = 44; n >= 9; --n) {
                     if (!HotbarRefil.mc.player.inventoryContainer.getSlot(n).getStack().isEmpty()) continue;
-                    HotbarRefil.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, (EntityPlayer) HotbarRefil.mc.player);
+                    HotbarRefil.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, HotbarRefil.mc.player);
                     return;
                 }
             }
@@ -117,9 +117,9 @@ extends Module {
                 break;
             }
             if (n2 == -1) continue;
-            HotbarRefil.mc.playerController.windowClick(0, n2, 0, ClickType.PICKUP, (EntityPlayer) HotbarRefil.mc.player);
-            HotbarRefil.mc.playerController.windowClick(0, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer) HotbarRefil.mc.player);
-            HotbarRefil.mc.playerController.windowClick(0, n2, 0, ClickType.PICKUP, (EntityPlayer) HotbarRefil.mc.player);
+            HotbarRefil.mc.playerController.windowClick(0, n2, 0, ClickType.PICKUP, HotbarRefil.mc.player);
+            HotbarRefil.mc.playerController.windowClick(0, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, HotbarRefil.mc.player);
+            HotbarRefil.mc.playerController.windowClick(0, n2, 0, ClickType.PICKUP, HotbarRefil.mc.player);
             this.Field1962.remove(itemStack);
         }
     }
@@ -127,12 +127,12 @@ extends Module {
     public void Method124() {
         for (int i = 0; i <= 9; ++i) {
             ItemStack itemStack;
-            if (((Boolean) handOnly.getValue()).booleanValue() && i != HotbarRefil.mc.player.inventory.currentItem || (itemStack = HotbarRefil.mc.player.inventory.getStackInSlot(i)).isEmpty() || itemStack.getItem() == Items.AIR || !itemStack.isStackable() || itemStack.getCount() >= itemStack.getMaxStackSize() || itemStack.getCount() >= (Integer)this.refillThreshold.getValue() || !((Boolean) others.getValue() != false || itemStack.getItem() instanceof ItemEndCrystal && (Boolean) crystals.getValue() != false || itemStack.getItem() instanceof ItemFood && (Boolean) food.getValue() != false) && (!(itemStack.getItem() instanceof ItemExpBottle) || !((Boolean) eXp.getValue()).booleanValue())) continue;
+            if (handOnly.getValue().booleanValue() && i != HotbarRefil.mc.player.inventory.currentItem || (itemStack = HotbarRefil.mc.player.inventory.getStackInSlot(i)).isEmpty() || itemStack.getItem() == Items.AIR || !itemStack.isStackable() || itemStack.getCount() >= itemStack.getMaxStackSize() || itemStack.getCount() >= this.refillThreshold.getValue() || !(others.getValue() != false || itemStack.getItem() instanceof ItemEndCrystal && crystals.getValue() != false || itemStack.getItem() instanceof ItemFood && food.getValue() != false) && (!(itemStack.getItem() instanceof ItemExpBottle) || !eXp.getValue().booleanValue())) continue;
             this.Field1962.put(itemStack, i);
         }
     }
 
     public HotbarRefil() {
-        super("HotbarRefill", "Automatically refills your hotbar", Category.PLAYER, new String[0]);
+        super("HotbarRefill", "Automatically refills your hotbar", Category.PLAYER);
     }
 }

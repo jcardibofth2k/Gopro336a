@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import me.darki.konas.*;
+import me.darki.konas.managers.CommandManager;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import sun.misc.Unsafe;
@@ -33,7 +34,7 @@ public class NewGui {
         block52: {
             block51: {
                 Class167.Method1620();
-                Class603.Method206();
+                CommandManager.Method206();
                 this.Field1136 = new Class109();
                 this.Field1136.Method2200();
                 v0 = Unsafe.class;

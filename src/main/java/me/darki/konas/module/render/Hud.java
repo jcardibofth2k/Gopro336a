@@ -43,16 +43,16 @@ extends Module {
 
     @Subscriber
     public void Method1454(RenderGameOverlayEvent.Post post) {
-        GuiIngameForge.renderHealth = (Boolean)Field1402.getValue();
+        GuiIngameForge.renderHealth = Field1402.getValue();
         GuiIngameForge.renderArmor = Field1398.getValue() == Class165.BOTH || Field1398.getValue() == Class165.VANILLA;
-        GuiIngameForge.renderExperiance = (Boolean)Field1397.getValue();
-        GuiIngameForge.renderHotbar = (Boolean)Field1396.getValue();
-        GuiIngameForge.renderFood = (Boolean)Field1403.getValue();
-        GuiIngameForge.renderCrosshairs = (Boolean)Field1404.getValue();
+        GuiIngameForge.renderExperiance = Field1397.getValue();
+        GuiIngameForge.renderHotbar = Field1396.getValue();
+        GuiIngameForge.renderFood = Field1403.getValue();
+        GuiIngameForge.renderCrosshairs = Field1404.getValue();
     }
 
     public String Method1455(PotionEffect potionEffect) {
-        return I18n.format((String)potionEffect.getEffectName(), (Object[])new Object[0]);
+        return I18n.format(potionEffect.getEffectName());
     }
 
     public int Method1456(ItemStack itemStack) {
@@ -70,8 +70,8 @@ extends Module {
                 if (Hud.mc.player == null || Hud.mc.world == null) {
                     return;
                 }
-                if (class654.Method1161() == null || !((Boolean)Field1393.getValue()).booleanValue() || class654.Method1161() instanceof GuiChat) break block1;
-                if (!(class654.Method1161() instanceof Class193) && !((Boolean)Field1394.getValue()).booleanValue()) break block2;
+                if (class654.Method1161() == null || !Field1393.getValue().booleanValue() || class654.Method1161() instanceof GuiChat) break block1;
+                if (!(class654.Method1161() instanceof Class193) && !Field1394.getValue().booleanValue()) break block2;
                 Hud.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
                 break block2;
             }
@@ -128,11 +128,11 @@ extends Module {
         if (Field1400.getValue() == Class163.DYNAMIC) {
             return itemStack.getItem().getRGBDurabilityForDisplay(itemStack);
         }
-        return ((ColorValue)Field1401.getValue()).Method774();
+        return Field1401.getValue().Method774();
     }
 
     public String Method1460(PotionEffect potionEffect) {
-        return this.Method1455(potionEffect) + " " + Potion.getPotionDurationString((PotionEffect)potionEffect, (float)1.0f);
+        return this.Method1455(potionEffect) + " " + Potion.getPotionDurationString(potionEffect, 1.0f);
     }
 
     public void Method1461(FontRenderer fontRenderer, ScaledResolution scaledResolution) {
@@ -141,7 +141,7 @@ extends Module {
     }
 
     public Hud() {
-        super("HUD", "Displays information on the ingame screen", Category.CLIENT, new String[0]);
+        super("HUD", "Displays information on the ingame screen", Category.CLIENT);
     }
 
     public static boolean Method394() {
@@ -151,7 +151,7 @@ extends Module {
     @Subscriber
     public void Method1462(Class12 class12) {
         block0: {
-            if (!((Boolean)Field1392.getValue()).booleanValue()) break block0;
+            if (!Field1392.getValue().booleanValue()) break block0;
             class12.Cancel();
         }
     }

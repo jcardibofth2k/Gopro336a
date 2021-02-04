@@ -20,7 +20,7 @@ final class TextColorSerializer extends TypeAdapter {
 
    public void write(final JsonWriter out, final TextColor value) throws IOException {
       if (value instanceof NamedTextColor) {
-         out.value((String)NamedTextColor.NAMES.key((NamedTextColor)value));
+         out.value((String)NamedTextColor.NAMES.key(value));
       } else if (this.downsampleColor) {
          out.value((String)NamedTextColor.NAMES.key(NamedTextColor.nearestTo(value)));
       } else {
@@ -35,7 +35,7 @@ final class TextColorSerializer extends TypeAdapter {
       if (color == null) {
          return null;
       } else {
-         return (TextColor)(this.downsampleColor ? NamedTextColor.nearestTo(color) : color);
+         return this.downsampleColor ? NamedTextColor.nearestTo(color) : color;
       }
    }
 

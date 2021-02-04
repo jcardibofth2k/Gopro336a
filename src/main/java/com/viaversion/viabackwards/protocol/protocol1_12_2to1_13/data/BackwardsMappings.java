@@ -37,14 +37,14 @@ public class BackwardsMappings extends com.viaversion.viabackwards.api.data.Back
       Entry entry;
       while(var3.hasNext()) {
          entry = (Entry)var3.next();
-         this.statisticMappings.put((Integer)entry.getValue(), (String)entry.getKey());
+         this.statisticMappings.put((Integer)entry.getValue(), entry.getKey());
       }
 
       var3 = Protocol1_13To1_12_2.MAPPINGS.getTranslateMapping().entrySet().iterator();
 
       while(var3.hasNext()) {
          entry = (Entry)var3.next();
-         this.translateMappings.put((String)entry.getValue(), (String)entry.getKey());
+         this.translateMappings.put(entry.getValue(), entry.getKey());
       }
 
    }

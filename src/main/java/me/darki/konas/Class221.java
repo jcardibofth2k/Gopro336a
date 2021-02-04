@@ -61,13 +61,13 @@ extends Module {
         List list = Class221.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos)).stream().filter(Class221::Method384).collect(Collectors.toList());
         float f = 0.0f;
         for (Entity entity : list) {
-            f += Class475.Method2150(entity.posX, entity.posY, entity.posZ, (Entity)Class221.mc.player);
+            f += Class475.Method2150(entity.posX, entity.posY, entity.posZ, Class221.mc.player);
         }
         return f;
     }
 
     public boolean Method386(Entity entity) {
-        return entity instanceof EntityEnderCrystal && Class221.mc.player.getDistance(entity) <= ((Float)this.Field240.getValue()).floatValue();
+        return entity instanceof EntityEnderCrystal && Class221.mc.player.getDistance(entity) <= this.Field240.getValue().floatValue();
     }
 
     public void Method387(Item item) {
@@ -75,9 +75,9 @@ extends Module {
             return;
         }
         int n = this.Method391(item);
-        if (((Boolean)this.Field236.getValue()).booleanValue() && item == Items.TOTEM_OF_UNDYING) {
+        if (this.Field236.getValue().booleanValue() && item == Items.TOTEM_OF_UNDYING) {
             for (int i = 0; i < 9; ++i) {
-                ItemStack itemStack = (ItemStack)Class221.mc.player.inventory.mainInventory.get(i);
+                ItemStack itemStack = Class221.mc.player.inventory.mainInventory.get(i);
                 if (itemStack.getItem() != Items.TOTEM_OF_UNDYING) continue;
                 if (Class221.mc.player.inventory.currentItem != i) {
                     Class221.mc.player.inventory.currentItem = i;
@@ -86,9 +86,9 @@ extends Module {
             }
         }
         if (n != -1) {
-            if (((Float)this.Field235.getValue()).floatValue() > 0.0f) {
-                if (this.Field250.Method737(((Float)this.Field235.getValue()).floatValue() * 100.0f)) {
-                    Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer)Class221.mc.player);
+            if (this.Field235.getValue().floatValue() > 0.0f) {
+                if (this.Field250.Method737(this.Field235.getValue().floatValue() * 100.0f)) {
+                    Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, Class221.mc.player);
                     this.Field250.Method739();
                 } else {
                     this.Field249.add(n < 9 ? n + 36 : n);
@@ -97,20 +97,20 @@ extends Module {
                 this.Field249.add(n < 9 ? n + 36 : n);
             } else {
                 this.Field250.Method739();
-                Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer)Class221.mc.player);
+                Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, Class221.mc.player);
                 PlayerControllerMP playerControllerMP = Class221.mc.playerController;
                 int n2 = Class221.mc.player.inventoryContainer.windowId;
                 int n3 = 45;
                 int n4 = 0;
                 ClickType clickType = ClickType.PICKUP;
                 EntityPlayerSP entityPlayerSP = Class221.mc.player;
-                playerControllerMP.windowClick(n2, n3, n4, clickType, (EntityPlayer)entityPlayerSP);
+                playerControllerMP.windowClick(n2, n3, n4, clickType, entityPlayerSP);
                 try {
                 }
                 catch (Exception exception) {
                     exception.printStackTrace();
                 }
-                Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer)Class221.mc.player);
+                Class221.mc.playerController.windowClick(Class221.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, Class221.mc.player);
             }
         }
     }
@@ -136,7 +136,7 @@ extends Module {
                 }
                 if (Class221.mc.currentScreen instanceof GuiContainer || Class221.mc.currentScreen instanceof GuiInventory) break block25;
                 if (this.Field249.isEmpty()) break block26;
-                if (!this.Field250.Method737(((Float)this.Field235.getValue()).floatValue() * 100.0f)) {
+                if (!this.Field250.Method737(this.Field235.getValue().floatValue() * 100.0f)) {
                     return;
                 }
                 int n = this.Field249.poll();
@@ -148,7 +148,7 @@ extends Module {
                 int n4 = 0;
                 ClickType clickType = ClickType.PICKUP;
                 EntityPlayerSP entityPlayerSP = Class221.mc.player;
-                playerControllerMP.windowClick(n2, n3, n4, clickType, (EntityPlayer)entityPlayerSP);
+                playerControllerMP.windowClick(n2, n3, n4, clickType, entityPlayerSP);
                 try {
                 }
                 catch (Exception exception) {
@@ -159,12 +159,12 @@ extends Module {
             if (!Class221.mc.player.inventory.getItemStack().isEmpty()) {
                 for (int i = 44; i >= 9; --i) {
                     if (!Class221.mc.player.inventoryContainer.getSlot(i).getStack().isEmpty()) continue;
-                    Class221.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, (EntityPlayer)Class221.mc.player);
+                    Class221.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, Class221.mc.player);
                     return;
                 }
             }
-            if (((Boolean)this.Field232.getValue()).booleanValue()) {
-                if (Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() <= ((Float)this.Field237.getValue()).floatValue() || (Boolean)this.Field243.getValue() != false && Class221.mc.player.isElytraFlying() || ((Boolean)this.Field241.getValue()).booleanValue() && Class221.mc.player.fallDistance >= ((Float)this.Field242.getValue()).floatValue() && !Class221.mc.player.isElytraFlying()) {
+            if (this.Field232.getValue().booleanValue()) {
+                if (Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() <= this.Field237.getValue().floatValue() || this.Field243.getValue() != false && Class221.mc.player.isElytraFlying() || this.Field241.getValue().booleanValue() && Class221.mc.player.fallDistance >= this.Field242.getValue().floatValue() && !Class221.mc.player.isElytraFlying()) {
                     this.Method387(Items.TOTEM_OF_UNDYING);
                     return;
                 }
@@ -178,47 +178,47 @@ extends Module {
                     float f = 0.0f;
                     List list = Class221.mc.world.loadedEntityList.stream().filter(Class221::Method392).filter(this::Method395).collect(Collectors.toList());
                     for (Entity entity : list) {
-                        f += Class475.Method2156((EntityEnderCrystal)entity, (Entity)Class221.mc.player);
+                        f += Class475.Method2156((EntityEnderCrystal)entity, Class221.mc.player);
                     }
-                    if (Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f <= ((Float)this.Field237.getValue()).floatValue()) {
+                    if (Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f <= this.Field237.getValue().floatValue()) {
                         this.Method387(Items.TOTEM_OF_UNDYING);
                         return;
                     }
                 }
-                if (((Boolean)this.Field244.getValue()).booleanValue() && this.Method394()) {
+                if (this.Field244.getValue().booleanValue() && this.Method394()) {
                     this.Method387(Items.TOTEM_OF_UNDYING);
                     return;
                 }
             }
-            if (((Boolean)this.Field233.getValue()).booleanValue() && this.Method383(Class221.mc.player.getHeldItemMainhand().getItem())) {
-                if (((Boolean)this.Field238.getValue()).booleanValue() && !Class221.mc.gameSettings.keyBindUseItem.isKeyDown()) {
-                    if (((Boolean)this.Field245.getValue()).booleanValue()) {
-                        this.Method387(((Class326)this.Field248.getValue()).Field559);
+            if (this.Field233.getValue().booleanValue() && this.Method383(Class221.mc.player.getHeldItemMainhand().getItem())) {
+                if (this.Field238.getValue().booleanValue() && !Class221.mc.gameSettings.keyBindUseItem.isKeyDown()) {
+                    if (this.Field245.getValue().booleanValue()) {
+                        this.Method387(this.Field248.getValue().Field559);
                     }
                     return;
                 }
                 this.Method387(Items.GOLDEN_APPLE);
                 return;
             }
-            if (((Boolean)this.Field234.getValue()).booleanValue()) {
+            if (this.Field234.getValue().booleanValue()) {
                 if (Class167.Method1610(AutoCrystal.class).isEnabled()) {
                     this.Method387(Items.END_CRYSTAL);
                     return;
                 }
-                if (((Boolean)this.Field245.getValue()).booleanValue()) {
-                    this.Method387(((Class326)this.Field248.getValue()).Field559);
+                if (this.Field245.getValue().booleanValue()) {
+                    this.Method387(this.Field248.getValue().Field559);
                     return;
                 }
             }
-            if (!((Boolean)this.Field246.getValue()).booleanValue()) break block25;
-            this.Method387(((Class326)this.Field248.getValue()).Field559);
+            if (!this.Field246.getValue().booleanValue()) break block25;
+            this.Method387(this.Field248.getValue().Field559);
         }
     }
 
     public int Method391(Item item) {
         int n;
         int n2 = -1;
-        int n3 = n = (Boolean)this.Field247.getValue() != false ? 9 : 0;
+        int n3 = n = this.Field247.getValue() != false ? 9 : 0;
         while (n < 36) {
             ItemStack itemStack = Class221.mc.player.inventory.getStackInSlot(n);
             if (itemStack != null && itemStack.getItem() == item) {
@@ -235,7 +235,7 @@ extends Module {
     }
 
     public boolean Method393() {
-        return (Boolean)this.Field241.getValue();
+        return this.Field241.getValue();
     }
 
     public boolean Method394() {
@@ -250,18 +250,18 @@ extends Module {
         while (iterator.hasNext()) {
             float f2 = ((Float)iterator.next()).floatValue();
             f += f2;
-            if (!(Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f2 <= ((Float)this.Field237.getValue()).floatValue())) continue;
+            if (!(Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f2 <= this.Field237.getValue().floatValue())) continue;
             return true;
         }
-        return Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f <= ((Float)this.Field237.getValue()).floatValue();
+        return Class221.mc.player.getHealth() + Class221.mc.player.getAbsorptionAmount() - f <= this.Field237.getValue().floatValue();
     }
 
     public boolean Method395(Entity entity) {
-        return Class221.mc.player.getDistance(entity) <= ((Float)this.Field240.getValue()).floatValue();
+        return Class221.mc.player.getDistance(entity) <= this.Field240.getValue().floatValue();
     }
 
     @Override
     public boolean Method396() {
-        return (Boolean)this.Field233.getValue();
+        return this.Field233.getValue();
     }
 }

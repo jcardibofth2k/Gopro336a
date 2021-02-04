@@ -58,7 +58,7 @@ public interface Int2IntFunction extends Function, IntUnaryOperator {
    /** @deprecated */
    @Deprecated
    default boolean containsKey(Object key) {
-      return key == null ? false : this.containsKey((Integer)key);
+      return key != null && this.containsKey(key);
    }
 
    default void defaultReturnValue(int rv) {

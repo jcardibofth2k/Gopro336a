@@ -62,8 +62,8 @@ public final class ClickEvent implements Examinable, StyleBuilderApplicable {
    }
 
    private ClickEvent(@NotNull final ClickEvent.Action action, @NotNull final String value) {
-      this.action = (ClickEvent.Action)Objects.requireNonNull(action, "action");
-      this.value = (String)Objects.requireNonNull(value, "value");
+      this.action = Objects.requireNonNull(action, "action");
+      this.value = Objects.requireNonNull(value, "value");
    }
 
    @NotNull
@@ -106,7 +106,8 @@ public final class ClickEvent implements Examinable, StyleBuilderApplicable {
       return (String)this.examine(StringExaminer.simpleEscaping());
    }
 
-   public static enum Action {
+   public
+   enum Action {
       OPEN_URL("open_url", true),
       OPEN_FILE("open_file", false),
       RUN_COMMAND("run_command", true),
@@ -120,7 +121,7 @@ public final class ClickEvent implements Examinable, StyleBuilderApplicable {
       private final String name;
       private final boolean readable;
 
-      private Action(@NotNull final String name, final boolean readable) {
+      Action(@NotNull final String name, final boolean readable) {
          this.name = name;
          this.readable = readable;
       }

@@ -21,7 +21,7 @@ extends Enum {
     }
 
     public static Class361[] Method2059() {
-        return (Class361[])Field2348.clone();
+        return Field2348.clone();
     }
 
     public static Class361 Method2060(String string) {

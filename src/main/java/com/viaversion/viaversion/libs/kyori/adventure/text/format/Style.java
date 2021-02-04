@@ -39,7 +39,7 @@ public interface Style extends Buildable, Examinable {
 
    @NotNull
    static Style style(@Nullable final TextColor color) {
-      return (Style)(color == null ? empty() : new StyleImpl((Key)null, color, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, (ClickEvent)null, (HoverEvent)null, (String)null));
+      return color == null ? empty() : new StyleImpl(null, color, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, TextDecoration.State.NOT_SET, null, null, null);
    }
 
    @NotNull
@@ -223,7 +223,7 @@ public interface Style extends Buildable, Examinable {
    @NotNull
    Style.Builder toBuilder();
 
-   public interface Builder extends Buildable.Builder {
+   interface Builder extends Buildable.Builder {
       @Contract("_ -> this")
       @NotNull
       Style.Builder font(@Nullable final Key font);
@@ -321,7 +321,7 @@ public interface Style extends Buildable, Examinable {
       Style build();
    }
 
-   public static enum Merge {
+   enum Merge {
       COLOR,
       DECORATIONS,
       EVENTS,
@@ -359,7 +359,8 @@ public interface Style extends Buildable, Examinable {
          return new Style.Merge[]{COLOR, DECORATIONS, EVENTS, INSERTION, FONT};
       }
 
-      public static enum Strategy {
+      public
+      enum Strategy {
          ALWAYS,
          NEVER,
          IF_ABSENT_ON_TARGET;

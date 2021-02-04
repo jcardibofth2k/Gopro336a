@@ -44,7 +44,7 @@ public interface ViaPlatform {
          return false;
       } else {
          UUID uuid = connection.getProtocolInfo().getUuid();
-         return uuid == null ? false : this.kickPlayer(uuid, message);
+         return uuid != null && this.kickPlayer(uuid, message);
       }
    }
 

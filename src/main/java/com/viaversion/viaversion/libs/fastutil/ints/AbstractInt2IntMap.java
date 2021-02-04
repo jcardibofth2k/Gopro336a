@@ -96,7 +96,7 @@ public abstract class AbstractInt2IntMap extends AbstractInt2IntFunction impleme
       int h = 0;
       int n = this.size();
 
-      for(ObjectIterator i = Int2IntMaps.fastIterator(this); n-- != 0; h += ((Int2IntMap.Entry)i.next()).hashCode()) {
+      for(ObjectIterator i = Int2IntMaps.fastIterator(this); n-- != 0; h += i.next().hashCode()) {
       }
 
       return h;
@@ -109,7 +109,7 @@ public abstract class AbstractInt2IntMap extends AbstractInt2IntFunction impleme
          return false;
       } else {
          Map m = (Map)o;
-         return m.size() != this.size() ? false : this.int2IntEntrySet().containsAll(m.entrySet());
+         return m.size() == this.size() && this.int2IntEntrySet().containsAll(m.entrySet());
       }
    }
 
@@ -128,9 +128,9 @@ public abstract class AbstractInt2IntMap extends AbstractInt2IntFunction impleme
          }
 
          Int2IntMap.Entry e = (Int2IntMap.Entry)i.next();
-         s.append(String.valueOf(e.getIntKey()));
+         s.append(e.getIntKey());
          s.append("=>");
-         s.append(String.valueOf(e.getIntValue()));
+         s.append(e.getIntValue());
       }
 
       s.append("}");

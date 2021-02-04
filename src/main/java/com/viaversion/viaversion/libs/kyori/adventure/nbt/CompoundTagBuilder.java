@@ -58,6 +58,6 @@ final class CompoundTagBuilder implements CompoundBinaryTag.Builder {
 
    @NotNull
    public CompoundBinaryTag build() {
-      return (CompoundBinaryTag)(this.tags == null ? CompoundBinaryTag.empty() : new CompoundBinaryTagImpl(new HashMap(this.tags)));
+      return this.tags == null ? CompoundBinaryTag.empty() : new CompoundBinaryTagImpl(new HashMap(this.tags));
    }
 }

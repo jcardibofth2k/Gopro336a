@@ -109,7 +109,7 @@ public class Int2ObjectOpenHashMap extends AbstractInt2ObjectMap implements Seri
    }
 
    private void tryCapacity(long capacity) {
-      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((double)((float)capacity / this.field_39)))));
+      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((float)capacity / this.field_39))));
       if (needed > this.field_38) {
          this.rehash(needed);
       }
@@ -144,7 +144,7 @@ public class Int2ObjectOpenHashMap extends AbstractInt2ObjectMap implements Seri
       if ((double)this.field_39 <= 0.5D) {
          this.ensureCapacity(m.size());
       } else {
-         this.tryCapacity((long)(this.size() + m.size()));
+         this.tryCapacity(this.size() + m.size());
       }
 
       super.putAll(m);
@@ -485,7 +485,7 @@ public class Int2ObjectOpenHashMap extends AbstractInt2ObjectMap implements Seri
          this.size = 0;
          this.containsNullKey = false;
          Arrays.fill(this.key, 0);
-         Arrays.fill(this.value, (Object)null);
+         Arrays.fill(this.value, null);
       }
    }
 
@@ -557,7 +557,7 @@ public class Int2ObjectOpenHashMap extends AbstractInt2ObjectMap implements Seri
    }
 
    public boolean trim(int n) {
-      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((double)((float)n / this.field_39)));
+      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((float)n / this.field_39));
       if (l < this.field_38 && this.size <= HashCommon.maxFill(l, this.field_39)) {
          try {
             this.rehash(l);
@@ -612,8 +612,8 @@ public class Int2ObjectOpenHashMap extends AbstractInt2ObjectMap implements Seri
       c.values = null;
       c.entries = null;
       c.containsNullKey = this.containsNullKey;
-      c.key = (int[])this.key.clone();
-      c.value = (Object[])this.value.clone();
+      c.key = this.key.clone();
+      c.value = this.value.clone();
       return c;
    }
 

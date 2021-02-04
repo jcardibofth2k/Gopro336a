@@ -14,7 +14,7 @@ extends MovementInputFromOptions {
     }
 
     public void updatePlayerMoveState() {
-        if (MathUtil.Method1087(((Class537)Freecam.Field2458.getValue()).Method851())) {
+        if (MathUtil.Method1087(Freecam.Field2458.getValue().Method851())) {
             super.updatePlayerMoveState();
         } else {
             this.moveStrafe = 0.0f;
