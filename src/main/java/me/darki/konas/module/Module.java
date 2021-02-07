@@ -19,7 +19,7 @@ public abstract class Module {
     public String Field1713 = null;
     public String description = "";
     public Setting<Keybind> Bind = new Setting<>("Bind", new Keybind(0)).setDescription("Sets the module toggle key");
-    public Setting<Boolean> holdBind = new Setting<>("Hold", false).Method1191(Module::Method396).setDescription("Only activate while bind is being held down");
+    public Setting<Boolean> holdBind = new Setting<>("Hold", false).Method1191/*visibleIf*/(Module::Method396/*hasHoldBind*/).setDescription("Only activate while bind is being held down");
     public Category category;
     public ArrayList<String> Field1718 = new ArrayList();
     public boolean enabled;
