@@ -52,7 +52,7 @@ public class InventoryTracker implements StorableObject {
       EntityTracker1_9 entityTracker = (EntityTracker1_9)user.getEntityTracker(Protocol1_9To1_8.class);
       if (hoverSlot != -1) {
          if (hoverSlot == 45) {
-            entityTracker.setSecondHand((Item)null);
+            entityTracker.setSecondHand(null);
          } else {
             boolean isArmorOrResultSlot = hoverSlot >= 5 && hoverSlot <= 8 || hoverSlot == 0;
             int previousItem;

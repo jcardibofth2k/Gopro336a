@@ -27,7 +27,7 @@ extends Module {
     public void Method836(Class643 class643) {
         block0: {
             Block block = class643.Method1245();
-            if (!((double)class643.Method1244().getY() >= Math.floor(Avoid.mc.player.posY)) || !(block.equals(Blocks.FIRE) && (Boolean)this.fire.getValue() != false || block instanceof BlockWeb && (Boolean)this.webs.getValue() != false || block instanceof BlockBasePressurePlate && (Boolean)this.pressurePlates.getValue() != false || block == Blocks.TRIPWIRE && (Boolean)this.wires.getValue() != false || block.equals(Blocks.CACTUS) && (Boolean)this.cactus.getValue() != false) && (Avoid.mc.world.isBlockLoaded(class643.Method1244(), false) && class643.Method1244().getY() >= 0 || !((Boolean)this.unloaded.getValue()).booleanValue())) break block0;
+            if (!((double)class643.Method1244().getY() >= Math.floor(Avoid.mc.player.posY)) || !(block.equals(Blocks.FIRE) && this.fire.getValue() != false || block instanceof BlockWeb && this.webs.getValue() != false || block instanceof BlockBasePressurePlate && this.pressurePlates.getValue() != false || block == Blocks.TRIPWIRE && this.wires.getValue() != false || block.equals(Blocks.CACTUS) && this.cactus.getValue() != false) && (Avoid.mc.world.isBlockLoaded(class643.Method1244(), false) && class643.Method1244().getY() >= 0 || !this.unloaded.getValue().booleanValue())) break block0;
             class643.Method1239(Block.FULL_BLOCK_AABB);
         }
     }

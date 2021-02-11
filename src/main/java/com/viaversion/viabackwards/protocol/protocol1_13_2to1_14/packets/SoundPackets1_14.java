@@ -24,7 +24,7 @@ public class SoundPackets1_14 extends RewriterBase {
       soundRewriter.registerSound(ClientboundPackets1_14.SOUND);
       soundRewriter.registerNamedSound(ClientboundPackets1_14.NAMED_SOUND);
       soundRewriter.registerStopSound(ClientboundPackets1_14.STOP_SOUND);
-      ((Protocol1_13_2To1_14)this.protocol).registerClientbound(ClientboundPackets1_14.ENTITY_SOUND, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.ENTITY_SOUND, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.cancel();

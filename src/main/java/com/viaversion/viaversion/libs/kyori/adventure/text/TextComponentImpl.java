@@ -50,7 +50,7 @@ final class TextComponentImpl extends AbstractComponent implements TextComponent
 
    @NotNull
    public TextComponent content(@NotNull final String content) {
-      return Objects.equals(this.content, content) ? this : new TextComponentImpl(this.children, this.style, (String)Objects.requireNonNull(content, "content"));
+      return Objects.equals(this.content, content) ? this : new TextComponentImpl(this.children, this.style, Objects.requireNonNull(content, "content"));
    }
 
    @NotNull
@@ -105,7 +105,7 @@ final class TextComponentImpl extends AbstractComponent implements TextComponent
 
       @NotNull
       public TextComponent.Builder content(@NotNull final String content) {
-         this.content = (String)Objects.requireNonNull(content, "content");
+         this.content = Objects.requireNonNull(content, "content");
          return this;
       }
 
@@ -116,7 +116,7 @@ final class TextComponentImpl extends AbstractComponent implements TextComponent
 
       @NotNull
       public TextComponent build() {
-         return (TextComponent)(this.isEmpty() ? Component.empty() : new TextComponentImpl(this.children, this.buildStyle(), this.content));
+         return this.isEmpty() ? Component.empty() : new TextComponentImpl(this.children, this.buildStyle(), this.content);
       }
 
       private boolean isEmpty() {

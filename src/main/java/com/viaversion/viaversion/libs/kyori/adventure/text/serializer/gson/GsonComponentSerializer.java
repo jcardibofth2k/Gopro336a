@@ -39,7 +39,7 @@ public interface GsonComponentSerializer extends ComponentSerializer, Buildable 
    JsonElement serializeToTree(@NotNull final Component component);
 
    @Internal
-   public interface Provider {
+   interface Provider {
       @Internal
       @NotNull
       GsonComponentSerializer gson();
@@ -53,7 +53,7 @@ public interface GsonComponentSerializer extends ComponentSerializer, Buildable 
       Consumer builder();
    }
 
-   public interface Builder extends Buildable.Builder {
+   interface Builder extends Buildable.Builder {
       @NotNull
       GsonComponentSerializer.Builder downsampleColors();
 

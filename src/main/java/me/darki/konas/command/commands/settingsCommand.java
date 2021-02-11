@@ -41,11 +41,11 @@ extends Command {
                 continue;
             }
             if (setting.getValue() instanceof Keybind) {
-                Logger.Method1118(setting.Method1183() + " [&b" + Keyboard.getKeyName((int)((Keybind)setting.getValue()).Method851()) + "&f]");
+                Logger.Method1118(setting.Method1183() + " [&b" + Keyboard.getKeyName(((Keybind)setting.getValue()).Method851()) + "&f]");
                 continue;
             }
             if (setting.getValue() instanceof Class537) {
-                Logger.Method1118(setting.Method1183() + " [&b" + Keyboard.getKeyName((int)((Class537)setting.getValue()).Method851()) + "&f]");
+                Logger.Method1118(setting.Method1183() + " [&b" + Keyboard.getKeyName(((Class537)setting.getValue()).Method851()) + "&f]");
                 continue;
             }
             if (setting.getValue() instanceof ColorValue) {

@@ -42,7 +42,7 @@ public class MixinGuiIngame {
 
     @Redirect(method={"renderGameOverlay"}, at=@At(value="FIELD", target="Lnet/minecraft/client/Minecraft;player:Lnet/minecraft/client/entity/EntityPlayerSP;"))
     private EntityPlayerSP Method1892(Minecraft mc) {
-        Class49 event = new Class49((Entity)mc.player);
+        Class49 event = new Class49(mc.player);
         EventDispatcher.Companion.dispatch(event);
         if (event.Method275() instanceof EntityPlayerSP) {
             return (EntityPlayerSP)event.Method275();
@@ -52,7 +52,7 @@ public class MixinGuiIngame {
 
     @Redirect(method={"renderPotionEffects"}, at=@At(value="FIELD", target="Lnet/minecraft/client/Minecraft;player:Lnet/minecraft/client/entity/EntityPlayerSP;"))
     private EntityPlayerSP Method1893(Minecraft mc) {
-        Class49 event = new Class49((Entity)mc.player);
+        Class49 event = new Class49(mc.player);
         EventDispatcher.Companion.dispatch(event);
         if (event.Method275() instanceof EntityPlayerSP) {
             return (EntityPlayerSP)event.Method275();

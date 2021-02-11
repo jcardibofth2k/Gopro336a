@@ -10,7 +10,7 @@ import java.io.StringReader;
 
 public final class JsonParser {
    public static JsonElement parseString(String json) throws JsonSyntaxException {
-      return parseReader((Reader)(new StringReader(json)));
+      return parseReader(new StringReader(json));
    }
 
    public static JsonElement parseReader(Reader reader) throws JsonIOException, JsonSyntaxException {

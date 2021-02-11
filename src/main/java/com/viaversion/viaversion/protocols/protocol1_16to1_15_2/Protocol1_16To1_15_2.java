@@ -79,7 +79,7 @@ public class Protocol1_16To1_15_2 extends AbstractProtocol {
                            JsonObject playerInfo = element.getAsJsonObject();
                            String name = playerInfo.getAsJsonPrimitive("name").getAsString();
                            if (name.indexOf(10) == -1) {
-                              splitSamples.add((JsonElement)playerInfo);
+                              splitSamples.add(playerInfo);
                            } else {
                               String id = playerInfo.getAsJsonPrimitive("id").getAsString();
                               String[] var11 = name.split("\n");
@@ -90,7 +90,7 @@ public class Protocol1_16To1_15_2 extends AbstractProtocol {
                                  JsonObject newSample = new JsonObject();
                                  newSample.addProperty("name", s);
                                  newSample.addProperty("id", id);
-                                 splitSamples.add((JsonElement)newSample);
+                                 splitSamples.add(newSample);
                               }
                            }
                         }

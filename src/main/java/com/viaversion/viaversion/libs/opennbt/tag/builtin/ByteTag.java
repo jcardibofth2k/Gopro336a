@@ -59,7 +59,7 @@ public class ByteTag extends NumberTag {
    }
 
    public short asShort() {
-      return (short)this.value;
+      return this.value;
    }
 
    public int asInt() {
@@ -67,15 +67,15 @@ public class ByteTag extends NumberTag {
    }
 
    public long asLong() {
-      return (long)this.value;
+      return this.value;
    }
 
    public float asFloat() {
-      return (float)this.value;
+      return this.value;
    }
 
    public double asDouble() {
-      return (double)this.value;
+      return this.value;
    }
 
    public int getTagId() {

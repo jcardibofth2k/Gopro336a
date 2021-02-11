@@ -160,7 +160,7 @@ public class Setting<T> {
     }
 
     public Enum Method1198(String string) {
-        for (Enum enum_ : (Enum[])((Enum)this.value).getClass().getEnumConstants()) {
+        for (Enum enum_ : ((Enum)this.value).getClass().getEnumConstants()) {
             if (!enum_.name().equalsIgnoreCase(string)) continue;
             return enum_;
         }

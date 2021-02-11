@@ -6,6 +6,7 @@ import java.util.List;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
+import me.darki.konas.util.ChatUtil;
 
 public class Class576
 extends Command {
@@ -22,12 +23,12 @@ extends Command {
         }
         if (stringArray[1].equalsIgnoreCase("list")) {
             List<File> list = Class589.Method2220();
-            ChatUtil.Method1033("(h)Configs:", new Object[0]);
+            ChatUtil.Method1033("(h)Configs:");
             ChatUtil.Method1031();
             if (Class589.Field2610.toPath() == Class589.Field2607.toPath()) {
-                ChatUtil.Method1033("(h)default", new Object[0]);
+                ChatUtil.Method1033("(h)default");
             } else {
-                ChatUtil.Method1033("default", new Object[0]);
+                ChatUtil.Method1033("default");
             }
             if (list != null && !list.isEmpty()) {
                 for (File file : list) {
@@ -42,14 +43,14 @@ extends Command {
         }
         if (stringArray[1].equalsIgnoreCase("current")) {
             if (Class589.Field2610 == Class589.Field2607) {
-                ChatUtil.Method1033("Currently selected config: (h)default", new Object[0]);
+                ChatUtil.Method1033("Currently selected config: (h)default");
             } else {
                 ChatUtil.Method1033("Currently selected config: (h)%s", Files.getNameWithoutExtension(Class589.Field2610.getName()));
             }
             return;
         }
         if (stringArray.length == 2) {
-            ChatUtil.Method1034(this.Method191(), new Object[0]);
+            ChatUtil.Method1034(this.Method191());
             return;
         }
         File file = new File(Class589.Field2608, stringArray[2] + ".json");
@@ -101,7 +102,7 @@ extends Command {
             }
             case "delete": {
                 if (bl) {
-                    ChatUtil.Method1034("You can't delete the (h)Default(r) Config", new Object[0]);
+                    ChatUtil.Method1034("You can't delete the (h)Default(r) Config");
                     return;
                 }
                 if (!file.exists()) {
@@ -116,7 +117,7 @@ extends Command {
                 break;
             }
             default: {
-                ChatUtil.Method1034(this.Method191(), new Object[0]);
+                ChatUtil.Method1034(this.Method191());
                 break;
             }
         }

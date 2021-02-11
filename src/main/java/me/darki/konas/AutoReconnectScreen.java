@@ -23,15 +23,15 @@ extends GuiScreen {
     public int Field1850;
 
     public void Method613() {
-        this.mc.displayGuiScreen((GuiScreen)new GuiConnecting(this.Field1846, this.mc, this.Field1848 == null ? this.mc.getCurrentServerData() : this.Field1848));
+        this.mc.displayGuiScreen(new GuiConnecting(this.Field1846, this.mc, this.Field1848 == null ? this.mc.getCurrentServerData() : this.Field1848));
     }
 
     public void initGui() {
         this.buttonList.clear();
         this.Field1845 = this.fontRenderer.listFormattedStringToWidth(this.Field1844.getFormattedText(), this.width - 50);
         this.Field1847 = this.Field1845.size() * this.fontRenderer.FONT_HEIGHT;
-        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, Math.min(this.height / 2 + this.Field1847 / 2 + this.fontRenderer.FONT_HEIGHT, this.height - 30), I18n.format((String)"gui.toMenu", (Object[])new Object[0])));
-        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, (int)Math.min((double)this.height / 1.85 + (double)this.Field1847 / 1.85 + (double)this.fontRenderer.FONT_HEIGHT, (double)(this.height + 80)), "Reconnect"));
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, Math.min(this.height / 2 + this.Field1847 / 2 + this.fontRenderer.FONT_HEIGHT, this.height - 30), I18n.format("gui.toMenu")));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, (int)Math.min((double)this.height / 1.85 + (double)this.Field1847 / 1.85 + (double)this.fontRenderer.FONT_HEIGHT, this.height + 80), "Reconnect"));
     }
 
     public void keyTyped(char c, int n) {
@@ -64,7 +64,7 @@ extends GuiScreen {
             this.Method613();
         }
         float f2 = (float)this.Field1850 - (float)(System.currentTimeMillis() - this.Field1849.Method736()) / 1000.0f;
-        ((GuiButton)this.buttonList.get((int)1)).displayString = "Reconnecting: " + Math.round(f2);
+        this.buttonList.get(1).displayString = "Reconnecting: " + Math.round(f2);
         super.drawScreen(n, n2, f);
     }
 

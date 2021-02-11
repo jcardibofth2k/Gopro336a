@@ -75,9 +75,9 @@ public class EntityPackets {
 
                         PacketWrapper velocity = wrapper.create(69);
                         velocity.write(Type.VAR_INT, entityId);
-                        velocity.write(Type.SHORT, (Short)wrapper.get(Type.SHORT, 0));
-                        velocity.write(Type.SHORT, (Short)wrapper.get(Type.SHORT, 1));
-                        velocity.write(Type.SHORT, (Short)wrapper.get(Type.SHORT, 2));
+                        velocity.write(Type.SHORT, wrapper.get(Type.SHORT, 0));
+                        velocity.write(Type.SHORT, wrapper.get(Type.SHORT, 1));
+                        velocity.write(Type.SHORT, wrapper.get(Type.SHORT, 2));
                         velocity.scheduleSend(Protocol1_14To1_13_2.class);
                      }
 
@@ -146,7 +146,7 @@ public class EntityPackets {
                         metadataList.add(new Metadata(6, MetaType1_14.Pose, MetadataRewriter1_14To1_13_2.recalculatePlayerPose(entityId, tracker)));
                      }
 
-                     metadataList.add(new Metadata(12, MetaType1_14.OptPosition, (Object)null));
+                     metadataList.add(new Metadata(12, MetaType1_14.OptPosition, null));
                      metadataPacket.write(Types1_14.METADATA_LIST, metadataList);
                      metadataPacket.scheduleSend(Protocol1_14To1_13_2.class);
                   }

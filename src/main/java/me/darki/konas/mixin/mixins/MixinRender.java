@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinRender {
     @Inject(method={"renderShadow"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method148(Entity entityIn, double x, double y, double z, float shadowAlpha, float partialTicks, CallbackInfo ci) {
-        if (Minecraft.getMinecraft().player != null && entityIn.equals((Object)Minecraft.getMinecraft().player)) {
+        if (Minecraft.getMinecraft().player != null && entityIn.equals(Minecraft.getMinecraft().player)) {
             Class131 event = new Class131();
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {

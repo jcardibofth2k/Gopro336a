@@ -14,7 +14,7 @@ public interface TextColor extends Comparable, Examinable, RGBLike, StyleBuilder
    static TextColor color(final int value) {
       int truncatedValue = value & 16777215;
       NamedTextColor named = NamedTextColor.ofExact(truncatedValue);
-      return (TextColor)(named != null ? named : new TextColorImpl(truncatedValue));
+      return named != null ? named : new TextColorImpl(truncatedValue);
    }
 
    @NotNull
@@ -30,7 +30,7 @@ public interface TextColor extends Comparable, Examinable, RGBLike, StyleBuilder
          return color(v, v, v);
       } else {
          float h = hsv.method_1() * 6.0F;
-         int i = (int)Math.floor((double)h);
+         int i = (int)Math.floor(h);
          float f = h - (float)i;
          float p = v * (1.0F - s);
          float q = v * (1.0F - s * f);

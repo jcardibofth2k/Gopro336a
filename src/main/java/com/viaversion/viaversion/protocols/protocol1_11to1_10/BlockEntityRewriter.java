@@ -4,7 +4,7 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
 public class BlockEntityRewriter {
-   private static BiMap oldToNewNames = HashBiMap.create();
+   private static final BiMap oldToNewNames = HashBiMap.create();
 
    private static void rewrite(String oldName, String newName) {
       oldToNewNames.put(oldName, "minecraft:" + newName);

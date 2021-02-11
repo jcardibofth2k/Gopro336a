@@ -27,7 +27,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -40,7 +40,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
             this.map(Type.INT);
             this.handler(EntityPackets1_12.this.getObjectTrackerHandler());
             this.handler(EntityPackets1_12.this.getObjectRewriter((id) -> {
-               return (ObjectType)Entity1_12Types.ObjectType.findById(id).orElse((Object)null);
+               return Entity1_12Types.ObjectType.findById(id).orElse(null);
             }));
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -63,7 +63,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
       });
       this.registerTracker(ClientboundPackets1_12.SPAWN_EXPERIENCE_ORB, Entity1_12Types.EntityType.EXPERIENCE_ORB);
       this.registerTracker(ClientboundPackets1_12.SPAWN_GLOBAL_ENTITY, Entity1_12Types.EntityType.WEATHER);
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -83,7 +83,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
          }
       });
       this.registerTracker(ClientboundPackets1_12.SPAWN_PAINTING, Entity1_12Types.EntityType.PAINTING);
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -96,7 +96,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
             this.handler(EntityPackets1_12.this.getTrackerAndMetaHandler(Types1_12.METADATA_LIST, Entity1_12Types.EntityType.PLAYER));
          }
       });
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -111,7 +111,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
             });
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper packetWrapper) throws Exception {
-                  PacketWrapper wrapper = PacketWrapper.create(7, (ByteBuf)null, packetWrapper.user());
+                  PacketWrapper wrapper = PacketWrapper.create(7, null, packetWrapper.user());
                   wrapper.write(Type.VAR_INT, 1);
                   wrapper.write(Type.STRING, "achievement.openInventory");
                   wrapper.write(Type.VAR_INT, 1);
@@ -123,7 +123,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
       this.registerRespawn(ClientboundPackets1_12.RESPAWN);
       this.registerRemoveEntities(ClientboundPackets1_12.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_12.ENTITY_METADATA, Types1_12.METADATA_LIST);
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.ENTITY_PROPERTIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.ENTITY_PROPERTIES, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.INT);
@@ -218,7 +218,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
          CompoundTag tag = (CompoundTag)meta.getValue();
          ShoulderTracker tracker = (ShoulderTracker)event.user().get(ShoulderTracker.class);
          if (tag.isEmpty() && tracker.getLeftShoulder() != null) {
-            tracker.setLeftShoulder((String)null);
+            tracker.setLeftShoulder(null);
             tracker.update();
          } else if (tag.contains("id") && event.entityId() == tracker.getEntityId()) {
             String id = (String)tag.get("id").getValue();
@@ -234,7 +234,7 @@ public class EntityPackets1_12 extends LegacyEntityRewriter {
          CompoundTag tag = (CompoundTag)event.meta().getValue();
          ShoulderTracker tracker = (ShoulderTracker)event.user().get(ShoulderTracker.class);
          if (tag.isEmpty() && tracker.getRightShoulder() != null) {
-            tracker.setRightShoulder((String)null);
+            tracker.setRightShoulder(null);
             tracker.update();
          } else if (tag.contains("id") && event.entityId() == tracker.getEntityId()) {
             String id = (String)tag.get("id").getValue();

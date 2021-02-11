@@ -10,7 +10,7 @@ import com.viaversion.viaversion.protocols.protocol1_13to1_12_2.ClientboundPacke
 
 public class WorldPackets {
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PARTICLE, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PARTICLE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.BOOLEAN);
@@ -26,12 +26,12 @@ public class WorldPackets {
                public void handle(PacketWrapper wrapper) throws Exception {
                   int id = (Integer)wrapper.get(Type.INT, 0);
                   if (id == 27) {
-                     wrapper.write(Type.FLAT_VAR_INT_ITEM, (Item)wrapper.read(Type.FLAT_ITEM));
+                     wrapper.write(Type.FLAT_VAR_INT_ITEM, wrapper.read(Type.FLAT_ITEM));
                   }
 
                }
             });
          }
-      }));
+      });
    }
 }

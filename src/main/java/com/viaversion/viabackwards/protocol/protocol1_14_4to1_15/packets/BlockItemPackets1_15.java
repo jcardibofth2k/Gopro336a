@@ -25,7 +25,7 @@ public class BlockItemPackets1_15 extends ItemRewriter {
    protected void registerPackets() {
       BlockRewriter blockRewriter = new BlockRewriter(this.protocol, Type.POSITION1_14);
       (new RecipeRewriter1_14(this.protocol)).registerDefaultHandler(ClientboundPackets1_15.DECLARE_RECIPES);
-      ((Protocol1_14_4To1_15)this.protocol).registerServerbound(ServerboundPackets1_14.EDIT_BOOK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_14.EDIT_BOOK, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                BlockItemPackets1_15.this.handleItemToServer((Item)wrapper.passthrough(Type.FLAT_VAR_INT_ITEM));
@@ -44,7 +44,7 @@ public class BlockItemPackets1_15 extends ItemRewriter {
       blockRewriter.registerBlockAction(ClientboundPackets1_15.BLOCK_ACTION);
       blockRewriter.registerBlockChange(ClientboundPackets1_15.BLOCK_CHANGE);
       blockRewriter.registerMultiBlockChange(ClientboundPackets1_15.MULTI_BLOCK_CHANGE);
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.CHUNK_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -94,7 +94,7 @@ public class BlockItemPackets1_15 extends ItemRewriter {
          }
       });
       blockRewriter.registerEffect(ClientboundPackets1_15.EFFECT, 1010, 2001);
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.SPAWN_PARTICLE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.SPAWN_PARTICLE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.BOOLEAN);

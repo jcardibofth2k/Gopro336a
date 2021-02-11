@@ -32,7 +32,7 @@ extends Command {
                 printStream.println(object);
             }
             catch (Exception exception) {
-                Enum enum_3 = ((Enum[])((Enum)setting.getValue()).getClass().getEnumConstants())[setting.Method1195(string)];
+                Enum enum_3 = ((Enum[]) setting.getValue().getClass().getEnumConstants())[setting.Method1195(string)];
                 Logger.Method1118("Something went wrong lol");
                 Logger.Method1118(enum_3.name());
                 Logger.Method1118("" + setting.Method1195(string));

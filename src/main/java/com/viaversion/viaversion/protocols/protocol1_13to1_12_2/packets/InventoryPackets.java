@@ -40,7 +40,7 @@ public class InventoryPackets extends ItemRewriter {
    }
 
    public void registerPackets() {
-      ((Protocol1_13To1_12_2)this.protocol).registerClientbound(ClientboundPackets1_12_1.SET_SLOT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12_1.SET_SLOT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -48,14 +48,14 @@ public class InventoryPackets extends ItemRewriter {
             this.handler(InventoryPackets.this.itemToClientHandler(Type.FLAT_ITEM));
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerClientbound(ClientboundPackets1_12_1.WINDOW_ITEMS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12_1.WINDOW_ITEMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.ITEM_ARRAY, Type.FLAT_ITEM_ARRAY);
             this.handler(InventoryPackets.this.itemArrayHandler(Type.FLAT_ITEM_ARRAY));
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerClientbound(ClientboundPackets1_12_1.WINDOW_PROPERTY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12_1.WINDOW_PROPERTY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -71,7 +71,7 @@ public class InventoryPackets extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerClientbound(ClientboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -169,7 +169,7 @@ public class InventoryPackets extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerClientbound(ClientboundPackets1_12_1.ENTITY_EQUIPMENT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12_1.ENTITY_EQUIPMENT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.VAR_INT);
@@ -177,7 +177,7 @@ public class InventoryPackets extends ItemRewriter {
             this.handler(InventoryPackets.this.itemToClientHandler(Type.FLAT_ITEM));
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerServerbound(ServerboundPackets1_13.CLICK_WINDOW, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.CLICK_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -188,7 +188,7 @@ public class InventoryPackets extends ItemRewriter {
             this.handler(InventoryPackets.this.itemToServerHandler(Type.ITEM));
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerServerbound(ServerboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -225,7 +225,7 @@ public class InventoryPackets extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_13To1_12_2)this.protocol).registerServerbound(ServerboundPackets1_13.CREATIVE_INVENTORY_ACTION, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_13.CREATIVE_INVENTORY_ACTION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.SHORT);
             this.map(Type.FLAT_ITEM, Type.ITEM);
@@ -445,7 +445,7 @@ public class InventoryPackets extends ItemRewriter {
 
             if (tag.isEmpty()) {
                tag = null;
-               item.setTag((CompoundTag)null);
+               item.setTag(null);
             }
          }
 

@@ -8,6 +8,6 @@ import com.viaversion.viaversion.libs.opennbt.tag.builtin.CompoundTag;
 
 public class HandItemProvider implements Provider {
    public Item getHandItem(UserConnection info) {
-      return new DataItem(0, (byte)0, (short)0, (CompoundTag)null);
+      return new DataItem(0, (byte)0, (short)0, null);
    }
 }

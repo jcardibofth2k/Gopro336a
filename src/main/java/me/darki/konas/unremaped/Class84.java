@@ -24,6 +24,6 @@ extends Enum {
     }
 
     public static Class84[] Method460() {
-        return (Class84[])Field285.clone();
+        return Field285.clone();
     }
 }

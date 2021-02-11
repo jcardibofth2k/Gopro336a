@@ -17,12 +17,12 @@ extends Module {
         if (!FastSwim.mc.player.isInWater() || !MathUtil.Method1080()) {
             return;
         }
-        double[] dArray = FastSwim.mc.player.ticksExisted % 4 == 0 && (Boolean) antiKick.getValue() != false ? MathUtil.Method1086((Double) speed.getValue() / 40.0) : MathUtil.Method1086((Double) speed.getValue() / 10.0);
+        double[] dArray = FastSwim.mc.player.ticksExisted % 4 == 0 && antiKick.getValue() != false ? MathUtil.Method1086(speed.getValue() / 40.0) : MathUtil.Method1086(speed.getValue() / 10.0);
         moveEvent.setX(dArray[0]);
         moveEvent.setZ(dArray[1]);
     }
 
     public FastSwim() {
-        super("FastSwim", Category.MOVEMENT, new String[0]);
+        super("FastSwim", Category.MOVEMENT);
     }
 }

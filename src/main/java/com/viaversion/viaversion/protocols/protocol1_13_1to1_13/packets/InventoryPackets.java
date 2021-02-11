@@ -22,7 +22,7 @@ public class InventoryPackets extends ItemRewriter {
       this.registerWindowItems(ClientboundPackets1_13.WINDOW_ITEMS, Type.FLAT_ITEM_ARRAY);
       this.registerAdvancements(ClientboundPackets1_13.ADVANCEMENTS, Type.FLAT_ITEM);
       this.registerSetCooldown(ClientboundPackets1_13.COOLDOWN);
-      ((Protocol1_13_1To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -52,7 +52,7 @@ public class InventoryPackets extends ItemRewriter {
       });
       this.registerEntityEquipment(ClientboundPackets1_13.ENTITY_EQUIPMENT, Type.FLAT_ITEM);
       final RecipeRewriter recipeRewriter = new RecipeRewriter1_13_2(this.protocol);
-      ((Protocol1_13_1To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.DECLARE_RECIPES, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int size = (Integer)wrapper.passthrough(Type.VAR_INT);

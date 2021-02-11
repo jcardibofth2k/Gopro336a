@@ -23,7 +23,7 @@ extends Enum {
     }
 
     public static PacketFlyType[] Method2061() {
-        return (PacketFlyType[])Field2351.clone();
+        return Field2351.clone();
     }
 
     public static PacketFlyType Method2062(String string) {

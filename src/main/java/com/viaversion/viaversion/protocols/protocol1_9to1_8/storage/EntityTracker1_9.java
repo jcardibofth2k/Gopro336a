@@ -77,7 +77,7 @@ public class EntityTracker1_9 extends EntityTrackerBase {
    }
 
    public void setSecondHand(int entityID, Item item) {
-      PacketWrapper wrapper = PacketWrapper.create(60, (ByteBuf)null, this.user());
+      PacketWrapper wrapper = PacketWrapper.create(60, null, this.user());
       wrapper.write(Type.VAR_INT, entityID);
       wrapper.write(Type.VAR_INT, 1);
       wrapper.write(Type.ITEM, this.itemInSecondHand = item);
@@ -97,7 +97,7 @@ public class EntityTracker1_9 extends EntityTrackerBase {
    public void syncShieldWithSword() {
       boolean swordInHand = this.hasSwordInHand();
       if (!swordInHand || this.itemInSecondHand == null) {
-         this.setSecondHand(swordInHand ? new DataItem(442, (byte)1, (short)0, (CompoundTag)null) : null);
+         this.setSecondHand(swordInHand ? new DataItem(442, (byte)1, (short)0, null) : null);
       }
 
    }
@@ -168,13 +168,13 @@ public class EntityTracker1_9 extends EntityTrackerBase {
                         if (entityId != this.getProvidedEntityId() && Via.getConfig().isShieldBlocking()) {
                            if ((data & 16) == 16) {
                               if (this.validBlocking.contains(entityId)) {
-                                 Item shield = new DataItem(442, (byte)1, (short)0, (CompoundTag)null);
+                                 Item shield = new DataItem(442, (byte)1, (short)0, null);
                                  this.setSecondHand(entityId, shield);
                               } else {
-                                 this.setSecondHand(entityId, (Item)null);
+                                 this.setSecondHand(entityId, null);
                               }
                            } else {
-                              this.setSecondHand(entityId, (Item)null);
+                              this.setSecondHand(entityId, null);
                            }
                         }
                      }
@@ -193,7 +193,7 @@ public class EntityTracker1_9 extends EntityTrackerBase {
                         this.knownHolograms.add(entityId);
 
                         try {
-                           PacketWrapper wrapper = PacketWrapper.create(37, (ByteBuf)null, this.user());
+                           PacketWrapper wrapper = PacketWrapper.create(37, null, this.user());
                            wrapper.write(Type.VAR_INT, entityId);
                            wrapper.write(Type.SHORT, Short.valueOf((short)0));
                            wrapper.write(Type.SHORT, (short)((int)(128.0D * Via.getConfig().getHologramYOffset() * 32.0D)));
@@ -256,7 +256,7 @@ public class EntityTracker1_9 extends EntityTrackerBase {
    }
 
    public void sendTeamPacket(boolean add, boolean now) {
-      PacketWrapper wrapper = PacketWrapper.create(65, (ByteBuf)null, this.user());
+      PacketWrapper wrapper = PacketWrapper.create(65, null, this.user());
       wrapper.write(Type.STRING, "viaversion");
       if (add) {
          if (!this.teamExists) {
@@ -304,10 +304,10 @@ public class EntityTracker1_9 extends EntityTrackerBase {
    public void sendMetadataBuffer(int entityId) {
       List metadataList = (List)this.metadataBuffer.get(entityId);
       if (metadataList != null) {
-         PacketWrapper wrapper = PacketWrapper.create(57, (ByteBuf)null, this.user());
+         PacketWrapper wrapper = PacketWrapper.create(57, null, this.user());
          wrapper.write(Type.VAR_INT, entityId);
          wrapper.write(Types1_9.METADATA_LIST, metadataList);
-         ((MetadataRewriter1_9To1_8)((Protocol1_9To1_8)Via.getManager().getProtocolManager().getProtocol(Protocol1_9To1_8.class)).get(MetadataRewriter1_9To1_8.class)).handleMetadata(entityId, metadataList, this.user());
+         ((MetadataRewriter1_9To1_8) Via.getManager().getProtocolManager().getProtocol(Protocol1_9To1_8.class).get(MetadataRewriter1_9To1_8.class)).handleMetadata(entityId, metadataList, this.user());
          this.handleMetadata(entityId, metadataList);
          if (!metadataList.isEmpty()) {
             try {

@@ -41,25 +41,25 @@ extends Module {
                 if (!this.Field2480.Method737(2500.0)) {
                     return;
                 }
-                if (Class233.mc.player.getHealth() + Class233.mc.player.getAbsorptionAmount() < (float)((Integer)Field2479.getValue()).intValue()) {
+                if (Class233.mc.player.getHealth() + Class233.mc.player.getAbsorptionAmount() < (float) Field2479.getValue().intValue()) {
                     return;
                 }
-                if (((Boolean)Field2478.getValue()).booleanValue() && Class233.mc.player.getActiveItemStack().getItem() instanceof ItemFood) {
+                if (Field2478.getValue().booleanValue() && Class233.mc.player.getActiveItemStack().getItem() instanceof ItemFood) {
                     return;
                 }
-                if (((Boolean)Field2474.getValue()).booleanValue() && !Class233.mc.player.isPotionActive(MobEffects.STRENGTH)) {
+                if (Field2474.getValue().booleanValue() && !Class233.mc.player.isPotionActive(MobEffects.STRENGTH)) {
                     if (this.Method1925("Arrow of Strength")) {
                         this.Method135(updateEvent);
-                    } else if (((Boolean)Field2475.getValue()).booleanValue()) {
+                    } else if (Field2475.getValue().booleanValue()) {
                         this.toggle();
                     }
                 }
-                if (!((Boolean)Field2473.getValue()).booleanValue() || Class233.mc.player.isPotionActive(MobEffects.SPEED)) break block9;
+                if (!Field2473.getValue().booleanValue() || Class233.mc.player.isPotionActive(MobEffects.SPEED)) break block9;
                 if (!this.Method1925("Arrow of Swiftness")) break block10;
                 this.Method135(updateEvent);
                 break block9;
             }
-            if (!((Boolean)Field2475.getValue()).booleanValue()) break block9;
+            if (!Field2475.getValue().booleanValue()) break block9;
             this.toggle();
         }
     }
@@ -70,24 +70,24 @@ extends Module {
             block1: {
                 block2: {
                     if (Class233.mc.player.inventory.getCurrentItem().getItem() != Items.BOW) break block1;
-                    Class233.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(0.0f, -90.0f, Class233.mc.player.onGround));
+                    Class233.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(0.0f, -90.0f, Class233.mc.player.onGround));
                     ((IEntityPlayerSP)Class233.mc.player).Method237(0.0f);
                     ((IEntityPlayerSP)Class233.mc.player).Method239(-90.0f);
                     if (Class233.mc.player.getItemInUseMaxCount() < 3) break block2;
                     this.Field2481 = false;
-                    Class233.mc.playerController.onStoppedUsingItem((EntityPlayer)Class233.mc.player);
-                    if (((Boolean)Field2475.getValue()).booleanValue()) {
+                    Class233.mc.playerController.onStoppedUsingItem(Class233.mc.player);
+                    if (Field2475.getValue().booleanValue()) {
                         this.toggle();
                     }
                     this.Field2480.Method739();
                     break block3;
                 }
                 if (Class233.mc.player.getItemInUseMaxCount() != 0) break block3;
-                Class233.mc.playerController.processRightClick((EntityPlayer)Class233.mc.player, (World)Class233.mc.world, EnumHand.MAIN_HAND);
+                Class233.mc.playerController.processRightClick(Class233.mc.player, Class233.mc.world, EnumHand.MAIN_HAND);
                 this.Field2481 = true;
                 break block3;
             }
-            if (!((Boolean)Field2476.getValue()).booleanValue() || (n = this.Method464()) == -1 || n == Class233.mc.player.inventory.currentItem) break block3;
+            if (!Field2476.getValue().booleanValue() || (n = this.Method464()) == -1 || n == Class233.mc.player.inventory.currentItem) break block3;
             Class233.mc.player.inventory.currentItem = n;
             Class233.mc.playerController.updateController();
         }
@@ -97,9 +97,9 @@ extends Module {
         for (int i = 0; i < 36; ++i) {
             ItemStack itemStack = Class233.mc.player.inventory.getStackInSlot(i);
             if (itemStack.getItem() != Items.TIPPED_ARROW || !itemStack.getDisplayName().equalsIgnoreCase(string)) continue;
-            Class233.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, (EntityPlayer)Class233.mc.player);
-            Class233.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, (EntityPlayer)Class233.mc.player);
-            Class233.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, (EntityPlayer)Class233.mc.player);
+            Class233.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, Class233.mc.player);
+            Class233.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, Class233.mc.player);
+            Class233.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, Class233.mc.player);
             return true;
         }
         return false;
@@ -113,7 +113,7 @@ extends Module {
             if (bl) {
                 return true;
             }
-            if (((Boolean)Field2477.getValue()).booleanValue()) {
+            if (Field2477.getValue().booleanValue()) {
                 return this.Method2132(i, string);
             }
             return false;
@@ -150,6 +150,6 @@ extends Module {
     }
 
     public Class233() {
-        super("SelfBow", "Shoots yourself", Category.COMBAT, new String[0]);
+        super("SelfBow", "Shoots yourself", Category.COMBAT);
     }
 }

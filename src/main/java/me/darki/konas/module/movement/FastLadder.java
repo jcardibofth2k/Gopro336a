@@ -19,6 +19,6 @@ extends Module {
     }
 
     public FastLadder() {
-        super("FastLadder", Category.MOVEMENT, new String[0]);
+        super("FastLadder", Category.MOVEMENT);
     }
 }

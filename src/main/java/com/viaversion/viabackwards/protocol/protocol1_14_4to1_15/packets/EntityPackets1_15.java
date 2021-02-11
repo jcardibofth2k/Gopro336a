@@ -23,7 +23,7 @@ public class EntityPackets1_15 extends EntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.UPDATE_HEALTH, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.UPDATE_HEALTH, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                float health = (Float)wrapper.passthrough(Type.FLOAT);
@@ -37,7 +37,7 @@ public class EntityPackets1_15 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.GAME_EVENT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.GAME_EVENT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.FLOAT);
@@ -50,7 +50,7 @@ public class EntityPackets1_15 extends EntityRewriter {
          }
       });
       this.registerTrackerWithData(ClientboundPackets1_15.SPAWN_ENTITY, Entity1_15Types.FALLING_BLOCK);
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -75,13 +75,13 @@ public class EntityPackets1_15 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.LONG, Type.NOTHING);
          }
       });
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -101,7 +101,7 @@ public class EntityPackets1_15 extends EntityRewriter {
       this.registerTracker(ClientboundPackets1_15.SPAWN_EXPERIENCE_ORB, Entity1_15Types.EXPERIENCE_ORB);
       this.registerTracker(ClientboundPackets1_15.SPAWN_GLOBAL_ENTITY, Entity1_15Types.LIGHTNING_BOLT);
       this.registerTracker(ClientboundPackets1_15.SPAWN_PAINTING, Entity1_15Types.PAINTING);
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -118,7 +118,7 @@ public class EntityPackets1_15 extends EntityRewriter {
       });
       this.registerRemoveEntities(ClientboundPackets1_15.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_15.ENTITY_METADATA, Types1_14.METADATA_LIST);
-      ((Protocol1_14_4To1_15)this.protocol).registerClientbound(ClientboundPackets1_15.ENTITY_PROPERTIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.ENTITY_PROPERTIES, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.INT);
@@ -167,7 +167,7 @@ public class EntityPackets1_15 extends EntityRewriter {
    }
 
    protected void registerRewrites() {
-      this.registerMetaTypeHandler(MetaType1_14.Slot, MetaType1_14.BlockID, MetaType1_14.PARTICLE, (MetaType)null);
+      this.registerMetaTypeHandler(MetaType1_14.Slot, MetaType1_14.BlockID, MetaType1_14.PARTICLE, null);
       this.filter().filterFamily(Entity1_15Types.LIVINGENTITY).removeIndex(12);
       this.filter().type(Entity1_15Types.BEE).cancel(15);
       this.filter().type(Entity1_15Types.BEE).cancel(16);

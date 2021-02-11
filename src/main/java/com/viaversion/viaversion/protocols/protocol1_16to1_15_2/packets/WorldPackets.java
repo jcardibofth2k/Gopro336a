@@ -65,7 +65,7 @@ public class WorldPackets {
                      heightMapData[ix] = v;
                   });
                   heightMap.setValue(CompactArrayUtil.createCompactArrayWithPadding(9, heightMapData.length, (ix) -> {
-                     return (long)heightMapData[ix];
+                     return heightMapData[ix];
                   }));
                }
 

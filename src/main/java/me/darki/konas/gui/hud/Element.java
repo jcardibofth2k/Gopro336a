@@ -49,7 +49,7 @@ public abstract class Element {
     }
 
     public void onRender2D() {
-        RenderUtil2.Method1337(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), ((ColorValue)this.Field2649.getValue()).Method774(), ((ColorValue)this.Field2648.getValue()).Method774());
+        RenderUtil2.Method1337(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.Field2649.getValue().Method774(), this.Field2648.getValue().Method774());
     }
 
     public void Method2319(float f) {

@@ -15,7 +15,7 @@ public class MixinTileEntityBeacon {
         Class106 event = new Class106();
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)Float.valueOf(0.0f));
+            cir.setReturnValue(Float.valueOf(0.0f));
         }
     }
 }

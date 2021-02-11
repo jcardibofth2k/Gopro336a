@@ -40,7 +40,7 @@ public class MixinMinecraft {
 
     @Redirect(method={"runGameLoop"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/gui/toasts/GuiToast;drawToast(Lnet/minecraft/client/gui/ScaledResolution;)V"))
     public void Method1748(GuiToast guiToast, ScaledResolution resolution) {
-        if (Class167.Method1610(NoRender.class).isEnabled() && ((Boolean)NoRender.Field1126.getValue()).booleanValue()) {
+        if (Class167.Method1610(NoRender.class).isEnabled() && NoRender.Field1126.getValue().booleanValue()) {
             return;
         }
         guiToast.drawToast(resolution);

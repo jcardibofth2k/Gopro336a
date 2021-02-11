@@ -13,7 +13,7 @@ public interface KeybindComponent extends BuildableComponent, ScopedComponent {
    @NotNull
    KeybindComponent keybind(@NotNull final String keybind);
 
-   public interface Builder extends ComponentBuilder {
+   interface Builder extends ComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       KeybindComponent.Builder keybind(@NotNull final String keybind);

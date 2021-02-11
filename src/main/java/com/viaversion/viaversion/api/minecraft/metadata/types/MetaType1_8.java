@@ -19,7 +19,7 @@ public enum MetaType1_8 implements MetaType {
    private final int typeID;
    private final Type type;
 
-   private MetaType1_8(int typeID, Type type) {
+   MetaType1_8(int typeID, Type type) {
       this.typeID = typeID;
       this.type = type;
    }

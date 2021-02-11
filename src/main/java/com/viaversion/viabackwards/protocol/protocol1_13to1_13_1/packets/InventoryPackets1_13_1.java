@@ -19,7 +19,7 @@ public class InventoryPackets1_13_1 extends ItemRewriter {
       this.registerSetCooldown(ClientboundPackets1_13.COOLDOWN);
       this.registerWindowItems(ClientboundPackets1_13.WINDOW_ITEMS, Type.FLAT_ITEM_ARRAY);
       this.registerSetSlot(ClientboundPackets1_13.SET_SLOT, Type.FLAT_ITEM);
-      ((Protocol1_13To1_13_1)this.protocol).registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {

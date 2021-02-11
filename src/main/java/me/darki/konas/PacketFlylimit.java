@@ -21,7 +21,7 @@ extends Enum {
     }
 
     public static PacketFlylimit[] Method1936() {
-        return (PacketFlylimit[])Field2083.clone();
+        return Field2083.clone();
     }
 
     static {

@@ -19,7 +19,7 @@ public class EntityTypeMapping {
       try {
          Field field = EntityTypeRewriter.class.getDeclaredField("ENTITY_TYPES");
          field.setAccessible(true);
-         Int2IntMap entityTypes = (Int2IntMap)field.get((Object)null);
+         Int2IntMap entityTypes = (Int2IntMap)field.get(null);
          ObjectIterator var2 = entityTypes.int2IntEntrySet().iterator();
 
          while(var2.hasNext()) {

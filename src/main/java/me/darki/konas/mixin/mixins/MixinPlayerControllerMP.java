@@ -51,7 +51,7 @@ public abstract class MixinPlayerControllerMP {
 
     @Inject(method={"onStoppedUsingItem"}, at={@At(value="HEAD")}, cancellable=true)
     private void Method1528(EntityPlayer playerIn, CallbackInfo ci) {
-        if (playerIn.equals((Object)Minecraft.getMinecraft().player)) {
+        if (playerIn.equals(Minecraft.getMinecraft().player)) {
             Class41 event = new Class41();
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {
@@ -66,17 +66,17 @@ public abstract class MixinPlayerControllerMP {
 
     @Inject(method={"clickBlock"}, at={@At(value="HEAD")}, cancellable=true)
     private void Method1529(BlockPos posBlock, EnumFacing directionFacing, CallbackInfoReturnable<Boolean> cir) {
-        Class652 clickEvent = new Class652((EntityPlayer)this.Field1519.player, posBlock, directionFacing, ForgeHooks.rayTraceEyeHitVec((EntityLivingBase)this.Field1519.player, (double)(this.Method1527() + 1.0f)));
+        Class652 clickEvent = new Class652(this.Field1519.player, posBlock, directionFacing, ForgeHooks.rayTraceEyeHitVec(this.Field1519.player, this.Method1527() + 1.0f));
         EventDispatcher.Companion.dispatch(clickEvent);
         if (clickEvent.isCanceled()) {
-            cir.setReturnValue((Object)false);
+            cir.setReturnValue(false);
         } else {
             Class646 event = Class646.Method1233(posBlock, directionFacing, this.Field1517, this.Field1518);
             this.Field1517 = event.Method450();
             this.Field1518 = event.Method213();
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {
-                cir.setReturnValue((Object)false);
+                cir.setReturnValue(false);
                 return;
             }
             this.Field1520 = true;
@@ -90,7 +90,7 @@ public abstract class MixinPlayerControllerMP {
         this.Field1517 = event.Method450();
         this.Field1518 = event.Method213();
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)false);
+            cir.setReturnValue(false);
             return;
         }
         this.Field1520 = true;
@@ -114,9 +114,9 @@ public abstract class MixinPlayerControllerMP {
 
     @Inject(method={"getBlockReachDistance"}, at={@At(value="RETURN")}, cancellable=true)
     private void Method1533(CallbackInfoReturnable<Float> cir) {
-        Class571 event = Class571.Method573(((Float)cir.getReturnValue()).floatValue());
+        Class571 event = Class571.Method573(cir.getReturnValue().floatValue());
         EventDispatcher.Companion.dispatch(event);
-        cir.setReturnValue((Object)Float.valueOf(event.Method571()));
+        cir.setReturnValue(Float.valueOf(event.Method571()));
     }
 
     @Inject(method={"windowClick"}, at={@At(value="RETURN")})
@@ -136,7 +136,7 @@ public abstract class MixinPlayerControllerMP {
         Class1 event = new Class1(blockPos);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)false);
+            cir.setReturnValue(false);
         }
     }
 

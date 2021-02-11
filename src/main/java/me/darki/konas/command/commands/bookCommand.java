@@ -14,7 +14,7 @@ import net.minecraft.init.Items;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import me.darki.konas.ChatUtil;
+import me.darki.konas.util.ChatUtil;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.Class589;
 import java.io.File;
@@ -41,13 +41,13 @@ public class bookCommand extends Command
     }
     
     public bookCommand() {
-        super("book", "Lets you sign a book with the text in a file", new SyntaxChunk[] { new SyntaxChunk("<file>") });
+        super("book", "Lets you sign a book with the text in a file", new SyntaxChunk("<file>"));
     }
     
     @Override
     public void Method174(final String[] array) {
         if (array.length != this.Method189().size() + 1) {
-            ChatUtil.Method1034(this.Method191(), new Object[0]);
+            ChatUtil.Method1034(this.Method191());
             return;
         }
         if (!bookCommand.Field2501.exists()) {
@@ -76,24 +76,24 @@ public class bookCommand extends Command
                 final NBTTagList list = new NBTTagList();
                 final String[] method2157 = this.Method2157(concat, 254);
                 for (int length = method2157.length, i = 0; i < length; ++i) {
-                    list.appendTag((NBTBase)new NBTTagString(method2157[i]));
+                    list.appendTag(new NBTTagString(method2157[i]));
                 }
                 if (heldItemMainhand.hasTagCompound()) {
-                    heldItemMainhand.getTagCompound().setTag("pages", (NBTBase)list);
+                    heldItemMainhand.getTagCompound().setTag("pages", list);
                 }
                 else {
-                    heldItemMainhand.setTagInfo("pages", (NBTBase)list);
+                    heldItemMainhand.setTagInfo("pages", list);
                 }
-                heldItemMainhand.setTagInfo("author", (NBTBase)new NBTTagString(bookCommand.Field123.player.getName()));
-                heldItemMainhand.setTagInfo("title", (NBTBase)new NBTTagString(array[1].trim()));
+                heldItemMainhand.setTagInfo("author", new NBTTagString(bookCommand.Field123.player.getName()));
+                heldItemMainhand.setTagInfo("title", new NBTTagString(array[1].trim()));
                 final PacketBuffer packetBuffer = new PacketBuffer(Unpooled.buffer());
                 packetBuffer.writeItemStack(heldItemMainhand);
-                bookCommand.Field123.getConnection().sendPacket((Packet)new CPacketCustomPayload("MC|BSign", packetBuffer));
-                bookCommand.Field123.displayGuiScreen((GuiScreen)null);
+                bookCommand.Field123.getConnection().sendPacket(new CPacketCustomPayload("MC|BSign", packetBuffer));
+                bookCommand.Field123.displayGuiScreen(null);
                 ChatUtil.Method1033("Signed book with name (h)%s(r)!", array[1]);
             }
             else {
-                ChatUtil.Method1034("You need to be holding a book and quill.", new Object[0]);
+                ChatUtil.Method1034("You need to be holding a book and quill.");
             }
         }
         else {

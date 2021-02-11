@@ -21,7 +21,7 @@ extends Module {
     }
 
     public Class284() {
-        super("AutoReconnect", Category.MISC, new String[0]);
+        super("AutoReconnect", Category.MISC);
     }
 
     @Subscriber
@@ -34,7 +34,7 @@ extends Module {
         block0: {
             if (!(class654.Method1161() instanceof GuiDisconnected)) break block0;
             this.Method124();
-            class654.Method1160(new AutoReconnectScreen((GuiDisconnected)class654.Method1161(), this.Field1733, (Integer)this.Field1734.getValue()));
+            class654.Method1160(new AutoReconnectScreen((GuiDisconnected)class654.Method1161(), this.Field1733, this.Field1734.getValue()));
         }
     }
 }

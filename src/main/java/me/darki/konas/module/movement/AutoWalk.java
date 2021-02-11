@@ -22,7 +22,7 @@ extends Module {
     public BlockPos Field1817 = null;
 
     public AutoWalk() {
-        super("AutoWalk", "Walk forward", 0, Category.MOVEMENT, new String[0]);
+        super("AutoWalk", "Walk forward", 0, Category.MOVEMENT);
     }
 
     /*
@@ -44,9 +44,9 @@ extends Module {
             this.toggle();
             return;
         }
-        if (!((Boolean)this.pathFind.getValue()).booleanValue()) {
+        if (!this.pathFind.getValue().booleanValue()) {
             class2.Method81().moveForward = f;
-            if ((Boolean)this.jump.getValue() == false) return;
+            if (this.jump.getValue() == false) return;
             if (!AutoWalk.mc.player.collidedHorizontally) return;
             if (!AutoWalk.mc.player.onGround) return;
             class2.Method81().jump = true;
@@ -66,7 +66,7 @@ extends Module {
             this.Field1814 = false;
         }
         BlockPos blockPos = new BlockPos(AutoWalk.mc.player.posX, AutoWalk.mc.player.onGround ? AutoWalk.mc.player.posY + 0.5 : AutoWalk.mc.player.posY, AutoWalk.mc.player.posZ);
-        if (this.Field1812.Method1419().equals((Object)blockPos)) {
+        if (this.Field1812.Method1419().equals(blockPos)) {
             Logger.Method1118("Done!");
             this.toggle();
             return;
@@ -76,7 +76,7 @@ extends Module {
         }
         Class498 class498 = this.Field1812.Method1430().get(this.Field1813);
         int n = this.Field1812.Method1430().indexOf(blockPos);
-        if (blockPos.equals((Object)class498)) {
+        if (blockPos.equals(class498)) {
             ++this.Field1813;
             if (this.Field1813 >= this.Field1812.Method1430().size()) {
                 this.Field1814 = true;
@@ -102,7 +102,7 @@ extends Module {
         if (blockPos.getX() != class498.getX() || blockPos.getZ() != class498.getZ()) {
             class2.Method81().moveForward = f;
             this.Field1815.Method739();
-            double[] dArray = MathUtil.Method1088((float)class498.getX() + 0.5f, class498.getY(), (float)class498.getZ() + 0.5f, (EntityPlayer) AutoWalk.mc.player);
+            double[] dArray = MathUtil.Method1088((float)class498.getX() + 0.5f, class498.getY(), (float)class498.getZ() + 0.5f, AutoWalk.mc.player);
             AutoWalk.mc.player.rotationYaw = (float)dArray[0];
             if (this.Field1813 <= 0 || !this.Field1812.Method1430().get(this.Field1813 - 1).Method930()) {
                 if (blockPos.getY() >= class498.getY()) return;
@@ -112,13 +112,13 @@ extends Module {
         }
         if (blockPos.getY() == class498.getY()) return;
         if (blockPos.getY() < class498.getY()) {
-            if (this.Field1813 < this.Field1812.Method1430().size() - 1 && !class498.up().equals((Object)this.Field1812.Method1430().get(this.Field1813 + 1))) {
+            if (this.Field1813 < this.Field1812.Method1430().size() - 1 && !class498.up().equals(this.Field1812.Method1430().get(this.Field1813 + 1))) {
                 ++this.Field1813;
             }
             class2.Method81().jump = true;
             return;
         }
-        while (this.Field1813 < this.Field1812.Method1430().size() - 1 && this.Field1812.Method1430().get(this.Field1813).down().equals((Object)this.Field1812.Method1430().get(this.Field1813 + 1))) {
+        while (this.Field1813 < this.Field1812.Method1430().size() - 1 && this.Field1812.Method1430().get(this.Field1813).down().equals(this.Field1812.Method1430().get(this.Field1813 + 1))) {
             ++this.Field1813;
         }
         class2.Method81().moveForward = f;

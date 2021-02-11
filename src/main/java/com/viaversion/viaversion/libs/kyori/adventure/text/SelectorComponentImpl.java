@@ -26,7 +26,7 @@ final class SelectorComponentImpl extends AbstractComponent implements SelectorC
 
    @NotNull
    public SelectorComponent pattern(@NotNull final String pattern) {
-      return Objects.equals(this.pattern, pattern) ? this : new SelectorComponentImpl(this.children, this.style, (String)Objects.requireNonNull(pattern, "pattern"), this.separator);
+      return Objects.equals(this.pattern, pattern) ? this : new SelectorComponentImpl(this.children, this.style, Objects.requireNonNull(pattern, "pattern"), this.separator);
    }
 
    @Nullable

@@ -37,14 +37,14 @@ extends Command {
             if (stringArray[1].equals("add")) {
                 String string = stringArray[2];
                 String string2 = stringArray[3].toUpperCase();
-                String string3 = String.join((CharSequence)" ", Arrays.copyOfRange(stringArray, 4, stringArray.length));
-                if (Keyboard.getKeyIndex((String)string2) == 0) {
+                String string3 = String.join(" ", Arrays.copyOfRange(stringArray, 4, stringArray.length));
+                if (Keyboard.getKeyIndex(string2) == 0) {
                     Logger.Method1119("Please specify a valid keybind!");
                     return;
                 }
-                Class152 class152 = new Class152(string, string3, Keyboard.getKeyIndex((String)string2));
+                Class152 class152 = new Class152(string, string3, Keyboard.getKeyIndex(string2));
                 Class157.Method1705(class152);
-                Logger.Method1118("Added Macro &b" + string + " &fwith Bind &b" + Keyboard.getKeyName((int)class152.Method1757()));
+                Logger.Method1118("Added Macro &b" + string + " &fwith Bind &b" + Keyboard.getKeyName(class152.Method1757()));
             } else {
                 Logger.Method1118(this.Method191());
             }
@@ -58,6 +58,6 @@ extends Command {
     }
 
     public static void Method1366(Class152 class152) {
-        Logger.Method1118(class152.Method1760() + (class152.Method1757() != 0 ? " [&b" + Keyboard.getKeyName((int)class152.Method1757()) + "&f]" : "") + " {&b" + class152.Method1756() + "&f}");
+        Logger.Method1118(class152.Method1760() + (class152.Method1757() != 0 ? " [&b" + Keyboard.getKeyName(class152.Method1757()) + "&f]" : "") + " {&b" + class152.Method1756() + "&f}");
     }
 }

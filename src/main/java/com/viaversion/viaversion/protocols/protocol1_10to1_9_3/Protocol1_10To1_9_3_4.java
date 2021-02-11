@@ -111,7 +111,7 @@ public class Protocol1_10To1_9_3_4 extends AbstractProtocol {
                public void handle(PacketWrapper wrapper) throws Exception {
                   ResourcePackTracker tracker = (ResourcePackTracker)wrapper.user().get(ResourcePackTracker.class);
                   wrapper.write(Type.STRING, tracker.getLastHash());
-                  wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.VAR_INT));
+                  wrapper.write(Type.VAR_INT, wrapper.read(Type.VAR_INT));
                }
             });
          }

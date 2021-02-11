@@ -21,7 +21,7 @@ extends Enum {
     }
 
     public static PacketFlyPhase[] Method1930() {
-        return (PacketFlyPhase[])Field2074.clone();
+        return Field2074.clone();
     }
 
     static {

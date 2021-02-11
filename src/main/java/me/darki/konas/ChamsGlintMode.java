@@ -12,7 +12,7 @@ extends Enum {
     }
 
     public static ChamsGlintMode[] Method1976() {
-        return (ChamsGlintMode[])Field2178.clone();
+        return Field2178.clone();
     }
 
     public static ChamsGlintMode Method1977(String string) {

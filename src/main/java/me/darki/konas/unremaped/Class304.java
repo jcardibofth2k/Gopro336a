@@ -35,7 +35,7 @@ extends Module {
     public List<Block> Field889 = Arrays.asList(Blocks.ANVIL, Blocks.AIR, Blocks.WEB, Blocks.WATER, Blocks.FIRE, Blocks.FLOWING_WATER, Blocks.LAVA, Blocks.FLOWING_WATER, Blocks.CHEST, Blocks.ENCHANTING_TABLE, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.GRAVEL, Blocks.LADDER, Blocks.VINE, Blocks.BEACON, Blocks.JUKEBOX, Blocks.ACACIA_DOOR, Blocks.BIRCH_DOOR, Blocks.DARK_OAK_DOOR, Blocks.IRON_DOOR, Blocks.JUNGLE_DOOR, Blocks.OAK_DOOR, Blocks.SPRUCE_DOOR, Blocks.IRON_TRAPDOOR, Blocks.TRAPDOOR, Blocks.BLACK_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.SILVER_SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX);
     public Class566 Field890 = new Class566();
     public Class325 Field891;
-    public static Setting<Class443> Field892 = new Setting<>("CustomBlocks", new Class443(new String[0]));
+    public static Setting<Class443> Field892 = new Setting<>("CustomBlocks", new Class443());
     public static Setting<Class322> Field893 = new Setting<>("Filter", Class322.NONE);
     public static Setting<Double> Field894 = new Setting<>("Expand", 1.0, 6.0, 0.0, 0.1);
     public static Setting<Double> Field895 = new Setting<>("Delay", 3.5, 10.0, 1.0, 0.5);
@@ -58,14 +58,14 @@ extends Module {
         double d4 = d - Class304.mc.player.posX;
         double d5 = d2 - Class304.mc.player.posY;
         double d6 = d3 - Class304.mc.player.posZ;
-        double d7 = MathHelper.sqrt((double)(d4 * d4 + d6 * d6));
+        double d7 = MathHelper.sqrt(d4 * d4 + d6 * d6);
         return new float[]{(float)(Math.atan2(d6, d4) * 180.0 / Math.PI) - 90.0f, (float)(-(Math.atan2(d5, d7) * 180.0 / Math.PI))};
     }
 
     @Subscriber(priority=3)
     public void Method135(UpdateEvent updateEvent) {
         block0: {
-            if (this.Field905.Method737(100.0 * (Double)Field895.getValue()) || !Class496.Method1966()) break block0;
+            if (this.Field905.Method737(100.0 * Field895.getValue()) || !Class496.Method1966()) break block0;
             NewGui.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
         }
     }
@@ -88,12 +88,12 @@ extends Module {
     }
 
     public double[] Method943(double d, double d2, double d3, double d4, float f) {
-        BlockPos blockPos = new BlockPos(d, Class304.mc.player.posY - (double)(Keyboard.isKeyDown((int)56) && ((Boolean)Field902.getValue()).booleanValue() ? 2 : 1), d2);
+        BlockPos blockPos = new BlockPos(d, Class304.mc.player.posY - (double)(Keyboard.isKeyDown(56) && Field902.getValue().booleanValue() ? 2 : 1), d2);
         Block block = Class304.mc.world.getBlockState(blockPos).getBlock();
         double d5 = -999.0;
         double d6 = -999.0;
         double d7 = 0.0;
-        double d8 = (Double)Field894.getValue() * 2.0;
+        double d8 = Field894.getValue() * 2.0;
         while (!this.Method946(block)) {
             d5 = d;
             d6 = d2;
@@ -103,7 +103,7 @@ extends Module {
             d5 += (d3 * 0.45 * Math.cos(Math.toRadians(f + 90.0f)) + d4 * 0.45 * Math.sin(Math.toRadians(f + 90.0f))) * d7;
             d6 += (d3 * 0.45 * Math.sin(Math.toRadians(f + 90.0f)) - d4 * 0.45 * Math.cos(Math.toRadians(f + 90.0f))) * d7;
             if (d7 == d8) break;
-            blockPos = new BlockPos(d5, Class304.mc.player.posY - (double)(Keyboard.isKeyDown((int)56) && (Boolean)Field902.getValue() != false ? 2 : 1), d6);
+            blockPos = new BlockPos(d5, Class304.mc.player.posY - (double)(Keyboard.isKeyDown(56) && Field902.getValue() != false ? 2 : 1), d6);
             block = Class304.mc.world.getBlockState(blockPos).getBlock();
         }
         return new double[]{d5, d6};
@@ -114,17 +114,12 @@ extends Module {
             return false;
         }
         if (Field893.getValue() == Class322.BLACKLIST) {
-            if (((Class443)Field892.getValue()).Method682().contains(block)) {
-                return false;
-            }
-        } else if (Field893.getValue() == Class322.WHITELIST && !((Class443)Field892.getValue()).Method682().contains(block)) {
-            return false;
-        }
-        return true;
+            return !Field892.getValue().Method682().contains(block);
+        } else return Field893.getValue() != Class322.WHITELIST || Field892.getValue().Method682().contains(block);
     }
 
     public Class304() {
-        super("Scaffold", Category.MISC, new String[0]);
+        super("Scaffold", Category.MISC);
     }
 
     public Class325 Method945(BlockPos blockPos) {
@@ -400,7 +395,7 @@ extends Module {
     public void onEnable() {
         if (Class304.mc.world != null) {
             this.Field890.Method739();
-            this.Field904 = MathHelper.floor((double)Class304.mc.player.posY);
+            this.Field904 = MathHelper.floor(Class304.mc.player.posY);
         }
     }
 
@@ -429,7 +424,7 @@ extends Module {
     }
 
     public float[] Method947(double d, double d2, double d3, EnumFacing enumFacing) {
-        EntitySnowball entitySnowball = new EntitySnowball((World)Class304.mc.world);
+        EntitySnowball entitySnowball = new EntitySnowball(Class304.mc.world);
         entitySnowball.posX = d + 0.5;
         entitySnowball.posY = d2 - 2.7035252353;
         entitySnowball.posZ = d3 + 0.5;
@@ -438,27 +433,27 @@ extends Module {
 
     @Subscriber(priority=11)
     public void Method948(Class56 class56) {
-        if (!Class167.Method1610(Sprint.class).isEnabled() && (((Boolean)Field902.getValue()).booleanValue() && Class304.mc.gameSettings.keyBindSneak.isKeyDown() || !((Boolean)Field901.getValue()).booleanValue())) {
+        if (!Class167.Method1610(Sprint.class).isEnabled() && (Field902.getValue().booleanValue() && Class304.mc.gameSettings.keyBindSneak.isKeyDown() || !Field901.getValue().booleanValue())) {
             Class304.mc.player.setSprinting(false);
         }
-        int n = (Boolean)Field902.getValue() != false && Keyboard.isKeyDown((int)56) ? 2 : 1;
-        if (((Boolean)Field900.getValue()).booleanValue()) {
+        int n = Field902.getValue() != false && Keyboard.isKeyDown(56) ? 2 : 1;
+        if (Field900.getValue().booleanValue()) {
             if (!MathUtil.Method1080() && Class304.mc.gameSettings.keyBindJump.isKeyDown() || Class304.mc.player.collidedVertically || Class304.mc.player.onGround) {
-                this.Field904 = MathHelper.floor((double)Class304.mc.player.posY);
+                this.Field904 = MathHelper.floor(Class304.mc.player.posY);
             }
         } else {
-            this.Field904 = MathHelper.floor((double)Class304.mc.player.posY);
+            this.Field904 = MathHelper.floor(Class304.mc.player.posY);
         }
         if (class56 instanceof UpdateEvent) {
             Object object;
             this.Field891 = null;
             double d = Class304.mc.player.posX;
             double d2 = Class304.mc.player.posZ;
-            double d3 = (Boolean)Field900.getValue() != false ? (double)this.Field904 : Class304.mc.player.posY;
+            double d3 = Field900.getValue() != false ? (double)this.Field904 : Class304.mc.player.posY;
             double d4 = Class304.mc.player.movementInput.moveForward;
             double d5 = Class304.mc.player.movementInput.moveStrafe;
             float f = Class304.mc.player.rotationYaw;
-            if (!Class304.mc.player.collidedHorizontally && (Double)Field894.getValue() > 0.0) {
+            if (!Class304.mc.player.collidedHorizontally && Field894.getValue() > 0.0) {
                 object = this.Method943(d, d2, d4, d5, f);
                 d = object[0];
                 d2 = object[1];
@@ -480,11 +475,11 @@ extends Module {
                 }
             }
         } else if (this.Field891 != null) {
-            if (this.Method464() <= 0 || !((Boolean)Field896.getValue()).booleanValue() && Class304.mc.player.getHeldItemMainhand().getItem() != null && !(Class304.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock)) {
+            if (this.Method464() <= 0 || !Field896.getValue().booleanValue() && Class304.mc.player.getHeldItemMainhand().getItem() != null && !(Class304.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock)) {
                 return;
             }
             int n2 = Class304.mc.player.inventory.currentItem;
-            if (!(!((Boolean)Field896.getValue()).booleanValue() || Class304.mc.player.getHeldItemMainhand().getItem() != null && Class304.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock && this.Method944(((ItemBlock)Class304.mc.player.getHeldItemMainhand().getItem()).getBlock()))) {
+            if (!(!Field896.getValue().booleanValue() || Class304.mc.player.getHeldItemMainhand().getItem() != null && Class304.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock && this.Method944(((ItemBlock)Class304.mc.player.getHeldItemMainhand().getItem()).getBlock()))) {
                 for (int i = 0; i < 9; ++i) {
                     if (Class304.mc.player.inventory.getStackInSlot(i) == null || Class304.mc.player.inventory.getStackInSlot(i).getCount() == 0 || !(Class304.mc.player.inventory.getStackInSlot(i).getItem() instanceof ItemBlock) || !this.Method944(((ItemBlock)Class304.mc.player.inventory.getStackInSlot(i).getItem()).getBlock())) continue;
                     Class304.mc.player.inventory.currentItem = i;
@@ -493,12 +488,12 @@ extends Module {
             }
             if (Field897.getValue() != Class307.NONE) {
                 if (Class304.mc.gameSettings.keyBindJump.isKeyDown() && Class304.mc.player.moveForward == 0.0f && Class304.mc.player.moveStrafing == 0.0f && Field897.getValue() != Class307.NONE && !Class304.mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
-                    if (!this.Field909 && ((Boolean)Field898.getValue()).booleanValue()) {
+                    if (!this.Field909 && Field898.getValue().booleanValue()) {
                         this.Field909 = true;
                         BlockPos blockPos = new BlockPos(Class304.mc.player.posX, Class304.mc.player.posY, Class304.mc.player.posZ);
-                        Class304.mc.player.setPosition((double)blockPos.getX() + 0.5, (double)blockPos.getY(), (double)blockPos.getZ() + 0.5);
+                        Class304.mc.player.setPosition((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5);
                     }
-                    if (((Boolean)Field898.getValue()).booleanValue() && !this.Field909) {
+                    if (Field898.getValue().booleanValue() && !this.Field909) {
                         return;
                     }
                     if (Field897.getValue() == Class307.FAST) {
@@ -515,7 +510,7 @@ extends Module {
                 } else {
                     NewGui.INSTANCE.Field1134.Method749(this);
                     this.Field890.Method739();
-                    if (this.Field909 && ((Boolean)Field898.getValue()).booleanValue()) {
+                    if (this.Field909 && Field898.getValue().booleanValue()) {
                         this.Field909 = false;
                     }
                 }
@@ -523,10 +518,10 @@ extends Module {
                 NewGui.INSTANCE.Field1134.Method749(this);
             }
             if (Class304.mc.playerController.processRightClickBlock(Class304.mc.player, Class304.mc.world, this.Field891.Field566, this.Field891.Field567, new Vec3d((double)this.Field891.Field566.getX() + Math.random(), (double)this.Field891.Field566.getY() + Math.random(), (double)this.Field891.Field566.getZ() + Math.random()), EnumHand.MAIN_HAND) != EnumActionResult.FAIL) {
-                if (((Boolean)Field903.getValue()).booleanValue()) {
+                if (Field903.getValue().booleanValue()) {
                     Class304.mc.player.swingArm(EnumHand.MAIN_HAND);
                 } else {
-                    Class304.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
+                    Class304.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                 }
             }
             Class304.mc.player.inventory.currentItem = n2;
@@ -537,9 +532,9 @@ extends Module {
     public void Method503(MoveEvent moveEvent) {
         double d = moveEvent.getX();
         double d2 = moveEvent.getZ();
-        if (Class304.mc.player.onGround && !Class304.mc.player.noClip && ((Boolean)Field899.getValue()).booleanValue() && !Keyboard.isKeyDown((int)56)) {
+        if (Class304.mc.player.onGround && !Class304.mc.player.noClip && Field899.getValue().booleanValue() && !Keyboard.isKeyDown(56)) {
             double d3 = 0.05;
-            while (d != 0.0 && Class304.mc.world.getCollisionBoxes((Entity)Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(d, -1.0, 0.0)).isEmpty()) {
+            while (d != 0.0 && Class304.mc.world.getCollisionBoxes(Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(d, -1.0, 0.0)).isEmpty()) {
                 if (d < d3 && d >= -d3) {
                     d = 0.0;
                     continue;
@@ -550,7 +545,7 @@ extends Module {
                 }
                 d += d3;
             }
-            while (d2 != 0.0 && Class304.mc.world.getCollisionBoxes((Entity)Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(0.0, -1.0, d2)).isEmpty()) {
+            while (d2 != 0.0 && Class304.mc.world.getCollisionBoxes(Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(0.0, -1.0, d2)).isEmpty()) {
                 if (d2 < d3 && d2 >= -d3) {
                     d2 = 0.0;
                     continue;
@@ -561,7 +556,7 @@ extends Module {
                 }
                 d2 += d3;
             }
-            while (d != 0.0 && d2 != 0.0 && Class304.mc.world.getCollisionBoxes((Entity)Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(d, -1.0, d2)).isEmpty()) {
+            while (d != 0.0 && d2 != 0.0 && Class304.mc.world.getCollisionBoxes(Class304.mc.player, Class304.mc.player.getEntityBoundingBox().offset(d, -1.0, d2)).isEmpty()) {
                 d = d < d3 && d >= -d3 ? 0.0 : (d > 0.0 ? (d -= d3) : (d += d3));
                 if (d2 < d3 && d2 >= -d3) {
                     d2 = 0.0;

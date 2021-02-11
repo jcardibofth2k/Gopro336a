@@ -33,7 +33,7 @@ public class FlowerPotHandler implements BlockEntityProvider.BlockEntityHandler 
          data = 0;
       }
 
-      Integer flower = (Integer)flowers.get(new Pair(item, (Byte)data));
+      Integer flower = (Integer)flowers.get(new Pair(item, data));
       if (flower != null) {
          return flower;
       } else {

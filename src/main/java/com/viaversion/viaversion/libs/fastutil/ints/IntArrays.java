@@ -50,7 +50,7 @@ public final class IntArrays {
 
    public static int[] grow(int[] array, int length, int preserve) {
       if (length > array.length) {
-         int newLength = (int)Math.max(Math.min((long)array.length + (long)(array.length >> 1), 2147483639L), (long)length);
+         int newLength = (int)Math.max(Math.min((long)array.length + (long)(array.length >> 1), 2147483639L), length);
          int[] t = new int[newLength];
          System.arraycopy(array, 0, t, 0, preserve);
          return t;
@@ -85,7 +85,7 @@ public final class IntArrays {
    }
 
    public static int[] copy(int[] array) {
-      return (int[])array.clone();
+      return array.clone();
    }
 
    /** @deprecated */
@@ -740,7 +740,7 @@ public final class IntArrays {
    }
 
    public static void mergeSort(int[] a, int from, int to) {
-      mergeSort(a, from, to, (int[])a.clone());
+      mergeSort(a, from, to, a.clone());
    }
 
    public static void mergeSort(int[] a) {
@@ -774,11 +774,11 @@ public final class IntArrays {
    }
 
    public static void mergeSort(int[] a, int from, int to, IntComparator comp) {
-      mergeSort(a, from, to, comp, (int[])a.clone());
+      mergeSort(a, from, to, comp, a.clone());
    }
 
    public static void mergeSort(int[] a, IntComparator comp) {
-      mergeSort(a, 0, a.length, (IntComparator)comp);
+      mergeSort(a, 0, a.length, comp);
    }
 
    public static void stableSort(int[] a, int from, int to) {
@@ -847,7 +847,7 @@ public final class IntArrays {
    }
 
    public static void radixSort(int[] a) {
-      radixSort((int[])a, 0, a.length);
+      radixSort(a, 0, a.length);
    }
 
    public static void radixSort(int[] a, int from, int to) {
@@ -1668,7 +1668,7 @@ public final class IntArrays {
    }
 
    public static void radixSort(int[][] a) {
-      radixSort((int[][])a, 0, a[0].length);
+      radixSort(a, 0, a[0].length);
    }
 
    public static void radixSort(int[][] a, int from, int to) {

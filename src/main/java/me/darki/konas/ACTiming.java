@@ -7,7 +7,7 @@ extends Enum {
     public static ACTiming[] Field1842;
 
     public static ACTiming[] Method1744() {
-        return (ACTiming[])Field1842.clone();
+        return Field1842.clone();
     }
 
     static {

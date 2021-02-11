@@ -290,7 +290,7 @@ final class TagStringReader {
       if (built.equalsIgnoreCase("true")) {
          return ByteBinaryTag.ONE;
       } else {
-         return (BinaryTag)(built.equalsIgnoreCase("false") ? ByteBinaryTag.ZERO : StringBinaryTag.method_10(built));
+         return built.equalsIgnoreCase("false") ? ByteBinaryTag.ZERO : StringBinaryTag.method_10(built);
       }
    }
 

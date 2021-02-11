@@ -30,7 +30,7 @@ final class ScoreComponentImpl extends AbstractComponent implements ScoreCompone
 
    @NotNull
    public ScoreComponent name(@NotNull final String name) {
-      return Objects.equals(this.name, name) ? this : new ScoreComponentImpl(this.children, this.style, (String)Objects.requireNonNull(name, "name"), this.objective, this.value);
+      return Objects.equals(this.name, name) ? this : new ScoreComponentImpl(this.children, this.style, Objects.requireNonNull(name, "name"), this.objective, this.value);
    }
 
    @NotNull
@@ -40,7 +40,7 @@ final class ScoreComponentImpl extends AbstractComponent implements ScoreCompone
 
    @NotNull
    public ScoreComponent objective(@NotNull final String objective) {
-      return Objects.equals(this.objective, objective) ? this : new ScoreComponentImpl(this.children, this.style, this.name, (String)Objects.requireNonNull(objective, "objective"), this.value);
+      return Objects.equals(this.objective, objective) ? this : new ScoreComponentImpl(this.children, this.style, this.name, Objects.requireNonNull(objective, "objective"), this.value);
    }
 
    /** @deprecated */

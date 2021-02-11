@@ -70,7 +70,7 @@ public abstract class AbstractIntList extends AbstractIntCollection implements I
 
    public IntListIterator listIterator(int index) {
       this.ensureIndex(index);
-      return new 1(this, index);
+      return new 1(this, index)
    }
 
    public boolean contains(int k) {
@@ -346,7 +346,7 @@ public abstract class AbstractIntList extends AbstractIntCollection implements I
          }
 
          int k = i.nextInt();
-         s.append(String.valueOf(k));
+         s.append(k);
       }
 
       s.append("]");

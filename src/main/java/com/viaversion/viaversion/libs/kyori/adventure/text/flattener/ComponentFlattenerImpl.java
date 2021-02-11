@@ -168,16 +168,16 @@ final class ComponentFlattenerImpl implements ComponentFlattener {
 
       @NotNull
       public ComponentFlattener.Builder mapper(@NotNull final Class type, @NotNull final Function converter) {
-         this.validateNoneInHierarchy((Class)Objects.requireNonNull(type, "type"));
-         this.flatteners.put(type, (Function)Objects.requireNonNull(converter, "converter"));
+         this.validateNoneInHierarchy(Objects.requireNonNull(type, "type"));
+         this.flatteners.put(type, Objects.requireNonNull(converter, "converter"));
          this.complexFlatteners.remove(type);
          return this;
       }
 
       @NotNull
       public ComponentFlattener.Builder complexMapper(@NotNull final Class type, @NotNull final BiConsumer converter) {
-         this.validateNoneInHierarchy((Class)Objects.requireNonNull(type, "type"));
-         this.complexFlatteners.put(type, (BiConsumer)Objects.requireNonNull(converter, "converter"));
+         this.validateNoneInHierarchy(Objects.requireNonNull(type, "type"));
+         this.complexFlatteners.put(type, Objects.requireNonNull(converter, "converter"));
          this.flatteners.remove(type);
          return this;
       }

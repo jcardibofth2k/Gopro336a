@@ -41,8 +41,8 @@ extends Module {
         }
         Item item = Class345.mc.player.getActiveItemStack().getItem();
         if (!Class345.mc.player.isHandActive() && item instanceof ItemFood || item instanceof ItemBow || item instanceof ItemPotion || !(item instanceof ItemFood) || !(item instanceof ItemBow) || !(item instanceof ItemPotion)) {
-            if (this.Field2669 && ((Boolean)Field2664.getValue()).booleanValue()) {
-                Class345.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class345.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+            if (this.Field2669 && Field2664.getValue().booleanValue()) {
+                Class345.mc.player.connection.sendPacket(new CPacketEntityAction(Class345.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
                 this.Field2669 = false;
             }
             if (this.Field2670) {
@@ -60,8 +60,8 @@ extends Module {
             if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                 return;
             }
-            if (!((Boolean)Field2666.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
-            Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
+            if (!Field2666.getValue().booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
+            Class345.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
         }
     }
 
@@ -82,7 +82,7 @@ extends Module {
     }
 
     public Class345() {
-        super("NoSlow", "Makes you not slow down while i. e. eating", Category.MOVEMENT, new String[0]);
+        super("NoSlow", "Makes you not slow down while i. e. eating", Category.MOVEMENT);
     }
 
     public static boolean Method394() {
@@ -97,9 +97,9 @@ extends Module {
                     return;
                 }
                 if (Field2667.getValue() == Class461.OFF) break block2;
-                if (Field2667.getValue() != Class461.TIMER || Class345.mc.world.getBlockState(new BlockPos((Entity)Class345.mc.player)).getBlock() != Blocks.WEB) break block3;
+                if (Field2667.getValue() != Class461.TIMER || Class345.mc.world.getBlockState(new BlockPos(Class345.mc.player)).getBlock() != Blocks.WEB) break block3;
                 if (!(moveEvent.getY() < 0.0)) break block2;
-                for (int i = 0; i < (Integer)Field2668.getValue(); ++i) {
+                for (int i = 0; i < Field2668.getValue(); ++i) {
                     this.Field2671 = true;
                     Class345.mc.player.move(moveEvent.getMoverType(), 0.0, moveEvent.getY(), 0.0);
                     Class550.Method883(Class345.mc.player.rotationYaw, Class345.mc.player.rotationPitch);
@@ -118,17 +118,17 @@ extends Module {
                 if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                     return;
                 }
-                if (((Boolean)Field2663.getValue()).booleanValue()) {
+                if (Field2663.getValue().booleanValue()) {
                     if (!this.Field2670) {
-                        Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(Class345.mc.player.rotationYaw, Class345.mc.player.rotationPitch, false));
+                        Class345.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(Class345.mc.player.rotationYaw, Class345.mc.player.rotationPitch, false));
                     }
                     this.Field2670 = true;
                 }
-                if (this.Field2669 || !((Boolean)Field2664.getValue()).booleanValue()) break block6;
-                if (!((Boolean)Field2665.getValue()).booleanValue() || !Class345.mc.player.onGround) break block7;
-                if (!((Boolean)Field2663.getValue()).booleanValue()) break block6;
+                if (this.Field2669 || !Field2664.getValue().booleanValue()) break block6;
+                if (!Field2665.getValue().booleanValue() || !Class345.mc.player.onGround) break block7;
+                if (!Field2663.getValue().booleanValue()) break block6;
             }
-            Class345.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class345.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            Class345.mc.player.connection.sendPacket(new CPacketEntityAction(Class345.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             this.Field2669 = true;
         }
     }
@@ -142,8 +142,8 @@ extends Module {
             if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                 return;
             }
-            if (!((Boolean)Field2666.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
-            Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(new BlockPos(-1, -1, -1), EnumFacing.DOWN, EnumHand.MAIN_HAND, 0.0f, 0.0f, 0.0f));
+            if (!Field2666.getValue().booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
+            Class345.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(new BlockPos(-1, -1, -1), EnumFacing.DOWN, EnumHand.MAIN_HAND, 0.0f, 0.0f, 0.0f));
         }
     }
 }

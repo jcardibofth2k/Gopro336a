@@ -15,7 +15,7 @@ extends Module {
     public long Field831 = 0L;
 
     public EntitySpeed() {
-        super("EntitySpeed", Category.MOVEMENT, new String[0]);
+        super("EntitySpeed", Category.MOVEMENT);
     }
 
     @Override
@@ -48,9 +48,9 @@ extends Module {
                         d = -1.0;
                     }
                 }
-                float f2 = ((Float) speed.getValue()).floatValue();
-                if (((Boolean) accelerate.getValue()).booleanValue()) {
-                    f2 *= Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field831) / (1000.0f * ((Float) acceleration.getValue()).floatValue()));
+                float f2 = speed.getValue().floatValue();
+                if (accelerate.getValue().booleanValue()) {
+                    f2 *= Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field831) / (1000.0f * acceleration.getValue().floatValue()));
                 }
                 double d3 = Math.sin(Math.toRadians(f + 90.0f));
                 double d4 = Math.cos(Math.toRadians(f + 90.0f));

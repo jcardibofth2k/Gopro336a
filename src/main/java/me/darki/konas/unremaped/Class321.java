@@ -92,7 +92,7 @@ extends Module {
                 String string = entry.getKey();
                 String string2 = entry.getValue();
                 if (!chatLine.getChatComponent().getUnformattedText().contains(string2)) continue;
-                ((IChatLine)chatLine).Method263((ITextComponent)new Class532(Command.Field122 + "bKonasChat:" + Command.Field122 + "r " + chatLine.getChatComponent().getFormattedText().replace(string2, string)));
+                ((IChatLine)chatLine).Method263(new Class532(Command.Field122 + "bKonasChat:" + Command.Field122 + "r " + chatLine.getChatComponent().getFormattedText().replace(string2, string)));
                 this.Field653.remove(string);
             }
         }
@@ -111,11 +111,11 @@ extends Module {
             block6: {
                 string = clientChatEvent.getMessage();
                 if (string.startsWith("/") || string.startsWith(Command.Method190())) break block6;
-                if (((Boolean)this.Field651.getValue()).booleanValue()) break block7;
+                if (this.Field651.getValue().booleanValue()) break block7;
             }
             return;
         }
-        switch (Class318.Field746[((Class324)((Object)this.Field650.getValue())).ordinal()]) {
+        switch (Class318.Field746[((Class324) this.Field650.getValue()).ordinal()]) {
             case 1: {
                 String string2 = "kcr" + this.Method717(string);
                 this.Field653.put(string, string2);
@@ -220,7 +220,7 @@ extends Module {
     }
 
     public Class321() {
-        super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC, new String[0]);
+        super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC);
         this.Field644 = new Class566();
         this.Field649 = null;
         this.Field650 = new IdkWhatThisSettingThingDoes("Mode", Class324.ROT13, this::Method718);
@@ -236,7 +236,7 @@ extends Module {
             Optional<Map.Entry<String, String>> optional;
             if (!(packetEvent.getPacket() instanceof SPacketChat) || !(optional = Class321.Method715(((SPacketChat) packetEvent.getPacket()).getChatComponent().getUnformattedText())).isPresent() || !(entry = optional.get()).getValue().startsWith("kcr")) break block0;
             String string = this.Method717(entry.getValue().substring("kcr".length()));
-            ((ISPacketChat) packetEvent.getPacket()).Method606((ITextComponent)new Class532(Command.Field122 + "bKonasChat: " + Command.Field122 + "f<" + entry.getKey() + "> " + Command.Field122 + "r" + string));
+            ((ISPacketChat) packetEvent.getPacket()).Method606(new Class532(Command.Field122 + "bKonasChat: " + Command.Field122 + "f<" + entry.getKey() + "> " + Command.Field122 + "r" + string));
         }
     }
 

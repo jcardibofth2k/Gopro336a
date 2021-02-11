@@ -18,7 +18,7 @@ public enum SoundSource {
    // $FF: renamed from: id int
    private final int field_67;
 
-   private SoundSource(String name, int id) {
+   SoundSource(String name, int id) {
       this.name = name;
       this.field_67 = id;
    }

@@ -16,7 +16,7 @@ extends Enum {
     }
 
     public static arrowType[] Method1918() {
-        return (arrowType[])Field2058.clone();
+        return Field2058.clone();
     }
 
     static {

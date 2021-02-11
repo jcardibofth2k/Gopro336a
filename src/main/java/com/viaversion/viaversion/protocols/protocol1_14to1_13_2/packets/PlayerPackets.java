@@ -16,11 +16,11 @@ import com.viaversion.viaversion.protocols.protocol1_14to1_13_2.ServerboundPacke
 
 public class PlayerPackets {
    public static void register(final Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_13.OPEN_SIGN_EDITOR, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.OPEN_SIGN_EDITOR, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION, Type.POSITION1_14);
          }
-      }));
+      });
       protocol.registerServerbound(ServerboundPackets1_14.QUERY_BLOCK_NBT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);

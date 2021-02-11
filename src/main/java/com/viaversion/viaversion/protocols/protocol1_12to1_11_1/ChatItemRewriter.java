@@ -32,7 +32,7 @@ public class ChatItemRewriter {
                            JsonElement valueElement = (JsonElement)var7.next();
                            if (valueElement.isJsonPrimitive() && valueElement.getAsJsonPrimitive().isString()) {
                               String newValue = indexRemoval.matcher(valueElement.getAsString()).replaceAll("");
-                              newArray.add((JsonElement)(new JsonPrimitive(newValue)));
+                              newArray.add(new JsonPrimitive(newValue));
                            }
                         }
 

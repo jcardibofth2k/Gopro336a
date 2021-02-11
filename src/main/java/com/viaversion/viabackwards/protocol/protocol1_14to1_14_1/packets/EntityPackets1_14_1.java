@@ -24,7 +24,7 @@ public class EntityPackets1_14_1 extends LegacyEntityRewriter {
       this.registerTracker(ClientboundPackets1_14.SPAWN_PLAYER, Entity1_14Types.PLAYER);
       this.registerTracker(ClientboundPackets1_14.JOIN_GAME, Entity1_14Types.PLAYER, Type.INT);
       this.registerRemoveEntities(ClientboundPackets1_14.DESTROY_ENTITIES);
-      ((Protocol1_14To1_14_1)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -32,7 +32,7 @@ public class EntityPackets1_14_1 extends LegacyEntityRewriter {
             this.handler(EntityPackets1_14_1.this.getTrackerHandler());
          }
       });
-      ((Protocol1_14To1_14_1)this.protocol).registerClientbound(ClientboundPackets1_14.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_14.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);

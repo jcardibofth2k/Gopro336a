@@ -16,7 +16,7 @@ public enum TextDecoration implements StyleBuilderApplicable, TextFormat {
    });
    private final String name;
 
-   private TextDecoration(final String name) {
+   TextDecoration(final String name) {
       this.name = name;
    }
 
@@ -46,14 +46,15 @@ public enum TextDecoration implements StyleBuilderApplicable, TextFormat {
       return new TextDecoration[]{OBFUSCATED, BOLD, STRIKETHROUGH, UNDERLINED, ITALIC};
    }
 
-   public static enum State {
+   public
+   enum State {
       NOT_SET("not_set"),
       FALSE("false"),
       TRUE("true");
 
       private final String name;
 
-      private State(final String name) {
+      State(final String name) {
          this.name = name;
       }
 

@@ -47,7 +47,7 @@ public class ISO8601Utils {
       if (offset != 0) {
          int hours = Math.abs(offset / '\uea60' / 60);
          int minutes = Math.abs(offset / '\uea60' % 60);
-         formatted.append((char)(offset < 0 ? '-' : '+'));
+         formatted.append(offset < 0 ? '-' : '+');
          padInt(formatted, hours, "hh".length());
          formatted.append(':');
          padInt(formatted, minutes, "mm".length());

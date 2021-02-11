@@ -74,29 +74,29 @@ extends Module {
         AxisAlignedBB axisAlignedBB2 = axisAlignedBB = Flight.mc.player.getRidingEntity() != null ? Flight.mc.player.getRidingEntity().getEntityBoundingBox() : Flight.mc.player.getEntityBoundingBox();
         if (axisAlignedBB != null) {
             int n = (int)axisAlignedBB.minY;
-            for (int i = MathHelper.floor((double)axisAlignedBB.minX); i < MathHelper.floor((double)axisAlignedBB.maxX) + 1; ++i) {
-                for (int j = MathHelper.floor((double)axisAlignedBB.minZ); j < MathHelper.floor((double)axisAlignedBB.maxZ) + 1; ++j) {
+            for (int i = MathHelper.floor(axisAlignedBB.minX); i < MathHelper.floor(axisAlignedBB.maxX) + 1; ++i) {
+                for (int j = MathHelper.floor(axisAlignedBB.minZ); j < MathHelper.floor(axisAlignedBB.maxZ) + 1; ++j) {
                     Block block = Flight.mc.world.getBlockState(new BlockPos(i, n, j)).getBlock();
-                    if (block instanceof BlockAir && !((Boolean)this.inAir.getValue()).booleanValue()) {
+                    if (block instanceof BlockAir && !this.inAir.getValue().booleanValue()) {
                         return;
                     }
-                    if (!(block != Blocks.LAVA && block != Blocks.FLOWING_LAVA || ((Boolean)this.inLava.getValue()).booleanValue())) {
+                    if (!(block != Blocks.LAVA && block != Blocks.FLOWING_LAVA || this.inLava.getValue().booleanValue())) {
                         return;
                     }
-                    if (block != Blocks.WATER && block != Blocks.FLOWING_WATER || ((Boolean)this.inWater.getValue()).booleanValue()) continue;
+                    if (block != Blocks.WATER && block != Blocks.FLOWING_WATER || this.inWater.getValue().booleanValue()) continue;
                     return;
                 }
             }
         }
-        double d = Interpolation.Method362(0.0, (double)((Float)this.speed.getValue()).floatValue() * 0.2625, Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field701) / (1000.0f * ((Float)this.acceleration.getValue()).floatValue())));
-        double d2 = Interpolation.Method362(0.0, (double)((Float)this.vSpeed.getValue()).floatValue() * 0.4, Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field701) / (1000.0f * ((Float)this.vAcceleration.getValue()).floatValue())));
+        double d = Interpolation.Method362(0.0, (double) this.speed.getValue().floatValue() * 0.2625, Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field701) / (1000.0f * this.acceleration.getValue().floatValue())));
+        double d2 = Interpolation.Method362(0.0, (double) this.vSpeed.getValue().floatValue() * 0.4, Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field701) / (1000.0f * this.vAcceleration.getValue().floatValue())));
         boolean bl = true;
         if (this.antiKick.getValue() != Class418.NONE) {
-            if (this.Field704 < (Integer)this.antiKickInterval.getValue()) {
+            if (this.Field704 < this.antiKickInterval.getValue()) {
                 ++this.Field704;
             } else {
                 ++this.Field705;
-                if (this.Field705 >= (Integer)this.antiKickTicks.getValue()) {
+                if (this.Field705 >= this.antiKickTicks.getValue()) {
                     this.Field704 = 0;
                 }
                 if (this.antiKick.getValue() == Class418.NORMAL) {
@@ -108,24 +108,24 @@ extends Module {
             }
         }
         double d3 = Math.sqrt(d * d + d2 * d2);
-        if (this.Field702 < (Integer)this.glideInterval.getValue()) {
+        if (this.Field702 < this.glideInterval.getValue()) {
             ++this.Field702;
             this.Field703 = 0;
         }
-        if (this.glide.getValue() == Class447.CONSTANT || this.Field702 >= (Integer)this.glideInterval.getValue() && this.glide.getValue() == Class447.DYNAMIC) {
-            moveEvent.setY((double)(-((Float)this.glideSpeed.getValue()).floatValue()) * 0.01);
+        if (this.glide.getValue() == Class447.CONSTANT || this.Field702 >= this.glideInterval.getValue() && this.glide.getValue() == Class447.DYNAMIC) {
+            moveEvent.setY((double)(-this.glideSpeed.getValue().floatValue()) * 0.01);
             ++this.Field703;
-            if (this.Field703 >= (Integer)this.glideTicks.getValue()) {
+            if (this.Field703 >= this.glideTicks.getValue()) {
                 this.Field702 = 0;
             }
         }
         if (Flight.mc.gameSettings.keyBindJump.isKeyDown() && bl) {
-            moveEvent.setY(d2 * (double)((Float)this.upFactor.getValue()).floatValue());
+            moveEvent.setY(d2 * (double) this.upFactor.getValue().floatValue());
         } else if (Flight.mc.gameSettings.keyBindSneak.isKeyDown()) {
             moveEvent.setY(-d2);
         }
-        if (d3 > (double)((Float)this.maxSpeed.getValue()).floatValue() * 0.6625) {
-            d = Math.min((double)((Float)this.speed.getValue()).floatValue() * 0.2625, Math.sqrt(d3 * d3 - moveEvent.getY() * moveEvent.getY()));
+        if (d3 > (double) this.maxSpeed.getValue().floatValue() * 0.6625) {
+            d = Math.min((double) this.speed.getValue().floatValue() * 0.2625, Math.sqrt(d3 * d3 - moveEvent.getY() * moveEvent.getY()));
         }
         double d4 = Flight.mc.player.movementInput.moveForward;
         double d5 = Flight.mc.player.movementInput.moveStrafe;
@@ -178,14 +178,14 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !((Boolean)this.noFall.getValue()).booleanValue()) break block0;
+            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.noFall.getValue().booleanValue()) break block0;
             ((ICPacketPlayer)class24.getPacket()).Method1700(true);
         }
     }
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
-        if (((Boolean)this.useTimer.getValue()).booleanValue()) {
+        if (this.useTimer.getValue().booleanValue()) {
             NewGui.INSTANCE.Field1134.Method746(this, 10, 1.088f);
         } else {
             NewGui.INSTANCE.Field1134.Method749(this);

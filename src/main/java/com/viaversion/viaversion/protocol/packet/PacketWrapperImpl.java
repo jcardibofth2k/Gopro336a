@@ -306,7 +306,7 @@ public class PacketWrapperImpl implements PacketWrapper {
    }
 
    public PacketWrapperImpl create(int packetId) {
-      return new PacketWrapperImpl(packetId, (ByteBuf)null, this.user());
+      return new PacketWrapperImpl(packetId, null, this.user());
    }
 
    public PacketWrapperImpl create(int packetId, PacketHandler handler) throws Exception {
@@ -355,7 +355,7 @@ public class PacketWrapperImpl implements PacketWrapper {
 
    public void resetReader() {
       for(int i = this.packetValues.size() - 1; i >= 0; --i) {
-         this.readableObjects.addFirst((Pair)this.packetValues.get(i));
+         this.readableObjects.addFirst(this.packetValues.get(i));
       }
 
       this.packetValues.clear();

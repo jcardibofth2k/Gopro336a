@@ -39,7 +39,7 @@ public class Protocol1_9_1_2To1_9_3_4 extends AbstractProtocol {
                      wrapper.write(Type.POSITION, position);
 
                      for(int i = 1; i < 5; ++i) {
-                        wrapper.write(Type.STRING, (String)tag.get("Text" + i).getValue());
+                        wrapper.write(Type.STRING, tag.get("Text" + i).getValue());
                      }
                   }
 

@@ -22,7 +22,8 @@ public class Entity1_10Types {
       }
    }
 
-   public static enum EntityType implements com.viaversion.viaversion.api.minecraft.entities.EntityType {
+   public
+   enum EntityType implements com.viaversion.viaversion.api.minecraft.entities.EntityType {
       ENTITY(-1),
       DROPPED_ITEM(1, ENTITY),
       EXPERIENCE_ORB(2, ENTITY),
@@ -109,12 +110,12 @@ public class Entity1_10Types {
       private final int field_66;
       private final Entity1_10Types.EntityType parent;
 
-      private EntityType(int id) {
+      EntityType(int id) {
          this.field_66 = id;
          this.parent = null;
       }
 
-      private EntityType(int id, Entity1_10Types.EntityType parent) {
+      EntityType(int id, Entity1_10Types.EntityType parent) {
          this.field_66 = id;
          this.parent = parent;
       }

@@ -91,13 +91,13 @@ public interface IntList extends List, Comparable, IntCollection {
    /** @deprecated */
    @Deprecated
    default int indexOf(Object o) {
-      return this.indexOf((Integer)o);
+      return this.indexOf(o);
    }
 
    /** @deprecated */
    @Deprecated
    default int lastIndexOf(Object o) {
-      return this.lastIndexOf((Integer)o);
+      return this.lastIndexOf(o);
    }
 
    /** @deprecated */

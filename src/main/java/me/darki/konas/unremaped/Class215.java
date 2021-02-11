@@ -146,19 +146,19 @@ implements Class135 {
         float f2 = NewGui.INSTANCE.Field1131.Method1828().Method492();
         float f3 = NewGui.INSTANCE.Field1131.Method1828().Method489();
         float f4 = NewGui.INSTANCE.Field1131.Method1828().Method476();
-        Field314 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.mainStart.getValue(), (ColorValue) KonasGui.mainEnd.getValue());
-        Field315 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.accentStart.getValue(), (ColorValue) KonasGui.accentEnd.getValue());
-        Field316 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.categoryStart.getValue(), (ColorValue) KonasGui.categoryEnd.getValue());
-        Field317 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.outlineStart.getValue(), (ColorValue) KonasGui.outlineEnd.getValue());
-        Field318 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.backgroundStart.getValue(), (ColorValue) KonasGui.backgroundEnd.getValue());
-        Field319 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.foregroundStart.getValue(), (ColorValue) KonasGui.foregroundEnd.getValue());
-        Field320 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.primaryStart.getValue(), (ColorValue) KonasGui.primaryEnd.getValue());
-        Field321 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.secondaryStart.getValue(), (ColorValue) KonasGui.secondaryEnd.getValue());
-        Field322 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.sliderStart.getValue(), (ColorValue) KonasGui.sliderEnd.getValue());
-        Field323 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.textBoxStart.getValue(), (ColorValue) KonasGui.textBoxEnd.getValue());
-        Field324 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.fontStart.getValue(), (ColorValue) KonasGui.fontEnd.getValue());
-        Field325 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.darkFontStart.getValue(), (ColorValue) KonasGui.darkFontEnd.getValue());
-        Field326 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.subFontStart.getValue(), (ColorValue) KonasGui.subFontEnd.getValue());
+        Field314 = new Class241(f, f2, f3, f4, KonasGui.mainStart.getValue(), KonasGui.mainEnd.getValue());
+        Field315 = new Class241(f, f2, f3, f4, KonasGui.accentStart.getValue(), KonasGui.accentEnd.getValue());
+        Field316 = new Class241(f, f2, f3, f4, KonasGui.categoryStart.getValue(), KonasGui.categoryEnd.getValue());
+        Field317 = new Class241(f, f2, f3, f4, KonasGui.outlineStart.getValue(), KonasGui.outlineEnd.getValue());
+        Field318 = new Class241(f, f2, f3, f4, KonasGui.backgroundStart.getValue(), KonasGui.backgroundEnd.getValue());
+        Field319 = new Class241(f, f2, f3, f4, KonasGui.foregroundStart.getValue(), KonasGui.foregroundEnd.getValue());
+        Field320 = new Class241(f, f2, f3, f4, KonasGui.primaryStart.getValue(), KonasGui.primaryEnd.getValue());
+        Field321 = new Class241(f, f2, f3, f4, KonasGui.secondaryStart.getValue(), KonasGui.secondaryEnd.getValue());
+        Field322 = new Class241(f, f2, f3, f4, KonasGui.sliderStart.getValue(), KonasGui.sliderEnd.getValue());
+        Field323 = new Class241(f, f2, f3, f4, KonasGui.textBoxStart.getValue(), KonasGui.textBoxEnd.getValue());
+        Field324 = new Class241(f, f2, f3, f4, KonasGui.fontStart.getValue(), KonasGui.fontEnd.getValue());
+        Field325 = new Class241(f, f2, f3, f4, KonasGui.darkFontStart.getValue(), KonasGui.darkFontEnd.getValue());
+        Field326 = new Class241(f, f2, f3, f4, KonasGui.subFontStart.getValue(), KonasGui.subFontEnd.getValue());
     }
 
     public boolean Method501(int n, int n2) {

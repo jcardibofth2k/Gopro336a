@@ -26,7 +26,7 @@ public class Search
 extends Module {
     public ArrayList<Block> Field662;
     public CopyOnWriteArrayList<Class448> copyOnWriteArrayList = new CopyOnWriteArrayList();
-    public static Setting<Class443> customBlocks = new Setting<>("CustomBlocks", new Class443(new String[0]));
+    public static Setting<Class443> customBlocks = new Setting<>("CustomBlocks", new Class443());
     public static Setting<Float> range = new Setting<>("Range", Float.valueOf(100.0f), Float.valueOf(500.0f), Float.valueOf(1.0f), Float.valueOf(1.0f));
     public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(-16711681));
     public static Setting<Boolean> aDefault = new Setting<>("Default", true);
@@ -42,47 +42,47 @@ extends Module {
     @Override
     public void onEnable() {
         block1: {
-            if (GlStateManager.glGetString((int)7936).contains("Intel") && !((Boolean) slowRender.getValue()).booleanValue()) {
+            if (GlStateManager.glGetString(7936).contains("Intel") && !slowRender.getValue().booleanValue()) {
                 Logger.Method1118("You have an integrated graphics card. To increase fps, use SlowRender.");
             }
-            if (!((Boolean) softReload.getValue()).booleanValue()) break block1;
+            if (!softReload.getValue().booleanValue()) break block1;
             Search.Method134();
         }
     }
 
     public boolean Method731(Class448 class448) {
-        if (((Boolean) aDefault.getValue()).booleanValue() && this.Field662.contains(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock())) {
+        if (aDefault.getValue().booleanValue() && this.Field662.contains(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock())) {
             return true;
         }
-        if (((Boolean) custom.getValue()).booleanValue() && ((Class443) customBlocks.getValue()).Method682().contains(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock())) {
+        if (custom.getValue().booleanValue() && customBlocks.getValue().Method682().contains(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock())) {
             return true;
         }
-        return (Boolean) illegals.getValue() != false && this.Method733(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock(), new BlockPos(class448.Field615, class448.Field616, class448.Field617));
+        return illegals.getValue() != false && this.Method733(Search.mc.world.getBlockState(new BlockPos(class448.Field615, class448.Field616, class448.Field617)).getBlock(), new BlockPos(class448.Field615, class448.Field616, class448.Field617));
     }
 
     public static void Method732(double d, double d2, double d3, double d4, double d5, double d6, int n) {
-        GL11.glBlendFunc((int)770, (int)771);
-        GL11.glEnable((int)3042);
-        GL11.glLineWidth((float)1.5f);
-        GL11.glDisable((int)3553);
-        GL11.glDisable((int)2929);
-        GL11.glDepthMask((boolean)false);
-        GL11.glColor4f((float)((float)(n >> 16 & 0xFF) / 255.0f), (float)((float)(n >> 8 & 0xFF) / 255.0f), (float)((float)(n & 0xFF) / 255.0f), (float)((float)(n >> 24 & 0xFF) / 255.0f));
+        GL11.glBlendFunc(770, 771);
+        GL11.glEnable(3042);
+        GL11.glLineWidth(1.5f);
+        GL11.glDisable(3553);
+        GL11.glDisable(2929);
+        GL11.glDepthMask(false);
+        GL11.glColor4f((float)(n >> 16 & 0xFF) / 255.0f, (float)(n >> 8 & 0xFF) / 255.0f, (float)(n & 0xFF) / 255.0f, (float)(n >> 24 & 0xFF) / 255.0f);
         GlStateManager.disableLighting();
         GL11.glLoadIdentity();
         ((IEntityRenderer) Search.mc.entityRenderer).Method1909(mc.getRenderPartialTicks());
-        GL11.glEnable((int)2848);
-        GL11.glBegin((int)1);
-        GL11.glVertex3d((double)d, (double)d2, (double)d3);
-        GL11.glVertex3d((double)d4, (double)d5, (double)d6);
-        GL11.glVertex3d((double)d4, (double)d5, (double)d6);
+        GL11.glEnable(2848);
+        GL11.glBegin(1);
+        GL11.glVertex3d(d, d2, d3);
+        GL11.glVertex3d(d4, d5, d6);
+        GL11.glVertex3d(d4, d5, d6);
         GL11.glEnd();
-        GL11.glDisable((int)2848);
-        GL11.glEnable((int)3553);
-        GL11.glEnable((int)2929);
-        GL11.glDepthMask((boolean)true);
-        GL11.glDisable((int)3042);
-        GL11.glColor3d((double)1.0, (double)1.0, (double)1.0);
+        GL11.glDisable(2848);
+        GL11.glEnable(3553);
+        GL11.glEnable(2929);
+        GL11.glDepthMask(true);
+        GL11.glDisable(3042);
+        GL11.glColor3d(1.0, 1.0, 1.0);
         GlStateManager.enableLighting();
     }
 
@@ -103,33 +103,33 @@ extends Module {
         if (Search.mc.world == null || Search.mc.player == null || this.copyOnWriteArrayList.isEmpty()) {
             return;
         }
-        if (((Boolean) fill.getValue()).booleanValue() || ((Boolean) outline.getValue()).booleanValue()) {
+        if (fill.getValue().booleanValue() || outline.getValue().booleanValue()) {
             for (Class448 class448 : this.copyOnWriteArrayList) {
-                if (class448.Method662(new Class448(Search.mc.player.posX, Search.mc.player.posY, Search.mc.player.posZ)) > (double)((Float) range.getValue()).floatValue() || !this.Method731(class448)) {
+                if (class448.Method662(new Class448(Search.mc.player.posX, Search.mc.player.posY, Search.mc.player.posZ)) > (double) range.getValue().floatValue() || !this.Method731(class448)) {
                     this.copyOnWriteArrayList.remove(class448);
                     continue;
                 }
                 blockPos = new BlockPos(class448.Field615, class448.Field616, class448.Field617);
-                AxisAlignedBB axisAlignedBB = Search.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess) Search.mc.world, blockPos).offset(blockPos);
-                if (((Boolean) fill.getValue()).booleanValue()) {
+                AxisAlignedBB axisAlignedBB = Search.mc.world.getBlockState(blockPos).getBoundingBox(Search.mc.world, blockPos).offset(blockPos);
+                if (fill.getValue().booleanValue()) {
                     Class507.Method1386();
-                    Class507.Method1379(axisAlignedBB, (ColorValue) color.getValue());
+                    Class507.Method1379(axisAlignedBB, color.getValue());
                     Class507.Method1385();
                 }
-                if (!((Boolean) outline.getValue()).booleanValue()) continue;
+                if (!outline.getValue().booleanValue()) continue;
                 Class507.Method1386();
-                Class507.Method1374(axisAlignedBB, 1.5, (ColorValue) color.getValue());
+                Class507.Method1374(axisAlignedBB, 1.5, color.getValue());
                 Class507.Method1385();
             }
         }
-        if (((Boolean) tracers.getValue()).booleanValue()) {
+        if (tracers.getValue().booleanValue()) {
             for (Class448 class448 : this.copyOnWriteArrayList) {
-                if (class448.Method662(new Class448(Search.mc.player.posX, Search.mc.player.posY, Search.mc.player.posZ)) > (double)((Float) range.getValue()).floatValue() || !this.Method731(class448)) {
+                if (class448.Method662(new Class448(Search.mc.player.posX, Search.mc.player.posY, Search.mc.player.posZ)) > (double) range.getValue().floatValue() || !this.Method731(class448)) {
                     this.copyOnWriteArrayList.remove(class448);
                     continue;
                 }
                 blockPos = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Search.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Search.mc.player.rotationYaw)));
-                Search.Method732(blockPos.x, blockPos.y + (double) Search.mc.player.getEyeHeight(), blockPos.z, class448.Field615 - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, class448.Field616 - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, class448.Field617 - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue) color.getValue()).Method774());
+                Search.Method732(blockPos.x, blockPos.y + (double) Search.mc.player.getEyeHeight(), blockPos.z, class448.Field615 - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, class448.Field616 - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, class448.Field617 - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, color.getValue().Method774());
             }
         }
     }
@@ -140,13 +140,9 @@ extends Module {
         }
         if (block == Blocks.BEDROCK) {
             if (Search.mc.player.dimension == 0) {
-                if (blockPos.getY() > 4) {
-                    return true;
-                }
+                return blockPos.getY() > 4;
             } else if (Search.mc.player.dimension == -1) {
-                if (blockPos.getY() > 127 || blockPos.getY() < 123 && blockPos.getY() > 4) {
-                    return true;
-                }
+                return blockPos.getY() > 127 || blockPos.getY() < 123 && blockPos.getY() > 4;
             } else {
                 return true;
             }
@@ -155,22 +151,22 @@ extends Module {
     }
 
     public Search() {
-        super("Search", Category.RENDER, new String[0]);
+        super("Search", Category.RENDER);
         this.Method124();
     }
 
     public void Method124() {
         this.Field662 = new ArrayList();
-        this.Field662.add((Block)Blocks.PORTAL);
+        this.Field662.add(Blocks.PORTAL);
         this.Field662.add(Blocks.MOB_SPAWNER);
         this.Field662.add(Blocks.END_PORTAL_FRAME);
         this.Field662.add(Blocks.END_PORTAL);
         this.Field662.add(Blocks.DISPENSER);
         this.Field662.add(Blocks.DROPPER);
-        this.Field662.add((Block)Blocks.HOPPER);
+        this.Field662.add(Blocks.HOPPER);
         this.Field662.add(Blocks.FURNACE);
         this.Field662.add(Blocks.LIT_FURNACE);
-        this.Field662.add((Block)Blocks.CHEST);
+        this.Field662.add(Blocks.CHEST);
         this.Field662.add(Blocks.TRAPPED_CHEST);
         this.Field662.add(Blocks.ENDER_CHEST);
         this.Field662.add(Blocks.WHITE_SHULKER_BOX);
@@ -197,7 +193,7 @@ extends Module {
         if (Search.mc.world == null || Search.mc.player == null) {
             return;
         }
-        if (((Boolean) slowRender.getValue()).booleanValue()) {
+        if (slowRender.getValue().booleanValue()) {
             if (this.Field675.Method737(1000.0)) {
                 this.Field675.Method739();
             } else {
@@ -213,14 +209,14 @@ extends Module {
     }
 
     public boolean Method735(Block block, BlockPos blockPos) {
-        if (((Boolean) aDefault.getValue()).booleanValue() && this.Field662.contains(block)) {
+        if (aDefault.getValue().booleanValue() && this.Field662.contains(block)) {
             return true;
         }
-        if (((Boolean) custom.getValue()).booleanValue()) {
-            if (((Class443) customBlocks.getValue()).Method682().contains(block)) {
+        if (custom.getValue().booleanValue()) {
+            if (customBlocks.getValue().Method682().contains(block)) {
                 return true;
             }
         }
-        return (Boolean) illegals.getValue() != false && this.Method733(block, blockPos);
+        return illegals.getValue() != false && this.Method733(block, blockPos);
     }
 }

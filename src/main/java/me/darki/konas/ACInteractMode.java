@@ -12,7 +12,7 @@ extends Enum {
     }
 
     public static ACInteractMode[] Method659() {
-        return (ACInteractMode[])Field613.clone();
+        return Field613.clone();
     }
 
     static {

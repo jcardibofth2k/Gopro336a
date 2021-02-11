@@ -60,7 +60,7 @@ public interface Int2ObjectSortedMap extends Int2ObjectMap, SortedMap {
 
    IntComparator comparator();
 
-   public interface FastSortedEntrySet extends ObjectSortedSet, Int2ObjectMap.FastEntrySet {
+   interface FastSortedEntrySet extends ObjectSortedSet, Int2ObjectMap.FastEntrySet {
       ObjectBidirectionalIterator fastIterator();
 
       ObjectBidirectionalIterator fastIterator(Int2ObjectMap.Entry var1);

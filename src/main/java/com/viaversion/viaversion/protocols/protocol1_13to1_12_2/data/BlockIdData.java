@@ -28,7 +28,7 @@ public class BlockIdData {
          InputStreamReader reader = new InputStreamReader(stream);
 
          try {
-            Map map = (Map)GsonUtil.getGson().fromJson((Reader)reader, (Type)(new TypeToken() {
+            Map map = (Map)GsonUtil.getGson().fromJson(reader, (new TypeToken() {
             }).getType());
             blockIdMapping = new HashMap(map);
             fallbackReverseMapping = new HashMap();
@@ -70,7 +70,7 @@ public class BlockIdData {
          InputStreamReader blockR = new InputStreamReader(blockS);
 
          try {
-            Map map = (Map)GsonUtil.getGson().fromJson((Reader)blockR, (Type)(new TypeToken() {
+            Map map = (Map)GsonUtil.getGson().fromJson(blockR, (new TypeToken() {
             }).getType());
             numberIdToString = new Int2ObjectOpenHashMap(map);
          } catch (Throwable var11) {

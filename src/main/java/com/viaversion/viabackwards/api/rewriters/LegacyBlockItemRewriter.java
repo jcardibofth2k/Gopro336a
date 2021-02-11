@@ -109,7 +109,7 @@ public abstract class LegacyBlockItemRewriter extends ItemRewriterBase {
          Tag yTag;
          Tag zTag;
          if ((xTag = tag.get("x")) != null && (yTag = tag.get("y")) != null && (zTag = tag.get("z")) != null) {
-            LegacyBlockItemRewriter.Pos pos = new LegacyBlockItemRewriter.Pos(((NumberTag)xTag).asInt() & 15, ((NumberTag)yTag).asInt(), ((NumberTag)zTag).asInt() & 15, (1)null);
+            LegacyBlockItemRewriter.Pos pos = new LegacyBlockItemRewriter.Pos(((NumberTag)xTag).asInt() & 15, ((NumberTag)yTag).asInt(), ((NumberTag)zTag).asInt() & 15, (1)null)
             tags.put(pos, tag);
             if (pos.getY() >= 0 && pos.getY() <= 255) {
                ChunkSection section = chunk.getSections()[pos.getY() >> 4];
@@ -160,7 +160,7 @@ public abstract class LegacyBlockItemRewriter extends ItemRewriterBase {
                         meta = block & 15;
                         settings = (MappedLegacyBlockItem)this.replacementData.get(btype);
                         if (settings != null && settings.hasBlockEntityHandler()) {
-                           LegacyBlockItemRewriter.Pos pos = new LegacyBlockItemRewriter.Pos(x, y + (i << 4), z, (1)null);
+                           LegacyBlockItemRewriter.Pos pos = new LegacyBlockItemRewriter.Pos(x, y + (i << 4), z, (1)null)
                            if (!tags.containsKey(pos)) {
                               CompoundTag tag = new CompoundTag();
                               tag.put("x", new IntTag(x + (chunk.getX() << 4)));
@@ -195,7 +195,7 @@ public abstract class LegacyBlockItemRewriter extends ItemRewriterBase {
       while(var1.hasNext()) {
          Entry entry = (Entry)var1.next();
          Int2ObjectMap mappings = new Int2ObjectOpenHashMap(8);
-         LEGACY_MAPPINGS.put((String)entry.getKey(), mappings);
+         LEGACY_MAPPINGS.put(entry.getKey(), mappings);
          Iterator var4 = ((JsonElement)entry.getValue()).getAsJsonObject().entrySet().iterator();
 
          while(true) {

@@ -18,7 +18,7 @@ public class ChorusPlantConnectionHandler extends AbstractFenceConnectionHandler
    }
 
    public ChorusPlantConnectionHandler() {
-      super((String)null);
+      super(null);
    }
 
    public ConnectionData.ConnectorInitAction getExtraAction() {

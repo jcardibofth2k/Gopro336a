@@ -7,7 +7,7 @@ extends Enum {
     public static ACSyncMode[] Field1818;
 
     public static ACSyncMode[] Method1710() {
-        return (ACSyncMode[])Field1818.clone();
+        return Field1818.clone();
     }
 
     static {

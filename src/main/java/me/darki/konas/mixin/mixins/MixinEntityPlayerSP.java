@@ -92,11 +92,11 @@ extends EntityPlayer {
                 ci.cancel();
                 Class309.Field882.Method739();
                 if (this.isRiding()) {
-                    this.Field2380.sendPacket((Packet)new CPacketPlayer.Rotation(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944(), this.onGround));
-                    this.Field2380.sendPacket((Packet)new CPacketInput(this.moveStrafing, this.moveForward, this.Field2381.jump, this.Field2381.sneak));
+                    this.Field2380.sendPacket(new CPacketPlayer.Rotation(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944(), this.onGround));
+                    this.Field2380.sendPacket(new CPacketInput(this.moveStrafing, this.moveForward, this.Field2381.jump, this.Field2381.sneak));
                     Entity entity = this.getLowestRidingEntity();
                     if (entity != this && entity.canPassengerSteer()) {
-                        this.Field2380.sendPacket((Packet)new CPacketVehicleMove(entity));
+                        this.Field2380.sendPacket(new CPacketVehicleMove(entity));
                     }
                 } else {
                     Class550.Method883(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944());
@@ -115,7 +115,7 @@ extends EntityPlayer {
         if (chestInventory instanceof IInteractionObject && "minecraft:beacon".equals(((IInteractionObject)chestInventory).getGuiID())) {
             Class0 event = new Class0();
             EventDispatcher.Companion.dispatch(event);
-            Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new KonasBeaconGui(this.inventory, chestInventory));
+            Minecraft.getMinecraft().displayGuiScreen(new KonasBeaconGui(this.inventory, chestInventory));
             if (event.isCanceled()) {
                 ci.cancel();
             }
@@ -139,7 +139,7 @@ extends EntityPlayer {
         if (event.isCanceled()) {
             return;
         }
-        this.Field2380.sendPacket((Packet)new CPacketChatMessage(event.Method1201()));
+        this.Field2380.sendPacket(new CPacketChatMessage(event.Method1201()));
     }
 
     @Redirect(method={"onUpdateWalkingPlayer"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/entity/EntityPlayerSP;isCurrentViewEntity()Z"))

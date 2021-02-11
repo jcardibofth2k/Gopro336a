@@ -93,8 +93,7 @@ extends Module {
         if (this.Method537() == StrafeMode.SMALLHOP) return true;
         if (this.Method537() == StrafeMode.STRAFE) return true;
         if (this.Method537() == StrafeMode.STRAFEOLD) return true;
-        if (this.Method537() != StrafeMode.STRAFESTRICT) return false;
-        return true;
+        return this.Method537() == StrafeMode.STRAFESTRICT;
     }
 
     @Subscriber
@@ -112,31 +111,31 @@ extends Module {
             NewGui.INSTANCE.Field1134.Method749(this);
             return;
         }
-        int n = MathHelper.floor((double)(Speed.mc.player.getEntityBoundingBox().minY - 0.2));
+        int n = MathHelper.floor(Speed.mc.player.getEntityBoundingBox().minY - 0.2);
         boolean bl2 = bl = Jesus.Method834(BlockLiquid.class, n) != null;
         if (Class167.Method1610(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
             return;
         }
         this.Method1645(this.Method537().name().substring(0, 1).toUpperCase() + this.Method537().name().substring(1).toLowerCase());
-        if (((Boolean)this.Field399.getValue()).booleanValue() && Speed.mc.player.isSneaking()) {
+        if (this.Field399.getValue().booleanValue() && Speed.mc.player.isSneaking()) {
             return;
         }
-        if ((this.Method537() == StrafeMode.STRAFEOLD || this.Method537() == StrafeMode.STRAFE || this.Method537() == StrafeMode.LOWHOP) && ((Boolean)this.Field392.getValue()).booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 10, 1.08f + 0.008f * ((Float)this.Field393.getValue()).floatValue());
+        if ((this.Method537() == StrafeMode.STRAFEOLD || this.Method537() == StrafeMode.STRAFE || this.Method537() == StrafeMode.LOWHOP) && this.Field392.getValue().booleanValue()) {
+            NewGui.INSTANCE.Field1134.Method746(this, 10, 1.08f + 0.008f * this.Field393.getValue().floatValue());
         } else if (this.Method537() != StrafeMode.STRAFESTRICT && this.Method537() != StrafeMode.SMALLHOP) {
             NewGui.INSTANCE.Field1134.Method749(this);
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 1: {
-                if (Class167.Method1612("LongJump").isEnabled() && ((Boolean) LongJump.disableStrafe.getValue()).booleanValue()) {
+                if (Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
                     return;
                 }
                 if (Class167.Method1612("ElytraFly").isEnabled()) {
                     return;
                 }
-                if (((Boolean)this.Field400.getValue()).booleanValue() && !Speed.mc.player.isSprinting() && MathUtil.Method1080()) {
+                if (this.Field400.getValue().booleanValue() && !Speed.mc.player.isSprinting() && MathUtil.Method1080()) {
                     Speed.mc.player.setSprinting(true);
-                    Speed.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                    Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                 }
                 this.Field408 = Math.sqrt((Speed.mc.player.posX - Speed.mc.player.prevPosX) * (Speed.mc.player.posX - Speed.mc.player.prevPosX) + (Speed.mc.player.posZ - Speed.mc.player.prevPosZ) * (Speed.mc.player.posZ - Speed.mc.player.prevPosZ));
                 break;
@@ -150,7 +149,7 @@ extends Module {
                     NewGui.INSTANCE.Field1134.Method746(this, 10, 1.15f);
                     Speed.mc.player.jump();
                     boolean bl3 = Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockIce || Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockPackedIce;
-                    double[] dArray = MathUtil.Method1086(this.Method541() * (Double)this.Field391.getValue() + (((Boolean)this.Field401.getValue()).booleanValue() ? (bl3 ? 0.3 : 0.06 * (Double)this.Field402.getValue()) : 0.0));
+                    double[] dArray = MathUtil.Method1086(this.Method541() * this.Field391.getValue() + (this.Field401.getValue().booleanValue() ? (bl3 ? 0.3 : 0.06 * this.Field402.getValue()) : 0.0));
                     Speed.mc.player.motionX = dArray[0];
                     Speed.mc.player.motionZ = dArray[1];
                     break;
@@ -161,8 +160,8 @@ extends Module {
             }
         }
         Item item = Speed.mc.player.getActiveItemStack().getItem();
-        if (this.Method537() == StrafeMode.STRAFESTRICT && ((Boolean)this.Field397.getValue()).booleanValue() && this.Field418 && (!Speed.mc.player.isHandActive() && item instanceof ItemFood || item instanceof ItemBow || item instanceof ItemPotion || !(item instanceof ItemFood) || !(item instanceof ItemBow) || !(item instanceof ItemPotion))) {
-            Speed.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Speed.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+        if (this.Method537() == StrafeMode.STRAFESTRICT && this.Field397.getValue().booleanValue() && this.Field418 && (!Speed.mc.player.isHandActive() && item instanceof ItemFood || item instanceof ItemBow || item instanceof ItemPotion || !(item instanceof ItemFood) || !(item instanceof ItemBow) || !(item instanceof ItemPotion))) {
+            Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
             this.Field418 = false;
         }
     }
@@ -188,7 +187,7 @@ extends Module {
     }
 
     public Speed() {
-        super("Speed", Category.MOVEMENT, new String[0]);
+        super("Speed", Category.MOVEMENT);
     }
 
     @Subscriber
@@ -201,10 +200,10 @@ extends Module {
     }
 
     public StrafeMode Method537() {
-        if (MathUtil.Method1087(((Class537)this.Field405.getValue()).Method851())) {
-            return (StrafeMode)((Object)this.Field404.getValue());
+        if (MathUtil.Method1087(this.Field405.getValue().Method851())) {
+            return this.Field404.getValue();
         }
-        return (StrafeMode)((Object)this.Field394.getValue());
+        return this.Field394.getValue();
     }
 
     public double Method504(double d, int n) {
@@ -234,13 +233,13 @@ extends Module {
         if (Speed.mc.player == null || Speed.mc.world == null) {
             return;
         }
-        if (((Boolean)this.Field399.getValue()).booleanValue() && Speed.mc.player.isSneaking()) {
+        if (this.Field399.getValue().booleanValue() && Speed.mc.player.isSneaking()) {
             return;
         }
         if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             return;
         }
-        int n = MathHelper.floor((double)(Speed.mc.player.getEntityBoundingBox().minY - 0.2));
+        int n = MathHelper.floor(Speed.mc.player.getEntityBoundingBox().minY - 0.2);
         boolean bl2 = bl = Jesus.Method834(BlockLiquid.class, n) != null;
         if (Class167.Method1610(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
             return;
@@ -251,9 +250,9 @@ extends Module {
                     if (this.Field413 == 2 && (Speed.mc.player.moveForward != 0.0f || Speed.mc.player.moveStrafing != 0.0f)) {
                         double d = 0.0;
                         if (Speed.mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
-                            d += (double)((float)(Speed.mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1f);
+                            d += (float)(Speed.mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1f;
                         }
-                        Speed.mc.player.motionY = ((Boolean)this.Field396.getValue() != false ? 0.3999999463558197 : 0.3999) + d;
+                        Speed.mc.player.motionY = (this.Field396.getValue() != false ? 0.3999999463558197 : 0.3999) + d;
                         moveEvent.setY(Speed.mc.player.motionY);
                         this.Field410 *= this.Field412 ? 1.6835 : 1.395;
                     } else if (this.Field413 == 3) {
@@ -261,7 +260,7 @@ extends Module {
                         this.Field410 = this.Field411 - d;
                         this.Field412 = !this.Field412;
                     } else {
-                        List list = Speed.mc.world.getCollisionBoxes((Entity)Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0));
+                        List list = Speed.mc.world.getCollisionBoxes(Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0));
                         if (list.size() > 0 || Speed.mc.player.collidedVertically) {
                             if (this.Field413 > 0) {
                                 this.Field413 = Speed.mc.player.moveForward == 0.0f && Speed.mc.player.moveStrafing == 0.0f ? 0 : 1;
@@ -273,9 +272,9 @@ extends Module {
                     this.Field410 = 1.35 * this.Method541() - 0.01;
                 }
                 this.Field410 = Math.max(this.Field410, this.Method541());
-                if (this.Field419 > 0.0 && ((Boolean)this.Field401.getValue()).booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
+                if (this.Field419 > 0.0 && this.Field401.getValue().booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
                     this.Field410 = Math.max(this.Field410, this.Field419);
-                } else if (((Boolean)this.Field398.getValue()).booleanValue()) {
+                } else if (this.Field398.getValue().booleanValue()) {
                     this.Field410 = Math.min(this.Field410, 0.433);
                 }
                 double d = Speed.mc.player.movementInput.moveForward;
@@ -308,7 +307,7 @@ extends Module {
                 break;
             }
             case 1: {
-                if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && ((Boolean) LongJump.disableStrafe.getValue()).booleanValue()) {
+                if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
                     return;
                 }
                 if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("ElytraFly").isEnabled()) {
@@ -316,9 +315,9 @@ extends Module {
                 }
                 if (!Speed.mc.player.isSprinting()) {
                     Speed.mc.player.setSprinting(true);
-                    Speed.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                    Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                 }
-                double d = (Double)this.Field391.getValue() * 0.99;
+                double d = this.Field391.getValue() * 0.99;
                 switch (this.Field406) {
                     case 0: {
                         ++this.Field406;
@@ -327,7 +326,7 @@ extends Module {
                     }
                     case 2: {
                         double d3;
-                        double d4 = d3 = (Boolean)this.Field396.getValue() != false ? 0.3999999463558197 : 0.40123128;
+                        double d4 = d3 = this.Field396.getValue() != false ? 0.3999999463558197 : 0.40123128;
                         if (Speed.mc.player.moveForward == 0.0f && Speed.mc.player.moveStrafing == 0.0f || !Speed.mc.player.onGround) break;
                         Speed.mc.player.motionY = d3;
                         moveEvent.setY(Speed.mc.player.motionY);
@@ -340,7 +339,7 @@ extends Module {
                     }
                     default: {
                         this.Field409 = this.Field408 - this.Field408 / 159.0;
-                        if (Speed.mc.world.getCollisionBoxes((Entity)Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0)).size() <= 0) {
+                        if (Speed.mc.world.getCollisionBoxes(Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0)).size() <= 0) {
                             if (!Speed.mc.player.collidedVertically) break;
                         }
                         if (this.Field406 <= 0) break;
@@ -349,7 +348,7 @@ extends Module {
                     }
                 }
                 this.Field409 = Math.max(this.Field409, this.Method541());
-                if (this.Field419 > 0.0 && ((Boolean)this.Field401.getValue()).booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
+                if (this.Field419 > 0.0 && this.Field401.getValue().booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
                     this.Field409 = Math.max(this.Field409, this.Field419);
                 }
                 float f = Speed.mc.player.movementInput.moveForward;
@@ -373,8 +372,8 @@ extends Module {
                     NewGui.INSTANCE.Field1134.Method749(this);
                 } else if (MathUtil.Method1080()) {
                     NewGui.INSTANCE.Field1134.Method746(this, 10, 1.3f);
-                    Speed.mc.player.motionX *= (double)1.02f;
-                    Speed.mc.player.motionZ *= (double)1.02f;
+                    Speed.mc.player.motionX *= 1.02f;
+                    Speed.mc.player.motionZ *= 1.02f;
                 }
                 if (Speed.mc.player.onGround && MathUtil.Method1080()) {
                     this.Field416 = 2;
@@ -397,13 +396,13 @@ extends Module {
                     double d = 0.66 * (this.Field411 - this.Method541());
                     this.Field414 = this.Field411 - d;
                 } else {
-                    if (Speed.mc.world.getCollisionBoxes((Entity)Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0)).size() > 0 || Speed.mc.player.collidedVertically) {
+                    if (Speed.mc.world.getCollisionBoxes(Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, Speed.mc.player.motionY, 0.0)).size() > 0 || Speed.mc.player.collidedVertically) {
                         this.Field416 = 1;
                     }
                     this.Field414 = this.Field411 - this.Field411 / 159.0;
                 }
                 this.Field414 = Math.max(this.Field414, this.Method541());
-                this.Field414 = this.Field419 > 0.0 && (Boolean)this.Field401.getValue() != false && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally ? Math.max(this.Field414, this.Field419) : Math.min(this.Field414, this.Field417 > 25 ? 0.449 : 0.433);
+                this.Field414 = this.Field419 > 0.0 && this.Field401.getValue() != false && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally ? Math.max(this.Field414, this.Field419) : Math.min(this.Field414, this.Field417 > 25 ? 0.449 : 0.433);
                 float f = Speed.mc.player.movementInput.moveForward;
                 float f3 = Speed.mc.player.movementInput.moveStrafe;
                 float f4 = Speed.mc.player.rotationYaw;
@@ -443,7 +442,7 @@ extends Module {
                 }
                 double d = 0.0;
                 if (Speed.mc.player.isPotionActive(MobEffects.JUMP_BOOST)) {
-                    d += (double)((float)(Speed.mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1f);
+                    d += (float)(Speed.mc.player.getActivePotionEffect(MobEffects.JUMP_BOOST).getAmplifier() + 1) * 0.1f;
                 }
                 if (this.Method504(Speed.mc.player.posY - (double)((int)Speed.mc.player.posY), 3) == this.Method504(0.4, 3)) {
                     Speed.mc.player.motionY = 0.31 + d;
@@ -505,7 +504,7 @@ extends Module {
                         moveEvent.setY(this.Method388() ? 0.2 : 0.4);
                         this.Field426 *= 2.149;
                         this.Field425 = 3;
-                        if (((Boolean)this.Field395.getValue()).booleanValue()) {
+                        if (this.Field395.getValue().booleanValue()) {
                             this.Field427 = true;
                         }
                     } else if (this.Field425 == 3) {
@@ -516,7 +515,7 @@ extends Module {
                         this.Field425 = 1;
                     }
                 }
-                this.Field426 = Math.min(Math.max(this.Field426, this.Method541()), (Double)this.Field391.getValue());
+                this.Field426 = Math.min(Math.max(this.Field426, this.Method541()), this.Field391.getValue());
                 float f = Speed.mc.player.movementInput.moveForward;
                 float f6 = Speed.mc.player.movementInput.moveStrafe;
                 if (f == 0.0f && f6 == 0.0f) {
@@ -543,14 +542,14 @@ extends Module {
         this.Field407 = 1;
         this.Field422 = 4;
         this.Field425 = 2;
-        if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && ((Boolean) LongJump.disableStrafe.getValue()).booleanValue()) {
+        if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
             return;
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 1: {
                 if (!Speed.mc.player.isSprinting() && MathUtil.Method1080()) {
                     Speed.mc.player.setSprinting(true);
-                    Speed.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                    Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                 }
             }
             case 4: {
@@ -566,7 +565,7 @@ extends Module {
     }
 
     public boolean Method519() {
-        return this.Method537() == StrafeMode.SMALLHOP && (Boolean)this.Field401.getValue() != false;
+        return this.Method537() == StrafeMode.SMALLHOP && this.Field401.getValue() != false;
     }
 
     @Subscriber
@@ -579,24 +578,24 @@ extends Module {
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 3: {
-                for (double d = 0.0625; d < (Double)this.Field391.getValue(); d += 0.262) {
+                for (double d = 0.0625; d < this.Field391.getValue(); d += 0.262) {
                     double[] dArray = MathUtil.Method1086(d);
-                    Speed.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Speed.mc.player.posX + dArray[0], Speed.mc.player.posY, Speed.mc.player.posZ + dArray[1], Speed.mc.player.onGround));
+                    Speed.mc.player.connection.sendPacket(new CPacketPlayer.Position(Speed.mc.player.posX + dArray[0], Speed.mc.player.posY, Speed.mc.player.posZ + dArray[1], Speed.mc.player.onGround));
                 }
-                Speed.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Speed.mc.player.posX + Speed.mc.player.motionX, Speed.mc.player.posY <= 10.0 ? 255.0 : 1.0, Speed.mc.player.posZ + Speed.mc.player.motionZ, Speed.mc.player.onGround));
+                Speed.mc.player.connection.sendPacket(new CPacketPlayer.Position(Speed.mc.player.posX + Speed.mc.player.motionX, Speed.mc.player.posY <= 10.0 ? 255.0 : 1.0, Speed.mc.player.posZ + Speed.mc.player.motionZ, Speed.mc.player.onGround));
                 break;
             }
         }
     }
 
     public boolean Method388() {
-        return Speed.mc.world.getCollisionBoxes((Entity)Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, 0.21, 0.0)).size() > 0;
+        return Speed.mc.world.getCollisionBoxes(Speed.mc.player, Speed.mc.player.getEntityBoundingBox().offset(0.0, 0.21, 0.0)).size() > 0;
     }
 
     @Subscriber
     public void Method540(Class25 class25) {
-        if (!this.Field418 && this.Method537() == StrafeMode.STRAFESTRICT && ((Boolean)this.Field397.getValue()).booleanValue()) {
-            Speed.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Speed.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+        if (!this.Field418 && this.Method537() == StrafeMode.STRAFESTRICT && this.Field397.getValue().booleanValue()) {
+            Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             this.Field418 = true;
         }
     }

@@ -89,15 +89,15 @@ public class HashCommon {
    }
 
    public static int maxFill(int n, float f) {
-      return Math.min((int)Math.ceil((double)((float)n * f)), n - 1);
+      return Math.min((int)Math.ceil((float)n * f), n - 1);
    }
 
    public static long maxFill(long n, float f) {
-      return Math.min((long)Math.ceil((double)((float)n * f)), n - 1L);
+      return Math.min((long)Math.ceil((float)n * f), n - 1L);
    }
 
    public static int arraySize(int expected, float f) {
-      long s = Math.max(2L, nextPowerOfTwo((long)Math.ceil((double)((float)expected / f))));
+      long s = Math.max(2L, nextPowerOfTwo((long)Math.ceil((float)expected / f)));
       if (s > 1073741824L) {
          throw new IllegalArgumentException("Too large (" + expected + " expected elements with load factor " + f + ")");
       } else {
@@ -106,6 +106,6 @@ public class HashCommon {
    }
 
    public static long bigArraySize(long expected, float f) {
-      return nextPowerOfTwo((long)Math.ceil((double)((float)expected / f)));
+      return nextPowerOfTwo((long)Math.ceil((float)expected / f));
    }
 }

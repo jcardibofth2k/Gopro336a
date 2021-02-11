@@ -34,7 +34,7 @@ public final class Int2ObjectMaps {
 
    public static ObjectIterable fastIterable(Int2ObjectMap map) {
       final ObjectSet entries = map.int2ObjectEntrySet();
-      return (ObjectIterable)(entries instanceof Int2ObjectMap.FastEntrySet ? new ObjectIterable() {
+      return entries instanceof Int2ObjectMap.FastEntrySet ? new ObjectIterable() {
          public ObjectIterator iterator() {
             return ((Int2ObjectMap.FastEntrySet)entries).fastIterator();
          }
@@ -42,7 +42,7 @@ public final class Int2ObjectMaps {
          public void forEach(Consumer consumer) {
             ((Int2ObjectMap.FastEntrySet)entries).fastForEach(consumer);
          }
-      } : entries);
+      } : entries;
    }
 
    public static Int2ObjectMap emptyMap() {
@@ -108,7 +108,7 @@ public final class Int2ObjectMaps {
       }
 
       public boolean equals(Object o) {
-         return !(o instanceof Map) ? false : ((Map)o).isEmpty();
+         return o instanceof Map && ((Map) o).isEmpty();
       }
 
       public String toString() {
@@ -179,7 +179,7 @@ public final class Int2ObjectMaps {
             return false;
          } else {
             Map m = (Map)o;
-            return m.size() != 1 ? false : ((Entry)m.entrySet().iterator().next()).equals(this.entrySet().iterator().next());
+            return m.size() == 1 && m.entrySet().iterator().next().equals(this.entrySet().iterator().next());
          }
       }
 

@@ -55,7 +55,7 @@ public class MixinEntityRenderer {
             Class89 event = Class89.Method437(partialTicks);
             EventDispatcher.Companion.dispatch(event);
             GlStateManager.resetColor();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
 
@@ -81,7 +81,7 @@ public class MixinEntityRenderer {
         Class40 event = Class40.Method280();
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)false);
+            cir.setReturnValue(false);
         }
     }
 
@@ -166,7 +166,7 @@ public class MixinEntityRenderer {
     private Entity Method171(Minecraft mc) {
         Class46 event = new Class46();
         EventDispatcher.Companion.dispatch(event);
-        if (event.isCanceled() && Keyboard.isKeyDown((int)56)) {
+        if (event.isCanceled() && Keyboard.isKeyDown(56)) {
             return mc.player;
         }
         return mc.getRenderViewEntity();
@@ -179,7 +179,7 @@ public class MixinEntityRenderer {
             Class46 event = new Class46();
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {
-                if (Keyboard.isKeyDown((int)56)) {
+                if (Keyboard.isKeyDown(56)) {
                     mc.player.turn(yaw, pitch);
                 } else {
                     Objects.requireNonNull(mc.getRenderViewEntity(), "Render Entity").turn(yaw, pitch);

@@ -39,7 +39,7 @@ extends Module {
     public static Setting<Float> Field306 = new Setting<>("Range", Float.valueOf(220.0f), Float.valueOf(500.0f), Float.valueOf(1.0f), Float.valueOf(1.0f));
 
     public static boolean Method388() {
-        return Field296.getValue() == Class460.ARROWS && (Boolean)Field302.getValue() != false;
+        return Field296.getValue() == Class460.ARROWS && Field302.getValue() != false;
     }
 
     public static boolean Method394() {
@@ -62,34 +62,34 @@ extends Module {
             int n;
             Vec3d vec3d;
             Vec3d vec3d2;
-            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= ((Float)Field306.getValue()).floatValue()) || (vec3d2 = NewGui.INSTANCE.Field1137.Method2026(vec3d = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.getEyeHeight(), 0.0))) == null || this.Method467(vec3d2) || Class516.Method1288(entity) && !((Boolean)Field301.getValue()).booleanValue()) continue;
+            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= Field306.getValue().floatValue()) || (vec3d2 = NewGui.INSTANCE.Field1137.Method2026(vec3d = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.getEyeHeight(), 0.0))) == null || this.Method467(vec3d2) || Class516.Method1288(entity) && !Field301.getValue().booleanValue()) continue;
             GL11.glPushMatrix();
             int n2 = -1;
-            if (((Boolean)Field297.getValue()).booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
+            if (Field297.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
                 n = NewGui.INSTANCE.Field1133.Method428(entity);
                 n2 = new Color(255, n, n).hashCode();
             } else {
-                n2 = Class492.Method1989(entity.getName()) && (Boolean)Field299.getValue() != false ? Color.CYAN.hashCode() : ((Boolean)Field298.getValue() != false ? this.Method468(entity.getDistance((Entity)Tracers.mc.player)) : ((ColorValue)Field300.getValue()).Method774());
+                n2 = Class492.Method1989(entity.getName()) && Field299.getValue() != false ? Color.CYAN.hashCode() : (Field298.getValue() != false ? this.Method468(entity.getDistance(Tracers.mc.player)) : Field300.getValue().Method774());
             }
             n = n2 >> 24 & 0xFF;
             int n3 = n2 >> 16 & 0xFF;
             int n4 = n2 >> 8 & 0xFF;
             int n5 = n2 & 0xFF;
-            Color color = new Color(n3, n4, n5, (int)((Boolean)Field302.getValue() != false ? MathHelper.clamp((float)(255.0f - 255.0f / (float)((Integer)Field303.getValue()).intValue() * Tracers.mc.player.getDistance(entity)), (float)100.0f, (float)255.0f) : (float)n));
+            Color color = new Color(n3, n4, n5, (int)(Field302.getValue() != false ? MathHelper.clamp(255.0f - 255.0f / (float) Field303.getValue().intValue() * Tracers.mc.player.getDistance(entity), 100.0f, 255.0f) : (float)n));
             int n6 = Display.getWidth() / 2 / (Tracers.mc.gameSettings.guiScale == 0 ? 1 : Tracers.mc.gameSettings.guiScale);
             int n7 = Display.getHeight() / 2 / (Tracers.mc.gameSettings.guiScale == 0 ? 1 : Tracers.mc.gameSettings.guiScale);
             float f = this.Method469(entity) - Tracers.mc.player.rotationYaw;
-            GL11.glTranslatef((float)n6, (float)n7, (float)0.0f);
-            GL11.glRotatef((float)f, (float)0.0f, (float)0.0f, (float)1.0f);
-            GL11.glTranslatef((float)(-n6), (float)(-n7), (float)0.0f);
-            Class516.Method1270(n6, n7 - (Integer)Field304.getValue(), ((Float)Field305.getValue()).floatValue() * 5.0f, 2.0f, 1.0f, false, 1.0f, color.getRGB());
-            GL11.glTranslatef((float)n6, (float)n7, (float)0.0f);
-            GL11.glRotatef((float)(-f), (float)0.0f, (float)0.0f, (float)1.0f);
-            GL11.glTranslatef((float)(-n6), (float)(-n7), (float)0.0f);
-            GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GL11.glTranslatef((float)n6, (float)n7, 0.0f);
+            GL11.glRotatef(f, 0.0f, 0.0f, 1.0f);
+            GL11.glTranslatef((float)(-n6), (float)(-n7), 0.0f);
+            Class516.Method1270(n6, n7 - Field304.getValue(), Field305.getValue().floatValue() * 5.0f, 2.0f, 1.0f, false, 1.0f, color.getRGB());
+            GL11.glTranslatef((float)n6, (float)n7, 0.0f);
+            GL11.glRotatef(-f, 0.0f, 0.0f, 1.0f);
+            GL11.glTranslatef((float)(-n6), (float)(-n7), 0.0f);
+            GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
             GL11.glPopMatrix();
         }
-        GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     }
 
     /*
@@ -106,8 +106,7 @@ extends Module {
         int n3 = Tracers.mc.gameSettings.guiScale == 0 ? 1 : Tracers.mc.gameSettings.guiScale;
         if (!(vec3d.y / (double)n3 >= 0.0)) return false;
         int n4 = Tracers.mc.gameSettings.guiScale == 0 ? 1 : Tracers.mc.gameSettings.guiScale;
-        if (!(vec3d.y / (double)n4 <= (double)Display.getHeight())) return false;
-        return true;
+        return vec3d.y / (double) n4 <= (double) Display.getHeight();
     }
 
     public int Method468(float f) {
@@ -122,7 +121,7 @@ extends Module {
     }
 
     public Tracers() {
-        super("Tracers", Category.RENDER, new String[0]);
+        super("Tracers", Category.RENDER);
     }
 
     @Subscriber
@@ -135,35 +134,35 @@ extends Module {
         }
         for (Entity entity : Tracers.mc.world.loadedEntityList) {
             int n;
-            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= ((Float)Field306.getValue()).floatValue())) continue;
+            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= Field306.getValue().floatValue())) continue;
             Vec3d vec3d = Class502.Method1393(entity, class89.Method436()).subtract(((IRenderManager)mc.getRenderManager()).Method69(), ((IRenderManager)mc.getRenderManager()).Method70(), ((IRenderManager)mc.getRenderManager()).Method71());
-            GL11.glBlendFunc((int)770, (int)771);
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-            GlStateManager.glLineWidth((float)((Float)Field305.getValue()).floatValue());
+            GL11.glBlendFunc(770, 771);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+            GlStateManager.glLineWidth(Field305.getValue().floatValue());
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask((boolean)false);
+            GlStateManager.depthMask(false);
             GlStateManager.enableBlend();
             GlStateManager.disableDepth();
             GlStateManager.disableLighting();
             GlStateManager.disableCull();
             GlStateManager.enableAlpha();
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f);
             boolean bl = Tracers.mc.gameSettings.viewBobbing;
             Tracers.mc.gameSettings.viewBobbing = false;
             ((IEntityRenderer)Tracers.mc.entityRenderer).Method1908(class89.Method436(), 0);
             Vec3d vec3d2 = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Tracers.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Tracers.mc.player.rotationYaw)));
-            if (((Boolean)Field297.getValue()).booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
+            if (Field297.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
                 int n2 = NewGui.INSTANCE.Field1133.Method428(entity);
                 n = new Color(255, n2, n2).hashCode();
             } else {
-                n = Class492.Method1989(entity.getName()) && (Boolean)Field299.getValue() != false ? Color.CYAN.hashCode() : ((Boolean)Field298.getValue() != false ? this.Method468(entity.getDistance((Entity)Tracers.mc.player)) : ((ColorValue)Field300.getValue()).Method774());
+                n = Class492.Method1989(entity.getName()) && Field299.getValue() != false ? Color.CYAN.hashCode() : (Field298.getValue() != false ? this.Method468(entity.getDistance(Tracers.mc.player)) : Field300.getValue().Method774());
             }
-            Class502.Method1408((float)vec3d2.x, (float)vec3d2.y + Tracers.mc.player.getEyeHeight(), (float)vec3d2.z, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z, ((Float)Field305.getValue()).floatValue(), n);
-            Class502.Method1408((float)vec3d.x, (float)vec3d.y, (float)vec3d.z, (float)vec3d.x, (float)vec3d.y + entity.getEyeHeight(), (float)vec3d.z, ((Float)Field305.getValue()).floatValue(), n);
+            Class502.Method1408((float)vec3d2.x, (float)vec3d2.y + Tracers.mc.player.getEyeHeight(), (float)vec3d2.z, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z, Field305.getValue().floatValue(), n);
+            Class502.Method1408((float)vec3d.x, (float)vec3d.y, (float)vec3d.z, (float)vec3d.x, (float)vec3d.y + entity.getEyeHeight(), (float)vec3d.z, Field305.getValue().floatValue(), n);
             Tracers.mc.gameSettings.viewBobbing = bl;
             ((IEntityRenderer)Tracers.mc.entityRenderer).Method1908(class89.Method436(), 0);
             GlStateManager.enableCull();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();
             GlStateManager.enableBlend();
             GlStateManager.enableDepth();

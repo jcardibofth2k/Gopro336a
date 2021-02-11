@@ -18,14 +18,14 @@ extends Command {
 
     public void Method508() {
         this.Field348 = false;
-        Field123.setRenderViewEntity((Entity) SpectateCommand.Field123.player);
+        Field123.setRenderViewEntity(SpectateCommand.Field123.player);
         Logger.Method1118("Stopped spectating " + Command.Field122 + "b" + this.Field347.getName());
         this.Field347 = null;
     }
 
     public SpectateCommand() {
         super("spectate", "Makes you spectate other players", new Class595("<player>"));
-        MinecraftForge.EVENT_BUS.register((Object)this);
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Subscriber
@@ -88,7 +88,7 @@ extends Command {
         if (SpectateCommand.Field123.world.getPlayerEntityByName(stringArray[1]) != null) {
             this.Field347 = SpectateCommand.Field123.world.getPlayerEntityByName(stringArray[1]);
             this.Field348 = true;
-            Field123.setRenderViewEntity((Entity)this.Field347);
+            Field123.setRenderViewEntity(this.Field347);
             Logger.Method1118("You are now spectating " + Command.Field122 + "b" + this.Field347.getName());
         } else {
             Logger.Method1118("Cant find player " + Command.Field122 + "b" + stringArray[1]);

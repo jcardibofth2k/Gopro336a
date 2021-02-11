@@ -52,7 +52,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
    private final String extraNbtTag;
 
    public BlockItemPackets1_13(Protocol1_12_2To1_13 protocol) {
-      super(protocol, (TranslatableRewriter)null);
+      super(protocol, null);
       this.extraNbtTag = "VB|" + protocol.getClass().getSimpleName() + "|2";
    }
 
@@ -61,7 +61,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.COOLDOWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.COOLDOWN, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -81,7 +81,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.BLOCK_ACTION, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.BLOCK_ACTION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -117,7 +117,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.BLOCK_ENTITY_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.BLOCK_ENTITY_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -134,7 +134,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.UNLOAD_CHUNK, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.UNLOAD_CHUNK, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -151,7 +151,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.BLOCK_CHANGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.handler(new PacketHandler() {
@@ -166,7 +166,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.MULTI_BLOCK_CHANGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.MULTI_BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.INT);
@@ -192,14 +192,14 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.WINDOW_ITEMS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.WINDOW_ITEMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.FLAT_ITEM_ARRAY, Type.ITEM_ARRAY);
             this.handler(BlockItemPackets1_13.this.itemArrayHandler(Type.ITEM_ARRAY));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SET_SLOT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SET_SLOT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -207,7 +207,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             this.handler(BlockItemPackets1_13.this.itemToClientHandler(Type.ITEM));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.CHUNK_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                ClientWorld clientWorld = (ClientWorld)wrapper.user().get(ClientWorld.class);
@@ -305,7 +305,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.EFFECT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.EFFECT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.POSITION);
@@ -327,7 +327,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.MAP_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.MAP_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.BYTE);
@@ -358,7 +358,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.ENTITY_EQUIPMENT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.ENTITY_EQUIPMENT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.VAR_INT);
@@ -366,7 +366,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             this.handler(BlockItemPackets1_13.this.itemToClientHandler(Type.ITEM));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.WINDOW_PROPERTY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.WINDOW_PROPERTY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -381,14 +381,14 @@ public class BlockItemPackets1_13 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.CREATIVE_INVENTORY_ACTION, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_12_1.CREATIVE_INVENTORY_ACTION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.SHORT);
             this.map(Type.ITEM, Type.FLAT_ITEM);
             this.handler(BlockItemPackets1_13.this.itemToServerHandler(Type.FLAT_ITEM));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.CLICK_WINDOW, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_12_1.CLICK_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -715,7 +715,7 @@ public class BlockItemPackets1_13 extends ItemRewriter {
 
             if (tag.isEmpty()) {
                tag = null;
-               item.setTag((CompoundTag)null);
+               item.setTag(null);
             }
          }
 
@@ -919,15 +919,15 @@ public class BlockItemPackets1_13 extends ItemRewriter {
       if (FlowerPotHandler.isFlowah(blockState)) {
          BackwardsBlockEntityProvider beProvider = (BackwardsBlockEntityProvider)Via.getManager().getProviders().get(BackwardsBlockEntityProvider.class);
          CompoundTag nbt = beProvider.transform(user, position, "minecraft:flower_pot");
-         PacketWrapper blockUpdateRemove = PacketWrapper.create(11, (ByteBuf)null, user);
+         PacketWrapper blockUpdateRemove = PacketWrapper.create(11, null, user);
          blockUpdateRemove.write(Type.POSITION, position);
          blockUpdateRemove.write(Type.VAR_INT, 0);
          blockUpdateRemove.scheduleSend(Protocol1_12_2To1_13.class);
-         PacketWrapper blockCreate = PacketWrapper.create(11, (ByteBuf)null, user);
+         PacketWrapper blockCreate = PacketWrapper.create(11, null, user);
          blockCreate.write(Type.POSITION, position);
          blockCreate.write(Type.VAR_INT, Protocol1_12_2To1_13.MAPPINGS.getNewBlockStateId(blockState));
          blockCreate.scheduleSend(Protocol1_12_2To1_13.class);
-         PacketWrapper wrapper = PacketWrapper.create(9, (ByteBuf)null, user);
+         PacketWrapper wrapper = PacketWrapper.create(9, null, user);
          wrapper.write(Type.POSITION, position);
          wrapper.write(Type.UNSIGNED_BYTE, Short.valueOf((short)5));
          wrapper.write(Type.NBT, nbt);

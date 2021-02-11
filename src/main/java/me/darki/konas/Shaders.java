@@ -16,7 +16,7 @@ extends Module {
     public Setting<SecretShaderMode> Field528 = new Setting<>("Shader", SecretShaderMode.ANTIALIAS);
 
     public Shaders() {
-        super("Shaders", "Enable 1.8 shaders", Category.RENDER, new String[0]);
+        super("Shaders", "Enable 1.8 shaders", Category.RENDER);
     }
 
     @Subscriber
@@ -39,7 +39,7 @@ extends Module {
                 StringBuilder stringBuilder4 = stringBuilder3.append(string);
                 Setting<SecretShaderMode> setting = this.Field528;
                 Object t = setting.getValue();
-                SecretShaderMode secretShaderMode = (SecretShaderMode)((Object)t);
+                SecretShaderMode secretShaderMode = (SecretShaderMode) t;
                 String string2 = secretShaderMode.name();
                 Locale locale = Locale.ROOT;
                 String string3 = string2.toLowerCase(locale);

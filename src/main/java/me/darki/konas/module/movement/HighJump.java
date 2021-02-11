@@ -12,14 +12,14 @@ extends Module {
     public static Setting<Boolean> ground = new Setting<>("Ground", true);
 
     public HighJump() {
-        super("HighJump", Category.MOVEMENT, new String[0]);
+        super("HighJump", Category.MOVEMENT);
     }
 
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block0: {
-            if (!HighJump.mc.player.movementInput.jump || ((Boolean) ground.getValue()).booleanValue() && !HighJump.mc.player.onGround) break block0;
-            HighJump.mc.player.motionY = (Double) height.getValue();
+            if (!HighJump.mc.player.movementInput.jump || ground.getValue().booleanValue() && !HighJump.mc.player.onGround) break block0;
+            HighJump.mc.player.motionY = height.getValue();
             moveEvent.setY(HighJump.mc.player.motionY);
         }
     }

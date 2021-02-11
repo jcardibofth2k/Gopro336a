@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.darki.konas.util.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
@@ -83,11 +84,11 @@ implements Class552 {
     }
 
     public void Method855(ArrayList<String> arrayList, int n, int n2, int n3) {
-        this.Method828(String.join((CharSequence)"\n\r", arrayList), n, n2, n3);
+        this.Method828(String.join("\n\r", arrayList), n, n2, n3);
     }
 
     public void Method856(String string, float f, float f2, int n) {
-        this.Method827(StringUtils.stripControlCodes((String)string), f + 0.5f, f2 + 0.5f, n);
+        this.Method827(StringUtils.stripControlCodes(string), f + 0.5f, f2 + 0.5f, n);
         this.Method827(string, f, f2, n);
     }
 
@@ -110,7 +111,7 @@ implements Class552 {
         if (string == null || string.isEmpty()) {
             return 0;
         }
-        this.Method828(StringUtils.stripControlCodes((String)string), f + 0.5f, f2 + 0.5f, 0);
+        this.Method828(StringUtils.stripControlCodes(string), f + 0.5f, f2 + 0.5f, 0);
         return this.Method828(string, f, f2, n);
     }
 
@@ -142,8 +143,8 @@ implements Class552 {
 
     public void Method859(String string, int n, int n2, int n3, double d) {
         GL11.glPushMatrix();
-        GL11.glTranslated((double)n, (double)n2, (double)0.0);
-        GL11.glScaled((double)d, (double)d, (double)d);
+        GL11.glTranslated(n, n2, 0.0);
+        GL11.glScaled(d, d, d);
         this.Method827(string, 0.0f, 0.0f, n3);
         GL11.glPopMatrix();
     }
@@ -165,8 +166,8 @@ implements Class552 {
 
     public void Method861(String string, int n, int n2, int n3, double d) {
         GL11.glPushMatrix();
-        GL11.glTranslated((double)n, (double)n2, (double)0.0);
-        GL11.glScaled((double)d, (double)d, (double)d);
+        GL11.glTranslated(n, n2, 0.0);
+        GL11.glScaled(d, d, d);
         this.Method828(string, 0.0f, 0.0f, n3);
         GL11.glPopMatrix();
     }
@@ -272,20 +273,20 @@ implements Class552 {
         }
         this.Field809 = scaledResolution.getScaleFactor();
         GL11.glPushMatrix();
-        GlStateManager.scale((float)(1.0f / this.Field809), (float)(1.0f / this.Field809), (float)(1.0f / this.Field809));
+        GlStateManager.scale(1.0f / this.Field809, 1.0f / this.Field809, 1.0f / this.Field809);
         f2 *= this.Field809;
         float f4 = f *= this.Field809;
         float f5 = (float)(n >> 16 & 0xFF) / 255.0f;
         float f6 = (float)(n >> 8 & 0xFF) / 255.0f;
         float f7 = (float)(n & 0xFF) / 255.0f;
         float f8 = (float)(n >> 24 & 0xFF) / 255.0f;
-        GlStateManager.color((float)f5, (float)f6, (float)f7, (float)f8);
+        GlStateManager.color(f5, f6, f7, f8);
         int n4 = n;
         char[] cArray = string.toCharArray();
         GlStateManager.disableLighting();
         GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate((int)770, (int)771, (int)1, (int)0);
-        GlStateManager.blendFunc((int)770, (int)771);
+        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.blendFunc(770, 771);
         String[] stringArray = ColorUtil.Field867.split(string);
         int n5 = 0;
         for (String string3 : stringArray) {
@@ -319,8 +320,8 @@ implements Class552 {
             }
             n5 += 2;
         }
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-        GlStateManager.bindTexture((int)0);
+        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.bindTexture(0);
         GlStateManager.popMatrix();
         return (int)this.Method862(string);
     }

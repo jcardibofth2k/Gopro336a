@@ -20,6 +20,6 @@ extends Element {
         if (PlayerViewer.mc.player == null || PlayerViewer.mc.world == null) {
             return;
         }
-        MathUtil.Method1090((int)(this.Method2320() + this.Method2329() / 2.0f), (int)(this.Method2324() + this.Method2322()), 50, -30.0f, 0.0f, (EntityPlayer)Minecraft.getMinecraft().player, (Boolean)this.Field1987.getValue(), (Boolean)this.Field1988.getValue());
+        MathUtil.Method1090((int)(this.Method2320() + this.Method2329() / 2.0f), (int)(this.Method2324() + this.Method2322()), 50, -30.0f, 0.0f, Minecraft.getMinecraft().player, this.Field1987.getValue(), this.Field1988.getValue());
     }
 }

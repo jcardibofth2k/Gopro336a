@@ -11,7 +11,7 @@ public class SkullHandler implements BackwardsBlockEntityProvider.BackwardsBlock
    public CompoundTag transform(UserConnection user, int blockId, CompoundTag tag) {
       int diff = blockId - 5447;
       int pos = diff % 20;
-      byte type = (byte)((int)Math.floor((double)((float)diff / 20.0F)));
+      byte type = (byte)((int)Math.floor((float)diff / 20.0F));
       tag.put("SkullType", new ByteTag(type));
       if (pos < 4) {
          return tag;

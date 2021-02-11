@@ -14,6 +14,6 @@ extends Module {
     }
 
     public Render() {
-        super("Render", "Customize global rendering options", Category.CLIENT, new String[0]);
+        super("Render", "Customize global rendering options", Category.CLIENT);
     }
 }

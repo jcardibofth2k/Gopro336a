@@ -32,12 +32,12 @@ public class BaseChunk implements Chunk {
    }
 
    public BaseChunk(int x, int z, boolean fullChunk, boolean ignoreOldLightData, int bitmask, ChunkSection[] sections, int[] biomeData, CompoundTag heightMap, List blockEntities) {
-      this(x, z, fullChunk, ignoreOldLightData, (BitSet)null, sections, biomeData, heightMap, blockEntities);
+      this(x, z, fullChunk, ignoreOldLightData, null, sections, biomeData, heightMap, blockEntities);
       this.bitmask = bitmask;
    }
 
    public BaseChunk(int x, int z, boolean fullChunk, boolean ignoreOldLightData, int bitmask, ChunkSection[] sections, int[] biomeData, List blockEntities) {
-      this(x, z, fullChunk, ignoreOldLightData, bitmask, sections, biomeData, (CompoundTag)null, blockEntities);
+      this(x, z, fullChunk, ignoreOldLightData, bitmask, sections, biomeData, null, blockEntities);
    }
 
    public boolean isBiomeData() {

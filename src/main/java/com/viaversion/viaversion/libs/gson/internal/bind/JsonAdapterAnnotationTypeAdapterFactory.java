@@ -26,7 +26,7 @@ public final class JsonAdapterAnnotationTypeAdapterFactory implements TypeAdapte
       Object instance = constructorConstructor.get(TypeToken.get(annotation.value())).construct();
       Object typeAdapter;
       if (instance instanceof TypeAdapter) {
-         typeAdapter = (TypeAdapter)instance;
+         typeAdapter = instance;
       } else if (instance instanceof TypeAdapterFactory) {
          typeAdapter = ((TypeAdapterFactory)instance).create(gson, type);
       } else {
@@ -36,7 +36,7 @@ public final class JsonAdapterAnnotationTypeAdapterFactory implements TypeAdapte
 
          JsonSerializer serializer = instance instanceof JsonSerializer ? (JsonSerializer)instance : null;
          JsonDeserializer deserializer = instance instanceof JsonDeserializer ? (JsonDeserializer)instance : null;
-         typeAdapter = new TreeTypeAdapter(serializer, deserializer, gson, type, (TypeAdapterFactory)null);
+         typeAdapter = new TreeTypeAdapter(serializer, deserializer, gson, type, null);
       }
 
       if (typeAdapter != null && annotation.nullSafe()) {

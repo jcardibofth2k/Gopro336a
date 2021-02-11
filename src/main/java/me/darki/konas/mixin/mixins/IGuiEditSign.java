@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={GuiEditSign.class})
 public interface IGuiEditSign {
     @Accessor(value="tileSign")
-    public TileEntitySign Method48();
+    TileEntitySign Method48();
 }

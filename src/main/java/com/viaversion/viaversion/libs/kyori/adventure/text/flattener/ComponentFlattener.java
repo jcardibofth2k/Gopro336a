@@ -25,7 +25,7 @@ public interface ComponentFlattener extends Buildable {
 
    void flatten(@NotNull final Component input, @NotNull final FlattenerListener listener);
 
-   public interface Builder extends Buildable.Builder {
+   interface Builder extends Buildable.Builder {
       @NotNull
       ComponentFlattener.Builder mapper(@NotNull final Class type, @NotNull final Function converter);
 

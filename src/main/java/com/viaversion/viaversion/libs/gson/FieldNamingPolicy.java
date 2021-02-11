@@ -35,7 +35,7 @@ public enum FieldNamingPolicy implements FieldNamingStrategy {
       }
    };
 
-   private FieldNamingPolicy() {
+   FieldNamingPolicy() {
    }
 
    static String separateCamelCase(String name, String separator) {

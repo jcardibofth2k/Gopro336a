@@ -11,15 +11,15 @@ import com.viaversion.viaversion.protocols.protocol1_15to1_14_4.Protocol1_15To1_
 
 public class PlayerPackets {
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_14.RESPAWN, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_14.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler((wrapper) -> {
                wrapper.write(Type.LONG, 0L);
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_14.JOIN_GAME, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_14.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -40,6 +40,6 @@ public class PlayerPackets {
                wrapper.write(Type.BOOLEAN, !Via.getConfig().is1_15InstantRespawn());
             });
          }
-      }));
+      });
    }
 }

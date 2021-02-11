@@ -52,7 +52,7 @@ public class BaseProtocol extends AbstractSimpleProtocol {
                         Via.getManager().getProtocolManager().completeMappingDataLoading(entry.getProtocol().getClass());
                      }
 
-                     pipeline.add((Collection)protocols);
+                     pipeline.add(protocols);
                      ProtocolVersion protocol = ProtocolVersion.getProtocol(serverProtocol);
                      wrapper.set(Type.VAR_INT, 0, protocol.getOriginalVersion());
                   }

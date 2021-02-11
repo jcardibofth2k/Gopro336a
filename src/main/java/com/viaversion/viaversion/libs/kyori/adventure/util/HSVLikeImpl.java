@@ -45,7 +45,7 @@ final class HSVLikeImpl implements HSVLike {
    }
 
    public int hashCode() {
-      return Objects.hash(new Object[]{this.field_84, this.field_85, this.field_86});
+      return Objects.hash(this.field_84, this.field_85, this.field_86);
    }
 
    public String toString() {

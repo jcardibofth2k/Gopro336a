@@ -22,7 +22,7 @@ extends Class164 {
     }
 
     public void drawButtonForegroundLayer(int n, int n2) {
-        String string = I18n.format((String)this.Field1788.getName(), (Object[])new Object[0]);
+        String string = I18n.format(this.Field1788.getName());
         if (this.Field1789 >= 3 && this.Field1788 != MobEffects.REGENERATION) {
             string = string + " II";
         }

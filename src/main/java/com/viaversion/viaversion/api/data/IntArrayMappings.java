@@ -39,7 +39,7 @@ public class IntArrayMappings implements Mappings {
    }
 
    public IntArrayMappings(int size, JsonArray oldMapping, JsonArray newMapping, boolean warnOnMissing) {
-      this(size, oldMapping, newMapping, (JsonObject)null, warnOnMissing);
+      this(size, oldMapping, newMapping, null, warnOnMissing);
    }
 
    public IntArrayMappings(JsonArray oldMapping, JsonArray newMapping, boolean warnOnMissing) {

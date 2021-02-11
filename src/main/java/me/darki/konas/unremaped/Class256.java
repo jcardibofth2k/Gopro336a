@@ -32,9 +32,9 @@ extends Module {
             }
         } else if (class24.getPacket() instanceof CPacketClickWindow) {
             CPacketClickWindow cPacketClickWindow = (CPacketClickWindow)class24.getPacket();
-            if (cPacketClickWindow.getClickType().equals((Object)ClickType.THROW) && this.Field2055 && this.Field2054 != null) {
+            if (cPacketClickWindow.getClickType().equals(ClickType.THROW) && this.Field2055 && this.Field2054 != null) {
                 this.Field2056 = true;
-            } else if (cPacketClickWindow.getClickType().equals((Object)ClickType.THROW) && !this.Field2055) {
+            } else if (cPacketClickWindow.getClickType().equals(ClickType.THROW) && !this.Field2055) {
                 this.Field2056 = false;
                 this.Field2054 = null;
             }
@@ -57,7 +57,7 @@ extends Module {
                 float f = (float)(class17.Method252().x - (double)class17.Method251().getX());
                 float f2 = (float)(class17.Method252().y - (double)class17.Method251().getY());
                 float f3 = (float)(class17.Method252().z - (double)class17.Method251().getZ());
-                Class256.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(class17.Method251(), class17.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
+                Class256.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(class17.Method251(), class17.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
                 this.Field2055 = true;
             } else if (block instanceof BlockContainer) {
                 this.Field2055 = false;
@@ -79,13 +79,13 @@ extends Module {
     }
 
     public Class256() {
-        super("EnderBackpack", "Closes your enderchest GUI and allows you to open it whenever you want", Category.EXPLOIT, new String[0]);
+        super("EnderBackpack", "Closes your enderchest GUI and allows you to open it whenever you want", Category.EXPLOIT);
     }
 
     @Override
     public void onDisable() {
         if (Class256.mc.world != null) {
-            Class256.mc.player.connection.sendPacket((Packet)new CPacketCloseWindow(Class256.mc.player.inventoryContainer.windowId));
+            Class256.mc.player.connection.sendPacket(new CPacketCloseWindow(Class256.mc.player.inventoryContainer.windowId));
             this.Field2055 = false;
             this.Field2056 = false;
             this.Field2054 = null;
@@ -103,7 +103,7 @@ extends Module {
             if (!(class654.Method1161() instanceof GuiInventory) || !this.Field2055 || this.Field2054 == null) break block1;
             this.Field2056 = false;
             class654.setCanceled(true);
-            mc.displayGuiScreen((GuiScreen)this.Field2054);
+            mc.displayGuiScreen(this.Field2054);
         }
     }
 }

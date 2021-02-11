@@ -41,7 +41,7 @@ public class Triple {
          if (!Objects.equals(this.first, triple.first)) {
             return false;
          } else {
-            return !Objects.equals(this.second, triple.second) ? false : Objects.equals(this.third, triple.third);
+            return Objects.equals(this.second, triple.second) && Objects.equals(this.third, triple.third);
          }
       } else {
          return false;

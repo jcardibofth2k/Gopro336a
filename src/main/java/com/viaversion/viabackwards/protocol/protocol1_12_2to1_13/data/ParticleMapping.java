@@ -15,16 +15,16 @@ public class ParticleMapping {
    }
 
    private static ParticleMapping.ParticleData rewrite(int replacementId) {
-      return new ParticleMapping.ParticleData(replacementId, (1)null);
+      return new ParticleMapping.ParticleData(replacementId, (1)null)
    }
 
    private static ParticleMapping.ParticleData rewrite(int replacementId, ParticleMapping.ParticleHandler handler) {
-      return new ParticleMapping.ParticleData(replacementId, handler, (1)null);
+      return new ParticleMapping.ParticleData(replacementId, handler, (1)null)
    }
 
    static {
       ParticleMapping.ParticleHandler blockHandler = new 1();
-      particles = new ParticleMapping.ParticleData[]{rewrite(16), rewrite(20), rewrite(35), rewrite(37, blockHandler), rewrite(4), rewrite(29), rewrite(9), rewrite(44), rewrite(42), rewrite(19), rewrite(18), rewrite(30, new 2()), rewrite(13), rewrite(41), rewrite(10), rewrite(25), rewrite(43), rewrite(15), rewrite(2), rewrite(1), rewrite(46, blockHandler), rewrite(3), rewrite(6), rewrite(26), rewrite(21), rewrite(34), rewrite(14), rewrite(36, new 3()), rewrite(33), rewrite(31), rewrite(12), rewrite(27), rewrite(22), rewrite(23), rewrite(0), rewrite(24), rewrite(39), rewrite(11), rewrite(48), rewrite(12), rewrite(45), rewrite(47), rewrite(7), rewrite(5), rewrite(17), rewrite(4), rewrite(4), rewrite(4), rewrite(18), rewrite(18)};
+      particles = new ParticleMapping.ParticleData[]{rewrite(16), rewrite(20), rewrite(35), rewrite(37, blockHandler), rewrite(4), rewrite(29), rewrite(9), rewrite(44), rewrite(42), rewrite(19), rewrite(18), rewrite(30, new 2()), rewrite(13), rewrite(41), rewrite(10), rewrite(25), rewrite(43), rewrite(15), rewrite(2), rewrite(1), rewrite(46, blockHandler), rewrite(3), rewrite(6), rewrite(26), rewrite(21), rewrite(34), rewrite(14), rewrite(36, new 3()), rewrite(33), rewrite(31), rewrite(12), rewrite(27), rewrite(22), rewrite(23), rewrite(0), rewrite(24), rewrite(39), rewrite(11), rewrite(48), rewrite(12), rewrite(45), rewrite(47), rewrite(7), rewrite(5), rewrite(17), rewrite(4), rewrite(4), rewrite(4), rewrite(18), rewrite(18)}
    }
 
    public static final class ParticleData {

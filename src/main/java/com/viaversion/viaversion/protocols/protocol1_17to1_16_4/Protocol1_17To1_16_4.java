@@ -101,7 +101,7 @@ public final class Protocol1_17To1_16_4 extends AbstractProtocol {
             });
          }
       });
-      this.registerClientbound(ClientboundPackets1_16_2.TITLE, (ClientboundPacketType)null, new PacketRemapper() {
+      this.registerClientbound(ClientboundPackets1_16_2.TITLE, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int type = (Integer)wrapper.read(Type.VAR_INT);
@@ -142,7 +142,7 @@ public final class Protocol1_17To1_16_4 extends AbstractProtocol {
             this.map(Type.FLOAT);
             this.map(Type.FLOAT);
             this.handler((wrapper) -> {
-               wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
+               wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
             });
          }
       });

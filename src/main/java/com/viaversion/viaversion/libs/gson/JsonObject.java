@@ -29,19 +29,19 @@ public final class JsonObject extends JsonElement {
    }
 
    public void addProperty(String property, String value) {
-      this.add(property, (JsonElement)(value == null ? JsonNull.INSTANCE : new JsonPrimitive(value)));
+      this.add(property, value == null ? JsonNull.INSTANCE : new JsonPrimitive(value));
    }
 
    public void addProperty(String property, Number value) {
-      this.add(property, (JsonElement)(value == null ? JsonNull.INSTANCE : new JsonPrimitive(value)));
+      this.add(property, value == null ? JsonNull.INSTANCE : new JsonPrimitive(value));
    }
 
    public void addProperty(String property, Boolean value) {
-      this.add(property, (JsonElement)(value == null ? JsonNull.INSTANCE : new JsonPrimitive(value)));
+      this.add(property, value == null ? JsonNull.INSTANCE : new JsonPrimitive(value));
    }
 
    public void addProperty(String property, Character value) {
-      this.add(property, (JsonElement)(value == null ? JsonNull.INSTANCE : new JsonPrimitive(value)));
+      this.add(property, value == null ? JsonNull.INSTANCE : new JsonPrimitive(value));
    }
 
    public Set entrySet() {

@@ -126,7 +126,7 @@ implements Class515 {
             ++this.Field1368;
             if (this.Field1366.Method1438().isEmpty()) continue;
             this.Field1362 = this.Field1366.Method1439();
-            if (this.Field1363.equals((Object)this.Field1362)) {
+            if (this.Field1363.equals(this.Field1362)) {
                 this.Method1427();
                 return this.Field1367;
             }
@@ -135,8 +135,8 @@ implements Class515 {
                 return this.Field1367;
             }
             for (Class498 class498 : this.Method1425(this.Field1362)) {
-                float f = this.Field1364.get((Object)this.Field1362).floatValue() + this.Method1418(this.Field1362, class498);
-                if (this.Field1364.containsKey((Object)class498) && this.Field1364.get((Object)class498).floatValue() <= f) continue;
+                float f = this.Field1364.get(this.Field1362).floatValue() + this.Method1418(this.Field1362, class498);
+                if (this.Field1364.containsKey(class498) && this.Field1364.get(class498).floatValue() <= f) continue;
                 this.Field1364.put(class498, Float.valueOf(f));
                 this.Field1365.put(class498, this.Field1362);
                 this.Field1366.Method1437(class498, f + this.Method1416(class498));
@@ -164,8 +164,7 @@ implements Class515 {
         BlockPos blockPos4 = blockPos2.offset(enumFacing2);
         if (!this.Method1426(blockPos2)) return false;
         if (!this.Method1426(blockPos3)) return false;
-        if (!this.Method1429(blockPos, blockPos4)) return false;
-        return true;
+        return this.Method1429(blockPos, blockPos4);
     }
 
     public ArrayList<Class498> Method1425(Class498 class498) {
@@ -210,7 +209,7 @@ implements Class515 {
                 arrayList.add(new Class498(blockPos8));
             }
         }
-        if (class498.getY() < 256 && this.Method1417(blockPos9.up()) && (bl || this.Method1415(class498)) && (this.Method1415(class498) || this.Field1363.equals((Object)blockPos9) || this.Method1420(blockPos) || this.Method1420(blockPos2) || this.Method1420(blockPos3) || this.Method1420(blockPos4))) {
+        if (class498.getY() < 256 && this.Method1417(blockPos9.up()) && (bl || this.Method1415(class498)) && (this.Method1415(class498) || this.Field1363.equals(blockPos9) || this.Method1420(blockPos) || this.Method1420(blockPos2) || this.Method1420(blockPos3) || this.Method1420(blockPos4))) {
             arrayList.add(new Class498(blockPos9, bl));
         }
         if (class498.getY() > 0 && this.Method1417(blockPos10) && this.Method1421(blockPos10.down()) && this.Method1423(class498)) {
@@ -246,7 +245,7 @@ implements Class515 {
         }
         while (class498 != null) {
             this.Field1367.add(class498);
-            class498 = this.Field1365.get((Object)class498);
+            class498 = this.Field1365.get(class498);
         }
         Collections.reverse(this.Field1367);
     }

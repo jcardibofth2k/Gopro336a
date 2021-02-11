@@ -16,8 +16,8 @@ public class MixinKeyBinding {
 
     @Inject(method={"isKeyDown"}, at={@At(value="RETURN")}, cancellable=true)
     private void Method458(CallbackInfoReturnable<Boolean> isKeyDown) {
-        Class658 event = new Class658((Boolean)isKeyDown.getReturnValue(), this.Field284);
+        Class658 event = new Class658(isKeyDown.getReturnValue(), this.Field284);
         EventDispatcher.Companion.dispatch(event);
-        isKeyDown.setReturnValue((Object)event.Method278());
+        isKeyDown.setReturnValue(event.Method278());
     }
 }

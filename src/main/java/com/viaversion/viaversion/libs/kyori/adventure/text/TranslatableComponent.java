@@ -15,7 +15,7 @@ public interface TranslatableComponent extends BuildableComponent, ScopedCompone
    )
    @NotNull
    default TranslatableComponent key(@NotNull final Translatable translatable) {
-      return this.key(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey());
+      return this.key(Objects.requireNonNull(translatable, "translatable").translationKey());
    }
 
    @Contract(
@@ -39,13 +39,13 @@ public interface TranslatableComponent extends BuildableComponent, ScopedCompone
    @NotNull
    TranslatableComponent args(@NotNull final List args);
 
-   public interface Builder extends ComponentBuilder {
+   interface Builder extends ComponentBuilder {
       @Contract(
          pure = true
       )
       @NotNull
       default TranslatableComponent.Builder key(@NotNull final Translatable translatable) {
-         return this.key(((Translatable)Objects.requireNonNull(translatable, "translatable")).translationKey());
+         return this.key(Objects.requireNonNull(translatable, "translatable").translationKey());
       }
 
       @Contract("_ -> this")

@@ -227,7 +227,7 @@ public final class TypeAdapters {
 
             for(int length = src.length(); i < length; ++i) {
                int value = src.get(i) ? 1 : 0;
-               out.value((long)value);
+               out.value(value);
             }
 
             out.endArray();
@@ -332,7 +332,7 @@ public final class TypeAdapters {
          }
 
          public void write(JsonWriter out, AtomicInteger value) throws IOException {
-            out.value((long)value.get());
+            out.value(value.get());
          }
       }).nullSafe();
       ATOMIC_INTEGER_FACTORY = newFactory(AtomicInteger.class, ATOMIC_INTEGER);
@@ -377,7 +377,7 @@ public final class TypeAdapters {
             int i = 0;
 
             for(int length = value.length(); i < length; ++i) {
-               out.value((long)value.get(i));
+               out.value(value.get(i));
             }
 
             out.endArray();
@@ -501,7 +501,7 @@ public final class TypeAdapters {
          }
 
          public void write(JsonWriter out, BigDecimal value) throws IOException {
-            out.value((Number)value);
+            out.value(value);
          }
       };
       BIG_INTEGER = new TypeAdapter() {
@@ -519,7 +519,7 @@ public final class TypeAdapters {
          }
 
          public void write(JsonWriter out, BigInteger value) throws IOException {
-            out.value((Number)value);
+            out.value(value);
          }
       };
       STRING_FACTORY = newFactory(String.class, STRING);
@@ -698,17 +698,17 @@ public final class TypeAdapters {
             } else {
                out.beginObject();
                out.name("year");
-               out.value((long)value.get(1));
+               out.value(value.get(1));
                out.name("month");
-               out.value((long)value.get(2));
+               out.value(value.get(2));
                out.name("dayOfMonth");
-               out.value((long)value.get(5));
+               out.value(value.get(5));
                out.name("hourOfDay");
-               out.value((long)value.get(11));
+               out.value(value.get(11));
                out.name("minute");
-               out.value((long)value.get(12));
+               out.value(value.get(12));
                out.name("second");
-               out.value((long)value.get(13));
+               out.value(value.get(13));
                out.endObject();
             }
          }
@@ -867,7 +867,7 @@ public final class TypeAdapters {
             for(int var4 = 0; var4 < var3; ++var4) {
                Enum constant = var2[var4];
                String name = constant.name();
-               SerializedName annotation = (SerializedName)classOfT.getField(name).getAnnotation(SerializedName.class);
+               SerializedName annotation = classOfT.getField(name).getAnnotation(SerializedName.class);
                if (annotation != null) {
                   name = annotation.value();
                   String[] var8 = annotation.alternate();

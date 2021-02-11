@@ -17,7 +17,7 @@ import com.viaversion.viaversion.protocols.protocol1_9to1_8.storage.InventoryTra
 
 public class InventoryPackets {
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_8.WINDOW_PROPERTY, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_8.WINDOW_PROPERTY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -45,8 +45,8 @@ public class InventoryPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.OPEN_WINDOW, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.OPEN_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.STRING);
@@ -69,8 +69,8 @@ public class InventoryPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.SET_SLOT, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.SET_SLOT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -84,7 +84,7 @@ public class InventoryPackets {
                      EntityTracker1_9 entityTracker = (EntityTracker1_9)wrapper.user().getEntityTracker(Protocol1_9To1_8.class);
                      short slotID = (Short)wrapper.get(Type.SHORT, 0);
                      byte windowId = ((Short)wrapper.get(Type.UNSIGNED_BYTE, 0)).byteValue();
-                     inventoryTracker.setItemId((short)windowId, slotID, stack == null ? 0 : stack.identifier());
+                     inventoryTracker.setItemId(windowId, slotID, stack == null ? 0 : stack.identifier());
                      entityTracker.syncShieldWithSword();
                   }
 
@@ -102,8 +102,8 @@ public class InventoryPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.WINDOW_ITEMS, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.WINDOW_ITEMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.ITEM_ARRAY);
@@ -151,20 +151,20 @@ public class InventoryPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.CLOSE_WINDOW, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.CLOSE_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   InventoryTracker inventoryTracker = (InventoryTracker)wrapper.user().get(InventoryTracker.class);
-                  inventoryTracker.setInventory((String)null);
+                  inventoryTracker.setInventory(null);
                   inventoryTracker.resetInventory((Short)wrapper.get(Type.UNSIGNED_BYTE, 0));
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.MAP_DATA, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.MAP_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.BYTE);
@@ -174,7 +174,7 @@ public class InventoryPackets {
                }
             });
          }
-      }));
+      });
       protocol.registerServerbound(ServerboundPackets1_9.CREATIVE_INVENTORY_ACTION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.SHORT);
@@ -199,13 +199,13 @@ public class InventoryPackets {
                   final short slot = (Short)wrapper.get(Type.SHORT, 0);
                   boolean throwItem = slot == 45;
                   if (throwItem) {
-                     wrapper.create(ClientboundPackets1_9.SET_SLOT, (PacketHandler)(new PacketHandler() {
+                     wrapper.create(ClientboundPackets1_9.SET_SLOT, new PacketHandler() {
                         public void handle(PacketWrapper wrapper) throws Exception {
                            wrapper.write(Type.UNSIGNED_BYTE, Short.valueOf((short)0));
                            wrapper.write(Type.SHORT, slot);
-                           wrapper.write(Type.ITEM, (Object)null);
+                           wrapper.write(Type.ITEM, null);
                         }
-                     })).send(Protocol1_9To1_8.class);
+                     }).send(Protocol1_9To1_8.class);
                      wrapper.set(Type.SHORT, 0, -999);
                   }
 
@@ -253,13 +253,13 @@ public class InventoryPackets {
                   }
 
                   if (throwItem) {
-                     wrapper.create(ClientboundPackets1_9.SET_SLOT, (PacketHandler)(new PacketHandler() {
+                     wrapper.create(ClientboundPackets1_9.SET_SLOT, new PacketHandler() {
                         public void handle(PacketWrapper wrapper) throws Exception {
                            wrapper.write(Type.UNSIGNED_BYTE, windowID);
                            wrapper.write(Type.SHORT, slot);
-                           wrapper.write(Type.ITEM, (Object)null);
+                           wrapper.write(Type.ITEM, null);
                         }
-                     })).scheduleSend(Protocol1_9To1_8.class);
+                     }).scheduleSend(Protocol1_9To1_8.class);
                      wrapper.set(Type.BYTE, 0, (byte)0);
                      wrapper.set(Type.BYTE, 1, (byte)0);
                      wrapper.set(Type.SHORT, 0, -999);
@@ -275,7 +275,7 @@ public class InventoryPackets {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   InventoryTracker inventoryTracker = (InventoryTracker)wrapper.user().get(InventoryTracker.class);
-                  inventoryTracker.setInventory((String)null);
+                  inventoryTracker.setInventory(null);
                   inventoryTracker.resetInventory((Short)wrapper.get(Type.UNSIGNED_BYTE, 0));
                }
             });
@@ -291,7 +291,7 @@ public class InventoryPackets {
                   if (entityTracker.isBlocking()) {
                      entityTracker.setBlocking(false);
                      if (!showShieldWhenSwordInHand) {
-                        entityTracker.setSecondHand((Item)null);
+                        entityTracker.setSecondHand(null);
                      }
                   }
 

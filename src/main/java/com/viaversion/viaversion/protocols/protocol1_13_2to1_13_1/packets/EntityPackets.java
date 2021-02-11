@@ -23,7 +23,7 @@ public class EntityPackets {
          }
 
       };
-      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_MOB, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -40,8 +40,8 @@ public class EntityPackets {
             this.map(Types1_13.METADATA_LIST, Types1_13_2.METADATA_LIST);
             this.handler(metaTypeHandler);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -53,13 +53,13 @@ public class EntityPackets {
             this.map(Types1_13.METADATA_LIST, Types1_13_2.METADATA_LIST);
             this.handler(metaTypeHandler);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.ENTITY_METADATA, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.ENTITY_METADATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Types1_13.METADATA_LIST, Types1_13_2.METADATA_LIST);
             this.handler(metaTypeHandler);
          }
-      }));
+      });
    }
 }

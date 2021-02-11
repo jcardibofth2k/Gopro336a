@@ -76,7 +76,7 @@ public class DataItem implements Item {
          } else if (this.amount != item.amount) {
             return false;
          } else {
-            return this.data != item.data ? false : Objects.equals(this.tag, item.tag);
+            return this.data == item.data && Objects.equals(this.tag, item.tag);
          }
       } else {
          return false;

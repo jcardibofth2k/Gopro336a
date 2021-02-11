@@ -21,7 +21,7 @@ extends Module {
     }
 
     public ViewPort() {
-        super("Viewport", "Modify your viewport", Category.RENDER, new String[0]);
+        super("Viewport", "Modify your viewport", Category.RENDER);
         Field501 = this;
     }
 
@@ -37,8 +37,8 @@ extends Module {
     }
 
     public static void Method570(float f, float f2, float f3, float f4, boolean bl) {
-        if (Field501.isEnabled() && (!bl || ((Boolean) hands.getValue()).booleanValue())) {
-            Project.gluPerspective((float)((Boolean) fov.getValue() != false ? (float)((Integer) angle.getValue()).intValue() : f), (float)((Boolean) aspect.getValue() != false ? ((Float) ratio.getValue()).floatValue() : f2), (float)f3, (float)f4);
+        if (Field501.isEnabled() && (!bl || hands.getValue().booleanValue())) {
+            Project.gluPerspective((float)(fov.getValue() != false ? (float) angle.getValue().intValue() : f), (float)(aspect.getValue() != false ? ratio.getValue().floatValue() : f2), (float)f3, (float)f4);
         } else {
             Project.gluPerspective((float)f, (float)f2, (float)f3, (float)f4);
         }

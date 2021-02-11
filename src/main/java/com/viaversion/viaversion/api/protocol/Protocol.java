@@ -15,7 +15,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 public interface Protocol {
    default void registerServerbound(State state, int oldPacketID, int newPacketID) {
-      this.registerServerbound(state, oldPacketID, newPacketID, (PacketRemapper)null);
+      this.registerServerbound(state, oldPacketID, newPacketID, null);
    }
 
    default void registerServerbound(State state, int oldPacketID, int newPacketID, PacketRemapper packetRemapper) {
@@ -31,7 +31,7 @@ public interface Protocol {
    }
 
    default void registerClientbound(State state, int oldPacketID, int newPacketID) {
-      this.registerClientbound(state, oldPacketID, newPacketID, (PacketRemapper)null);
+      this.registerClientbound(state, oldPacketID, newPacketID, null);
    }
 
    default void registerClientbound(State state, int oldPacketID, int newPacketID, PacketRemapper packetRemapper) {
@@ -51,7 +51,7 @@ public interface Protocol {
    void registerClientbound(ClientboundPacketType var1, ClientboundPacketType var2, @Nullable PacketRemapper var3);
 
    default void registerClientbound(ClientboundPacketType packetType, @Nullable ClientboundPacketType mappedPacketType) {
-      this.registerClientbound(packetType, mappedPacketType, (PacketRemapper)null);
+      this.registerClientbound(packetType, mappedPacketType, null);
    }
 
    void cancelClientbound(ClientboundPacketType var1);

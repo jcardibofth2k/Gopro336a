@@ -108,7 +108,7 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements Serializab
    }
 
    private void tryCapacity(long capacity) {
-      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((double)((float)capacity / this.field_42)))));
+      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((float)capacity / this.field_42))));
       if (needed > this.field_41) {
          this.rehash(needed);
       }
@@ -141,7 +141,7 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements Serializab
       if ((double)this.field_42 <= 0.5D) {
          this.ensureCapacity(m.size());
       } else {
-         this.tryCapacity((long)(this.size() + m.size()));
+         this.tryCapacity(this.size() + m.size());
       }
 
       super.putAll(m);
@@ -610,7 +610,7 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements Serializab
    }
 
    public boolean trim(int n) {
-      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((double)((float)n / this.field_42)));
+      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((float)n / this.field_42));
       if (l < this.field_41 && this.size <= HashCommon.maxFill(l, this.field_42)) {
          try {
             this.rehash(l);
@@ -665,8 +665,8 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements Serializab
       c.values = null;
       c.entries = null;
       c.containsNullKey = this.containsNullKey;
-      c.key = (int[])this.key.clone();
-      c.value = (int[])this.value.clone();
+      c.key = this.key.clone();
+      c.value = this.value.clone();
       return c;
    }
 

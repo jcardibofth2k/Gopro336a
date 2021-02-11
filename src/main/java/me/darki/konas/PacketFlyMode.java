@@ -15,7 +15,7 @@ extends Enum {
     }
 
     public static PacketFlyMode[] Method1883() {
-        return (PacketFlyMode[])Field2050.clone();
+        return Field2050.clone();
     }
 
     /*

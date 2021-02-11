@@ -18,7 +18,7 @@ public class SoundPackets1_13 extends RewriterBase {
    }
 
    protected void registerPackets() {
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.NAMED_SOUND, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.NAMED_SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler((wrapper) -> {
@@ -35,7 +35,7 @@ public class SoundPackets1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.STOP_SOUND, ClientboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.STOP_SOUND, ClientboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.write(Type.STRING, "MC|StopSound");
@@ -63,7 +63,7 @@ public class SoundPackets1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SOUND, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler((wrapper) -> {

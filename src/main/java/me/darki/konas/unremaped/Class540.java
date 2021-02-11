@@ -77,10 +77,7 @@ public class Class540 {
         InetAddress inetAddress = null;
         GameProfile gameProfile5 = yggdrasilMinecraftSessionService2.hasJoinedServer(gameProfile4, string7, inetAddress);
         boolean bl = gameProfile5.isComplete();
-        if (bl) {
-            return true;
-        }
-        return false;
+        return bl;
     }
 
     public static boolean Method1097(Class68 class68, String string, String string2) {

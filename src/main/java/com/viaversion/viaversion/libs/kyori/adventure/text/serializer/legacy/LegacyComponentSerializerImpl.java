@@ -100,11 +100,11 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
          if (foundFormat == LegacyComponentSerializerImpl.FormatCodeType.KYORI_HEX) {
             TextColor parsed = tryParseHexColor(input.substring(pos, pos + 6));
             if (parsed != null) {
-               return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, parsed, (1)null);
+               return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, parsed, (1)null)
             }
          } else {
             if (foundFormat == LegacyComponentSerializerImpl.FormatCodeType.MOJANG_LEGACY) {
-               return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, (TextFormat)FORMATS.get(LEGACY_CHARS.indexOf(legacy)), (1)null);
+               return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, (TextFormat)FORMATS.get(LEGACY_CHARS.indexOf(legacy)), (1)null)
             }
 
             if (foundFormat == LegacyComponentSerializerImpl.FormatCodeType.BUNGEECORD_UNUSUAL_HEX) {
@@ -116,7 +116,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
 
                TextColor parsed = tryParseHexColor(foundHex.reverse().toString());
                if (parsed != null) {
-                  return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, parsed, (1)null);
+                  return new LegacyComponentSerializerImpl.DecodedFormat(foundFormat, parsed, (1)null)
                }
             }
          }
@@ -140,7 +140,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
    }
 
    private String toLegacyCode(TextFormat format) {
-      if (isHexTextColor((TextFormat)format)) {
+      if (isHexTextColor(format)) {
          TextColor color = (TextColor)format;
          if (this.hexColours) {
             String hex = String.format("%06x", color.value());
@@ -194,7 +194,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
                if (from != pos) {
                   if (current != null) {
                      if (reset) {
-                        parts.add((TextComponent)current.build());
+                        parts.add(current.build());
                         reset = false;
                         current = Component.text();
                      } else {
@@ -224,7 +224,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
          } while(next != -1);
 
          if (current != null) {
-            parts.add((TextComponent)current.build());
+            parts.add(current.build());
          }
 
          String remaining = pos > 0 ? input.substring(0, pos) : "";
@@ -232,14 +232,14 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
             return this.extractUrl((TextComponent)parts.get(0));
          } else {
             Collections.reverse(parts);
-            return this.extractUrl((TextComponent)((TextComponent.Builder)Component.text().content(remaining).append(parts)).build());
+            return this.extractUrl((TextComponent) Component.text().content(remaining).append(parts).build());
          }
       }
    }
 
    @NotNull
    public String serialize(@NotNull final Component component) {
-      LegacyComponentSerializerImpl.Cereal state = new LegacyComponentSerializerImpl.Cereal((1)null);
+      LegacyComponentSerializerImpl.Cereal state = new LegacyComponentSerializerImpl.Cereal((1)null)
       this.flattener.flatten(component, state);
       return state.toString();
    }
@@ -305,7 +305,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
       }
    }
 
-   static enum FormatCodeType {
+   enum FormatCodeType {
       MOJANG_LEGACY,
       KYORI_HEX,
       BUNGEECORD_UNUSUAL_HEX;
@@ -316,7 +316,8 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
       }
    }
 
-   private static enum Reset implements TextFormat {
+   private
+   enum Reset implements TextFormat {
       INSTANCE;
 
       // $FF: synthetic method
@@ -467,12 +468,12 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
 
       @NotNull
       public LegacyComponentSerializer.Builder extractUrls() {
-         return this.extractUrls(LegacyComponentSerializerImpl.DEFAULT_URL_PATTERN, (Style)null);
+         return this.extractUrls(LegacyComponentSerializerImpl.DEFAULT_URL_PATTERN, null);
       }
 
       @NotNull
       public LegacyComponentSerializer.Builder extractUrls(@NotNull final Pattern pattern) {
-         return this.extractUrls(pattern, (Style)null);
+         return this.extractUrls(pattern, null);
       }
 
       @NotNull
@@ -508,7 +509,7 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
 
       @NotNull
       public LegacyComponentSerializer.Builder flattener(@NotNull final ComponentFlattener flattener) {
-         this.flattener = (ComponentFlattener)Objects.requireNonNull(flattener, "flattener");
+         this.flattener = Objects.requireNonNull(flattener, "flattener");
          return this;
       }
 
@@ -524,10 +525,10 @@ final class LegacyComponentSerializerImpl implements LegacyComponentSerializer {
 
       static {
          SECTION = (LegacyComponentSerializer)LegacyComponentSerializerImpl.SERVICE.map(LegacyComponentSerializer.Provider::legacySection).orElseGet(() -> {
-            return new LegacyComponentSerializerImpl('§', '#', (TextReplacementConfig)null, false, false, ComponentFlattener.basic());
+            return new LegacyComponentSerializerImpl('§', '#', null, false, false, ComponentFlattener.basic());
          });
          AMPERSAND = (LegacyComponentSerializer)LegacyComponentSerializerImpl.SERVICE.map(LegacyComponentSerializer.Provider::legacyAmpersand).orElseGet(() -> {
-            return new LegacyComponentSerializerImpl('&', '#', (TextReplacementConfig)null, false, false, ComponentFlattener.basic());
+            return new LegacyComponentSerializerImpl('&', '#', null, false, false, ComponentFlattener.basic());
          });
       }
    }

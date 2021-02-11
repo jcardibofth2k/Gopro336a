@@ -46,7 +46,7 @@ extends Module {
     }
 
     public static Float Method809(EntityPlayer entityPlayer) {
-        return Float.valueOf(Class317.mc.player.getDistance((Entity)entityPlayer));
+        return Float.valueOf(Class317.mc.player.getDistance(entityPlayer));
     }
 
     @Subscriber(priority=100)
@@ -68,12 +68,12 @@ extends Module {
         if ((f2 = (f2 * f2 + f2 * 2.0f) / 3.0f) >= 1.0f) {
             f2 = 1.0f;
         }
-        if (Float.isNaN(f = (float)(-Math.toDegrees(this.Method808(entityPlayer, d2 = (double)(f2 * 3.0f), d = (double)0.05f))))) {
+        if (Float.isNaN(f = (float)(-Math.toDegrees(this.Method808(entityPlayer, d2 = f2 * 3.0f, d = 0.05f))))) {
             return;
         }
         double d3 = entityPlayer.posX - entityPlayer.lastTickPosX;
         double d4 = entityPlayer.posZ - entityPlayer.lastTickPosZ;
-        double d5 = Class317.mc.player.getDistance((Entity)entityPlayer);
+        double d5 = Class317.mc.player.getDistance(entityPlayer);
         d5 -= d5 % 2.0;
         d3 = d5 / 2.0 * d3 * (Class317.mc.player.isSprinting() ? 1.3 : 1.1);
         d4 = d5 / 2.0 * d4 * (Class317.mc.player.isSprinting() ? 1.3 : 1.1);
@@ -84,7 +84,7 @@ extends Module {
     }
 
     public static boolean Method132(EntityPlayer entityPlayer) {
-        return !Class546.Method963((Entity)entityPlayer);
+        return !Class546.Method963(entityPlayer);
     }
 
     public static boolean Method128(EntityPlayer entityPlayer) {

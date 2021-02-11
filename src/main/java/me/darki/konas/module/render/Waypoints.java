@@ -56,7 +56,7 @@ extends Module {
         if (Waypoints.mc.player == null || Waypoints.mc.world == null) {
             return;
         }
-        if (!((Boolean)this.Field1903.getValue()).booleanValue()) {
+        if (!this.Field1903.getValue().booleanValue()) {
             return;
         }
         EntityPlayer entityPlayer = Waypoints.mc.world.getPlayerEntityByUUID(class15.Method209());
@@ -72,36 +72,36 @@ extends Module {
             ColorValue class4403 = null;
             switch (Class199.Field47[class197.ordinal()]) {
                 case 1: {
-                    if (((Boolean)this.Field1900.getValue()).booleanValue()) {
-                        colorValue = (ColorValue)this.Field1901.getValue();
+                    if (this.Field1900.getValue().booleanValue()) {
+                        colorValue = this.Field1901.getValue();
                     }
-                    if (((Boolean)this.Field1898.getValue()).booleanValue()) {
-                        class4402 = (ColorValue)this.Field1899.getValue();
+                    if (this.Field1898.getValue().booleanValue()) {
+                        class4402 = this.Field1899.getValue();
                     }
-                    if (!((Boolean)this.Field1896.getValue()).booleanValue()) break;
-                    class4403 = (ColorValue)this.Field1897.getValue();
+                    if (!this.Field1896.getValue().booleanValue()) break;
+                    class4403 = this.Field1897.getValue();
                     break;
                 }
                 case 2: {
-                    if (((Boolean)this.Field1908.getValue()).booleanValue()) {
-                        colorValue = (ColorValue)this.Field1909.getValue();
+                    if (this.Field1908.getValue().booleanValue()) {
+                        colorValue = this.Field1909.getValue();
                     }
-                    if (((Boolean)this.Field1906.getValue()).booleanValue()) {
-                        class4402 = (ColorValue)this.Field1907.getValue();
+                    if (this.Field1906.getValue().booleanValue()) {
+                        class4402 = this.Field1907.getValue();
                     }
-                    if (!((Boolean)this.Field1904.getValue()).booleanValue()) break;
-                    class4403 = (ColorValue)this.Field1905.getValue();
+                    if (!this.Field1904.getValue().booleanValue()) break;
+                    class4403 = this.Field1905.getValue();
                     break;
                 }
                 case 3: {
-                    if (((Boolean)this.Field1917.getValue()).booleanValue()) {
-                        colorValue = (ColorValue)this.Field1918.getValue();
+                    if (this.Field1917.getValue().booleanValue()) {
+                        colorValue = this.Field1918.getValue();
                     }
-                    if (((Boolean)this.Field1915.getValue()).booleanValue()) {
-                        class4402 = (ColorValue)this.Field1916.getValue();
+                    if (this.Field1915.getValue().booleanValue()) {
+                        class4402 = this.Field1916.getValue();
                     }
-                    if (!((Boolean)this.Field1913.getValue()).booleanValue()) break;
-                    class4403 = (ColorValue)this.Field1914.getValue();
+                    if (!this.Field1913.getValue().booleanValue()) break;
+                    class4403 = this.Field1914.getValue();
                 }
             }
             if (class4402 != null) {
@@ -126,7 +126,7 @@ extends Module {
         if (Waypoints.mc.world == null || Waypoints.mc.player == null) {
             return;
         }
-        if (((Boolean)this.Field1903.getValue()).booleanValue()) {
+        if (this.Field1903.getValue().booleanValue()) {
             for (Map.Entry object : this.Field1919.entrySet()) {
                 EntityPlayer entityPlayer = (EntityPlayer)object.getKey();
                 if (entityPlayer == Waypoints.mc.player) continue;
@@ -142,8 +142,8 @@ extends Module {
     public void Method1451(Class654 class654) {
         if (class654.Method1161() instanceof GuiConnecting || class654.Method1161() instanceof GuiDownloadTerrain || class654.Method1161() instanceof GuiDisconnected || class654.Method1161() instanceof GuiMultiplayer) {
             this.Field1919.clear();
-        } else if (class654.Method1161() instanceof GuiGameOver && ((Boolean)this.Field1911.getValue()).booleanValue()) {
-            if (((Boolean)this.Field1912.getValue()).booleanValue()) {
+        } else if (class654.Method1161() instanceof GuiGameOver && this.Field1911.getValue().booleanValue()) {
+            if (this.Field1912.getValue().booleanValue()) {
                 NewGui.INSTANCE.Field1138.Method764();
             }
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");
@@ -157,7 +157,7 @@ extends Module {
         if (Waypoints.mc.player == null || Waypoints.mc.world == null) {
             return;
         }
-        if (!((Boolean)this.Field1903.getValue()).booleanValue()) {
+        if (!this.Field1903.getValue().booleanValue()) {
             return;
         }
         for (Map.Entry<EntityPlayer, Long> entry : this.Field1919.entrySet()) {
@@ -167,7 +167,7 @@ extends Module {
     }
 
     public Waypoints() {
-        super("Waypoints", "Shows waypoints", Category.CLIENT, new String[0]);
+        super("Waypoints", "Shows waypoints", Category.CLIENT);
     }
 
     public ConcurrentHashMap<EntityPlayer, Long> Method1799() {

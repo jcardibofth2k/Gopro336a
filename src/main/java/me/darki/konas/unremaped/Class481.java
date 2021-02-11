@@ -42,7 +42,7 @@ extends Module {
     }
 
     public Class481() {
-        super("Crosshair", "Draws a custom crosshair", Category.RENDER, new String[0]);
+        super("Crosshair", "Draws a custom crosshair", Category.RENDER);
     }
 
     @Subscriber
@@ -51,16 +51,16 @@ extends Module {
             ScaledResolution scaledResolution = new ScaledResolution(mc);
             float f = (float)(scaledResolution.getScaledWidth_double() / 2.0 + 0.5);
             float f2 = (float)(scaledResolution.getScaledHeight_double() / 2.0 + 0.5);
-            float f3 = ((Float)this.Field2369.getValue()).floatValue();
-            float f4 = Math.max(((Float)this.Field2371.getValue()).floatValue(), 0.5f);
-            float f5 = ((Float)this.Field2373.getValue()).floatValue();
+            float f3 = this.Field2369.getValue().floatValue();
+            float f4 = Math.max(this.Field2371.getValue().floatValue(), 0.5f);
+            float f5 = this.Field2373.getValue().floatValue();
             float f6 = ((ITimer)((IMinecraft)mc).Method56()).Method96();
-            Class481.Method2075(f - (f3 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.Field2370.getValue()).floatValue()) - (f5 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.Field2374.getValue()).floatValue()), f2 - (f4 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.Field2372.getValue()).floatValue()) / 2.0f, f - f3, f2 + f4 / 2.0f, ((ColorValue)this.Field2375.getValue()).Method774());
-            Class481.Method2075(f + f3 + f5, f2 - f4 / 2.0f, f + f3, f2 + f4 / 2.0f, ((ColorValue)this.Field2375.getValue()).Method774());
-            Class481.Method2075(f - f4 / 2.0f, f2 + f3 + f5, f + f4 / 2.0f, f2 + f3, ((ColorValue)this.Field2375.getValue()).Method774());
-            Class481.Method2075(f - f4 / 2.0f, f2 - f3 - f5, f + f4 / 2.0f, f2 - f3, ((ColorValue)this.Field2375.getValue()).Method774());
-            if (!((Boolean)this.Field2368.getValue()).booleanValue()) break block0;
-            Class481.Method2075(f - f4 / 2.0f, f2 - f4 / 2.0f, f + f4 / 2.0f, f2 + f4 / 2.0f, ((ColorValue)this.Field2375.getValue()).Method774());
+            Class481.Method2075(f - (f3 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * this.Field2370.getValue().floatValue()) - (f5 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * this.Field2374.getValue().floatValue()), f2 - (f4 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * this.Field2372.getValue().floatValue()) / 2.0f, f - f3, f2 + f4 / 2.0f, this.Field2375.getValue().Method774());
+            Class481.Method2075(f + f3 + f5, f2 - f4 / 2.0f, f + f3, f2 + f4 / 2.0f, this.Field2375.getValue().Method774());
+            Class481.Method2075(f - f4 / 2.0f, f2 + f3 + f5, f + f4 / 2.0f, f2 + f3, this.Field2375.getValue().Method774());
+            Class481.Method2075(f - f4 / 2.0f, f2 - f3 - f5, f + f4 / 2.0f, f2 - f3, this.Field2375.getValue().Method774());
+            if (!this.Field2368.getValue().booleanValue()) break block0;
+            Class481.Method2075(f - f4 / 2.0f, f2 - f4 / 2.0f, f + f4 / 2.0f, f2 + f4 / 2.0f, this.Field2375.getValue().Method774());
         }
     }
 
@@ -84,13 +84,13 @@ extends Module {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
-        GlStateManager.color((float)f6, (float)f7, (float)f8, (float)f5);
+        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.color(f6, f7, f8, f5);
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION);
-        bufferBuilder.pos((double)f, (double)f4, 0.0).endVertex();
-        bufferBuilder.pos((double)f3, (double)f4, 0.0).endVertex();
-        bufferBuilder.pos((double)f3, (double)f2, 0.0).endVertex();
-        bufferBuilder.pos((double)f, (double)f2, 0.0).endVertex();
+        bufferBuilder.pos(f, f4, 0.0).endVertex();
+        bufferBuilder.pos(f3, f4, 0.0).endVertex();
+        bufferBuilder.pos(f3, f2, 0.0).endVertex();
+        bufferBuilder.pos(f, f2, 0.0).endVertex();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();

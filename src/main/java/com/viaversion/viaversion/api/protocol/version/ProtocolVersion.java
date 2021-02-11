@@ -65,7 +65,7 @@ public class ProtocolVersion {
    }
 
    public static ProtocolVersion register(int version, int snapshotVersion, String name) {
-      return register(version, snapshotVersion, name, (VersionRange)null);
+      return register(version, snapshotVersion, name, null);
    }
 
    public static ProtocolVersion register(int version, String name, @Nullable VersionRange versionRange) {
@@ -134,7 +134,7 @@ public class ProtocolVersion {
    }
 
    public ProtocolVersion(int version, String name) {
-      this(version, -1, name, (VersionRange)null);
+      this(version, -1, name, null);
    }
 
    public ProtocolVersion(int version, int snapshotVersion, String name, @Nullable VersionRange versionRange) {

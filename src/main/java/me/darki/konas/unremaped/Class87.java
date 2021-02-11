@@ -35,7 +35,7 @@ public class Class87 {
 
     public Entity Method421() {
         if (!this.Field261.isEmpty()) {
-            return (Entity)Collections.max(this.Field261.entrySet(), Map.Entry.comparingByValue()).getKey();
+            return Collections.max(this.Field261.entrySet(), Map.Entry.comparingByValue()).getKey();
         }
         return null;
     }
@@ -46,7 +46,7 @@ public class Class87 {
             return;
         }
         for (EntityPlayer entityPlayer : Minecraft.getMinecraft().world.playerEntities) {
-            if (Class546.Method963((Entity)entityPlayer) || !(entityPlayer.getHealth() <= 0.0f) || !Field262.containsKey(entityPlayer.getName())) continue;
+            if (Class546.Method963(entityPlayer) || !(entityPlayer.getHealth() <= 0.0f) || !Field262.containsKey(entityPlayer.getName())) continue;
             Field262.remove(entityPlayer.getName(), Field262.get(entityPlayer.getName()));
         }
         this.Method429().forEach(this::Method427);
@@ -63,12 +63,12 @@ public class Class87 {
             if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketUseEntity) || !(cPacketUseEntity = (CPacketUseEntity)class24.getPacket()).getAction().equals((Object)CPacketUseEntity.Action.ATTACK) || !(cPacketUseEntity.getEntityFromWorld((World)Minecraft.getMinecraft().world) instanceof EntityPlayer)) break block2;
-            EntityPlayer entityPlayer = (EntityPlayer)cPacketUseEntity.getEntityFromWorld((World)Minecraft.getMinecraft().world);
+            if (!(class24.getPacket() instanceof CPacketUseEntity) || !(cPacketUseEntity = (CPacketUseEntity)class24.getPacket()).getAction().equals(CPacketUseEntity.Action.ATTACK) || !(cPacketUseEntity.getEntityFromWorld(Minecraft.getMinecraft().world) instanceof EntityPlayer)) break block2;
+            EntityPlayer entityPlayer = (EntityPlayer)cPacketUseEntity.getEntityFromWorld(Minecraft.getMinecraft().world);
             if (!Field264 && entityPlayer == null) {
                 throw new AssertionError();
             }
-            this.Method430((Entity)entityPlayer);
+            this.Method430(entityPlayer);
         }
     }
 
@@ -86,7 +86,7 @@ public class Class87 {
             if (!(entity instanceof EntityPlayer) || !((entityPlayer = (EntityPlayer)entity).getHealth() <= 0.0f)) break block0;
             Class45 class45 = new Class45(entityPlayer);
             EventDispatcher.Companion.dispatch(class45);
-            this.Method426((Entity)entityPlayer);
+            this.Method426(entityPlayer);
         }
     }
 
@@ -141,7 +141,7 @@ public class Class87 {
             return;
         }
         if (packetEvent.getPacket() instanceof SPacketEntityStatus && (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() == 35) {
-            Entity entity = sPacketEntityStatus.getEntity((World)Minecraft.getMinecraft().world);
+            Entity entity = sPacketEntityStatus.getEntity(Minecraft.getMinecraft().world);
             if (Field262 == null) {
                 Field262 = new HashMap();
             }

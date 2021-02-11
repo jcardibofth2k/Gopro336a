@@ -90,7 +90,7 @@ extends Class244 {
         }
         this.Field2243 = new Vector2f[arrayList.size()];
         for (int i = 0; i < arrayList.size(); ++i) {
-            this.Field2243[i] = (Vector2f)arrayList.get(i);
+            this.Field2243[i] = arrayList.get(i);
         }
     }
 

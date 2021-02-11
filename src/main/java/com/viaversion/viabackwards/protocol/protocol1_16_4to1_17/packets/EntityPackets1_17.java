@@ -34,7 +34,7 @@ public final class EntityPackets1_17 extends EntityRewriter {
       this.registerTracker(ClientboundPackets1_17.SPAWN_PAINTING, Entity1_17Types.PAINTING);
       this.registerTracker(ClientboundPackets1_17.SPAWN_PLAYER, Entity1_17Types.PLAYER);
       this.registerMetadataRewriter(ClientboundPackets1_17.ENTITY_METADATA, Types1_17.METADATA_LIST, Types1_16.METADATA_LIST);
-      ((Protocol1_16_4To1_17)this.protocol).registerClientbound(ClientboundPackets1_17.REMOVE_ENTITY, ClientboundPackets1_16_2.DESTROY_ENTITIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_17.REMOVE_ENTITY, ClientboundPackets1_16_2.DESTROY_ENTITIES, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int entityId = (Integer)wrapper.read(Type.VAR_INT);
@@ -44,7 +44,7 @@ public final class EntityPackets1_17 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_16_4To1_17)this.protocol).registerClientbound(ClientboundPackets1_17.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_17.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.BOOLEAN);
@@ -91,7 +91,7 @@ public final class EntityPackets1_17 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_16_4To1_17)this.protocol).registerClientbound(ClientboundPackets1_17.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_17.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.NBT);
             this.handler(EntityPackets1_17.this.worldDataTrackerHandler(0));
@@ -100,7 +100,7 @@ public final class EntityPackets1_17 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_16_4To1_17)this.protocol).registerClientbound(ClientboundPackets1_17.PLAYER_POSITION, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_17.PLAYER_POSITION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.DOUBLE);
             this.map(Type.DOUBLE);
@@ -114,11 +114,11 @@ public final class EntityPackets1_17 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_16_4To1_17)this.protocol).registerClientbound(ClientboundPackets1_17.ENTITY_PROPERTIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_17.ENTITY_PROPERTIES, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler((wrapper) -> {
-               wrapper.write(Type.INT, (Integer)wrapper.read(Type.VAR_INT));
+               wrapper.write(Type.INT, wrapper.read(Type.VAR_INT));
             });
          }
       });
@@ -152,7 +152,7 @@ public final class EntityPackets1_17 extends EntityRewriter {
          }
 
       });
-      this.registerMetaTypeHandler(MetaType1_16.ITEM, MetaType1_16.BLOCK_STATE, (MetaType)null, MetaType1_16.OPT_COMPONENT);
+      this.registerMetaTypeHandler(MetaType1_16.ITEM, MetaType1_16.BLOCK_STATE, null, MetaType1_16.OPT_COMPONENT);
       this.mapTypes(Entity1_17Types.values(), Entity1_16_2Types.class);
       this.filter().type(Entity1_17Types.AXOLOTL).cancel(17);
       this.filter().type(Entity1_17Types.AXOLOTL).cancel(18);

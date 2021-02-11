@@ -11,10 +11,10 @@ extends Module {
 
     @Subscriber
     public void Method1947(Class571 class571) {
-        class571.Method572(((Float)Field2095.getValue()).floatValue());
+        class571.Method572(Field2095.getValue().floatValue());
     }
 
     public Class372() {
-        super("Reach", "Increaces your block reach range", Category.PLAYER, new String[0]);
+        super("Reach", "Increaces your block reach range", Category.PLAYER);
     }
 }

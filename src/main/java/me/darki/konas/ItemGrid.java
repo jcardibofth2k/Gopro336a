@@ -21,10 +21,10 @@ extends Element {
         this.Method2008(new ItemStack(Items.GOLDEN_APPLE, n2, 1), (int)this.Method2320() + 22, (int)this.Method2324() + 2);
         this.Method2008(new ItemStack(Items.TOTEM_OF_UNDYING, n3), (int)this.Method2320() + 2, (int)this.Method2324() + 22);
         this.Method2008(new ItemStack(Items.EXPERIENCE_BOTTLE, n4), (int)this.Method2320() + 22, (int)this.Method2324() + 22);
-        RenderUtil2.Method1336(this.Method2320(), this.Method2324(), 21.0f, 21.0f, 1.0f, ((ColorValue)this.Field2649.getValue()).Method774());
-        RenderUtil2.Method1336(this.Method2320() + 21.0f, this.Method2324(), 21.0f, 21.0f, 1.0f, ((ColorValue)this.Field2649.getValue()).Method774());
-        RenderUtil2.Method1336(this.Method2320(), this.Method2324() + 21.0f, 21.0f, 21.0f, 1.0f, ((ColorValue)this.Field2649.getValue()).Method774());
-        RenderUtil2.Method1336(this.Method2320() + 21.0f, this.Method2324() + 21.0f, 21.0f, 21.0f, 1.0f, ((ColorValue)this.Field2649.getValue()).Method774());
+        RenderUtil2.Method1336(this.Method2320(), this.Method2324(), 21.0f, 21.0f, 1.0f, this.Field2649.getValue().Method774());
+        RenderUtil2.Method1336(this.Method2320() + 21.0f, this.Method2324(), 21.0f, 21.0f, 1.0f, this.Field2649.getValue().Method774());
+        RenderUtil2.Method1336(this.Method2320(), this.Method2324() + 21.0f, 21.0f, 21.0f, 1.0f, this.Field2649.getValue().Method774());
+        RenderUtil2.Method1336(this.Method2320() + 21.0f, this.Method2324() + 21.0f, 21.0f, 21.0f, 1.0f, this.Field2649.getValue().Method774());
     }
 
     public ItemGrid() {

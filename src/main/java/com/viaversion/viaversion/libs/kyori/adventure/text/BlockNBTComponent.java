@@ -50,7 +50,7 @@ public interface BlockNBTComponent extends NBTComponent, ScopedComponent {
       return this.worldPos(Coordinate.relative(x), Coordinate.relative(y), Coordinate.relative(z));
    }
 
-   public interface LocalPos extends BlockNBTComponent.Pos {
+   interface LocalPos extends BlockNBTComponent.Pos {
       // $FF: renamed from: of (double, double, double) com.viaversion.viaversion.libs.kyori.adventure.text.BlockNBTComponent$LocalPos
       @NotNull
       static BlockNBTComponent.LocalPos method_4(final double left, final double up, final double forwards) {
@@ -65,7 +65,7 @@ public interface BlockNBTComponent extends NBTComponent, ScopedComponent {
       double forwards();
    }
 
-   public interface Pos extends Examinable {
+   interface Pos extends Examinable {
       @NotNull
       static BlockNBTComponent.Pos fromString(@NotNull final String input) throws IllegalArgumentException {
          Matcher localMatch = BlockNBTComponentImpl.Tokens.LOCAL_PATTERN.matcher(input);
@@ -85,7 +85,7 @@ public interface BlockNBTComponent extends NBTComponent, ScopedComponent {
       String asString();
    }
 
-   public interface WorldPos extends BlockNBTComponent.Pos {
+   interface WorldPos extends BlockNBTComponent.Pos {
       // $FF: renamed from: of (com.viaversion.viaversion.libs.kyori.adventure.text.BlockNBTComponent.WorldPos.Coordinate, com.viaversion.viaversion.libs.kyori.adventure.text.BlockNBTComponent.WorldPos.Coordinate, com.viaversion.viaversion.libs.kyori.adventure.text.BlockNBTComponent.WorldPos.Coordinate) com.viaversion.viaversion.libs.kyori.adventure.text.BlockNBTComponent$WorldPos
       @NotNull
       static BlockNBTComponent.WorldPos method_6(@NotNull final Coordinate x, @NotNull final Coordinate y, @NotNull final Coordinate z) {
@@ -105,7 +105,7 @@ public interface BlockNBTComponent extends NBTComponent, ScopedComponent {
       Coordinate method_9();
    }
 
-   public interface Builder extends NBTComponentBuilder {
+   interface Builder extends NBTComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       BlockNBTComponent.Builder pos(@NotNull final BlockNBTComponent.Pos pos);

@@ -46,7 +46,7 @@ public class RotationUtil {
     }
 
     public void Method1943(BlockPos blockPos) {
-        float[] fArray = RotationUtil.Method1946(this.mc.player.getPositionEyes(this.mc.getRenderPartialTicks()), new Vec3d((double)((float)blockPos.getX() + 0.5f), (double)((float)blockPos.getY() + 0.5f), (double)((float)blockPos.getZ() + 0.5f)));
+        float[] fArray = RotationUtil.Method1946(this.mc.player.getPositionEyes(this.mc.getRenderPartialTicks()), new Vec3d((float)blockPos.getX() + 0.5f, (float)blockPos.getY() + 0.5f, (float)blockPos.getZ() + 0.5f));
         this.Method1937(fArray[0], fArray[1]);
     }
 
@@ -62,9 +62,9 @@ public class RotationUtil {
         double d = vec3d2.x - vec3d.x;
         double d2 = (vec3d2.y - vec3d.y) * -1.0;
         double d3 = vec3d2.z - vec3d.z;
-        double d4 = MathHelper.sqrt((double)(d * d + d3 * d3));
-        float f = (float)MathHelper.wrapDegrees((double)(Math.toDegrees(Math.atan2(d3, d)) - 90.0));
-        float f2 = (float)MathHelper.wrapDegrees((double)Math.toDegrees(Math.atan2(d2, d4)));
+        double d4 = MathHelper.sqrt(d * d + d3 * d3);
+        float f = (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(d3, d)) - 90.0);
+        float f2 = (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(d2, d4)));
         if (f2 > 90.0f) {
             f2 = 90.0f;
         } else if (f2 < -90.0f) {

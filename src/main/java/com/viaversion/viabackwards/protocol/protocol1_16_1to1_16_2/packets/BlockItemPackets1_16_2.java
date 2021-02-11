@@ -39,7 +39,7 @@ public class BlockItemPackets1_16_2 extends ItemRewriter {
       this.registerEntityEquipmentArray(ClientboundPackets1_16_2.ENTITY_EQUIPMENT, Type.FLAT_VAR_INT_ITEM);
       this.registerTradeList(ClientboundPackets1_16_2.TRADE_LIST, Type.FLAT_VAR_INT_ITEM);
       this.registerAdvancements(ClientboundPackets1_16_2.ADVANCEMENTS, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.UNLOCK_RECIPES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.UNLOCK_RECIPES, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.passthrough(Type.VAR_INT);
@@ -57,7 +57,7 @@ public class BlockItemPackets1_16_2 extends ItemRewriter {
       blockRewriter.registerAcknowledgePlayerDigging(ClientboundPackets1_16_2.ACKNOWLEDGE_PLAYER_DIGGING);
       blockRewriter.registerBlockAction(ClientboundPackets1_16_2.BLOCK_ACTION);
       blockRewriter.registerBlockChange(ClientboundPackets1_16_2.BLOCK_CHANGE);
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.CHUNK_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                Chunk chunk = (Chunk)wrapper.read(new Chunk1_16_2Type());
@@ -91,7 +91,7 @@ public class BlockItemPackets1_16_2 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.BLOCK_ENTITY_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.BLOCK_ENTITY_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                Position position = (Position)wrapper.passthrough(Type.POSITION1_14);
@@ -100,7 +100,7 @@ public class BlockItemPackets1_16_2 extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_16_1To1_16_2)this.protocol).registerClientbound(ClientboundPackets1_16_2.MULTI_BLOCK_CHANGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.MULTI_BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                long chunkPosition = (Long)wrapper.read(Type.LONG);
@@ -126,7 +126,7 @@ public class BlockItemPackets1_16_2 extends ItemRewriter {
       this.registerSpawnParticle(ClientboundPackets1_16_2.SPAWN_PARTICLE, Type.FLAT_VAR_INT_ITEM, Type.DOUBLE);
       this.registerClickWindow(ServerboundPackets1_16.CLICK_WINDOW, Type.FLAT_VAR_INT_ITEM);
       this.registerCreativeInvAction(ServerboundPackets1_16.CREATIVE_INVENTORY_ACTION, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_16_1To1_16_2)this.protocol).registerServerbound(ServerboundPackets1_16.EDIT_BOOK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_16.EDIT_BOOK, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                BlockItemPackets1_16_2.this.handleItemToServer((Item)wrapper.passthrough(Type.FLAT_VAR_INT_ITEM));

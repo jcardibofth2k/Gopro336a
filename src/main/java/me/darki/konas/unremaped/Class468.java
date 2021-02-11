@@ -47,7 +47,7 @@ extends Module {
                         return;
                     }
                 }
-                if (((Boolean)Field2594.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
+                if (Field2594.getValue().booleanValue() && !Field2604.Method737(75.0)) {
                     return;
                 }
                 rayTraceResult = Class468.mc.objectMouseOver;
@@ -58,44 +58,44 @@ extends Module {
                 if (Field2592.getValue() != Class462.VECTOR) break block12;
                 GlStateManager.pushMatrix();
                 Class507.Method1386();
-                GlStateManager.glLineWidth((float)((Float)Field2601.getValue()).floatValue());
+                GlStateManager.glLineWidth(Field2601.getValue().floatValue());
                 GlStateManager.disableTexture2D();
-                GlStateManager.depthMask((boolean)false);
-                if (!((Boolean)this.Field2595.getValue()).booleanValue()) {
+                GlStateManager.depthMask(false);
+                if (!this.Field2595.getValue().booleanValue()) {
                     GlStateManager.disableDepth();
                 }
-                GL11.glLineWidth((float)((Float)Field2601.getValue()).floatValue());
-                GL11.glColor4f((float)((float)((ColorValue)this.Field2602.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method782() / 255.0f));
-                GlStateManager.translate((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
+                GL11.glLineWidth(Field2601.getValue().floatValue());
+                GL11.glColor4f((float) this.Field2602.getValue().Method769() / 255.0f, (float) this.Field2602.getValue().Method770() / 255.0f, (float) this.Field2602.getValue().Method779() / 255.0f, (float) this.Field2602.getValue().Method782() / 255.0f);
+                GlStateManager.translate(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69(), rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70(), rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71());
                 EnumFacing enumFacing = rayTraceResult.sideHit;
                 switch (enumFacing) {
                     case NORTH: 
                     case SOUTH: {
-                        GlStateManager.rotate((float)90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                        GlStateManager.rotate(90.0f, 1.0f, 0.0f, 0.0f);
                         break;
                     }
                     case EAST: 
                     case WEST: {
-                        GlStateManager.rotate((float)90.0f, (float)0.0f, (float)0.0f, (float)1.0f);
+                        GlStateManager.rotate(90.0f, 0.0f, 0.0f, 1.0f);
                         break;
                     }
                 }
                 Cylinder cylinder = new Cylinder();
-                GlStateManager.rotate((float)-90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GlStateManager.rotate(-90.0f, 1.0f, 0.0f, 0.0f);
                 cylinder.setDrawStyle(100011);
-                cylinder.draw(((Float)Field2597.getValue()).floatValue() * 2.0f, ((Float)Field2597.getValue()).floatValue(), 0.0f, ((Integer)Field2598.getValue()).intValue(), 1);
-                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-                if (!((Boolean)this.Field2595.getValue()).booleanValue()) {
+                cylinder.draw(Field2597.getValue().floatValue() * 2.0f, Field2597.getValue().floatValue(), 0.0f, Field2598.getValue().intValue(), 1);
+                GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+                if (!this.Field2595.getValue().booleanValue()) {
                     GlStateManager.enableDepth();
                 }
-                GlStateManager.depthMask((boolean)true);
+                GlStateManager.depthMask(true);
                 GlStateManager.enableTexture2D();
                 Class507.Method1385();
                 GlStateManager.popMatrix();
                 break block11;
             }
             if (Field2592.getValue() != Class462.BASED) break block11;
-            this.Method2215(rayTraceResult, ((Float)Field2599.getValue()).floatValue(), (Double)Field2600.getValue(), ((ColorValue)this.Field2602.getValue()).Method775());
+            this.Method2215(rayTraceResult, Field2599.getValue().floatValue(), Field2600.getValue(), this.Field2602.getValue().Method775());
         }
     }
 
@@ -107,61 +107,61 @@ extends Module {
         if (Class468.mc.world == null || Class468.mc.player == null) {
             return;
         }
-        if (((Boolean)Field2594.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
+        if (Field2594.getValue().booleanValue() && !Field2604.Method737(75.0)) {
             return;
         }
         GlStateManager.pushMatrix();
         Class507.Method1386();
-        if (((Boolean)this.Field2595.getValue()).booleanValue()) {
+        if (this.Field2595.getValue().booleanValue()) {
             GlStateManager.enableDepth();
-            GlStateManager.depthMask((boolean)true);
+            GlStateManager.depthMask(true);
         }
         if (Field2592.getValue() == Class462.FULL) {
-            Class507.Method1379(axisAlignedBB, (ColorValue)this.Field2602.getValue());
+            Class507.Method1379(axisAlignedBB, this.Field2602.getValue());
         }
-        Class507.Method1374(axisAlignedBB, ((Float)Field2601.getValue()).floatValue(), ((ColorValue)this.Field2602.getValue()).Method784(255));
+        Class507.Method1374(axisAlignedBB, Field2601.getValue().floatValue(), this.Field2602.getValue().Method784(255));
         GlStateManager.resetColor();
         Class507.Method1385();
         GlStateManager.popMatrix();
     }
 
     public void Method2215(RayTraceResult rayTraceResult, float f, double d, Color color) {
-        GL11.glPushAttrib((int)1048575);
+        GL11.glPushAttrib(1048575);
         GL11.glPushMatrix();
-        GL11.glDisable((int)3008);
-        GL11.glEnable((int)3042);
-        GL11.glBlendFunc((int)770, (int)771);
-        GL11.glDepthMask((boolean)false);
-        GL11.glDisable((int)2929);
-        GL11.glDisable((int)2884);
-        GL11.glEnable((int)2848);
-        GL11.glHint((int)3154, (int)4352);
-        GL11.glDisable((int)3553);
-        GL11.glDisable((int)2896);
-        GL11.glLineWidth((float)2.0f);
-        GL11.glColor4f((float)((float)color.getRed() / 255.0f), (float)((float)color.getGreen() / 255.0f), (float)((float)color.getBlue() / 255.0f), (float)((float)color.getAlpha() / 255.0f));
-        GL11.glTranslated((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
+        GL11.glDisable(3008);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glDepthMask(false);
+        GL11.glDisable(2929);
+        GL11.glDisable(2884);
+        GL11.glEnable(2848);
+        GL11.glHint(3154, 4352);
+        GL11.glDisable(3553);
+        GL11.glDisable(2896);
+        GL11.glLineWidth(2.0f);
+        GL11.glColor4f((float)color.getRed() / 255.0f, (float)color.getGreen() / 255.0f, (float)color.getBlue() / 255.0f, (float)color.getAlpha() / 255.0f);
+        GL11.glTranslated(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69(), rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70(), rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71());
         switch (rayTraceResult.sideHit) {
             case WEST: {
-                GL11.glRotatef((float)90.0f, (float)0.0f, (float)0.0f, (float)1.0f);
-                GL11.glRotatef((float)-90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GL11.glRotatef(90.0f, 0.0f, 0.0f, 1.0f);
+                GL11.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
                 break;
             }
             case EAST: {
-                GL11.glRotatef((float)-90.0f, (float)0.0f, (float)0.0f, (float)1.0f);
-                GL11.glRotatef((float)-90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GL11.glRotatef(-90.0f, 0.0f, 0.0f, 1.0f);
+                GL11.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
                 break;
             }
             case NORTH: {
-                GL11.glRotatef((float)180.0f, (float)0.0f, (float)1.0f, (float)0.0f);
+                GL11.glRotatef(180.0f, 0.0f, 1.0f, 0.0f);
                 break;
             }
             case UP: {
-                GL11.glRotatef((float)-90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GL11.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
                 break;
             }
             case DOWN: {
-                GL11.glRotatef((float)90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
+                GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
                 break;
             }
         }
@@ -170,36 +170,36 @@ extends Module {
         if (d == 0.0) {
             d2 = 0.0;
         }
-        GL11.glRotated((double)d2, (double)0.0, (double)0.0, (double)1.0);
-        GL11.glScalef((float)(f * 0.5f), (float)(f * 0.5f), (float)(f * 0.5f));
-        GL11.glBegin((int)3);
-        GL11.glVertex3d((double)0.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)0.0, (double)1.0, (double)0.0);
-        GL11.glVertex3d((double)1.0, (double)1.0, (double)0.0);
+        GL11.glRotated(d2, 0.0, 0.0, 1.0);
+        GL11.glScalef(f * 0.5f, f * 0.5f, f * 0.5f);
+        GL11.glBegin(3);
+        GL11.glVertex3d(0.0, 0.0, 0.0);
+        GL11.glVertex3d(0.0, 1.0, 0.0);
+        GL11.glVertex3d(1.0, 1.0, 0.0);
         GL11.glEnd();
-        GL11.glBegin((int)3);
-        GL11.glVertex3d((double)0.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)1.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)1.0, (double)-1.0, (double)0.0);
+        GL11.glBegin(3);
+        GL11.glVertex3d(0.0, 0.0, 0.0);
+        GL11.glVertex3d(1.0, 0.0, 0.0);
+        GL11.glVertex3d(1.0, -1.0, 0.0);
         GL11.glEnd();
-        GL11.glBegin((int)3);
-        GL11.glVertex3d((double)0.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)0.0, (double)-1.0, (double)0.0);
-        GL11.glVertex3d((double)-1.0, (double)-1.0, (double)0.0);
+        GL11.glBegin(3);
+        GL11.glVertex3d(0.0, 0.0, 0.0);
+        GL11.glVertex3d(0.0, -1.0, 0.0);
+        GL11.glVertex3d(-1.0, -1.0, 0.0);
         GL11.glEnd();
-        GL11.glBegin((int)3);
-        GL11.glVertex3d((double)0.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)-1.0, (double)0.0, (double)0.0);
-        GL11.glVertex3d((double)-1.0, (double)1.0, (double)0.0);
+        GL11.glBegin(3);
+        GL11.glVertex3d(0.0, 0.0, 0.0);
+        GL11.glVertex3d(-1.0, 0.0, 0.0);
+        GL11.glVertex3d(-1.0, 1.0, 0.0);
         GL11.glEnd();
-        GL11.glEnable((int)2896);
-        GL11.glEnable((int)3553);
-        GL11.glDisable((int)2848);
-        GL11.glEnable((int)2884);
-        GL11.glEnable((int)2929);
-        GL11.glDepthMask((boolean)true);
-        GL11.glDisable((int)3042);
-        GL11.glEnable((int)3008);
+        GL11.glEnable(2896);
+        GL11.glEnable(3553);
+        GL11.glDisable(2848);
+        GL11.glEnable(2884);
+        GL11.glEnable(2929);
+        GL11.glDepthMask(true);
+        GL11.glDisable(3042);
+        GL11.glEnable(3008);
         GL11.glPopMatrix();
         GL11.glPopAttrib();
     }
@@ -231,8 +231,8 @@ extends Module {
             if (this.Field2603.typeOfHit != RayTraceResult.Type.BLOCK) break block12;
             BlockPos blockPos = this.Field2603.getBlockPos();
             IBlockState iBlockState = Class468.mc.world.getBlockState(blockPos);
-            AxisAlignedBB axisAlignedBB = iBlockState.getSelectedBoundingBox((World)Class468.mc.world, blockPos);
-            if (((Boolean)this.Field2593.getValue()).booleanValue()) {
+            AxisAlignedBB axisAlignedBB = iBlockState.getSelectedBoundingBox(Class468.mc.world, blockPos);
+            if (this.Field2593.getValue().booleanValue()) {
                 switch (this.Field2603.sideHit) {
                     case DOWN: {
                         axisAlignedBB = new AxisAlignedBB(axisAlignedBB.minX, axisAlignedBB.minY, axisAlignedBB.minZ, axisAlignedBB.maxX, axisAlignedBB.minY, axisAlignedBB.maxZ);
@@ -264,13 +264,13 @@ extends Module {
     }
 
     public Class468() {
-        super("BlockHighlight", Category.RENDER, new String[0]);
+        super("BlockHighlight", Category.RENDER);
     }
 
     @Subscriber
     public void Method2216(Class40 class40) {
         block0: {
-            if (((Boolean)this.Field2596.getValue()).booleanValue()) break block0;
+            if (this.Field2596.getValue().booleanValue()) break block0;
             class40.setCanceled(true);
         }
     }

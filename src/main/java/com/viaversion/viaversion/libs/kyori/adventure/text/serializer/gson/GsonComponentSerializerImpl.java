@@ -67,7 +67,7 @@ final class GsonComponentSerializerImpl implements GsonComponentSerializer {
 
    @NotNull
    public String serialize(@NotNull final Component component) {
-      return this.serializer().toJson((Object)component);
+      return this.serializer().toJson(component);
    }
 
    @NotNull
@@ -146,10 +146,10 @@ final class GsonComponentSerializerImpl implements GsonComponentSerializer {
 
       static {
          INSTANCE = (GsonComponentSerializer)GsonComponentSerializerImpl.SERVICE.map(GsonComponentSerializer.Provider::gson).orElseGet(() -> {
-            return new GsonComponentSerializerImpl(false, (LegacyHoverEventSerializer)null, false);
+            return new GsonComponentSerializerImpl(false, null, false);
          });
          LEGACY_INSTANCE = (GsonComponentSerializer)GsonComponentSerializerImpl.SERVICE.map(GsonComponentSerializer.Provider::gsonLegacy).orElseGet(() -> {
-            return new GsonComponentSerializerImpl(true, (LegacyHoverEventSerializer)null, true);
+            return new GsonComponentSerializerImpl(true, null, true);
          });
       }
    }

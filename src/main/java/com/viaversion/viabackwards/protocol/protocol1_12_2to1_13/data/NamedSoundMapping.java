@@ -20,7 +20,7 @@ public class NamedSoundMapping {
       try {
          Field field = NamedSoundRewriter.class.getDeclaredField("oldToNew");
          field.setAccessible(true);
-         Map sounds = (Map)field.get((Object)null);
+         Map sounds = (Map)field.get(null);
          sounds.forEach((sound1_12, sound1_13) -> {
             SOUNDS.put(sound1_13, sound1_12);
          });

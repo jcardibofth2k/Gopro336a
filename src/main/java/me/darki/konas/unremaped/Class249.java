@@ -26,7 +26,7 @@ public class Class249 {
             return false;
         }
         Class249 class249 = (Class249)object;
-        return this.Field2206.equals((Object)class249.Field2206);
+        return this.Field2206.equals(class249.Field2206);
     }
 
     public BlockPos Method2002() {

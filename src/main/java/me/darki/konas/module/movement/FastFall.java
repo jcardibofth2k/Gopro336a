@@ -28,12 +28,12 @@ extends Module {
                 return;
             }
             if (!this.Field1095 || FastFall.mc.player.onGround || !(moveEvent.getY() < 0.0)) break block3;
-            for (int i = 0; i < (Integer)Field1094.getValue(); ++i) {
+            for (int i = 0; i < Field1094.getValue(); ++i) {
                 this.Field1096 = true;
                 FastFall.mc.player.move(moveEvent.getMoverType(), Field1092.getValue() == Class428.BOOST ? moveEvent.getX() : 0.0, moveEvent.getY(), Field1092.getValue() == Class428.BOOST ? moveEvent.getZ() : 0.0);
                 this.Field1096 = false;
                 Class550.Method883(FastFall.mc.player.rotationYaw, FastFall.mc.player.rotationPitch);
-                if (!((Boolean)Field1091.getValue()).booleanValue()) continue;
+                if (!Field1091.getValue().booleanValue()) continue;
                 moveEvent.setY(moveEvent.getY() - 0.08);
                 FastFall.mc.player.motionY -= 0.08;
             }
@@ -45,17 +45,17 @@ extends Module {
     }
 
     public FastFall() {
-        super("FastFall", "Makes you fall faster", Category.MOVEMENT, new String[0]);
+        super("FastFall", "Makes you fall faster", Category.MOVEMENT);
     }
 
     @Subscriber
     public void Method130(Class19 class19) {
-        if (FastFall.mc.world.getBlockState(new BlockPos((Entity)FastFall.mc.player)).getBlock() != Blocks.AIR) {
+        if (FastFall.mc.world.getBlockState(new BlockPos(FastFall.mc.player)).getBlock() != Blocks.AIR) {
             this.Field1095 = false;
             return;
         }
         if (FastFall.mc.player.onGround) {
-            FastFall.mc.player.motionY = -0.0784 * (double)((Float)Field1093.getValue()).floatValue();
+            FastFall.mc.player.motionY = -0.0784 * (double) Field1093.getValue().floatValue();
             this.Field1095 = true;
         }
         if (FastFall.mc.player.motionY > 0.0) {

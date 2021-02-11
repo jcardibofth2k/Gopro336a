@@ -73,7 +73,7 @@ public class MappingData extends MappingDataBase {
          }
       }
 
-      Map translateData = (Map)GsonUtil.getGson().fromJson((Reader)(new InputStreamReader(MappingData.class.getClassLoader().getResourceAsStream("assets/viaversion/data/mapping-lang-1.12-1.13.json"))), (Type)(new TypeToken() {
+      Map translateData = (Map)GsonUtil.getGson().fromJson(new InputStreamReader(MappingData.class.getClassLoader().getResourceAsStream("assets/viaversion/data/mapping-lang-1.12-1.13.json")), (new TypeToken() {
       }).getType());
 
       try {
@@ -122,7 +122,7 @@ public class MappingData extends MappingDataBase {
    }
 
    protected Mappings loadFromObject(JsonObject oldMappings, JsonObject newMappings, @Nullable JsonObject diffMappings, String key) {
-      return (Mappings)(key.equals("blocks") ? new IntArrayMappings(4084, oldMappings.getAsJsonObject("blocks"), newMappings.getAsJsonObject("blockstates")) : super.loadFromObject(oldMappings, newMappings, diffMappings, key));
+      return key.equals("blocks") ? new IntArrayMappings(4084, oldMappings.getAsJsonObject("blocks"), newMappings.getAsJsonObject("blockstates")) : super.loadFromObject(oldMappings, newMappings, diffMappings, key);
    }
 
    public static String validateNewChannel(String newId) {
@@ -154,7 +154,7 @@ public class MappingData extends MappingDataBase {
             idsArray[i] = ids.get(i).getAsInt();
          }
 
-         output.put((String)entry.getKey(), idsArray);
+         output.put(entry.getKey(), idsArray);
       }
 
    }

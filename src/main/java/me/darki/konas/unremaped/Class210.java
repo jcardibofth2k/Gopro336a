@@ -18,14 +18,14 @@ extends Class183 {
     public void Method105(int n, int n2, float f) {
         int n3;
         super.Method105(n, n2, f);
-        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-        int n4 = n3 = ((ParentSetting)this.Method583().getValue()).Method1230() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-        if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class210.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-            n3 = ((ParentSetting)this.Method583().getValue()).Method1230() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
+        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ClickGUIModule.color.getValue().Method774());
+        int n4 = n3 = this.Method583().getValue().Method1230() ? ClickGUIModule.color.getValue().Method774() : ClickGUIModule.secondary.getValue().Method774();
+        if (ClickGUIModule.hover.getValue().booleanValue() && Class210.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+            n3 = this.Method583().getValue().Method1230() ? ClickGUIModule.color.getValue().Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
         }
         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
-        Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
-        Class548.Method1016(((ParentSetting)this.Method583().getValue()).Method1230() ? "-" : "+", (int)(this.Method1475() + this.Method1479() - 5.0f - Class548.Method1022(((ParentSetting)this.Method583().getValue()).Method1230() ? "-" : "+")), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(((ParentSetting)this.Method583().getValue()).Method1230() ? "-" : "+") / 2.0f - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
+        Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f), ClickGUIModule.fony.getValue().Method774());
+        Class548.Method1016(this.Method583().getValue().Method1230() ? "-" : "+", (int)(this.Method1475() + this.Method1479() - 5.0f - Class548.Method1022(this.Method583().getValue().Method1230() ? "-" : "+")), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method583().getValue().Method1230() ? "-" : "+") / 2.0f - 0.5f), ClickGUIModule.fony.getValue().Method774());
     }
 
     @Override
@@ -33,8 +33,8 @@ extends Class183 {
         super.Method106(n, n2, n3);
         boolean bl = Class210.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl && (n3 == 0 || n3 == 1)) {
-            Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
-            ((ParentSetting)this.Method583().getValue()).Method1231(!((ParentSetting)this.Method583().getValue()).Method1230());
+            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            this.Method583().getValue().Method1231(!this.Method583().getValue().Method1230());
             return true;
         }
         return false;

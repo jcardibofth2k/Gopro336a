@@ -35,7 +35,7 @@ public class VBMappingDataLoader {
 
             JsonObject var3;
             try {
-               var3 = (JsonObject)GsonUtil.getGson().fromJson((Reader)reader, (Class)JsonObject.class);
+               var3 = (JsonObject)GsonUtil.getGson().fromJson(reader, JsonObject.class);
             } catch (Throwable var6) {
                try {
                   reader.close();
@@ -68,7 +68,7 @@ public class VBMappingDataLoader {
 
          JsonObject var3;
          try {
-            var3 = (JsonObject)GsonUtil.getGson().fromJson((Reader)reader, (Class)JsonObject.class);
+            var3 = (JsonObject)GsonUtil.getGson().fromJson(reader, JsonObject.class);
          } catch (Throwable var6) {
             try {
                reader.close();
@@ -195,7 +195,7 @@ public class VBMappingDataLoader {
                while(var14.hasNext()) {
                   Object2IntMap.Entry entry = (Object2IntMap.Entry)var14.next();
                   if (!newIdenfierMap.containsKey(entry.getKey()) && !itemMapping.containsKey(entry.getIntValue())) {
-                     ViaBackwards.getPlatform().getLogger().warning("No item mapping for " + (String)entry.getKey() + " :( ");
+                     ViaBackwards.getPlatform().getLogger().warning("No item mapping for " + entry.getKey() + " :( ");
                   }
                }
             }

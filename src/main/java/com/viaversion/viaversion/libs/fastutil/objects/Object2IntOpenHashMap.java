@@ -108,7 +108,7 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
    }
 
    private void tryCapacity(long capacity) {
-      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((double)((float)capacity / this.field_141)))));
+      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((float)capacity / this.field_141))));
       if (needed > this.field_140) {
          this.rehash(needed);
       }
@@ -142,7 +142,7 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
       if ((double)this.field_141 <= 0.5D) {
          this.ensureCapacity(m.size());
       } else {
-         this.tryCapacity((long)(this.size() + m.size()));
+         this.tryCapacity(this.size() + m.size());
       }
 
       super.putAll(m);
@@ -522,7 +522,7 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
       if (this.size != 0) {
          this.size = 0;
          this.containsNullKey = false;
-         Arrays.fill(this.key, (Object)null);
+         Arrays.fill(this.key, null);
       }
    }
 
@@ -594,7 +594,7 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
    }
 
    public boolean trim(int n) {
-      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((double)((float)n / this.field_141)));
+      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((float)n / this.field_141));
       if (l < this.field_140 && this.size <= HashCommon.maxFill(l, this.field_141)) {
          try {
             this.rehash(l);
@@ -649,8 +649,8 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
       c.values = null;
       c.entries = null;
       c.containsNullKey = this.containsNullKey;
-      c.key = (Object[])this.key.clone();
-      c.value = (int[])this.value.clone();
+      c.key = this.key.clone();
+      c.value = this.value.clone();
       return c;
    }
 
@@ -1007,7 +1007,7 @@ public class Object2IntOpenHashMap extends AbstractObject2IntMap implements Seri
                Object2IntOpenHashMap.this.key[Object2IntOpenHashMap.this.field_140] = null;
             } else {
                if (this.pos < 0) {
-                  Object2IntOpenHashMap.this.removeInt(this.wrapped.set(-this.pos - 1, (Object)null));
+                  Object2IntOpenHashMap.this.removeInt(this.wrapped.set(-this.pos - 1, null));
                   this.last = -1;
                   return;
                }

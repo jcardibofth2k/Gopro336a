@@ -8,12 +8,12 @@ extends BlockPos {
     public boolean Field2057;
 
     public Class498(BlockPos blockPos, boolean bl) {
-        super((Vec3i)blockPos);
+        super(blockPos);
         this.Field2057 = bl;
     }
 
     public Class498(BlockPos blockPos) {
-        super((Vec3i)blockPos);
+        super(blockPos);
         this.Field2057 = false;
     }
 

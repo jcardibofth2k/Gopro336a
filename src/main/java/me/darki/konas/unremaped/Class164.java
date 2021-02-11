@@ -35,7 +35,7 @@ extends GuiButton {
         block6: {
             if (!this.visible) break block6;
             minecraft.getTextureManager().bindTexture(KonasBeaconGui.access$200());
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             this.hovered = n >= this.x && n2 >= this.y && n < this.x + this.width && n2 < this.y + this.height;
             int n3 = 0;
             if (!this.enabled) {
@@ -46,7 +46,7 @@ extends GuiButton {
                 n3 += this.width * 3;
             }
             this.drawTexturedModalRect(this.x, this.y, n3, 219, this.width, this.height);
-            if (!KonasBeaconGui.access$200().equals((Object)this.Field1724)) {
+            if (!KonasBeaconGui.access$200().equals(this.Field1724)) {
                 minecraft.getTextureManager().bindTexture(this.Field1724);
             }
             this.drawTexturedModalRect(this.x + 2, this.y + 2, this.Field1725, this.Field1726, 18, 18);

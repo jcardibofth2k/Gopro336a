@@ -19,21 +19,21 @@ extends Module {
     @Subscriber
     public void Method135(UpdateEvent updateEvent) {
         block3: {
-            this.Method1645(((Class269)((Object) mode.getValue())).name());
+            this.Method1645(mode.getValue().name());
             if (mode.getValue() != Class269.NOCLIP) break block3;
             Phase.mc.player.setVelocity(0.0, 0.0, 0.0);
             if (Phase.mc.gameSettings.keyBindForward.isKeyDown() || Phase.mc.gameSettings.keyBindBack.isKeyDown() || Phase.mc.gameSettings.keyBindLeft.isKeyDown() || Phase.mc.gameSettings.keyBindRight.isKeyDown()) {
                 double[] dArray = MathUtil.Method1086(0.06f);
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX + dArray[0], Phase.mc.player.posY, Phase.mc.player.posZ + dArray[1], Phase.mc.player.onGround));
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX + dArray[0], Phase.mc.player.posY, Phase.mc.player.posZ + dArray[1], Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
             }
             if (Phase.mc.gameSettings.keyBindSneak.isKeyDown()) {
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX, Phase.mc.player.posY - (Double) distance.getValue() / 1000.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, Phase.mc.player.posY - distance.getValue() / 1000.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
             }
             if (Phase.mc.gameSettings.keyBindJump.isKeyDown()) {
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX, Phase.mc.player.posY + (Double) distance.getValue() / 1000.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
-                Phase.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, Phase.mc.player.posY + distance.getValue() / 1000.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
+                Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
             }
         }
     }
@@ -62,7 +62,7 @@ extends Module {
                     }
                     if (mode.getValue() != Class269.SAND) break block2;
                     if (Phase.mc.player.getRidingEntity() == null || class570.Method579() != Phase.mc.player.getRidingEntity()) break block3;
-                    if (!Phase.mc.gameSettings.keyBindSprint.isKeyDown() || !((Boolean) noVoid.getValue()).booleanValue()) break block4;
+                    if (!Phase.mc.gameSettings.keyBindSprint.isKeyDown() || !noVoid.getValue().booleanValue()) break block4;
                     class570.setCanceled(true);
                     break block3;
                 }
@@ -86,10 +86,10 @@ extends Module {
     @Override
     public void onEnable() {
         block0: {
-            if (!((Boolean) autoClip.getValue()).booleanValue() || Phase.mc.player == null || Phase.mc.world == null) break block0;
+            if (!autoClip.getValue().booleanValue() || Phase.mc.player == null || Phase.mc.world == null) break block0;
             double d = Math.cos(Math.toRadians(Phase.mc.player.rotationYaw + 90.0f));
             double d2 = Math.sin(Math.toRadians(Phase.mc.player.rotationYaw + 90.0f));
-            Phase.mc.player.setPosition(Phase.mc.player.posX + (1.0 * ((Double) distance.getValue() / 1000.0) * d + 0.0 * ((Double) distance.getValue() / 1000.0) * d2), Phase.mc.player.posY, Phase.mc.player.posZ + (1.0 * ((Double) distance.getValue() / 1000.0) * d2 - 0.0 * ((Double) distance.getValue() / 1000.0) * d));
+            Phase.mc.player.setPosition(Phase.mc.player.posX + (1.0 * (distance.getValue() / 1000.0) * d + 0.0 * (distance.getValue() / 1000.0) * d2), Phase.mc.player.posY, Phase.mc.player.posZ + (1.0 * (distance.getValue() / 1000.0) * d2 - 0.0 * (distance.getValue() / 1000.0) * d));
         }
     }
 

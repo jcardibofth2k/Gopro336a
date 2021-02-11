@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public interface TextComponent extends BuildableComponent, ScopedComponent {
    @NotNull
    static TextComponent ofChildren(@NotNull final ComponentLike... components) {
-      return (TextComponent)(components.length == 0 ? Component.empty() : new TextComponentImpl(Arrays.asList(components), Style.empty(), ""));
+      return components.length == 0 ? Component.empty() : new TextComponentImpl(Arrays.asList(components), Style.empty(), "");
    }
 
    @NotNull
@@ -20,7 +20,7 @@ public interface TextComponent extends BuildableComponent, ScopedComponent {
    @NotNull
    TextComponent content(@NotNull final String content);
 
-   public interface Builder extends ComponentBuilder {
+   interface Builder extends ComponentBuilder {
       @NotNull
       String content();
 

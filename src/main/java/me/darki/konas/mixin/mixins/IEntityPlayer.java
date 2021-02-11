@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value={EntityPlayer.class})
 public interface IEntityPlayer {
     @Accessor(value="PLAYER_MODEL_FLAG")
-    public static DataParameter<Byte> Method326() {
+    static DataParameter<Byte> Method326() {
         throw new NotImplementedException("IEntityPlayer mixin failed to apply");
     }
 
     @Invoker(value="updateCape")
-    public void Method327();
+    void Method327();
 }

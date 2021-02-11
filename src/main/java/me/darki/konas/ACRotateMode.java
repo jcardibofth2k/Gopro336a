@@ -12,7 +12,7 @@ extends Enum {
     }
 
     public static ACRotateMode[] Method612() {
-        return (ACRotateMode[])Field536.clone();
+        return Field536.clone();
     }
 
     static {

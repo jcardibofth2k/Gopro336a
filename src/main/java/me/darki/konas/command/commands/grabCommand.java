@@ -10,7 +10,7 @@ import me.darki.konas.command.Logger;
 public class grabCommand
 extends Command {
     public grabCommand() {
-        super("Grab", "Copies your current coords to your clipboard", new String[]{"Coords", "CopyCoords", "CopyPos", "CopyPosition"}, new SyntaxChunk[0]);
+        super("Grab", "Copies your current coords to your clipboard", new String[]{"Coords", "CopyCoords", "CopyPos", "CopyPosition"});
     }
 
     @Override

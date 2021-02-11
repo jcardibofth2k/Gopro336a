@@ -30,14 +30,14 @@ public final class InventoryPackets extends ItemRewriter {
       this.registerSpawnParticle(ClientboundPackets1_16_2.SPAWN_PARTICLE, Type.FLAT_VAR_INT_ITEM, Type.DOUBLE);
       (new RecipeRewriter1_16(this.protocol)).registerDefaultHandler(ClientboundPackets1_16_2.DECLARE_RECIPES);
       this.registerCreativeInvAction(ServerboundPackets1_17.CREATIVE_INVENTORY_ACTION, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_17To1_16_4)this.protocol).registerServerbound(ServerboundPackets1_17.EDIT_BOOK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_17.EDIT_BOOK, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                InventoryPackets.this.handleItemToServer((Item)wrapper.passthrough(Type.FLAT_VAR_INT_ITEM));
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerServerbound(ServerboundPackets1_17.CLICK_WINDOW, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_17.CLICK_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -66,7 +66,7 @@ public final class InventoryPackets extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerClientbound(ClientboundPackets1_16_2.WINDOW_CONFIRMATION, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16_2.WINDOW_CONFIRMATION, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                short inventoryId = (Short)wrapper.read(Type.UNSIGNED_BYTE);
@@ -84,7 +84,7 @@ public final class InventoryPackets extends ItemRewriter {
             });
          }
       });
-      ((Protocol1_17To1_16_4)this.protocol).registerServerbound(ServerboundPackets1_17.PONG, (ServerboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_17.PONG, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                int id = (Integer)wrapper.read(Type.INT);

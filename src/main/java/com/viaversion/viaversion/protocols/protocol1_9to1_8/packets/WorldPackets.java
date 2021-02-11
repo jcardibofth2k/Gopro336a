@@ -32,7 +32,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class WorldPackets {
    public static void register(Protocol protocol) {
-      protocol.registerClientbound(ClientboundPackets1_8.UPDATE_SIGN, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_8.UPDATE_SIGN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.STRING, Protocol1_9To1_8.FIX_JSON);
@@ -40,8 +40,8 @@ public class WorldPackets {
             this.map(Type.STRING, Protocol1_9To1_8.FIX_JSON);
             this.map(Type.STRING, Protocol1_9To1_8.FIX_JSON);
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.EFFECT, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.EFFECT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.POSITION);
@@ -66,8 +66,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.NAMED_SOUND, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.NAMED_SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -96,8 +96,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.CHUNK_DATA, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -118,8 +118,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.MAP_BULK_CHUNK, (ClientboundPacketType)null, new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.MAP_BULK_CHUNK, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.cancel();
@@ -163,7 +163,7 @@ public class WorldPackets {
             });
          }
       });
-      protocol.registerClientbound(ClientboundPackets1_8.BLOCK_ENTITY_DATA, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_8.BLOCK_ENTITY_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -196,13 +196,13 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_8.BLOCK_CHANGE, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_8.BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.VAR_INT);
          }
-      }));
+      });
       protocol.registerServerbound(ServerboundPackets1_9.UPDATE_SIGN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
@@ -234,7 +234,7 @@ public class WorldPackets {
                      if (entityTracker.isBlocking()) {
                         entityTracker.setBlocking(false);
                         if (!Via.getConfig().isShowShieldWhenSwordInHand()) {
-                           entityTracker.setSecondHand((Item)null);
+                           entityTracker.setSecondHand(null);
                         }
                      }
                   }
@@ -243,7 +243,7 @@ public class WorldPackets {
             });
          }
       });
-      protocol.registerServerbound(ServerboundPackets1_9.USE_ITEM, (ServerboundPacketType)null, new PacketRemapper() {
+      protocol.registerServerbound(ServerboundPackets1_9.USE_ITEM, null, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -261,7 +261,7 @@ public class WorldPackets {
                         if (hand == 0 && !tracker.isBlocking()) {
                            tracker.setBlocking(true);
                            if (!showShieldWhenSwordInHand && tracker.getItemInSecondHand() == null) {
-                              Item shield = new DataItem(442, (byte)1, (short)0, (CompoundTag)null);
+                              Item shield = new DataItem(442, (byte)1, (short)0, null);
                               tracker.setSecondHand(shield);
                            }
                         }
@@ -272,7 +272,7 @@ public class WorldPackets {
                         }
                      } else {
                         if (!showShieldWhenSwordInHand) {
-                           tracker.setSecondHand((Item)null);
+                           tracker.setSecondHand(null);
                         }
 
                         tracker.setBlocking(false);
@@ -348,10 +348,10 @@ public class WorldPackets {
                   Position pos = (Position)wrapper.get(Type.POSITION, 0);
                   Optional tag = provider.get(wrapper.user(), pos);
                   if (tag.isPresent()) {
-                     PacketWrapper updateBlockEntity = PacketWrapper.create(9, (ByteBuf)null, wrapper.user());
+                     PacketWrapper updateBlockEntity = PacketWrapper.create(9, null, wrapper.user());
                      updateBlockEntity.write(Type.POSITION, pos);
                      updateBlockEntity.write(Type.UNSIGNED_BYTE, Short.valueOf((short)2));
-                     updateBlockEntity.write(Type.NBT, (CompoundTag)tag.get());
+                     updateBlockEntity.write(Type.NBT, tag.get());
                      updateBlockEntity.scheduleSend(Protocol1_9To1_8.class);
                   }
 

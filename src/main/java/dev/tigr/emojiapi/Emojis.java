@@ -75,7 +75,7 @@ public class Emojis {
 
       try {
          String json = IOUtils.toString(stream, Charsets.UTF_8);
-         jsonObject = (JsonObject)gson.fromJson(json, JsonObject.class);
+         jsonObject = gson.fromJson(json, JsonObject.class);
       } catch (IOException var4) {
          var4.printStackTrace();
       }

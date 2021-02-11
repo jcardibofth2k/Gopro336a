@@ -49,7 +49,7 @@ public class MappingDataLoader {
 
             JsonObject var3;
             try {
-               var3 = (JsonObject)GsonUtil.getGson().fromJson((Reader)reader, (Class)JsonObject.class);
+               var3 = (JsonObject)GsonUtil.getGson().fromJson(reader, JsonObject.class);
             } catch (Throwable var6) {
                try {
                   reader.close();
@@ -95,7 +95,7 @@ public class MappingDataLoader {
 
          JsonObject var5;
          try {
-            JsonObject object = (JsonObject)GsonUtil.getGson().fromJson((Reader)reader, (Class)JsonObject.class);
+            JsonObject object = (JsonObject)GsonUtil.getGson().fromJson(reader, JsonObject.class);
             if (cacheIfEnabled && cacheJsonMappings) {
                MAPPINGS_CACHE.put(name, object);
             }
@@ -128,7 +128,7 @@ public class MappingDataLoader {
    }
 
    public static void mapIdentifiers(int[] output, JsonObject oldIdentifiers, JsonObject newIdentifiers) {
-      mapIdentifiers((int[])output, oldIdentifiers, newIdentifiers, (JsonObject)null);
+      mapIdentifiers(output, oldIdentifiers, newIdentifiers, null);
    }
 
    public static void mapIdentifiers(int[] output, JsonObject oldIdentifiers, JsonObject newIdentifiers, @Nullable JsonObject diffIdentifiers) {
@@ -168,7 +168,7 @@ public class MappingDataLoader {
    }
 
    public static void mapIdentifiers(int[] output, JsonArray oldIdentifiers, JsonArray newIdentifiers, boolean warnOnMissing) {
-      mapIdentifiers(output, oldIdentifiers, newIdentifiers, (JsonObject)null, warnOnMissing);
+      mapIdentifiers(output, oldIdentifiers, newIdentifiers, null, warnOnMissing);
    }
 
    public static void mapIdentifiers(int[] output, JsonArray oldIdentifiers, JsonArray newIdentifiers, @Nullable JsonObject diffIdentifiers, boolean warnOnMissing) {

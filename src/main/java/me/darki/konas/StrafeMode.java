@@ -29,6 +29,6 @@ extends Enum {
     }
 
     public static StrafeMode[] Method378() {
-        return (StrafeMode[])Field228.clone();
+        return Field228.clone();
     }
 }

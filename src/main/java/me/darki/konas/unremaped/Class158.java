@@ -102,7 +102,7 @@ extends Gui {
         block4: {
             int n;
             String string2 = "";
-            String string3 = ChatAllowedCharacters.filterAllowedCharacters((String)string);
+            String string3 = ChatAllowedCharacters.filterAllowedCharacters(string);
             int n2 = this.Field1835 < this.Field1836 ? this.Field1835 : this.Field1836;
             int n3 = this.Field1835 < this.Field1836 ? this.Field1836 : this.Field1835;
             int n4 = this.Field1828 - this.Field1827.length() - (n2 - n3);
@@ -211,23 +211,23 @@ extends Gui {
         if (!this.Field1832) {
             return false;
         }
-        if (GuiScreen.isKeyComboCtrlA((int)n)) {
+        if (GuiScreen.isKeyComboCtrlA(n)) {
             this.Method1658();
             this.Method1742(0);
             return true;
         }
-        if (GuiScreen.isKeyComboCtrlC((int)n)) {
-            GuiScreen.setClipboardString((String)this.Method1731());
+        if (GuiScreen.isKeyComboCtrlC(n)) {
+            GuiScreen.setClipboardString(this.Method1731());
             return true;
         }
-        if (GuiScreen.isKeyComboCtrlV((int)n)) {
+        if (GuiScreen.isKeyComboCtrlV(n)) {
             if (this.Field1833) {
                 this.Method1718(GuiScreen.getClipboardString());
             }
             return true;
         }
-        if (GuiScreen.isKeyComboCtrlX((int)n)) {
-            GuiScreen.setClipboardString((String)this.Method1731());
+        if (GuiScreen.isKeyComboCtrlX(n)) {
+            GuiScreen.setClipboardString(this.Method1731());
             if (this.Field1833) {
                 this.Method1718("");
             }
@@ -299,7 +299,7 @@ extends Gui {
                 return true;
             }
         }
-        if (ChatAllowedCharacters.isAllowedCharacter((char)c)) {
+        if (ChatAllowedCharacters.isAllowedCharacter(c)) {
             if (this.Field1833) {
                 this.Method1718(Character.toString(c));
             }
@@ -342,15 +342,15 @@ extends Gui {
         }
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
-        GlStateManager.color((float)0.0f, (float)0.0f, (float)255.0f, (float)255.0f);
+        GlStateManager.color(0.0f, 0.0f, 255.0f, 255.0f);
         GlStateManager.disableTexture2D();
         GlStateManager.enableColorLogic();
-        GlStateManager.colorLogicOp((GlStateManager.LogicOp)GlStateManager.LogicOp.OR_REVERSE);
+        GlStateManager.colorLogicOp(GlStateManager.LogicOp.OR_REVERSE);
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION);
-        bufferBuilder.pos((double)n, (double)n4, 0.0).endVertex();
-        bufferBuilder.pos((double)n3, (double)n4, 0.0).endVertex();
-        bufferBuilder.pos((double)n3, (double)n2, 0.0).endVertex();
-        bufferBuilder.pos((double)n, (double)n2, 0.0).endVertex();
+        bufferBuilder.pos(n, n4, 0.0).endVertex();
+        bufferBuilder.pos(n3, n4, 0.0).endVertex();
+        bufferBuilder.pos(n3, n2, 0.0).endVertex();
+        bufferBuilder.pos(n, n2, 0.0).endVertex();
         tessellator.draw();
         GlStateManager.disableColorLogic();
         GlStateManager.enableTexture2D();
@@ -379,7 +379,7 @@ extends Gui {
     public void Method619(int n) {
         this.Field1835 = n;
         int n2 = this.Field1827.length();
-        this.Field1835 = MathHelper.clamp((int)this.Field1835, (int)0, (int)n2);
+        this.Field1835 = MathHelper.clamp(this.Field1835, 0, n2);
         this.Method1742(this.Field1835);
     }
 
@@ -418,8 +418,8 @@ extends Gui {
         block11: {
             if (!this.Method1741()) break block11;
             if (this.Method1712()) {
-                Class158.drawRect((int)(this.Field1823 - 1), (int)(this.Field1824 - 1), (int)(this.Field1823 + this.Field1825 + 1), (int)(this.Field1824 + this.Field1826 + 1), (int)-6250336);
-                Class158.drawRect((int)this.Field1823, (int)this.Field1824, (int)(this.Field1823 + this.Field1825), (int)(this.Field1824 + this.Field1826), (int)-16777216);
+                Class158.drawRect(this.Field1823 - 1, this.Field1824 - 1, this.Field1823 + this.Field1825 + 1, this.Field1824 + this.Field1826 + 1, -6250336);
+                Class158.drawRect(this.Field1823, this.Field1824, this.Field1823 + this.Field1825, this.Field1824 + this.Field1826, -16777216);
             }
             int n = this.Field1833 ? this.Field1837 : this.Field1838;
             int n2 = this.Field1835 - this.Field1834;
@@ -450,7 +450,7 @@ extends Gui {
             }
             if (bl2) {
                 if (bl3) {
-                    Gui.drawRect((int)n7, (int)(n5 - 1), (int)(n7 + 1), (int)(n5 + 1 + this.Field1822.FONT_HEIGHT), (int)-3092272);
+                    Gui.drawRect(n7, n5 - 1, n7 + 1, n5 + 1 + this.Field1822.FONT_HEIGHT, -3092272);
                 } else {
                     this.Field1822.drawStringWithShadow("_", (float)n7, (float)n5, n);
                 }
@@ -490,7 +490,7 @@ extends Gui {
             } else if (n <= this.Field1834) {
                 this.Field1834 -= this.Field1834 - n;
             }
-            this.Field1834 = MathHelper.clamp((int)this.Field1834, (int)0, (int)n2);
+            this.Field1834 = MathHelper.clamp(this.Field1834, 0, n2);
         }
     }
 

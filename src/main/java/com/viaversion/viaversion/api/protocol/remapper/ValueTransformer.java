@@ -15,7 +15,7 @@ public abstract class ValueTransformer implements ValueWriter {
    }
 
    protected ValueTransformer(Type outputType) {
-      this((Type)null, outputType);
+      this(null, outputType);
    }
 
    public abstract Object transform(PacketWrapper var1, Object var2) throws Exception;

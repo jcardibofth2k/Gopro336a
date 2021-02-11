@@ -31,7 +31,7 @@ extends Module {
     public Class566 Field1982 = new Class566();
 
     public AutoGG() {
-        super("AutoGG", Category.MISC, new String[0]);
+        super("AutoGG", Category.MISC);
         Field1976.add("Good fight! Konas owns me and all \u2022\u1d17\u2022");
         Field1977.add("you just got nae nae'd by konas <player>!");
         Field1977.add("<player> tango down");
@@ -56,7 +56,7 @@ extends Module {
     @Subscriber
     public void Method1451(Class654 class654) {
         block0: {
-            if (!(class654.Method1161() instanceof GuiGameOver) || !((Boolean) excuses.getValue()).booleanValue() || !this.Field1982.Method737(2000.0)) break block0;
+            if (!(class654.Method1161() instanceof GuiGameOver) || !excuses.getValue().booleanValue() || !this.Field1982.Method737(2000.0)) break block0;
             this.Method124();
             this.Field1982.Method739();
         }
@@ -79,7 +79,7 @@ extends Module {
         if (packetEvent.getPacket() instanceof SPacketPlayerListItem && (sPacketPlayerListItem = (SPacketPlayerListItem) packetEvent.getPacket()).getAction() == SPacketPlayerListItem.Action.REMOVE_PLAYER) {
             for (SPacketPlayerListItem.AddPlayerData addPlayerData : sPacketPlayerListItem.getEntries()) {
                 EntityPlayer entityPlayer = AutoGG.mc.world.getPlayerEntityByUUID(addPlayerData.getProfile().getId());
-                if (entityPlayer == null || !((Boolean) log.getValue()).booleanValue() || AutoGG.mc.player.ticksExisted <= 100 || !NewGui.INSTANCE.Field1133.Method423((Entity)entityPlayer)) continue;
+                if (entityPlayer == null || !log.getValue().booleanValue() || AutoGG.mc.player.ticksExisted <= 100 || !NewGui.INSTANCE.Field1133.Method423((Entity)entityPlayer)) continue;
                 this.Method1809(entityPlayer);
             }
         }
@@ -88,11 +88,11 @@ extends Module {
     @Subscriber
     public void Method1467(Class45 class45) {
         block1: {
-            if (((Boolean) gg.getValue()).booleanValue()) {
+            if (gg.getValue().booleanValue()) {
                 this.Method1808(class45.Method270());
                 return;
             }
-            if (!((Boolean) ez.getValue()).booleanValue()) break block1;
+            if (!ez.getValue().booleanValue()) break block1;
             this.Method1807(class45.Method270());
         }
     }
@@ -111,7 +111,7 @@ extends Module {
             EntityPlayer entityPlayer;
             Entity entity;
             SPacketEntityStatus sPacketEntityStatus;
-            if (!(packetEvent.getPacket() instanceof SPacketEntityStatus) || (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() != 35 || !((entity = sPacketEntityStatus.getEntity((World) AutoGG.mc.world)) instanceof EntityPlayer) || !NewGui.INSTANCE.Field1133.Method423((Entity)(entityPlayer = (EntityPlayer)entity)) || !((Boolean) pops.getValue()).booleanValue()) break block0;
+            if (!(packetEvent.getPacket() instanceof SPacketEntityStatus) || (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() != 35 || !((entity = sPacketEntityStatus.getEntity(AutoGG.mc.world)) instanceof EntityPlayer) || !NewGui.INSTANCE.Field1133.Method423((Entity)(entityPlayer = (EntityPlayer)entity)) || !pops.getValue().booleanValue()) break block0;
             this.Method1810(entityPlayer);
         }
     }

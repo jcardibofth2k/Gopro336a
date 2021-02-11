@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={ChatLine.class})
 public interface IChatLine {
     @Accessor(value="lineString")
-    public void Method263(ITextComponent var1);
+    void Method263(ITextComponent var1);
 }

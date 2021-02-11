@@ -34,7 +34,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.PLAYER_POSITION, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLAYER_POSITION, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.DOUBLE);
             this.map(Type.DOUBLE);
@@ -59,7 +59,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -107,7 +107,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
       });
       this.registerTracker(ClientboundPackets1_13.SPAWN_EXPERIENCE_ORB, Entity1_13Types.EntityType.EXPERIENCE_ORB);
       this.registerTracker(ClientboundPackets1_13.SPAWN_GLOBAL_ENTITY, Entity1_13Types.EntityType.LIGHTNING_BOLT);
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_MOB, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_MOB, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -141,7 +141,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
             this.handler(EntityPackets1_13.this.getMobSpawnRewriter(Types1_12.METADATA_LIST));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PLAYER, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -154,7 +154,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
             this.handler(EntityPackets1_13.this.getTrackerAndMetaHandler(Types1_12.METADATA_LIST, Entity1_13Types.EntityType.PLAYER));
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_PAINTING, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PAINTING, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -169,7 +169,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
          }
       });
       this.registerJoinGame(ClientboundPackets1_13.JOIN_GAME, Entity1_13Types.EntityType.PLAYER);
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler(EntityPackets1_13.this.getDimensionHandler(0));
@@ -180,7 +180,7 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
       });
       this.registerRemoveEntities(ClientboundPackets1_13.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_13.ENTITY_METADATA, Types1_13.METADATA_LIST, Types1_12.METADATA_LIST);
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.FACE_PLAYER, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.FACE_PLAYER, null, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -215,9 +215,9 @@ public class EntityPackets1_13 extends LegacyEntityRewriter {
                });
             }
          };
-         ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.PLAYER_POSITION, movementRemapper);
-         ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.PLAYER_POSITION_AND_ROTATION, movementRemapper);
-         ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.VEHICLE_MOVE, movementRemapper);
+         this.protocol.registerServerbound(ServerboundPackets1_12_1.PLAYER_POSITION, movementRemapper);
+         this.protocol.registerServerbound(ServerboundPackets1_12_1.PLAYER_POSITION_AND_ROTATION, movementRemapper);
+         this.protocol.registerServerbound(ServerboundPackets1_12_1.VEHICLE_MOVE, movementRemapper);
       }
 
    }

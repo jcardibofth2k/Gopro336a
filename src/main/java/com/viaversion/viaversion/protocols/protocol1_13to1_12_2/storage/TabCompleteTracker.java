@@ -15,10 +15,10 @@ public class TabCompleteTracker implements StorableObject {
 
    public void sendPacketToServer(UserConnection connection) {
       if (this.lastTabComplete != null && this.timeToSend <= System.currentTimeMillis()) {
-         PacketWrapper wrapper = PacketWrapper.create(1, (ByteBuf)null, connection);
+         PacketWrapper wrapper = PacketWrapper.create(1, null, connection);
          wrapper.write(Type.STRING, this.lastTabComplete);
          wrapper.write(Type.BOOLEAN, false);
-         wrapper.write(Type.OPTIONAL_POSITION, (Object)null);
+         wrapper.write(Type.OPTIONAL_POSITION, null);
 
          try {
             wrapper.scheduleSendToServer(Protocol1_13To1_12_2.class);

@@ -12,7 +12,7 @@ extends Module {
     @Subscriber
     public void Method2065(Class60 class60) {
         block0: {
-            if (!class60.Method322().isTame() && ((Boolean)this.Field2361.getValue()).booleanValue()) break block0;
+            if (!class60.Method322().isTame() && this.Field2361.getValue().booleanValue()) break block0;
             class60.Cancel();
         }
     }
@@ -24,7 +24,7 @@ extends Module {
     @Subscriber
     public void Method2066(Class72 class72) {
         block0: {
-            if (!class72.Method322().isTame() && ((Boolean)this.Field2361.getValue()).booleanValue()) break block0;
+            if (!class72.Method322().isTame() && this.Field2361.getValue().booleanValue()) break block0;
             class72.Cancel();
         }
     }

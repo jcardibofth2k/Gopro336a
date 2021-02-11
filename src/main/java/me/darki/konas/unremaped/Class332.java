@@ -64,7 +64,7 @@ extends Module {
     }
 
     public Class332() {
-        super("Translate", "Translate your chat message into any language", Category.MISC, new String[0]);
+        super("Translate", "Translate your chat message into any language", Category.MISC);
     }
 
     @Subscriber

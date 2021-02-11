@@ -80,7 +80,7 @@ public class SpawnPackets {
                         public void handle(PacketWrapper wrapper) throws Exception {
                            wrapper.write(Type.VAR_INT, entityID);
                            List meta = new ArrayList();
-                           Item item = new DataItem(373, (byte)1, (short)data, (CompoundTag)null);
+                           Item item = new DataItem(373, (byte)1, (short)data, null);
                            ItemRewriter.toClient(item);
                            Metadata potion = new Metadata(5, MetaType1_9.Slot, item);
                            meta.add(potion);
@@ -226,10 +226,10 @@ public class SpawnPackets {
                public void handle(PacketWrapper wrapper) throws Exception {
                   short item = (Short)wrapper.read(Type.SHORT);
                   if (item != 0) {
-                     PacketWrapper packet = PacketWrapper.create(60, (ByteBuf)null, wrapper.user());
-                     packet.write(Type.VAR_INT, (Integer)wrapper.get(Type.VAR_INT, 0));
+                     PacketWrapper packet = PacketWrapper.create(60, null, wrapper.user());
+                     packet.write(Type.VAR_INT, wrapper.get(Type.VAR_INT, 0));
                      packet.write(Type.VAR_INT, 0);
-                     packet.write(Type.ITEM, new DataItem(item, (byte)1, (short)0, (CompoundTag)null));
+                     packet.write(Type.ITEM, new DataItem(item, (byte)1, (short)0, null));
 
                      try {
                         packet.send(Protocol1_9To1_8.class);

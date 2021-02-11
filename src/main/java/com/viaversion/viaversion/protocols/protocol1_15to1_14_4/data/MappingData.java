@@ -12,6 +12,6 @@ public class MappingData extends MappingDataBase {
    }
 
    protected Mappings loadFromArray(JsonObject oldMappings, JsonObject newMappings, @Nullable JsonObject diffMappings, String key) {
-      return (Mappings)(!key.equals("sounds") ? super.loadFromArray(oldMappings, newMappings, diffMappings, key) : new IntArrayMappings(oldMappings.getAsJsonArray(key), newMappings.getAsJsonArray(key), false));
+      return !key.equals("sounds") ? super.loadFromArray(oldMappings, newMappings, diffMappings, key) : new IntArrayMappings(oldMappings.getAsJsonArray(key), newMappings.getAsJsonArray(key), false);
    }
 }

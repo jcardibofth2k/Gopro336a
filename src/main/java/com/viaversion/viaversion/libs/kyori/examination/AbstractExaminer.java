@@ -63,33 +63,33 @@ public abstract class AbstractExaminer implements Examiner {
 
          return this.array((Object[])value);
       } else if (value instanceof Boolean) {
-         return this.examine((Boolean)value);
+         return this.examine(value);
       } else if (value instanceof Character) {
-         return this.examine((Character)value);
+         return this.examine(value);
       } else {
          if (value instanceof Number) {
             if (value instanceof Byte) {
-               return this.examine((Byte)value);
+               return this.examine(value);
             }
 
             if (value instanceof Double) {
-               return this.examine((Double)value);
+               return this.examine(value);
             }
 
             if (value instanceof Float) {
-               return this.examine((Float)value);
+               return this.examine(value);
             }
 
             if (value instanceof Integer) {
-               return this.examine((Integer)value);
+               return this.examine(value);
             }
 
             if (value instanceof Long) {
-               return this.examine((Long)value);
+               return this.examine(value);
             }
 
             if (value instanceof Short) {
-               return this.examine((Short)value);
+               return this.examine(value);
             }
          } else if (value instanceof BaseStream) {
             if (value instanceof Stream) {

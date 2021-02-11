@@ -15,8 +15,8 @@ extends Module {
 
     @Subscriber
     public void Method139(Class89 class89) {
-        if (this.Field775.Method737(((Integer)this.Field774.getValue()).intValue()) && this.Field776 != null) {
-            PingSpoof.mc.player.connection.sendPacket((Packet)this.Field776);
+        if (this.Field775.Method737(this.Field774.getValue().intValue()) && this.Field776 != null) {
+            PingSpoof.mc.player.connection.sendPacket(this.Field776);
             this.Field776 = null;
         }
     }
@@ -29,7 +29,7 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketKeepAlive) || this.Field776 == class24.getPacket() || (Integer)this.Field774.getValue() == 0) break block0;
+            if (!(class24.getPacket() instanceof CPacketKeepAlive) || this.Field776 == class24.getPacket() || this.Field774.getValue() == 0) break block0;
             this.Field776 = (CPacketKeepAlive)class24.getPacket();
             class24.Method1235();
             this.Field775.Method739();
@@ -37,6 +37,6 @@ extends Module {
     }
 
     public PingSpoof() {
-        super("PingSpoof", Category.MISC, new String[0]);
+        super("PingSpoof", Category.MISC);
     }
 }

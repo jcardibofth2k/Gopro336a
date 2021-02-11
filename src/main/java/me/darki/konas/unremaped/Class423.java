@@ -3,6 +3,7 @@ package me.darki.konas;
 import java.util.ArrayList;
 
 import me.darki.konas.module.Module;
+import me.darki.konas.module.render.Trajectories;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -29,12 +30,12 @@ public class Class423 {
         Entity entity = null;
         RayTraceResult rayTraceResult2 = null;
         double d = 0.0;
-        ArrayList arrayList = (ArrayList)Module.mc.world.getEntitiesWithinAABBExcludingEntity((Entity)this.Field1051, this.Field1057.expand(this.Field1053.x, this.Field1053.y, this.Field1053.z).grow(1.0, 1.0, 1.0));
+        ArrayList arrayList = (ArrayList)Module.mc.world.getEntitiesWithinAABBExcludingEntity(this.Field1051, this.Field1057.expand(this.Field1053.x, this.Field1053.y, this.Field1053.z).grow(1.0, 1.0, 1.0));
         for (Entity entity2 : arrayList) {
             double d2;
             if (!entity2.canBeCollidedWith()) continue;
             float f = entity2.getCollisionBorderSize();
-            AxisAlignedBB axisAlignedBB = entity2.getEntityBoundingBox().expand((double)f, (double)f, (double)f);
+            AxisAlignedBB axisAlignedBB = entity2.getEntityBoundingBox().expand(f, f, f);
             RayTraceResult rayTraceResult3 = axisAlignedBB.calculateIntercept(this.Field1052, vec3d);
             if (rayTraceResult3 == null || !((d2 = this.Field1052.distanceTo(rayTraceResult3.hitVec)) < d) && d != 0.0) continue;
             entity = entity2;
@@ -77,10 +78,10 @@ public class Class423 {
         this.Field1060 = class420;
         this.Method1059(this.Field1051.posX, this.Field1051.posY + (double)this.Field1051.getEyeHeight(), this.Field1051.posZ, Trajectories.Method651(this.Field1051) ? (float)Class317.Field764 : this.Field1051.rotationYaw, Trajectories.Method651(this.Field1051) ? (float)Class317.Field765 : this.Field1051.rotationPitch);
         this.Field1056 = class420 == Class420.EXPERIENCE ? -20.0f : 0.0f;
-        Vec3d vec3d = new Vec3d((double)(MathHelper.cos((float)(this.Field1054 / 180.0f * (float)Math.PI)) * 0.16f), 0.1, (double)(MathHelper.sin((float)(this.Field1054 / 180.0f * (float)Math.PI)) * 0.16f));
+        Vec3d vec3d = new Vec3d(MathHelper.cos(this.Field1054 / 180.0f * (float)Math.PI) * 0.16f, 0.1, MathHelper.sin(this.Field1054 / 180.0f * (float)Math.PI) * 0.16f);
         this.Field1052 = this.Field1052.subtract(vec3d);
         this.Method1060(this.Field1052);
-        this.Field1053 = new Vec3d((double)(-MathHelper.sin((float)(this.Field1054 / 180.0f * (float)Math.PI)) * MathHelper.cos((float)(this.Field1055 / 180.0f * (float)Math.PI))), (double)(-MathHelper.sin((float)((this.Field1055 + this.Field1056) / 180.0f * (float)Math.PI))), (double)(MathHelper.cos((float)(this.Field1054 / 180.0f * (float)Math.PI)) * MathHelper.cos((float)(this.Field1055 / 180.0f * (float)Math.PI))));
+        this.Field1053 = new Vec3d(-MathHelper.sin(this.Field1054 / 180.0f * (float)Math.PI) * MathHelper.cos(this.Field1055 / 180.0f * (float)Math.PI), -MathHelper.sin((this.Field1055 + this.Field1056) / 180.0f * (float)Math.PI), MathHelper.cos(this.Field1054 / 180.0f * (float)Math.PI) * MathHelper.cos(this.Field1055 / 180.0f * (float)Math.PI));
         this.Method1069(this.Field1053, this.Method1058());
     }
 
@@ -126,8 +127,8 @@ public class Class423 {
         if (this.Field1060 == Class420.FISHING_ROD) {
             f = 0.92f;
         }
-        this.Field1053 = this.Field1053.scale((double)f);
-        this.Field1053 = this.Field1053.subtract(0.0, (double)this.Method1062(), 0.0);
+        this.Field1053 = this.Field1053.scale(f);
+        this.Field1053 = this.Field1053.subtract(0.0, this.Method1062(), 0.0);
         this.Method1060(this.Field1052);
     }
 
@@ -149,6 +150,6 @@ public class Class423 {
 
     public void Method1069(Vec3d vec3d, float f) {
         this.Field1053 = vec3d.scale(1.0 / vec3d.length());
-        this.Field1053 = this.Field1053.scale((double)f);
+        this.Field1053 = this.Field1053.scale(f);
     }
 }

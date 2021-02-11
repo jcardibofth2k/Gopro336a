@@ -30,7 +30,7 @@ public abstract class AbstractProtocol implements Protocol {
    private boolean initialized;
 
    protected AbstractProtocol() {
-      this((Class)null, (Class)null, (Class)null, (Class)null);
+      this(null, null, null, null);
    }
 
    protected AbstractProtocol(@Nullable Class oldClientboundPacketEnum, @Nullable Class clientboundPacketEnum, @Nullable Class oldServerboundPacketEnum, @Nullable Class serverboundPacketEnum) {
@@ -174,9 +174,9 @@ public abstract class AbstractProtocol implements Protocol {
 
    public void registerClientbound(ClientboundPacketType packetType, @Nullable PacketRemapper packetRemapper) {
       this.checkPacketType(packetType, packetType.getClass() == this.oldClientboundPacketEnum);
-      ClientboundPacketType mappedPacket = this.oldClientboundPacketEnum == this.newClientboundPacketEnum ? packetType : (ClientboundPacketType)Arrays.stream((ClientboundPacketType[])this.newClientboundPacketEnum.getEnumConstants()).filter((en) -> {
+      ClientboundPacketType mappedPacket = this.oldClientboundPacketEnum == this.newClientboundPacketEnum ? packetType : Arrays.stream((ClientboundPacketType[])this.newClientboundPacketEnum.getEnumConstants()).filter((en) -> {
          return en.getName().equals(packetType.getName());
-      }).findAny().orElse((Object)null);
+      }).findAny().orElse(null);
       Preconditions.checkNotNull(mappedPacket, "Packet type " + packetType + " in " + packetType.getClass().getSimpleName() + " could not be automatically mapped!");
       int oldId = packetType.getId();
       int newId = mappedPacket.getId();
@@ -195,9 +195,9 @@ public abstract class AbstractProtocol implements Protocol {
 
    public void registerServerbound(ServerboundPacketType packetType, @Nullable PacketRemapper packetRemapper) {
       this.checkPacketType(packetType, packetType.getClass() == this.newServerboundPacketEnum);
-      ServerboundPacketType mappedPacket = this.oldServerboundPacketEnum == this.newServerboundPacketEnum ? packetType : (ServerboundPacketType)Arrays.stream((ServerboundPacketType[])this.oldServerboundPacketEnum.getEnumConstants()).filter((en) -> {
+      ServerboundPacketType mappedPacket = this.oldServerboundPacketEnum == this.newServerboundPacketEnum ? packetType : Arrays.stream((ServerboundPacketType[])this.oldServerboundPacketEnum.getEnumConstants()).filter((en) -> {
          return en.getName().equals(packetType.getName());
-      }).findAny().orElse((Object)null);
+      }).findAny().orElse(null);
       Preconditions.checkNotNull(mappedPacket, "Packet type " + packetType + " in " + packetType.getClass().getSimpleName() + " could not be automatically mapped!");
       int oldId = mappedPacket.getId();
       int newId = packetType.getId();

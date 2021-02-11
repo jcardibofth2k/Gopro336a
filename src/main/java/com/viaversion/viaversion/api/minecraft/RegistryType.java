@@ -24,7 +24,7 @@ public enum RegistryType {
       return (RegistryType)MAP.get(resourceKey);
    }
 
-   private RegistryType(String resourceLocation) {
+   RegistryType(String resourceLocation) {
       this.resourceLocation = resourceLocation;
    }
 

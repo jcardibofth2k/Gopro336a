@@ -26,7 +26,7 @@ extends Class215 {
                 return true;
             }
             if (n3 == 1) {
-                NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2170(this.Field390);
+                NewGui.INSTANCE.Field1131.Method1828().Method2175().get(this.Field390.getCategory()).Method2170(this.Field390);
             }
         }
         return super.Method494(n, n2, n3);
@@ -38,12 +38,12 @@ extends Class215 {
         Class272 class272 = new Class272(this.Method486(), this.Method492(), this.Method489(), this.Method476());
         Class272 class2722 = new Class272(this.Method486(), this.Method492(), 4.0f, this.Method476());
         if (this.Field390.isEnabled()) {
-            Class247.Method2043(class272, this.Method501(n, n2) ? Field321.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field321);
+            Class247.Method2043(class272, this.Method501(n, n2) ? Field321.Method2048(KonasGui.highlight.getValue().floatValue()) : Field321);
             Class247.Method2042(class272, Field317, 1.0f);
         } else if (this.Method501(n, n2)) {
-            Class247.Method2043(class272, Field319.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()));
+            Class247.Method2043(class272, Field319.Method2048(KonasGui.highlight.getValue().floatValue()));
         }
-        if (NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179() != null && NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179().equals(this.Field390)) {
+        if (NewGui.INSTANCE.Field1131.Method1828().Method2175().get(this.Field390.getCategory()).Method2179() != null && NewGui.INSTANCE.Field1131.Method1828().Method2175().get(this.Field390.getCategory()).Method2179().equals(this.Field390)) {
             Class247.Method2043(class2722, Field315);
             Class247.Method2042(class2722, Field317, 1.0f);
         }

@@ -34,7 +34,7 @@ extends Module {
     public static Setting<Float> Field2618 = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(Field2616::getValue);
     public static Setting<ColorValue> Field2619 = new Setting<>("Color", new ColorValue(869950564, true)).Method1191(Field2616::getValue);
     public Queue<Packet> Field2620 = new LinkedList<Packet>();
-    public Vec3d Field2621 = new Vec3d((Vec3i)BlockPos.ORIGIN);
+    public Vec3d Field2621 = new Vec3d(BlockPos.ORIGIN);
     public AtomicBoolean Field2622 = new AtomicBoolean(false);
 
     @Override
@@ -56,7 +56,7 @@ extends Module {
     @Subscriber
     public void Method462(TickEvent tickEvent) {
         block1: {
-            if (!((Boolean)this.Field2613.getValue()).booleanValue() || tickEvent.Method324() != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || Class229.mc.player == null || Class229.mc.world == null || !((float)this.Field2620.size() >= ((Float)this.Field2615.getValue()).floatValue() * 10.0f)) break block1;
+            if (!this.Field2613.getValue().booleanValue() || tickEvent.Method324() != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || Class229.mc.player == null || Class229.mc.world == null || !((float)this.Field2620.size() >= this.Field2615.getValue().floatValue() * 10.0f)) break block1;
             this.Field2622.set(true);
             while (!this.Field2620.isEmpty()) {
                 Packet packet = this.Field2620.poll();
@@ -80,27 +80,27 @@ extends Module {
             if (Class229.mc.player == null || Class229.mc.world == null) {
                 return;
             }
-            if (!((Boolean)Field2616.getValue()).booleanValue() || this.Field2621 == null) break block9;
+            if (!Field2616.getValue().booleanValue() || this.Field2621 == null) break block9;
             GlStateManager.pushMatrix();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
-            GL11.glEnable((int)3008);
-            GL11.glBlendFunc((int)770, (int)771);
-            GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+            GL11.glEnable(3008);
+            GL11.glBlendFunc(770, 771);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
-            float[] fArray = Color.RGBtoHSB(((ColorValue)Field2619.getValue()).Method769(), ((ColorValue)Field2619.getValue()).Method770(), ((ColorValue)Field2619.getValue()).Method779(), null);
+            float[] fArray = Color.RGBtoHSB(Field2619.getValue().Method769(), Field2619.getValue().Method770(), Field2619.getValue().Method779(), null);
             float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
             int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
             ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
             double d = this.Field2621.x - iRenderManager.Method69();
             double d2 = this.Field2621.y - iRenderManager.Method70();
             double d3 = this.Field2621.z - iRenderManager.Method71();
-            GL11.glShadeModel((int)7425);
+            GL11.glShadeModel(7425);
             GlStateManager.disableCull();
-            GL11.glLineWidth((float)((Float)Field2618.getValue()).floatValue());
-            GL11.glBegin((int)1);
+            GL11.glLineWidth(Field2618.getValue().floatValue());
+            GL11.glBegin(1);
             for (n3 = 0; n3 <= 360; ++n3) {
                 Vec3d vec3d = new Vec3d(d + Math.sin((double)n3 * Math.PI / 180.0) * 0.5, d2 + 0.01, d3 + Math.cos((double)n3 * Math.PI / 180.0) * 0.5);
                 arrayList.add(vec3d);
@@ -109,38 +109,38 @@ extends Module {
                 int n5 = n4 >> 16 & 0xFF;
                 n2 = n4 >> 8 & 0xFF;
                 n = n4 & 0xFF;
-                if (((ColorValue)Field2619.getValue()).Method783()) {
-                    GL11.glColor4f((float)((float)n5 / 255.0f), (float)((float)n2 / 255.0f), (float)((float)n / 255.0f), (float)((Boolean)Field2617.getValue() != false ? 1.0f : (float)((ColorValue)Field2619.getValue()).Method782() / 255.0f));
+                if (Field2619.getValue().Method783()) {
+                    GL11.glColor4f((float)n5 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, Field2617.getValue() != false ? 1.0f : (float) Field2619.getValue().Method782() / 255.0f);
                 } else {
-                    GL11.glColor4f((float)((float)((ColorValue)Field2619.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method779() / 255.0f), (float)((Boolean)Field2617.getValue() != false ? 1.0f : (float)((ColorValue)Field2619.getValue()).Method782() / 255.0f));
+                    GL11.glColor4f((float) Field2619.getValue().Method769() / 255.0f, (float) Field2619.getValue().Method770() / 255.0f, (float) Field2619.getValue().Method779() / 255.0f, Field2617.getValue() != false ? 1.0f : (float) Field2619.getValue().Method782() / 255.0f);
                 }
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)n3)).x, (double)((Vec3d)arrayList.get((int)n3)).y, (double)((Vec3d)arrayList.get((int)n3)).z);
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)(n3 + 1))).x, (double)((Vec3d)arrayList.get((int)(n3 + 1))).y, (double)((Vec3d)arrayList.get((int)(n3 + 1))).z);
+                GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
+                GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
                 n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
             }
             GL11.glEnd();
-            if (((Boolean)Field2617.getValue()).booleanValue()) {
+            if (Field2617.getValue().booleanValue()) {
                 f2 = f;
-                GL11.glBegin((int)9);
+                GL11.glBegin(9);
                 for (n3 = 0; n3 < arrayList.size() - 1; ++n3) {
                     int n6 = n4 >> 16 & 0xFF;
                     n2 = n4 >> 8 & 0xFF;
                     n = n4 & 0xFF;
-                    if (((ColorValue)Field2619.getValue()).Method783()) {
-                        GL11.glColor4f((float)((float)n6 / 255.0f), (float)((float)n2 / 255.0f), (float)((float)n / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method782() / 255.0f));
+                    if (Field2619.getValue().Method783()) {
+                        GL11.glColor4f((float)n6 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, (float) Field2619.getValue().Method782() / 255.0f);
                     } else {
-                        GL11.glColor4f((float)((float)((ColorValue)Field2619.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)Field2619.getValue()).Method782() / 255.0f));
+                        GL11.glColor4f((float) Field2619.getValue().Method769() / 255.0f, (float) Field2619.getValue().Method770() / 255.0f, (float) Field2619.getValue().Method779() / 255.0f, (float) Field2619.getValue().Method782() / 255.0f);
                     }
-                    GL11.glVertex3d((double)((Vec3d)arrayList.get((int)n3)).x, (double)((Vec3d)arrayList.get((int)n3)).y, (double)((Vec3d)arrayList.get((int)n3)).z);
-                    GL11.glVertex3d((double)((Vec3d)arrayList.get((int)(n3 + 1))).x, (double)((Vec3d)arrayList.get((int)(n3 + 1))).y, (double)((Vec3d)arrayList.get((int)(n3 + 1))).z);
+                    GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
+                    GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
                     n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
                 }
                 GL11.glEnd();
             }
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-            GL11.glDisable((int)3008);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+            GL11.glDisable(3008);
             GlStateManager.enableCull();
-            GL11.glShadeModel((int)7424);
+            GL11.glShadeModel(7424);
             GlStateManager.enableDepth();
             GlStateManager.enableTexture2D();
             GlStateManager.enableLighting();
@@ -162,9 +162,9 @@ extends Module {
                 if (this.Field2622.get()) {
                     return;
                 }
-                if (!((Boolean)this.Field2613.getValue()).booleanValue()) break block4;
+                if (!this.Field2613.getValue().booleanValue()) break block4;
                 if (!(class24.getPacket() instanceof CPacketPlayer)) break block5;
-                if (((Boolean)this.Field2614.getValue()).booleanValue() && !((CPacketPlayer)class24.getPacket()).isOnGround()) {
+                if (this.Field2614.getValue().booleanValue() && !((CPacketPlayer)class24.getPacket()).isOnGround()) {
                     this.Field2622.set(true);
                     while (!this.Field2620.isEmpty()) {
                         Packet packet2 = this.Field2620.poll();

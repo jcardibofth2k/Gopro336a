@@ -39,7 +39,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.SET_SLOT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.SET_SLOT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -64,7 +64,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.WINDOW_ITEMS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.WINDOW_ITEMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.ITEM_ARRAY);
@@ -83,7 +83,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
                      }
 
                      ChestedHorseStorage storage = (ChestedHorseStorage)horse.get();
-                     stacks = (Item[])Arrays.copyOf(stacks, !storage.isChested() ? 38 : 53);
+                     stacks = Arrays.copyOf(stacks, !storage.isChested() ? 38 : 53);
 
                      for(int ix = stacks.length - 1; ix >= 0; --ix) {
                         stacks[BlockItemPackets1_11.this.getNewSlotId(storage, ix)] = stacks[ix];
@@ -98,7 +98,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
          }
       });
       this.registerEntityEquipment(ClientboundPackets1_9_3.ENTITY_EQUIPMENT, Type.ITEM);
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.handler(new PacketHandler() {
@@ -125,7 +125,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerServerbound(ServerboundPackets1_9_3.CLICK_WINDOW, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_9_3.CLICK_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -153,7 +153,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
          }
       });
       this.registerCreativeInvAction(ServerboundPackets1_9_3.CREATIVE_INVENTORY_ACTION, Type.ITEM);
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.CHUNK_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -178,7 +178,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.BLOCK_CHANGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.VAR_INT);
@@ -190,7 +190,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.MULTI_BLOCK_CHANGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.MULTI_BLOCK_CHANGE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.INT);
@@ -209,7 +209,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.BLOCK_ENTITY_DATA, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.BLOCK_ENTITY_DATA, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.POSITION);
             this.map(Type.UNSIGNED_BYTE);
@@ -229,7 +229,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.OPEN_WINDOW, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.OPEN_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.STRING);
@@ -238,7 +238,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   int entityId = -1;
-                  if (((String)wrapper.get(Type.STRING, 0)).equals("EntityHorse")) {
+                  if (wrapper.get(Type.STRING, 0).equals("EntityHorse")) {
                      entityId = (Integer)wrapper.passthrough(Type.INT);
                   }
 
@@ -254,23 +254,23 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerClientbound(ClientboundPackets1_9_3.CLOSE_WINDOW, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_9_3.CLOSE_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   WindowTracker windowTracker = (WindowTracker)wrapper.user().get(WindowTracker.class);
-                  windowTracker.setInventory((String)null);
+                  windowTracker.setInventory(null);
                   windowTracker.setEntityId(-1);
                }
             });
          }
       });
-      ((Protocol1_10To1_11)this.protocol).registerServerbound(ServerboundPackets1_9_3.CLOSE_WINDOW, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_9_3.CLOSE_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
                   WindowTracker windowTracker = (WindowTracker)wrapper.user().get(WindowTracker.class);
-                  windowTracker.setInventory((String)null);
+                  windowTracker.setInventory(null);
                   windowTracker.setEntityId(-1);
                }
             });
@@ -286,7 +286,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter {
 
    protected void registerRewrites() {
       MappedLegacyBlockItem data = (MappedLegacyBlockItem)this.replacementData.computeIfAbsent(52, (s) -> {
-         return new MappedLegacyBlockItem(52, (short)-1, (String)null, false);
+         return new MappedLegacyBlockItem(52, (short)-1, null, false);
       });
       data.setBlockEntityHandler((b, tag) -> {
          EntityIdRewriter.toClientSpawner(tag, true);

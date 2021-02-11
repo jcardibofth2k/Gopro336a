@@ -63,7 +63,7 @@ public class EntityPackets1_16 extends EntityRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_15_2To1_16)this.protocol).registerClientbound(ClientboundPackets1_16.SPAWN_ENTITY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16.SPAWN_ENTITY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.UUID);
@@ -79,11 +79,11 @@ public class EntityPackets1_16 extends EntityRewriter {
                if (entityType == Entity1_16Types.LIGHTNING_BOLT) {
                   wrapper.cancel();
                   PacketWrapper spawnLightningPacket = wrapper.create(ClientboundPackets1_15.SPAWN_GLOBAL_ENTITY);
-                  spawnLightningPacket.write(Type.VAR_INT, (Integer)wrapper.get(Type.VAR_INT, 0));
+                  spawnLightningPacket.write(Type.VAR_INT, wrapper.get(Type.VAR_INT, 0));
                   spawnLightningPacket.write(Type.BYTE, (byte)1);
-                  spawnLightningPacket.write(Type.DOUBLE, (Double)wrapper.get(Type.DOUBLE, 0));
-                  spawnLightningPacket.write(Type.DOUBLE, (Double)wrapper.get(Type.DOUBLE, 1));
-                  spawnLightningPacket.write(Type.DOUBLE, (Double)wrapper.get(Type.DOUBLE, 2));
+                  spawnLightningPacket.write(Type.DOUBLE, wrapper.get(Type.DOUBLE, 0));
+                  spawnLightningPacket.write(Type.DOUBLE, wrapper.get(Type.DOUBLE, 1));
+                  spawnLightningPacket.write(Type.DOUBLE, wrapper.get(Type.DOUBLE, 2));
                   spawnLightningPacket.send(Protocol1_15_2To1_16.class);
                }
 
@@ -92,7 +92,7 @@ public class EntityPackets1_16 extends EntityRewriter {
          }
       });
       this.registerSpawnTracker(ClientboundPackets1_16.SPAWN_MOB);
-      ((Protocol1_15_2To1_16)this.protocol).registerClientbound(ClientboundPackets1_16.RESPAWN, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(EntityPackets1_16.this.dimensionTransformer);
             this.handler((wrapper) -> {
@@ -124,7 +124,7 @@ public class EntityPackets1_16 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_15_2To1_16)this.protocol).registerClientbound(ClientboundPackets1_16.JOIN_GAME, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -159,7 +159,7 @@ public class EntityPackets1_16 extends EntityRewriter {
       this.registerTracker(ClientboundPackets1_16.SPAWN_PLAYER, Entity1_16Types.PLAYER);
       this.registerRemoveEntities(ClientboundPackets1_16.DESTROY_ENTITIES);
       this.registerMetadataRewriter(ClientboundPackets1_16.ENTITY_METADATA, Types1_16.METADATA_LIST, Types1_14.METADATA_LIST);
-      ((Protocol1_15_2To1_16)this.protocol).registerClientbound(ClientboundPackets1_16.ENTITY_PROPERTIES, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16.ENTITY_PROPERTIES, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.passthrough(Type.VAR_INT);
@@ -182,7 +182,7 @@ public class EntityPackets1_16 extends EntityRewriter {
             });
          }
       });
-      ((Protocol1_15_2To1_16)this.protocol).registerClientbound(ClientboundPackets1_16.PLAYER_INFO, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_16.PLAYER_INFO, new PacketRemapper() {
          public void registerMap() {
             this.handler((packetWrapper) -> {
                int action = (Integer)packetWrapper.passthrough(Type.VAR_INT);

@@ -44,7 +44,7 @@ extends Module {
     }
 
     public AutoMend() {
-        super("AutoMend", Category.MISC, new String[0]);
+        super("AutoMend", Category.MISC);
     }
 
     @Override
@@ -75,41 +75,41 @@ extends Module {
                     return;
                 }
                 EntityEnderCrystal entityEnderCrystal = AutoMend.mc.world.loadedEntityList.stream().filter(this::Method513).map(AutoMend::Method1805).min(Comparator.comparing(AutoMend::Method1806)).orElse(null);
-                if ((entityEnderCrystal != null || AutoMend.mc.player.getHealth() + AutoMend.mc.player.getAbsorptionAmount() < this.Field1953) && ((Boolean)this.attackCheck.getValue()).booleanValue()) {
+                if ((entityEnderCrystal != null || AutoMend.mc.player.getHealth() + AutoMend.mc.player.getAbsorptionAmount() < this.Field1953) && this.attackCheck.getValue().booleanValue()) {
                     Field1952 = false;
                     this.Field1951 = false;
                     this.toggle();
                     return;
                 }
                 this.Field1953 = AutoMend.mc.player.getHealth() + AutoMend.mc.player.getAbsorptionAmount();
-                if (AutoMend.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() != Items.EXPERIENCE_BOTTLE && (!((Boolean)this.autoSwitch.getValue()).booleanValue() || this.Method464() == -1)) break block11;
+                if (AutoMend.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() != Items.EXPERIENCE_BOTTLE && (!this.autoSwitch.getValue().booleanValue() || this.Method464() == -1)) break block11;
                 if (!(class56 instanceof UpdateEvent)) break block12;
                 if (class56.isCanceled() || !Class496.Method1966()) {
                     return;
                 }
                 this.Field1951 = false;
-                if (((Boolean)this.lookdown.getValue()).booleanValue()) {
+                if (this.lookdown.getValue().booleanValue()) {
                     NewGui.INSTANCE.Field1139.Method1937(AutoMend.mc.player.rotationYaw, 90.0f);
                 }
-                if (!((Boolean)this.armor.getValue()).booleanValue()) break block11;
+                if (!this.armor.getValue().booleanValue()) break block11;
                 ItemStack[] itemStackArray = new ItemStack[]{AutoMend.mc.player.inventory.getStackInSlot(39), AutoMend.mc.player.inventory.getStackInSlot(38), AutoMend.mc.player.inventory.getStackInSlot(37), AutoMend.mc.player.inventory.getStackInSlot(36)};
                 for (n = 0; n < 4; ++n) {
                     itemStack = itemStackArray[n];
-                    if (!(itemStack.getItem() instanceof ItemArmor) || Class477.Method2169(itemStack) < (float)((Integer)this.threshold.getValue()).intValue()) continue;
+                    if (!(itemStack.getItem() instanceof ItemArmor) || Class477.Method2169(itemStack) < (float) this.threshold.getValue().intValue()) continue;
                     for (int i = 0; i < 36; ++i) {
                         ItemStack itemStack2 = AutoMend.mc.player.inventory.getStackInSlot(i);
                         if (!itemStack2.isEmpty() || itemStack2.getItem() != Items.AIR) continue;
                         Field1952 = true;
-                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, n + 5, 0, ClickType.PICKUP, (EntityPlayer) AutoMend.mc.player);
-                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, i < 9 ? i + 36 : i, 0, ClickType.PICKUP, (EntityPlayer) AutoMend.mc.player);
-                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, n + 5, 0, ClickType.PICKUP, (EntityPlayer) AutoMend.mc.player);
+                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, n + 5, 0, ClickType.PICKUP, AutoMend.mc.player);
+                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, i < 9 ? i + 36 : i, 0, ClickType.PICKUP, AutoMend.mc.player);
+                        AutoMend.mc.playerController.windowClick(AutoMend.mc.player.inventoryContainer.windowId, n + 5, 0, ClickType.PICKUP, AutoMend.mc.player);
                         AutoMend.mc.playerController.updateController();
                         return;
                     }
                 }
                 for (n = 0; n < 4; ++n) {
                     itemStack = itemStackArray[n];
-                    if (!(itemStack.getItem() instanceof ItemArmor) || Class477.Method2169(itemStack) >= (float)((Integer)this.threshold.getValue()).intValue()) continue;
+                    if (!(itemStack.getItem() instanceof ItemArmor) || Class477.Method2169(itemStack) >= (float) this.threshold.getValue().intValue()) continue;
                     this.Field1951 = true;
                 }
                 if (!this.Field1951) {
@@ -118,29 +118,29 @@ extends Module {
                 }
                 break block11;
             }
-            if (!((Boolean)this.autoXP.getValue()).booleanValue() || ((Boolean)this.armor.getValue()).booleanValue() && !this.Field1951) break block11;
+            if (!this.autoXP.getValue().booleanValue() || this.armor.getValue().booleanValue() && !this.Field1951) break block11;
             int n = this.Method464();
-            boolean bl = ((Boolean)this.autoSwitch.getValue()).booleanValue() && AutoMend.mc.player.inventory.currentItem != n && n != -1;
+            boolean bl = this.autoSwitch.getValue().booleanValue() && AutoMend.mc.player.inventory.currentItem != n && n != -1;
             int n2 = AutoMend.mc.player.inventory.currentItem;
             if (bl) {
                 AutoMend.mc.player.inventory.currentItem = n;
-                AutoMend.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                AutoMend.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
             if (AutoMend.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemExpBottle) {
-                AutoMend.mc.playerController.processRightClick((EntityPlayer) AutoMend.mc.player, (World) AutoMend.mc.world, EnumHand.MAIN_HAND);
+                AutoMend.mc.playerController.processRightClick(AutoMend.mc.player, AutoMend.mc.world, EnumHand.MAIN_HAND);
             }
             if (bl) {
                 AutoMend.mc.player.inventory.currentItem = n2;
-                AutoMend.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n2));
+                AutoMend.mc.player.connection.sendPacket(new CPacketHeldItemChange(n2));
             }
         }
     }
 
     public boolean Method513(Entity entity) {
-        return entity instanceof EntityEnderCrystal && AutoMend.mc.player.getDistance(entity) <= ((Float)this.crystalRange.getValue()).floatValue();
+        return entity instanceof EntityEnderCrystal && AutoMend.mc.player.getDistance(entity) <= this.crystalRange.getValue().floatValue();
     }
 
     public static Float Method1806(EntityEnderCrystal entityEnderCrystal) {
-        return Float.valueOf(AutoMend.mc.player.getDistance((Entity)entityEnderCrystal));
+        return Float.valueOf(AutoMend.mc.player.getDistance(entityEnderCrystal));
     }
 }

@@ -8,7 +8,7 @@ extends Enum {
     public static ACDamageMode[] Field429;
 
     public static ACDamageMode[] Method544() {
-        return (ACDamageMode[])Field429.clone();
+        return Field429.clone();
     }
 
     public static ACDamageMode Method545(String string) {

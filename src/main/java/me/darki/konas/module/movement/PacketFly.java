@@ -58,25 +58,25 @@ extends Module {
 
     public void Method2053(double d, double d2, double d3, PacketFlyMode packetFlyMode, boolean bl) {
         if (this.Field2331 != null) {
-            PacketFly.mc.player.connection.sendPacket((Packet)this.Field2331);
+            PacketFly.mc.player.connection.sendPacket(this.Field2331);
             this.Field2331 = null;
         }
         Vec3d vec3d = new Vec3d(PacketFly.mc.player.posX + d, PacketFly.mc.player.posY + d2, PacketFly.mc.player.posZ + d3);
         Vec3d vec3d2 = this.Method2057(d, d2, d3, packetFlyMode);
         CPacketPlayer.Position position = new CPacketPlayer.Position(vec3d.x, vec3d.y, vec3d.z, PacketFly.mc.player.onGround);
-        this.Field2333.add((CPacketPlayer)position);
-        PacketFly.mc.player.connection.sendPacket((Packet)position);
+        this.Field2333.add(position);
+        PacketFly.mc.player.connection.sendPacket(position);
         if (limit.getValue() != PacketFlylimit.NONE && this.Field2339 == 0) {
             return;
         }
         CPacketPlayer.Position position2 = new CPacketPlayer.Position(vec3d2.x, vec3d2.y, vec3d2.z, PacketFly.mc.player.onGround);
-        this.Field2333.add((CPacketPlayer)position2);
-        PacketFly.mc.player.connection.sendPacket((Packet)position2);
-        if (((Boolean) constrict.getValue()).booleanValue()) {
+        this.Field2333.add(position2);
+        PacketFly.mc.player.connection.sendPacket(position2);
+        if (constrict.getValue().booleanValue()) {
             for (int i = 0; i < 7; ++i) {
                 position = new CPacketPlayer.Position(vec3d.x, vec3d.y, vec3d.z, PacketFly.mc.player.onGround);
-                this.Field2333.add((CPacketPlayer)position);
-                PacketFly.mc.player.connection.sendPacket((Packet)position);
+                this.Field2333.add(position);
+                PacketFly.mc.player.connection.sendPacket(position);
             }
         }
         if (bl) {
@@ -95,12 +95,12 @@ extends Module {
         if (PacketFly.mc.player.ticksExisted % 20 == 0) {
             this.Method124();
         }
-        this.Method1645(((PacketFlyType)((Object) type.getValue())).name());
+        this.Method1645(type.getValue().name());
         PacketFly.mc.player.setVelocity(0.0, 0.0, 0.0);
         if (this.Field2330 <= 0 && type.getValue() != PacketFlyType.SETBACK) {
             this.Field2332 = new CPacketPlayer.Position(PacketFly.Method2055(), 1.0, PacketFly.Method2055(), PacketFly.mc.player.onGround);
-            this.Field2333.add((CPacketPlayer)this.Field2332);
-            PacketFly.mc.player.connection.sendPacket((Packet)this.Field2332);
+            this.Field2333.add(this.Field2332);
+            PacketFly.mc.player.connection.sendPacket(this.Field2332);
             return;
         }
         boolean bl = this.Method519();
@@ -118,7 +118,7 @@ extends Module {
         }
         if (bl || !PacketFly.mc.gameSettings.keyBindSneak.isKeyDown() || !PacketFly.mc.gameSettings.keyBindJump.isKeyDown()) {
             if (MathUtil.Method1080()) {
-                double[] dArray = MathUtil.Method1086((bl && phase.getValue() != PacketFlyPhase.NONE ? (phase.getValue() == PacketFlyPhase.FAST ? (this.Field2343 != 0.0 ? 0.0465 : 0.062) : 0.031) : 0.26) * (double)((Float) speed.getValue()).floatValue());
+                double[] dArray = MathUtil.Method1086((bl && phase.getValue() != PacketFlyPhase.NONE ? (phase.getValue() == PacketFlyPhase.FAST ? (this.Field2343 != 0.0 ? 0.0465 : 0.062) : 0.031) : 0.26) * (double) speed.getValue().floatValue());
                 if (dArray[0] != 0.0 || dArray[1] != 0.0) {
                     if (this.Field2336 < 1 || bl) {
                         this.Field2342 = dArray[0];
@@ -146,24 +146,24 @@ extends Module {
             this.Field2343 = 0.0;
             this.Field2344 = 0.0;
         }
-        switch (Class271.Field1984[((PacketFlyType)((Object) type.getValue())).ordinal()]) {
+        switch (Class271.Field1984[type.getValue().ordinal()]) {
             case 1: {
                 PacketFly.mc.player.setVelocity(this.Field2342, this.Field2343, this.Field2344);
-                this.Method2053(this.Field2342, this.Field2343, this.Field2344, (PacketFlyMode)((Object) packetMode.getValue()), true);
+                this.Method2053(this.Field2342, this.Field2343, this.Field2344, packetMode.getValue(), true);
                 break;
             }
             case 2: {
-                this.Method2053(this.Field2342, this.Field2343, this.Field2344, (PacketFlyMode)((Object) packetMode.getValue()), true);
+                this.Method2053(this.Field2342, this.Field2343, this.Field2344, packetMode.getValue(), true);
                 break;
             }
             case 3: {
                 PacketFly.mc.player.setVelocity(this.Field2342, this.Field2343, this.Field2344);
-                this.Method2053(this.Field2342, this.Field2343, this.Field2344, (PacketFlyMode)((Object) packetMode.getValue()), false);
+                this.Method2053(this.Field2342, this.Field2343, this.Field2344, packetMode.getValue(), false);
                 break;
             }
             case 4: 
             case 5: {
-                float f = ((Float) factor.getValue()).floatValue();
+                float f = factor.getValue().floatValue();
                 int n = (int)Math.floor(f);
                 float f2 = f - (float)n;
                 if (Math.random() <= (double)f2) {
@@ -171,7 +171,7 @@ extends Module {
                 }
                 for (int i = 1; i <= n; ++i) {
                     PacketFly.mc.player.setVelocity(this.Field2342 * (double)i, this.Field2343 * (double)i, this.Field2344 * (double)i);
-                    this.Method2053(this.Field2342 * (double)i, this.Field2343 * (double)i, this.Field2344 * (double)i, (PacketFlyMode)((Object) packetMode.getValue()), true);
+                    this.Method2053(this.Field2342 * (double)i, this.Field2343 * (double)i, this.Field2344 * (double)i, packetMode.getValue(), true);
                 }
                 this.Field2342 = PacketFly.mc.player.motionX;
                 this.Field2343 = PacketFly.mc.player.motionY;
@@ -277,8 +277,8 @@ extends Module {
         this.Field2341 = false;
         this.Field2332 = null;
         this.Field2332 = new CPacketPlayer.Position(PacketFly.Method2055(), 1.0, PacketFly.Method2055(), PacketFly.mc.player.onGround);
-        this.Field2333.add((CPacketPlayer)this.Field2332);
-        PacketFly.mc.player.connection.sendPacket((Packet)this.Field2332);
+        this.Field2333.add(this.Field2332);
+        PacketFly.mc.player.connection.sendPacket(this.Field2332);
     }
 
     @Subscriber
@@ -314,7 +314,7 @@ extends Module {
         if (PacketFly.mc.currentScreen instanceof GuiDisconnected || PacketFly.mc.currentScreen instanceof GuiMainMenu || PacketFly.mc.currentScreen instanceof GuiMultiplayer || PacketFly.mc.currentScreen instanceof GuiDownloadTerrain) {
             this.toggle();
         }
-        if (((Boolean) boost.getValue()).booleanValue()) {
+        if (boost.getValue().booleanValue()) {
             NewGui.INSTANCE.Field1134.Method746(this, 9, 1.088f);
         } else {
             NewGui.INSTANCE.Field1134.Method749(this);
@@ -328,7 +328,7 @@ extends Module {
     }
 
     public PacketFly() {
-        super("PacketFly", Category.EXPLOIT, new String[0]);
+        super("PacketFly", Category.EXPLOIT);
     }
 
     public Vec3d Method2057(double d, double d2, double d3, PacketFlyMode packetFlyMode) {
@@ -357,10 +357,10 @@ extends Module {
     }
 
     public boolean Method519() {
-        if (!PacketFly.mc.world.getCollisionBoxes((Entity) PacketFly.mc.player, PacketFly.mc.player.getEntityBoundingBox().expand(0.0, 0.0, 0.0)).isEmpty()) {
+        if (!PacketFly.mc.world.getCollisionBoxes(PacketFly.mc.player, PacketFly.mc.player.getEntityBoundingBox().expand(0.0, 0.0, 0.0)).isEmpty()) {
             return true;
         }
-        return !PacketFly.mc.world.getCollisionBoxes((Entity) PacketFly.mc.player, PacketFly.mc.player.getEntityBoundingBox().offset(0.0, 2.0, 0.0).contract(0.0, 1.99, 0.0)).isEmpty();
+        return !PacketFly.mc.world.getCollisionBoxes(PacketFly.mc.player, PacketFly.mc.player.getEntityBoundingBox().offset(0.0, 2.0, 0.0).contract(0.0, 1.99, 0.0)).isEmpty();
     }
 
     public static double Method2058() {

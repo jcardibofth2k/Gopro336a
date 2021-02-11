@@ -40,14 +40,14 @@ public class PlayerPacket1_13 extends RewriterBase {
    }
 
    protected void registerPackets() {
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(State.LOGIN, 4, -1, new PacketRemapper() {
+      this.protocol.registerClientbound(State.LOGIN, 4, -1, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(final PacketWrapper packetWrapper) throws Exception {
                   packetWrapper.cancel();
                   packetWrapper.create(2, new PacketHandler() {
                      public void handle(PacketWrapper newWrapper) throws Exception {
-                        newWrapper.write(Type.VAR_INT, (Integer)packetWrapper.read(Type.VAR_INT));
+                        newWrapper.write(Type.VAR_INT, packetWrapper.read(Type.VAR_INT));
                         newWrapper.write(Type.BOOLEAN, false);
                      }
                   }).sendToServer(Protocol1_12_2To1_13.class);
@@ -55,7 +55,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -116,7 +116,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SPAWN_PARTICLE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SPAWN_PARTICLE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.BOOLEAN);
@@ -152,7 +152,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.PLAYER_INFO, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.PLAYER_INFO, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper packetWrapper) throws Exception {
@@ -199,7 +199,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.SCOREBOARD_OBJECTIVE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.SCOREBOARD_OBJECTIVE, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.map(Type.BYTE);
@@ -207,7 +207,7 @@ public class PlayerPacket1_13 extends RewriterBase {
                public void handle(PacketWrapper wrapper) throws Exception {
                   byte mode = (Byte)wrapper.get(Type.BYTE, 0);
                   if (mode == 0 || mode == 2) {
-                     String value = ((JsonElement)wrapper.read(Type.COMPONENT)).toString();
+                     String value = wrapper.read(Type.COMPONENT).toString();
                      value = ChatRewriter.jsonToLegacyText(value);
                      if (value.length() > 32) {
                         value = value.substring(0, 32);
@@ -222,7 +222,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.TEAMS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.TEAMS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.map(Type.BYTE);
@@ -288,7 +288,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.DECLARE_COMMANDS, (ClientboundPacketType)null, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.DECLARE_COMMANDS, null, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                wrapper.cancel();
@@ -331,7 +331,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.TAB_COMPLETE, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.TAB_COMPLETE, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -369,7 +369,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.TAB_COMPLETE, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_12_1.TAB_COMPLETE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                TabCompleteStorage storage = (TabCompleteStorage)wrapper.user().get(TabCompleteStorage.class);
@@ -423,12 +423,12 @@ public class PlayerPacket1_13 extends RewriterBase {
                   }
 
                   response.scheduleSend(Protocol1_12_2To1_13.class);
-                  storage.setLastRequest((String)null);
+                  storage.setLastRequest(null);
                }
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerServerbound(ServerboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_12_1.PLUGIN_MESSAGE, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                String channel = (String)wrapper.read(Type.STRING);
@@ -506,7 +506,7 @@ public class PlayerPacket1_13 extends RewriterBase {
                      ViaBackwards.getPlatform().getLogger().warning("Client send MC|AdvCmd custom payload to update command block, weird!");
                   } else if (type == 1) {
                      wrapper.setId(35);
-                     wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
+                     wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
                      wrapper.passthrough(Type.STRING);
                      wrapper.passthrough(Type.BOOLEAN);
                   } else {
@@ -557,11 +557,7 @@ public class PlayerPacket1_13 extends RewriterBase {
                   wrapper.write(Type.BYTE, ((Integer)wrapper.read(Type.INT)).byteValue());
                   String mirror = (String)wrapper.read(Type.STRING);
                   boolean var10000;
-                  if (modex.equals("NONE")) {
-                     var10000 = false;
-                  } else {
-                     var10000 = modex.equals("LEFT_RIGHT") ? true : true;
-                  }
+                  var10000 = !modex.equals("NONE");
 
                   rewritten = (String)wrapper.read(Type.STRING);
                   if (modex.equals("NONE")) {
@@ -569,7 +565,7 @@ public class PlayerPacket1_13 extends RewriterBase {
                   } else if (modex.equals("CLOCKWISE_90")) {
                      var10000 = true;
                   } else {
-                     var10000 = modex.equals("CLOCKWISE_180") ? true : true;
+                     var10000 = true;
                   }
 
                   wrapper.passthrough(Type.STRING);
@@ -592,12 +588,12 @@ public class PlayerPacket1_13 extends RewriterBase {
                   break;
                case 6:
                   wrapper.setId(32);
-                  wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
-                  wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
+                  wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
+                  wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
                   break;
                case 7:
                   wrapper.setId(31);
-                  wrapper.write(Type.VAR_INT, (Integer)wrapper.read(Type.INT));
+                  wrapper.write(Type.VAR_INT, wrapper.read(Type.INT));
                   break;
                case 8:
                   wrapper.setId(21);
@@ -642,7 +638,7 @@ public class PlayerPacket1_13 extends RewriterBase {
             });
          }
       });
-      ((Protocol1_12_2To1_13)this.protocol).registerClientbound(ClientboundPackets1_13.STATISTICS, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_13.STATISTICS, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler(new PacketHandler() {
@@ -690,6 +686,6 @@ public class PlayerPacket1_13 extends RewriterBase {
    }
 
    private static boolean startsWithIgnoreCase(String string, String prefix) {
-      return string.length() < prefix.length() ? false : string.regionMatches(true, 0, prefix, 0, prefix.length());
+      return string.length() >= prefix.length() && string.regionMatches(true, 0, prefix, 0, prefix.length());
    }
 }

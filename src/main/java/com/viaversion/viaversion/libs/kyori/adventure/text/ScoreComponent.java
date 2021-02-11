@@ -36,7 +36,7 @@ public interface ScoreComponent extends BuildableComponent, ScopedComponent {
    @NotNull
    ScoreComponent value(@Nullable final String value);
 
-   public interface Builder extends ComponentBuilder {
+   interface Builder extends ComponentBuilder {
       @Contract("_ -> this")
       @NotNull
       ScoreComponent.Builder name(@NotNull final String name);

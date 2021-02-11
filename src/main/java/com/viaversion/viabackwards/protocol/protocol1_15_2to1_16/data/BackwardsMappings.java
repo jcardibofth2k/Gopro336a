@@ -19,7 +19,7 @@ public class BackwardsMappings extends com.viaversion.viabackwards.api.data.Back
 
       while(var3.hasNext()) {
          Entry entry = (Entry)var3.next();
-         this.attributeMappings.put((String)entry.getValue(), (String)entry.getKey());
+         this.attributeMappings.put(entry.getValue(), entry.getKey());
       }
 
    }

@@ -11,7 +11,7 @@ import net.minecraft.network.play.server.SPacketPlayerPosLook;
 public class NoRotate
 extends Module {
     public NoRotate() {
-        super("NoRotate", "Cancels server to client rotations", Category.PLAYER, new String[0]);
+        super("NoRotate", "Cancels server to client rotations", Category.PLAYER);
     }
 
     @Subscriber

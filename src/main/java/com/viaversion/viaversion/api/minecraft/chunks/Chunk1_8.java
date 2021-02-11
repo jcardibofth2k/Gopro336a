@@ -11,7 +11,7 @@ public class Chunk1_8 extends BaseChunk {
    }
 
    public Chunk1_8(int x, int z) {
-      this(x, z, true, 0, new ChunkSection[16], (int[])null, new ArrayList());
+      this(x, z, true, 0, new ChunkSection[16], null, new ArrayList());
       this.unloadPacket = true;
    }
 

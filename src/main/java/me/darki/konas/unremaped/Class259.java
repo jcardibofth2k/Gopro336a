@@ -12,6 +12,6 @@ extends Module {
     }
 
     public Class259() {
-        super("DualUse", Category.EXPLOIT, new String[0]);
+        super("DualUse", Category.EXPLOIT);
     }
 }

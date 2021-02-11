@@ -72,13 +72,13 @@ final class CompoundBinaryTagImpl extends AbstractBinaryTag implements CompoundB
 
    @NotNull
    public CompoundBinaryTag remove(@NotNull final String key, @Nullable final Consumer removed) {
-      return (CompoundBinaryTag)(!this.tags.containsKey(key) ? this : this.edit((map) -> {
+      return !this.tags.containsKey(key) ? this : this.edit((map) -> {
          BinaryTag tag = (BinaryTag)map.remove(key);
          if (removed != null) {
             removed.accept(tag);
          }
 
-      }));
+      });
    }
 
    public byte getByte(@NotNull final String key, final byte defaultValue) {
@@ -187,6 +187,6 @@ final class CompoundBinaryTagImpl extends AbstractBinaryTag implements CompoundB
    }
 
    public void forEach(@NotNull final Consumer action) {
-      this.tags.entrySet().forEach((Consumer)Objects.requireNonNull(action, "action"));
+      this.tags.entrySet().forEach(Objects.requireNonNull(action, "action"));
    }
 }

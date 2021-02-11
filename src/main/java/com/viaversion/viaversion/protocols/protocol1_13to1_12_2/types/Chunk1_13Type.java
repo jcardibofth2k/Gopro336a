@@ -99,7 +99,7 @@ public class Chunk1_13Type extends PartialType {
          }
       }
 
-      Type.NBT_ARRAY.write(output, (CompoundTag[])chunk.getBlockEntities().toArray(new CompoundTag[0]));
+      Type.NBT_ARRAY.write(output, chunk.getBlockEntities().toArray(new CompoundTag[0]));
    }
 
    public Class getBaseClass() {

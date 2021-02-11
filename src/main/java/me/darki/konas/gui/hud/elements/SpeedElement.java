@@ -55,7 +55,7 @@ extends Element {
         float f = Math.max(5.0f, Class557.Method800(string));
         Method2323(f + 1.0f);
         Method2319(Class557.Method799(string) + 1.0f);
-        Class557.Method801(string, (int)Method2320(), (int)Method2324(), ((ColorValue)textColor.getValue()).Method774());
+        Class557.Method801(string, (int)Method2320(), (int)Method2324(), textColor.getValue().Method774());
     }
 
     public String calcSpeed() {
@@ -65,7 +65,7 @@ extends Element {
         if (kilometers.getValue()) {
             d2 = 3.6;
         }
-        Field281[Field282 % Field281.length] = d = (double)(MathHelper.sqrt((double)(Math.pow(SpeedElement.speed('x', mc), 2.0) + (vertical.getValue() ? Math.pow(SpeedElement.speed('y', mc), 2.0) : 0.0) + Math.pow(SpeedElement.speed('z', mc), 2.0))) / f) * d2;
+        Field281[Field282 % Field281.length] = d = (double)(MathHelper.sqrt(Math.pow(SpeedElement.speed('x', mc), 2.0) + (vertical.getValue() ? Math.pow(SpeedElement.speed('y', mc), 2.0) : 0.0) + Math.pow(SpeedElement.speed('z', mc), 2.0)) / f) * d2;
         ++Field282;
         int n = 1;
         double d3 = 0.0;

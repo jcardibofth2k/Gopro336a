@@ -64,7 +64,7 @@ public interface Int2IntMap extends Int2IntFunction, Map {
    /** @deprecated */
    @Deprecated
    default boolean containsValue(Object value) {
-      return value == null ? false : this.containsValue((Integer)value);
+      return value != null && this.containsValue(value);
    }
 
    default int getOrDefault(int key, int defaultValue) {
@@ -267,7 +267,7 @@ public interface Int2IntMap extends Int2IntFunction, Map {
       return (Integer)super.merge(key, value, remappingFunction);
    }
 
-   public interface Entry extends java.util.Map.Entry {
+   interface Entry extends java.util.Map.Entry {
       int getIntKey();
 
       /** @deprecated */
@@ -293,7 +293,7 @@ public interface Int2IntMap extends Int2IntFunction, Map {
       }
    }
 
-   public interface FastEntrySet extends ObjectSet {
+   interface FastEntrySet extends ObjectSet {
       ObjectIterator fastIterator();
 
       default void fastForEach(Consumer consumer) {

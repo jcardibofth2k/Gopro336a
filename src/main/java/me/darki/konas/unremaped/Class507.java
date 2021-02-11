@@ -26,7 +26,7 @@ public class Class507 {
     public static void Method1368(double d, double d2, double d3, double d4, double d5, double d6, ColorValue colorValue, float f) {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
-        GlStateManager.glLineWidth((float)f);
+        GlStateManager.glLineWidth(f);
         colorValue.Method774();
         bufferBuilder.begin(1, DefaultVertexFormats.POSITION);
         Class507.Method1375(d, d2, d3, bufferBuilder);
@@ -41,7 +41,7 @@ public class Class507 {
     public static void Method1370(AxisAlignedBB axisAlignedBB, double d, ColorValue colorValue, int n) {
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
-        GlStateManager.glLineWidth((float)((float)d));
+        GlStateManager.glLineWidth((float)d);
         colorValue.Method774();
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
         Class507.Method1372(axisAlignedBB.minX, axisAlignedBB.minY, axisAlignedBB.minZ, colorValue, colorValue.Method782(), bufferBuilder);
@@ -195,35 +195,35 @@ public class Class507 {
     }
 
     public static void Method1385() {
-        GL11.glDisable((int)34383);
-        GL11.glDisable((int)2848);
+        GL11.glDisable(34383);
+        GL11.glDisable(2848);
         GlStateManager.enableAlpha();
         GlStateManager.enableCull();
         GlStateManager.enableLighting();
         GlStateManager.enableTexture2D();
         GlStateManager.enableDepth();
         GlStateManager.disableBlend();
-        GlStateManager.depthMask((boolean)true);
-        GlStateManager.glLineWidth((float)1.0f);
-        GlStateManager.shadeModel((int)7424);
-        GL11.glHint((int)3154, (int)4352);
+        GlStateManager.depthMask(true);
+        GlStateManager.glLineWidth(1.0f);
+        GlStateManager.shadeModel(7424);
+        GL11.glHint(3154, 4352);
         GL11.glPopAttrib();
     }
 
     public static void Method1386() {
-        GL11.glPushAttrib((int)1048575);
-        GL11.glHint((int)3154, (int)4354);
-        GlStateManager.tryBlendFuncSeparate((int)770, (int)771, (int)0, (int)1);
-        GlStateManager.shadeModel((int)7425);
-        GlStateManager.depthMask((boolean)false);
+        GL11.glPushAttrib(1048575);
+        GL11.glHint(3154, 4354);
+        GlStateManager.tryBlendFuncSeparate(770, 771, 0, 1);
+        GlStateManager.shadeModel(7425);
+        GlStateManager.depthMask(false);
         GlStateManager.enableBlend();
         GlStateManager.disableDepth();
         GlStateManager.disableTexture2D();
         GlStateManager.disableLighting();
         GlStateManager.disableCull();
         GlStateManager.enableAlpha();
-        GL11.glEnable((int)2848);
-        GL11.glEnable((int)34383);
+        GL11.glEnable(2848);
+        GL11.glEnable(34383);
     }
 
     public static void Method1387(BlockPos blockPos, double d, float f, ColorValue colorValue) {

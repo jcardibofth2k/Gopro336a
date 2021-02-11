@@ -262,7 +262,7 @@ public final class JsonTreeReader extends JsonReader {
          int newLength = this.stackSize * 2;
          this.stack = Arrays.copyOf(this.stack, newLength);
          this.pathIndices = Arrays.copyOf(this.pathIndices, newLength);
-         this.pathNames = (String[])Arrays.copyOf(this.pathNames, newLength);
+         this.pathNames = Arrays.copyOf(this.pathNames, newLength);
       }
 
       this.stack[this.stackSize++] = newTop;

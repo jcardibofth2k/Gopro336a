@@ -434,7 +434,7 @@ lbl44:
                 return string11.substring(n4, n6);
             }
             catch (IOException object4) {
-                ((Throwable)object4).printStackTrace();
+                object4.printStackTrace();
             }
         }
         return null;

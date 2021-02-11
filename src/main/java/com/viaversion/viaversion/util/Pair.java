@@ -35,7 +35,7 @@ public class Pair {
          return true;
       } else if (o != null && this.getClass() == o.getClass()) {
          Pair pair = (Pair)o;
-         return !Objects.equals(this.key, pair.key) ? false : Objects.equals(this.value, pair.value);
+         return Objects.equals(this.key, pair.key) && Objects.equals(this.value, pair.value);
       } else {
          return false;
       }

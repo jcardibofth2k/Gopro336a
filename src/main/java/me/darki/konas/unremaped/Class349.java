@@ -20,7 +20,7 @@ extends Module {
         }
         AxisAlignedBB axisAlignedBB = Class349.mc.player.getEntityBoundingBox();
         AxisAlignedBB axisAlignedBB2 = axisAlignedBB.offset(0.0, -0.5, 0.0).expand(-0.001, 0.0, -0.001);
-        List list = Class349.mc.world.getCollisionBoxes((Entity)Class349.mc.player, axisAlignedBB2);
+        List list = Class349.mc.world.getCollisionBoxes(Class349.mc.player, axisAlignedBB2);
         if (!list.isEmpty()) {
             return;
         }
@@ -28,6 +28,6 @@ extends Module {
     }
 
     public Class349() {
-        super("Parkour", Category.MOVEMENT, new String[0]);
+        super("Parkour", Category.MOVEMENT);
     }
 }

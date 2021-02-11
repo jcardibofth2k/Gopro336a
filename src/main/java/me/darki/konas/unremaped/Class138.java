@@ -17,7 +17,7 @@ extends Element {
             String string = (mc.isIntegratedServerRunning() ? "Singleplayer: " : "Server: ") + (Class138.mc.player.getServerBrand() == null ? "Unknown" : Class138.mc.player.getServerBrand());
             this.Method2319(Class557.Method799(string) + 1.0f);
             this.Method2323(Class557.Method800(string) + 1.0f);
-            Class557.Method801(string, this.Method2320(), this.Method2324(), ((ColorValue)this.Field2053.getValue()).Method774());
+            Class557.Method801(string, this.Method2320(), this.Method2324(), this.Field2053.getValue().Method774());
         }
     }
 

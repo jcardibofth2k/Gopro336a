@@ -28,7 +28,7 @@ public class DoorConnectionHandler extends ConnectionHandler {
          int type = baseDoors.indexOf(blockData.getMinecraftKey());
          if (type != -1) {
             int id = blockData.getSavedBlockStateId();
-            DoorConnectionHandler.DoorData doorData = new DoorConnectionHandler.DoorData(blockData.getValue("half").equals("lower"), blockData.getValue("hinge").equals("right"), blockData.getValue("powered").equals("true"), blockData.getValue("open").equals("true"), BlockFace.valueOf(blockData.getValue("facing").toUpperCase(Locale.ROOT)), type, (1)null);
+            DoorConnectionHandler.DoorData doorData = new DoorConnectionHandler.DoorData(blockData.getValue("half").equals("lower"), blockData.getValue("hinge").equals("right"), blockData.getValue("powered").equals("true"), blockData.getValue("open").equals("true"), BlockFace.valueOf(blockData.getValue("facing").toUpperCase(Locale.ROOT)), type, (1)null)
             doorDataMap.put(id, doorData);
             connectedStates.put(getStates(doorData), id);
             ConnectionData.connectionHandlerMap.put(id, connectionHandler);

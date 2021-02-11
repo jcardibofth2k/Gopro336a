@@ -77,7 +77,7 @@ public class ViaFabric {
       MappingDataLoader.enableMappingsCache();
       ((ViaManagerImpl)Via.getManager()).init();
       new VRBackwardsLoader(this.file);
-      this.initFuture.complete((Object)null);
+      this.initFuture.complete(null);
    }
 
    public void setFile(File file) {

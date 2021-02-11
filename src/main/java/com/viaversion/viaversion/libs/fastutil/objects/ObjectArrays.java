@@ -51,7 +51,7 @@ public final class ObjectArrays {
 
    public static Object[] grow(Object[] array, int length, int preserve) {
       if (length > array.length) {
-         int newLength = (int)Math.max(Math.min((long)array.length + (long)(array.length >> 1), 2147483639L), (long)length);
+         int newLength = (int)Math.max(Math.min((long)array.length + (long)(array.length >> 1), 2147483639L), length);
          Object[] t = newArray(array, newLength);
          System.arraycopy(array, 0, t, 0, preserve);
          return t;
@@ -86,7 +86,7 @@ public final class ObjectArrays {
    }
 
    public static Object[] copy(Object[] array) {
-      return (Object[])array.clone();
+      return array.clone();
    }
 
    /** @deprecated */
@@ -729,7 +729,7 @@ public final class ObjectArrays {
    }
 
    public static void mergeSort(Object[] a, int from, int to) {
-      mergeSort(a, from, to, (Object[])a.clone());
+      mergeSort(a, from, to, a.clone());
    }
 
    public static void mergeSort(Object[] a) {
@@ -763,11 +763,11 @@ public final class ObjectArrays {
    }
 
    public static void mergeSort(Object[] a, int from, int to, Comparator comp) {
-      mergeSort(a, from, to, comp, (Object[])a.clone());
+      mergeSort(a, from, to, comp, a.clone());
    }
 
    public static void mergeSort(Object[] a, Comparator comp) {
-      mergeSort(a, 0, a.length, (Comparator)comp);
+      mergeSort(a, 0, a.length, comp);
    }
 
    public static void stableSort(Object[] a, int from, int to) {

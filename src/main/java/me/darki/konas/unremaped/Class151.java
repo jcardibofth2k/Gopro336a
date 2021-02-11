@@ -28,7 +28,7 @@ extends GuiScreen {
     public void actionPerformed(GuiButton guiButton) {
         if (guiButton.enabled) {
             if (guiButton.id == 1) {
-                this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                this.mc.displayGuiScreen(NewGui.INSTANCE.Field1132);
             } else if (guiButton.id == 0) {
                 Class170 class170;
                 if (this.Field1965.getText().isEmpty()) {
@@ -48,7 +48,7 @@ extends GuiScreen {
                     class170.Method1542();
                 }
                 NewGui.INSTANCE.Field1132.Method1659().Method1669(class170);
-                this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                this.mc.displayGuiScreen(NewGui.INSTANCE.Field1132);
             } else if (guiButton.id == 3) {
                 if (this.Field1965.getText().isEmpty()) {
                     return;
@@ -65,7 +65,7 @@ extends GuiScreen {
                     }
                     class170.Method1542();
                     NewGui.INSTANCE.Field1132.Method1659().Method1669(class170);
-                    this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                    this.mc.displayGuiScreen(NewGui.INSTANCE.Field1132);
                 }
             } else if (guiButton.id == 5 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 URI uRI;
@@ -93,7 +93,7 @@ extends GuiScreen {
             this.drawCenteredString(this.fontRenderer, TextFormatting.DARK_RED + "Invalid Credentials", this.width / 2, this.height / 4 + 96, 0xFFFFFF);
         }
         if (this.Field1968) {
-            ((GuiButton)this.buttonList.get((int)3)).visible = true;
+            this.buttonList.get(3).visible = true;
         }
         this.Field1965.drawTextBox();
         this.Field1966.Method613();
@@ -106,7 +106,7 @@ extends GuiScreen {
                 if (!this.Field1965.isFocused()) break block2;
                 this.Field1965.textboxKeyTyped(c, n);
                 if (n == 28 || n == 156) {
-                    this.actionPerformed((GuiButton)this.buttonList.get(0));
+                    this.actionPerformed(this.buttonList.get(0));
                 }
                 if (n != 15) break block3;
                 this.Field1966.Method1719(true);
@@ -116,23 +116,23 @@ extends GuiScreen {
             if (!this.Field1966.Method1714()) break block3;
             this.Field1966.Method1729(c, n);
             if (n == 28 || n == 156) {
-                this.actionPerformed((GuiButton)this.buttonList.get(0));
+                this.actionPerformed(this.buttonList.get(0));
             }
         }
     }
 
     public void onGuiClosed() {
-        Keyboard.enableRepeatEvents((boolean)false);
+        Keyboard.enableRepeatEvents(false);
     }
 
     public void initGui() {
-        Keyboard.enableRepeatEvents((boolean)true);
+        Keyboard.enableRepeatEvents(true);
         this.buttonList.clear();
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + 18, "Add"));
         this.buttonList.add(new GuiButton(3, this.width / 2 - 100, this.height / 4 + 120 + 18, "Add through Microsoft"));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 144 + 18, "Cancel"));
         this.buttonList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 168 + 18, "Login through browser"));
-        ((GuiButton)this.buttonList.get((int)3)).visible = false;
+        this.buttonList.get(3).visible = false;
         this.Field1965 = new GuiTextField(2, this.fontRenderer, this.width / 2 - 100, 66, 200, 20);
         ((IGuiTextField)this.Field1965).Method1604(320);
         this.Field1966 = new Class158(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);

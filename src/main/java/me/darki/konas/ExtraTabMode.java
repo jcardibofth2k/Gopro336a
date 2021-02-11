@@ -25,6 +25,6 @@ extends Enum {
     }
 
     public static ExtraTabMode[] Method1313() {
-        return (ExtraTabMode[])Field1291.clone();
+        return Field1291.clone();
     }
 }

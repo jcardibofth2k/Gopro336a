@@ -32,10 +32,10 @@ public class InventoryPackets extends ItemRewriter {
          PacketWrapper clearPacket = wrapper.create(ClientboundPackets1_16.SET_SLOT);
          clearPacket.write(Type.UNSIGNED_BYTE, Short.valueOf((short)-1));
          clearPacket.write(Type.SHORT, Short.valueOf((short)-1));
-         clearPacket.write(Type.FLAT_VAR_INT_ITEM, (Object)null);
+         clearPacket.write(Type.FLAT_VAR_INT_ITEM, null);
          clearPacket.send(Protocol1_16To1_15_2.class);
       };
-      ((Protocol1_16To1_15_2)this.protocol).registerClientbound(ClientboundPackets1_15.OPEN_WINDOW, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.OPEN_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.VAR_INT);
@@ -51,12 +51,12 @@ public class InventoryPackets extends ItemRewriter {
             this.handler(cursorRemapper);
          }
       });
-      ((Protocol1_16To1_15_2)this.protocol).registerClientbound(ClientboundPackets1_15.CLOSE_WINDOW, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.CLOSE_WINDOW, new PacketRemapper() {
          public void registerMap() {
             this.handler(cursorRemapper);
          }
       });
-      ((Protocol1_16To1_15_2)this.protocol).registerClientbound(ClientboundPackets1_15.WINDOW_PROPERTY, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.WINDOW_PROPERTY, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.UNSIGNED_BYTE);
             this.map(Type.SHORT);
@@ -79,7 +79,7 @@ public class InventoryPackets extends ItemRewriter {
       this.registerTradeList(ClientboundPackets1_15.TRADE_LIST, Type.FLAT_VAR_INT_ITEM);
       this.registerSetSlot(ClientboundPackets1_15.SET_SLOT, Type.FLAT_VAR_INT_ITEM);
       this.registerAdvancements(ClientboundPackets1_15.ADVANCEMENTS, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_16To1_15_2)this.protocol).registerClientbound(ClientboundPackets1_15.ENTITY_EQUIPMENT, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_15.ENTITY_EQUIPMENT, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.handler((wrapper) -> {
@@ -92,7 +92,7 @@ public class InventoryPackets extends ItemRewriter {
       (new RecipeRewriter1_14(this.protocol)).registerDefaultHandler(ClientboundPackets1_15.DECLARE_RECIPES);
       this.registerClickWindow(ServerboundPackets1_16.CLICK_WINDOW, Type.FLAT_VAR_INT_ITEM);
       this.registerCreativeInvAction(ServerboundPackets1_16.CREATIVE_INVENTORY_ACTION, Type.FLAT_VAR_INT_ITEM);
-      ((Protocol1_16To1_15_2)this.protocol).registerServerbound(ServerboundPackets1_16.EDIT_BOOK, new PacketRemapper() {
+      this.protocol.registerServerbound(ServerboundPackets1_16.EDIT_BOOK, new PacketRemapper() {
          public void registerMap() {
             this.handler((wrapper) -> {
                InventoryPackets.this.handleItemToServer((Item)wrapper.passthrough(Type.FLAT_VAR_INT_ITEM));

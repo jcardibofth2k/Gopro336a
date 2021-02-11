@@ -16,7 +16,7 @@ public class class_106 implements class_0 {
 
    // $FF: renamed from: c () void
    public void method_24() {
-      Iterable var1 = (Iterable)ManagementFactory.getRuntimeMXBean().getInputArguments();
+      Iterable var1 = ManagementFactory.getRuntimeMXBean().getInputArguments();
       boolean var2 = false;
       Iterator var3 = var1.iterator();
 
@@ -38,7 +38,7 @@ public class class_106 implements class_0 {
          break;
       }
 
-      if ((String)var10000 != null) {
+      if (var10000 != null) {
          var2 = false;
          boolean var14 = false;
          boolean var15 = false;
@@ -76,7 +76,7 @@ public class class_106 implements class_0 {
          }
 
          var11.printStackTrace();
-         class_106 var12 = (class_106)this;
+         class_106 var12 = this;
          var3 = false;
 
          try {

@@ -119,7 +119,7 @@ public class Int2ObjectLinkedOpenHashMap extends AbstractInt2ObjectSortedMap imp
    }
 
    private void tryCapacity(long capacity) {
-      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((double)((float)capacity / this.field_37)))));
+      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((float)capacity / this.field_37))));
       if (needed > this.field_36) {
          this.rehash(needed);
       }
@@ -156,7 +156,7 @@ public class Int2ObjectLinkedOpenHashMap extends AbstractInt2ObjectSortedMap imp
       if ((double)this.field_37 <= 0.5D) {
          this.ensureCapacity(m.size());
       } else {
-         this.tryCapacity((long)(this.size() + m.size()));
+         this.tryCapacity(this.size() + m.size());
       }
 
       super.putAll(m);
@@ -783,7 +783,7 @@ public class Int2ObjectLinkedOpenHashMap extends AbstractInt2ObjectSortedMap imp
          this.size = 0;
          this.containsNullKey = false;
          Arrays.fill(this.key, 0);
-         Arrays.fill(this.value, (Object)null);
+         Arrays.fill(this.value, null);
          this.first = this.last = -1;
       }
    }
@@ -954,7 +954,7 @@ public class Int2ObjectLinkedOpenHashMap extends AbstractInt2ObjectSortedMap imp
    }
 
    public boolean trim(int n) {
-      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((double)((float)n / this.field_37)));
+      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((float)n / this.field_37));
       if (l < this.field_36 && this.size <= HashCommon.maxFill(l, this.field_37)) {
          try {
             this.rehash(l);
@@ -1030,9 +1030,9 @@ public class Int2ObjectLinkedOpenHashMap extends AbstractInt2ObjectSortedMap imp
       c.values = null;
       c.entries = null;
       c.containsNullKey = this.containsNullKey;
-      c.key = (int[])this.key.clone();
-      c.value = (Object[])this.value.clone();
-      c.link = (long[])this.link.clone();
+      c.key = this.key.clone();
+      c.value = this.value.clone();
+      c.link = this.link.clone();
       return c;
    }
 

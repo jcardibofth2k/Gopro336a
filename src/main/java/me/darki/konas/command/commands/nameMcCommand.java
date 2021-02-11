@@ -4,7 +4,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import me.darki.konas.ChatUtil;
+import me.darki.konas.util.ChatUtil;
 import me.darki.konas.Class595;
 import me.darki.konas.command.Command;
 
@@ -13,7 +13,7 @@ extends Command {
     @Override
     public void Method174(String[] stringArray) {
         if (stringArray.length != 2) {
-            ChatUtil.Method1034(this.Method191(), new Object[0]);
+            ChatUtil.Method1034(this.Method191());
             return;
         }
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {

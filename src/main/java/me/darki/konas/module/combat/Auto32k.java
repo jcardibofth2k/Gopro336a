@@ -78,7 +78,7 @@ extends Module {
         }
         this.Field1506 = this.Method1518(this.Method1516(false));
         if (!this.Field1504) {
-            this.Field1510 = Auto32k.Method1517((Block)Blocks.HOPPER);
+            this.Field1510 = Auto32k.Method1517(Blocks.HOPPER);
             this.Field1511 = this.getBlockInHotbar();
             n2 = Auto32k.Method1517(Blocks.DISPENSER);
             n = Auto32k.Method1517(Blocks.REDSTONE_BLOCK);
@@ -87,25 +87,25 @@ extends Module {
                 return;
             }
             if (this.Field1506 == null) {
-                this.Method1514((EntityLivingBase) Auto32k.mc.player, n2, n, this.Field1512);
+                this.Method1514(Auto32k.mc.player, n2, n, this.Field1512);
             } else {
-                this.Method1514((EntityLivingBase)this.Field1506, n2, n, this.Field1512);
+                this.Method1514(this.Field1506, n2, n, this.Field1512);
             }
             this.Field1504 = true;
         }
         if (Auto32k.mc.currentScreen instanceof GuiDispenser) {
             EnumFacing enumFacing = Auto32k.Method1520(this.Field1508);
-            if (!(((Slot) Auto32k.mc.player.openContainer.inventorySlots.get((int)0)).inventory.getStackInSlot(0).getItem() instanceof ItemShulkerBox)) {
+            if (!(Auto32k.mc.player.openContainer.inventorySlots.get(0).inventory.getStackInSlot(0).getItem() instanceof ItemShulkerBox)) {
                 if (Auto32k.mc.world.getBlockState(this.Field1507.up()).getBlock() instanceof BlockShulkerBox) {
                     BlockPos blockPos = this.Field1508.offset(enumFacing).offset(enumFacing);
-                    if (((Boolean) blockShulker.getValue()).booleanValue() && Blocks.OBSIDIAN.canPlaceBlockAt((World) Auto32k.mc.world, blockPos) && Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos)).isEmpty()) {
+                    if (blockShulker.getValue().booleanValue() && Blocks.OBSIDIAN.canPlaceBlockAt(Auto32k.mc.world, blockPos) && Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos)).isEmpty()) {
                         Class542.Method1041(blockPos);
                     }
                     Auto32k.mc.player.inventory.currentItem = this.Field1510;
                     Class542.Method1041(this.Field1507);
-                    Auto32k.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(this.Field1507, EnumFacing.UP, EnumHand.MAIN_HAND, 0.5f, 0.5f, 0.5f));
+                    Auto32k.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(this.Field1507, EnumFacing.UP, EnumHand.MAIN_HAND, 0.5f, 0.5f, 0.5f));
                 } else {
-                    Auto32k.mc.playerController.windowClick(Auto32k.mc.player.openContainer.windowId, 0, this.Field1511, ClickType.SWAP, (EntityPlayer) Auto32k.mc.player);
+                    Auto32k.mc.playerController.windowClick(Auto32k.mc.player.openContainer.windowId, 0, this.Field1511, ClickType.SWAP, Auto32k.mc.player);
                 }
             } else if (!this.Field1509) {
                 EnumFacing enumFacing2 = this.Method1525(this.Field1508, enumFacing);
@@ -117,14 +117,14 @@ extends Module {
         if (!this.Method938(Auto32k.mc.player.getHeldItemMainhand()) && Auto32k.mc.currentScreen instanceof GuiHopper) {
             n2 = Auto32k.Method391(Items.AIR) == -1 ? Auto32k.mc.player.inventory.currentItem : Auto32k.Method391(Items.AIR);
             for (n = 0; n < 5; ++n) {
-                if (!this.Method938(((Slot) Auto32k.mc.player.openContainer.inventorySlots.get((int)0)).inventory.getStackInSlot(n))) continue;
-                Auto32k.mc.playerController.windowClick(Auto32k.mc.player.openContainer.windowId, n, n2, ClickType.SWAP, (EntityPlayer) Auto32k.mc.player);
+                if (!this.Method938(Auto32k.mc.player.openContainer.inventorySlots.get(0).inventory.getStackInSlot(n))) continue;
+                Auto32k.mc.playerController.windowClick(Auto32k.mc.player.openContainer.windowId, n, n2, ClickType.SWAP, Auto32k.mc.player);
                 Auto32k.mc.player.inventory.currentItem = n2;
                 break;
             }
         }
-        if (((Boolean) killAura.getValue()).booleanValue() && this.Method938(Auto32k.mc.player.getHeldItemMainhand()) && this.Field1506 != null && mode.getValue() == Auto32kMode.TICK && this.Field1505 >= (Integer) ticks.getValue() && (double) Auto32k.mc.player.getDistance((Entity)this.Field1506) <= (Double) attackRange.getValue()) {
-            Auto32k.mc.playerController.attackEntity((EntityPlayer) Auto32k.mc.player, (Entity)this.Field1506);
+        if (killAura.getValue().booleanValue() && this.Method938(Auto32k.mc.player.getHeldItemMainhand()) && this.Field1506 != null && mode.getValue() == Auto32kMode.TICK && this.Field1505 >= ticks.getValue() && (double) Auto32k.mc.player.getDistance(this.Field1506) <= attackRange.getValue()) {
+            Auto32k.mc.playerController.attackEntity(Auto32k.mc.player, this.Field1506);
             Auto32k.mc.player.swingArm(EnumHand.MAIN_HAND);
             this.Field1505 = 0;
         }
@@ -132,7 +132,7 @@ extends Module {
     }
 
     public Auto32k() {
-        super("Auto32k", "Automatically kills someone using 32k weapons", Category.COMBAT, new String[0]);
+        super("Auto32k", "Automatically kills someone using 32k weapons", Category.COMBAT);
     }
 
     public void Method1514(EntityLivingBase entityLivingBase, int n, int n2, int n3) {
@@ -148,7 +148,7 @@ extends Module {
         Class542.Method1041(blockPos);
         Auto32k.mc.player.inventory.currentItem = n;
         Class542.Method1041(this.Field1508);
-        Auto32k.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(this.Field1508, EnumFacing.UP, EnumHand.MAIN_HAND, 0.5f, 0.5f, 0.5f));
+        Auto32k.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(this.Field1508, EnumFacing.UP, EnumHand.MAIN_HAND, 0.5f, 0.5f, 0.5f));
         Auto32k.mc.player.inventory.currentItem = n2;
     }
 
@@ -156,17 +156,17 @@ extends Module {
         int n;
         Class507.Method1386();
         IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
-        float[] fArray = Color.RGBtoHSB(((ColorValue) color.getValue()).Method769(), ((ColorValue) color.getValue()).Method770(), ((ColorValue) color.getValue()).Method779(), null);
+        float[] fArray = Color.RGBtoHSB(color.getValue().Method769(), color.getValue().Method770(), color.getValue().Method779(), null);
         float f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
         int n2 = Color.getHSBColor(f, fArray[1], fArray[2]).getRGB();
         ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
         double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
         double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
         double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
-        GL11.glLineWidth((float)((Float) width.getValue()).floatValue());
-        GL11.glBegin((int)1);
+        GL11.glLineWidth(width.getValue().floatValue());
+        GL11.glBegin(1);
         for (n = 0; n <= 360; ++n) {
-            Vec3d vec3d = new Vec3d(d + Math.sin((double)n * Math.PI / 180.0) * (Double) attackRange.getValue(), d2 + 0.01, d3 + Math.cos((double)n * Math.PI / 180.0) * (Double) attackRange.getValue());
+            Vec3d vec3d = new Vec3d(d + Math.sin((double)n * Math.PI / 180.0) * attackRange.getValue(), d2 + 0.01, d3 + Math.cos((double)n * Math.PI / 180.0) * attackRange.getValue());
             arrayList.add(vec3d);
         }
         for (n = 0; n < arrayList.size() - 1; ++n) {
@@ -174,14 +174,14 @@ extends Module {
             int n4 = n2 >> 16 & 0xFF;
             int n5 = n2 >> 8 & 0xFF;
             int n6 = n2 & 0xFF;
-            if (((ColorValue) color.getValue()).Method783()) {
-                GL11.glColor4f((float)((float)n4 / 255.0f), (float)((float)n5 / 255.0f), (float)((float)n6 / 255.0f), (float)((float)n3 / 255.0f));
+            if (color.getValue().Method783()) {
+                GL11.glColor4f((float)n4 / 255.0f, (float)n5 / 255.0f, (float)n6 / 255.0f, (float)n3 / 255.0f);
             } else {
-                GL11.glColor4f((float)((float)((ColorValue) color.getValue()).Method769() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method770() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method779() / 255.0f), (float)((float)((ColorValue) color.getValue()).Method782() / 255.0f));
+                GL11.glColor4f((float) color.getValue().Method769() / 255.0f, (float) color.getValue().Method770() / 255.0f, (float) color.getValue().Method779() / 255.0f, (float) color.getValue().Method782() / 255.0f);
             }
-            if (!((Boolean) combine.getValue()).booleanValue() || this.Method1521(entity, ((Vec3d)arrayList.get((int)n)).x + iRenderManager.Method69(), entity.posY, ((Vec3d)arrayList.get((int)n)).z + iRenderManager.Method71())) {
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)n)).x, (double)((Vec3d)arrayList.get((int)n)).y, (double)((Vec3d)arrayList.get((int)n)).z);
-                GL11.glVertex3d((double)((Vec3d)arrayList.get((int)(n + 1))).x, (double)((Vec3d)arrayList.get((int)(n + 1))).y, (double)((Vec3d)arrayList.get((int)(n + 1))).z);
+            if (!combine.getValue().booleanValue() || this.Method1521(entity, arrayList.get(n).x + iRenderManager.Method69(), entity.posY, arrayList.get(n).z + iRenderManager.Method71())) {
+                GL11.glVertex3d(arrayList.get(n).x, arrayList.get(n).y, arrayList.get(n).z);
+                GL11.glVertex3d(arrayList.get(n + 1).x, arrayList.get(n + 1).y, arrayList.get(n + 1).z);
             }
             n2 = Color.getHSBColor(f += 0.0027777778f, fArray[1], fArray[2]).getRGB();
         }
@@ -194,7 +194,7 @@ extends Module {
         for (Entity entity : Auto32k.mc.world.loadedEntityList) {
             if (entity == null || !(entity instanceof EntityPlayer)) continue;
             EntityPlayer entityPlayer = (EntityPlayer)entity;
-            if ((double) Auto32k.mc.player.getDistance((Entity)entityPlayer) > (bl ? (Double) playerRange.getValue() * 4.0 : (Double) playerRange.getValue()) || entityPlayer == Auto32k.mc.player || !((Boolean) walls.getValue()).booleanValue() && !Auto32k.mc.player.canEntityBeSeen((Entity)entityPlayer) && !Auto32k.Method386((Entity)entityPlayer) || entityPlayer.getHealth() <= 0.0f || entityPlayer.isDead || !((Boolean) friends.getValue()).booleanValue() && Class492.Method1989(entityPlayer.getName())) continue;
+            if ((double) Auto32k.mc.player.getDistance(entityPlayer) > (bl ? playerRange.getValue() * 4.0 : playerRange.getValue()) || entityPlayer == Auto32k.mc.player || !walls.getValue().booleanValue() && !Auto32k.mc.player.canEntityBeSeen(entityPlayer) && !Auto32k.Method386(entityPlayer) || entityPlayer.getHealth() <= 0.0f || entityPlayer.isDead || !friends.getValue().booleanValue() && Class492.Method1989(entityPlayer.getName())) continue;
             arrayList.add(entityPlayer);
         }
         return arrayList;
@@ -223,21 +223,21 @@ extends Module {
             if (Auto32k.mc.player == null || Auto32k.mc.world == null) {
                 return;
             }
-            if (!((Boolean) rangeCircles.getValue()).booleanValue()) break block2;
+            if (!rangeCircles.getValue().booleanValue()) break block2;
             for (Entity entity : this.Method1516(true)) {
                 this.Method1515(entity, class89);
             }
-            this.Method1515((Entity) Auto32k.mc.player, class89);
-            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            this.Method1515(Auto32k.mc.player, class89);
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
 
     public EntityPlayer Method1518(List<EntityPlayer> list) {
         EntityPlayer entityPlayer = null;
-        double d = (Double) playerRange.getValue();
+        double d = playerRange.getValue();
         for (EntityPlayer entityPlayer2 : list) {
             block17: {
-                if (((Boolean) armorCheck.getValue()).booleanValue() && entityPlayer != null) {
+                if (armorCheck.getValue().booleanValue() && entityPlayer != null) {
                     EntityPlayer entityPlayer3 = entityPlayer;
                     EntityEquipmentSlot entityEquipmentSlot = EntityEquipmentSlot.HEAD;
                     ItemStack itemStack = entityPlayer3.getItemStackFromSlot(entityEquipmentSlot);
@@ -262,8 +262,8 @@ extends Module {
                     }
                 }
             }
-            if (!((double) Auto32k.mc.player.getDistance((Entity)entityPlayer2) < d)) continue;
-            d = Auto32k.mc.player.getDistance((Entity)entityPlayer2);
+            if (!((double) Auto32k.mc.player.getDistance(entityPlayer2) < d)) continue;
+            d = Auto32k.mc.player.getDistance(entityPlayer2);
             entityPlayer = entityPlayer2;
         }
         return entityPlayer;
@@ -292,9 +292,9 @@ extends Module {
             return null;
         }
         ArrayList<BlockPos> arrayList = new ArrayList<BlockPos>();
-        for (BlockPos blockPos : Class545.Method1003(new BlockPos((Entity) Auto32k.mc.player), 3)) {
+        for (BlockPos blockPos : Class545.Method1003(new BlockPos(Auto32k.mc.player), 3)) {
             EnumFacing enumFacing = Auto32k.Method1520(blockPos.up());
-            if (enumFacing == null || enumFacing == EnumFacing.DOWN || enumFacing == EnumFacing.UP || !Class542.Method1040(blockPos, Blocks.OBSIDIAN, true) || !Blocks.DISPENSER.canPlaceBlockAt((World) Auto32k.mc.world, blockPos.up()) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.up())).isEmpty() || this.Method1525(blockPos.up(), enumFacing) == null || !Blocks.HOPPER.canPlaceBlockAt((World) Auto32k.mc.world, blockPos.offset(enumFacing)) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing))).isEmpty() || !Blocks.SILVER_SHULKER_BOX.canPlaceBlockAt((World) Auto32k.mc.world, blockPos.offset(enumFacing).up()) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing).up())).isEmpty()) continue;
+            if (enumFacing == null || enumFacing == EnumFacing.DOWN || enumFacing == EnumFacing.UP || !Class542.Method1040(blockPos, Blocks.OBSIDIAN, true) || !Blocks.DISPENSER.canPlaceBlockAt(Auto32k.mc.world, blockPos.up()) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.up())).isEmpty() || this.Method1525(blockPos.up(), enumFacing) == null || !Blocks.HOPPER.canPlaceBlockAt(Auto32k.mc.world, blockPos.offset(enumFacing)) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing))).isEmpty() || !Blocks.SILVER_SHULKER_BOX.canPlaceBlockAt(Auto32k.mc.world, blockPos.offset(enumFacing).up()) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing).up())).isEmpty()) continue;
             arrayList.add(blockPos);
         }
         return arrayList;
@@ -306,11 +306,11 @@ extends Module {
 
     public static EnumFacing Method1520(BlockPos blockPos) {
         Vec3d vec3d = new Vec3d(Auto32k.mc.player.posX, Auto32k.mc.player.posY + (double) Auto32k.mc.player.getEyeHeight(), Auto32k.mc.player.posZ);
-        Vec3d vec3d2 = new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(EnumFacing.DOWN.getDirectionVec()).scale(0.5));
+        Vec3d vec3d2 = new Vec3d(blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(EnumFacing.DOWN.getDirectionVec()).scale(0.5));
         double d = vec3d2.x - vec3d.x;
         double d2 = vec3d2.z - vec3d.z;
         float f = (float)Math.toDegrees(Math.atan2(d2, d)) - 90.0f;
-        float f2 = Auto32k.mc.player.rotationYaw + MathHelper.wrapDegrees((float)(f - Auto32k.mc.player.rotationYaw));
+        float f2 = Auto32k.mc.player.rotationYaw + MathHelper.wrapDegrees(f - Auto32k.mc.player.rotationYaw);
         if (Math.abs(Auto32k.mc.player.posX - (double)((float)blockPos.getX() + 0.5f)) < 2.0 && Math.abs(Auto32k.mc.player.posZ - (double)((float)blockPos.getZ() + 0.5f)) < 2.0) {
             double d3 = Auto32k.mc.player.posY + (double) Auto32k.mc.player.getEyeHeight();
             if (d3 - (double)blockPos.getY() > 2.0) {
@@ -320,15 +320,15 @@ extends Module {
                 return EnumFacing.DOWN;
             }
         }
-        return EnumFacing.byHorizontalIndex((int)(MathHelper.floor((double)((double)(f2 * 4.0f / 360.0f) + 0.5)) & 3)).getOpposite();
+        return EnumFacing.byHorizontalIndex((int)(MathHelper.floor((double)(f2 * 4.0f / 360.0f) + 0.5) & 3)).getOpposite();
     }
 
     public boolean Method1521(Entity entity, double d, double d2, double d3) {
         List<EntityPlayer> list = this.Method1516(true);
-        list.add((EntityPlayer) Auto32k.mc.player);
+        list.add(Auto32k.mc.player);
         for (EntityPlayer entityPlayer : list) {
             double d4;
-            if (entityPlayer.equals((Object)entity) || entityPlayer.posY != d2 || !((d4 = Math.sqrt(Math.pow(d - ShaderUtil.Method842((Entity)entityPlayer), 2.0) + Math.pow(d3 - ShaderUtil.Method846((Entity)entityPlayer), 2.0))) < (Double) attackRange.getValue())) continue;
+            if (entityPlayer.equals(entity) || entityPlayer.posY != d2 || !((d4 = Math.sqrt(Math.pow(d - ShaderUtil.Method842(entityPlayer), 2.0) + Math.pow(d3 - ShaderUtil.Method846(entityPlayer), 2.0))) < attackRange.getValue())) continue;
             return false;
         }
         return true;
@@ -338,7 +338,7 @@ extends Module {
         BlockPos blockPos = null;
         double d = 0.0;
         for (BlockPos blockPos2 : this.Method1519()) {
-            if (!(entityLivingBase.getDistance((double)blockPos2.getX(), (double)blockPos2.getY(), (double)blockPos2.getZ()) > d)) continue;
+            if (!(entityLivingBase.getDistance(blockPos2.getX(), blockPos2.getY(), blockPos2.getZ()) > d)) continue;
             blockPos = blockPos2;
         }
         return blockPos;
@@ -350,8 +350,8 @@ extends Module {
             if (Auto32k.mc.player == null || Auto32k.mc.world == null) {
                 return;
             }
-            if (!((Boolean) killAura.getValue()).booleanValue() || !this.Method938(Auto32k.mc.player.getHeldItemMainhand()) || this.Field1506 == null || mode.getValue() != Auto32kMode.ALWAYS || !this.Field1513.Method737((Double) delay.getValue() * 1000.0) || !((double) Auto32k.mc.player.getDistance((Entity)this.Field1506) <= (Double) attackRange.getValue())) break block1;
-            Auto32k.mc.playerController.attackEntity((EntityPlayer) Auto32k.mc.player, (Entity)this.Field1506);
+            if (!killAura.getValue().booleanValue() || !this.Method938(Auto32k.mc.player.getHeldItemMainhand()) || this.Field1506 == null || mode.getValue() != Auto32kMode.ALWAYS || !this.Field1513.Method737(delay.getValue() * 1000.0) || !((double) Auto32k.mc.player.getDistance(this.Field1506) <= attackRange.getValue())) break block1;
+            Auto32k.mc.playerController.attackEntity(Auto32k.mc.player, this.Field1506);
             Auto32k.mc.player.swingArm(EnumHand.MAIN_HAND);
             this.Field1513.Method739();
         }
@@ -361,7 +361,7 @@ extends Module {
         BlockPos blockPos = null;
         double d = 420.0;
         for (BlockPos blockPos2 : this.Method1519()) {
-            if (!(Auto32k.mc.player.getDistance((double)blockPos2.getX(), (double)blockPos2.getY(), (double)blockPos2.getZ()) < d)) continue;
+            if (!(Auto32k.mc.player.getDistance(blockPos2.getX(), blockPos2.getY(), blockPos2.getZ()) < d)) continue;
             blockPos = blockPos2;
         }
         return blockPos;
@@ -369,13 +369,13 @@ extends Module {
 
     public EnumFacing Method1525(BlockPos blockPos, EnumFacing enumFacing) {
         for (EnumFacing enumFacing2 : EnumFacing.values()) {
-            if (enumFacing2 == EnumFacing.DOWN || enumFacing2 == enumFacing || !Blocks.REDSTONE_BLOCK.canPlaceBlockAt((World) Auto32k.mc.world, blockPos.offset(enumFacing2)) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing2))).isEmpty()) continue;
+            if (enumFacing2 == EnumFacing.DOWN || enumFacing2 == enumFacing || !Blocks.REDSTONE_BLOCK.canPlaceBlockAt(Auto32k.mc.world, blockPos.offset(enumFacing2)) || !Auto32k.mc.world.getEntitiesWithinAABBExcludingEntity(null, new AxisAlignedBB(blockPos.offset(enumFacing2))).isEmpty()) continue;
             return enumFacing2;
         }
         return null;
     }
 
     public boolean Method938(ItemStack itemStack) {
-        return EnchantmentHelper.getEnchantmentLevel((Enchantment)Enchantments.SHARPNESS, (ItemStack)itemStack) >= 1000;
+        return EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, itemStack) >= 1000;
     }
 }

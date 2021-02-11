@@ -31,21 +31,21 @@ extends Module {
     public static Setting<Boolean> fastPlace = new Setting<>("FastPlace", false);
     public static Setting<Boolean> noCrystalPlace = new Setting<>("NoCrystalPlace", false);
     public static Setting<Boolean> placeWhitelist = new Setting<>("PlaceWhitelist", false);
-    public static Setting<Class443> whitelist = new Setting<>("Whitelist", new Class443(new String[0]));
+    public static Setting<Class443> whitelist = new Setting<>("Whitelist", new Class443());
     public static boolean Field1871 = false;
 
     public boolean Method394() {
         Item item = FastUse.mc.player.getHeldItemMainhand().getItem();
         Item item2 = FastUse.mc.player.getHeldItemOffhand().getItem();
-        if (((Boolean) fastXP.getValue()).booleanValue() && (item instanceof ItemExpBottle || item2 instanceof ItemExpBottle)) {
+        if (fastXP.getValue().booleanValue() && (item instanceof ItemExpBottle || item2 instanceof ItemExpBottle)) {
             return true;
         }
-        if (((Boolean) fastPlace.getValue()).booleanValue()) {
-            if (item instanceof ItemBlock && (((Class443) whitelist.getValue()).Method682().contains(((ItemBlock)item).getBlock()) || !((Boolean) placeWhitelist.getValue()).booleanValue())) {
+        if (fastPlace.getValue().booleanValue()) {
+            if (item instanceof ItemBlock && (whitelist.getValue().Method682().contains(((ItemBlock)item).getBlock()) || !placeWhitelist.getValue().booleanValue())) {
                 ((IMinecraft)mc).Method57(0);
                 return true;
             }
-            if (item2 instanceof ItemBlock && (((Class443) whitelist.getValue()).Method682().contains(((ItemBlock)item2).getBlock()) || !((Boolean) placeWhitelist.getValue()).booleanValue())) {
+            if (item2 instanceof ItemBlock && (whitelist.getValue().Method682().contains(((ItemBlock)item2).getBlock()) || !placeWhitelist.getValue().booleanValue())) {
                 ((IMinecraft)mc).Method57(0);
                 return true;
             }
@@ -64,12 +64,12 @@ extends Module {
                 if (FastUse.mc.player == null || FastUse.mc.world == null) {
                     return;
                 }
-                if (!((Boolean) ghostFix.getValue()).booleanValue() || !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) && !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemBoat)) break block3;
+                if (!ghostFix.getValue().booleanValue() || !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) && !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemBoat)) break block3;
                 if (!(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock)) break block4;
                 class24.Cancel();
                 break block4;
             }
-            if (!((Boolean) noCrystalPlace.getValue()).booleanValue() || !(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) || !(FastUse.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal)) break block4;
+            if (!noCrystalPlace.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) || !(FastUse.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal)) break block4;
             if (Field1871) {
                 Field1871 = false;
             } else {
@@ -88,16 +88,16 @@ extends Module {
             if (FastUse.mc.world == null || FastUse.mc.player == null) {
                 return;
             }
-            if (((Boolean) strict.getValue()).booleanValue() && FastUse.mc.player.ticksExisted % 2 == 0) {
+            if (strict.getValue().booleanValue() && FastUse.mc.player.ticksExisted % 2 == 0) {
                 return;
             }
-            if (((Boolean) fastBow.getValue()).booleanValue() && FastUse.mc.player.inventory.getCurrentItem().getItem() instanceof ItemBow && FastUse.mc.player.isHandActive() && FastUse.mc.player.getItemInUseMaxCount() >= 3) {
-                FastUse.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, FastUse.mc.player.getHorizontalFacing()));
-                if (((Boolean) bowBomb.getValue()).booleanValue() && FastUse.mc.gameSettings.keyBindUseItem.isKeyDown()) {
-                    FastUse.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(FastUse.mc.player.posX, FastUse.mc.player.posY - 0.1, FastUse.mc.player.posZ, FastUse.mc.player.rotationYaw, FastUse.mc.player.rotationPitch, false));
-                    FastUse.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(FastUse.mc.player.posX, FastUse.mc.player.posY - 999.0, FastUse.mc.player.posZ, FastUse.mc.player.rotationYaw, FastUse.mc.player.rotationPitch, true));
+            if (fastBow.getValue().booleanValue() && FastUse.mc.player.inventory.getCurrentItem().getItem() instanceof ItemBow && FastUse.mc.player.isHandActive() && FastUse.mc.player.getItemInUseMaxCount() >= 3) {
+                FastUse.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, FastUse.mc.player.getHorizontalFacing()));
+                if (bowBomb.getValue().booleanValue() && FastUse.mc.gameSettings.keyBindUseItem.isKeyDown()) {
+                    FastUse.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(FastUse.mc.player.posX, FastUse.mc.player.posY - 0.1, FastUse.mc.player.posZ, FastUse.mc.player.rotationYaw, FastUse.mc.player.rotationPitch, false));
+                    FastUse.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(FastUse.mc.player.posX, FastUse.mc.player.posY - 999.0, FastUse.mc.player.posZ, FastUse.mc.player.rotationYaw, FastUse.mc.player.rotationPitch, true));
                 }
-                FastUse.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItem(FastUse.mc.player.getActiveHand()));
+                FastUse.mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(FastUse.mc.player.getActiveHand()));
                 FastUse.mc.player.stopActiveHand();
                 return;
             }
@@ -109,7 +109,7 @@ extends Module {
     @Subscriber
     public void Method1762(Class41 class41) {
         block0: {
-            if (!(FastUse.mc.player.getHeldItem(FastUse.mc.player.getActiveHand()).getItem() instanceof ItemFood) || !((Boolean) packetEat.getValue()).booleanValue()) break block0;
+            if (!(FastUse.mc.player.getHeldItem(FastUse.mc.player.getActiveHand()).getItem() instanceof ItemFood) || !packetEat.getValue().booleanValue()) break block0;
             class41.setCanceled(true);
         }
     }

@@ -20,10 +20,10 @@ extends Command {
     public void Method174(String[] stringArray) {
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
-                if (!((Class443)HoleFill.validBlocks.getValue()).Method684().isEmpty()) {
+                if (!HoleFill.validBlocks.getValue().Method684().isEmpty()) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("\n");
-                    ((Class443)HoleFill.validBlocks.getValue()).Method684().forEach(arg_0 -> holeFillCommand.Method175(stringBuilder, arg_0));
+                    HoleFill.validBlocks.getValue().Method684().forEach(arg_0 -> holeFillCommand.Method175(stringBuilder, arg_0));
                     Logger.Method1118(stringBuilder.toString());
                 } else {
                     Logger.Method1118("You dont have any blocks added :(");
@@ -38,13 +38,13 @@ extends Command {
             return;
         }
         if (stringArray[1].equalsIgnoreCase("add")) {
-            if (((Class443)HoleFill.validBlocks.getValue()).Method681(stringArray[2])) {
+            if (HoleFill.validBlocks.getValue().Method681(stringArray[2])) {
                 Logger.Method1118("Added Block &b" + stringArray[2]);
             } else {
                 Logger.Method1119("Couldn't find block &b" + stringArray[2]);
             }
         } else if (stringArray[1].equalsIgnoreCase("del")) {
-            if (((Class443)HoleFill.validBlocks.getValue()).Method677(stringArray[2])) {
+            if (HoleFill.validBlocks.getValue().Method677(stringArray[2])) {
                 Logger.Method1118("Removed Block &b" + stringArray[2]);
             } else {
                 Logger.Method1119("Couldn't find block &b" + stringArray[2]);
@@ -52,6 +52,6 @@ extends Command {
         } else {
             Logger.Method1118(this.Method191());
         }
-        ((Class443)HoleFill.validBlocks.getValue()).Method680();
+        HoleFill.validBlocks.getValue().Method680();
     }
 }

@@ -58,6 +58,6 @@ extends Enum {
     }
 
     public static PotionUtil[] Method1854() {
-        return (PotionUtil[])Field2032.clone();
+        return Field2032.clone();
     }
 }

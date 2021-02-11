@@ -52,13 +52,13 @@ extends Module {
             Vec3d vec3d = MiddleClick.mc.player.getPositionEyes(1.0f);
             for (float f = 0.0f; f < (float)n; f += 0.5f) {
                 vec3d = vec3d.add(MiddleClick.mc.player.getLookVec().scale(0.5));
-                if (!((Boolean)Field962.getValue()).booleanValue() && MiddleClick.mc.world.getBlockState(new BlockPos(vec3d.x, vec3d.y, vec3d.z)).getBlock() != Blocks.AIR) {
+                if (!Field962.getValue().booleanValue() && MiddleClick.mc.world.getBlockState(new BlockPos(vec3d.x, vec3d.y, vec3d.z)).getBlock() != Blocks.AIR) {
                     return null;
                 }
                 for (EntityPlayer entityPlayer : MiddleClick.mc.world.playerEntities) {
                     AxisAlignedBB axisAlignedBB;
                     if (entityPlayer == MiddleClick.mc.player || (axisAlignedBB = entityPlayer.getEntityBoundingBox()) == null) continue;
-                    if (entityPlayer.getDistance((Entity)MiddleClick.mc.player) > 6.0f) {
+                    if (entityPlayer.getDistance(MiddleClick.mc.player) > 6.0f) {
                         axisAlignedBB = axisAlignedBB.grow(0.5);
                     }
                     if (!axisAlignedBB.contains(vec3d)) continue;
@@ -86,8 +86,8 @@ extends Module {
 
     @Subscriber
     public void Method123(Class50 class50) {
-        if (GameSettings.isKeyDown((KeyBinding)MiddleClick.mc.gameSettings.keyBindPickBlock) && this.Field967.Method737(350.0)) {
-            if (((Boolean)this.Field965.getValue()).booleanValue() && (!((Boolean)this.Field966.getValue()).booleanValue() || Class545.Method1009(new BlockPos((Entity)MiddleClick.mc.player)))) {
+        if (GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock) && this.Field967.Method737(350.0)) {
+            if (this.Field965.getValue().booleanValue() && (!this.Field966.getValue().booleanValue() || Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
                 int n = this.Method524();
                 if (this.Field969) {
                     this.Field968 = MiddleClick.mc.player.inventory.currentItem;
@@ -95,24 +95,24 @@ extends Module {
                 }
                 if (n != -1) {
                     MiddleClick.mc.player.inventory.currentItem = n;
-                    MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
-                    MiddleClick.mc.playerController.processRightClick((EntityPlayer)MiddleClick.mc.player, (World)MiddleClick.mc.world, EnumHand.MAIN_HAND);
+                    MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                    MiddleClick.mc.playerController.processRightClick(MiddleClick.mc.player, MiddleClick.mc.world, EnumHand.MAIN_HAND);
                 }
             }
         } else if (this.Field968 != -1) {
             MiddleClick.mc.player.inventory.currentItem = this.Field968;
-            MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field968));
+            MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field968));
             this.Field968 = -1;
             this.Field969 = true;
         }
     }
 
     public static Vec3d Method970(float f, float f2) {
-        float f3 = MathHelper.cos((float)(-f2 * ((float)Math.PI / 180) - (float)Math.PI));
-        float f4 = MathHelper.sin((float)(-f2 * ((float)Math.PI / 180) - (float)Math.PI));
-        float f5 = -MathHelper.cos((float)(-f * ((float)Math.PI / 180)));
-        float f6 = MathHelper.sin((float)(-f * ((float)Math.PI / 180)));
-        return new Vec3d((double)(f4 * f5), (double)f6, (double)(f3 * f5));
+        float f3 = MathHelper.cos(-f2 * ((float)Math.PI / 180) - (float)Math.PI);
+        float f4 = MathHelper.sin(-f2 * ((float)Math.PI / 180) - (float)Math.PI);
+        float f5 = -MathHelper.cos(-f * ((float)Math.PI / 180));
+        float f6 = MathHelper.sin(-f * ((float)Math.PI / 180));
+        return new Vec3d(f4 * f5, f6, f3 * f5);
     }
 
     public MiddleClick() {
@@ -140,7 +140,7 @@ extends Module {
                     Logger.Method1118("Removed \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
                 } else {
                     Class492.Method1990(entity.getName(), entity.getUniqueID().toString());
-                    if (Class167.Method1610(Class299.class).isEnabled() && ((Boolean)Class299.Field1451.getValue()).booleanValue()) {
+                    if (Class167.Method1610(Class299.class).isEnabled() && Class299.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(entity.getName(), "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
@@ -149,28 +149,28 @@ extends Module {
                 return;
             }
         }
-        if (((Boolean)this.Field963.getValue()).booleanValue() && this.Method969() != -1) {
+        if (this.Field963.getValue().booleanValue() && this.Method969() != -1) {
             this.Field967.Method739();
             int n2 = this.Method969();
             n = MiddleClick.mc.player.inventory.currentItem;
             if (n2 != -1) {
                 MiddleClick.mc.player.inventory.currentItem = n2;
-                MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n2));
-                MiddleClick.mc.playerController.processRightClick((EntityPlayer)MiddleClick.mc.player, (World)MiddleClick.mc.world, EnumHand.MAIN_HAND);
+                MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(n2));
+                MiddleClick.mc.playerController.processRightClick(MiddleClick.mc.player, MiddleClick.mc.world, EnumHand.MAIN_HAND);
                 MiddleClick.mc.player.inventory.currentItem = n;
-                MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
                 return;
             }
         }
-        if (((Boolean)this.Field964.getValue()).booleanValue() && (!((Boolean)this.Field965.getValue()).booleanValue() || ((Boolean)this.Field966.getValue()).booleanValue() && !Class545.Method1009(new BlockPos((Entity)MiddleClick.mc.player)))) {
+        if (this.Field964.getValue().booleanValue() && (!this.Field965.getValue().booleanValue() || this.Field966.getValue().booleanValue() && !Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
             int n3 = this.getBlockInHotbar();
             n = MiddleClick.mc.player.inventory.currentItem;
             if (n3 != -1) {
                 MiddleClick.mc.player.inventory.currentItem = n3;
-                MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n3));
-                MiddleClick.mc.playerController.processRightClick((EntityPlayer)MiddleClick.mc.player, (World)MiddleClick.mc.world, EnumHand.MAIN_HAND);
+                MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(n3));
+                MiddleClick.mc.playerController.processRightClick(MiddleClick.mc.player, MiddleClick.mc.world, EnumHand.MAIN_HAND);
                 MiddleClick.mc.player.inventory.currentItem = n;
-                MiddleClick.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                MiddleClick.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
                 return;
             }
         }
@@ -222,14 +222,14 @@ extends Module {
             if (Field960.getValue() != Class306.MENU) {
                 return;
             }
-            if (!GameSettings.isKeyDown((KeyBinding)MiddleClick.mc.gameSettings.keyBindPickBlock)) {
+            if (!GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock)) {
                 return;
             }
-            EntityPlayer entityPlayer = MiddleClick.Method968((Integer)Field961.getValue());
+            EntityPlayer entityPlayer = MiddleClick.Method968(Field961.getValue());
             if (entityPlayer == null) break block5;
             this.Field967.Method739();
             if (MiddleClick.mc.currentScreen == null) {
-                mc.displayGuiScreen((GuiScreen)new Class262(entityPlayer));
+                mc.displayGuiScreen(new Class262(entityPlayer));
             }
         }
     }

@@ -10,7 +10,7 @@ public enum GameMode {
    private final int field_149;
    private final String text;
 
-   private GameMode(int id, String text) {
+   GameMode(int id, String text) {
       this.field_149 = id;
       this.text = text;
    }

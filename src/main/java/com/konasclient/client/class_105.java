@@ -36,7 +36,7 @@ public class class_105 extends Thread {
    @NotNull
    public static class_105 field_350 = new class_105();
    // $FF: renamed from: c com.konasclient.client.9
-   public static class_108 field_351 = new class_108((DefaultConstructorMarker)null);
+   public static class_108 field_351 = new class_108(null);
 
    // $FF: renamed from: c () java.lang.String
    @NotNull
@@ -95,7 +95,7 @@ public class class_105 extends Thread {
 
          var3 = StringsKt.replace$default(var3, var4, "", false, 4, (Object)null);
          var3 = StringsKt.replace$default(var3, "jar:file:/", "", false, 4, (Object)null);
-         InputStream var5 = (InputStream)(new FileInputStream(new File(var3)));
+         InputStream var5 = new FileInputStream(new File(var3));
          byte[] var6 = new byte[1024];
          MessageDigest var7 = MessageDigest.getInstance("MD5");
          boolean var8 = false;
@@ -159,7 +159,7 @@ public class class_105 extends Thread {
    public Unsafe method_406() {
       Field var1 = Unsafe.class.getDeclaredField("theUnsafe");
       var1.setAccessible(true);
-      Object var10000 = var1.get((Object)null);
+      Object var10000 = var1.get(null);
       if (var10000 == null) {
          throw new TypeCastException("null cannot be cast to non-null type sun.misc.Unsafe");
       } else {

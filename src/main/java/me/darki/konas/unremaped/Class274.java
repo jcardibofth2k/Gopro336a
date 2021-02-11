@@ -8,7 +8,7 @@ import net.minecraft.network.play.client.CPacketConfirmTeleport;
 public class Class274
 extends Module {
     public Class274() {
-        super("PortalGodmode", Category.EXPLOIT, new String[0]);
+        super("PortalGodmode", Category.EXPLOIT);
     }
 
     @Subscriber

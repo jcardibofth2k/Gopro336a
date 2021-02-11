@@ -19,7 +19,7 @@ public abstract class Module {
     public String Field1713 = null;
     public String description = "";
     public Setting<Keybind> Bind = new Setting<>("Bind", new Keybind(0)).setDescription("Sets the module toggle key");
-    public Setting<Boolean> holdBind = new Setting<>("Hold", false).Method1191(Module::Method396).setDescription("Only activate while bind is being held down");
+    public Setting<Boolean> holdBind = new Setting<>("Hold", false).Method1191/*visibleIf*/(Module::Method396/*hasHoldBind*/).setDescription("Only activate while bind is being held down");
     public Category category;
     public ArrayList<String> Field1718 = new ArrayList();
     public boolean enabled;
@@ -44,7 +44,7 @@ public abstract class Module {
     }
 
     public boolean Method1630() {
-        return (Boolean)this.holdBind.getValue();
+        return this.holdBind.getValue();
     }
 
     public void toggle() {
@@ -71,7 +71,7 @@ public abstract class Module {
 
     public Module(String string, int n, Category category, String ... stringArray) {
         this.name = string;
-        ((Keybind)this.Bind.getValue()).Method850(n);
+        this.Bind.getValue().Method850(n);
         this.category = category;
         Collections.addAll(this.Field1718, stringArray);
         EventDispatcher.Companion.register(this);
@@ -120,7 +120,7 @@ public abstract class Module {
     public Module(String string, String string2, int n, Category category, String ... stringArray) {
         this.name = string;
         this.description = string2;
-        ((Keybind)this.Bind.getValue()).Method850(n);
+        this.Bind.getValue().Method850(n);
         this.category = category;
         Collections.addAll(this.Field1718, stringArray);
         EventDispatcher.Companion.register(this);
@@ -168,7 +168,7 @@ public abstract class Module {
     }
 
     public int Method1646() {
-        return ((Keybind)this.Bind.getValue()).Method851();
+        return this.Bind.getValue().Method851();
     }
 
     public Module(String string, Category category, String ... stringArray) {

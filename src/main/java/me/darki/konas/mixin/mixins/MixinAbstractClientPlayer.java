@@ -25,7 +25,7 @@ public abstract class MixinAbstractClientPlayer {
             Class8 event = new Class8(info.getGameProfile().getName());
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {
-                callbackInfoReturnable.setReturnValue((Object)event.Method83());
+                callbackInfoReturnable.setReturnValue(event.Method83());
             }
         }
     }

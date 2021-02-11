@@ -23,13 +23,13 @@ public interface IntCollection extends Collection, IntIterable {
    /** @deprecated */
    @Deprecated
    default boolean contains(Object key) {
-      return key == null ? false : this.contains((Integer)key);
+      return key != null && this.contains(key);
    }
 
    /** @deprecated */
    @Deprecated
    default boolean remove(Object key) {
-      return key == null ? false : this.rem((Integer)key);
+      return key != null && this.rem((Integer) key);
    }
 
    int[] toIntArray();

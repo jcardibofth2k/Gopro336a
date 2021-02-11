@@ -8,7 +8,7 @@ extends Command {
     public static boolean Field230 = false;
 
     public SeisureCommand() {
-        super("seizure", "Gives you a seizure", new SyntaxChunk[0]);
+        super("seizure", "Gives you a seizure");
     }
 
     @Override

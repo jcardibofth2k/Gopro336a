@@ -15,7 +15,7 @@ public class VBMappings extends IntArrayMappings {
    }
 
    public VBMappings(JsonObject oldMapping, JsonObject newMapping, boolean warnOnMissing) {
-      this((JsonObject)oldMapping, (JsonObject)newMapping, (JsonObject)null, warnOnMissing);
+      this(oldMapping, newMapping, null, warnOnMissing);
    }
 
    public VBMappings(JsonArray oldMapping, JsonArray newMapping, JsonObject diffMapping, boolean warnOnMissing) {

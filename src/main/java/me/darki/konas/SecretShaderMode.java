@@ -30,7 +30,7 @@ extends Enum {
     public static SecretShaderMode[] Field431;
 
     public static SecretShaderMode[] Method548() {
-        return (SecretShaderMode[])Field431.clone();
+        return Field431.clone();
     }
 
     /*

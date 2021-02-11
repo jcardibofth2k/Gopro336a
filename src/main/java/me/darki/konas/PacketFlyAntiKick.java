@@ -9,7 +9,7 @@ extends Enum {
     public static PacketFlyAntiKick[] Field2004;
 
     public static PacketFlyAntiKick[] Method1833() {
-        return (PacketFlyAntiKick[])Field2004.clone();
+        return Field2004.clone();
     }
 
     /*

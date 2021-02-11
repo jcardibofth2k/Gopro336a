@@ -15,7 +15,7 @@ import com.viaversion.viaversion.rewriter.BlockRewriter;
 public class WorldPackets {
    public static void register(final Protocol protocol) {
       BlockRewriter blockRewriter = new BlockRewriter(protocol, Type.POSITION);
-      protocol.registerClientbound(ClientboundPackets1_13.CHUNK_DATA, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.CHUNK_DATA, new PacketRemapper() {
          public void registerMap() {
             this.handler(new PacketHandler() {
                public void handle(PacketWrapper wrapper) throws Exception {
@@ -36,12 +36,12 @@ public class WorldPackets {
                }
             });
          }
-      }));
+      });
       blockRewriter.registerBlockAction(ClientboundPackets1_13.BLOCK_ACTION);
       blockRewriter.registerBlockChange(ClientboundPackets1_13.BLOCK_CHANGE);
       blockRewriter.registerMultiBlockChange(ClientboundPackets1_13.MULTI_BLOCK_CHANGE);
       blockRewriter.registerEffect(ClientboundPackets1_13.EFFECT, 1010, 2001);
-      protocol.registerClientbound(ClientboundPackets1_13.JOIN_GAME, (PacketRemapper)(new PacketRemapper() {
+      protocol.registerClientbound(ClientboundPackets1_13.JOIN_GAME, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.map(Type.UNSIGNED_BYTE);
@@ -54,8 +54,8 @@ public class WorldPackets {
                }
             });
          }
-      }));
-      protocol.registerClientbound(ClientboundPackets1_13.RESPAWN, (PacketRemapper)(new PacketRemapper() {
+      });
+      protocol.registerClientbound(ClientboundPackets1_13.RESPAWN, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.INT);
             this.handler(new PacketHandler() {
@@ -66,6 +66,6 @@ public class WorldPackets {
                }
             });
          }
-      }));
+      });
    }
 }

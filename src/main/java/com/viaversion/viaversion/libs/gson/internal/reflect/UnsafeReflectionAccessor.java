@@ -42,7 +42,7 @@ final class UnsafeReflectionAccessor extends ReflectionAccessor {
          unsafeClass = Class.forName("sun.misc.Unsafe");
          Field unsafeField = unsafeClass.getDeclaredField("theUnsafe");
          unsafeField.setAccessible(true);
-         return unsafeField.get((Object)null);
+         return unsafeField.get(null);
       } catch (Exception var1) {
          return null;
       }

@@ -124,7 +124,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
    }
 
    private void tryCapacity(long capacity) {
-      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((double)((float)capacity / this.field_76)))));
+      int needed = (int)Math.min(1073741824L, Math.max(2L, HashCommon.nextPowerOfTwo((long)Math.ceil((float)capacity / this.field_76))));
       if (needed > this.field_75) {
          this.rehash(needed);
       }
@@ -135,7 +135,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
       if ((double)this.field_76 <= 0.5D) {
          this.ensureCapacity(c.size());
       } else {
-         this.tryCapacity((long)(this.size() + c.size()));
+         this.tryCapacity(this.size() + c.size());
       }
 
       return super.addAll(c);
@@ -145,7 +145,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
       if ((double)this.field_76 <= 0.5D) {
          this.ensureCapacity(c.size());
       } else {
-         this.tryCapacity((long)(this.size() + c.size()));
+         this.tryCapacity(this.size() + c.size());
       }
 
       return super.addAll(c);
@@ -237,7 +237,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
 
    public boolean remove(int k) {
       if (k == 0) {
-         return this.containsNull ? this.removeNullEntry() : false;
+         return this.containsNull && this.removeNullEntry();
       } else {
          int[] key = this.key;
          int curr;
@@ -298,7 +298,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
    }
 
    public IntIterator iterator() {
-      return new IntOpenHashSet.SetIterator((1)null);
+      return new IntOpenHashSet.SetIterator((1)null)
    }
 
    public boolean trim() {
@@ -306,7 +306,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
    }
 
    public boolean trim(int n) {
-      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((double)((float)n / this.field_76)));
+      int l = HashCommon.nextPowerOfTwo((int)Math.ceil((float)n / this.field_76));
       if (l < this.field_75 && this.size <= HashCommon.maxFill(l, this.field_76)) {
          try {
             this.rehash(l);
@@ -351,7 +351,7 @@ public class IntOpenHashSet extends AbstractIntSet implements Serializable, Clon
          throw new InternalError();
       }
 
-      c.key = (int[])this.key.clone();
+      c.key = this.key.clone();
       c.containsNull = this.containsNull;
       return c;
    }

@@ -184,7 +184,7 @@ public final class LinkedTreeMap extends AbstractMap implements Serializable {
             this.replaceInParent(node, right);
             node.right = null;
          } else {
-            this.replaceInParent(node, (LinkedTreeMap.Node)null);
+            this.replaceInParent(node, null);
          }
 
          this.rebalance(originalParent, false);

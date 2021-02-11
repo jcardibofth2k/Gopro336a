@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public interface ComponentLike {
    @NotNull
    static List asComponents(@NotNull final List likes) {
-      return asComponents(likes, (Predicate)null);
+      return asComponents(likes, null);
    }
 
    @NotNull

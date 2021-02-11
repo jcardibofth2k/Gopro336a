@@ -67,15 +67,15 @@ public class ShortTag extends NumberTag {
    }
 
    public long asLong() {
-      return (long)this.value;
+      return this.value;
    }
 
    public float asFloat() {
-      return (float)this.value;
+      return this.value;
    }
 
    public double asDouble() {
-      return (double)this.value;
+      return this.value;
    }
 
    public int getTagId() {

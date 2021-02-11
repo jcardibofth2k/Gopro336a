@@ -19,7 +19,7 @@ extends Module {
     @Subscriber
     public void Method2044(Class52 class52) {
         block0: {
-            if (!((Boolean) noHitbox.getValue()).booleanValue()) break block0;
+            if (!noHitbox.getValue().booleanValue()) break block0;
             class52.Cancel();
         }
     }
@@ -43,10 +43,10 @@ extends Module {
         if (BetterPortals.mc.player == null || BetterPortals.mc.world == null) {
             return;
         }
-        if (((Boolean) allowGuis.getValue()).booleanValue()) {
+        if (allowGuis.getValue().booleanValue()) {
             ((IEntity) BetterPortals.mc.player).Method44(false);
         }
-        if (((Boolean) noRender.getValue()).booleanValue()) {
+        if (noRender.getValue().booleanValue()) {
             GuiIngameForge.renderPortal = false;
         }
     }

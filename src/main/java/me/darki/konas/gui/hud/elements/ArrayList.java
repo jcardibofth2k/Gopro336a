@@ -39,7 +39,7 @@ extends Element {
         String string = this.Method894(module);
         RenderUtil2.Method1338(this.Method2320() + (bl ? this.Method2329() - f - 2.0f : 0.0f), this.Method2324() + (float)nArray[0], f + 2.0f, (int)(Class557.Method799(string) + 1.5f), new Color(20, 20, 20, 60).hashCode());
         int n = this.Method902(nArray2[0]);
-        if (((Boolean)this.Field841.getValue()).booleanValue()) {
+        if (this.Field841.getValue().booleanValue()) {
             RenderUtil2.Method1338(this.Method2320() + (bl ? this.Method2329() - f - 2.0f : f + 2.0f), this.Method2324() + (float)nArray[0], 1.0f, (int)(Class557.Method799(string) + 1.5f), n);
         }
         Class557.Method801(string, (int)((float)((int)this.Method2320()) + (bl ? this.Method2329() - f : 0.0f)), (int)(this.Method2324() + (float)nArray[0] + 0.5f), module.Method1635() ? n : Color.GRAY.getRGB());
@@ -110,7 +110,7 @@ extends Element {
     }
 
     public boolean Method900() {
-        return (Boolean)this.Field844.getValue() != false && !((ColorValue)this.Field843.getValue()).Method783();
+        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
     }
 
     public ArrayList() {
@@ -118,28 +118,28 @@ extends Element {
     }
 
     public boolean Method901() {
-        return (Boolean)this.Field842.getValue() == false;
+        return this.Field842.getValue() == false;
     }
 
     public int Method902(int n) {
-        float[] fArray = Color.RGBtoHSB(((ColorValue)this.Field843.getValue()).Method778() >> 16 & 0xFF, ((ColorValue)this.Field843.getValue()).Method778() >> 8 & 0xFF, ((ColorValue)this.Field843.getValue()).Method778() & 0xFF, null);
-        if (((Boolean)this.Field842.getValue()).booleanValue()) {
+        float[] fArray = Color.RGBtoHSB(this.Field843.getValue().Method778() >> 16 & 0xFF, this.Field843.getValue().Method778() >> 8 & 0xFF, this.Field843.getValue().Method778() & 0xFF, null);
+        if (this.Field842.getValue().booleanValue()) {
             return this.Method896(n - 1);
         }
-        if (((Boolean)this.Field844.getValue()).booleanValue()) {
-            if (((ColorValue)this.Field843.getValue()).Method783()) {
+        if (this.Field844.getValue().booleanValue()) {
+            if (this.Field843.getValue().Method783()) {
                 return Class556.Method807(300 * n, fArray);
             }
-            return Class556.Method805(n, fArray, ((Float)this.Field846.getValue()).floatValue(), ((Float)this.Field847.getValue()).floatValue(), ((Float)this.Field845.getValue()).floatValue());
+            return Class556.Method805(n, fArray, this.Field846.getValue().floatValue(), this.Field847.getValue().floatValue(), this.Field845.getValue().floatValue());
         }
-        return ((ColorValue)this.Field843.getValue()).Method774();
+        return this.Field843.getValue().Method774();
     }
 
     public boolean Method903() {
-        return (Boolean)this.Field844.getValue() != false && !((ColorValue)this.Field843.getValue()).Method783();
+        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
     }
 
     public boolean Method904() {
-        return (Boolean)this.Field844.getValue() != false && !((ColorValue)this.Field843.getValue()).Method783();
+        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
     }
 }

@@ -56,7 +56,7 @@ public abstract class AbstractInt2ObjectSortedMap extends AbstractInt2ObjectMap 
       }
 
       public IntBidirectionalIterator iterator(int from) {
-         return new com.viaversion.viaversion.libs.fastutil.ints.AbstractInt2ObjectSortedMap.KeySetIterator(AbstractInt2ObjectSortedMap.this.int2ObjectEntrySet().iterator(new AbstractInt2ObjectMap.BasicEntry(from, (Object)null)));
+         return new com.viaversion.viaversion.libs.fastutil.ints.AbstractInt2ObjectSortedMap.KeySetIterator(AbstractInt2ObjectSortedMap.this.int2ObjectEntrySet().iterator(new AbstractInt2ObjectMap.BasicEntry(from, null)));
       }
 
       public IntBidirectionalIterator iterator() {

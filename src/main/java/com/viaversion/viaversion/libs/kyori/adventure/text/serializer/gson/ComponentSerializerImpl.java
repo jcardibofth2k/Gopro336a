@@ -65,7 +65,7 @@ final class ComponentSerializerImpl implements JsonDeserializer, JsonSerializer 
             if (parent == null) {
                parent = child.toBuilder();
             } else {
-               parent.append((Component)child);
+               parent.append(child);
             }
          }
 
@@ -97,7 +97,7 @@ final class ComponentSerializerImpl implements JsonDeserializer, JsonSerializer 
                      args.add(this.deserialize0(argElement, context));
                   }
 
-                  component = Component.translatable().key(nbt).args((List)args);
+                  component = Component.translatable().key(nbt).args(args);
                }
             } else if (object.has("score")) {
                JsonObject score = object.getAsJsonObject("score");
@@ -145,7 +145,7 @@ final class ComponentSerializerImpl implements JsonDeserializer, JsonSerializer 
 
             for(int size = extra.size(); i < size; ++i) {
                JsonElement extraElement = extra.get(i);
-               ((ComponentBuilder)component).append((Component)this.deserialize0(extraElement, context));
+               ((ComponentBuilder)component).append(this.deserialize0(extraElement, context));
             }
          }
 

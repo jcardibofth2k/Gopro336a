@@ -25,12 +25,12 @@ public interface Codec {
    @NotNull
    Object encode(@NotNull final Object decoded) throws Throwable;
 
-   public interface Decoder {
+   interface Decoder {
       @NotNull
       Object decode(@NotNull final Object encoded) throws Throwable;
    }
 
-   public interface Encoder {
+   interface Encoder {
       @NotNull
       Object encode(@NotNull final Object decoded) throws Throwable;
    }

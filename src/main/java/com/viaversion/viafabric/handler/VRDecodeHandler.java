@@ -24,7 +24,7 @@ public class VRDecodeHandler extends MessageToMessageDecoder {
          this.skipDoubleTransform = false;
          out.add(bytebuf.retain());
       } else if (!this.info.checkIncomingPacket()) {
-         throw CancelDecoderException.generate((Throwable)null);
+         throw CancelDecoderException.generate(null);
       } else if (!this.info.shouldTransformPacket()) {
          out.add(bytebuf.retain());
       } else {

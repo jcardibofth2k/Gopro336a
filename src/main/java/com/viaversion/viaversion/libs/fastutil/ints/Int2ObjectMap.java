@@ -240,7 +240,7 @@ public interface Int2ObjectMap extends Int2ObjectFunction, Map {
       return super.merge(key, value, remappingFunction);
    }
 
-   public interface Entry extends java.util.Map.Entry {
+   interface Entry extends java.util.Map.Entry {
       int getIntKey();
 
       /** @deprecated */
@@ -250,7 +250,7 @@ public interface Int2ObjectMap extends Int2ObjectFunction, Map {
       }
    }
 
-   public interface FastEntrySet extends ObjectSet {
+   interface FastEntrySet extends ObjectSet {
       ObjectIterator fastIterator();
 
       default void fastForEach(Consumer consumer) {

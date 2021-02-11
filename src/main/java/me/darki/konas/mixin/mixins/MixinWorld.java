@@ -15,7 +15,7 @@ public class MixinWorld {
     public void Method1983(CallbackInfoReturnable<Long> cir) {
         Class85 event = EventDispatcher.Companion.dispatch(new Class85());
         if (event.isCanceled()) {
-            cir.setReturnValue((Object)event.Method456());
+            cir.setReturnValue(event.Method456());
         }
     }
 
@@ -25,7 +25,7 @@ public class MixinWorld {
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             ci.cancel();
-            ci.setReturnValue((Object)Float.valueOf(0.0f));
+            ci.setReturnValue(Float.valueOf(0.0f));
         }
     }
 }

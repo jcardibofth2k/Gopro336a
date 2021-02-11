@@ -46,7 +46,7 @@ public final class Streams {
    }
 
    public static Writer writerForAppendable(Appendable appendable) {
-      return (Writer)(appendable instanceof Writer ? (Writer)appendable : new Streams.AppendableWriter(appendable));
+      return appendable instanceof Writer ? (Writer)appendable : new AppendableWriter(appendable);
    }
 
    private static final class AppendableWriter extends Writer {

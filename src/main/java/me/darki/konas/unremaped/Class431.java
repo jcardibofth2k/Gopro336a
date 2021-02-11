@@ -44,23 +44,23 @@ extends Module {
         GlStateManager.disableTexture2D();
         GlStateManager.disableAlpha();
         GlStateManager.disableDepth();
-        GlStateManager.depthMask((boolean)false);
-        GlStateManager.glLineWidth((float)2.0f);
+        GlStateManager.depthMask(false);
+        GlStateManager.glLineWidth(2.0f);
         for (ChunkPos chunkPos : this.Field800) {
-            AxisAlignedBB axisAlignedBB = new AxisAlignedBB((double)chunkPos.getXStart(), 0.0, (double)chunkPos.getZStart(), (double)chunkPos.getXEnd(), 0.0, (double)chunkPos.getZEnd());
+            AxisAlignedBB axisAlignedBB = new AxisAlignedBB(chunkPos.getXStart(), 0.0, chunkPos.getZStart(), chunkPos.getXEnd(), 0.0, chunkPos.getZEnd());
             GlStateManager.pushMatrix();
             if (this.Field799.isBoundingBoxInFrustum(axisAlignedBB)) {
                 double d = Class431.mc.player.lastTickPosX + (Class431.mc.player.posX - Class431.mc.player.lastTickPosX) * (double)class89.Method436();
                 double d2 = Class431.mc.player.lastTickPosY + (Class431.mc.player.posY - Class431.mc.player.lastTickPosY) * (double)class89.Method436();
                 double d3 = Class431.mc.player.lastTickPosZ + (Class431.mc.player.posZ - Class431.mc.player.lastTickPosZ) * (double)class89.Method436();
-                Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)this.Field801.getValue()).Method774());
+                Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, this.Field801.getValue().Method774());
             }
             GlStateManager.popMatrix();
         }
-        GlStateManager.glLineWidth((float)1.0f);
+        GlStateManager.glLineWidth(1.0f);
         GlStateManager.enableTexture2D();
         GlStateManager.enableDepth();
-        GlStateManager.depthMask((boolean)true);
+        GlStateManager.depthMask(true);
         GlStateManager.enableAlpha();
         Class516.Method1261();
         GlStateManager.popMatrix();
@@ -72,6 +72,6 @@ extends Module {
     }
 
     public Class431() {
-        super("NewChunks", Category.RENDER, new String[0]);
+        super("NewChunks", Category.RENDER);
     }
 }

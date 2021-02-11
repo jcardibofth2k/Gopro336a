@@ -26,7 +26,7 @@ public class WorldPackets1_13_2 {
                public void handle(PacketWrapper wrapper) throws Exception {
                   int id = (Integer)wrapper.get(Type.INT, 0);
                   if (id == 27) {
-                     wrapper.write(Type.FLAT_ITEM, (Item)wrapper.read(Type.FLAT_VAR_INT_ITEM));
+                     wrapper.write(Type.FLAT_ITEM, wrapper.read(Type.FLAT_VAR_INT_ITEM));
                   }
 
                }

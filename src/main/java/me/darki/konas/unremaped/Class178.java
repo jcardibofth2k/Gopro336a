@@ -25,6 +25,6 @@ extends Module {
     }
 
     public Class178() {
-        super("NoForge", "Prevents client from sending forge signature", Category.CLIENT, new String[0]);
+        super("NoForge", "Prevents client from sending forge signature", Category.CLIENT);
     }
 }

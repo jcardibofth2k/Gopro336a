@@ -278,11 +278,11 @@ public abstract class EntityRewriter extends RewriterBase implements com.viavers
    }
 
    public void registerMetadataRewriter(ClientboundPacketType packetType, Type metaType) {
-      this.registerMetadataRewriter(packetType, (Type)null, metaType);
+      this.registerMetadataRewriter(packetType, null, metaType);
    }
 
    public PacketHandler trackerHandler() {
-      return this.trackerAndRewriterHandler((Type)null);
+      return this.trackerAndRewriterHandler(null);
    }
 
    protected PacketHandler worldDataTrackerHandler(int nbtIndex) {

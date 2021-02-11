@@ -29,9 +29,9 @@ public final class Index {
    @SafeVarargs
    @NotNull
    public static Index create(final Class type, @NotNull final Function keyFunction, @NotNull final Enum... values) {
-      return create((Object[])values, (IntFunction)((length) -> {
+      return create(values, (length) -> {
          return new EnumMap(type);
-      }), (Function)keyFunction);
+      }, keyFunction);
    }
 
    @SafeVarargs

@@ -32,7 +32,7 @@ public class MetadataRewriter1_14To1_13_2 extends EntityRewriter {
       EntityTracker1_14 tracker = (EntityTracker1_14)this.tracker(connection);
       int armorType;
       if (metadata.metaType() == MetaType1_14.Slot) {
-         ((Protocol1_14To1_13_2)this.protocol).getItemRewriter().handleItemToClient((Item)metadata.getValue());
+         this.protocol.getItemRewriter().handleItemToClient((Item)metadata.getValue());
       } else if (metadata.metaType() == MetaType1_14.BlockID) {
          armorType = (Integer)metadata.getValue();
          metadata.setValue(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewBlockStateId(armorType));
@@ -95,14 +95,14 @@ public class MetadataRewriter1_14To1_13_2 extends EntityRewriter {
                armorType = (Integer)metadata.getValue();
                Item armorItem = null;
                if (armorType == 1) {
-                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(727), (byte)1, (short)0, (CompoundTag)null);
+                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(727), (byte)1, (short)0, null);
                } else if (armorType == 2) {
-                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(728), (byte)1, (short)0, (CompoundTag)null);
+                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(728), (byte)1, (short)0, null);
                } else if (armorType == 3) {
-                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(729), (byte)1, (short)0, (CompoundTag)null);
+                  armorItem = new DataItem(((Protocol1_14To1_13_2)this.protocol).getMappingData().getNewItemId(729), (byte)1, (short)0, null);
                }
 
-               PacketWrapper equipmentPacket = PacketWrapper.create(70, (ByteBuf)null, connection);
+               PacketWrapper equipmentPacket = PacketWrapper.create(70, null, connection);
                equipmentPacket.write(Type.VAR_INT, entityId);
                equipmentPacket.write(Type.VAR_INT, 4);
                equipmentPacket.write(Type.FLAT_VAR_INT_ITEM, armorItem);
@@ -124,7 +124,7 @@ public class MetadataRewriter1_14To1_13_2 extends EntityRewriter {
             if (metadata.method_71() == 8) {
                metadata.setMetaType(MetaType1_14.OptVarInt);
                if (metadata.getValue().equals(0)) {
-                  metadata.setValue((Object)null);
+                  metadata.setValue(null);
                }
             }
          } else if (type.isOrHasParent(Entity1_14Types.ABSTRACT_SKELETON) && metadata.method_71() == 14) {

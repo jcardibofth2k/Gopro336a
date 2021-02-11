@@ -74,16 +74,16 @@ extends Module {
         float f = n;
         float f2 = n2;
         float f3 = 0.0f;
-        GL11.glTranslatef((float)f, (float)f2, (float)f3);
+        GL11.glTranslatef(f, f2, f3);
         float f4 = 45.0f;
         float f5 = n;
         float f6 = n2;
         float f7 = 8000.0f;
-        GL11.glRotatef((float)f4, (float)f5, (float)f6, (float)f7);
+        GL11.glRotatef(f4, f5, f6, f7);
         float f8 = -n;
         float f9 = -n2;
         float f10 = 0.0f;
-        GL11.glTranslatef((float)f8, (float)f9, (float)f10);
+        GL11.glTranslatef(f8, f9, f10);
         HitMarkers hitMarkers = this;
         int n3 = n;
         int n4 = n2;
@@ -101,7 +101,7 @@ extends Module {
     }
 
     public HitMarkers() {
-        super("HitMarkers", Category.RENDER, new String[0]);
+        super("HitMarkers", Category.RENDER);
         this.Field1278 = new File(HitMarkers.mc.gameDir + File.separator + "Konas" + File.separator + "hitmarker.wav");
         try {
             if (!this.Field1278.exists()) {

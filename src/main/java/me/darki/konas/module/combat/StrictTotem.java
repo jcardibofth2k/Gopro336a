@@ -29,36 +29,36 @@ extends Module {
             for (int i = 44; i >= 9; --i) {
                 if (StrictTotem.mc.player.inventoryContainer.getSlot(i).getStack().getItem() != Items.TOTEM_OF_UNDYING) continue;
                 this.Field2556 = true;
-                if (this.Field2555.Method737((float)((Integer)Field2553.getValue()).intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
-                    if (((Boolean)Field2554.getValue()).booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (this.Field2555.Method737((float) Field2553.getValue().intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
+                    if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
                         StrictTotem.mc.player.motionZ = 0.0;
                         return;
                     }
-                    StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, (EntityPlayer) StrictTotem.mc.player);
+                    StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, StrictTotem.mc.player);
                 }
-                if (this.Field2555.Method737((float)((Integer)Field2553.getValue()).intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
-                    if (((Boolean)Field2554.getValue()).booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (this.Field2555.Method737((float) Field2553.getValue().intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
+                    if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
                         StrictTotem.mc.player.motionZ = 0.0;
                         return;
                     }
-                    StrictTotem.mc.playerController.windowClick(0, 45, 0, ClickType.PICKUP, (EntityPlayer) StrictTotem.mc.player);
+                    StrictTotem.mc.playerController.windowClick(0, 45, 0, ClickType.PICKUP, StrictTotem.mc.player);
                     if (StrictTotem.mc.player.inventory.getItemStack().isEmpty()) {
                         this.Field2556 = false;
                         return;
                     }
                 }
-                if (!this.Field2555.Method737((float)((Integer)Field2553.getValue()).intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
-                if (((Boolean)Field2554.getValue()).booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (!this.Field2555.Method737((float) Field2553.getValue().intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
+                if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                     StrictTotem.mc.player.motionX = 0.0;
                     StrictTotem.mc.player.motionY = 0.0;
                     StrictTotem.mc.player.motionZ = 0.0;
                     return;
                 }
-                StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, (EntityPlayer) StrictTotem.mc.player);
+                StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, StrictTotem.mc.player);
                 this.Field2556 = false;
                 return;
             }
@@ -66,7 +66,7 @@ extends Module {
     }
 
     public StrictTotem() {
-        super("StrictTotem", "Forces totem into offhand", Category.COMBAT, new String[0]);
+        super("StrictTotem", "Forces totem into offhand", Category.COMBAT);
         this.Method1633(315, 1000);
     }
 

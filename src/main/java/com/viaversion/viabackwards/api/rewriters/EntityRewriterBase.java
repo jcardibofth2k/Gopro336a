@@ -130,7 +130,7 @@ public abstract class EntityRewriterBase extends com.viaversion.viaversion.rewri
       this.filter().handler((event, meta) -> {
          MetaType type = meta.metaType();
          if (itemType != null && type == itemType) {
-            ((BackwardsProtocol)this.protocol).getItemRewriter().handleItemToClient((Item)meta.value());
+            this.protocol.getItemRewriter().handleItemToClient((Item)meta.value());
          } else if (blockType != null && type == blockType) {
             int data = (Integer)meta.value();
             meta.setValue(((BackwardsProtocol)this.protocol).getMappingData().getNewBlockStateId(data));

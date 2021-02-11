@@ -28,7 +28,7 @@ public interface ComponentSerializer {
    )
    @Nullable
    default Component deserializeOrNull(@Nullable final Object input) {
-      return this.deserializeOr(input, (Component)null);
+      return this.deserializeOr(input, null);
    }
 
    @Contract(
@@ -49,7 +49,7 @@ public interface ComponentSerializer {
    )
    @Nullable
    default Object serializeOrNull(@Nullable final Component component) {
-      return this.serializeOr(component, (Object)null);
+      return this.serializeOr(component, null);
    }
 
    @Contract(

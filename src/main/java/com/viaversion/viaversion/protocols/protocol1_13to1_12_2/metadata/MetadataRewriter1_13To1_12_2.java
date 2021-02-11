@@ -31,7 +31,7 @@ public class MetadataRewriter1_13To1_12_2 extends EntityRewriter {
          if (metadata.getValue() != null && !((String)metadata.getValue()).isEmpty()) {
             metadata.setTypeAndValue(MetaType1_13.OptChat, ChatRewriter.legacyTextToJson((String)metadata.getValue()));
          } else {
-            metadata.setTypeAndValue(MetaType1_13.OptChat, (Object)null);
+            metadata.setTypeAndValue(MetaType1_13.OptChat, null);
          }
       }
 
@@ -47,7 +47,7 @@ public class MetadataRewriter1_13To1_12_2 extends EntityRewriter {
 
       if (metadata.metaType() == MetaType1_13.Slot) {
          metadata.setMetaType(MetaType1_13.Slot);
-         ((Protocol1_13To1_12_2)this.protocol).getItemRewriter().handleItemToClient((Item)metadata.getValue());
+         this.protocol.getItemRewriter().handleItemToClient((Item)metadata.getValue());
       } else if (metadata.metaType() == MetaType1_13.BlockID) {
          metadata.setValue(WorldPackets.toNewId((Integer)metadata.getValue()));
       }

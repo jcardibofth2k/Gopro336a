@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={GuiScreen.class})
 public interface IGuiScreen {
     @Accessor(value="buttonList")
-    public void Method2085(List<GuiButton> var1);
+    void Method2085(List <GuiButton> var1);
 
     @Accessor(value="buttonList")
-    public List<GuiButton> Method2086();
+    List<GuiButton> Method2086();
 }

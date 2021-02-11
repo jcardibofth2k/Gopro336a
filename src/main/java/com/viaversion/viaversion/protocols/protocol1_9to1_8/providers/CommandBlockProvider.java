@@ -40,7 +40,7 @@ public class CommandBlockProvider implements Provider {
 
    public void sendPermission(UserConnection user) throws Exception {
       if (this.isEnabled()) {
-         PacketWrapper wrapper = PacketWrapper.create(27, (ByteBuf)null, user);
+         PacketWrapper wrapper = PacketWrapper.create(27, null, user);
          EntityTracker1_9 tracker = (EntityTracker1_9)user.getEntityTracker(Protocol1_9To1_8.class);
          wrapper.write(Type.INT, tracker.getProvidedEntityId());
          wrapper.write(Type.BYTE, (byte)26);

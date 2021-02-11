@@ -14,7 +14,11 @@ extends MovementInputFromOptions {
     }
 
     public void updatePlayerMoveState() {
+<<<<<<< HEAD:src/main/java/me/darki/konas/unremaped/Class398.java
         if (MathUtil.Method1087(((Class537)Freecam.control.getValue()).Method851())) {
+=======
+        if (MathUtil.Method1087(Freecam.Field2458.getValue().Method851())) {
+>>>>>>> f776e1904b63ad8ae23617cc10076a951d8b81da:src/main/java/me/darki/konas/Class398.java
             super.updatePlayerMoveState();
         } else {
             this.moveStrafe = 0.0f;

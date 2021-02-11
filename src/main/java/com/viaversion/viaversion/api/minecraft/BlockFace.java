@@ -17,7 +17,7 @@ public enum BlockFace {
    private final byte modZ;
    private final BlockFace.EnumAxis axis;
 
-   private BlockFace(byte modX, byte modY, byte modZ, BlockFace.EnumAxis axis) {
+   BlockFace(byte modX, byte modY, byte modZ, BlockFace.EnumAxis axis) {
       this.modX = modX;
       this.modY = modY;
       this.modZ = modZ;
@@ -53,12 +53,13 @@ public enum BlockFace {
       opposites.put(BOTTOM, TOP);
    }
 
-   public static enum EnumAxis {
+   public
+   enum EnumAxis {
       // $FF: renamed from: X com.viaversion.viaversion.api.minecraft.BlockFace$EnumAxis
       field_2822,
       // $FF: renamed from: Y com.viaversion.viaversion.api.minecraft.BlockFace$EnumAxis
       field_2823,
       // $FF: renamed from: Z com.viaversion.viaversion.api.minecraft.BlockFace$EnumAxis
-      field_2824;
+      field_2824
    }
 }

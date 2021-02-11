@@ -111,7 +111,7 @@ public class IntArrayList extends AbstractIntList implements RandomAccess, Clone
    private void grow(int capacity) {
       if (capacity > this.field_74.length) {
          if (this.field_74 != IntArrays.DEFAULT_EMPTY_ARRAY) {
-            capacity = (int)Math.max(Math.min((long)this.field_74.length + (long)(this.field_74.length >> 1), 2147483639L), (long)capacity);
+            capacity = (int)Math.max(Math.min((long)this.field_74.length + (long)(this.field_74.length >> 1), 2147483639L), capacity);
          } else if (capacity < 10) {
             capacity = 10;
          }
@@ -370,7 +370,7 @@ public class IntArrayList extends AbstractIntList implements RandomAccess, Clone
 
    public IntListIterator listIterator(int index) {
       this.ensureIndex(index);
-      return new 1(this, index);
+      return new 1(this, index)
    }
 
    public void sort(IntComparator comp) {

@@ -30,6 +30,6 @@ extends Enum {
     }
 
     public static Class357[] Method2166() {
-        return (Class357[])Field2507.clone();
+        return Field2507.clone();
     }
 }

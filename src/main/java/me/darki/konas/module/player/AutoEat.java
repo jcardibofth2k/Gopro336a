@@ -34,7 +34,7 @@ extends Module {
             for (int i = 0; i < 9; ++i) {
                 ItemStack itemStack = AutoEat.mc.player.inventory.getStackInSlot(i);
                 if (!(itemStack.getItem() instanceof ItemFood)) continue;
-                if (((Boolean)this.preferGaps.getValue()).booleanValue() && itemStack.getItem() == Items.GOLDEN_APPLE) {
+                if (this.preferGaps.getValue().booleanValue() && itemStack.getItem() == Items.GOLDEN_APPLE) {
                     n = i;
                     break;
                 }
@@ -55,8 +55,8 @@ extends Module {
         if (AutoEat.mc.player.isCreative()) {
             return;
         }
-        if (AutoEat.mc.player.getHealth() + AutoEat.mc.player.getAbsorptionAmount() <= ((Float)this.health.getValue()).floatValue() || (float) AutoEat.mc.player.getFoodStats().getFoodLevel() <= ((Float)this.hunger.getValue()).floatValue()) {
-            if (((Boolean)this.autoSwitch.getValue()).booleanValue() && !(AutoEat.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood) && !(AutoEat.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() instanceof ItemFood)) {
+        if (AutoEat.mc.player.getHealth() + AutoEat.mc.player.getAbsorptionAmount() <= this.health.getValue().floatValue() || (float) AutoEat.mc.player.getFoodStats().getFoodLevel() <= this.hunger.getValue().floatValue()) {
+            if (this.autoSwitch.getValue().booleanValue() && !(AutoEat.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood) && !(AutoEat.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() instanceof ItemFood)) {
                 int n = this.Method464();
                 if (this.Field2294) {
                     this.Field2293 = AutoEat.mc.player.inventory.currentItem;
@@ -64,34 +64,34 @@ extends Module {
                 }
                 if (n != -1) {
                     AutoEat.mc.player.inventory.currentItem = n;
-                    AutoEat.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                    AutoEat.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
                 }
             }
             if (AutoEat.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemFood) {
                 if (AutoEat.mc.currentScreen == null || AutoEat.mc.currentScreen instanceof GuiInventory) {
-                    KeyBinding.setKeyBindState((int) AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), (boolean)true);
+                    KeyBinding.setKeyBindState(AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), true);
                     this.Field2295 = true;
                 } else {
-                    AutoEat.mc.playerController.processRightClick((EntityPlayer) AutoEat.mc.player, (World) AutoEat.mc.world, EnumHand.MAIN_HAND);
+                    AutoEat.mc.playerController.processRightClick(AutoEat.mc.player, AutoEat.mc.world, EnumHand.MAIN_HAND);
                 }
             } else if (AutoEat.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() instanceof ItemFood) {
                 if (AutoEat.mc.currentScreen == null || AutoEat.mc.currentScreen instanceof GuiInventory) {
-                    KeyBinding.setKeyBindState((int) AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), (boolean)true);
+                    KeyBinding.setKeyBindState(AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), true);
                     this.Field2295 = true;
                 } else {
-                    AutoEat.mc.playerController.processRightClick((EntityPlayer) AutoEat.mc.player, (World) AutoEat.mc.world, EnumHand.OFF_HAND);
+                    AutoEat.mc.playerController.processRightClick(AutoEat.mc.player, AutoEat.mc.world, EnumHand.OFF_HAND);
                 }
             } else if (AutoEat.mc.currentScreen == null || AutoEat.mc.currentScreen instanceof GuiInventory) {
-                KeyBinding.setKeyBindState((int) AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), (boolean)GameSettings.isKeyDown((KeyBinding) AutoEat.mc.gameSettings.keyBindUseItem));
+                KeyBinding.setKeyBindState(AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), GameSettings.isKeyDown(AutoEat.mc.gameSettings.keyBindUseItem));
             }
         } else {
             if (this.Field2295) {
-                KeyBinding.setKeyBindState((int) AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), (boolean)GameSettings.isKeyDown((KeyBinding) AutoEat.mc.gameSettings.keyBindUseItem));
+                KeyBinding.setKeyBindState(AutoEat.mc.gameSettings.keyBindUseItem.getKeyCode(), GameSettings.isKeyDown(AutoEat.mc.gameSettings.keyBindUseItem));
                 this.Field2295 = false;
             }
             if (this.Field2293 != -1) {
                 AutoEat.mc.player.inventory.currentItem = this.Field2293;
-                AutoEat.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field2293));
+                AutoEat.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field2293));
                 this.Field2293 = -1;
                 this.Field2294 = true;
             }

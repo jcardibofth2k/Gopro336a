@@ -92,11 +92,11 @@ extends Module {
             this.toggle();
             return false;
         }
-        BlockPos blockPos = new BlockPos((Entity)entityPlayer).up();
+        BlockPos blockPos = new BlockPos(entityPlayer).up();
         if (this.Method522(blockPos)) {
             return true;
         }
-        blockPos = new BlockPos((Entity)entityPlayer).up().up();
+        blockPos = new BlockPos(entityPlayer).up().up();
         return this.Method522(blockPos);
     }
 
@@ -109,14 +109,14 @@ extends Module {
             return false;
         }
         BlockPos blockPos3 = blockPos.add(0, 2, 0);
-        if (!((Boolean)AutoCrystal.protocol.getValue()).booleanValue() && PistonAura.mc.world.getBlockState(blockPos3).getBlock() != Blocks.AIR) {
+        if (!AutoCrystal.protocol.getValue().booleanValue() && PistonAura.mc.world.getBlockState(blockPos3).getBlock() != Blocks.AIR) {
             return false;
         }
         return PistonAura.mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(blockPos2, blockPos3.add(1, 1, 1))).isEmpty();
     }
 
     public static boolean Method128(EntityPlayer entityPlayer) {
-        return !Class546.Method963((Entity)entityPlayer);
+        return !Class546.Method963(entityPlayer);
     }
 
     public static boolean Method513(Entity entity) {
@@ -124,7 +124,7 @@ extends Module {
     }
 
     public boolean Method126(EntityPlayer entityPlayer) {
-        return PistonAura.mc.player.getDistance((Entity)entityPlayer) < (float)((Integer)this.Field353.getValue()).intValue();
+        return PistonAura.mc.player.getDistance(entityPlayer) < (float) this.Field353.getValue().intValue();
     }
 
     public static Float Method514(Entity entity) {
@@ -169,7 +169,7 @@ extends Module {
             if (this.Field383.Method737(1000.0)) {
                 return;
             }
-            if (((Boolean)Field362.getValue()).booleanValue()) {
+            if (Field362.getValue().booleanValue()) {
                 blockPos = null;
                 switch (Class216.Field286[this.Field372.ordinal()]) {
                     case 1: {
@@ -186,17 +186,17 @@ extends Module {
                     }
                 }
                 if (blockPos != null) {
-                    axisAlignedBB = PistonAura.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess) PistonAura.mc.world, blockPos).offset(blockPos);
+                    axisAlignedBB = PistonAura.mc.world.getBlockState(blockPos).getBoundingBox(PistonAura.mc.world, blockPos).offset(blockPos);
                     axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                     Class523.Method1216();
-                    Class523.Method1217(axisAlignedBB, ((ColorValue)Field363.getValue()).Method774());
+                    Class523.Method1217(axisAlignedBB, Field363.getValue().Method774());
                     Class523.Method1214();
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, ((ColorValue)Field364.getValue()).Method774(), 1.5f);
+                    Class523.Method1215(axisAlignedBB, Field364.getValue().Method774(), 1.5f);
                     Class523.Method1214();
                 }
             }
-            if (((Boolean)Field365.getValue()).booleanValue()) {
+            if (Field365.getValue().booleanValue()) {
                 blockPos = null;
                 switch (this.Field374) {
                     case NORTH: {
@@ -218,14 +218,14 @@ extends Module {
                 if (blockPos != null) {
                     blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                     Class523.Method1216();
-                    Class523.Method1217((AxisAlignedBB)blockPos, ((ColorValue)Field366.getValue()).Method774());
+                    Class523.Method1217((AxisAlignedBB)blockPos, Field366.getValue().Method774());
                     Class523.Method1214();
                     Class523.Method1216();
-                    Class523.Method1215((AxisAlignedBB)blockPos, ((ColorValue)Field367.getValue()).Method774(), 1.5f);
+                    Class523.Method1215((AxisAlignedBB)blockPos, Field367.getValue().Method774(), 1.5f);
                     Class523.Method1214();
                 }
             }
-            if (!((Boolean)Field368.getValue()).booleanValue()) break block26;
+            if (!Field368.getValue().booleanValue()) break block26;
             blockPos = null;
             axisAlignedBB = null;
             Vec3d vec3d = null;
@@ -259,42 +259,42 @@ extends Module {
             if (blockPos != null) {
                 Class523.Method1216();
                 GL11.glPushMatrix();
-                GL11.glEnable((int)3042);
-                GL11.glBlendFunc((int)770, (int)771);
-                GL11.glDisable((int)2896);
-                GL11.glDisable((int)3553);
-                GL11.glEnable((int)2848);
-                GL11.glDisable((int)2929);
-                GL11.glDepthMask((boolean)false);
-                GL11.glLineWidth((float)5.0f);
-                GL11.glColor4f((float)((float)(((ColorValue)Field369.getValue()).Method774() >> 16 & 0xFF) / 255.0f), (float)((float)(((ColorValue)Field369.getValue()).Method774() >> 8 & 0xFF) / 255.0f), (float)((float)(((ColorValue)Field369.getValue()).Method774() & 0xFF) / 255.0f), (float)((float)(((ColorValue)Field369.getValue()).Method774() >> 24 & 0xFF) / 255.0f));
-                if (((Boolean)Field370.getValue()).booleanValue()) {
-                    GL11.glBegin((int)1);
-                    GL11.glVertex3d((double)blockPos.x, (double)blockPos.y, (double)blockPos.z);
+                GL11.glEnable(3042);
+                GL11.glBlendFunc(770, 771);
+                GL11.glDisable(2896);
+                GL11.glDisable(3553);
+                GL11.glEnable(2848);
+                GL11.glDisable(2929);
+                GL11.glDepthMask(false);
+                GL11.glLineWidth(5.0f);
+                GL11.glColor4f((float)(Field369.getValue().Method774() >> 16 & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() >> 8 & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() >> 24 & 0xFF) / 255.0f);
+                if (Field370.getValue().booleanValue()) {
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(blockPos.x, blockPos.y, blockPos.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
                     GL11.glEnd();
-                    GL11.glBegin((int)1);
-                    GL11.glVertex3d((double)vec3d.x, (double)vec3d.y, (double)vec3d.z);
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(vec3d.x, vec3d.y, vec3d.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
                     GL11.glEnd();
                 }
-                if (((Boolean)Field371.getValue()).booleanValue()) {
-                    GL11.glBegin((int)1);
-                    GL11.glVertex3d((double)blockPos.x, (double)(blockPos.y - 1.0), (double)blockPos.z);
+                if (Field371.getValue().booleanValue()) {
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(blockPos.x, blockPos.y - 1.0, blockPos.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)(axisAlignedBB.y - 1.0), (double)axisAlignedBB.z);
                     GL11.glEnd();
-                    GL11.glBegin((int)1);
-                    GL11.glVertex3d((double)vec3d.x, (double)(vec3d.y - 1.0), (double)vec3d.z);
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(vec3d.x, vec3d.y - 1.0, vec3d.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)(axisAlignedBB.y - 1.0), (double)axisAlignedBB.z);
                     GL11.glEnd();
                 }
-                GL11.glLineWidth((float)1.0f);
-                GL11.glDisable((int)2848);
-                GL11.glEnable((int)3553);
-                GL11.glEnable((int)2896);
-                GL11.glEnable((int)2929);
-                GL11.glDepthMask((boolean)true);
-                GL11.glDisable((int)3042);
+                GL11.glLineWidth(1.0f);
+                GL11.glDisable(2848);
+                GL11.glEnable(3553);
+                GL11.glEnable(2896);
+                GL11.glEnable(2929);
+                GL11.glDepthMask(true);
+                GL11.glDisable(3042);
                 GL11.glPopMatrix();
                 Class523.Method1214();
             }
@@ -305,21 +305,21 @@ extends Module {
         this.Field383.Method739();
         if (bl) {
             PistonAura.mc.player.inventory.currentItem = n;
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+            PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
         }
         if (bl2) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
         }
         if (bl3) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
         }
         PistonAura.mc.playerController.processRightClickBlock(PistonAura.mc.player, PistonAura.mc.world, this.Field376, this.Field377, vec3d, EnumHand.MAIN_HAND);
-        PistonAura.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
+        PistonAura.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
         if (bl3) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }
         if (bl2) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.START_SPRINTING));
         }
         this.Field372 = Class220.CRYSTAL;
     }
@@ -335,8 +335,8 @@ extends Module {
     }
 
     public void Method518(Entity entity) {
-        PistonAura.mc.playerController.attackEntity((EntityPlayer) PistonAura.mc.player, entity);
-        PistonAura.mc.player.connection.sendPacket((Packet)new CPacketAnimation(this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
+        PistonAura.mc.playerController.attackEntity(PistonAura.mc.player, entity);
+        PistonAura.mc.player.connection.sendPacket(new CPacketAnimation(this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
     }
 
     public boolean Method519() {
@@ -344,7 +344,7 @@ extends Module {
     }
 
     public static Float Method520(EntityPlayer entityPlayer) {
-        return Float.valueOf(PistonAura.mc.player.getDistance((Entity)entityPlayer));
+        return Float.valueOf(PistonAura.mc.player.getDistance(entityPlayer));
     }
 
     public List<EntityPlayer> Method521() {
@@ -353,13 +353,13 @@ extends Module {
 
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
-        if (packetEvent.getPacket() instanceof SPacketBlockChange && this.Field378 != null && ((SPacketBlockChange) packetEvent.getPacket()).getBlockPosition().equals((Object)this.Field378) && ((SPacketBlockChange) packetEvent.getPacket()).getBlockState().getBlock() instanceof BlockAir) {
+        if (packetEvent.getPacket() instanceof SPacketBlockChange && this.Field378 != null && ((SPacketBlockChange) packetEvent.getPacket()).getBlockPosition().equals(this.Field378) && ((SPacketBlockChange) packetEvent.getPacket()).getBlockState().getBlock() instanceof BlockAir) {
             this.Field378 = null;
         }
     }
 
     public boolean Method522(BlockPos blockPos) {
-        if (!this.Method515(blockPos) && !((Boolean)this.Field360.getValue()).booleanValue()) {
+        if (!this.Method515(blockPos) && !this.Field360.getValue().booleanValue()) {
             return false;
         }
         for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
@@ -374,20 +374,20 @@ extends Module {
             Block block = ((ItemBlock)itemStack.getItem()).getBlock();
             if (block == Blocks.REDSTONE_BLOCK) {
                 if (!this.Method515(blockPos.offset(enumFacing, 3))) {
-                    if (!((Boolean)this.Field360.getValue()).booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_TORCH && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_BLOCK) continue;
+                    if (!this.Field360.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_TORCH && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_BLOCK) continue;
                     this.Field378 = blockPos.offset(enumFacing, 3);
                 }
             } else {
                 optional = Class545.Method1006(blockPos.offset(enumFacing, 3), false, true);
-                if (!optional.isPresent() && ((Boolean)this.Field360.getValue()).booleanValue() && (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_TORCH || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_BLOCK)) {
+                if (!optional.isPresent() && this.Field360.getValue().booleanValue() && (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_TORCH || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_BLOCK)) {
                     this.Field378 = blockPos.offset(enumFacing, 3);
                 }
                 if (!optional.isPresent() && this.Field378 == null && ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH) {
                     for (BlockPos blockPos2 : EnumFacing.HORIZONTALS) {
-                        if (blockPos2.equals((Object)enumFacing) || blockPos2.equals((Object)enumFacing.getOpposite())) continue;
+                        if (blockPos2.equals(enumFacing) || blockPos2.equals(enumFacing.getOpposite())) continue;
                         optional = Class545.Method1006(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2), false, true);
                         if (optional.isPresent()) break;
-                        if (!((Boolean)this.Field360.getValue()).booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2)).getBlock() != Blocks.REDSTONE_TORCH) continue;
+                        if (!this.Field360.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2)).getBlock() != Blocks.REDSTONE_TORCH) continue;
                         this.Field378 = blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2);
                         break;
                     }
@@ -395,15 +395,15 @@ extends Module {
                 if (!optional.isPresent() && this.Field378 == null) continue;
             }
             optional = Class545.Method997(blockPos.offset(enumFacing, 2));
-            boolean bl = this.Field380 = (Boolean)this.Field360.getValue() != false && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() instanceof BlockPistonBase;
+            boolean bl = this.Field380 = this.Field360.getValue() != false && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() instanceof BlockPistonBase;
             if (!optional.isPresent() && !this.Field380) continue;
             if (!this.Field380) {
                 BlockPos blockPos2;
                 BlockPos blockPos3 = optional.get().Field1089;
                 EnumFacing enumFacing2 = optional.get().Field1090;
-                double[] dArray = Class545.Method1008(blockPos3.getX(), blockPos3.getY(), blockPos3.getZ(), enumFacing2, (EntityPlayer) PistonAura.mc.player);
-                blockPos2 = EnumFacing.fromAngle((double)dArray[0]);
-                if (Math.abs(dArray[1]) > 55.0 || blockPos2 != enumFacing || ((Boolean)this.Field358.getValue()).booleanValue() && !this.Method526(optional.get().Field1089)) continue;
+                double[] dArray = Class545.Method1008(blockPos3.getX(), blockPos3.getY(), blockPos3.getZ(), enumFacing2, PistonAura.mc.player);
+                blockPos2 = EnumFacing.fromAngle(dArray[0]);
+                if (Math.abs(dArray[1]) > 55.0 || blockPos2 != enumFacing || this.Field358.getValue().booleanValue() && !this.Method526(optional.get().Field1089)) continue;
                 this.Field376 = blockPos3;
                 this.Field377 = enumFacing2;
             }
@@ -429,14 +429,14 @@ extends Module {
             int n2 = PistonAura.mc.player.inventory.currentItem;
             if (bl) {
                 PistonAura.mc.player.inventory.currentItem = n;
-                PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
             Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field386 = blockPos.offset(enumFacing);
             this.Field387.Method739();
             if (!bl) break block1;
             PistonAura.mc.player.inventory.currentItem = n2;
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n2));
+            PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n2));
         }
     }
 
@@ -447,7 +447,7 @@ extends Module {
             this.Field385 = 0;
             this.Field384.run();
             this.Field384 = null;
-            for (int i = 0; i < (Integer)Field355.getValue() - 1; ++i) {
+            for (int i = 0; i < Field355.getValue() - 1; ++i) {
                 this.Method528(true);
                 if (this.Field384 == null) {
                     return;
@@ -483,35 +483,35 @@ extends Module {
     public void Method525(boolean bl, int n, boolean bl2, boolean bl3, Optional optional, Vec3d vec3d) {
         this.Field381.Method739();
         this.Field383.Method739();
-        this.Field382 = (Integer)this.Field354.getValue() * 10;
+        this.Field382 = this.Field354.getValue() * 10;
         if (bl) {
             PistonAura.mc.player.inventory.currentItem = n;
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+            PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
         }
         if (bl2) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
         }
         if (bl3) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
         }
         PistonAura.mc.playerController.processRightClickBlock(PistonAura.mc.player, PistonAura.mc.world, ((Class534)optional.get()).Field1089, ((Class534)optional.get()).Field1090, vec3d, EnumHand.MAIN_HAND);
-        PistonAura.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
+        PistonAura.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
         if (bl3) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }
         if (bl2) {
-            PistonAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) PistonAura.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+            PistonAura.mc.player.connection.sendPacket(new CPacketEntityAction(PistonAura.mc.player, CPacketEntityAction.Action.START_SPRINTING));
         }
         this.Field372 = Class220.BREAKING;
     }
 
     public boolean Method386(Entity entity) {
-        return PistonAura.mc.player.getDistance(entity) <= (float)((Integer)this.Field353.getValue() + 4);
+        return PistonAura.mc.player.getDistance(entity) <= (float)(this.Field353.getValue() + 4);
     }
 
     @Subscriber(priority=99)
     public void Method135(UpdateEvent updateEvent) {
-        if (this.Field385 < (Integer)Field356.getValue()) {
+        if (this.Field385 < Field356.getValue()) {
             ++this.Field385;
         }
         if (updateEvent.isCanceled() || !Class496.Method1966()) {
@@ -520,7 +520,7 @@ extends Module {
         if (this.Field372 == Class220.BREAKING) {
             NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
         }
-        if (this.Field385 < (Integer)Field356.getValue()) {
+        if (this.Field385 < Field356.getValue()) {
             return;
         }
         this.Method528(false);
@@ -531,21 +531,21 @@ extends Module {
             for (double d2 = 0.1; d2 < 0.9; d2 += 0.1) {
                 for (double d3 = 0.1; d3 < 0.9; d3 += 0.1) {
                     Vec3d vec3d = new Vec3d(PistonAura.mc.player.posX, PistonAura.mc.player.getEntityBoundingBox().minY + (double) PistonAura.mc.player.getEyeHeight(), PistonAura.mc.player.posZ);
-                    Vec3d vec3d2 = new Vec3d((Vec3i)blockPos).add(d, d2, d3);
+                    Vec3d vec3d2 = new Vec3d(blockPos).add(d, d2, d3);
                     double d4 = vec3d.distanceTo(vec3d2);
                     double d5 = vec3d2.x - vec3d.x;
                     double d6 = vec3d2.y - vec3d.y;
                     double d7 = vec3d2.z - vec3d.z;
-                    double d8 = MathHelper.sqrt((double)(d5 * d5 + d7 * d7));
-                    double[] dArray = new double[]{MathHelper.wrapDegrees((float)((float)Math.toDegrees(Math.atan2(d7, d5)) - 90.0f)), MathHelper.wrapDegrees((float)((float)(-Math.toDegrees(Math.atan2(d6, d8)))))};
-                    float f = MathHelper.cos((float)((float)(-dArray[0] * 0.01745329238474369 - 3.1415927410125732)));
-                    float f2 = MathHelper.sin((float)((float)(-dArray[0] * 0.01745329238474369 - 3.1415927410125732)));
-                    float f3 = -MathHelper.cos((float)((float)(-dArray[1] * 0.01745329238474369)));
-                    float f4 = MathHelper.sin((float)((float)(-dArray[1] * 0.01745329238474369)));
-                    Vec3d vec3d3 = new Vec3d((double)(f2 * f3), (double)f4, (double)(f * f3));
+                    double d8 = MathHelper.sqrt(d5 * d5 + d7 * d7);
+                    double[] dArray = new double[]{MathHelper.wrapDegrees((float)Math.toDegrees(Math.atan2(d7, d5)) - 90.0f), MathHelper.wrapDegrees((float)(-Math.toDegrees(Math.atan2(d6, d8))))};
+                    float f = MathHelper.cos((float)(-dArray[0] * 0.01745329238474369 - 3.1415927410125732));
+                    float f2 = MathHelper.sin((float)(-dArray[0] * 0.01745329238474369 - 3.1415927410125732));
+                    float f3 = -MathHelper.cos((float)(-dArray[1] * 0.01745329238474369));
+                    float f4 = MathHelper.sin((float)(-dArray[1] * 0.01745329238474369));
+                    Vec3d vec3d3 = new Vec3d(f2 * f3, f4, f * f3);
                     Vec3d vec3d4 = vec3d.add(vec3d3.x * d4, vec3d3.y * d4, vec3d3.z * d4);
                     RayTraceResult rayTraceResult = PistonAura.mc.world.rayTraceBlocks(vec3d, vec3d4, false, false, false);
-                    if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK || !rayTraceResult.getBlockPos().equals((Object)blockPos)) continue;
+                    if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK || !rayTraceResult.getBlockPos().equals(blockPos)) continue;
                     return true;
                 }
             }
@@ -568,13 +568,13 @@ extends Module {
     public void Method528(boolean bl) {
         block43: {
             block42: {
-                if (this.Field388.Method737(1000.0) && ((Boolean)this.Field352.getValue()).booleanValue()) {
+                if (this.Field388.Method737(1000.0) && this.Field352.getValue().booleanValue()) {
                     this.toggle();
                 }
                 if (!this.Field381.Method737(this.Field382)) {
                     return;
                 }
-                if (((Boolean)this.Field357.getValue()).booleanValue() && Math.sqrt(PistonAura.mc.player.motionX * PistonAura.mc.player.motionX + PistonAura.mc.player.motionZ * PistonAura.mc.player.motionZ) > 9.0E-4) {
+                if (this.Field357.getValue().booleanValue() && Math.sqrt(PistonAura.mc.player.motionX * PistonAura.mc.player.motionX + PistonAura.mc.player.motionZ * PistonAura.mc.player.motionZ) > 9.0E-4) {
                     return;
                 }
                 if (this.mode.getValue() != Class214.DAMAGE) break block42;
@@ -597,7 +597,7 @@ extends Module {
                             boolean bl2 = PistonAura.mc.player.inventory.currentItem != n;
                             boolean bl3 = PistonAura.mc.player.isSprinting();
                             boolean bl4 = Class545.Method1004(this.Field376);
-                            Vec3d vec3d = new Vec3d((Vec3i)this.Field376).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field377.getDirectionVec()).scale(0.5));
+                            Vec3d vec3d = new Vec3d(this.Field376).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field377.getDirectionVec()).scale(0.5));
                             if (bl) {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                 Class550.Method883(fArray[0], fArray[1]);
@@ -617,7 +617,7 @@ extends Module {
                             if (this.Field379.Method737(1000.0)) {
                                 RayTraceResult rayTraceResult = PistonAura.mc.world.rayTraceBlocks(new Vec3d(PistonAura.mc.player.posX, PistonAura.mc.player.posY + (double) PistonAura.mc.player.getEyeHeight(), PistonAura.mc.player.posZ), new Vec3d((double)this.Field378.getX() + 0.5, (double)this.Field378.getY() + 0.5, (double)this.Field378.getZ() + 0.5));
                                 EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
-                                Vec3d vec3d = new Vec3d((Vec3i)this.Field378).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
+                                Vec3d vec3d = new Vec3d(this.Field378).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
                                 if (bl) {
                                     float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                     Class550.Method883(fArray[0], fArray[1]);
@@ -667,7 +667,7 @@ extends Module {
                         Optional<Class534> optional = Class545.Method1006(this.Field373.offset(this.Field374, 3), false, ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH);
                         if (!optional.isPresent() && ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH) {
                             for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
-                                if (!enumFacing.equals((Object)this.Field374) && !enumFacing.equals((Object)this.Field374.getOpposite()) && (optional = Class545.Method1006(this.Field373.offset(this.Field374, 2).offset(enumFacing), false, ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH)).isPresent()) break;
+                                if (!enumFacing.equals(this.Field374) && !enumFacing.equals(this.Field374.getOpposite()) && (optional = Class545.Method1006(this.Field373.offset(this.Field374, 2).offset(enumFacing), false, ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH)).isPresent()) break;
                             }
                         }
                         if (optional.isPresent()) {
@@ -676,7 +676,7 @@ extends Module {
                             boolean bl5 = PistonAura.mc.player.inventory.currentItem != n;
                             int n2 = PistonAura.mc.player.isSprinting();
                             int n3 = Class545.Method1004(optional.get().Field1089);
-                            enumFacing = new Vec3d((Vec3i)optional.get().Field1089).add(0.5, 0.5, 0.5).add(new Vec3d(optional.get().Field1090.getDirectionVec()).scale(0.5));
+                            enumFacing = new Vec3d(optional.get().Field1089).add(0.5, 0.5, 0.5).add(new Vec3d(optional.get().Field1090.getDirectionVec()).scale(0.5));
                             if (bl) {
                                 object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), (Vec3d)enumFacing);
                                 Class550.Method883((float)object[0], (float)object[1]);
@@ -693,12 +693,12 @@ extends Module {
                     case 4: {
                         Entity entity = PistonAura.mc.world.loadedEntityList.stream().filter(PistonAura::Method513).filter(this::Method386).min(Comparator.comparing(PistonAura::Method514)).orElse(null);
                         if (entity != null) {
-                            if (((Boolean)this.Field359.getValue()).booleanValue() && Class475.Method2156((EntityEnderCrystal)entity, (Entity) PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
+                            if (this.Field359.getValue().booleanValue() && Class475.Method2156((EntityEnderCrystal)entity, PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
                                 return;
                             }
                             this.Field381.Method739();
                             this.Field383.Method739();
-                            this.Field382 = (Integer)this.Field354.getValue() * 10;
+                            this.Field382 = this.Field354.getValue() * 10;
                             if (bl) {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), entity.getPositionVector());
                                 Class550.Method883(fArray[0], fArray[1]);
@@ -709,7 +709,7 @@ extends Module {
                             break;
                         }
                         if (bl) {
-                            float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field373.getX() + 0.5, (double)this.Field373.getY(), (double)this.Field373.getZ() + 0.5));
+                            float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5));
                             Class550.Method883(fArray[0], fArray[1]);
                             break;
                         }
@@ -735,21 +735,21 @@ extends Module {
             List<EntityPlayer> list = this.Method521();
             block8: for (EntityPlayer entityPlayer : list) {
                 Object object;
-                if (((Boolean)this.smart.getValue()).booleanValue() && !Class545.Method1009(new BlockPos((Entity)entityPlayer)) && PistonAura.mc.world.getBlockState(new BlockPos((Entity)entityPlayer)).getBlock() == Blocks.AIR) continue;
-                BlockPos blockPos = new BlockPos((Entity)entityPlayer).up();
-                if (((Boolean)this.Field359.getValue()).booleanValue() && blockPos.equals((Object)new BlockPos((Entity) PistonAura.mc.player))) continue;
+                if (this.smart.getValue().booleanValue() && !Class545.Method1009(new BlockPos(entityPlayer)) && PistonAura.mc.world.getBlockState(new BlockPos(entityPlayer)).getBlock() == Blocks.AIR) continue;
+                BlockPos blockPos = new BlockPos(entityPlayer).up();
+                if (this.Field359.getValue().booleanValue() && blockPos.equals(new BlockPos(PistonAura.mc.player))) continue;
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
-                    if (!(PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase) && (this.Field387.Method737(Class475.Method2142() + 150) || !blockPos.offset(enumFacing).equals((Object)this.Field386)) || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase && !(object = (EnumFacing) PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getValue((IProperty)BlockDirectional.FACING)).equals((Object)enumFacing.getOpposite())) continue;
-                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), (Boolean)this.Field358.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, (Boolean)this.Field358.getValue())) == null) break block8;
+                    if (!(PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase) && (this.Field387.Method737(Class475.Method2142() + 150) || !blockPos.offset(enumFacing).equals(this.Field386)) || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase && !(object = PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getValue((IProperty)BlockDirectional.FACING)).equals(enumFacing.getOpposite())) continue;
+                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), this.Field358.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.Field358.getValue())) == null) break block8;
                     this.Field384 = () -> this.Method530(n4, (Class490)object);
                     return;
                 }
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     Class490 class490;
-                    if (!Class496.Method1967(blockPos.offset(enumFacing), (Boolean)this.Field358.getValue()) || !((Boolean)this.Field358.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
+                    if (!Class496.Method1967(blockPos.offset(enumFacing), this.Field358.getValue()) || !(this.Field358.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
                     object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.offset(enumFacing).getX() + 0.5, (double)blockPos.offset(enumFacing).getY() + 1.0, (double)blockPos.offset(enumFacing).getZ() + 0.5));
-                    EnumFacing enumFacing2 = EnumFacing.fromAngle((double)((double)object[0]));
-                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, (Boolean)this.Field358.getValue())) == null) continue;
+                    EnumFacing enumFacing2 = EnumFacing.fromAngle((double)object[0]);
+                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, this.Field358.getValue())) == null) continue;
                     this.Field384 = () -> this.Method523(n, class490, blockPos, enumFacing);
                     return;
                 }
@@ -758,8 +758,8 @@ extends Module {
     }
 
     public void Method529(EnumFacing enumFacing) {
-        PistonAura.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field378, enumFacing));
-        PistonAura.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field378, enumFacing));
+        PistonAura.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field378, enumFacing));
+        PistonAura.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field378, enumFacing));
         this.Field379.Method739();
     }
 
@@ -773,16 +773,16 @@ extends Module {
             int n2 = PistonAura.mc.player.inventory.currentItem;
             if (bl) {
                 PistonAura.mc.player.inventory.currentItem = n;
-                PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
             Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field381.Method739();
             this.Field382 = Class475.Method2142() + 150;
             if (bl) {
                 PistonAura.mc.player.inventory.currentItem = n2;
-                PistonAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n2));
+                PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n2));
             }
-            if (!((Boolean)this.Field351.getValue()).booleanValue()) break block2;
+            if (!this.Field351.getValue().booleanValue()) break block2;
             this.toggle();
         }
     }

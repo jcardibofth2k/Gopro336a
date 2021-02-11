@@ -96,7 +96,7 @@ extends Class90 {
             super.Method440(bl);
         } else {
             this.Field643 = true;
-            this.Field642 = (Integer) ClickGUIModule.animationSpeed.getValue();
+            this.Field642 = ClickGUIModule.animationSpeed.getValue();
         }
     }
 
@@ -143,72 +143,72 @@ extends Class90 {
             this.Method442(0.0f);
             this.Method711().forEach(this::Method707);
         }
-        if (this.Method921() + this.Method911() + Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) > (float)scaledResolution.getScaledHeight()) {
-            this.Method442((float)scaledResolution.getScaledHeight() - this.Method911() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()));
+        if (this.Method921() + this.Method911() + Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) > (float)scaledResolution.getScaledHeight()) {
+            this.Method442((float)scaledResolution.getScaledHeight() - this.Method911() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()));
             this.Method711().forEach(this::Method699);
         }
-        RenderUtil2.Method1338(this.Method922(), this.Method921(), this.Method910(), this.Method911(), ((ColorValue) ClickGUIModule.header.getValue()).Method774());
-        Class548.Method1016(this.Method920(), (int)(this.Method922() + 3.0f), (int)(this.Method921() + this.Method911() / 2.0f - (float)(Class548.Method1020() / 2) - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
+        RenderUtil2.Method1338(this.Method922(), this.Method921(), this.Method910(), this.Method911(), ClickGUIModule.header.getValue().Method774());
+        Class548.Method1016(this.Method920(), (int)(this.Method922() + 3.0f), (int)(this.Method921() + this.Method911() / 2.0f - (float)(Class548.Method1020() / 2) - 0.5f), ClickGUIModule.fony.getValue().Method774());
         if (this.Method914()) {
-            if (Class200.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())) && this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) {
+            if (Class200.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue())) && this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue()) {
                 int n3 = Mouse.getDWheel();
                 if (n3 < 0) {
-                    if ((float)(this.Method708() - (Integer) ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()))) {
-                        this.Method700((int)(-(this.Method696() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()))));
+                    if ((float)(this.Method708() - ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()))) {
+                        this.Method700((int)(-(this.Method696() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()))));
                     } else {
-                        this.Method700(this.Method708() - (Integer) ClickGUIModule.scrollSpeed.getValue());
+                        this.Method700(this.Method708() - ClickGUIModule.scrollSpeed.getValue());
                     }
                 } else if (n3 > 0) {
-                    this.Method700(this.Method708() + (Integer) ClickGUIModule.scrollSpeed.getValue());
+                    this.Method700(this.Method708() + ClickGUIModule.scrollSpeed.getValue());
                 }
             }
             if (this.Method708() > 0) {
                 this.Method700(0);
             }
-            if (this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) {
-                if ((float)(this.Method708() - (Integer) ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())) {
-                    this.Method700((int)(-(this.Method696() - ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())));
+            if (this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue()) {
+                if ((float)(this.Method708() - ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - ClickGUIModule.maxHeight.getValue().floatValue())) {
+                    this.Method700((int)(-(this.Method696() - ClickGUIModule.maxHeight.getValue().floatValue())));
                 }
             } else if (this.Method708() < 0) {
                 this.Method700(0);
             }
             GL11.glPushMatrix();
-            GL11.glEnable((int)3089);
-            if (((Boolean) ClickGUIModule.animate.getValue()).booleanValue()) {
-                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(((Float) ClickGUIModule.maxHeight.getValue()).floatValue(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue() * ((float)this.Field642 / (float)((Integer) ClickGUIModule.animationSpeed.getValue()).intValue())));
+            GL11.glEnable(3089);
+            if (ClickGUIModule.animate.getValue().booleanValue()) {
+                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(ClickGUIModule.maxHeight.getValue().floatValue(), ClickGUIModule.maxHeight.getValue().floatValue() * ((float)this.Field642 / (float) ClickGUIModule.animationSpeed.getValue().intValue())));
                 if (this.Field643) {
                     --this.Field642;
                     if (this.Field642 <= 0) {
                         super.Method440(false);
                         this.Field643 = false;
                     }
-                } else if (this.Field642 < (Integer) ClickGUIModule.animationSpeed.getValue()) {
+                } else if (this.Field642 < ClickGUIModule.animationSpeed.getValue()) {
                     ++this.Field642;
                 }
             } else {
-                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue());
+                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), ClickGUIModule.maxHeight.getValue().floatValue());
                 if (this.Field643) {
                     super.Method440(false);
                     this.Field643 = false;
                 }
             }
-            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()), ((ColorValue) ClickGUIModule.b.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()), ((ColorValue) ClickGUIModule.b.getValue()).Method774());
             this.Method711().forEach(arg_0 -> Class200.Method702(n, n2, f, arg_0));
-            GL11.glDisable((int)3089);
-            if (((Boolean) ClickGUIModule.outline.getValue()).booleanValue() && !((Boolean) ClickGUIModule.animate.getValue()).booleanValue()) {
-                float f2 = ((Integer) ClickGUIModule.thickness.getValue()).intValue();
-                RenderUtil2.Method1338(this.Method922() - f2, this.Method921() - f2, f2, this.Method911() - f2 + Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) + f2 * 2.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-                RenderUtil2.Method1338(this.Method922(), this.Method921() - f2, this.Method910(), f2, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-                RenderUtil2.Method1338(this.Method922() + this.Method910(), this.Method921() - f2, f2, this.Method911() - f2 + Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) + f2 * 2.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-                RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911() + Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) - f2, this.Method910(), f2, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+            GL11.glDisable(3089);
+            if (ClickGUIModule.outline.getValue().booleanValue() && !ClickGUIModule.animate.getValue().booleanValue()) {
+                float f2 = ClickGUIModule.thickness.getValue().intValue();
+                RenderUtil2.Method1338(this.Method922() - f2, this.Method921() - f2, f2, this.Method911() - f2 + Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) + f2 * 2.0f, ClickGUIModule.color.getValue().Method774());
+                RenderUtil2.Method1338(this.Method922(), this.Method921() - f2, this.Method910(), f2, ClickGUIModule.color.getValue().Method774());
+                RenderUtil2.Method1338(this.Method922() + this.Method910(), this.Method921() - f2, f2, this.Method911() - f2 + Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) + f2 * 2.0f, ClickGUIModule.color.getValue().Method774());
+                RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911() + Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) - f2, this.Method910(), f2, ClickGUIModule.color.getValue().Method774());
             }
             GL11.glPopMatrix();
-        } else if (((Boolean) ClickGUIModule.outline.getValue()).booleanValue() && !((Boolean) ClickGUIModule.animate.getValue()).booleanValue()) {
-            float f3 = ((Integer) ClickGUIModule.thickness.getValue()).intValue();
-            RenderUtil2.Method1338(this.Method922() - f3, this.Method921() - f3, f3, this.Method911() + f3 * 2.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-            RenderUtil2.Method1338(this.Method922(), this.Method921() - f3, this.Method910(), f3, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-            RenderUtil2.Method1338(this.Method922() + this.Method910(), this.Method921() - f3, f3, this.Method911() + f3 * 2.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
-            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), f3, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+        } else if (ClickGUIModule.outline.getValue().booleanValue() && !ClickGUIModule.animate.getValue().booleanValue()) {
+            float f3 = ClickGUIModule.thickness.getValue().intValue();
+            RenderUtil2.Method1338(this.Method922() - f3, this.Method921() - f3, f3, this.Method911() + f3 * 2.0f, ClickGUIModule.color.getValue().Method774());
+            RenderUtil2.Method1338(this.Method922(), this.Method921() - f3, this.Method910(), f3, ClickGUIModule.color.getValue().Method774());
+            RenderUtil2.Method1338(this.Method922() + this.Method910(), this.Method921() - f3, f3, this.Method911() + f3 * 2.0f, ClickGUIModule.color.getValue().Method774());
+            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), f3, ClickGUIModule.color.getValue().Method774());
         }
         this.Method710(n, n2);
     }
@@ -247,12 +247,12 @@ extends Class90 {
             }
             case 1: {
                 if (!bl) break;
-                Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
+                Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
                 this.Method440(!this.Method914());
                 return true;
             }
         }
-        if (this.Method914() && Class200.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue() ? (double)((Float) ClickGUIModule.maxHeight.getValue()).floatValue() : (double)this.Method696())) {
+        if (this.Method914() && Class200.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue() ? (double) ClickGUIModule.maxHeight.getValue().floatValue() : (double)this.Method696())) {
             for (Class183 class183 : this.Method711()) {
                 if (!class183.Method106(n, n2, n3)) continue;
                 return true;
@@ -267,7 +267,7 @@ extends Class90 {
             class183.Method1472(f);
             class183.Method665(this.Method922(), this.Method921() + (float)this.Method708());
             if (class183 instanceof Class201) {
-                if (f <= ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) {
+                if (f <= ClickGUIModule.maxHeight.getValue().floatValue()) {
                     ((Class201)class183).Method674(n, n2);
                 }
                 if (class183.Method1486()) {

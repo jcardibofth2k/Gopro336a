@@ -12,7 +12,7 @@ implements IFMLLoadingPlugin {
     public LoadingPlugin() {
         System.out.println("Konas Coremod initialising");
         MixinBootstrap.init();
-        Mixins.addConfiguration((String)"mixins.konas.json");
+        Mixins.addConfiguration("mixins.konas.json");
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
     }
 

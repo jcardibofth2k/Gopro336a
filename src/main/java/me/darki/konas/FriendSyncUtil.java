@@ -26,7 +26,7 @@ public class FriendSyncUtil
     public static Set<String> Method2311() {
         JsonReader jsonReader;
         try {
-            jsonReader = new JsonReader((Reader)new FileReader(FriendSyncUtil.Field2645));
+            jsonReader = new JsonReader(new FileReader(FriendSyncUtil.Field2645));
         }
         catch (FileNotFoundException ex) {
             Logger.Method1119("Unable to load Future friends file: " + ex.getMessage());
@@ -61,7 +61,7 @@ public class FriendSyncUtil
         final JsonParser jsonParser = new JsonParser();
         JsonObject jsonObject;
         try {
-            jsonObject = (JsonObject)jsonParser.parse((Reader)new FileReader(FriendSyncUtil.Field2646));
+            jsonObject = (JsonObject)jsonParser.parse(new FileReader(FriendSyncUtil.Field2646));
         }
         catch (Exception ex) {
             Logger.Method1119("Unable to load Pyro friends file: " + ex.getMessage());
@@ -91,7 +91,7 @@ public class FriendSyncUtil
     public static Set<String> Method2314() {
         JsonReader jsonReader;
         try {
-            jsonReader = new JsonReader((Reader)new FileReader(FriendSyncUtil.Field2647));
+            jsonReader = new JsonReader(new FileReader(FriendSyncUtil.Field2647));
         }
         catch (FileNotFoundException ex) {
             Logger.Method1119("Unable to load Rusherhack friends file: " + ex.getMessage());

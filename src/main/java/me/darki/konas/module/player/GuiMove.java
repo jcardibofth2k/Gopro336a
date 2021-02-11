@@ -43,15 +43,15 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         block3: {
-            if (!((Boolean)this.Field2005.getValue()).booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
+            if (!this.Field2005.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
             if (GuiMove.mc.player.isActiveItemStackBlocking()) {
-                GuiMove.mc.playerController.onStoppedUsingItem((EntityPlayer)GuiMove.mc.player);
+                GuiMove.mc.playerController.onStoppedUsingItem(GuiMove.mc.player);
             }
             if (GuiMove.mc.player.isSneaking()) {
-                GuiMove.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)GuiMove.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+                GuiMove.mc.player.connection.sendPacket(new CPacketEntityAction(GuiMove.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
             }
             if (GuiMove.mc.player.isSprinting()) {
-                GuiMove.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)GuiMove.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+                GuiMove.mc.player.connection.sendPacket(new CPacketEntityAction(GuiMove.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
             }
         }
     }
@@ -73,18 +73,18 @@ extends Module {
         }
         if (GuiMove.mc.currentScreen instanceof GuiOptions || GuiMove.mc.currentScreen instanceof GuiVideoSettings || GuiMove.mc.currentScreen instanceof GuiScreenOptionsSounds || GuiMove.mc.currentScreen instanceof GuiContainer || GuiMove.mc.currentScreen instanceof GuiIngameMenu || GuiMove.mc.currentScreen instanceof Class147 || GuiMove.mc.currentScreen instanceof GuiScreenAdvancements || GuiMove.mc.currentScreen instanceof Class193 || GuiMove.mc.currentScreen instanceof Class262) {
             for (KeyBinding keyBinding : this.Field2007) {
-                KeyBinding.setKeyBindState((int)keyBinding.getKeyCode(), (boolean)GameSettings.isKeyDown((KeyBinding)keyBinding));
+                KeyBinding.setKeyBindState(keyBinding.getKeyCode(), GameSettings.isKeyDown(keyBinding));
             }
-            if (Keyboard.isKeyDown((int)203)) {
+            if (Keyboard.isKeyDown(203)) {
                 GuiMove.mc.player.rotationYaw -= 5.0f;
             }
-            if (Keyboard.isKeyDown((int)200) && GuiMove.mc.player.rotationPitch > -84.0f) {
+            if (Keyboard.isKeyDown(200) && GuiMove.mc.player.rotationPitch > -84.0f) {
                 GuiMove.mc.player.rotationPitch -= 5.0f;
             }
-            if (Keyboard.isKeyDown((int)208) && GuiMove.mc.player.rotationPitch < 84.0f) {
+            if (Keyboard.isKeyDown(208) && GuiMove.mc.player.rotationPitch < 84.0f) {
                 GuiMove.mc.player.rotationPitch += 5.0f;
             }
-            if (Keyboard.isKeyDown((int)205)) {
+            if (Keyboard.isKeyDown(205)) {
                 GuiMove.mc.player.rotationYaw += 5.0f;
             }
         }
@@ -93,19 +93,19 @@ extends Module {
     @Subscriber
     public void Method1837(Class644 class644) {
         block2: {
-            if (!((Boolean)this.Field2005.getValue()).booleanValue()) {
+            if (!this.Field2005.getValue().booleanValue()) {
                 return;
             }
             if (GuiMove.mc.player.isSneaking()) {
-                GuiMove.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)GuiMove.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+                GuiMove.mc.player.connection.sendPacket(new CPacketEntityAction(GuiMove.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
             if (!GuiMove.mc.player.isSprinting()) break block2;
-            GuiMove.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)GuiMove.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+            GuiMove.mc.player.connection.sendPacket(new CPacketEntityAction(GuiMove.mc.player, CPacketEntityAction.Action.START_SPRINTING));
         }
     }
 
     public GuiMove() {
-        super("GUIMove", "Lets you move around in GUIs", Category.PLAYER, new String[0]);
+        super("GUIMove", "Lets you move around in GUIs", Category.PLAYER);
         this.Field2007.add(GuiMove.mc.gameSettings.keyBindForward);
         this.Field2007.add(GuiMove.mc.gameSettings.keyBindBack);
         this.Field2007.add(GuiMove.mc.gameSettings.keyBindRight);

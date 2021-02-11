@@ -13,22 +13,22 @@ extends Module {
     @Subscriber
     public void Method1994(Class5 class5) {
         class5.Cancel();
-        if (((Boolean)Field2203.getValue()).booleanValue()) {
-            class5.Method89(((Float)Field2204.getValue()).floatValue());
+        if (Field2203.getValue().booleanValue()) {
+            class5.Method89(Field2204.getValue().floatValue());
         } else {
             class5.Method89(4.0);
         }
     }
 
     public Class491() {
-        super("CameraClip", Category.RENDER, new String[0]);
+        super("CameraClip", Category.RENDER);
     }
 
     @Subscriber
     public void Method1995(Class3 class3) {
         block0: {
-            if (!((Boolean)Field2203.getValue()).booleanValue()) break block0;
-            class3.Method89(((Float)Field2204.getValue()).floatValue());
+            if (!Field2203.getValue().booleanValue()) break block0;
+            class3.Method89(Field2204.getValue().floatValue());
             class3.Cancel();
         }
     }

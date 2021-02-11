@@ -22,7 +22,7 @@ extends Enum {
     }
 
     public static Class403[] Method1206() {
-        return (Class403[])Field1225.clone();
+        return Field1225.clone();
     }
 
     public static Class403 Method1207(String string) {

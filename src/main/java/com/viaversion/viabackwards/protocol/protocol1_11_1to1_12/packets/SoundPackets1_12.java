@@ -14,7 +14,7 @@ public class SoundPackets1_12 extends LegacySoundRewriter {
    }
 
    protected void registerPackets() {
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.NAMED_SOUND, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.NAMED_SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.STRING);
             this.map(Type.VAR_INT);
@@ -25,7 +25,7 @@ public class SoundPackets1_12 extends LegacySoundRewriter {
             this.map(Type.FLOAT);
          }
       });
-      ((Protocol1_11_1To1_12)this.protocol).registerClientbound(ClientboundPackets1_12.SOUND, new PacketRemapper() {
+      this.protocol.registerClientbound(ClientboundPackets1_12.SOUND, new PacketRemapper() {
          public void registerMap() {
             this.map(Type.VAR_INT);
             this.map(Type.VAR_INT);

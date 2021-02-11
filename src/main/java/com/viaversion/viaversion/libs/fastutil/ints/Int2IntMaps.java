@@ -29,7 +29,7 @@ public final class Int2IntMaps {
 
    public static ObjectIterable fastIterable(Int2IntMap map) {
       ObjectSet entries = map.int2IntEntrySet();
-      return (ObjectIterable)(entries instanceof Int2IntMap.FastEntrySet ? new 1(entries) : entries);
+      return (ObjectIterable)(entries instanceof Int2IntMap.FastEntrySet ? new 1(entries) : entries)
    }
 
    public static Int2IntMap singleton(int key, int value) {

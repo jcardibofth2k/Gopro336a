@@ -24,18 +24,18 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block7: {
-            if (((Boolean) pitchTrigger.getValue()).booleanValue() && Anchor.mc.player.rotationPitch < (float)((Integer) pitch.getValue()).intValue()) {
+            if (pitchTrigger.getValue().booleanValue() && Anchor.mc.player.rotationPitch < (float) pitch.getValue().intValue()) {
                 return;
             }
-            BlockPos blockPos = new BlockPos((Entity) Anchor.mc.player);
+            BlockPos blockPos = new BlockPos(Anchor.mc.player);
             if (this.Method512(blockPos)) {
                 this.Field1260.Method739();
-                if (((Boolean) turnOffAfter.getValue()).booleanValue()) {
+                if (turnOffAfter.getValue().booleanValue()) {
                     this.toggle();
                 }
             }
             boolean bl = false;
-            for (int i = 1; i < (Integer) vRange.getValue(); ++i) {
+            for (int i = 1; i < vRange.getValue(); ++i) {
                 if (!this.Method512(blockPos.down(i))) continue;
                 bl = true;
                 break;
@@ -46,7 +46,7 @@ extends Module {
             double d3 = Math.abs(Anchor.mc.player.posX - d);
             double d4 = Math.abs(Anchor.mc.player.posZ - d2);
             if (d3 < (double)0.3f || d3 > (double)0.7f || d4 < (double)0.3f || d4 > (double)0.7f) {
-                if (((Boolean) center.getValue()).booleanValue()) {
+                if (center.getValue().booleanValue()) {
                     Anchor.mc.player.setPosition((double)blockPos.getX() + 0.5, Anchor.mc.player.posY, (double)blockPos.getZ() + 0.5);
                 } else {
                     return;
@@ -65,6 +65,6 @@ extends Module {
     }
 
     public Anchor() {
-        super("Anchor", Category.MOVEMENT, new String[0]);
+        super("Anchor", Category.MOVEMENT);
     }
 }

@@ -48,7 +48,7 @@ public class EntityPackets {
                            return null;
                         }
 
-                        passengerPacket.write(Type.VAR_INT, (Integer)tracker.getVehicleMap().remove(passenger));
+                        passengerPacket.write(Type.VAR_INT, tracker.getVehicleMap().remove(passenger));
                         passengerPacket.write(Type.VAR_INT_ARRAY_PRIMITIVE, new int[0]);
                      } else {
                         passengerPacket.write(Type.VAR_INT, vehicle);
@@ -201,7 +201,7 @@ public class EntityPackets {
                   if ((Integer)wrapper.get(Type.VAR_INT, 0) == 2) {
                      wrapper.passthrough(Type.VAR_INT);
                      wrapper.passthrough(Type.INT);
-                     Protocol1_9To1_8.FIX_JSON.write(wrapper, (String)wrapper.read(Type.STRING));
+                     Protocol1_9To1_8.FIX_JSON.write(wrapper, wrapper.read(Type.STRING));
                   }
 
                }
@@ -226,7 +226,7 @@ public class EntityPackets {
                            List modifiers = new ArrayList(modifiersToRead);
 
                            for(int j = 0; j < modifiersToRead; ++j) {
-                              modifiers.add(new Triple((UUID)wrapper.read(Type.UUID), (Double)wrapper.read(Type.DOUBLE), (Byte)wrapper.read(Type.BYTE)));
+                              modifiers.add(new Triple(wrapper.read(Type.UUID), wrapper.read(Type.DOUBLE), wrapper.read(Type.BYTE)));
                            }
 
                            properties.put(key, new Pair(value, modifiers));
@@ -238,16 +238,16 @@ public class EntityPackets {
 
                         while(var11.hasNext()) {
                            Entry entry = (Entry)var11.next();
-                           wrapper.write(Type.STRING, (String)entry.getKey());
-                           wrapper.write(Type.DOUBLE, (Double)((Pair)entry.getValue()).getKey());
+                           wrapper.write(Type.STRING, entry.getKey());
+                           wrapper.write(Type.DOUBLE, ((Pair)entry.getValue()).getKey());
                            wrapper.write(Type.VAR_INT, ((List)((Pair)entry.getValue()).getValue()).size());
                            Iterator var13 = ((List)((Pair)entry.getValue()).getValue()).iterator();
 
                            while(var13.hasNext()) {
                               Triple modifier = (Triple)var13.next();
-                              wrapper.write(Type.UUID, (UUID)modifier.getFirst());
-                              wrapper.write(Type.DOUBLE, (Double)modifier.getSecond());
-                              wrapper.write(Type.BYTE, (Byte)modifier.getThird());
+                              wrapper.write(Type.UUID, modifier.getFirst());
+                              wrapper.write(Type.DOUBLE, modifier.getSecond());
+                              wrapper.write(Type.BYTE, modifier.getThird());
                            }
                         }
 

@@ -35,7 +35,7 @@ extends Module {
             ItemStack itemStack = Class285.mc.player.inventory.getStackInSlot(i);
             if (itemStack.isEmpty() || !(itemStack.getItem() instanceof ItemBlock) || (itemBlock = (ItemBlock)itemStack.getItem()).getBlock() != Blocks.ENDER_CHEST) continue;
             Class285.mc.player.inventory.currentItem = i;
-            Class285.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(i));
+            Class285.mc.player.connection.sendPacket(new CPacketHeldItemChange(i));
             return true;
         }
         return false;
@@ -47,7 +47,7 @@ extends Module {
         if (updateEvent.isCanceled() || !Class496.Method1966()) {
             return;
         }
-        BlockPos blockPos = AutoCrystal.Method1578(new BlockPos((Entity)Class285.mc.player), ((Integer)Field1728.getValue()).intValue(), (Integer)Field1728.getValue(), false, true, 0).stream().filter(Class285::Method512).min(Comparator.comparing(Class285::Method1653)).orElse(null);
+        BlockPos blockPos = AutoCrystal.Method1578(new BlockPos(Class285.mc.player), Field1728.getValue().intValue(), Field1728.getValue(), false, true, 0).stream().filter(Class285::Method512).min(Comparator.comparing(Class285::Method1653)).orElse(null);
         if (blockPos != null) {
             if (this.Field1730.Method737(4000.0)) {
                 boolean bl;
@@ -58,7 +58,7 @@ extends Module {
                         if (itemStack.isEmpty() || itemStack.getItem() != Items.DIAMOND_PICKAXE) continue;
                         bl = true;
                         Class285.mc.player.inventory.currentItem = i;
-                        Class285.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(i));
+                        Class285.mc.player.connection.sendPacket(new CPacketHeldItemChange(i));
                         break;
                     }
                 }
@@ -68,17 +68,17 @@ extends Module {
                 EnumFacing enumFacing = Class285.mc.player.getHorizontalFacing().getOpposite();
                 NewGui.INSTANCE.Field1139.Method1942(new Vec3d((double)blockPos.getX() + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5));
                 Class285.mc.player.swingArm(EnumHand.MAIN_HAND);
-                Class285.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, enumFacing));
-                Class285.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, enumFacing));
+                Class285.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, enumFacing));
+                Class285.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, enumFacing));
                 this.Field1730.Method739();
             }
         } else if (this.Field1729.Method737(350.0)) {
             Object object;
             this.Field1729.Method739();
-            if (Class285.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? (object = (ItemBlock)Class285.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
+            if (Class285.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? (object = Class285.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
                 return;
             }
-            for (BlockPos blockPos2 : AutoCrystal.Method1578(new BlockPos((Entity)Class285.mc.player), ((Integer)Field1728.getValue()).intValue(), (Integer)Field1728.getValue(), false, true, 0)) {
+            for (BlockPos blockPos2 : AutoCrystal.Method1578(new BlockPos(Class285.mc.player), Field1728.getValue().intValue(), Field1728.getValue(), false, true, 0)) {
                 Class490 class490 = Class496.Method1962(blockPos2, true);
                 if (class490 == null) continue;
                 this.Field1731 = class490;
@@ -97,7 +97,7 @@ extends Module {
     }
 
     public Class285() {
-        super("AutoObsidian", "Automatically placed EChests and mines them", Category.MISC, new String[0]);
+        super("AutoObsidian", "Automatically placed EChests and mines them", Category.MISC);
     }
 
     @Subscriber(priority=5)

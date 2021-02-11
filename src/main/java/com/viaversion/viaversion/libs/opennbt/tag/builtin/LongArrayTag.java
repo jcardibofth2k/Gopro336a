@@ -78,7 +78,7 @@ public class LongArrayTag extends Tag {
    }
 
    public final LongArrayTag clone() {
-      return new LongArrayTag((long[])this.value.clone());
+      return new LongArrayTag(this.value.clone());
    }
 
    public int getTagId() {

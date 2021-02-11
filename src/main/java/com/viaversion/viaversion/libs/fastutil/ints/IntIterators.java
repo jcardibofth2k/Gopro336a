@@ -162,11 +162,11 @@ public final class IntIterators {
    }
 
    public static IntIterator asIntIterator(Iterator i) {
-      return (IntIterator)(i instanceof IntIterator ? (IntIterator)i : new IntIterators.IteratorWrapper(i));
+      return i instanceof IntIterator ? (IntIterator)i : new IteratorWrapper(i);
    }
 
    public static IntListIterator asIntIterator(ListIterator i) {
-      return (IntListIterator)(i instanceof IntListIterator ? (IntListIterator)i : new IntIterators.ListIteratorWrapper(i));
+      return i instanceof IntListIterator ? (IntListIterator)i : new ListIteratorWrapper(i);
    }
 
    public static boolean any(IntIterator iterator, IntPredicate predicate) {

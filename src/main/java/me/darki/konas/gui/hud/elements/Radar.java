@@ -33,12 +33,12 @@ extends Element {
             int n3 = (int)((double)this.Method2329() * 0.425);
             int n4 = (int)((float)n + this.Method2329() / 2.0f);
             int n5 = (int)((float)n2 + this.Method2322() / 2.0f);
-            RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), ((ColorValue)this.Field2648.getValue()).Method774());
-            RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 1.0f, ((ColorValue)this.Field2649.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.Field2648.getValue().Method774());
+            RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 1.0f, this.Field2649.getValue().Method774());
             GL11.glPushMatrix();
-            GL11.glDisable((int)3553);
-            GL11.glBlendFunc((int)770, (int)771);
-            GL11.glEnable((int)3042);
+            GL11.glDisable(3553);
+            GL11.glBlendFunc(770, 771);
+            GL11.glEnable(3042);
             Object[][] objectArrayArray = Radar.mc.world.loadedEntityList.iterator();
             while (objectArrayArray.hasNext()) {
                 double d;
@@ -49,47 +49,47 @@ extends Element {
                 GL11.glPushMatrix();
                 double d4 = Radar.mc.player.posX - objectArrayArray2.posX + (double)n + (double)(this.Method2329() / 2.0f);
                 double d5 = Radar.mc.player.posZ - objectArrayArray2.posZ + (double)n2 + (double)(this.Method2329() / 2.0f);
-                GL11.glTranslated((double)n4, (double)n5, (double)0.0);
-                GL11.glRotatef((float)(this.rotate.getValue() != arrowType.ARROW ? -Radar.mc.player.rotationYaw : -180.0f), (float)0.0f, (float)0.0f, (float)1.0f);
-                GL11.glTranslated((double)(-n4), (double)(-n5), (double)0.0);
+                GL11.glTranslated(n4, n5, 0.0);
+                GL11.glRotatef(this.rotate.getValue() != arrowType.ARROW ? -Radar.mc.player.rotationYaw : -180.0f, 0.0f, 0.0f, 1.0f);
+                GL11.glTranslated(-n4, -n5, 0.0);
                 double d6 = 12.0;
-                GL11.glTranslated((double)d4, (double)d5, (double)0.0);
-                GL11.glRotatef((float)((this.rotate.getValue() != arrowType.ARROW ? Radar.mc.player.rotationYaw + 180.0f : 0.0f) + 180.0f), (float)0.0f, (float)0.0f, (float)1.0f);
-                GL11.glTranslated((double)(-d4), (double)(-d5), (double)0.0);
+                GL11.glTranslated(d4, d5, 0.0);
+                GL11.glRotatef((this.rotate.getValue() != arrowType.ARROW ? Radar.mc.player.rotationYaw + 180.0f : 0.0f) + 180.0f, 0.0f, 0.0f, 1.0f);
+                GL11.glTranslated(-d4, -d5, 0.0);
                 if (objectArrayArray2 instanceof EntityPlayer) {
                     if (Class492.Method1989(objectArrayArray2.getName())) {
-                        GL11.glColor4f((float)0.3f, (float)1.0f, (float)0.3f, (float)1.0f);
+                        GL11.glColor4f(0.3f, 1.0f, 0.3f, 1.0f);
                     } else {
-                        GL11.glColor4f((float)1.0f, (float)0.3f, (float)0.3f, (float)1.0f);
+                        GL11.glColor4f(1.0f, 0.3f, 0.3f, 1.0f);
                     }
                 } else if (objectArrayArray2 instanceof EntityMob) {
-                    GL11.glColor4f((float)1.0f, (float)0.5f, (float)0.5f, (float)1.0f);
+                    GL11.glColor4f(1.0f, 0.5f, 0.5f, 1.0f);
                 } else if (objectArrayArray2 instanceof EntityAnimal) {
-                    GL11.glColor4f((float)0.5f, (float)1.0f, (float)0.5f, (float)1.0f);
+                    GL11.glColor4f(0.5f, 1.0f, 0.5f, 1.0f);
                 } else {
-                    GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)0.0f);
+                    GL11.glColor4f(1.0f, 1.0f, 1.0f, 0.0f);
                 }
-                GL11.glBegin((int)9);
-                GL11.glVertex2d((double)d4, (double)(d5 + (double)((Double)this.size.getValue()).floatValue()));
-                GL11.glVertex2d((double)(d4 + (double)((Double)this.size.getValue()).floatValue()), (double)d5);
-                GL11.glVertex2d((double)d4, (double)(d5 - (double)((Double)this.size.getValue()).floatValue()));
-                GL11.glVertex2d((double)(d4 - (double)((Double)this.size.getValue()).floatValue()), (double)d5);
+                GL11.glBegin(9);
+                GL11.glVertex2d(d4, d5 + (double) this.size.getValue().floatValue());
+                GL11.glVertex2d(d4 + (double) this.size.getValue().floatValue(), d5);
+                GL11.glVertex2d(d4, d5 - (double) this.size.getValue().floatValue());
+                GL11.glVertex2d(d4 - (double) this.size.getValue().floatValue(), d5);
                 GL11.glEnd();
                 GL11.glPopMatrix();
             }
-            GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+            GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
             GL11.glPushMatrix();
-            GL11.glTranslatef((float)n4, (float)n5, (float)0.0f);
-            GL11.glRotatef((float)(this.rotate.getValue() == arrowType.ARROW ? Radar.mc.player.rotationYaw : 180.0f), (float)0.0f, (float)0.0f, (float)1.0f);
-            GL11.glTranslatef((float)(-n4), (float)(-n5), (float)0.0f);
-            GL11.glBegin((int)9);
-            GL11.glVertex2d((double)n4, (double)(n5 + 3));
-            GL11.glVertex2d((double)((double)n4 + 1.5), (double)(n5 - 3));
-            GL11.glVertex2d((double)((double)n4 - 1.5), (double)(n5 - 3));
+            GL11.glTranslatef((float)n4, (float)n5, 0.0f);
+            GL11.glRotatef(this.rotate.getValue() == arrowType.ARROW ? Radar.mc.player.rotationYaw : 180.0f, 0.0f, 0.0f, 1.0f);
+            GL11.glTranslatef((float)(-n4), (float)(-n5), 0.0f);
+            GL11.glBegin(9);
+            GL11.glVertex2d(n4, n5 + 3);
+            GL11.glVertex2d((double)n4 + 1.5, n5 - 3);
+            GL11.glVertex2d((double)n4 - 1.5, n5 - 3);
             GL11.glEnd();
             GL11.glPopMatrix();
             GL11.glPushMatrix();
-            GL11.glEnable((int)3553);
+            GL11.glEnable(3553);
             for (Object[] objectArray : objectArrayArray = new Object[][]{{"N", -90.0}, {"S", 90.0}, {"E", 0.0}, {"W", 180.0}}) {
                 if (objectArray.length < 2) {
                     return;
@@ -104,15 +104,15 @@ extends Element {
                 Radar.mc.fontRenderer.drawStringWithShadow(string, (float)((double)n4 + (double)n3 * Math.cos(Math.toRadians(d))) - (float)(Radar.mc.fontRenderer.getStringWidth(string) / 2), (float)((double)n5 + (double)n3 * Math.sin(Math.toRadians(d))) - (float)(Radar.mc.fontRenderer.FONT_HEIGHT / 2), -1);
             }
             GL11.glPopMatrix();
-            GL11.glDisable((int)3042);
+            GL11.glDisable(3042);
             GL11.glPopMatrix();
         }
     }
 
     public Radar() {
         super("Radar", 2.0f, 100.0f, 100.0f, 100.0f);
-        ((ColorValue)this.Field2648.getValue()).Method771(new Color(31, 31, 31, 170).hashCode());
-        ((ColorValue)this.Field2649.getValue()).Method771(new Color(255, 85, 255, 255).hashCode());
+        this.Field2648.getValue().Method771(new Color(31, 31, 31, 170).hashCode());
+        this.Field2649.getValue().Method771(new Color(255, 85, 255, 255).hashCode());
     }
 
     public boolean shouldRender(Object object) {
@@ -123,21 +123,17 @@ extends Element {
         if (entity == Radar.mc.player) {
             return false;
         }
-        if (entity.isInvisible() && !((Boolean)this.invisibles.getValue()).booleanValue()) {
+        if (entity.isInvisible() && !this.invisibles.getValue().booleanValue()) {
             return false;
         }
         if (object instanceof EntityPlayer) {
-            if (((Boolean)this.players.getValue()).booleanValue()) {
+            if (this.players.getValue().booleanValue()) {
                 EntityPlayer entityPlayer = (EntityPlayer)object;
                 return true;
             }
         } else if (object instanceof EntityMob) {
-            if (((Boolean)this.mobs.getValue()).booleanValue()) {
-                return true;
-            }
-        } else if (object instanceof EntityAnimal && ((Boolean)this.animals.getValue()).booleanValue()) {
-            return true;
-        }
+            return this.mobs.getValue().booleanValue();
+        } else return object instanceof EntityAnimal && this.animals.getValue().booleanValue();
         return false;
     }
 }

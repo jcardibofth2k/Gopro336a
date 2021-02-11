@@ -57,7 +57,7 @@ public class PlayerPackets {
                public void handle(PacketWrapper wrapper) throws Exception {
                   int action = (Integer)wrapper.get(Type.VAR_INT, 0);
                   if (action == 0 || action == 1) {
-                     Protocol1_9To1_8.FIX_JSON.write(wrapper, (String)wrapper.read(Type.STRING));
+                     Protocol1_9To1_8.FIX_JSON.write(wrapper, wrapper.read(Type.STRING));
                   }
 
                }
@@ -197,7 +197,7 @@ public class PlayerPackets {
                            if (action == 3) {
                               boolean hasDisplayName = (Boolean)wrapper.passthrough(Type.BOOLEAN);
                               if (hasDisplayName) {
-                                 Protocol1_9To1_8.FIX_JSON.write(wrapper, (String)wrapper.read(Type.STRING));
+                                 Protocol1_9To1_8.FIX_JSON.write(wrapper, wrapper.read(Type.STRING));
                               }
                            } else if (action == 4) {
                            }
@@ -221,7 +221,7 @@ public class PlayerPackets {
                         wrapper.passthrough(Type.VAR_INT);
                         boolean hasDisplayNamex = (Boolean)wrapper.passthrough(Type.BOOLEAN);
                         if (hasDisplayNamex) {
-                           Protocol1_9To1_8.FIX_JSON.write(wrapper, (String)wrapper.read(Type.STRING));
+                           Protocol1_9To1_8.FIX_JSON.write(wrapper, wrapper.read(Type.STRING));
                         }
                      }
                   }
@@ -402,7 +402,7 @@ public class PlayerPackets {
                      EntityTracker1_9 tracker = (EntityTracker1_9)wrapper.user().getEntityTracker(Protocol1_9To1_8.class);
                      if (tracker.isBlocking()) {
                         if (!Via.getConfig().isShowShieldWhenSwordInHand()) {
-                           tracker.setSecondHand((Item)null);
+                           tracker.setSecondHand(null);
                         }
 
                         tracker.setBlocking(false);

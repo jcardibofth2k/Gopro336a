@@ -29,7 +29,7 @@ extends GuiScreen {
     public void Method22(GuiButton button, CallbackInfo ci) {
         if (button.id == 8) {
             NewGui.INSTANCE.Field1132.Method1660(this);
-            Minecraft.getMinecraft().displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+            Minecraft.getMinecraft().displayGuiScreen(NewGui.INSTANCE.Field1132);
         } else if (button.id == 69420 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(new URI("https://discord.gg/gpVZ4Y6cpq"));
@@ -42,15 +42,15 @@ extends GuiScreen {
 
     @Inject(method={"addSingleplayerMultiplayerButtons"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method23(int p_73969_1_, int p_73969_2_, CallbackInfo ci) {
-        IGuiScreen screen = (IGuiScreen)((Object)this);
+        IGuiScreen screen = (IGuiScreen) this;
         List<GuiButton> buttonList = screen.Method2086();
-        buttonList.add(new GuiButton(1, ((GuiScreen)this).width / 2 - 100, p_73969_1_, 98, 20, I18n.format((String)"menu.singleplayer", (Object[])new Object[0])));
-        buttonList.add(new GuiButton(69420, ((GuiScreen)this).width / 2 + 2, p_73969_1_, 98, 20, "Discord"));
-        buttonList.add(new GuiButton(2, ((GuiScreen)this).width / 2 - 100, p_73969_1_ + p_73969_2_, 98, 20, I18n.format((String)"menu.multiplayer", (Object[])new Object[0])));
-        buttonList.add(new GuiButton(8, ((GuiScreen)this).width / 2 + 2, p_73969_1_ + p_73969_2_, 98, 20, "Alt Manager"));
-        this.Field13 = new GuiButton(14, ((GuiScreen)this).width / 2 + 2, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format((String)"menu.online", (Object[])new Object[0]).replace("Minecraft", "").trim());
+        buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_, 98, 20, I18n.format("menu.singleplayer")));
+        buttonList.add(new GuiButton(69420, this.width / 2 + 2, p_73969_1_, 98, 20, "Discord"));
+        buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_, 98, 20, I18n.format("menu.multiplayer")));
+        buttonList.add(new GuiButton(8, this.width / 2 + 2, p_73969_1_ + p_73969_2_, 98, 20, "Alt Manager"));
+        this.Field13 = new GuiButton(14, this.width / 2 + 2, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format("menu.online").replace("Minecraft", "").trim());
         buttonList.add(this.Field13);
-        this.Field14 = new GuiButton(6, ((GuiScreen)this).width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format((String)"fml.menu.mods", (Object[])new Object[0]));
+        this.Field14 = new GuiButton(6, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format("fml.menu.mods"));
         buttonList.add(this.Field14);
         screen.Method2085(buttonList);
         ci.cancel();

@@ -29,8 +29,8 @@ public class MathUtil {
         double d = vec3d2.x - vec3d.x;
         double d2 = (vec3d2.y - vec3d.y) * -1.0;
         double d3 = vec3d2.z - vec3d.z;
-        double d4 = MathHelper.sqrt((double)(d * d + d3 * d3));
-        return new float[]{(float)MathHelper.wrapDegrees((double)(Math.toDegrees(Math.atan2(d3, d)) - 90.0)), (float)MathHelper.wrapDegrees((double)Math.toDegrees(Math.atan2(d2, d4)))};
+        double d4 = MathHelper.sqrt(d * d + d3 * d3);
+        return new float[]{(float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(d3, d)) - 90.0), (float)MathHelper.wrapDegrees(Math.toDegrees(Math.atan2(d2, d4)))};
     }
 
     public static double[] Method1076(double d, EntityPlayerSP entityPlayerSP) {
@@ -80,9 +80,9 @@ public class MathUtil {
 
     public static void Method1081(Vec3d vec3d) {
         float[] fArray = MathUtil.Method1085(vec3d);
-        MathUtil.Field1066.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(fArray[0], (float)MathHelper.normalizeAngle((int)((int)fArray[1]), (int)360), MathUtil.Field1066.player.onGround));
+        MathUtil.Field1066.player.connection.sendPacket(new CPacketPlayer.Rotation(fArray[0], (float)MathHelper.normalizeAngle((int)fArray[1], 360), MathUtil.Field1066.player.onGround));
         ((IEntityPlayerSP) MathUtil.Field1066.player).Method237(fArray[0]);
-        ((IEntityPlayerSP) MathUtil.Field1066.player).Method239(MathHelper.normalizeAngle((int)((int)fArray[1]), (int)360));
+        ((IEntityPlayerSP) MathUtil.Field1066.player).Method239(MathHelper.normalizeAngle((int)fArray[1], 360));
     }
 
     public static double Method1082(float f) {
@@ -93,7 +93,7 @@ public class MathUtil {
         double d = Math.floor(MathUtil.Field1066.player.posX) + 0.5;
         double d2 = Math.floor(MathUtil.Field1066.player.posZ) + 0.5;
         MathUtil.Field1066.player.setPosition(d, MathUtil.Field1066.player.posY, d2);
-        MathUtil.Field1066.player.connection.sendPacket((Packet)new CPacketPlayer.Position(d, MathUtil.Field1066.player.posY, d2, MathUtil.Field1066.player.onGround));
+        MathUtil.Field1066.player.connection.sendPacket(new CPacketPlayer.Position(d, MathUtil.Field1066.player.posY, d2, MathUtil.Field1066.player.onGround));
     }
 
     public static boolean Method1084() {
@@ -103,7 +103,7 @@ public class MathUtil {
         }
         int n = 1;
         while ((double)n < MathUtil.Field1066.player.posY) {
-            BlockPos blockPos = new BlockPos(MathUtil.Field1066.player.posX, (double)n, MathUtil.Field1066.player.posZ);
+            BlockPos blockPos = new BlockPos(MathUtil.Field1066.player.posX, n, MathUtil.Field1066.player.posZ);
             if (!(MathUtil.Field1066.world.getBlockState(blockPos).getBlock() instanceof BlockAir)) {
                 bl = false;
                 break;
@@ -122,7 +122,7 @@ public class MathUtil {
         double d4 = Math.sqrt(d * d + d3 * d3);
         float f = (float)Math.toDegrees(Math.atan2(d3, d)) - 90.0f;
         float f2 = (float)(-Math.toDegrees(Math.atan2(d2, d4)));
-        float[] fArray = new float[]{MathUtil.Field1066.player.rotationYaw + MathHelper.wrapDegrees((float)(f - MathUtil.Field1066.player.rotationYaw)), MathUtil.Field1066.player.rotationPitch + MathHelper.wrapDegrees((float)(f2 - MathUtil.Field1066.player.rotationPitch))};
+        float[] fArray = new float[]{MathUtil.Field1066.player.rotationYaw + MathHelper.wrapDegrees(f - MathUtil.Field1066.player.rotationYaw), MathUtil.Field1066.player.rotationPitch + MathHelper.wrapDegrees(f2 - MathUtil.Field1066.player.rotationPitch)};
         return fArray;
     }
 
@@ -152,7 +152,7 @@ public class MathUtil {
 
     public static boolean Method1087(int n) {
         if (n != 0 && n < 256) {
-            return n < 0 ? Mouse.isButtonDown((int)(n + 100)) : Keyboard.isKeyDown((int)n);
+            return n < 0 ? Mouse.isButtonDown(n + 100) : Keyboard.isKeyDown(n);
         }
         return false;
     }
@@ -180,23 +180,23 @@ public class MathUtil {
         ESP.Field1339 = true;
         GlStateManager.pushMatrix();
         GlStateManager.enableDepth();
-        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f);
+        GlStateManager.color(1.0f, 1.0f, 1.0f);
         GlStateManager.enableColorMaterial();
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)n, (float)n2, (float)50.0f);
+        GlStateManager.translate((float)n, (float)n2, 50.0f);
         GlStateManager.scale((float)(-n3), (float)n3, (float)n3);
-        GlStateManager.rotate((float)180.0f, (float)0.0f, (float)0.0f, (float)1.0f);
+        GlStateManager.rotate(180.0f, 0.0f, 0.0f, 1.0f);
         float f3 = entityPlayer.renderYawOffset;
         float f4 = entityPlayer.rotationYaw;
         float f5 = entityPlayer.rotationPitch;
         float f6 = entityPlayer.prevRotationYawHead;
         float f7 = entityPlayer.rotationYawHead;
-        GlStateManager.rotate((float)135.0f, (float)0.0f, (float)1.0f, (float)0.0f);
+        GlStateManager.rotate(135.0f, 0.0f, 1.0f, 0.0f);
         RenderHelper.enableStandardItemLighting();
-        GlStateManager.rotate((float)-135.0f, (float)0.0f, (float)1.0f, (float)0.0f);
+        GlStateManager.rotate(-135.0f, 0.0f, 1.0f, 0.0f);
         f = bl ? entityPlayer.rotationYaw * -1.0f : f;
         f2 = bl2 ? entityPlayer.rotationPitch * -1.0f : f2;
-        GlStateManager.rotate((float)(-((float)Math.atan(f2 / 40.0f)) * 20.0f), (float)1.0f, (float)0.0f, (float)0.0f);
+        GlStateManager.rotate(-((float)Math.atan(f2 / 40.0f)) * 20.0f, 1.0f, 0.0f, 0.0f);
         if (!bl) {
             entityPlayer.renderYawOffset = (float)Math.atan(f / 40.0f) * 20.0f;
             entityPlayer.rotationYawHead = entityPlayer.rotationYaw = (float)Math.atan(f / 40.0f) * 40.0f;
@@ -205,11 +205,11 @@ public class MathUtil {
         if (!bl2) {
             entityPlayer.rotationPitch = -((float)Math.atan(f2 / 40.0f)) * 20.0f;
         }
-        GlStateManager.translate((float)0.0f, (float)0.0f, (float)0.0f);
+        GlStateManager.translate(0.0f, 0.0f, 0.0f);
         RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
         renderManager.setPlayerViewY(180.0f);
         renderManager.setRenderShadow(false);
-        renderManager.renderEntity((Entity)entityPlayer, 0.0, 0.0, 0.0, 0.0f, 1.0f, false);
+        renderManager.renderEntity(entityPlayer, 0.0, 0.0, 0.0, 0.0f, 1.0f, false);
         renderManager.setRenderShadow(true);
         if (!bl) {
             entityPlayer.renderYawOffset = f3;
@@ -223,9 +223,9 @@ public class MathUtil {
         GlStateManager.popMatrix();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
-        GlStateManager.setActiveTexture((int)OpenGlHelper.lightmapTexUnit);
+        GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
         GlStateManager.disableTexture2D();
-        GlStateManager.setActiveTexture((int)OpenGlHelper.defaultTexUnit);
+        GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
         GlStateManager.disableDepth();
         GlStateManager.popMatrix();
         ESP.Field1339 = false;

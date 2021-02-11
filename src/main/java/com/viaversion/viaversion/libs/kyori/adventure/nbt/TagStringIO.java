@@ -137,7 +137,7 @@ public final class TagStringIO {
 
       @NotNull
       public TagStringIO build() {
-         return new TagStringIO(this, (1)null);
+         return new TagStringIO(this, (1)null)
       }
    }
 }
