@@ -1,5 +1,7 @@
 package me.darki.konas;
 
+import me.darki.konas.unremaped.Class56;
+
 public class UpdateEvent
 extends Class56 {
     public static UpdateEvent Field161 = new UpdateEvent();

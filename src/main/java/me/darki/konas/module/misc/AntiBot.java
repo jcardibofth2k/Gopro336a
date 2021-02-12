@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.Class19;
+import me.darki.konas.unremaped.Class19;
 import me.darki.konas.module.Module;
 import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.client.network.NetworkPlayerInfo;

@@ -1,5 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.util.math.RoundingUtil;
@@ -54,7 +56,7 @@ extends Class183 {
                     block4: {
                         super.Method105(n, n2, f);
                         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), 0xFFFFFF);
-                        float f2 = MathHelper.floor((((Number)this.Method583().getValue()).floatValue() - ((Number)this.Method583().Method1187()).floatValue()) / (((Number)this.Method583().Method1182()).floatValue() - ((Number)this.Method583().Method1187()).floatValue()) * this.Method1479());
+                        float f2 = MathHelper.floor((float)((((Number)this.Method583().getValue()).floatValue() - ((Number)this.Method583().Method1187()).floatValue()) / (((Number)this.Method583().Method1182()).floatValue() - ((Number)this.Method583().Method1187()).floatValue()) * this.Method1479()));
                         if (f2 < 0.0f) {
                             this.Method583().setValue(this.Method583().Method1187());
                             this.Method104(false);
@@ -62,14 +64,14 @@ extends Class183 {
                             this.Method583().setValue(this.Method583().Method1182());
                             this.Method104(false);
                         }
-                        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ClickGUIModule.color.getValue().Method774());
-                        int n3 = this.Method648() ? ClickGUIModule.color.getValue().Method775().brighter().getRGB() : ClickGUIModule.color.getValue().Method775().darker().getRGB();
+                        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+                        int n3 = this.Method648() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().getRGB() : ((ColorValue) ClickGUIModule.color.getValue()).Method775().darker().getRGB();
                         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), f2, this.Method1481(), n3);
-                        Class548.Method1016(this.Method1480() + ": " + this.Method583().getValue(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480() + ": " + this.Method583().getValue()) / 2.0f - 0.5f), ClickGUIModule.fony.getValue().Method774());
+                        Class548.Method1016(this.Method1480() + ": " + this.Method583().getValue(), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480() + ": " + this.Method583().getValue()) / 2.0f - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
                         if (!this.Field593) break block3;
                         if (!(this.Method583().getValue() instanceof Float)) break block4;
                         float f3 = ((float)n - this.Method1475()) * (((Number)this.Method583().Method1182()).floatValue() - ((Number)this.Method583().Method1187()).floatValue()) / this.Method1479() + ((Number)this.Method583().Method1187()).floatValue();
-                        this.Method583().setValue(Float.valueOf(MathHelper.clamp(RoundingUtil.Method1998(RoundingUtil.Method1999(f3, ((Float)this.Method583().Method1176()).floatValue()), 2), ((Float)this.Method583().Method1187()).floatValue(), ((Float)this.Method583().Method1182()).floatValue())));
+                        this.Method583().setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f3, ((Float)this.Method583().Method1176()).floatValue()), 2), (float)((Float)this.Method583().Method1187()).floatValue(), (float)((Float)this.Method583().Method1182()).floatValue())));
                         break block3;
                     }
                     if (!(this.Method583().getValue() instanceof Integer)) break block5;
@@ -79,7 +81,7 @@ extends Class183 {
                 }
                 if (!(this.Method583().getValue() instanceof Double)) break block6;
                 double d = (double)((float)n - this.Method1475()) * (((Number)this.Method583().Method1182()).doubleValue() - ((Number)this.Method583().Method1187()).doubleValue()) / (double)this.Method1479() + ((Number)this.Method583().Method1187()).doubleValue();
-                this.Method583().setValue(MathHelper.clamp(RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double)this.Method583().Method1176()), 2), (Double)this.Method583().Method1187(), (Double)this.Method583().Method1182()));
+                this.Method583().setValue(MathHelper.clamp((double)RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double)this.Method583().Method1176()), 2), (double)((Double)this.Method583().Method1187()), (double)((Double)this.Method583().Method1182())));
                 break block3;
             }
             if (!(this.Method583().getValue() instanceof Long)) break block3;

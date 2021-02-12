@@ -1,16 +1,15 @@
 package me.darki.konas.command;
 
 import java.util.ConcurrentModificationException;
-import me.darki.konas.Class191;
-import me.darki.konas.Class532;
-import me.darki.konas.Class533;
-import me.darki.konas.Class538;
-import me.darki.konas.Class539;
-import me.darki.konas.Class54;
+import me.darki.konas.unremaped.Class191;
+import me.darki.konas.unremaped.Class532;
+import me.darki.konas.unremaped.Class533;
+import me.darki.konas.unremaped.Class538;
+import me.darki.konas.unremaped.Class539;
+import me.darki.konas.unremaped.Class54;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiNewChat;
-import net.minecraft.util.text.ITextComponent;
 
 @Deprecated
 public class Logger {

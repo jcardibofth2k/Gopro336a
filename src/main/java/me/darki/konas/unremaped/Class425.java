@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import cookiedragon.eventsystem.Subscriber;
@@ -8,6 +8,9 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.IdkWhatThisSettingThingDoes;
+import me.darki.konas.ParentSetting;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.module.Category;
@@ -87,30 +90,30 @@ extends Module {
 
     public void Method949(EntityPlayer entityPlayer, ItemStack itemStack, double d, double d2) {
         GL11.glPushMatrix();
-        GL11.glDepthMask(true);
-        GlStateManager.clear(256);
+        GL11.glDepthMask((boolean)true);
+        GlStateManager.clear((int)256);
         GlStateManager.disableDepth();
         GlStateManager.enableDepth();
         RenderHelper.enableStandardItemLighting();
         Class425.mc.getRenderItem().zLevel = -100.0f;
-        GlStateManager.scale(3.0, 3.0, 0.01f);
+        GlStateManager.scale((double)3.0, (double)3.0, (double)0.01f);
         mc.getRenderItem().renderItemAndEffectIntoGUI(itemStack, (int)(d / 3.0), (int)(d2 / 3.0));
         this.Method956(itemStack, d / 3.0, d2 / 3.0);
         Class425.mc.getRenderItem().zLevel = 0.0f;
-        GlStateManager.scale(1.0f, 1.0f, 1.0f);
+        GlStateManager.scale((float)1.0f, (float)1.0f, (float)1.0f);
         RenderHelper.disableStandardItemLighting();
         GlStateManager.enableAlpha();
         GlStateManager.disableBlend();
         GlStateManager.disableLighting();
         GlStateManager.enableDepth();
-        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
         GL11.glPopMatrix();
     }
 
     @Subscriber
     public void Method950(Class139 class139) {
         block0: {
-            if (!this.Method384(class139.Method1894())) break block0;
+            if (!this.Method384((Entity)class139.Method1894())) break block0;
             class139.setCanceled(true);
         }
     }
@@ -120,15 +123,15 @@ extends Module {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GlStateManager.shadeModel(7425);
+        GlStateManager.tryBlendFuncSeparate((int)770, (int)771, (int)1, (int)0);
+        GlStateManager.shadeModel((int)7425);
         bufferBuilder.begin(bl ? 2 : 7, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos(f, f4, 0.0).color((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f).endVertex();
-        bufferBuilder.pos(f3, f4, 0.0).color((float)class4402.Method769() / 255.0f, (float)class4402.Method770() / 255.0f, (float)class4402.Method779() / 255.0f, (float)class4402.Method782() / 255.0f).endVertex();
-        bufferBuilder.pos(f3, f2, 0.0).color((float)class4403.Method769() / 255.0f, (float)class4403.Method770() / 255.0f, (float)class4403.Method779() / 255.0f, (float)class4403.Method782() / 255.0f).endVertex();
-        bufferBuilder.pos(f, f2, 0.0).color((float)class4404.Method769() / 255.0f, (float)class4404.Method770() / 255.0f, (float)class4404.Method779() / 255.0f, (float)class4404.Method782() / 255.0f).endVertex();
+        bufferBuilder.pos((double)f, (double)f4, 0.0).color((float) colorValue.Method769() / 255.0f, (float) colorValue.Method770() / 255.0f, (float) colorValue.Method779() / 255.0f, (float) colorValue.Method782() / 255.0f).endVertex();
+        bufferBuilder.pos((double)f3, (double)f4, 0.0).color((float)class4402.Method769() / 255.0f, (float)class4402.Method770() / 255.0f, (float)class4402.Method779() / 255.0f, (float)class4402.Method782() / 255.0f).endVertex();
+        bufferBuilder.pos((double)f3, (double)f2, 0.0).color((float)class4403.Method769() / 255.0f, (float)class4403.Method770() / 255.0f, (float)class4403.Method779() / 255.0f, (float)class4403.Method782() / 255.0f).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, 0.0).color((float)class4404.Method769() / 255.0f, (float)class4404.Method770() / 255.0f, (float)class4404.Method779() / 255.0f, (float)class4404.Method782() / 255.0f).endVertex();
         tessellator.draw();
-        GlStateManager.shadeModel(7424);
+        GlStateManager.shadeModel((int)7424);
         GlStateManager.disableBlend();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
@@ -143,12 +146,12 @@ extends Module {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+        GlStateManager.tryBlendFuncSeparate((int)770, (int)771, (int)1, (int)0);
         bufferBuilder.begin(bl ? 2 : 7, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos(f, f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f3, f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f3, f2, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f, f2, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f3, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f3, (double)f2, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, 0.0).color(f6, f7, f8, f5).endVertex();
         tessellator.draw();
         GlStateManager.disableBlend();
         GlStateManager.enableTexture2D();
@@ -156,40 +159,40 @@ extends Module {
     }
 
     public static boolean Method386(Entity entity) {
-        return Field943.getValue() == false || Field956.isBoundingBoxInFrustum(entity.getEntityBoundingBox().grow(2.0));
+        return (Boolean)Field943.getValue() == false || Field956.isBoundingBoxInFrustum(entity.getEntityBoundingBox().grow(2.0));
     }
 
     public void Method953(String string, Vec3d vec3d, Vec3d vec3d2, Vec3d vec3d3) {
         GL11.glPushMatrix();
-        double d = MathHelper.clamp(vec3d2.distanceTo(vec3d3), 0.0, Field947.getValue() * 10.0) * 0.2;
-        d = 1.0 / (d * Field946.getValue() + 1.0);
-        double d2 = Field945.getValue() * d;
+        double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
+        d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
+        double d2 = (Double)Field945.getValue() * d;
         if (Field954.getValue() != Class427.HIGHRES) {
             d2 *= 3.0;
         }
-        GL11.glTranslated(vec3d.x, vec3d.y, 0.0);
-        GL11.glScaled(d2, d2, 1.0);
+        GL11.glTranslated((double)vec3d.x, (double)vec3d.y, (double)0.0);
+        GL11.glScaled((double)d2, (double)d2, (double)1.0);
         float f = Class551.Method877(string);
         float f2 = Class551.Method882(string);
-        if (Field924.getValue().booleanValue()) {
-            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, Field928.getValue(), Field929.getValue(), Field930.getValue(), Field931.getValue(), false);
+        if (((Boolean)Field924.getValue()).booleanValue()) {
+            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)Field928.getValue(), (ColorValue)Field929.getValue(), (ColorValue)Field930.getValue(), (ColorValue)Field931.getValue(), false);
         }
-        if (Field925.getValue().booleanValue()) {
-            GL11.glLineWidth(Field926.getValue().floatValue());
-            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, Field932.getValue(), Field933.getValue(), Field934.getValue(), Field935.getValue(), true);
+        if (((Boolean)Field925.getValue()).booleanValue()) {
+            GL11.glLineWidth((float)((Float)Field926.getValue()).floatValue());
+            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)Field932.getValue(), (ColorValue)Field933.getValue(), (ColorValue)Field934.getValue(), (ColorValue)Field935.getValue(), true);
         }
         Class551.Method878(string, -(f / 2.0f), -f2, -1);
         GL11.glPopMatrix();
     }
 
     public void Method954(Vec3d vec3d, Entity entity) {
-        Vec3d vec3d2 = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.height + Field951.getValue(), 0.0);
+        Vec3d vec3d2 = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.height + (Double)Field951.getValue(), 0.0);
         Vec3d vec3d3 = NewGui.INSTANCE.Field1137.Method2026(vec3d2);
         this.Method958(entity, vec3d3, vec3d, vec3d2);
     }
 
     public Class425() {
-        super("Nametags", Category.RENDER);
+        super("Nametags", Category.RENDER, new String[0]);
     }
 
     public static void Method955(Class427 class427) {
@@ -208,25 +211,25 @@ extends Module {
     public void Method956(ItemStack var1_1, double var2_2, double var4_3) {
         block35: {
             if (var1_1.isEmpty()) break block35;
-            if (var1_1.getCount() != 1 && Class425.Field939.getValue().booleanValue()) {
+            if (var1_1.getCount() != 1 && ((Boolean)Class425.Field939.getValue()).booleanValue()) {
                 var6_4 = String.valueOf(var1_1.getCount());
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.disableBlend();
-                GlStateManager.translate(var2_2 + 15.0, var4_3 + 13.0, 0.0);
+                GlStateManager.translate((double)(var2_2 + 15.0), (double)(var4_3 + 13.0), (double)0.0);
                 var7_7 = 0.13;
                 if (Class425.Field954.getValue() != Class427.HIGHRES) {
                     var7_7 *= 3.0;
                 }
-                GlStateManager.scale((double)var7_7, (double)var7_7, 1.0);
+                GlStateManager.scale((double)var7_7, (double)var7_7, (double)1.0);
                 Class551.Method878(var6_4, -Class551.Method877(var6_4), 0.0f, -1);
-                GlStateManager.scale((double)(1.0 / var7_7), (double)(1.0 / var7_7), 1.0);
-                GlStateManager.translate(-(var2_2 + 15.0), -(var4_3 + 13.0), 0.0);
+                GlStateManager.scale((double)(1.0 / var7_7), (double)(1.0 / var7_7), (double)1.0);
+                GlStateManager.translate((double)(-(var2_2 + 15.0)), (double)(-(var4_3 + 13.0)), (double)0.0);
                 GlStateManager.enableLighting();
                 GlStateManager.enableDepth();
                 GlStateManager.enableBlend();
             }
-            if (var1_1.getItem().showDurabilityBar(var1_1) && Class425.Field940.getValue().booleanValue()) {
+            if (var1_1.getItem().showDurabilityBar(var1_1) && ((Boolean)Class425.Field940.getValue()).booleanValue()) {
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.disableTexture2D();
@@ -234,30 +237,30 @@ extends Module {
                 GlStateManager.disableBlend();
                 var6_5 = var1_1.getItem().getDurabilityForDisplay(var1_1);
                 var8_8 = var1_1.getItem().getRGBDurabilityForDisplay(var1_1);
-                GlStateManager.translate(var2_2 + 3.5, var4_3 + 15.0, 0.0);
-                GlStateManager.scale(0.75, 0.75, 1.0);
+                GlStateManager.translate((double)(var2_2 + 3.5), (double)(var4_3 + 15.0), (double)0.0);
+                GlStateManager.scale((double)0.75, (double)0.75, (double)1.0);
                 Class425.Method952(0.0f, 0.0f, 12.0f, 2.0f, -16777216, false);
                 Class425.Method952(0.0f, 0.0f, Math.round(12.0f - (float)var6_5 * 12.0f), 1.0f, var8_8 | -16777216, false);
-                GlStateManager.scale(1.3333333333333333, 1.3333333333333333, 1.0);
-                GlStateManager.translate(-(var2_2 + 3.5), -(var4_3 + 15.0), 0.0);
+                GlStateManager.scale((double)1.3333333333333333, (double)1.3333333333333333, (double)1.0);
+                GlStateManager.translate((double)(-(var2_2 + 3.5)), (double)(-(var4_3 + 15.0)), (double)0.0);
                 GlStateManager.enableBlend();
                 GlStateManager.enableAlpha();
                 GlStateManager.enableTexture2D();
                 GlStateManager.enableLighting();
                 GlStateManager.enableDepth();
             }
-            if (!Class425.Field941.getValue().booleanValue()) break block35;
-            var6_6 = Class425.Field949.getValue().intValue();
+            if (!((Boolean)Class425.Field941.getValue()).booleanValue()) break block35;
+            var6_6 = ((Integer)Class425.Field949.getValue()).intValue();
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
             GlStateManager.disableBlend();
-            GlStateManager.translate(var2_2 + 5.0, var4_3 + 10.0, 0.0);
-            var7_7 = 0.13 * Class425.Field950.getValue();
+            GlStateManager.translate((double)(var2_2 + 5.0), (double)(var4_3 + 10.0), (double)0.0);
+            var7_7 = 0.13 * (Double)Class425.Field950.getValue();
             if (Class425.Field954.getValue() != Class427.HIGHRES) {
                 var7_7 *= 3.0;
                 var6_6 /= 3.0f;
             }
-            GlStateManager.scale((double)var7_7, (double)var7_7, 1.0);
+            GlStateManager.scale((double)var7_7, (double)var7_7, (double)1.0);
             var9_9 = var1_1.getEnchantmentTagList();
             for (var10_10 = 0; var10_10 < var9_9.tagCount(); ++var10_10) {
                 block34: {
@@ -315,8 +318,8 @@ lbl78:
                     // empty catch block
                 }
             }
-            GlStateManager.scale((double)(1.0 / var7_7), (double)(1.0 / var7_7), 1.0);
-            GlStateManager.translate(-(var2_2 + 15.0), -(var4_3 + 10.0), 0.0);
+            GlStateManager.scale((double)(1.0 / var7_7), (double)(1.0 / var7_7), (double)1.0);
+            GlStateManager.translate((double)(-(var2_2 + 15.0)), (double)(-(var4_3 + 10.0)), (double)0.0);
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
             GlStateManager.enableBlend();
@@ -331,25 +334,25 @@ lbl78:
     public void Method466(Class91 class91) {
         Waypoints waypoints;
         Vec3d vec3d = new Vec3d(Class425.mc.getRenderViewEntity().lastTickPosX + (Class425.mc.getRenderViewEntity().posX - Class425.mc.getRenderViewEntity().lastTickPosX) * (double)mc.getRenderPartialTicks(), Class425.mc.getRenderViewEntity().lastTickPosY + (Class425.mc.getRenderViewEntity().posY - Class425.mc.getRenderViewEntity().lastTickPosY) * (double)mc.getRenderPartialTicks(), Class425.mc.getRenderViewEntity().lastTickPosZ + (Class425.mc.getRenderViewEntity().posZ - Class425.mc.getRenderViewEntity().lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, 2.0, 0.0);
-        if (Field943.getValue().booleanValue()) {
+        if (((Boolean)Field943.getValue()).booleanValue()) {
             Field956.setPosition(Class425.mc.getRenderViewEntity().posX, Class425.mc.getRenderViewEntity().posY, Class425.mc.getRenderViewEntity().posZ);
         }
         Class425.mc.world.loadedEntityList.stream().filter(Class425::Method513).filter(this::Method384).filter(Class425::Method386).forEach(arg_0 -> this.Method954(vec3d, arg_0));
-        if (Field914.getValue().booleanValue() && (waypoints = (Waypoints)Class167.Method1610(Waypoints.class)) != null && waypoints.Method1651()) {
+        if (((Boolean)Field914.getValue()).booleanValue() && (waypoints = (Waypoints)Class167.Method1610(Waypoints.class)) != null && waypoints.Method1651()) {
             EntityPlayer entityPlayer;
             for (Class559 object : NewGui.INSTANCE.Field1138.Method759()) {
                 entityPlayer = new Vec3d(object.Method821(), object.Method820(), object.Method818()).add(0.5, 2.2, 0.5);
                 Vec3d vec3d2 = NewGui.INSTANCE.Field1137.Method2026((Vec3d)entityPlayer);
                 String string = object.Method819();
-                if (Field915.getValue().booleanValue()) {
+                if (((Boolean)Field915.getValue()).booleanValue()) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
                     double d = Double.parseDouble(decimalFormat.format(object.Method821()));
                     double d2 = Double.parseDouble(decimalFormat.format(object.Method820()));
                     double d3 = Double.parseDouble(decimalFormat.format(object.Method818()));
                     string = string + " " + d + ", " + d2 + ", " + d3;
                 }
-                if (Field916.getValue().booleanValue()) {
-                    string = string + " " + entityPlayer.distanceTo(vec3d);
+                if (((Boolean)Field916.getValue()).booleanValue()) {
+                    string = string + " " + (int)entityPlayer.distanceTo(vec3d);
                 }
                 this.Method953(string, vec3d2, vec3d, (Vec3d)entityPlayer);
             }
@@ -359,13 +362,13 @@ lbl78:
                 double d = Double.parseDouble(this.Field955.format(entityPlayer.posX));
                 double d4 = Double.parseDouble(this.Field955.format(entityPlayer.posY));
                 double d5 = Double.parseDouble(this.Field955.format(entityPlayer.posZ));
-                Vec3d vec3d3 = new Vec3d(d, d4, d5).add(0.0, (double)entityPlayer.height + Field951.getValue(), 0.0);
+                Vec3d vec3d3 = new Vec3d(d, d4, d5).add(0.0, (double)entityPlayer.height + (Double)Field951.getValue(), 0.0);
                 Vec3d vec3d4 = NewGui.INSTANCE.Field1137.Method2026(vec3d3);
                 String string = entityPlayer.getName();
-                if (Field915.getValue().booleanValue()) {
+                if (((Boolean)Field915.getValue()).booleanValue()) {
                     string = string + " " + d + ", " + d4 + ", " + d5;
                 }
-                if (Field916.getValue().booleanValue()) {
+                if (((Boolean)Field916.getValue()).booleanValue()) {
                     string = string + " " + (int)vec3d3.distanceTo(vec3d);
                 }
                 this.Method953(string, vec3d4, vec3d, vec3d3);
@@ -380,17 +383,17 @@ lbl78:
     }
 
     public boolean Method384(Entity entity) {
-        if ((double)entity.getDistance(Class425.mc.player) > Field918.getValue()) {
+        if ((double)entity.getDistance((Entity)Class425.mc.player) > (Double)Field918.getValue()) {
             return false;
         }
-        if (Field911.getValue().booleanValue() && entity instanceof EntityAnimal) {
+        if (((Boolean)Field911.getValue()).booleanValue() && entity instanceof EntityAnimal) {
             return true;
         }
-        if (Field912.getValue().booleanValue() && entity instanceof IMob) {
+        if (((Boolean)Field912.getValue()).booleanValue() && entity instanceof IMob) {
             return true;
         }
-        if (Field913.getValue().booleanValue() && entity instanceof EntityPlayer && !Class546.Method963(entity)) {
-            return Field953.getValue() != false || !(entity instanceof EntityPlayerSP);
+        if (((Boolean)Field913.getValue()).booleanValue() && entity instanceof EntityPlayer && !Class546.Method963(entity)) {
+            return (Boolean)Field953.getValue() != false || !(entity instanceof EntityPlayerSP);
         }
         return false;
     }
@@ -400,31 +403,31 @@ lbl78:
         float f;
         int n;
         GL11.glPushMatrix();
-        double d = MathHelper.clamp(vec3d2.distanceTo(vec3d3), 0.0, Field947.getValue() * 10.0) * 0.2;
-        d = 1.0 / (d * Field946.getValue() + 1.0);
-        double d2 = Field945.getValue() * d;
+        double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
+        d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
+        double d2 = (Double)Field945.getValue() * d;
         if (Class167.Method1610(Zoom.class).isEnabled()) {
-            d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * Field944.getValue();
+            d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
         }
         if (Field954.getValue() != Class427.HIGHRES) {
             d2 *= 3.0;
         }
-        GL11.glTranslated(vec3d.x, vec3d.y, 0.0);
-        GL11.glScaled(d2, d2, 1.0);
+        GL11.glTranslated((double)vec3d.x, (double)vec3d.y, (double)0.0);
+        GL11.glScaled((double)d2, (double)d2, (double)1.0);
         String string2 = entity.getName();
         if (string2.equalsIgnoreCase("antiflame")) {
             string2 = "god";
         }
         if (entity instanceof EntityPlayer) {
-            if (Field919.getValue().booleanValue()) {
+            if (((Boolean)Field919.getValue()).booleanValue()) {
                 string2 = string2 + (((EntityPlayer)entity).isCreative() ? " [C]" : " [S]");
             }
-            if (Field920.getValue().booleanValue() && mc.getConnection() != null && mc.getConnection().getPlayerInfo(entity.getUniqueID()) != null) {
+            if (((Boolean)Field920.getValue()).booleanValue() && mc.getConnection() != null && mc.getConnection().getPlayerInfo(entity.getUniqueID()) != null) {
                 n = mc.getConnection().getPlayerInfo(entity.getUniqueID()).getResponseTime();
                 string2 = string2 + " " + n + "ms";
             }
         }
-        if (Field921.getValue().booleanValue() && entity instanceof EntityLivingBase) {
+        if (((Boolean)Field921.getValue()).booleanValue() && entity instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase)entity;
             f = Class425.Method957(entityLivingBase.getHealth() + entityLivingBase.getAbsorptionAmount(), 1);
             if (entity.getName().equalsIgnoreCase("antiflame")) {
@@ -434,7 +437,7 @@ lbl78:
             string = string.replace(".0", "");
             string2 = string2 + " " + string + ChatFormatting.RESET.toString();
         }
-        if (Field922.getValue().booleanValue()) {
+        if (((Boolean)Field922.getValue()).booleanValue()) {
             n = 0;
             if (Class87.Field262.containsKey(entity.getName())) {
                 n = Class87.Field262.get(entity.getName());
@@ -443,46 +446,46 @@ lbl78:
         }
         float f2 = Class551.Method877(string2);
         f = Class551.Method882(string2);
-        if (Field924.getValue().booleanValue()) {
-            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, Field928.getValue(), Field929.getValue(), Field930.getValue(), Field931.getValue(), false);
+        if (((Boolean)Field924.getValue()).booleanValue()) {
+            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)Field928.getValue(), (ColorValue)Field929.getValue(), (ColorValue)Field930.getValue(), (ColorValue)Field931.getValue(), false);
         }
-        if (Field925.getValue().booleanValue()) {
-            GL11.glLineWidth(Field926.getValue().floatValue());
-            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, Field932.getValue(), Field933.getValue(), Field934.getValue(), Field935.getValue(), true);
+        if (((Boolean)Field925.getValue()).booleanValue()) {
+            GL11.glLineWidth((float)((Float)Field926.getValue()).floatValue());
+            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)Field932.getValue(), (ColorValue)Field933.getValue(), (ColorValue)Field934.getValue(), (ColorValue)Field935.getValue(), true);
         }
         if (Field954.getValue() == Class427.VANILLA) {
             f += 0.5f;
         }
-        Class551.Method878((Field923.getValue().booleanValue() ? (Class492.Method1988(entity.getUniqueID().toString()) ? Command.Field122 + "b" : "") : "") + string2, -(f2 / 2.0f), Field954.getValue() == Class427.VANILLA ? -f + 2.0f : -f, -1);
-        GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        Class551.Method878((((Boolean)Field923.getValue()).booleanValue() ? (Class492.Method1988(entity.getUniqueID().toString()) ? Command.Field122 + "b" : "") : "") + string2, -(f2 / 2.0f), Field954.getValue() == Class427.VANILLA ? -f + 2.0f : -f, -1);
+        GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
         if (Field954.getValue() != Class427.HIGHRES) {
-            GL11.glScaled(1.0 / d2, 1.0 / d2, 1.0);
-            d2 = Field945.getValue() * d;
+            GL11.glScaled((double)(1.0 / d2), (double)(1.0 / d2), (double)1.0);
+            d2 = (Double)Field945.getValue() * d;
             if (Class167.Method1610(Zoom.class).isEnabled()) {
-                d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * Field944.getValue();
+                d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
             }
-            GL11.glScaled(d2, d2, 1.0);
+            GL11.glScaled((double)d2, (double)d2, (double)1.0);
             f *= 3.0f;
         }
-        if (Field938.getValue().booleanValue() && entity instanceof EntityPlayer) {
+        if (((Boolean)Field938.getValue()).booleanValue() && entity instanceof EntityPlayer) {
             string = (EntityPlayer)entity;
-            if ((double)entity.getDistance(Class425.mc.player) <= Field937.getValue()) {
+            if ((double)entity.getDistance((Entity)Class425.mc.player) <= (Double)Field937.getValue()) {
                 double d3 = 0.0;
                 for (ItemStack itemStack : string.inventory.armorInventory) {
                     if (itemStack == null) continue;
-                    d3 -= (double) Field948.getValue().intValue() / 2.0;
+                    d3 -= (double)((Integer)Field948.getValue()).intValue() / 2.0;
                 }
                 if (string.getHeldItemMainhand() != null) {
                     Iterator iterator = string.getHeldItemMainhand().copy();
-                    this.Method949((EntityPlayer)string, (ItemStack)iterator, d3 -= Field948.getValue().intValue(), -((double)f + 55.0));
-                    d3 += Field948.getValue().intValue();
+                    this.Method949((EntityPlayer)string, (ItemStack)iterator, d3 -= (double)((Integer)Field948.getValue()).intValue(), -((double)f + 55.0));
+                    d3 += (double)((Integer)Field948.getValue()).intValue();
                 }
                 for (int i = 3; i >= 0; --i) {
                     ItemStack itemStack;
                     itemStack = (ItemStack)string.inventory.armorInventory.get(i);
                     if (itemStack == null) continue;
                     this.Method949((EntityPlayer)string, itemStack, d3, -((double)f + 55.0));
-                    d3 += Field948.getValue().intValue();
+                    d3 += (double)((Integer)Field948.getValue()).intValue();
                 }
                 if (string.getHeldItemOffhand() != null) {
                     ItemStack itemStack = string.getHeldItemOffhand().copy();

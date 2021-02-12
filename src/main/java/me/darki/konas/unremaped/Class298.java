@@ -1,10 +1,11 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.TrayIcon;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -43,8 +44,8 @@ extends Module {
                             return;
                         }
                         if (Field1485.getValue() != Class300.HEALTH) break block5;
-                        if (!(Class298.mc.player.getHealth() <= Field1486.getValue().floatValue())) break block4;
-                        if (!Field1488.getValue().booleanValue()) break block6;
+                        if (!(Class298.mc.player.getHealth() <= ((Float)Field1486.getValue()).floatValue())) break block4;
+                        if (!((Boolean)Field1488.getValue()).booleanValue()) break block6;
                         this.Method134();
                         break block4;
                     }
@@ -54,19 +55,19 @@ extends Module {
                 }
                 if (Field1485.getValue() != Class300.PLAYER) break block7;
                 for (EntityPlayer entityPlayer : Class298.mc.world.playerEntities) {
-                    if (entityPlayer == Class298.mc.player || Class492.Method1989(entityPlayer.getName()) || Class546.Method963(entityPlayer)) continue;
+                    if (entityPlayer == Class298.mc.player || Class492.Method1989(entityPlayer.getName()) || Class546.Method963((Entity)entityPlayer)) continue;
                     this.Method134();
                     break block4;
                 }
                 break block4;
             }
-            if (!Field1488.getValue().booleanValue() && this.Method519()) {
+            if (!((Boolean)Field1488.getValue()).booleanValue() && this.Method519()) {
                 return;
             }
             float f = 0.0f;
             List list = Class298.mc.world.loadedEntityList.stream().filter(Class298::Method513).filter(this::Method386).collect(Collectors.toList());
             for (Entity entity : list) {
-                f += Class475.Method2156((EntityEnderCrystal)entity, Class298.mc.player);
+                f += Class475.Method2156((EntityEnderCrystal)entity, (Entity)Class298.mc.player);
             }
             if (!(Class298.mc.player.getHealth() + Class298.mc.player.getAbsorptionAmount() <= f)) break block4;
             this.Method134();
@@ -81,7 +82,7 @@ extends Module {
             }
         }
         this.toggle();
-        if (this.Field1489.getValue().booleanValue()) {
+        if (((Boolean)this.Field1489.getValue()).booleanValue()) {
             this.Method1637("You have AutoLogged!", TrayIcon.MessageType.ERROR);
         }
         Class298.mc.player.inventory.currentItem = 1000;
@@ -104,6 +105,6 @@ extends Module {
     }
 
     public boolean Method386(Entity entity) {
-        return Class298.mc.player.getDistance(entity) <= this.Field1487.getValue().floatValue();
+        return Class298.mc.player.getDistance(entity) <= ((Float)this.Field1487.getValue()).floatValue();
     }
 }

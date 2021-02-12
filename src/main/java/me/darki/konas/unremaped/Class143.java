@@ -1,8 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.util.UUID;
 
+import me.darki.konas.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;
@@ -42,7 +43,7 @@ extends Element {
         float f = Math.max(5.0f, Class557.Method800(string));
         this.Method2323(f + 1.0f);
         this.Method2319(Class557.Method799(string) + 1.0f);
-        Class557.Method801(string, (int)this.Method2320(), (int)this.Method2324(), this.Field2028.getValue().Method774());
+        Class557.Method801(string, (int)this.Method2320(), (int)this.Method2324(), ((ColorValue)this.Field2028.getValue()).Method774());
     }
 
     public Class143() {

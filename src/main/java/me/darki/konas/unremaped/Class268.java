@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 public class Class268
 extends Enum {
@@ -17,7 +17,7 @@ extends Enum {
     }
 
     public static Class268[] Method1830() {
-        return Field2002.clone();
+        return (Class268[])Field2002.clone();
     }
 
     /*

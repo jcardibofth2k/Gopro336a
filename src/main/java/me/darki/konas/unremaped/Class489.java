@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ extends Module {
         DynamicTexture dynamicTexture = Class509.Method1353(string);
         ResourceLocation resourceLocation = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation(string, dynamicTexture);
         this.Field2267.put(string, resourceLocation);
-        Minecraft.getMinecraft().getTextureManager().loadTexture(resourceLocation, dynamicTexture);
+        Minecraft.getMinecraft().getTextureManager().loadTexture(resourceLocation, (ITextureObject)dynamicTexture);
     }
 
     @Override
@@ -46,6 +46,6 @@ extends Module {
     }
 
     public Class489() {
-        super("Capes", Category.RENDER);
+        super("Capes", Category.RENDER, new String[0]);
     }
 }

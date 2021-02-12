@@ -5,6 +5,8 @@ import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.settingEnums.ChamsGlintMode;
+import me.darki.konas.unremaped.Class102;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;

@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
@@ -12,6 +12,6 @@ extends Module {
     }
 
     public Class259() {
-        super("DualUse", Category.EXPLOIT);
+        super("DualUse", Category.EXPLOIT, new String[0]);
     }
 }

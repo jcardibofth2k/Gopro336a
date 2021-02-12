@@ -1,8 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class60;
-import me.darki.konas.Class72;
+import me.darki.konas.unremaped.Class60;
+import me.darki.konas.unremaped.Class72;
 import net.minecraft.entity.passive.AbstractHorse;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

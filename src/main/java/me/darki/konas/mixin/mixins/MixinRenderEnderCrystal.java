@@ -1,9 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.Class167;
-import me.darki.konas.ColorValue;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.module.render.Chams;
-import me.darki.konas.ChamsGlintMode;
+import me.darki.konas.settingEnums.ChamsGlintMode;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;

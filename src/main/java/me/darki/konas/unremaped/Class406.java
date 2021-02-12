@@ -1,8 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.ParentSetting;
 import me.darki.konas.mixin.mixins.IDestroyBlockProgress;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IPlayerControllerMP;
@@ -64,28 +66,28 @@ extends Module {
     }
 
     public void Method732(double d, double d2, double d3, double d4, double d5, double d6, int n) {
-        GL11.glBlendFunc(770, 771);
-        GL11.glEnable(3042);
-        GL11.glLineWidth(1.5f);
-        GL11.glDisable(3553);
-        GL11.glDisable(2929);
-        GL11.glDepthMask(false);
-        GL11.glColor4f((float)(n >> 16 & 0xFF) / 255.0f, (float)(n >> 8 & 0xFF) / 255.0f, (float)(n & 0xFF) / 255.0f, (float)(n >> 24 & 0xFF) / 255.0f);
+        GL11.glBlendFunc((int)770, (int)771);
+        GL11.glEnable((int)3042);
+        GL11.glLineWidth((float)1.5f);
+        GL11.glDisable((int)3553);
+        GL11.glDisable((int)2929);
+        GL11.glDepthMask((boolean)false);
+        GL11.glColor4f((float)((float)(n >> 16 & 0xFF) / 255.0f), (float)((float)(n >> 8 & 0xFF) / 255.0f), (float)((float)(n & 0xFF) / 255.0f), (float)((float)(n >> 24 & 0xFF) / 255.0f));
         GlStateManager.disableLighting();
         GL11.glLoadIdentity();
         ((IEntityRenderer)Class406.mc.entityRenderer).Method1909(mc.getRenderPartialTicks());
-        GL11.glEnable(2848);
-        GL11.glBegin(1);
-        GL11.glVertex3d(d, d2, d3);
-        GL11.glVertex3d(d4, d5, d6);
-        GL11.glVertex3d(d4, d5, d6);
+        GL11.glEnable((int)2848);
+        GL11.glBegin((int)1);
+        GL11.glVertex3d((double)d, (double)d2, (double)d3);
+        GL11.glVertex3d((double)d4, (double)d5, (double)d6);
+        GL11.glVertex3d((double)d4, (double)d5, (double)d6);
         GL11.glEnd();
-        GL11.glDisable(2848);
-        GL11.glEnable(3553);
-        GL11.glEnable(2929);
-        GL11.glDepthMask(true);
-        GL11.glDisable(3042);
-        GL11.glColor3d(1.0, 1.0, 1.0);
+        GL11.glDisable((int)2848);
+        GL11.glEnable((int)3553);
+        GL11.glEnable((int)2929);
+        GL11.glDepthMask((boolean)true);
+        GL11.glDisable((int)3042);
+        GL11.glColor3d((double)1.0, (double)1.0, (double)1.0);
         GlStateManager.enableLighting();
     }
 
@@ -101,29 +103,29 @@ extends Module {
         if (Class406.mc.playerController.getIsHittingBlock()) {
             float f = ((IPlayerControllerMP)Class406.mc.playerController).Method295();
             BlockPos blockPos = ((IPlayerControllerMP)Class406.mc.playerController).Method296();
-            AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox(Class406.mc.world, blockPos).offset(blockPos);
-            switch (Class402.Field1230[this.Field1191.getValue().ordinal()]) {
+            AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Class406.mc.world, blockPos).offset(blockPos);
+            switch (Class402.Field1230[((Class400)((Object)this.Field1191.getValue())).ordinal()]) {
                 case 1: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
                 case 2: {
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
                 case 3: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), this.Field1200.getValue(), this.Field1197.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1200.getValue(), (ColorValue)this.Field1197.getValue(), f);
                     break;
                 }
                 default: {
-                    this.Method1173(axisAlignedBB, this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB, (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
             }
-            if (this.Field1202.getValue().booleanValue()) {
+            if (((Boolean)this.Field1202.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, this.Field1203.getValue().Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.Field1203.getValue()).Method774());
             }
         }
         ((IRenderGlobal)Class406.mc.renderGlobal).Method74().forEach(this::Method1171);
@@ -135,17 +137,17 @@ extends Module {
 
     public void Method1172(AxisAlignedBB axisAlignedBB) {
         block3: {
-            if (this.Field1210.getValue().booleanValue()) {
+            if (((Boolean)this.Field1210.getValue()).booleanValue()) {
                 Class507.Method1386();
-                Class507.Method1379(axisAlignedBB, this.Field1211.getValue());
+                Class507.Method1379(axisAlignedBB, (ColorValue)this.Field1211.getValue());
                 Class507.Method1385();
             }
-            if (!this.Field1206.getValue().booleanValue()) break block3;
+            if (!((Boolean)this.Field1206.getValue()).booleanValue()) break block3;
             Class507.Method1386();
-            if (this.Field1207.getValue().booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).Method69(), -((IRenderManager)Module.mc.getRenderManager()).Method70(), -((IRenderManager)Module.mc.getRenderManager()).Method71()), this.Field1209.getValue().Method774(), this.Field1208.getValue().floatValue());
+            if (((Boolean)this.Field1207.getValue()).booleanValue()) {
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).Method69(), -((IRenderManager)Module.mc.getRenderManager()).Method70(), -((IRenderManager)Module.mc.getRenderManager()).Method71()), ((ColorValue)this.Field1209.getValue()).Method774(), ((Float)this.Field1208.getValue()).floatValue());
             } else {
-                Class507.Method1374(axisAlignedBB, this.Field1208.getValue().floatValue(), this.Field1209.getValue());
+                Class507.Method1374(axisAlignedBB, ((Float)this.Field1208.getValue()).floatValue(), (ColorValue)this.Field1209.getValue());
             }
             Class507.Method1385();
         }
@@ -153,28 +155,28 @@ extends Module {
 
     public void Method1173(AxisAlignedBB axisAlignedBB, ColorValue colorValue, ColorValue class4402, float f) {
         block4: {
-            if (this.Field1201.getValue().booleanValue()) {
+            if (((Boolean)this.Field1201.getValue()).booleanValue()) {
                 colorValue = new ColorValue(Class406.Method1174(f, colorValue.Method782()).getRGB());
                 class4402 = colorValue.Method784(class4402.Method782());
             }
-            if (this.Field1198.getValue().booleanValue()) {
+            if (((Boolean)this.Field1198.getValue()).booleanValue()) {
                 Class507.Method1386();
                 Class507.Method1379(axisAlignedBB, colorValue);
                 Class507.Method1385();
             }
-            if (!this.Field1193.getValue().booleanValue()) break block4;
+            if (!((Boolean)this.Field1193.getValue()).booleanValue()) break block4;
             Class507.Method1386();
-            if (this.Field1194.getValue().booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), this.Field1195.getValue().floatValue());
+            if (((Boolean)this.Field1194.getValue()).booleanValue()) {
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), ((Float)this.Field1195.getValue()).floatValue());
             } else {
-                Class507.Method1374(axisAlignedBB, this.Field1195.getValue().floatValue(), class4402);
+                Class507.Method1374(axisAlignedBB, ((Float)this.Field1195.getValue()).floatValue(), class4402);
             }
             Class507.Method1385();
         }
     }
 
     public Class406() {
-        super("Interactions", "Render interactions with the world", Category.RENDER);
+        super("Interactions", "Render interactions with the world", Category.RENDER, new String[0]);
     }
 
     public static Color Method1174(float f, int n) {
@@ -188,38 +190,38 @@ extends Module {
         block19: {
             if (destroyBlockProgress == null) break block19;
             BlockPos blockPos = destroyBlockProgress.getPosition();
-            if (Class406.mc.playerController.getIsHittingBlock() && ((IPlayerControllerMP)Class406.mc.playerController).Method296().equals(blockPos)) {
+            if (Class406.mc.playerController.getIsHittingBlock() && ((IPlayerControllerMP)Class406.mc.playerController).Method296().equals((Object)blockPos)) {
                 return;
             }
-            if (Class406.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) > (double) this.Field1192.getValue().floatValue()) {
+            if (Class406.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) > (double)((Float)this.Field1192.getValue()).floatValue()) {
                 return;
             }
             float f = Math.min(1.0f, (float)destroyBlockProgress.getPartialBlockDamage() / 8.0f);
-            AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox(Class406.mc.world, blockPos).offset(blockPos);
-            switch (Class402.Field1230[this.Field1191.getValue().ordinal()]) {
+            AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Class406.mc.world, blockPos).offset(blockPos);
+            switch (Class402.Field1230[((Class400)((Object)this.Field1191.getValue())).ordinal()]) {
                 case 1: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
                 case 2: {
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
                 case 3: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), this.Field1199.getValue(), this.Field1196.getValue(), f);
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), this.Field1200.getValue(), this.Field1197.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1200.getValue(), (ColorValue)this.Field1197.getValue(), f);
                     break;
                 }
                 default: {
-                    this.Method1173(axisAlignedBB, this.Field1199.getValue(), this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB, (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
                     break;
                 }
             }
-            if (this.Field1202.getValue().booleanValue()) {
+            if (((Boolean)this.Field1202.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, this.Field1203.getValue().Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.Field1203.getValue()).Method774());
             }
-            if (this.Field1204.getValue().booleanValue()) {
+            if (((Boolean)this.Field1204.getValue()).booleanValue()) {
                 int n = ((IDestroyBlockProgress)destroyBlockProgress).Method908();
                 Entity entity = Class406.mc.world.getEntityByID(n);
                 if (entity == null || entity == Class406.mc.player) {
@@ -239,7 +241,7 @@ extends Module {
                 EntityPlayerSP entityPlayerSP = Class406.mc.player;
                 float f5 = 1.0f;
                 try {
-                    Class502.Method1395(f2, f3, f4, entityPlayerSP, f5);
+                    Class502.Method1395(f2, f3, f4, (EntityPlayer)entityPlayerSP, f5);
                 }
                 catch (Exception exception) {
                     // empty catch block
@@ -247,10 +249,10 @@ extends Module {
                 GlStateManager.disableDepth();
                 GlStateManager.disableTexture2D();
                 GlStateManager.disableLighting();
-                GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-                GlStateManager.scale(0.15, 0.15, 1.0);
+                GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
+                GlStateManager.scale((double)0.15, (double)0.15, (double)1.0);
                 Class425.Field958.Method826(string, (float)(-((double)Class425.Field958.Method830(string) / 2.0)), (int)(-Class425.Field958.Method831(string) / 2.0f), -1);
-                GlStateManager.scale(6.666666666666667, 6.666666666666667, 1.0);
+                GlStateManager.scale((double)6.666666666666667, (double)6.666666666666667, (double)1.0);
                 GlStateManager.enableLighting();
                 GlStateManager.enableTexture2D();
                 GlStateManager.enableDepth();

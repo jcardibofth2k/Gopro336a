@@ -9,6 +9,7 @@ import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.*;
 
 public class Sky
 extends Module {

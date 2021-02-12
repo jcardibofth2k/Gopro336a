@@ -1,9 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.TrayIcon;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import me.darki.konas.TickEvent;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
@@ -21,7 +22,7 @@ extends Module {
     public CopyOnWriteArrayList<EntityPlayer> Field557 = new CopyOnWriteArrayList();
 
     public Class329() {
-        super("VisualRange", Category.MISC);
+        super("VisualRange", Category.MISC, new String[0]);
     }
 
     @Subscriber
@@ -33,21 +34,21 @@ extends Module {
             this.Field557 = new CopyOnWriteArrayList();
         }
         for (EntityPlayer entityPlayer : Class329.mc.world.playerEntities) {
-            if (entityPlayer == Class329.mc.player || Class546.Method963(entityPlayer) || this.Field555.getValue().booleanValue() && Class492.Method1989(entityPlayer.getName()) || this.Field557.contains(entityPlayer)) continue;
+            if (entityPlayer == Class329.mc.player || Class546.Method963((Entity)entityPlayer) || ((Boolean)this.Field555.getValue()).booleanValue() && Class492.Method1989(entityPlayer.getName()) || this.Field557.contains(entityPlayer)) continue;
             this.Field557.add(entityPlayer);
-            if (this.Field553.getValue().booleanValue()) {
+            if (((Boolean)this.Field553.getValue()).booleanValue()) {
                 Logger.Method1117(entityPlayer.getName() + Command.Field122 + "a entered" + Command.Field122 + "f Visual Range!", 5555);
             } else {
                 Logger.Method1118(entityPlayer.getName() + Command.Field122 + "a entered" + Command.Field122 + "f Visual Range!");
             }
-            if (!this.Field556.getValue().booleanValue()) continue;
+            if (!((Boolean)this.Field556.getValue()).booleanValue()) continue;
             this.Method1637(entityPlayer.getName() + " has entered Visual Range!", TrayIcon.MessageType.WARNING);
         }
         for (EntityPlayer entityPlayer : this.Field557) {
             if (Class329.mc.world.playerEntities.contains(entityPlayer)) continue;
             this.Field557.remove(entityPlayer);
-            if (!this.Field554.getValue().booleanValue() || !this.Field555.getValue().booleanValue() || Class492.Method1989(entityPlayer.getName())) continue;
-            if (this.Field553.getValue().booleanValue()) {
+            if (!((Boolean)this.Field554.getValue()).booleanValue() || !((Boolean)this.Field555.getValue()).booleanValue() || Class492.Method1989(entityPlayer.getName())) continue;
+            if (((Boolean)this.Field553.getValue()).booleanValue()) {
                 Logger.Method1117(entityPlayer.getName() + Command.Field122 + "c left" + Command.Field122 + "f Visual Range!", 5555);
                 continue;
             }

@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.mixin.mixins.IRenderManager;
 import net.minecraft.block.state.IBlockState;
@@ -24,7 +24,7 @@ public class Class502 {
     }
 
     public static void Method1390(BlockPos blockPos, Float f, Float f2, Float f3, Float f4, Float f5) {
-        Class502.Method1410(new Vec3d(blockPos.getX(), blockPos.getY(), blockPos.getZ()), f, f2, f3, f4, 1.0, 1.0, 1.0, f5);
+        Class502.Method1410(new Vec3d((double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ()), f, f2, f3, f4, 1.0, 1.0, 1.0, f5);
     }
 
     public static void Method1391(float f, float f2, float f3, float f4, int n) {
@@ -33,7 +33,7 @@ public class Class502 {
 
     public static void Method1392() {
         GlStateManager.enableDepth();
-        GlStateManager.depthMask(true);
+        GlStateManager.depthMask((boolean)true);
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
         GlStateManager.resetColor();
@@ -48,13 +48,13 @@ public class Class502 {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
         Class502.Method1409(n);
         bufferBuilder.begin(n2, DefaultVertexFormats.POSITION);
-        bufferBuilder.pos(f, f4, 0.0).endVertex();
-        bufferBuilder.pos(f3, f4, 0.0).endVertex();
-        bufferBuilder.pos(f3, f2, 0.0).endVertex();
-        bufferBuilder.pos(f, f2, 0.0).endVertex();
+        bufferBuilder.pos((double)f, (double)f4, 0.0).endVertex();
+        bufferBuilder.pos((double)f3, (double)f4, 0.0).endVertex();
+        bufferBuilder.pos((double)f3, (double)f2, 0.0).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, 0.0).endVertex();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
@@ -62,12 +62,12 @@ public class Class502 {
 
     public static void Method1395(float f, float f2, float f3, EntityPlayer entityPlayer, float f4) {
         Class502.Method1405(f, f2, f3);
-        int n = (int)entityPlayer.getDistance(f, f2, f3);
+        int n = (int)entityPlayer.getDistance((double)f, (double)f2, (double)f3);
         float f5 = (float)n / 2.0f / (2.0f + (2.0f - f4));
         if (f5 < 1.0f) {
             f5 = 1.0f;
         }
-        GlStateManager.scale(f5, f5, f5);
+        GlStateManager.scale((float)f5, (float)f5, (float)f5);
     }
 
     public static Vec3d Method1396(Entity entity, double d) {
@@ -86,7 +86,7 @@ public class Class502 {
         double d4 = vec3d.x - (Class502.Field1356.player.lastTickPosX + (Class502.Field1356.player.posX - Class502.Field1356.player.lastTickPosX) * (double)f);
         double d5 = vec3d.y - (Class502.Field1356.player.lastTickPosY + (Class502.Field1356.player.posY - Class502.Field1356.player.lastTickPosY) * (double)f);
         double d6 = vec3d.z - (Class502.Field1356.player.lastTickPosZ + (Class502.Field1356.player.posZ - Class502.Field1356.player.lastTickPosZ) * (double)f);
-        GlStateManager.color((float)n / 255.0f, (float)n2 / 255.0f, (float)n3 / 255.0f, (float)n4 / 255.0f);
+        GlStateManager.color((float)((float)n / 255.0f), (float)((float)n2 / 255.0f), (float)((float)n3 / 255.0f), (float)((float)n4 / 255.0f));
         AxisAlignedBB axisAlignedBB = new AxisAlignedBB(d4, d5, d6, d4 + d, d5 + d2, d6 + d3);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
@@ -153,8 +153,8 @@ public class Class502 {
     }
 
     public static void Method1399() {
-        GlStateManager.blendFunc(770, 771);
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.blendFunc((int)770, (int)771);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
         GlStateManager.enableBlend();
         GlStateManager.disableLighting();
         GlStateManager.disableCull();
@@ -181,18 +181,18 @@ public class Class502 {
         GlStateManager.pushMatrix();
         Class502.Method1413();
         GlStateManager.enableBlend();
-        GlStateManager.glLineWidth(3.0f);
+        GlStateManager.glLineWidth((float)3.0f);
         GlStateManager.disableTexture2D();
-        GlStateManager.depthMask(false);
+        GlStateManager.depthMask((boolean)false);
         GlStateManager.disableDepth();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
         BlockPos blockPos = tileEntity.getPos();
         IBlockState iBlockState = Class502.Field1356.world.getBlockState(blockPos);
-        AxisAlignedBB axisAlignedBB = iBlockState.getSelectedBoundingBox(Class502.Field1356.world, blockPos).offset(-Class502.Field1356.getRenderManager().viewerPosX, -Class502.Field1356.getRenderManager().viewerPosY, -Class502.Field1356.getRenderManager().viewerPosZ);
-        Class502.Method1411(axisAlignedBB.grow(0.002f), Float.valueOf(f), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4));
+        AxisAlignedBB axisAlignedBB = iBlockState.getSelectedBoundingBox((World)Class502.Field1356.world, blockPos).offset(-Class502.Field1356.getRenderManager().viewerPosX, -Class502.Field1356.getRenderManager().viewerPosY, -Class502.Field1356.getRenderManager().viewerPosZ);
+        Class502.Method1411(axisAlignedBB.grow((double)0.002f), Float.valueOf(f), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4));
         GlStateManager.resetColor();
         GlStateManager.enableDepth();
-        GlStateManager.depthMask(true);
+        GlStateManager.depthMask((boolean)true);
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
         Class502.Method1392();
@@ -205,11 +205,11 @@ public class Class502 {
 
     public static void Method1405(float f, float f2, float f3) {
         float f4 = 0.02666667f;
-        GlStateManager.translate((double)f - ((IRenderManager)Field1356.getRenderManager()).Method69(), (double)f2 - ((IRenderManager)Field1356.getRenderManager()).Method70(), (double)f3 - ((IRenderManager)Field1356.getRenderManager()).Method71());
-        GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
-        GlStateManager.rotate(-Minecraft.getMinecraft().player.rotationYaw, 0.0f, 1.0f, 0.0f);
-        GlStateManager.rotate(Minecraft.getMinecraft().player.rotationPitch, Minecraft.getMinecraft().gameSettings.thirdPersonView == 2 ? -1.0f : 1.0f, 0.0f, 0.0f);
-        GlStateManager.scale(-f4, -f4, f4);
+        GlStateManager.translate((double)((double)f - ((IRenderManager)Field1356.getRenderManager()).Method69()), (double)((double)f2 - ((IRenderManager)Field1356.getRenderManager()).Method70()), (double)((double)f3 - ((IRenderManager)Field1356.getRenderManager()).Method71()));
+        GlStateManager.glNormal3f((float)0.0f, (float)1.0f, (float)0.0f);
+        GlStateManager.rotate((float)(-Minecraft.getMinecraft().player.rotationYaw), (float)0.0f, (float)1.0f, (float)0.0f);
+        GlStateManager.rotate((float)Minecraft.getMinecraft().player.rotationPitch, (float)(Minecraft.getMinecraft().gameSettings.thirdPersonView == 2 ? -1.0f : 1.0f), (float)0.0f, (float)0.0f);
+        GlStateManager.scale((float)(-f4), (float)(-f4), (float)f4);
     }
 
     public static void Method1406() {
@@ -223,7 +223,7 @@ public class Class502 {
         double d4 = (double)blockPos.getX() - (Class502.Field1356.player.lastTickPosX + (Class502.Field1356.player.posX - Class502.Field1356.player.lastTickPosX) * (double)f);
         double d5 = (double)blockPos.getY() - (Class502.Field1356.player.lastTickPosY + (Class502.Field1356.player.posY - Class502.Field1356.player.lastTickPosY) * (double)f);
         double d6 = (double)blockPos.getZ() - (Class502.Field1356.player.lastTickPosZ + (Class502.Field1356.player.posZ - Class502.Field1356.player.lastTickPosZ) * (double)f);
-        GlStateManager.color((float)n / 255.0f, (float)n2 / 255.0f, (float)n3 / 255.0f, (float)n4 / 255.0f);
+        GlStateManager.color((float)((float)n / 255.0f), (float)((float)n2 / 255.0f), (float)((float)n3 / 255.0f), (float)((float)n4 / 255.0f));
         AxisAlignedBB axisAlignedBB = new AxisAlignedBB(d4, d5, d6, d4 + d, d5 + d2, d6 + d3);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
@@ -291,17 +291,17 @@ public class Class502 {
 
     public static void Method1408(float f, float f2, float f3, float f4, float f5, float f6, float f7, int n) {
         Float[] floatArray = Class502.Method1397(n);
-        GL11.glLineWidth(f7);
-        GL11.glEnable(2848);
-        GL11.glHint(3154, 4354);
+        GL11.glLineWidth((float)f7);
+        GL11.glEnable((int)2848);
+        GL11.glHint((int)3154, (int)4354);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         bufferBuilder.begin(3, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos(f, f2, f3).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
-        bufferBuilder.pos(f4, f5, f6).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
-        bufferBuilder.pos(f4, f5, f6).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, (double)f3).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
+        bufferBuilder.pos((double)f4, (double)f5, (double)f6).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
+        bufferBuilder.pos((double)f4, (double)f5, (double)f6).color(floatArray[0].floatValue(), floatArray[1].floatValue(), floatArray[2].floatValue(), floatArray[3].floatValue()).endVertex();
         tessellator.draw();
-        GL11.glDisable(2848);
+        GL11.glDisable((int)2848);
     }
 
     public static void Method1409(int n) {
@@ -309,7 +309,7 @@ public class Class502 {
         float f2 = (float)(n >> 8 & 0xFF) / 255.0f;
         float f3 = (float)(n & 0xFF) / 255.0f;
         float f4 = (float)(n >> 24 & 0xFF) / 255.0f;
-        GlStateManager.color(f, f2, f3, f4);
+        GlStateManager.color((float)f, (float)f2, (float)f3, (float)f4);
     }
 
     public static void Method1410(Vec3d vec3d, Float f, Float f2, Float f3, Float f4, double d, double d2, double d3, Float f5) {
@@ -373,11 +373,11 @@ public class Class502 {
         float f5 = (float)(n >> 24 & 0xFF) / 255.0f;
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.glLineWidth(1.0f);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+        GlStateManager.glLineWidth((float)1.0f);
         GlStateManager.disableTexture2D();
         GlStateManager.disableDepth();
-        GlStateManager.depthMask(false);
+        GlStateManager.depthMask((boolean)false);
         if (entity != Class502.Field1356.player) {
             double d = Class502.Field1356.player.lastTickPosX + (Class502.Field1356.player.posX - Class502.Field1356.player.lastTickPosX) * (double)f.floatValue();
             double d2 = Class502.Field1356.player.lastTickPosY + (Class502.Field1356.player.posY - Class502.Field1356.player.lastTickPosY) * (double)f.floatValue();
@@ -385,20 +385,20 @@ public class Class502 {
             Class502.Method1411(entity.getEntityBoundingBox().offset(-d, -d2, -d3), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4), Float.valueOf(f5));
         }
         GlStateManager.enableDepth();
-        GlStateManager.depthMask(true);
+        GlStateManager.depthMask((boolean)true);
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }
 
     public static void Method1413() {
-        GL11.glBlendFunc(770, 771);
+        GL11.glBlendFunc((int)770, (int)771);
         GlStateManager.enableBlend();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.glLineWidth(10.0f);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+        GlStateManager.glLineWidth((float)10.0f);
         GlStateManager.disableTexture2D();
         GlStateManager.disableDepth();
-        GlStateManager.depthMask(false);
+        GlStateManager.depthMask((boolean)false);
         GlStateManager.resetColor();
     }
 

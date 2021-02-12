@@ -1,6 +1,6 @@
 package me.darki.konas;
 
-import me.darki.konas.Class520;
+import me.darki.konas.unremaped.Class520;
 
 public class Keybind
 implements Class520 {

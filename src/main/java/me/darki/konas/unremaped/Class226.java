@@ -1,7 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
 
@@ -55,8 +57,8 @@ extends Class215 {
             if (this.Field2579.hasDescription()) {
                 Class247.Field2261.Method863(this.Field2579.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
             }
-            RenderUtil2.Method1338(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, this.Field2579.getValue().Method774());
-            RenderUtil2.Method1336(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, 1.0f, this.Field2579.getValue().Method784(255).Method774());
+            RenderUtil2.Method1338(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, ((ColorValue)this.Field2579.getValue()).Method774());
+            RenderUtil2.Method1336(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, 1.0f, ((ColorValue)this.Field2579.getValue()).Method784(255).Method774());
             if (!this.Field2580) break block20;
             if (Class226.Method487(n, n2, this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f, 40.0, 17.5)) {
                 if (Field327 > 0) {
@@ -190,7 +192,7 @@ extends Class215 {
                 return true;
             }
             if (Class226.Method487(n, n2, this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Field2588, 40.0, this.Field2589)) {
-                this.Field2579.getValue().Method780(!this.Field2579.getValue().Method783());
+                ((ColorValue)this.Field2579.getValue()).Method780(!((ColorValue)this.Field2579.getValue()).Method783());
             }
             if (Class226.Method487(n, n2, this.Method486() + 240.0f - (float)(this.Field2590 ? 108 : 0), this.Method492(), 156.0, 100.0)) {
                 return true;
@@ -201,9 +203,9 @@ extends Class215 {
             if (n3 == 0) {
                 this.Field2580 = !this.Field2580;
             } else if (n3 == 1) {
-                this.Field2579.getValue().Method771(KonasGui.Field110);
+                ((ColorValue)this.Field2579.getValue()).Method771(KonasGui.Field110);
             } else if (n3 == 2) {
-                KonasGui.Field110 = this.Field2579.getValue().Method778();
+                KonasGui.Field110 = ((ColorValue)this.Field2579.getValue()).Method778();
             }
             return true;
         }
@@ -235,7 +237,7 @@ extends Class215 {
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f + 17.5f, 40.0f * ((float)this.Field2583 / 255.0f), 17.5f, 0x4400FF00);
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f + 35.0f, 40.0f * ((float)this.Field2584 / 255.0f), 17.5f, 0x440000FF);
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f + 52.5f, 40.0f * ((float)this.Field2581 / 255.0f), 17.5f, 0x44FFFFFF);
-            RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Field2588, 40.0f, this.Field2589, this.Field2579.getValue().Method783() ? this.Field2579.getValue().Method784(50).Method774() : 0);
+            RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Field2588, 40.0f, this.Field2589, ((ColorValue)this.Field2579.getValue()).Method783() ? ((ColorValue)this.Field2579.getValue()).Method784(50).Method774() : 0);
             Class247.Field2262.Method863("R" + this.Field2582, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 8.75f - Class247.Field2262.Method831("R") / 2.0f), Field324);
             Class247.Field2262.Method863("G" + this.Field2583, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)((double)(this.Method492() + 6.0f) + 26.25 - (double)(Class247.Field2262.Method831("G") / 2.0f)), Field324);
             Class247.Field2262.Method863("B" + this.Field2584, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 43.75f - Class247.Field2262.Method831("B") / 2.0f), Field324);
@@ -252,7 +254,7 @@ extends Class215 {
     }
 
     public ColorValue Method2214() {
-        return this.Field2579.getValue();
+        return (ColorValue)this.Field2579.getValue();
     }
 
     public Class226(Setting<ColorValue> setting, float f, float f2, float f3, float f4, float f5, boolean bl) {

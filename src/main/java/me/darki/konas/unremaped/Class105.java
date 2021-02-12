@@ -1,7 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.module.client.NewGui;
@@ -65,7 +67,7 @@ extends Class90 {
                 return true;
             }
         }
-        if (this.Method914() && Class105.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue() ? (double) ClickGUIModule.maxHeight.getValue().floatValue() : (double)this.Method696())) {
+        if (this.Method914() && Class105.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue() ? (double)((Float) ClickGUIModule.maxHeight.getValue()).floatValue() : (double)this.Method696())) {
             for (Class183 class183 : this.Method2208()) {
                 if (!class183.Method106(n, n2, n3)) continue;
                 return true;
@@ -170,58 +172,58 @@ extends Class90 {
             this.Method442(0.0f);
             this.Method2208().forEach(this::Method707);
         }
-        if (this.Method921() + this.Method911() + Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) > (float)scaledResolution.getScaledHeight()) {
-            this.Method442((float)scaledResolution.getScaledHeight() - this.Method911() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()));
+        if (this.Method921() + this.Method911() + Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) > (float)scaledResolution.getScaledHeight()) {
+            this.Method442((float)scaledResolution.getScaledHeight() - this.Method911() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()));
             this.Method2208().forEach(this::Method697);
         }
-        RenderUtil2.Method1338(this.Method922(), this.Method921(), this.Method910(), this.Method911(), ClickGUIModule.header.getValue().Method774());
-        Class548.Method1016(this.Method920(), (int)(this.Method922() + 3.0f), (int)(this.Method921() + this.Method911() / 2.0f - (float)(Class548.Method1020() / 2) - 0.5f), ClickGUIModule.fony.getValue().Method774());
+        RenderUtil2.Method1338(this.Method922(), this.Method921(), this.Method910(), this.Method911(), ((ColorValue) ClickGUIModule.header.getValue()).Method774());
+        Class548.Method1016(this.Method920(), (int)(this.Method922() + 3.0f), (int)(this.Method921() + this.Method911() / 2.0f - (float)(Class548.Method1020() / 2) - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
         if (this.Method914()) {
-            if (Class105.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue())) && this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue()) {
+            if (Class105.Method916(n, n2, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())) && this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) {
                 int n3 = Mouse.getDWheel();
                 if (n3 < 0) {
-                    if ((float)(this.Method2209() - ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()))) {
-                        this.Method700((int)(-(this.Method696() - Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()))));
+                    if ((float)(this.Method2209() - (Integer) ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()))) {
+                        this.Method700((int)(-(this.Method696() - Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()))));
                     } else {
-                        this.Method700(this.Method2209() - ClickGUIModule.scrollSpeed.getValue());
+                        this.Method700(this.Method2209() - (Integer) ClickGUIModule.scrollSpeed.getValue());
                     }
                 } else if (n3 > 0) {
-                    this.Method700(this.Method2209() + ClickGUIModule.scrollSpeed.getValue());
+                    this.Method700(this.Method2209() + (Integer) ClickGUIModule.scrollSpeed.getValue());
                 }
             }
             if (this.Method2209() > 0) {
                 this.Method700(0);
             }
-            if (this.Method696() > ClickGUIModule.maxHeight.getValue().floatValue()) {
-                if ((float)(this.Method2209() - ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - ClickGUIModule.maxHeight.getValue().floatValue())) {
-                    this.Method700((int)(-(this.Method696() - ClickGUIModule.maxHeight.getValue().floatValue())));
+            if (this.Method696() > ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) {
+                if ((float)(this.Method2209() - (Integer) ClickGUIModule.scrollSpeed.getValue()) < -(this.Method696() - ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())) {
+                    this.Method700((int)(-(this.Method696() - ((Float) ClickGUIModule.maxHeight.getValue()).floatValue())));
                 }
             } else if (this.Method2209() < 0) {
                 this.Method700(0);
             }
             GL11.glPushMatrix();
-            GL11.glEnable(3089);
-            if (ClickGUIModule.animate.getValue().booleanValue()) {
-                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(ClickGUIModule.maxHeight.getValue().floatValue(), ClickGUIModule.maxHeight.getValue().floatValue() * ((float)this.Field2577 / (float) ClickGUIModule.animationSpeed.getValue().intValue())));
+            GL11.glEnable((int)3089);
+            if (((Boolean) ClickGUIModule.animate.getValue()).booleanValue()) {
+                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(((Float) ClickGUIModule.maxHeight.getValue()).floatValue(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue() * ((float)this.Field2577 / (float)((Integer) ClickGUIModule.animationSpeed.getValue()).intValue())));
                 if (this.Field2578) {
                     --this.Field2577;
                     if (this.Field2577 <= 0) {
                         super.Method440(false);
                         this.Field2578 = false;
                     }
-                } else if (this.Field2577 < ClickGUIModule.animationSpeed.getValue()) {
+                } else if (this.Field2577 < (Integer) ClickGUIModule.animationSpeed.getValue()) {
                     ++this.Field2577;
                 }
             } else {
-                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), ClickGUIModule.maxHeight.getValue().floatValue());
+                RenderUtil2.Method1339(scaledResolution, this.Method922(), this.Method921() + this.Method911(), this.Method910(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue());
                 if (this.Field2578) {
                     super.Method440(false);
                     this.Field2578 = false;
                 }
             }
-            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ClickGUIModule.maxHeight.getValue().floatValue()) + 2.0f, ((ColorValue) ClickGUIModule.b.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method922(), this.Method921() + this.Method911(), this.Method910(), Math.min(this.Method696(), ((Float) ClickGUIModule.maxHeight.getValue()).floatValue()) + 2.0f, ((ColorValue) ClickGUIModule.b.getValue()).Method774());
             this.Method2208().forEach(arg_0 -> Class105.Method702(n, n2, f, arg_0));
-            GL11.glDisable(3089);
+            GL11.glDisable((int)3089);
             GL11.glPopMatrix();
         }
         this.Method2207();
@@ -238,7 +240,7 @@ extends Class90 {
             super.Method440(bl);
         } else {
             this.Field2578 = true;
-            this.Field2577 = ClickGUIModule.animationSpeed.getValue();
+            this.Field2577 = (Integer) ClickGUIModule.animationSpeed.getValue();
         }
     }
 

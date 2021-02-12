@@ -1,9 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.util.Collection;
 import java.util.Collections;
-import me.darki.konas.Class556;
+
 import me.darki.konas.mixin.mixins.IRenderManager;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -38,7 +38,7 @@ public class Class516 {
             AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d, axisAlignedBB.minY - entity.posY + d2, axisAlignedBB.minZ - entity.posZ + d3, axisAlignedBB.maxX - entity.posX + d, axisAlignedBB.maxY - entity.posY + d2, axisAlignedBB.maxZ - entity.posZ + d3);
             if (entity == Class516.Field1284.player) break block0;
             float[] fArray = Class556.Method806(n);
-            Class516.Method1283(axisAlignedBB2.grow(0.002f), fArray[0], fArray[1], fArray[2], fArray[3]);
+            Class516.Method1283(axisAlignedBB2.grow((double)0.002f), fArray[0], fArray[1], fArray[2], fArray[3]);
         }
     }
 
@@ -99,29 +99,29 @@ public class Class516 {
 
     public static void Method1259(AxisAlignedBB axisAlignedBB, Color color) {
         AxisAlignedBB axisAlignedBB2 = axisAlignedBB.offset(-Class516.Field1284.getRenderManager().viewerPosX, -Class516.Field1284.getRenderManager().viewerPosY, -Class516.Field1284.getRenderManager().viewerPosZ);
-        Class516.Method1258(axisAlignedBB2.grow(0.002f), color.getRed() * 255, color.getGreen() * 255, color.getBlue() * 255, color.getAlpha() * 255);
+        Class516.Method1258(axisAlignedBB2.grow((double)0.002f), color.getRed() * 255, color.getGreen() * 255, color.getBlue() * 255, color.getAlpha() * 255);
     }
 
     public static void Method1260(double d, double d2, double d3, float f, int n, int n2) {
         Sphere sphere = new Sphere();
         GL11.glPushMatrix();
-        GL11.glBlendFunc(770, 771);
-        GL11.glEnable(3042);
-        GL11.glLineWidth(1.2f);
-        GL11.glDisable(3553);
-        GL11.glDisable(2929);
-        GL11.glDepthMask(false);
+        GL11.glBlendFunc((int)770, (int)771);
+        GL11.glEnable((int)3042);
+        GL11.glLineWidth((float)1.2f);
+        GL11.glDisable((int)3553);
+        GL11.glDisable((int)2929);
+        GL11.glDepthMask((boolean)false);
         sphere.setDrawStyle(100013);
         double d4 = ((IRenderManager)Field1284.getRenderManager()).Method69();
         double d5 = ((IRenderManager)Field1284.getRenderManager()).Method70();
         double d6 = ((IRenderManager)Field1284.getRenderManager()).Method71();
-        GL11.glTranslated(d - d4, d2 - d5, d3 - d6);
+        GL11.glTranslated((double)(d - d4), (double)(d2 - d5), (double)(d3 - d6));
         sphere.draw(f, n, n2);
-        GL11.glLineWidth(2.0f);
-        GL11.glEnable(3553);
-        GL11.glEnable(2929);
-        GL11.glDepthMask(true);
-        GL11.glDisable(3042);
+        GL11.glLineWidth((float)2.0f);
+        GL11.glEnable((int)3553);
+        GL11.glEnable((int)2929);
+        GL11.glDepthMask((boolean)true);
+        GL11.glDisable((int)3042);
         GL11.glPopMatrix();
     }
 
@@ -136,7 +136,7 @@ public class Class516 {
         float f2 = (float)(n >> 16 & 0xFF) / 255.0f;
         float f3 = (float)(n >> 8 & 0xFF) / 255.0f;
         float f4 = (float)(n & 0xFF) / 255.0f;
-        GlStateManager.color(f2, f3, f4, f);
+        GlStateManager.color((float)f2, (float)f3, (float)f4, (float)f);
     }
 
     public static void Method1263(AxisAlignedBB axisAlignedBB, int n) {
@@ -234,38 +234,38 @@ public class Class516 {
     }
 
     public static void Method1270(float f, float f2, float f3, float f4, float f5, boolean bl, float f6, int n) {
-        boolean bl2 = GL11.glIsEnabled(3042);
+        boolean bl2 = GL11.glIsEnabled((int)3042);
         float f7 = (float)(n >> 24 & 0xFF) / 255.0f;
-        GL11.glEnable(3042);
-        GL11.glDisable(3553);
-        GL11.glBlendFunc(770, 771);
-        GL11.glEnable(2848);
+        GL11.glEnable((int)3042);
+        GL11.glDisable((int)3553);
+        GL11.glBlendFunc((int)770, (int)771);
+        GL11.glEnable((int)2848);
         GL11.glPushMatrix();
         Class516.Method1276(n);
-        GL11.glBegin(7);
-        GL11.glVertex2d(f, f2);
-        GL11.glVertex2d(f - f3 / f4, f2 + f3);
-        GL11.glVertex2d(f, f2 + f3 / f5);
-        GL11.glVertex2d(f + f3 / f4, f2 + f3);
-        GL11.glVertex2d(f, f2);
+        GL11.glBegin((int)7);
+        GL11.glVertex2d((double)f, (double)f2);
+        GL11.glVertex2d((double)(f - f3 / f4), (double)(f2 + f3));
+        GL11.glVertex2d((double)f, (double)(f2 + f3 / f5));
+        GL11.glVertex2d((double)(f + f3 / f4), (double)(f2 + f3));
+        GL11.glVertex2d((double)f, (double)f2);
         GL11.glEnd();
         if (bl) {
-            GL11.glLineWidth(f6);
-            GL11.glColor4f(0.0f, 0.0f, 0.0f, f7);
-            GL11.glBegin(2);
-            GL11.glVertex2d(f, f2);
-            GL11.glVertex2d(f - f3 / f4, f2 + f3);
-            GL11.glVertex2d(f, f2 + f3 / f5);
-            GL11.glVertex2d(f + f3 / f4, f2 + f3);
-            GL11.glVertex2d(f, f2);
+            GL11.glLineWidth((float)f6);
+            GL11.glColor4f((float)0.0f, (float)0.0f, (float)0.0f, (float)f7);
+            GL11.glBegin((int)2);
+            GL11.glVertex2d((double)f, (double)f2);
+            GL11.glVertex2d((double)(f - f3 / f4), (double)(f2 + f3));
+            GL11.glVertex2d((double)f, (double)(f2 + f3 / f5));
+            GL11.glVertex2d((double)(f + f3 / f4), (double)(f2 + f3));
+            GL11.glVertex2d((double)f, (double)f2);
             GL11.glEnd();
         }
         GL11.glPopMatrix();
-        GL11.glEnable(3553);
+        GL11.glEnable((int)3553);
         if (!bl2) {
-            GL11.glDisable(3042);
+            GL11.glDisable((int)3042);
         }
-        GL11.glDisable(2848);
+        GL11.glDisable((int)2848);
     }
 
     public static void Method1271(AxisAlignedBB axisAlignedBB, int n) {
@@ -287,11 +287,11 @@ public class Class516 {
         GlStateManager.disableTexture2D();
         GlStateManager.disableAlpha();
         GlStateManager.disableDepth();
-        GlStateManager.depthMask(false);
+        GlStateManager.depthMask((boolean)false);
         double d3 = ((IRenderManager)Field1284.getRenderManager()).Method69();
         double d4 = ((IRenderManager)Field1284.getRenderManager()).Method70();
         double d5 = ((IRenderManager)Field1284.getRenderManager()).Method71();
-        GL11.glColor4d(f, f2, f3, f4);
+        GL11.glColor4d((double)f, (double)f2, (double)f3, (double)f4);
         for (BlockPos blockPos : collection) {
             GlStateManager.pushMatrix();
             double d6 = (double)blockPos.getX() - d3;
@@ -303,7 +303,7 @@ public class Class516 {
         }
         GlStateManager.enableTexture2D();
         GlStateManager.enableDepth();
-        GlStateManager.depthMask(true);
+        GlStateManager.depthMask((boolean)true);
         GlStateManager.enableAlpha();
         Class516.Method1261();
     }
@@ -316,19 +316,19 @@ public class Class516 {
             float f4 = (float)(n & 0xFF) / 255.0f;
             float f5 = (float)(n >> 24 & 0xFF) / 255.0f;
             Class516.Method1289();
-            GlStateManager.glLineWidth(2.0f);
+            GlStateManager.glLineWidth((float)2.0f);
             GlStateManager.disableTexture2D();
-            GlStateManager.depthMask(false);
+            GlStateManager.depthMask((boolean)false);
             BlockPos blockPos = rayTraceResult.getBlockPos();
             IBlockState iBlockState = Class516.Field1284.world.getBlockState(blockPos);
             if (iBlockState.getMaterial() != Material.AIR && Class516.Field1284.world.getWorldBorder().contains(blockPos)) {
                 double d = Class516.Field1284.player.lastTickPosX + (Class516.Field1284.player.posX - Class516.Field1284.player.lastTickPosX) * (double)f;
                 double d2 = Class516.Field1284.player.lastTickPosY + (Class516.Field1284.player.posY - Class516.Field1284.player.lastTickPosY) * (double)f;
                 double d3 = Class516.Field1284.player.lastTickPosZ + (Class516.Field1284.player.posZ - Class516.Field1284.player.lastTickPosZ) * (double)f;
-                Class516.Method1283(iBlockState.getSelectedBoundingBox(Class516.Field1284.world, blockPos).grow(0.002f).offset(-d, -d2, -d3), f2, f3, f4, f5);
+                Class516.Method1283(iBlockState.getSelectedBoundingBox((World)Class516.Field1284.world, blockPos).grow((double)0.002f).offset(-d, -d2, -d3), f2, f3, f4, f5);
             }
             Class516.Method1261();
-            GlStateManager.depthMask(true);
+            GlStateManager.depthMask((boolean)true);
             GlStateManager.enableTexture2D();
         }
     }
@@ -345,17 +345,17 @@ public class Class516 {
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.shadeModel(7425);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+        GlStateManager.shadeModel((int)7425);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos(f3, f2, 0.0).color(f10, f11, f12, f9).endVertex();
-        bufferBuilder.pos(f, f2, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f, f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f3, f4, 0.0).color(f10, f11, f12, f9).endVertex();
+        bufferBuilder.pos((double)f3, (double)f2, 0.0).color(f10, f11, f12, f9).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f3, (double)f4, 0.0).color(f10, f11, f12, f9).endVertex();
         tessellator.draw();
-        GlStateManager.shadeModel(7424);
+        GlStateManager.shadeModel((int)7424);
         GlStateManager.disableBlend();
         GlStateManager.enableAlpha();
         GlStateManager.enableTexture2D();
@@ -366,7 +366,7 @@ public class Class516 {
         float f2 = (float)(n >> 8 & 0xFF) / 255.0f;
         float f3 = (float)(n & 0xFF) / 255.0f;
         float f4 = (float)(n >> 24 & 0xFF) / 255.0f;
-        GL11.glColor4f(f, f2, f3, f4);
+        GL11.glColor4f((float)f, (float)f2, (float)f3, (float)f4);
     }
 
     public static void Method1277(float f, float f2, float f3, float f4, int n, int n2, int n3, int n4) {
@@ -389,17 +389,17 @@ public class Class516 {
         GlStateManager.disableTexture2D();
         GlStateManager.enableBlend();
         GlStateManager.disableAlpha();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.shadeModel(7425);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+        GlStateManager.shadeModel((int)7425);
         Tessellator tessellator = Tessellator.getInstance();
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         bufferBuilder.begin(7, DefaultVertexFormats.POSITION_COLOR);
-        bufferBuilder.pos(f3, f2, 0.0).color(f18, f19, f20, f17).endVertex();
-        bufferBuilder.pos(f, f2, 0.0).color(f14, f15, f16, f13).endVertex();
-        bufferBuilder.pos(f, f4, 0.0).color(f6, f7, f8, f5).endVertex();
-        bufferBuilder.pos(f3, f4, 0.0).color(f10, f11, f12, f9).endVertex();
+        bufferBuilder.pos((double)f3, (double)f2, 0.0).color(f18, f19, f20, f17).endVertex();
+        bufferBuilder.pos((double)f, (double)f2, 0.0).color(f14, f15, f16, f13).endVertex();
+        bufferBuilder.pos((double)f, (double)f4, 0.0).color(f6, f7, f8, f5).endVertex();
+        bufferBuilder.pos((double)f3, (double)f4, 0.0).color(f10, f11, f12, f9).endVertex();
         tessellator.draw();
-        GlStateManager.shadeModel(7424);
+        GlStateManager.shadeModel((int)7424);
         GlStateManager.disableBlend();
         GlStateManager.enableAlpha();
         GlStateManager.enableTexture2D();
@@ -425,23 +425,23 @@ public class Class516 {
         BufferBuilder bufferBuilder = tessellator.getBuffer();
         GlStateManager.enableBlend();
         GlStateManager.disableTexture2D();
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-        GlStateManager.color(f3, f4, f5, f2);
-        GL11.glEnable(2848);
-        GlStateManager.glLineWidth(f);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
+        GlStateManager.color((float)f3, (float)f4, (float)f5, (float)f2);
+        GL11.glEnable((int)2848);
+        GlStateManager.glLineWidth((float)f);
         bufferBuilder.begin(1, DefaultVertexFormats.POSITION);
-        bufferBuilder.pos(n, n2, 0.0).endVertex();
-        bufferBuilder.pos(n3, n2, 0.0).endVertex();
-        bufferBuilder.pos(n3, n2, 0.0).endVertex();
-        bufferBuilder.pos(n3, n4, 0.0).endVertex();
-        bufferBuilder.pos(n3, n4, 0.0).endVertex();
-        bufferBuilder.pos(n, n4, 0.0).endVertex();
-        bufferBuilder.pos(n, n4, 0.0).endVertex();
-        bufferBuilder.pos(n, n2, 0.0).endVertex();
+        bufferBuilder.pos((double)n, (double)n2, 0.0).endVertex();
+        bufferBuilder.pos((double)n3, (double)n2, 0.0).endVertex();
+        bufferBuilder.pos((double)n3, (double)n2, 0.0).endVertex();
+        bufferBuilder.pos((double)n3, (double)n4, 0.0).endVertex();
+        bufferBuilder.pos((double)n3, (double)n4, 0.0).endVertex();
+        bufferBuilder.pos((double)n, (double)n4, 0.0).endVertex();
+        bufferBuilder.pos((double)n, (double)n4, 0.0).endVertex();
+        bufferBuilder.pos((double)n, (double)n2, 0.0).endVertex();
         tessellator.draw();
         GlStateManager.enableTexture2D();
         GlStateManager.disableBlend();
-        GL11.glDisable(2848);
+        GL11.glDisable((int)2848);
     }
 
     public static void Method1279(Vec3d vec3d, Vec3d vec3d2, Color color) {
@@ -465,9 +465,9 @@ public class Class516 {
         double d4 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * d - iRenderManager.Method71();
         AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
         AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d2, axisAlignedBB.minY - entity.posY + d3, axisAlignedBB.minZ - entity.posZ + d4, axisAlignedBB.maxX - entity.posX + d2, axisAlignedBB.maxY - entity.posY + d3, axisAlignedBB.maxZ - entity.posZ + d4);
-        GL11.glBlendFunc(770, 771);
+        GL11.glBlendFunc((int)770, (int)771);
         float[] fArray = Class556.Method806(n);
-        GL11.glColor4f(fArray[0], fArray[1], fArray[2], fArray[3]);
+        GL11.glColor4f((float)fArray[0], (float)fArray[1], (float)fArray[2], (float)fArray[3]);
         Class516.Method1286(axisAlignedBB2);
     }
 
@@ -511,12 +511,12 @@ public class Class516 {
         float f2 = (float)color.getGreen() / 255.0f;
         float f3 = (float)color.getBlue() / 255.0f;
         float f4 = (float)color.getAlpha() / 255.0f;
-        GlStateManager.color(f, f2, f3, f4);
+        GlStateManager.color((float)f, (float)f2, (float)f3, (float)f4);
     }
 
     public static void Method1285(AxisAlignedBB axisAlignedBB, Color color) {
         AxisAlignedBB axisAlignedBB2 = axisAlignedBB.offset(-Class516.Field1284.getRenderManager().viewerPosX, -Class516.Field1284.getRenderManager().viewerPosY, -Class516.Field1284.getRenderManager().viewerPosZ);
-        Class516.Method1283(axisAlignedBB2.grow(0.002f), color.getRed() * 255, color.getGreen() * 255, color.getBlue() * 255, color.getAlpha() * 255);
+        Class516.Method1283(axisAlignedBB2.grow((double)0.002f), color.getRed() * 255, color.getGreen() * 255, color.getBlue() * 255, color.getAlpha() * 255);
     }
 
     public static void Method1286(AxisAlignedBB axisAlignedBB) {
@@ -588,10 +588,10 @@ public class Class516 {
         double d5 = d - ((IRenderManager)Field1284.getRenderManager()).Method69();
         double d6 = d2 - ((IRenderManager)Field1284.getRenderManager()).Method70();
         double d7 = d3 - ((IRenderManager)Field1284.getRenderManager()).Method71();
-        GL11.glColor4f((float)color.getRed() / 255.0f, (float)color.getGreen() / 255.0f, (float)color.getBlue() / 255.0f, (float)color.getAlpha() / 255.0f);
-        GL11.glBegin(1);
+        GL11.glColor4f((float)((float)color.getRed() / 255.0f), (float)((float)color.getGreen() / 255.0f), (float)((float)color.getBlue() / 255.0f), (float)((float)color.getAlpha() / 255.0f));
+        GL11.glBegin((int)1);
         for (int i = 0; i <= 360; ++i) {
-            GL11.glVertex3d(d5 + Math.sin((double)i * Math.PI / 180.0) * d4, d6, d7 + Math.cos((double)i * Math.PI / 180.0) * d4);
+            GL11.glVertex3d((double)(d5 + Math.sin((double)i * Math.PI / 180.0) * d4), (double)d6, (double)(d7 + Math.cos((double)i * Math.PI / 180.0) * d4));
         }
         GL11.glEnd();
     }
@@ -601,8 +601,8 @@ public class Class516 {
     }
 
     public static void Method1289() {
-        GL11.glBlendFunc(770, 771);
-        GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        GL11.glBlendFunc((int)770, (int)771);
+        GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
         GlStateManager.enableBlend();
         GlStateManager.disableLighting();
         GlStateManager.disableCull();

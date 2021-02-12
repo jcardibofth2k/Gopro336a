@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import me.darki.konas.*;
 import me.darki.konas.managers.CommandManager;
+import me.darki.konas.unremaped.*;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import sun.misc.Unsafe;

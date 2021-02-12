@@ -1,8 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.List;
 
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.combat.AutoCrystal;
@@ -63,33 +64,34 @@ extends Module {
             return false;
         }
         for (BlockPos blockPos : Class276.Method1765()) {
-            if (!this.Method515(this.Field1798.add(blockPos))) continue;
+            if (!this.Method515(this.Field1798.add((Vec3i)blockPos))) continue;
             bl = false;
         }
         for (BlockPos blockPos : Class276.Method1766()) {
-            if (!this.Method515(this.Field1798.add(blockPos)) && !this.Method515(this.Field1798.add(blockPos.down()))) continue;
+            if (!this.Method515(this.Field1798.add((Vec3i)blockPos)) && !this.Method515(this.Field1798.add((Vec3i)blockPos.down()))) continue;
             this.Field1799 = false;
         }
         for (BlockPos blockPos : Class276.Method1767()) {
-            if (!this.Method515(this.Field1798.add(blockPos)) && !this.Method515(this.Field1798.add(blockPos.down()))) continue;
+            if (!this.Method515(this.Field1798.add((Vec3i)blockPos)) && !this.Method515(this.Field1798.add((Vec3i)blockPos.down()))) continue;
             this.Field1800 = false;
         }
         for (BlockPos blockPos : Class276.Method1769()) {
-            if (!this.Method515(this.Field1798.add(blockPos))) continue;
+            if (!this.Method515(this.Field1798.add((Vec3i)blockPos))) continue;
             this.Field1799 = false;
         }
         for (BlockPos blockPos : Class276.Method1768()) {
-            if (!this.Method515(this.Field1798.add(blockPos))) continue;
+            if (!this.Method515(this.Field1798.add((Vec3i)blockPos))) continue;
             this.Field1800 = false;
         }
         if (bl2) return false;
         if (!bl) return false;
         if (this.Field1799) return true;
-        return this.Field1800;
+        if (!this.Field1800) return false;
+        return true;
     }
 
     public Class282() {
-        super("AutoWither", "Automatically places and spawns wither", Category.MISC);
+        super("AutoWither", "Automatically places and spawns wither", Category.MISC, new String[0]);
     }
 
     @Subscriber(priority=40)
@@ -105,7 +107,7 @@ extends Module {
                     this.toggle();
                     return;
                 }
-                List<BlockPos> list = AutoCrystal.Method1578(Class282.mc.player.getPosition().down(), Field1795.getValue().intValue(), Field1795.getValue(), false, true, 0);
+                List<BlockPos> list = AutoCrystal.Method1578(Class282.mc.player.getPosition().down(), ((Integer)Field1795.getValue()).intValue(), (Integer)Field1795.getValue(), false, true, 0);
                 boolean bl = true;
                 for (BlockPos blockPos : list) {
                     this.Field1798 = blockPos.down();
@@ -114,7 +116,7 @@ extends Module {
                     break;
                 }
                 if (bl) {
-                    if (this.Field1794.getValue().booleanValue()) {
+                    if (((Boolean)this.Field1794.getValue()).booleanValue()) {
                         this.toggle();
                     }
                     return;
@@ -122,29 +124,29 @@ extends Module {
             }
             if (Class282.mc.player.inventory.currentItem != this.Field1801) {
                 Class282.mc.player.inventory.currentItem = this.Field1801;
-                Class282.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1801));
+                Class282.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1801));
             }
             int n = 0;
             for (BlockPos blockPos : Class276.Method1765()) {
-                if (!Class496.Method1965(this.Field1798.add(blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add(blockPos), this.Field1793.getValue(), true)) == null) continue;
+                if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.Field1793.getValue(), true)) == null) continue;
                 Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
-                if (++n < Field1796.getValue()) continue;
+                if (++n < (Integer)Field1796.getValue()) continue;
                 this.Field1805 = true;
                 return;
             }
             if (this.Field1799) {
                 for (BlockPos blockPos : Class276.Method1766()) {
-                    if (!Class496.Method1965(this.Field1798.add(blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add(blockPos), this.Field1793.getValue(), true)) == null) continue;
+                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.Field1793.getValue(), true)) == null) continue;
                     Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
-                    if (++n < Field1796.getValue()) continue;
+                    if (++n < (Integer)Field1796.getValue()) continue;
                     this.Field1805 = true;
                     return;
                 }
             } else if (this.Field1800) {
                 for (BlockPos blockPos : Class276.Method1767()) {
-                    if (!Class496.Method1965(this.Field1798.add(blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add(blockPos), this.Field1793.getValue(), true)) == null) continue;
+                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.Field1793.getValue(), true)) == null) continue;
                     Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
-                    if (++n < Field1796.getValue()) continue;
+                    if (++n < (Integer)Field1796.getValue()) continue;
                     this.Field1805 = true;
                     return;
                 }
@@ -153,32 +155,32 @@ extends Module {
         } else if (this.Field1803 == 2) {
             if (Class282.mc.player.inventory.currentItem != this.Field1802) {
                 Class282.mc.player.inventory.currentItem = this.Field1802;
-                Class282.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1802));
+                Class282.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1802));
             }
             int n = 0;
             if (this.Field1799) {
                 for (BlockPos blockPos : Class276.Method1769()) {
                     Class490 class490;
-                    if (!Class496.Method1965(this.Field1798.add(blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add(blockPos), this.Field1793.getValue(), true)) == null) continue;
+                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.Field1793.getValue(), true)) == null) continue;
                     Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
-                    if (++n < Field1796.getValue()) continue;
+                    if (++n < (Integer)Field1796.getValue()) continue;
                     return;
                 }
             } else if (this.Field1800) {
                 for (BlockPos blockPos : Class276.Method1768()) {
                     Class490 class490;
-                    if (!Class496.Method1965(this.Field1798.add(blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add(blockPos), this.Field1793.getValue(), true)) == null) continue;
+                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.Field1793.getValue(), true)) == null) continue;
                     Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
-                    if (++n < Field1796.getValue()) continue;
+                    if (++n < (Integer)Field1796.getValue()) continue;
                     return;
                 }
             }
-            if (this.Field1794.getValue().booleanValue()) {
+            if (((Boolean)this.Field1794.getValue()).booleanValue()) {
                 this.toggle();
             }
             this.Field1803 = 3;
         } else if (this.Field1803 == 3) {
-            if (this.Field1804 < Field1797.getValue()) {
+            if (this.Field1804 < (Integer)Field1797.getValue()) {
                 ++this.Field1804;
             } else {
                 this.Field1804 = 1;

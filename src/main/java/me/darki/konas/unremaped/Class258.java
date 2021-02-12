@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
@@ -26,43 +26,43 @@ extends Class215 {
                                         }
                                         if (!Class258.Method487(n, n2, this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block1;
                                         if (!(this.Field2063.getValue() instanceof Float)) break block2;
-                                        float f = this.Field2063.getValue().floatValue() - this.Field2063.Method1176().floatValue();
-                                        this.Field2063.setValue(Float.valueOf(MathHelper.clamp(RoundingUtil.Method1998(RoundingUtil.Method1999(f, this.Field2063.Method1176().floatValue()), 2), this.Field2063.Method1187().floatValue(), this.Field2063.Method1182().floatValue())));
+                                        float f = ((Number)this.Field2063.getValue()).floatValue() - ((Number)this.Field2063.Method1176()).floatValue();
+                                        this.Field2063.setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f, ((Float)((Number)this.Field2063.Method1176())).floatValue()), 2), (float)((Float)((Number)this.Field2063.Method1187())).floatValue(), (float)((Float)((Number)this.Field2063.Method1182())).floatValue())));
                                         break block3;
                                     }
                                     if (!(this.Field2063.getValue() instanceof Integer)) break block4;
-                                    int n4 = this.Field2063.getValue().intValue() - this.Field2063.Method1176().intValue();
+                                    int n4 = ((Number)this.Field2063.getValue()).intValue() - ((Number)this.Field2063.Method1176()).intValue();
                                     this.Field2063.setValue(Integer.valueOf(n4));
                                     break block3;
                                 }
                                 if (!(this.Field2063.getValue() instanceof Double)) break block5;
-                                double d = this.Field2063.getValue().doubleValue() + -this.Field2063.Method1176().doubleValue();
-                                this.Field2063.setValue(Double.valueOf(MathHelper.clamp(RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double) this.Field2063.Method1176()), 2), (Double) this.Field2063.Method1187(), (Double) this.Field2063.Method1182())));
+                                double d = ((Number)this.Field2063.getValue()).doubleValue() + -((Number)this.Field2063.Method1176()).doubleValue();
+                                this.Field2063.setValue(Double.valueOf(MathHelper.clamp((double)RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double)((Number)this.Field2063.Method1176())), 2), (double)((Double)((Number)this.Field2063.Method1187())), (double)((Double)((Number)this.Field2063.Method1182())))));
                                 break block3;
                             }
                             if (!(this.Field2063.getValue() instanceof Long)) break block3;
-                            long l = this.Field2063.getValue().longValue() - this.Field2063.Method1176().longValue();
+                            long l = ((Number)this.Field2063.getValue()).longValue() - ((Number)this.Field2063.Method1176()).longValue();
                             this.Field2063.setValue(Long.valueOf(l));
                             break block3;
                         }
                         if (!Class258.Method487(n, n2, this.Method486() + this.Method489() - 12.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block3;
                         if (!(this.Field2063.getValue() instanceof Float)) break block6;
-                        float f = this.Field2063.getValue().floatValue() + this.Field2063.Method1176().floatValue();
-                        this.Field2063.setValue(Float.valueOf(MathHelper.clamp(RoundingUtil.Method1998(RoundingUtil.Method1999(f, this.Field2063.Method1176().floatValue()), 2), this.Field2063.Method1187().floatValue(), this.Field2063.Method1182().floatValue())));
+                        float f = ((Number)this.Field2063.getValue()).floatValue() + ((Number)this.Field2063.Method1176()).floatValue();
+                        this.Field2063.setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f, ((Float)((Number)this.Field2063.Method1176())).floatValue()), 2), (float)((Float)((Number)this.Field2063.Method1187())).floatValue(), (float)((Float)((Number)this.Field2063.Method1182())).floatValue())));
                         break block3;
                     }
                     if (!(this.Field2063.getValue() instanceof Integer)) break block7;
-                    int n5 = this.Field2063.getValue().intValue() + this.Field2063.Method1176().intValue();
+                    int n5 = ((Number)this.Field2063.getValue()).intValue() + ((Number)this.Field2063.Method1176()).intValue();
                     this.Field2063.setValue(Integer.valueOf(n5));
                     break block3;
                 }
                 if (!(this.Field2063.getValue() instanceof Double)) break block8;
-                double d = this.Field2063.getValue().doubleValue() + this.Field2063.Method1176().doubleValue();
-                this.Field2063.setValue(Double.valueOf(MathHelper.clamp(RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double) this.Field2063.Method1176()), 2), (Double) this.Field2063.Method1187(), (Double) this.Field2063.Method1182())));
+                double d = ((Number)this.Field2063.getValue()).doubleValue() + ((Number)this.Field2063.Method1176()).doubleValue();
+                this.Field2063.setValue(Double.valueOf(MathHelper.clamp((double)RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double)((Number)this.Field2063.Method1176())), 2), (double)((Double)((Number)this.Field2063.Method1187())), (double)((Double)((Number)this.Field2063.Method1182())))));
                 break block3;
             }
             if (!(this.Field2063.getValue() instanceof Long)) break block3;
-            long l = this.Field2063.getValue().longValue() + this.Field2063.Method1176().longValue();
+            long l = ((Number)this.Field2063.getValue()).longValue() + ((Number)this.Field2063.Method1176()).longValue();
             this.Field2063.setValue(Long.valueOf(l));
         }
         return super.Method494(n, n2, n3);
@@ -77,7 +77,7 @@ extends Class215 {
         }
         Class270 class270 = new Class270(this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18), this.Method489() - 32.0f, 6.0f, 3.0f);
         Class247.Method2043(class270, Field321);
-        float f2 = MathHelper.floor((this.Field2063.getValue().floatValue() - this.Field2063.Method1187().floatValue()) / (this.Field2063.Method1182().floatValue() - this.Field2063.Method1187().floatValue()) * (this.Method489() - 32.0f));
+        float f2 = MathHelper.floor((float)((((Number)this.Field2063.getValue()).floatValue() - ((Number)this.Field2063.Method1187()).floatValue()) / (((Number)this.Field2063.Method1182()).floatValue() - ((Number)this.Field2063.Method1187()).floatValue()) * (this.Method489() - 32.0f)));
         if (f2 < 0.0f) {
             this.Field2063.setValue(this.Field2063.Method1187());
             this.Field2064 = false;
@@ -87,26 +87,26 @@ extends Class215 {
         }
         if (this.Field2064) {
             if (this.Field2063.getValue() instanceof Float) {
-                float f3 = ((float)n - (this.Method486() + 16.0f)) * (this.Field2063.Method1182().floatValue() - this.Field2063.Method1187().floatValue()) / (this.Method489() - 32.0f) + this.Field2063.Method1187().floatValue();
-                this.Field2063.setValue(Float.valueOf(MathHelper.clamp(RoundingUtil.Method1998(RoundingUtil.Method1999(f3, this.Field2063.Method1176().floatValue()), 2), this.Field2063.Method1187().floatValue(), this.Field2063.Method1182().floatValue())));
+                float f3 = ((float)n - (this.Method486() + 16.0f)) * (((Number)this.Field2063.Method1182()).floatValue() - ((Number)this.Field2063.Method1187()).floatValue()) / (this.Method489() - 32.0f) + ((Number)this.Field2063.Method1187()).floatValue();
+                this.Field2063.setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f3, ((Float)((Number)this.Field2063.Method1176())).floatValue()), 2), (float)((Float)((Number)this.Field2063.Method1187())).floatValue(), (float)((Float)((Number)this.Field2063.Method1182())).floatValue())));
             } else if (this.Field2063.getValue() instanceof Integer) {
-                int n3 = (int)(((float)n - (this.Method486() + 16.0f)) * (float)(this.Field2063.Method1182().intValue() - ~this.Field2063.Method1187().intValue() + 1) / (this.Method489() - 32.0f) + (float) this.Field2063.Method1187().intValue());
+                int n3 = (int)(((float)n - (this.Method486() + 16.0f)) * (float)(((Number)this.Field2063.Method1182()).intValue() - ~((Number)this.Field2063.Method1187()).intValue() + 1) / (this.Method489() - 32.0f) + (float)((Number)this.Field2063.Method1187()).intValue());
                 this.Field2063.setValue(Integer.valueOf(n3));
             } else if (this.Field2063.getValue() instanceof Double) {
-                double d = (double)((float)n - (this.Method486() + 16.0f)) * (this.Field2063.Method1182().doubleValue() - this.Field2063.Method1187().doubleValue()) / (double)(this.Method489() - 32.0f) + this.Field2063.Method1187().doubleValue();
-                this.Field2063.setValue(Double.valueOf(MathHelper.clamp(RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double) this.Field2063.Method1176()), 2), (Double) this.Field2063.Method1187(), (Double) this.Field2063.Method1182())));
+                double d = (double)((float)n - (this.Method486() + 16.0f)) * (((Number)this.Field2063.Method1182()).doubleValue() - ((Number)this.Field2063.Method1187()).doubleValue()) / (double)(this.Method489() - 32.0f) + ((Number)this.Field2063.Method1187()).doubleValue();
+                this.Field2063.setValue(Double.valueOf(MathHelper.clamp((double)RoundingUtil.Method1996(RoundingUtil.Method1997(d, (Double)((Number)this.Field2063.Method1176())), 2), (double)((Double)((Number)this.Field2063.Method1187())), (double)((Double)((Number)this.Field2063.Method1182())))));
             } else if (this.Field2063.getValue() instanceof Long) {
-                long l = (long)((double)((float)n - (this.Method486() + 16.0f)) * (this.Field2063.Method1182().doubleValue() - this.Field2063.Method1187().doubleValue()) / (double)(this.Method489() - 32.0f) + this.Field2063.Method1187().doubleValue());
+                long l = (long)((double)((float)n - (this.Method486() + 16.0f)) * (((Number)this.Field2063.Method1182()).doubleValue() - ((Number)this.Field2063.Method1187()).doubleValue()) / (double)(this.Method489() - 32.0f) + ((Number)this.Field2063.Method1187()).doubleValue());
                 this.Field2063.setValue(Long.valueOf(l));
             }
         }
         Class270 class2702 = new Class270(this.Method486() + 10.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18), 12.0f + f2, 6.0f, 6.0f);
-        Class247.Method2043(class2702, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(KonasGui.highlight.getValue().floatValue()) : Field320);
+        Class247.Method2043(class2702, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class247.Method2042(class2702, Field317, 1.0f);
         Class270 class2703 = new Class270(this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0f, 12.0f, 6.0f);
-        Class247.Method2043(class2703, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(KonasGui.highlight.getValue().floatValue()) : Field320);
+        Class247.Method2043(class2703, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class247.Method2042(class2703, Field317, 1.0f);
-        Class247.Field2261.Method863(this.Field2063.getValue().toString(), (int)(this.Method486() + 16.0f + f2 - Class247.Field2261.Method830(this.Field2063.getValue().toString()) / 2.0f), (int)(this.Method492() + (float)(this.Field2063.hasDescription() ? 48 : 32)), Field324);
+        Class247.Field2261.Method863(((Number)this.Field2063.getValue()).toString(), (int)(this.Method486() + 16.0f + f2 - Class247.Field2261.Method830(((Number)this.Field2063.getValue()).toString()) / 2.0f), (int)(this.Method492() + (float)(this.Field2063.hasDescription() ? 48 : 32)), Field324);
         Class247.Field2261.Method863("-", this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("-"), Field324);
         Class247.Field2261.Method863("+", this.Method486() + this.Method489() - Class247.Field2261.Method830("+"), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("+"), Field324);
     }

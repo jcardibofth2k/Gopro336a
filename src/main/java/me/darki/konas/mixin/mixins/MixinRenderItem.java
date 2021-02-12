@@ -1,8 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.Class167;
-import me.darki.konas.ColorValue;
-import me.darki.konas.Class478;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class478;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;

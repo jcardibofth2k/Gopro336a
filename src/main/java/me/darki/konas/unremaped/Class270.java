@@ -1,8 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 import java.util.List;
-import me.darki.konas.Class244;
+
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.util.FastTrig;
 
@@ -90,7 +90,7 @@ extends Class244 {
         }
         this.Field2243 = new Vector2f[arrayList.size()];
         for (int i = 0; i < arrayList.size(); ++i) {
-            this.Field2243[i] = arrayList.get(i);
+            this.Field2243[i] = (Vector2f)arrayList.get(i);
         }
     }
 

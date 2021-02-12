@@ -1,8 +1,8 @@
 package me.darki.konas;
 
 import java.io.IOException;
-import me.darki.konas.Class162;
-import me.darki.konas.Class223;
+import me.darki.konas.unremaped.Class162;
+import me.darki.konas.unremaped.Class223;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiBeacon;
 import net.minecraft.entity.player.InventoryPlayer;

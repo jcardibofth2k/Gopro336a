@@ -6,6 +6,7 @@ import java.util.Comparator;
 
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class557;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityGhast;

@@ -2,7 +2,7 @@ package me.darki.konas.setting;
 
 import com.viaversion.viafabric.ViaFabric;
 import java.util.function.BooleanSupplier;
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.ParentSetting;
 import me.darki.konas.module.Module;
 

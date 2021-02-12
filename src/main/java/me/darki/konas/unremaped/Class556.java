@@ -1,11 +1,11 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
 public class Class556 {
     public static int Method805(int n, float[] fArray, float f, float f2, float f3) {
         double d = Math.sin((double)f * ((double)System.currentTimeMillis() / Math.pow(10.0, 2.0) * (double)(f2 / 10.0f) + (double)n));
-        return Color.getHSBColor(fArray[0], fArray[1], (float)(((d *= f3) + 1.0) / 2.0) + (1.0f - f3) * 0.5f).getRGB();
+        return Color.getHSBColor(fArray[0], fArray[1], (float)(((d *= (double)f3) + 1.0) / 2.0) + (1.0f - f3) * 0.5f).getRGB();
     }
 
     public static float[] Method806(int n) {

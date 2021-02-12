@@ -2,9 +2,9 @@ package me.darki.konas.module.render;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class443;
-import me.darki.konas.Class70;
-import me.darki.konas.Class83;
+import me.darki.konas.unremaped.Class443;
+import me.darki.konas.unremaped.Class70;
+import me.darki.konas.unremaped.Class83;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 

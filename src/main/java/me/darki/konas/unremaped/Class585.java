@@ -1,7 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.io.PrintStream;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;
@@ -32,7 +34,7 @@ extends Command {
                 printStream.println(object);
             }
             catch (Exception exception) {
-                Enum enum_3 = ((Enum[]) setting.getValue().getClass().getEnumConstants())[setting.Method1195(string)];
+                Enum enum_3 = ((Enum[])((Enum)setting.getValue()).getClass().getEnumConstants())[setting.Method1195(string)];
                 Logger.Method1118("Something went wrong lol");
                 Logger.Method1118(enum_3.name());
                 Logger.Method1118("" + setting.Method1195(string));

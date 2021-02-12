@@ -2,9 +2,9 @@ package me.darki.konas.module.render;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class31;
+import me.darki.konas.unremaped.Class31;
 import me.darki.konas.ViewModelMode;
-import me.darki.konas.Class659;
+import me.darki.konas.unremaped.Class659;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.renderer.GlStateManager;

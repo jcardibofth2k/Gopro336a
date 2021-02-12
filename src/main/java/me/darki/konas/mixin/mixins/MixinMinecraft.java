@@ -2,11 +2,11 @@ package me.darki.konas.mixin.mixins;
 
 import com.viaversion.viafabric.ViaFabric;
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class167;
-import me.darki.konas.Class28;
-import me.darki.konas.Class38;
-import me.darki.konas.Class651;
-import me.darki.konas.Class653;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class28;
+import me.darki.konas.unremaped.Class38;
+import me.darki.konas.unremaped.Class651;
+import me.darki.konas.unremaped.Class653;
 import me.darki.konas.KonasMod;
 import me.darki.konas.module.render.NoRender;
 import net.minecraft.client.Minecraft;

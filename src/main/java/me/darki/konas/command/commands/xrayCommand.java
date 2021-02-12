@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.Class443;
+import me.darki.konas.unremaped.Class443;
 import me.darki.konas.XRay;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;

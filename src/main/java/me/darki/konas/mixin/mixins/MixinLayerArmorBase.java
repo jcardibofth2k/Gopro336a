@@ -1,11 +1,10 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class167;
-import me.darki.konas.ColorValue;
-import me.darki.konas.Class478;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class478;
 import me.darki.konas.module.render.ESP;
-import me.darki.konas.Class569;
+import me.darki.konas.unremaped.Class569;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerArmorBase;
 import net.minecraft.entity.EntityLivingBase;

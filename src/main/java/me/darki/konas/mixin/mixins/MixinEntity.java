@@ -1,10 +1,10 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class34;
-import me.darki.konas.Class36;
-import me.darki.konas.Class37;
-import me.darki.konas.Class80;
+import me.darki.konas.unremaped.Class34;
+import me.darki.konas.unremaped.Class36;
+import me.darki.konas.unremaped.Class37;
+import me.darki.konas.unremaped.Class80;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import org.spongepowered.asm.mixin.Mixin;

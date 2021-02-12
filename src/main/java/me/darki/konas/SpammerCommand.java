@@ -1,7 +1,5 @@
 package me.darki.konas;
 
-import me.darki.konas.Class526;
-import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.misc.Spammer;

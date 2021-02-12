@@ -1,8 +1,11 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.ParentSetting;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
@@ -118,12 +121,12 @@ extends Class183 {
                 class183.Method1472(f2);
                 f2 += class183.Method1481();
             }
-            int n4 = n3 = this.Field1436.Method2338() ? ClickGUIModule.color.getValue().Method774() : ClickGUIModule.secondary.getValue().Method774();
-            if (ClickGUIModule.hover.getValue().booleanValue() && Class180.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-                n3 = this.Field1436.Method2338() ? ClickGUIModule.color.getValue().Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
+            int n4 = n3 = this.Field1436.Method2338() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
+            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class180.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+                n3 = this.Field1436.Method2338() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
-            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 4.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f - 0.5f), ClickGUIModule.fony.getValue().Method774());
+            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 4.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f - 0.5f), ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
             if (!this.Method1486()) break block2;
             this.Method1494().forEach(arg_0 -> Class180.Method670(n, n2, f, arg_0));
         }

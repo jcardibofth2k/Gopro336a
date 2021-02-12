@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.viaversion.viafabric.ViaFabric;
 import com.viaversion.viafabric.protocol.ProtocolCollection;
@@ -36,13 +36,13 @@ extends GuiButton {
             if (!this.visible) break block1;
             if (this.Field2046) {
                 this.Field2045 = (float)(n - (this.x + 4)) / (float)(this.width - 8);
-                this.Field2045 = MathHelper.clamp(this.Field2045, 0.0f, 1.0f);
+                this.Field2045 = MathHelper.clamp((float)this.Field2045, (float)0.0f, (float)1.0f);
                 int n3 = (int)(this.Field2045 * this.Field2048);
                 ViaFabric.getInstance().setVersion(ProtocolCollection.values()[n3].getVersion().getVersion());
                 this.displayString = "Protocol: " + ProtocolCollection.values()[n3].getVersion().getName();
             }
             minecraft.getTextureManager().bindTexture(BUTTON_TEXTURES);
-            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+            GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
             this.drawTexturedModalRect(this.x + (int)(this.Field2045 * (float)(this.width - 8)), this.y, 0, 66, 4, 20);
             this.drawTexturedModalRect(this.x + (int)(this.Field2045 * (float)(this.width - 8)) + 4, this.y, 196, 66, 4, 20);
         }
@@ -51,7 +51,7 @@ extends GuiButton {
     public boolean mousePressed(Minecraft minecraft, int n, int n2) {
         if (super.mousePressed(minecraft, n, n2)) {
             this.Field2045 = (float)(n - (this.x + 4)) / (float)(this.width - 8);
-            this.Field2045 = MathHelper.clamp(this.Field2045, 0.0f, 1.0f);
+            this.Field2045 = MathHelper.clamp((float)this.Field2045, (float)0.0f, (float)1.0f);
             int n3 = (int)(this.Field2045 * this.Field2048);
             ViaFabric.getInstance().setVersion(ProtocolCollection.values()[n3].getVersion().getVersion());
             this.displayString = "Protocol: " + ProtocolCollection.values()[n3].getVersion().getName();

@@ -1,7 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.Class309;
-import me.darki.konas.Class531;
+import me.darki.konas.unremaped.Class309;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

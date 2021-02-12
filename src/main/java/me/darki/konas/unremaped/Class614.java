@@ -1,8 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.SyntaxChunk;
 
-public class MuteCommandOptions
+public class Class614
 extends SyntaxChunk {
     public String Method177(String string) {
         if (string.toLowerCase().startsWith("a")) {
@@ -20,8 +20,7 @@ extends SyntaxChunk {
         return string;
     }
 
-    public
-    MuteCommandOptions(String string) {
+    public Class614(String string) {
         super(string);
     }
 }

@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.text.SimpleDateFormat;
@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
+import me.darki.konas.MathUtil;
+import me.darki.konas.TickEvent;
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.IGuiEditSign;
 import me.darki.konas.module.Category;
@@ -62,7 +65,7 @@ extends Module {
     public Class566 Field1787 = new Class566();
 
     public static Float Method1676(BlockPos blockPos) {
-        return Float.valueOf(MathHelper.sqrt(Class280.mc.player.getDistanceSq(blockPos)));
+        return Float.valueOf(MathHelper.sqrt((double)Class280.mc.player.getDistanceSq(blockPos)));
     }
 
     public boolean Method526(BlockPos blockPos) {
@@ -79,7 +82,7 @@ extends Module {
             CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
             if (class24.getPacket() instanceof CPacketPlayer.Position) {
                 class24.setCanceled(true);
-                Class280.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(cPacketPlayer.getX(Class280.mc.player.posX), cPacketPlayer.getY(Class280.mc.player.posY), cPacketPlayer.getZ(Class280.mc.player.posZ), this.Field1785, this.Field1786, cPacketPlayer.isOnGround()));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(Class280.mc.player.posX), cPacketPlayer.getY(Class280.mc.player.posY), cPacketPlayer.getZ(Class280.mc.player.posZ), this.Field1785, this.Field1786, cPacketPlayer.isOnGround()));
             } else {
                 ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field1785);
                 ((ICPacketPlayer)cPacketPlayer).Method1697(this.Field1786);
@@ -98,7 +101,7 @@ extends Module {
     public void Method948(Class56 class56) {
         block13: {
             block12: {
-                if (!Field1771.getValue().booleanValue()) {
+                if (!((Boolean)Field1771.getValue()).booleanValue()) {
                     return;
                 }
                 if (!(class56 instanceof UpdateEvent)) break block12;
@@ -106,7 +109,7 @@ extends Module {
                 this.Field1782 = null;
                 int n = this.Method464();
                 this.Field1783 = -1;
-                Iterable iterable = BlockPos.getAllInBox(Class280.mc.player.getPosition().add(-Field1775.getValue().intValue(), -Field1776.getValue().intValue(), -Field1775.getValue().intValue()), Class280.mc.player.getPosition().add(Field1775.getValue().intValue(), Field1776.getValue().intValue(), Field1775.getValue().intValue()));
+                Iterable iterable = BlockPos.getAllInBox((BlockPos)Class280.mc.player.getPosition().add(-((Integer)Field1775.getValue()).intValue(), -((Integer)Field1776.getValue()).intValue(), -((Integer)Field1775.getValue()).intValue()), (BlockPos)Class280.mc.player.getPosition().add(((Integer)Field1775.getValue()).intValue(), ((Integer)Field1776.getValue()).intValue(), ((Integer)Field1775.getValue()).intValue()));
                 BlockPos blockPos = StreamSupport.stream(iterable.spliterator(), false).filter(Class280::Method512).filter(Class280::Method1683).min(Comparator.comparing(Class280::Method1686)).orElse(null);
                 if (blockPos != null) {
                     if (Class280.mc.world.getBlockState(blockPos).getMaterial().isReplaceable()) {
@@ -115,45 +118,45 @@ extends Module {
                         if (optional.isPresent()) {
                             this.Field1781 = optional.get().Field1089;
                             this.Field1782 = optional.get().Field1090;
-                            double[] dArray = Class545.Method1008(this.Field1781.getX(), this.Field1781.getY(), this.Field1781.getZ(), this.Field1782, Class280.mc.player);
+                            double[] dArray = Class545.Method1008(this.Field1781.getX(), this.Field1781.getY(), this.Field1781.getZ(), this.Field1782, (EntityPlayer)Class280.mc.player);
                             this.Field1785 = (float)dArray[0];
                             this.Field1786 = (float)dArray[1];
                             this.Field1784 = true;
                             return;
                         }
-                    } else if (this.Field1787.Method737(Field1773.getValue() * 10)) {
+                    } else if (this.Field1787.Method737((Integer)Field1773.getValue() * 10)) {
                         this.Field1784 = false;
                         return;
                     }
                 }
                 break block13;
             }
-            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.Method737(Field1773.getValue() * 2) || this.Field1783 == -1) break block13;
+            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.Method737((Integer)Field1773.getValue() * 2) || this.Field1783 == -1) break block13;
             boolean bl = Class280.mc.player.inventory.currentItem != this.Field1783;
             boolean bl2 = Class280.mc.player.isSprinting();
             int n = Class280.mc.player.inventory.currentItem;
             boolean bl3 = Class545.Method1004(this.Field1781);
             if (bl) {
                 Class280.mc.player.inventory.currentItem = this.Field1783;
-                Class280.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1783));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1783));
             }
             if (bl2) {
-                Class280.mc.player.connection.sendPacket(new CPacketEntityAction(Class280.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class280.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
             }
             if (bl3) {
-                Class280.mc.player.connection.sendPacket(new CPacketEntityAction(Class280.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class280.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
-            Class280.mc.playerController.processRightClickBlock(Class280.mc.player, Class280.mc.world, this.Field1781, this.Field1782, new Vec3d(this.Field1781).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1782.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
-            Class280.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
+            Class280.mc.playerController.processRightClickBlock(Class280.mc.player, Class280.mc.world, this.Field1781, this.Field1782, new Vec3d((Vec3i)this.Field1781).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1782.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
+            Class280.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
             if (bl3) {
-                Class280.mc.player.connection.sendPacket(new CPacketEntityAction(Class280.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class280.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
             }
             if (bl2) {
-                Class280.mc.player.connection.sendPacket(new CPacketEntityAction(Class280.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class280.mc.player, CPacketEntityAction.Action.START_SPRINTING));
             }
             if (bl) {
                 Class280.mc.player.inventory.currentItem = n;
-                Class280.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                Class280.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
             }
             this.Field1787.Method739();
         }
@@ -161,11 +164,11 @@ extends Module {
 
     public void Method1677(double d, double d2, double d3, EntityPlayer entityPlayer) {
         double[] dArray = MathUtil.Method1088(d, d2, d3, entityPlayer);
-        Class280.mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float)dArray[0], (float)dArray[1], false));
+        Class280.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation((float)dArray[0], (float)dArray[1], false));
     }
 
     public static Float Method1678(BlockPos blockPos) {
-        return Float.valueOf(MathHelper.sqrt(Class280.mc.player.getDistanceSq(blockPos)));
+        return Float.valueOf(MathHelper.sqrt((double)Class280.mc.player.getDistanceSq(blockPos)));
     }
 
     public static boolean Method522(BlockPos blockPos) {
@@ -177,8 +180,8 @@ extends Module {
     }
 
     public void Method1679(BlockPos blockPos) {
-        if (Field1777.getValue().booleanValue()) {
-            this.Method1677((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5, Class280.mc.player);
+        if (((Boolean)Field1777.getValue()).booleanValue()) {
+            this.Method1677((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5, (EntityPlayer)Class280.mc.player);
         }
         Class280.mc.playerController.clickBlock(blockPos, EnumFacing.UP);
         Class280.mc.player.swingArm(EnumHand.MAIN_HAND);
@@ -191,7 +194,7 @@ extends Module {
             if (Class280.mc.world == null || Class280.mc.player == null) {
                 return;
             }
-            if (!(class654.Method1161() instanceof GuiEditSign) || !Field1770.getValue().booleanValue()) break block1;
+            if (!(class654.Method1161() instanceof GuiEditSign) || !((Boolean)Field1770.getValue()).booleanValue()) break block1;
             GuiEditSign guiEditSign = (GuiEditSign)class654.Method1161();
             TileEntitySign tileEntitySign = ((IGuiEditSign)guiEditSign).Method48();
             this.Method1680(tileEntitySign.getPos());
@@ -205,7 +208,7 @@ extends Module {
         iTextComponentArray[1] = new TextComponentString(Field1780.get(1).replaceAll("<player>", Class280.mc.player.getName()).replaceAll("<date>", new SimpleDateFormat("dd/MM/yy").format(new Date())));
         iTextComponentArray[2] = new TextComponentString(Field1780.get(2).replaceAll("<player>", Class280.mc.player.getName()).replaceAll("<date>", new SimpleDateFormat("dd/MM/yy").format(new Date())));
         iTextComponentArray[3] = new TextComponentString(Field1780.get(3).replaceAll("<player>", Class280.mc.player.getName()).replaceAll("<date>", new SimpleDateFormat("dd/MM/yy").format(new Date())));
-        Class280.mc.player.connection.sendPacket(new CPacketUpdateSign(blockPos, iTextComponentArray));
+        Class280.mc.player.connection.sendPacket((Packet)new CPacketUpdateSign(blockPos, iTextComponentArray));
     }
 
     public boolean Method1681(BlockPos blockPos) {
@@ -229,7 +232,7 @@ extends Module {
         if (!itemStack.isEmpty() && itemStack.getItem() instanceof ItemBlock) {
             return Class280.mc.player.inventory.currentItem;
         }
-        if (Field1772.getValue().booleanValue()) {
+        if (((Boolean)Field1772.getValue()).booleanValue()) {
             for (int i = 0; i < 9; ++i) {
                 itemStack = Class280.mc.player.inventory.getStackInSlot(i);
                 if (itemStack.isEmpty() || !(itemStack.getItem() instanceof ItemBlock)) continue;
@@ -254,16 +257,16 @@ extends Module {
                 return;
             }
             this.Field1778.clear();
-            Iterable iterable = BlockPos.getAllInBox(Class280.mc.player.getPosition().add(-Field1775.getValue().intValue(), -Field1776.getValue().intValue(), -Field1775.getValue().intValue()), Class280.mc.player.getPosition().add(Field1775.getValue().intValue(), Field1776.getValue().intValue(), Field1775.getValue().intValue()));
-            if (Field1769.getValue().booleanValue()) {
+            Iterable iterable = BlockPos.getAllInBox((BlockPos)Class280.mc.player.getPosition().add(-((Integer)Field1775.getValue()).intValue(), -((Integer)Field1776.getValue()).intValue(), -((Integer)Field1775.getValue()).intValue()), (BlockPos)Class280.mc.player.getPosition().add(((Integer)Field1775.getValue()).intValue(), ((Integer)Field1776.getValue()).intValue(), ((Integer)Field1775.getValue()).intValue()));
+            if (((Boolean)Field1769.getValue()).booleanValue()) {
                 this.Field1778 = (ArrayList)StreamSupport.stream(iterable.spliterator(), false).filter(Class280::Method522).filter(this::Method526).sorted(Comparator.comparing(Class280::Method1678)).collect(Collectors.toList());
-                if (!this.Field1778.isEmpty() && Class280.mc.player.ticksExisted % Field1774.getValue() == 0) {
+                if (!this.Field1778.isEmpty() && Class280.mc.player.ticksExisted % (Integer)Field1774.getValue() == 0) {
                     this.Method1679(this.Field1778.get(0));
                 }
             }
-            if (!Field1770.getValue().booleanValue()) break block4;
+            if (!((Boolean)Field1770.getValue()).booleanValue()) break block4;
             this.Field1779 = (ArrayList)StreamSupport.stream(iterable.spliterator(), false).filter(Class280::Method1684).filter(this::Method1681).filter(this::Method515).sorted(Comparator.comparing(Class280::Method1676)).collect(Collectors.toList());
-            if (!this.Field1779.isEmpty() && Class280.mc.player.ticksExisted % Field1774.getValue() == 0) {
+            if (!this.Field1779.isEmpty() && Class280.mc.player.ticksExisted % (Integer)Field1774.getValue() == 0) {
                 this.Method1680(this.Field1779.get(0));
             }
         }
@@ -285,6 +288,6 @@ extends Module {
     }
 
     public static Float Method1686(BlockPos blockPos) {
-        return Float.valueOf(MathHelper.sqrt(Class280.mc.player.getDistanceSq(blockPos)));
+        return Float.valueOf(MathHelper.sqrt((double)Class280.mc.player.getDistanceSq(blockPos)));
     }
 }

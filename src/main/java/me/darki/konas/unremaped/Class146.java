@@ -1,9 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.potion.Potion;
@@ -53,11 +54,11 @@ extends Element {
     }
 
     public String Method1818(PotionEffect potionEffect) {
-        return this.Method1819(potionEffect) + " " + Potion.getPotionDurationString(potionEffect, 1.0f);
+        return this.Method1819(potionEffect) + " " + Potion.getPotionDurationString((PotionEffect)potionEffect, (float)1.0f);
     }
 
     public String Method1819(PotionEffect potionEffect) {
-        return I18n.format(potionEffect.getEffectName());
+        return I18n.format((String)potionEffect.getEffectName(), (Object[])new Object[0]);
     }
 
     public void Method1820(AtomicReference atomicReference, AtomicInteger atomicInteger, PotionEffect potionEffect) {

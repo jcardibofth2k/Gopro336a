@@ -1,8 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.SyntaxChunk;
 
-public class friendSyncclients
+public class Class624
 extends SyntaxChunk {
     public String Method177(String string) {
         if (string.toLowerCase().startsWith("f")) {
@@ -17,8 +17,7 @@ extends SyntaxChunk {
         return string;
     }
 
-    public
-    friendSyncclients(String string) {
+    public Class624(String string) {
         super(string);
     }
 }

@@ -2,7 +2,7 @@ package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class643;
+import me.darki.konas.unremaped.Class643;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;

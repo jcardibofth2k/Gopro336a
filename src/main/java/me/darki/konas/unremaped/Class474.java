@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.mixin.mixins.IRenderManager;
@@ -32,13 +32,13 @@ extends Module {
             if (Class474.mc.mouseHelper.deltaX != 0 || Class474.mc.mouseHelper.deltaY != 0 || this.Method394()) {
                 this.Field2551 = 4;
             } else {
-                float f = 360.0f / (Field2547.getValue() != false ? 8.0f : 4.0f);
+                float f = 360.0f / ((Boolean)Field2547.getValue() != false ? 8.0f : 4.0f);
                 if (this.Field2551 <= 0) {
                     float f2 = Class474.mc.player.rotationYaw + 180.0f;
                     f2 = (float)Math.round(f2 / f) * f;
                     Class474.mc.player.prevRotationYaw = Class474.mc.player.rotationYaw;
-                    Class474.mc.player.rotationYaw = Interpolation.Method363(Class474.mc.player.rotationYaw, f2 -= 180.0f, mc.getRenderPartialTicks(), Field2550.getValue().floatValue());
-                    if (Field2549.getValue().booleanValue() && Class474.mc.player.isRiding()) {
+                    Class474.mc.player.rotationYaw = Interpolation.Method363(Class474.mc.player.rotationYaw, f2 -= 180.0f, mc.getRenderPartialTicks(), ((Float)Field2550.getValue()).floatValue());
+                    if (((Boolean)Field2549.getValue()).booleanValue() && Class474.mc.player.isRiding()) {
                         Class474.mc.player.getRidingEntity().prevRotationYaw = Class474.mc.player.getRidingEntity().rotationYaw;
                         Class474.mc.player.getRidingEntity().rotationYaw = Class474.mc.player.rotationYaw;
                     }
@@ -46,42 +46,42 @@ extends Module {
                     --this.Field2551;
                 }
             }
-            if (!Field2548.getValue().booleanValue() || this.Field2551 <= 0 && !(this.Field2552 > 0.0f)) break block11;
+            if (!((Boolean)Field2548.getValue()).booleanValue() || this.Field2551 <= 0 && !(this.Field2552 > 0.0f)) break block11;
             double d = 300.0;
             Vec3d vec3d = Class474.mc.player.getPositionVector();
-            Vec3d[] vec3dArray = Field2547.getValue() != false ? new Vec3d[]{vec3d.add(d, 0.0, 0.0), vec3d.add(d / 2.0, 0.0, d / 2.0), vec3d.add(0.0, 0.0, d), vec3d.add(-d / 2.0, 0.0, d / 2.0), vec3d.add(-d, 0.0, 0.0), vec3d.add(-d / 2.0, 0.0, -d / 2.0), vec3d.add(0.0, 0.0, -d), vec3d.add(d / 2.0, 0.0, -d / 2.0)} : new Vec3d[]{vec3d.add(d, 0.0, 0.0), vec3d.add(0.0, 0.0, d), vec3d.add(-d, 0.0, 0.0), vec3d.add(0.0, 0.0, -d)};
+            Vec3d[] vec3dArray = (Boolean)Field2547.getValue() != false ? new Vec3d[]{vec3d.add(d, 0.0, 0.0), vec3d.add(d / 2.0, 0.0, d / 2.0), vec3d.add(0.0, 0.0, d), vec3d.add(-d / 2.0, 0.0, d / 2.0), vec3d.add(-d, 0.0, 0.0), vec3d.add(-d / 2.0, 0.0, -d / 2.0), vec3d.add(0.0, 0.0, -d), vec3d.add(d / 2.0, 0.0, -d / 2.0)} : new Vec3d[]{vec3d.add(d, 0.0, 0.0), vec3d.add(0.0, 0.0, d), vec3d.add(-d, 0.0, 0.0), vec3d.add(0.0, 0.0, -d)};
             if (this.Field2551 > 0) {
-                this.Field2552 = Interpolation.Method363(this.Field2552, 255.0f, mc.getRenderPartialTicks(), Field2550.getValue().floatValue());
+                this.Field2552 = Interpolation.Method363(this.Field2552, 255.0f, mc.getRenderPartialTicks(), ((Float)Field2550.getValue()).floatValue());
             } else if (this.Field2552 > 0.0f) {
-                this.Field2552 = Interpolation.Method363(this.Field2552, 0.0f, mc.getRenderPartialTicks(), Field2550.getValue().floatValue());
+                this.Field2552 = Interpolation.Method363(this.Field2552, 0.0f, mc.getRenderPartialTicks(), ((Float)Field2550.getValue()).floatValue());
             }
             if (this.Field2552 != 0.0f) {
                 GlStateManager.pushMatrix();
-                GlStateManager.blendFunc(770, 771);
-                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                GlStateManager.blendFunc((int)770, (int)771);
+                GlStateManager.tryBlendFuncSeparate((GlStateManager.SourceFactor)GlStateManager.SourceFactor.SRC_ALPHA, (GlStateManager.DestFactor)GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, (GlStateManager.SourceFactor)GlStateManager.SourceFactor.ONE, (GlStateManager.DestFactor)GlStateManager.DestFactor.ZERO);
                 GlStateManager.enableBlend();
                 GlStateManager.disableLighting();
                 GlStateManager.disableCull();
-                GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
                 GlStateManager.disableDepth();
-                GlStateManager.depthMask(false);
-                GlStateManager.shadeModel(7425);
-                GlStateManager.glLineWidth(2.0f);
+                GlStateManager.depthMask((boolean)false);
+                GlStateManager.shadeModel((int)7425);
+                GlStateManager.glLineWidth((float)2.0f);
                 GlStateManager.disableTexture2D();
-                GL11.glEnable(2848);
-                GL11.glHint(3154, 4354);
+                GL11.glEnable((int)2848);
+                GL11.glHint((int)3154, (int)4354);
                 double d2 = ((IRenderManager)mc.getRenderManager()).Method69();
                 double d3 = ((IRenderManager)mc.getRenderManager()).Method70();
                 double d4 = ((IRenderManager)mc.getRenderManager()).Method71();
-                GlStateManager.translate(-d2, -d3, -d4);
+                GlStateManager.translate((double)(-d2), (double)(-d3), (double)(-d4));
                 for (Vec3d vec3d2 : vec3dArray) {
-                    Class474.Method2187(vec3d2.subtract(0.0, this.Field2552, 0.0), vec3d2.add(0.0, (double)this.Field2552, 0.0), 0.96f, 0.19f, 0.19f, this.Field2552 / 255.0f / 2.0f + 127.5f);
+                    Class474.Method2187(vec3d2.subtract(0.0, (double)this.Field2552, 0.0), vec3d2.add(0.0, (double)this.Field2552, 0.0), 0.96f, 0.19f, 0.19f, this.Field2552 / 255.0f / 2.0f + 127.5f);
                 }
-                GlStateManager.shadeModel(7424);
-                GL11.glDisable(2848);
+                GlStateManager.shadeModel((int)7424);
+                GL11.glDisable((int)2848);
                 GlStateManager.enableDepth();
-                GlStateManager.depthMask(true);
-                GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+                GlStateManager.depthMask((boolean)true);
+                GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
                 GlStateManager.enableCull();
                 GlStateManager.enableLighting();
                 GlStateManager.disableBlend();
@@ -96,7 +96,7 @@ extends Module {
     }
 
     public Class474() {
-        super("YawLock", "Lock your yaw rotation", Category.PLAYER);
+        super("YawLock", "Lock your yaw rotation", Category.PLAYER, new String[0]);
     }
 
     public static void Method2187(Vec3d vec3d, Vec3d vec3d2, float f, float f2, float f3, float f4) {
@@ -110,7 +110,7 @@ extends Module {
 
     public boolean Method394() {
         for (int i = 0; i < Mouse.getButtonCount(); ++i) {
-            if (!Mouse.isButtonDown(i)) continue;
+            if (!Mouse.isButtonDown((int)i)) continue;
             return true;
         }
         return false;

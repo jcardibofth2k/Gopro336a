@@ -1,9 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import me.darki.konas.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -36,7 +37,7 @@ extends Module {
 
     @Override
     public String Method756() {
-        return this.Field712.getValue().toString().charAt(0) + this.Field712.getValue().toString().substring(1).toLowerCase();
+        return ((Class323)((Object)this.Field712.getValue())).toString().charAt(0) + ((Class323)((Object)this.Field712.getValue())).toString().substring(1).toLowerCase();
     }
 
     public Class320() {
@@ -48,49 +49,49 @@ extends Module {
         if (Class320.mc.player == null || Class320.mc.world == null) {
             return;
         }
-        if (!Class167.Method1612("KillAura").isEnabled() && this.Field717.getValue().booleanValue()) {
+        if (!Class167.Method1612("KillAura").isEnabled() && ((Boolean)this.Field717.getValue()).booleanValue()) {
             return;
         }
         if ((this.Field712.getValue() == Class323.JUMP || this.Field712.getValue() == Class323.SMALLJUMP) && this.Field719 != null && this.Field720 != null) {
             return;
         }
         if (class24.getPacket() instanceof CPacketUseEntity && ((CPacketUseEntity)class24.getPacket()).getAction() == CPacketUseEntity.Action.ATTACK && Class320.mc.player.onGround && Class320.mc.player.collidedVertically && !Class320.mc.player.isInLava() && !Class320.mc.player.isInWater()) {
-            Entity entity = ((CPacketUseEntity)class24.getPacket()).getEntityFromWorld(Class320.mc.world);
+            Entity entity = ((CPacketUseEntity)class24.getPacket()).getEntityFromWorld((World)Class320.mc.world);
             if (entity instanceof EntityEnderCrystal || entity == null) {
                 return;
             }
             if (entity instanceof EntityMinecart || entity instanceof EntityBoat) {
-                if (this.Field714.getValue().booleanValue()) {
+                if (((Boolean)this.Field714.getValue()).booleanValue()) {
                     if (this.Field721 > 0) {
                         --this.Field721;
                         return;
                     }
-                    this.Field721 = this.Field715.getValue();
-                    for (int i = 0; i < this.Field715.getValue(); ++i) {
+                    this.Field721 = (Integer)this.Field715.getValue();
+                    for (int i = 0; i < (Integer)this.Field715.getValue(); ++i) {
                         this.Field718.add(new CPacketUseEntity(entity));
                     }
                     return;
                 }
             }
-            switch (Class314.Field761[this.Field712.getValue().ordinal()]) {
+            switch (Class314.Field761[((Class323)((Object)this.Field712.getValue())).ordinal()]) {
                 case 1: {
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0625101, Class320.mc.player.posZ, false));
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0125, Class320.mc.player.posZ, false));
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0625101, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0125, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
                     break;
                 }
                 case 2: {
-                    if (this.Field713.getValue().booleanValue() && Class320.mc.world.getBlockState(new BlockPos(Class320.mc.player)).getBlock() instanceof BlockWeb) {
-                        Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0625101, Class320.mc.player.posZ, false));
-                        Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
-                        Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0125, Class320.mc.player.posZ, false));
-                        Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
+                    if (((Boolean)this.Field713.getValue()).booleanValue() && Class320.mc.world.getBlockState(new BlockPos((Entity)Class320.mc.player)).getBlock() instanceof BlockWeb) {
+                        Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0625101, Class320.mc.player.posZ, false));
+                        Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
+                        Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.0125, Class320.mc.player.posZ, false));
+                        Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY, Class320.mc.player.posZ, false));
                         break;
                     }
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.11, Class320.mc.player.posZ, false));
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.1100013579, Class320.mc.player.posZ, false));
-                    Class320.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 1.3579E-6, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.11, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 0.1100013579, Class320.mc.player.posZ, false));
+                    Class320.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class320.mc.player.posX, Class320.mc.player.posY + 1.3579E-6, Class320.mc.player.posZ, false));
                     break;
                 }
                 case 3: {
@@ -127,15 +128,15 @@ extends Module {
             return;
         }
         if (tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
-            if (!this.Field718.isEmpty() && this.Field722 % this.Field716.getValue() == 0) {
-                Class320.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
-                Class320.mc.player.connection.sendPacket(this.Field718.poll());
+            if (!this.Field718.isEmpty() && this.Field722 % (Integer)this.Field716.getValue() == 0) {
+                Class320.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
+                Class320.mc.player.connection.sendPacket((Packet)this.Field718.poll());
             }
             ++this.Field722;
         }
         if (Class320.mc.player.motionY < 0.0 && this.Field719 != null && this.Field720 != null && (this.Field712.getValue() == Class323.JUMP || this.Field712.getValue() == Class323.SMALLJUMP)) {
-            Class320.mc.player.connection.sendPacket(this.Field719);
-            Class320.mc.player.connection.sendPacket(this.Field720);
+            Class320.mc.player.connection.sendPacket((Packet)this.Field719);
+            Class320.mc.player.connection.sendPacket((Packet)this.Field720);
             this.Field719 = null;
             this.Field720 = null;
         }

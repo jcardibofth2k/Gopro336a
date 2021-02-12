@@ -9,6 +9,9 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class526;
+import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.Class589;
 
 public class Spammer
 extends Module {

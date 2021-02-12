@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
@@ -22,7 +22,7 @@ extends Module {
     }
 
     public Class419() {
-        super("PacketRender", Category.RENDER);
+        super("PacketRender", Category.RENDER, new String[0]);
     }
 
     public static float Method1115() {

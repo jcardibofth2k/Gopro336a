@@ -1,9 +1,9 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class21;
-import me.darki.konas.Class4;
-import me.darki.konas.Class53;
+import me.darki.konas.unremaped.Class21;
+import me.darki.konas.unremaped.Class4;
+import me.darki.konas.unremaped.Class53;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;

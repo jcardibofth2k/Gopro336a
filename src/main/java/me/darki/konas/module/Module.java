@@ -6,8 +6,8 @@ import java.awt.TrayIcon;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import me.darki.konas.Class167;
-import me.darki.konas.Class184;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class184;
 import me.darki.konas.Keybind;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

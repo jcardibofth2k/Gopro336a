@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.google.common.base.Charsets;
 import com.mojang.authlib.Agent;
@@ -10,9 +10,7 @@ import com.mojang.authlib.yggdrasil.YggdrasilUserAuthentication;
 import com.mojang.util.UUIDTypeAdapter;
 import java.net.InetAddress;
 import java.util.UUID;
-import me.darki.konas.Class509;
-import me.darki.konas.Class512;
-import me.darki.konas.Class68;
+
 import me.darki.konas.mixin.mixins.IMinecraft;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Session;
@@ -77,7 +75,10 @@ public class Class540 {
         InetAddress inetAddress = null;
         GameProfile gameProfile5 = yggdrasilMinecraftSessionService2.hasJoinedServer(gameProfile4, string7, inetAddress);
         boolean bl = gameProfile5.isComplete();
-        return bl;
+        if (bl) {
+            return true;
+        }
+        return false;
     }
 
     public static boolean Method1097(Class68 class68, String string, String string2) {

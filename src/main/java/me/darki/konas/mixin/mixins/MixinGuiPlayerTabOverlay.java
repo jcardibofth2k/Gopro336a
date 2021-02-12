@@ -3,7 +3,7 @@ package me.darki.konas.mixin.mixins;
 import cookiedragon.eventsystem.EventDispatcher;
 import java.util.List;
 import kotlin.collections.CollectionsKt;
-import me.darki.konas.Class133;
+import me.darki.konas.unremaped.Class133;
 import me.darki.konas.module.render.ExtraTab;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;

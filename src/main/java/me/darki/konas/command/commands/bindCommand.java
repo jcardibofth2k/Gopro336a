@@ -1,9 +1,9 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.util.ChatUtil;
-import me.darki.konas.Class605;
-import me.darki.konas.Class606;
+import me.darki.konas.unremaped.Class605;
+import me.darki.konas.unremaped.Class606;
 import me.darki.konas.command.Command;
 import me.darki.konas.module.Module;
 import org.lwjgl.input.Keyboard;

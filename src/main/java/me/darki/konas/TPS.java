@@ -5,6 +5,8 @@ import java.text.DecimalFormat;
 
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class456;
+import me.darki.konas.unremaped.Class557;
 
 public class TPS
 extends Element {

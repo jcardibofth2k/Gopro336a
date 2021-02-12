@@ -2,12 +2,11 @@ package me.darki.konas.command.commands;
 
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.module.render.Hud;
-import me.darki.konas.Class247;
-import me.darki.konas.Class425;
-import me.darki.konas.Class427;
-import me.darki.konas.Class548;
-import me.darki.konas.Class555;
-import me.darki.konas.Class557;
+import me.darki.konas.unremaped.Class247;
+import me.darki.konas.unremaped.Class425;
+import me.darki.konas.unremaped.Class548;
+import me.darki.konas.unremaped.Class555;
+import me.darki.konas.unremaped.Class557;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

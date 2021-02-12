@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import me.darki.konas.module.Category;
 import me.darki.konas.PacketEvent;
-import me.darki.konas.Class475;
+import me.darki.konas.unremaped.Class475;
 import me.darki.konas.RotationUtil;
-import me.darki.konas.Class496;
-import me.darki.konas.Class523;
+import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Class523;
 import me.darki.konas.MathUtil;
-import me.darki.konas.Class545;
-import me.darki.konas.Class566;
+import me.darki.konas.unremaped.Class545;
+import me.darki.konas.unremaped.Class566;
 import me.darki.konas.TickEvent;
-import me.darki.konas.Class89;
+import me.darki.konas.unremaped.Class89;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.Module;
@@ -29,7 +29,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketAnimation;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketPlayer;
@@ -41,7 +40,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 
 public class Surround
 extends Module {

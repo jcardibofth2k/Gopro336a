@@ -1,10 +1,11 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.io.IOException;
 import java.util.LinkedHashSet;
 import javax.annotation.Nullable;
 
+import me.darki.konas.settingEnums.AccountLoginScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -24,7 +25,7 @@ extends GuiScreen {
         this.mc = Minecraft.getMinecraft();
         if (this.Field1740 == null) {
             Class160 class160 = this.Field1740 = new Class160(this, this.mc, this.width, this.height, 52, this.height - 64, 36);
-            ((Object) class160).getClass();
+            ((Object)((Object)class160)).getClass();
             this.Field1739.forEach(class160::Method1669);
         }
         this.Field1740.Method1671().forEach(this::Method1657);
@@ -75,7 +76,7 @@ extends GuiScreen {
                             break block0;
                         }
                         if (guiButton.id != 1) break block2;
-                        this.mc.displayGuiScreen(new Class151());
+                        this.mc.displayGuiScreen((GuiScreen)new Class151());
                         break block0;
                     }
                     if (guiButton.id != 2) break block3;
@@ -90,7 +91,7 @@ extends GuiScreen {
                 break block0;
             }
             if (guiButton.id != 5) break block0;
-            this.mc.displayGuiScreen(new AccountLoginScreen(this));
+            this.mc.displayGuiScreen((GuiScreen)new AccountLoginScreen(this));
         }
     }
 

@@ -1,5 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.Config;
+import me.darki.konas.KonasMod;
+import me.darki.konas.ParentSetting;
 import me.darki.konas.module.misc.Announcer;
 import me.darki.konas.module.misc.AutoGG;
 import net.minecraft.client.resources.I18n;
@@ -53,7 +57,7 @@ public class Class589
         final JsonArray jsonArray = new JsonArray();
         final Iterator<Module> iterator = Class167.Method1619().iterator();
         while (iterator.hasNext()) {
-            jsonArray.add(Method2226(iterator.next()));
+            jsonArray.add((JsonElement)Method2226(iterator.next()));
         }
         return jsonArray;
     }
@@ -65,12 +69,12 @@ public class Class589
                 continue;
             }
             final JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("X", class90.Method922());
-            jsonObject.addProperty("Y", class90.Method921());
+            jsonObject.addProperty("X", (Number)class90.Method922());
+            jsonObject.addProperty("Y", (Number)class90.Method921());
             jsonObject.addProperty("Extended", Boolean.valueOf(class90.Method914()));
             final JsonObject jsonObject2 = new JsonObject();
-            jsonObject2.add(class90.Method920(), jsonObject);
-            jsonArray.add(jsonObject2);
+            jsonObject2.add(class90.Method920(), (JsonElement)jsonObject);
+            jsonArray.add((JsonElement)jsonObject2);
         }
         return jsonArray;
     }
@@ -85,38 +89,38 @@ public class Class589
                 }
                 final JsonArray jsonArray = new JsonArray();
                 final JsonObject jsonObject = new JsonObject();
-                jsonObject.add("Modules", Method2217());
-                jsonArray.add(jsonObject);
+                jsonObject.add("Modules", (JsonElement)Method2217());
+                jsonArray.add((JsonElement)jsonObject);
                 final JsonObject jsonObject2 = new JsonObject();
-                jsonObject2.add("Containers", Method2273());
-                jsonArray.add(jsonObject2);
+                jsonObject2.add("Containers", (JsonElement)Method2273());
+                jsonArray.add((JsonElement)jsonObject2);
                 final JsonObject jsonObject3 = new JsonObject();
-                jsonObject3.add("Panels", Method2218());
-                jsonArray.add(jsonObject3);
+                jsonObject3.add("Panels", (JsonElement)Method2218());
+                jsonArray.add((JsonElement)jsonObject3);
                 final JsonObject jsonObject4 = new JsonObject();
-                jsonObject4.add("Friends", Method2245());
-                jsonArray.add(jsonObject4);
+                jsonObject4.add("Friends", (JsonElement)Method2245());
+                jsonArray.add((JsonElement)jsonObject4);
                 final JsonObject jsonObject5 = new JsonObject();
                 jsonObject5.addProperty("Prefix", Command.Method190());
-                jsonArray.add(jsonObject5);
+                jsonArray.add((JsonElement)jsonObject5);
                 final JsonObject jsonObject6 = new JsonObject();
                 jsonObject6.addProperty("Language", Class332.Field435);
-                jsonArray.add(jsonObject6);
+                jsonArray.add((JsonElement)jsonObject6);
                 final JsonObject jsonObject7 = new JsonObject();
-                jsonObject7.add("Macros", Method2249());
-                jsonArray.add(jsonObject7);
+                jsonObject7.add("Macros", (JsonElement)Method2249());
+                jsonArray.add((JsonElement)jsonObject7);
                 final JsonObject jsonObject8 = new JsonObject();
-                jsonObject8.add("Waypoints", Method2257());
-                jsonArray.add(jsonObject8);
+                jsonObject8.add("Waypoints", (JsonElement)Method2257());
+                jsonArray.add((JsonElement)jsonObject8);
                 jsonArray.add(fontCommand.Field1351);
                 final JsonObject jsonObject9 = new JsonObject();
-                jsonObject9.add("Muted", Method2275());
-                jsonArray.add(jsonObject9);
+                jsonObject9.add("Muted", (JsonElement)Method2275());
+                jsonArray.add((JsonElement)jsonObject9);
                 final JsonObject jsonObject10 = new JsonObject();
                 jsonObject10.addProperty("Watermark", KonasMod.Field732);
-                jsonArray.add(jsonObject10);
+                jsonArray.add((JsonElement)jsonObject10);
                 final FileWriter fileWriter = new FileWriter(file);
-                new GsonBuilder().setPrettyPrinting().create().toJson(jsonArray, fileWriter);
+                new GsonBuilder().setPrettyPrinting().create().toJson((JsonElement)jsonArray, (Appendable)fileWriter);
                 fileWriter.close();
                 break Label_0847;
             }
@@ -230,33 +234,33 @@ public class Class589
                     jsonObject.addProperty(setting.Method1183(), Boolean.valueOf(((ParentSetting)setting.getValue()).Method1230()));
                 }
                 else if (setting.getValue() instanceof Class537) {
-                    jsonObject.addProperty(setting.Method1183(), ((Class537)setting.getValue()).Method851());
+                    jsonObject.addProperty(setting.Method1183(), (Number)((Class537)setting.getValue()).Method851());
                 }
                 else if (setting.getValue() instanceof Enum || setting.getValue() instanceof String) {
                     jsonObject.addProperty(setting.Method1183(), String.valueOf(setting.getValue()));
                 }
                 else if (setting.getValue() instanceof ColorValue) {
                     final JsonArray jsonArray = new JsonArray();
-                    jsonArray.add(((ColorValue)setting.getValue()).Method778());
+                    jsonArray.add((Number)((ColorValue)setting.getValue()).Method778());
                     jsonArray.add(Boolean.valueOf(((ColorValue)setting.getValue()).Method783()));
-                    jsonArray.add(((ColorValue)setting.getValue()).Method776());
-                    jsonObject.add(setting.Method1183(), jsonArray);
+                    jsonArray.add((Number)((ColorValue)setting.getValue()).Method776());
+                    jsonObject.add(setting.Method1183(), (JsonElement)jsonArray);
                 }
                 else if (setting.getValue() instanceof Class443) {
                     final JsonArray jsonArray2 = new JsonArray();
                     final Iterator<String> iterator2 = ((Class443)setting.getValue()).Method684().iterator();
                     while (iterator2.hasNext()) {
-                        jsonArray2.add(iterator2.next());
+                        jsonArray2.add((String)iterator2.next());
                     }
-                    jsonObject.add(setting.Method1183(), jsonArray2);
+                    jsonObject.add(setting.Method1183(), (JsonElement)jsonArray2);
                 }
                 else if (setting.getValue() instanceof Class531) {
                     final JsonArray jsonArray3 = new JsonArray();
                     final Iterator<String> iterator3 = ((Class531)setting.getValue()).Method1146().iterator();
                     while (iterator3.hasNext()) {
-                        jsonArray3.add(iterator3.next());
+                        jsonArray3.add((String)iterator3.next());
                     }
-                    jsonObject.add(setting.Method1183(), jsonArray3);
+                    jsonObject.add(setting.Method1183(), (JsonElement)jsonArray3);
                 }
                 else {
                     if (!(setting.getValue() instanceof Class526)) {
@@ -265,14 +269,14 @@ public class Class589
                     final JsonArray jsonArray4 = new JsonArray();
                     final Iterator<String> iterator4 = ((Class526)setting.getValue()).Method1225().iterator();
                     while (iterator4.hasNext()) {
-                        jsonArray4.add(iterator4.next());
+                        jsonArray4.add((String)iterator4.next());
                     }
-                    jsonObject.add(setting.Method1183(), jsonArray4);
+                    jsonObject.add(setting.Method1183(), (JsonElement)jsonArray4);
                 }
             }
         }
         final JsonObject jsonObject2 = new JsonObject();
-        jsonObject2.add(module.getName(), jsonObject);
+        jsonObject2.add(module.getName(), (JsonElement)jsonObject);
         return jsonObject2;
     }
     
@@ -397,11 +401,11 @@ public class Class589
                 jsonObject.addProperty("Password", field1542.Method317());
                 jsonObject.addProperty("UUID", field1542.Method305());
                 jsonObject.addProperty("Token", field1542.Method312());
-                jsonObject.addProperty("Last-Login", field1542.Method307());
+                jsonObject.addProperty("Last-Login", (Number)field1542.Method307());
                 jsonObject.addProperty("Microsoft", Boolean.valueOf(field1542.Method302()));
-                jsonArray.add(jsonObject);
+                jsonArray.add((JsonElement)jsonObject);
             }
-            create.toJson(jsonArray, fileWriter);
+            create.toJson((JsonElement)jsonArray, (Appendable)fileWriter);
             fileWriter.close();
             return;
         }
@@ -477,10 +481,10 @@ public class Class589
             }
         }
         if (n != -1) {
-            asJsonArray.set(n, Method2226(module));
+            asJsonArray.set(n, (JsonElement)Method2226(module));
             final JsonObject jsonObject = new JsonObject();
-            jsonObject.add("Modules", asJsonArray);
-            method2256.set(0, jsonObject);
+            jsonObject.add("Modules", (JsonElement)asJsonArray);
+            method2256.set(0, (JsonElement)jsonObject);
             Method2261(method2256, file);
         }
     }
@@ -518,7 +522,7 @@ public class Class589
         final JsonArray jsonArray = new JsonArray();
         final Iterator<Class469> iterator = Class492.Method1993().iterator();
         while (iterator.hasNext()) {
-            jsonArray.add(Method2228(iterator.next()));
+            jsonArray.add((JsonElement)Method2228(iterator.next()));
         }
         return jsonArray;
     }
@@ -568,7 +572,7 @@ public class Class589
             jsonObject.addProperty("Name", class152.Method1760());
             jsonObject.addProperty("Bind", GameSettings.getKeyDisplayString(class152.Method1757()));
             jsonObject.addProperty("Text", class152.Method1756());
-            jsonArray.add(jsonObject);
+            jsonArray.add((JsonElement)jsonObject);
         }
         return jsonArray;
     }
@@ -680,7 +684,7 @@ public class Class589
             else {
                 IOException ex;
                 try {
-                    Files.move(file.toPath(), file2.toPath());
+                    Files.move(file.toPath(), file2.toPath(), new CopyOption[0]);
                     return;
                 }
                 catch (IOException ex2) {
@@ -773,7 +777,7 @@ public class Class589
     public static JsonArray Method2256(final File file) {
         try {
             final FileReader fileReader = new FileReader(file);
-            final JsonArray jsonArray = (JsonArray)new JsonParser().parse(fileReader);
+            final JsonArray jsonArray = (JsonArray)new JsonParser().parse((Reader)fileReader);
             fileReader.close();
             return jsonArray;
         }
@@ -788,13 +792,13 @@ public class Class589
         for (final Class559 class559 : NewGui.INSTANCE.Field1138.Method758()) {
             final JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("Name", class559.Method819());
-            jsonObject.addProperty("X", class559.Method821());
-            jsonObject.addProperty("Y", class559.Method820());
-            jsonObject.addProperty("Z", class559.Method818());
-            jsonObject.addProperty("Dimension", class559.Method814());
+            jsonObject.addProperty("X", (Number)class559.Method821());
+            jsonObject.addProperty("Y", (Number)class559.Method820());
+            jsonObject.addProperty("Z", (Number)class559.Method818());
+            jsonObject.addProperty("Dimension", (Number)class559.Method814());
             jsonObject.addProperty("Server", class559.Method813());
             jsonObject.addProperty("Type", class559.Method815().toString());
-            jsonArray.add(jsonObject);
+            jsonArray.add((JsonElement)jsonObject);
         }
         return jsonArray;
     }
@@ -832,7 +836,7 @@ public class Class589
         String x;
         try {
             final FileWriter fileWriter = new FileWriter(file);
-            new GsonBuilder().setPrettyPrinting().create().toJson(jsonArray, fileWriter);
+            new GsonBuilder().setPrettyPrinting().create().toJson((JsonElement)jsonArray, (Appendable)fileWriter);
             fileWriter.close();
             return;
         }
@@ -844,9 +848,9 @@ public class Class589
     }
     
     public static int Method2262(final String s) {
-        final String format = I18n.format("key.mouse.left");
-        final String format2 = I18n.format("key.mouse.right");
-        final String format3 = I18n.format("key.mouse.middle");
+        final String format = I18n.format("key.mouse.left", new Object[0]);
+        final String format2 = I18n.format("key.mouse.right", new Object[0]);
+        final String format3 = I18n.format("key.mouse.middle", new Object[0]);
         if (s.equalsIgnoreCase(format)) {
             return -100;
         }
@@ -857,7 +861,7 @@ public class Class589
             return -98;
         }
         for (int i = 0; i < 15; ++i) {
-            if (s.equalsIgnoreCase(I18n.format("key.mouseButton", i + 4))) {
+            if (s.equalsIgnoreCase(I18n.format("key.mouseButton", new Object[] { i + 4 }))) {
                 return i + 4 - 101;
             }
         }
@@ -925,7 +929,7 @@ public class Class589
             final JsonParser jsonParser = new JsonParser();
             JsonArray jsonArray = null;
             try {
-                jsonArray = (JsonArray)jsonParser.parse(fileReader);
+                jsonArray = (JsonArray)jsonParser.parse((Reader)fileReader);
             }
             catch (ClassCastException ex) {}
             JsonArray asJsonArray = null;
@@ -971,7 +975,7 @@ public class Class589
             JsonArray jsonArray = null;
             Label_0114: {
                 try {
-                    jsonArray = (JsonArray)jsonParser.parse(fileReader);
+                    jsonArray = (JsonArray)jsonParser.parse((Reader)fileReader);
                     break Label_0114;
                 }
                 catch (ClassCastException ex) {}
@@ -1054,9 +1058,9 @@ public class Class589
         final JsonArray jsonArray = new JsonArray();
         for (final Element element : NewGui.INSTANCE.Field1136.Method2196()) {
             final JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("A", element.Method2317());
-            jsonObject.addProperty("X", element.Method2336());
-            jsonObject.addProperty("Y", element.Method2315());
+            jsonObject.addProperty("A", (Number)element.Method2317());
+            jsonObject.addProperty("X", (Number)element.Method2336());
+            jsonObject.addProperty("Y", (Number)element.Method2315());
             jsonObject.addProperty("Enabled", Boolean.valueOf(element.Method2338()));
             jsonObject.addProperty("Visible", Boolean.valueOf(element.Method2338()));
             if (!Class109.Method2198(element).isEmpty()) {
@@ -1072,17 +1076,17 @@ public class Class589
                     }
                     else if (setting.getValue() instanceof ColorValue) {
                         final JsonArray jsonArray2 = new JsonArray();
-                        jsonArray2.add(((ColorValue)setting.getValue()).Method778());
+                        jsonArray2.add((Number)((ColorValue)setting.getValue()).Method778());
                         jsonArray2.add(Boolean.valueOf(((ColorValue)setting.getValue()).Method783()));
-                        jsonObject.add(setting.Method1183(), jsonArray2);
+                        jsonObject.add(setting.Method1183(), (JsonElement)jsonArray2);
                     }
                     else if (setting.getValue() instanceof Class443) {
                         final JsonArray jsonArray3 = new JsonArray();
                         final Iterator<String> iterator3 = ((Class443)setting.getValue()).Method684().iterator();
                         while (iterator3.hasNext()) {
-                            jsonArray3.add(iterator3.next());
+                            jsonArray3.add((String)iterator3.next());
                         }
-                        jsonObject.add(setting.Method1183(), jsonArray3);
+                        jsonObject.add(setting.Method1183(), (JsonElement)jsonArray3);
                     }
                     else {
                         if (!(setting.getValue() instanceof Class531)) {
@@ -1091,15 +1095,15 @@ public class Class589
                         final JsonArray jsonArray4 = new JsonArray();
                         final Iterator<String> iterator4 = ((Class531)setting.getValue()).Method1146().iterator();
                         while (iterator4.hasNext()) {
-                            jsonArray4.add(iterator4.next());
+                            jsonArray4.add((String)iterator4.next());
                         }
-                        jsonObject.add(setting.Method1183(), jsonArray4);
+                        jsonObject.add(setting.Method1183(), (JsonElement)jsonArray4);
                     }
                 }
             }
             final JsonObject jsonObject2 = new JsonObject();
-            jsonObject2.add(element.Method2316(), jsonObject);
-            jsonArray.add(jsonObject2);
+            jsonObject2.add(element.Method2316(), (JsonElement)jsonObject);
+            jsonArray.add((JsonElement)jsonObject2);
         }
         return jsonArray;
     }
@@ -1118,7 +1122,7 @@ public class Class589
                 JsonArray jsonArray = null;
                 Label_0139: {
                     try {
-                        jsonArray = (JsonArray)jsonParser.parse(fileReader);
+                        jsonArray = (JsonArray)jsonParser.parse((Reader)fileReader);
                         break Label_0139;
                     }
                     catch (ClassCastException ex3) {}
@@ -1284,7 +1288,7 @@ public class Class589
                     }
                     err11.println(x11);
                 }
-                Class425.Method955(Class425.Field954.getValue());
+                Class425.Method955((Class427)Class425.Field954.getValue());
                 if (asJsonArray2 != null) {
                     asJsonArray2.forEach((Consumer)Class589::Method2229);
                 }
@@ -1341,7 +1345,7 @@ public class Class589
         for (final String s : Class484.Method2068()) {
             final JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("Name", s);
-            jsonArray.add(jsonObject);
+            jsonArray.add((JsonElement)jsonObject);
         }
         return jsonArray;
     }
@@ -1501,8 +1505,8 @@ public class Class589
             final JsonArray method2256 = Method2256(file);
             if (Config.Field1792.getValue()) {
                 final JsonObject jsonObject = new JsonObject();
-                jsonObject.add("Friends", Method2245());
-                method2256.set(3, jsonObject);
+                jsonObject.add("Friends", (JsonElement)Method2245());
+                method2256.set(3, (JsonElement)jsonObject);
                 Method2261(method2256, file);
             }
             else {
@@ -1521,8 +1525,8 @@ public class Class589
                     }
                 }
                 final JsonObject jsonObject2 = new JsonObject();
-                jsonObject2.add("Friends", asJsonArray);
-                method2256.set(3, jsonObject2);
+                jsonObject2.add("Friends", (JsonElement)asJsonArray);
+                method2256.set(3, (JsonElement)jsonObject2);
                 Method2261(method2256, file);
             }
             return;

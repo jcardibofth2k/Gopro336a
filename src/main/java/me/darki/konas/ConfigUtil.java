@@ -3,6 +3,9 @@ package me.darki.konas;
 import cookiedragon.eventsystem.Subscriber;
 import java.io.File;
 
+import me.darki.konas.unremaped.Class546;
+import me.darki.konas.unremaped.Class589;
+import me.darki.konas.unremaped.Class654;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.GuiConnecting;
 

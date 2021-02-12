@@ -1,7 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.ParentSetting;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;
@@ -116,10 +118,10 @@ extends Class215 {
         block0: {
             block1: {
                 super.Method497(n, n2, f);
-                GL11.glEnable(3089);
+                GL11.glEnable((int)3089);
                 RenderUtil2.Method1339(new ScaledResolution(Minecraft.getMinecraft()), this.Method486(), this.Method492(), this.Method489(), this.Method476());
                 this.Field2506.forEach(arg_0 -> Class236.Method2164(n, n2, f, arg_0));
-                GL11.glDisable(3089);
+                GL11.glDisable((int)3089);
                 if (!this.Method501(n, n2)) break block0;
                 if (Field327 <= 0) break block1;
                 if (!(this.Field2506.get(0).Method495() < 0.0f)) break block0;

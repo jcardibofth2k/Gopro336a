@@ -1,8 +1,8 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.Class24;
-import me.darki.konas.Class395;
+import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.Class395;
 import me.darki.konas.mixin.mixins.ICPacketAnimation;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

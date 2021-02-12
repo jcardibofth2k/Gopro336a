@@ -6,7 +6,10 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.entity.player.EntityPlayer;
+import me.darki.konas.unremaped.Class2;
+import me.darki.konas.unremaped.Class498;
+import me.darki.konas.unremaped.Class501;
+import me.darki.konas.unremaped.Class566;
 import net.minecraft.util.math.BlockPos;
 
 public class AutoWalk

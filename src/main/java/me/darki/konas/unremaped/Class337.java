@@ -1,6 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.PacketEvent;
+import me.darki.konas.TickEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
@@ -32,7 +34,7 @@ extends Module {
     public Setting<Boolean> Field289 = new Setting<>("Swing", true);
     public Setting<Boolean> Field290 = new Setting<>("Strict", false);
     public Setting<Boolean> Field291 = new Setting<>("Skulls", true);
-    public static Setting<Class443> Field292 = new Setting<>("CustomBlocks", new Class443());
+    public static Setting<Class443> Field292 = new Setting<>("CustomBlocks", new Class443(new String[0]));
     public static Setting<Class348> Field293 = new Setting<>("Filter", Class348.NONE);
     public Class346 Field294 = Class346.WAITING;
     public Class566 Field295 = new Class566();
@@ -62,7 +64,7 @@ extends Module {
                 this.toggle();
                 return;
             }
-            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || this.Field290.getValue().booleanValue()) break block1;
+            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || ((Boolean)this.Field290.getValue()).booleanValue()) break block1;
             ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method40(Class337.mc.player.rotationYaw);
             ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method41(Class337.mc.player.rotationPitch);
         }
@@ -87,8 +89,8 @@ extends Module {
             this.toggle();
             return;
         }
-        if (Class337.mc.world.getBlockState(new BlockPos(Class337.mc.player)).getBlock() == Blocks.AIR) {
-            if (this.Field291.getValue().booleanValue() && Class337.mc.world.getBlockState(new BlockPos(Class337.mc.player).up(2)).getBlock() != Blocks.AIR) {
+        if (Class337.mc.world.getBlockState(new BlockPos((Entity)Class337.mc.player)).getBlock() == Blocks.AIR) {
+            if (((Boolean)this.Field291.getValue()).booleanValue() && Class337.mc.world.getBlockState(new BlockPos((Entity)Class337.mc.player).up(2)).getBlock() != Blocks.AIR) {
                 if (this.getBlockInHotbar() == -1) {
                     this.toggle();
                     return;
@@ -96,12 +98,12 @@ extends Module {
                 BlockPos blockPos = new BlockPos(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ);
                 BlockPos blockPos2 = blockPos.down();
                 EnumFacing enumFacing = EnumFacing.UP;
-                Vec3d vec3d = new Vec3d(blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
-                if (this.Field288.getValue().booleanValue()) {
+                Vec3d vec3d = new Vec3d((Vec3i)blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
+                if (((Boolean)this.Field288.getValue()).booleanValue()) {
                     if (((IEntityPlayerSP)Class337.mc.player).Method240() < 0.0f) {
-                        Class337.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(Class337.mc.player.rotationYaw, 0.0f, true));
+                        Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(Class337.mc.player.rotationYaw, 0.0f, true));
                     }
-                    Class337.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ, Class337.mc.player.rotationYaw, 90.0f, true));
+                    Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ, Class337.mc.player.rotationYaw, 90.0f, true));
                     ((IEntityPlayerSP)Class337.mc.player).Method233(Class337.mc.player.posY + 1.16);
                     ((IEntityPlayerSP)Class337.mc.player).Method239(90.0f);
                 }
@@ -112,15 +114,15 @@ extends Module {
                 int n = Class337.mc.player.inventory.currentItem;
                 if (bl) {
                     Class337.mc.player.inventory.currentItem = this.getBlockInHotbar();
-                    Class337.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.getBlockInHotbar()));
+                    Class337.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.getBlockInHotbar()));
                 }
-                Class337.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos2, enumFacing, EnumHand.MAIN_HAND, f, f2, f3));
-                if (this.Field289.getValue().booleanValue()) {
-                    Class337.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos2, enumFacing, EnumHand.MAIN_HAND, f, f2, f3));
+                if (((Boolean)this.Field289.getValue()).booleanValue()) {
+                    Class337.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
                 }
                 if (bl) {
                     Class337.mc.player.inventory.currentItem = n;
-                    Class337.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                    Class337.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
                 }
                 this.Field295.Method739();
                 this.Field294 = Class346.DISABLING;
@@ -133,22 +135,22 @@ extends Module {
             BlockPos blockPos = new BlockPos(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ);
             BlockPos blockPos3 = blockPos.down();
             EnumFacing enumFacing = EnumFacing.UP;
-            Vec3d vec3d = new Vec3d(blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
-            if (this.Field288.getValue().booleanValue()) {
+            Vec3d vec3d = new Vec3d((Vec3i)blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
+            if (((Boolean)this.Field288.getValue()).booleanValue()) {
                 if (((IEntityPlayerSP)Class337.mc.player).Method240() < 0.0f) {
-                    Class337.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(Class337.mc.player.rotationYaw, 0.0f, true));
+                    Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(Class337.mc.player.rotationYaw, 0.0f, true));
                 }
-                Class337.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ, Class337.mc.player.rotationYaw, 90.0f, true));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(Class337.mc.player.posX, Class337.mc.player.posY, Class337.mc.player.posZ, Class337.mc.player.rotationYaw, 90.0f, true));
                 ((IEntityPlayerSP)Class337.mc.player).Method233(Class337.mc.player.posY + 1.16);
                 ((IEntityPlayerSP)Class337.mc.player).Method239(90.0f);
             }
-            Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 0.42, Class337.mc.player.posZ, false));
-            Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 0.75, Class337.mc.player.posZ, false));
-            Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.01, Class337.mc.player.posZ, false));
-            Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.16, Class337.mc.player.posZ, false));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 0.42, Class337.mc.player.posZ, false));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 0.75, Class337.mc.player.posZ, false));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.01, Class337.mc.player.posZ, false));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.16, Class337.mc.player.posZ, false));
             if (mc.getCurrentServerData() != null && Class337.mc.getCurrentServerData().serverIP.toLowerCase().contains("crystalpvp")) {
-                Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.16, Class337.mc.player.posZ, false));
-                Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.24, Class337.mc.player.posZ, false));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.16, Class337.mc.player.posZ, false));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, Class337.mc.player.posY + 1.24, Class337.mc.player.posZ, false));
             }
             float f = (float)(vec3d.x - (double)blockPos.getX());
             float f4 = (float)(vec3d.y - (double)blockPos.getY());
@@ -157,17 +159,17 @@ extends Module {
             int n = Class337.mc.player.inventory.currentItem;
             if (bl) {
                 Class337.mc.player.inventory.currentItem = this.Method464();
-                Class337.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Method464()));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Method464()));
             }
-            Class337.mc.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos3, enumFacing, EnumHand.MAIN_HAND, f, f4, f5));
-            if (this.Field289.getValue().booleanValue()) {
-                Class337.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos3, enumFacing, EnumHand.MAIN_HAND, f, f4, f5));
+            if (((Boolean)this.Field289.getValue()).booleanValue()) {
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
             }
             if (bl) {
                 Class337.mc.player.inventory.currentItem = n;
-                Class337.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                Class337.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
             }
-            Class337.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class337.mc.player.posX, this.Method463(), Class337.mc.player.posZ, false));
+            Class337.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class337.mc.player.posX, this.Method463(), Class337.mc.player.posZ, false));
             this.Field295.Method739();
             this.Field294 = Class346.DISABLING;
         } else {
@@ -227,7 +229,7 @@ extends Module {
             ItemStack itemStack = Class337.mc.player.inventory.getStackInSlot(i);
             if (itemStack == ItemStack.EMPTY || !(itemStack.getItem() instanceof ItemBlock)) continue;
             Block block = ((ItemBlock)itemStack.getItem()).getBlock();
-            if (Field293.getValue() == Class348.BLACKLIST ? Field292.getValue().Method682().contains(block) : Field293.getValue() == Class348.WHITELIST && !Field292.getValue().Method682().contains(block)) continue;
+            if (Field293.getValue() == Class348.BLACKLIST ? ((Class443)Field292.getValue()).Method682().contains(block) : Field293.getValue() == Class348.WHITELIST && !((Class443)Field292.getValue()).Method682().contains(block)) continue;
             n = i;
             break;
         }

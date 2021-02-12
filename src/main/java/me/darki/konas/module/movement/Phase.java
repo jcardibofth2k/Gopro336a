@@ -5,8 +5,11 @@ import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class19;
+import me.darki.konas.unremaped.Class269;
+import me.darki.konas.unremaped.Class570;
+import me.darki.konas.unremaped.Class572;
 import net.minecraft.entity.item.EntityBoat;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketPlayer;
 
 public class Phase

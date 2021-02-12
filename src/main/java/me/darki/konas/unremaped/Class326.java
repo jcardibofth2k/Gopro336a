@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,7 +21,7 @@ extends Enum {
     }
 
     public static Class326[] Method633() {
-        return Field560.clone();
+        return (Class326[])Field560.clone();
     }
 
     /*

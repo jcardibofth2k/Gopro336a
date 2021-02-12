@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import cookiedragon.eventsystem.EventDispatcher;
+import me.darki.konas.unremaped.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraftforge.client.event.ClientChatEvent;

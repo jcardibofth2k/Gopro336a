@@ -31,6 +31,7 @@ import me.darki.konas.command.commands.prefixCommand;
 import me.darki.konas.command.commands.rubberFillCommand;
 import me.darki.konas.command.commands.settingsCommand;
 import me.darki.konas.command.commands.xrayCommand;
+import me.darki.konas.unremaped.*;
 
 public class CommandManager {
     public static ArrayList<Command> Field130 = new ArrayList();

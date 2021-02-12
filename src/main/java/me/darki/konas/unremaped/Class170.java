@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -39,15 +39,15 @@ implements GuiListExtended.IGuiListEntry {
     public BufferedImage Field1546 = null;
 
     public void Method1538() {
-        this.Field1540.displayGuiScreen(new GuiYesNo(this::Method1539, "Are you sure you want to delete '" + this.Field1542.Method309() + "'?", "This process cannot be reverted.", "Delete", "Cancel", 0));
+        this.Field1540.displayGuiScreen((GuiScreen)new GuiYesNo(this::Method1539, "Are you sure you want to delete '" + this.Field1542.Method309() + "'?", "This process cannot be reverted.", "Delete", "Cancel", 0));
     }
 
     public void Method1539(boolean bl, int n) {
         if (bl) {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiScreenWorking());
+            Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiScreenWorking());
             NewGui.INSTANCE.Field1132.Method1659().Method1673(this);
         }
-        this.Field1540.displayGuiScreen(this.Field1541);
+        this.Field1540.displayGuiScreen((GuiScreen)this.Field1541);
     }
 
     public void Method1540() {
@@ -77,11 +77,11 @@ implements GuiListExtended.IGuiListEntry {
         if (this.Field1542.Method311()) {
             return;
         }
-        this.Field1540.getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+        this.Field1540.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
         File file = new File(this.Field1540.gameDir + File.separator + "exploit.txt");
         if (this.Field1542.Method302()) {
             ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(this.Field1542.Method309(), this.Field1542.Method305(), this.Field1542.Method312(), "mojang"));
-            bl = Class540.Method1096() || Class540.Method1093(this.Field1542, this.Field1542.Method303(), this.Field1542.Method317());
+            bl = !Class540.Method1096() ? Class540.Method1093(this.Field1542, this.Field1542.Method303(), this.Field1542.Method317()) : true;
         } else if (!file.exists() || this.Field1542.Method312().isEmpty() || this.Field1542.Method305().isEmpty()) {
             bl = Class540.Method1097(this.Field1542, this.Field1542.Method303(), this.Field1542.Method317());
         } else {
@@ -180,12 +180,12 @@ implements GuiListExtended.IGuiListEntry {
         } else {
             this.Field1540.fontRenderer.drawString(string3, n2 + 32 + 3, n3 + this.Field1540.fontRenderer.FONT_HEIGHT + 3, 0x808080);
         }
-        GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
         if (this.Field1546 != null) {
             if (this.Field1543 == null) {
                 this.Field1543 = new DynamicTexture(this.Field1546);
                 this.Field1544 = this.Field1540.getTextureManager().getDynamicTextureLocation(this.Field1542.Method305(), this.Field1543);
-                this.Field1540.getTextureManager().loadTexture(this.Field1544, this.Field1543);
+                this.Field1540.getTextureManager().loadTexture(this.Field1544, (ITextureObject)this.Field1543);
                 this.Field1546.getRGB(0, 0, this.Field1546.getWidth(), this.Field1546.getHeight(), this.Field1543.getTextureData(), 0, this.Field1546.getWidth());
                 this.Field1543.updateDynamicTexture();
             }
@@ -194,7 +194,7 @@ implements GuiListExtended.IGuiListEntry {
         }
         this.Field1540.getTextureManager().bindTexture(this.Field1543 != null ? this.Field1544 : Field1539);
         GlStateManager.enableBlend();
-        Gui.drawModalRectWithCustomSizedTexture(n2, n3, 0.0f, 0.0f, 32, 32, 32.0f, 32.0f);
+        Gui.drawModalRectWithCustomSizedTexture((int)n2, (int)n3, (float)0.0f, (float)0.0f, (int)32, (int)32, (float)32.0f, (float)32.0f);
         GlStateManager.disableBlend();
     }
 }

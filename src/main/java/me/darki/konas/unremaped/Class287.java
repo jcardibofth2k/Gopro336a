@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.mojang.authlib.GameProfile;
 import cookiedragon.eventsystem.Subscriber;
@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import me.darki.konas.TickEvent;
 import me.darki.konas.mixin.mixins.IInventoryPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -25,18 +26,18 @@ extends Module {
     public static String[][] Field1746 = new String[][]{{"66666666-6666-6666-6666-666666666600", "soulbond", "-3", "0"}, {"66666666-6666-6666-6666-666666666601", "derp1", "0", "-3"}, {"66666666-6666-6666-6666-666666666602", "derp2", "3", "0"}, {"66666666-6666-6666-6666-666666666603", "derp3", "0", "3"}, {"66666666-6666-6666-6666-666666666604", "derp4", "-6", "0"}, {"66666666-6666-6666-6666-666666666605", "derp5", "0", "-6"}, {"66666666-6666-6666-6666-666666666606", "derp6", "6", "0"}, {"66666666-6666-6666-6666-666666666607", "derp7", "0", "6"}, {"66666666-6666-6666-6666-666666666608", "derp8", "-9", "0"}, {"66666666-6666-6666-6666-666666666609", "derp9", "0", "-9"}, {"66666666-6666-6666-6666-666666666610", "derp10", "9", "0"}, {"66666666-6666-6666-6666-666666666611", "derp11", "0", "9"}};
 
     public void Method1662(String string, String string2, int n, int n2, int n3) {
-        EntityOtherPlayerMP entityOtherPlayerMP = new EntityOtherPlayerMP(Class287.mc.world, new GameProfile(UUID.fromString(string), string2));
-        entityOtherPlayerMP.copyLocationAndAnglesFrom(Class287.mc.player);
-        entityOtherPlayerMP.posX += n2;
-        entityOtherPlayerMP.posZ += n3;
-        if (Field1744.getValue().booleanValue()) {
-            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method25(Class287.mc.player.inventory.armorInventory);
-            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method26(Class287.mc.player.inventory.mainInventory);
+        EntityOtherPlayerMP entityOtherPlayerMP = new EntityOtherPlayerMP((World)Class287.mc.world, new GameProfile(UUID.fromString(string), string2));
+        entityOtherPlayerMP.copyLocationAndAnglesFrom((Entity)Class287.mc.player);
+        entityOtherPlayerMP.posX += (double)n2;
+        entityOtherPlayerMP.posZ += (double)n3;
+        if (((Boolean)Field1744.getValue()).booleanValue()) {
+            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method25((NonNullList<ItemStack>)Class287.mc.player.inventory.armorInventory);
+            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method26((NonNullList<ItemStack>)Class287.mc.player.inventory.mainInventory);
             entityOtherPlayerMP.inventory.currentItem = Class287.mc.player.inventory.currentItem;
             entityOtherPlayerMP.setHeldItem(EnumHand.MAIN_HAND, Class287.mc.player.getHeldItemMainhand());
             entityOtherPlayerMP.setHeldItem(EnumHand.OFF_HAND, Class287.mc.player.getHeldItemOffhand());
         }
-        Class287.mc.world.addEntityToWorld(n, entityOtherPlayerMP);
+        Class287.mc.world.addEntityToWorld(n, (Entity)entityOtherPlayerMP);
         this.Field1745.add(n);
     }
 
@@ -61,7 +62,7 @@ extends Module {
         this.Field1745 = new ArrayList<Integer>();
         int n = -101;
         for (String[] stringArray : Field1746) {
-            if (Field1743.getValue().equals(Class289.SINGLE)) {
+            if (((Class289)((Object)Field1743.getValue())).equals((Object)Class289.SINGLE)) {
                 this.Method1662(stringArray[0], stringArray[1], n, 0, 0);
                 break;
             }

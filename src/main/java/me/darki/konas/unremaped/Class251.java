@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.mixin.mixins.ICPacketUpdateSign;
@@ -16,7 +16,7 @@ extends Module {
         if (class24.getPacket() instanceof CPacketUpdateSign && mc.getCurrentServerData() != null) {
             block4: for (int i = 0; i < 4; ++i) {
                 if (((ICPacketUpdateSign)class24.getPacket()).Method47()[i] == null) continue;
-                switch (Class227.Field2571[this.Field2094.getValue().ordinal()]) {
+                switch (Class227.Field2571[((Class254)((Object)this.Field2094.getValue())).ordinal()]) {
                     case 1: {
                         ((ICPacketUpdateSign)class24.getPacket()).Method47()[i] = ((ICPacketUpdateSign)class24.getPacket()).Method47()[i].replace("&", "\u00a7\u00a70");
                         continue block4;
@@ -30,6 +30,6 @@ extends Module {
     }
 
     public Class251() {
-        super("ColorSigns", "Lets you use color codes on signs", -7213820, Category.EXPLOIT);
+        super("ColorSigns", "Lets you use color codes on signs", -7213820, Category.EXPLOIT, new String[0]);
     }
 }

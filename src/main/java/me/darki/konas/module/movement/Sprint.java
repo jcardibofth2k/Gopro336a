@@ -5,6 +5,8 @@ import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class27;
+import me.darki.konas.unremaped.Class344;
 import net.minecraft.util.MovementInput;
 
 public class Sprint

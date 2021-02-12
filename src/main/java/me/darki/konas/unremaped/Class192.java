@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.PacketEvent;
+import me.darki.konas.ParentSetting;
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -59,11 +63,11 @@ extends Module {
     public int Field78 = -1;
 
     public boolean Method122(EntityPlayer entityPlayer) {
-        return Class192.mc.player.getDistance(entityPlayer) <= this.Field56.getValue().floatValue();
+        return Class192.mc.player.getDistance((Entity)entityPlayer) <= ((Float)this.Field56.getValue()).floatValue();
     }
 
     public Class192() {
-        super("AntiSurround", "Mines enemy surrounds", Category.COMBAT);
+        super("AntiSurround", "Mines enemy surrounds", Category.COMBAT, new String[0]);
     }
 
     @Subscriber(priority=15)
@@ -74,18 +78,18 @@ extends Module {
         }
         if (this.Field78 != -1 && this.Field69.Method737(350.0)) {
             Class192.mc.player.inventory.currentItem = this.Field78;
-            Class192.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field78));
+            Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field78));
             this.Field78 = -1;
         }
     }
 
     public void Method124() {
         block1: {
-            if (this.Field61.getValue().booleanValue()) {
-                Class192.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72.getOpposite()));
+            if (((Boolean)this.Field61.getValue()).booleanValue()) {
+                Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72.getOpposite()));
             }
-            Class192.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
-            if (!this.Field55.getValue().booleanValue()) break block1;
+            Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
+            if (!((Boolean)this.Field55.getValue()).booleanValue()) break block1;
             Class192.mc.player.swingArm(EnumHand.MAIN_HAND);
         }
     }
@@ -117,7 +121,7 @@ extends Module {
     public void onDisable() {
         if (this.Field78 != -1 && Class192.mc.player != null) {
             Class192.mc.player.inventory.currentItem = this.Field78;
-            Class192.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field78));
+            Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field78));
             this.Field78 = -1;
         }
     }
@@ -138,7 +142,7 @@ extends Module {
             }
             int n2 = Class192.mc.player.inventory.currentItem;
             Class192.mc.player.inventory.currentItem = n;
-            this.Field73 += iBlockState.getPlayerRelativeBlockHardness(Class192.mc.player, Class192.mc.player.world, this.Field71);
+            this.Field73 += iBlockState.getPlayerRelativeBlockHardness((EntityPlayer)Class192.mc.player, Class192.mc.player.world, this.Field71);
             Class192.mc.player.inventory.currentItem = n2;
             this.Field74.Method739();
         }
@@ -146,7 +150,7 @@ extends Module {
 
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
-        if (packetEvent.getPacket() instanceof SPacketBlockChange && this.Field71 != null && ((SPacketBlockChange) packetEvent.getPacket()).getBlockPosition().equals(this.Field71) && ((SPacketBlockChange) packetEvent.getPacket()).getBlockState().getBlock() instanceof BlockAir) {
+        if (packetEvent.getPacket() instanceof SPacketBlockChange && this.Field71 != null && ((SPacketBlockChange) packetEvent.getPacket()).getBlockPosition().equals((Object)this.Field71) && ((SPacketBlockChange) packetEvent.getPacket()).getBlockState().getBlock() instanceof BlockAir) {
             this.Field70 = this.Field71;
             this.Field71 = null;
             this.Field72 = null;
@@ -158,14 +162,14 @@ extends Module {
     }
 
     public static Double Method133(BlockPos blockPos, Vec3d vec3d, EnumFacing enumFacing) {
-        return new Vec3d(blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)).distanceTo(vec3d);
+        return new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)).distanceTo(vec3d);
     }
 
     public void Method134() {
         block0: {
-            Class192.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72));
-            Class192.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
-            if (!this.Field55.getValue().booleanValue()) break block0;
+            Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72));
+            Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
+            if (!((Boolean)this.Field55.getValue()).booleanValue()) break block0;
             Class192.mc.player.swingArm(EnumHand.MAIN_HAND);
         }
     }
@@ -177,7 +181,7 @@ extends Module {
             ArrayList<BlockPos> arrayList;
             BlockPos blockPos;
             EntityPlayer entityPlayer;
-            if (updateEvent.isCanceled() || !Class496.Method1959(this.Field54.getValue())) {
+            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)this.Field54.getValue())) {
                 return;
             }
             if (this.Field71 != null) {
@@ -193,22 +197,22 @@ extends Module {
                         if (this.Field59.getValue() != Class195.OFF && (n = AutoTool.Method1850(this.Field71)) != -1 && n != Class192.mc.player.inventory.currentItem) {
                             if (this.Field59.getValue() == Class195.SILENT) {
                                 this.Field78 = Class192.mc.player.inventory.currentItem;
-                                Class192.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                                Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
                                 this.Field69.Method739();
                             } else {
                                 Class192.mc.player.inventory.currentItem = n;
-                                Class192.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                                Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
                             }
                         }
                     }
                 }
-            } else if (this.Field76.Method737(this.Field57.getValue().floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (arrayList = Class465.Method2284(new BlockPos(entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, this.Field58.getValue())) != null) {
+            } else if (this.Field76.Method737(((Float)this.Field57.getValue()).floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (BlockPos)(arrayList = Class465.Method2284(new BlockPos((Entity)entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, (Boolean)this.Field58.getValue())) != null) {
                 this.Field71 = blockPos;
                 this.Field72 = enumFacing;
                 this.Field73 = 0.0f;
                 this.Field75 = false;
                 this.Field76.Method739();
-                if (this.Field60.getValue().booleanValue() && this.Field71.equals(this.Field70)) {
+                if (((Boolean)this.Field60.getValue()).booleanValue() && this.Field71.equals((Object)this.Field70)) {
                     this.Field73 = 1.0f;
                     this.Field74.Method739();
                     this.Field77 = this::Method124;
@@ -216,18 +220,18 @@ extends Module {
                     this.Field77 = this::Method134;
                 }
             }
-            if (!this.Field54.getValue().booleanValue() || this.Field71 == null) break block13;
-            Vec3d vec3d = new Vec3d(this.Field71).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field72.getDirectionVec()).scale(0.5));
+            if (!((Boolean)this.Field54.getValue()).booleanValue() || this.Field71 == null) break block13;
+            Vec3d vec3d = new Vec3d((Vec3i)this.Field71).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field72.getDirectionVec()).scale(0.5));
             NewGui.INSTANCE.Field1139.Method1942(vec3d);
         }
     }
 
     public static boolean Method136(Vec3d vec3d, BlockPos blockPos, EnumFacing enumFacing) {
-        return Class192.mc.world.rayTraceBlocks(vec3d, new Vec3d(blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5))) == null;
+        return Class192.mc.world.rayTraceBlocks(vec3d, new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5))) == null;
     }
 
     public static Float Method137(EntityPlayer entityPlayer) {
-        return Float.valueOf(Class192.mc.player.getDistance(entityPlayer));
+        return Float.valueOf(Class192.mc.player.getDistance((Entity)entityPlayer));
     }
 
     public static boolean Method138(EntityPlayer entityPlayer) {
@@ -331,7 +335,7 @@ lbl67:
     }
 
     public static boolean Method141(EntityPlayer entityPlayer) {
-        return !Class546.Method963(entityPlayer);
+        return !Class546.Method963((Entity)entityPlayer);
     }
 
     public EntityPlayer Method142() {

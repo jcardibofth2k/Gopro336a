@@ -1,8 +1,8 @@
 package me.darki.konas.command.commands;
 
 import java.util.ArrayList;
-import me.darki.konas.Class595;
-import me.darki.konas.Class602;
+import me.darki.konas.unremaped.Class595;
+import me.darki.konas.unremaped.Class602;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 

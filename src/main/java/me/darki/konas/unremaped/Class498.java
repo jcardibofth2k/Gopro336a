@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -8,12 +8,12 @@ extends BlockPos {
     public boolean Field2057;
 
     public Class498(BlockPos blockPos, boolean bl) {
-        super(blockPos);
+        super((Vec3i)blockPos);
         this.Field2057 = bl;
     }
 
     public Class498(BlockPos blockPos) {
-        super(blockPos);
+        super((Vec3i)blockPos);
         this.Field2057 = false;
     }
 

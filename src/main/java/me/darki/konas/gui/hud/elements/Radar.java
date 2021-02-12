@@ -1,8 +1,8 @@
 package me.darki.konas.gui.hud.elements;
 
 import java.awt.Color;
-import me.darki.konas.ColorValue;
-import me.darki.konas.Class492;
+
+import me.darki.konas.unremaped.Class492;
 import me.darki.konas.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;

@@ -1,7 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.nio.ByteBuffer;
 
+import me.darki.konas.ShaderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.shader.Framebuffer;
@@ -35,13 +36,13 @@ public abstract class Class564 {
     public void Method686() {
         block2: {
             if (this.Field635 > -1) {
-                EXTFramebufferObject.glDeleteRenderbuffersEXT(this.Field635);
+                EXTFramebufferObject.glDeleteRenderbuffersEXT((int)this.Field635);
             }
             if (this.Field634 > -1) {
-                EXTFramebufferObject.glDeleteFramebuffersEXT(this.Field634);
+                EXTFramebufferObject.glDeleteFramebuffersEXT((int)this.Field634);
             }
             if (this.Field633 <= -1) break block2;
-            GL11.glDeleteTextures(this.Field633);
+            GL11.glDeleteTextures((int)this.Field633);
         }
     }
 
@@ -56,27 +57,27 @@ public abstract class Class564 {
     }
 
     public void Method687() {
-        GL11.glScaled(1.0 / Field627, 1.0 / Field627, 1.0 / Field627);
-        GL11.glDisable(3553);
-        GL11.glBegin(4);
-        GL11.glTexCoord2d(0.0, 1.0);
-        GL11.glVertex2d(0.0, 0.0);
-        GL11.glTexCoord2d(0.0, 0.0);
-        GL11.glVertex2d(0.0, this.Field632);
-        GL11.glTexCoord2d(1.0, 0.0);
-        GL11.glVertex2d(this.Field631, this.Field632);
-        GL11.glTexCoord2d(1.0, 0.0);
-        GL11.glVertex2d(this.Field631, this.Field632);
-        GL11.glTexCoord2d(1.0, 1.0);
-        GL11.glVertex2d(this.Field631, 0.0);
-        GL11.glTexCoord2d(0.0, 1.0);
-        GL11.glVertex2d(0.0, 0.0);
+        GL11.glScaled((double)(1.0 / Field627), (double)(1.0 / Field627), (double)(1.0 / Field627));
+        GL11.glDisable((int)3553);
+        GL11.glBegin((int)4);
+        GL11.glTexCoord2d((double)0.0, (double)1.0);
+        GL11.glVertex2d((double)0.0, (double)0.0);
+        GL11.glTexCoord2d((double)0.0, (double)0.0);
+        GL11.glVertex2d((double)0.0, (double)this.Field632);
+        GL11.glTexCoord2d((double)1.0, (double)0.0);
+        GL11.glVertex2d((double)this.Field631, (double)this.Field632);
+        GL11.glTexCoord2d((double)1.0, (double)0.0);
+        GL11.glVertex2d((double)this.Field631, (double)this.Field632);
+        GL11.glTexCoord2d((double)1.0, (double)1.0);
+        GL11.glVertex2d((double)this.Field631, (double)0.0);
+        GL11.glTexCoord2d((double)0.0, (double)1.0);
+        GL11.glVertex2d((double)0.0, (double)0.0);
         GL11.glEnd();
-        GL11.glScaled(Field627, Field627, Field627);
+        GL11.glScaled((double)Field627, (double)Field627, (double)Field627);
     }
 
     public void Method688() {
-        int n = EXTFramebufferObject.glCheckFramebufferStatusEXT(36160);
+        int n = EXTFramebufferObject.glCheckFramebufferStatusEXT((int)36160);
         switch (n) {
             case 36053: {
                 return;
@@ -107,19 +108,19 @@ public abstract class Class564 {
         this.Field634 = EXTFramebufferObject.glGenFramebuffersEXT();
         this.Field633 = GL11.glGenTextures();
         this.Field635 = EXTFramebufferObject.glGenRenderbuffersEXT();
-        GL11.glBindTexture(3553, this.Field633);
-        GL11.glTexParameterf(3553, 10241, 9729.0f);
-        GL11.glTexParameterf(3553, 10240, 9729.0f);
-        GL11.glTexParameterf(3553, 10242, 10496.0f);
-        GL11.glTexParameterf(3553, 10243, 10496.0f);
-        GL11.glBindTexture(3553, 0);
-        GL11.glBindTexture(3553, this.Field633);
-        GL11.glTexImage2D(3553, 0, 32856, this.Field629, this.Field630, 0, 6408, 5121, (ByteBuffer)null);
-        EXTFramebufferObject.glBindFramebufferEXT(36160, this.Field634);
-        EXTFramebufferObject.glFramebufferTexture2DEXT(36160, 36064, 3553, this.Field633, 0);
-        EXTFramebufferObject.glBindRenderbufferEXT(36161, this.Field635);
-        EXTFramebufferObject.glRenderbufferStorageEXT(36161, 34041, this.Field629, this.Field630);
-        EXTFramebufferObject.glFramebufferRenderbufferEXT(36160, 36128, 36161, this.Field635);
+        GL11.glBindTexture((int)3553, (int)this.Field633);
+        GL11.glTexParameterf((int)3553, (int)10241, (float)9729.0f);
+        GL11.glTexParameterf((int)3553, (int)10240, (float)9729.0f);
+        GL11.glTexParameterf((int)3553, (int)10242, (float)10496.0f);
+        GL11.glTexParameterf((int)3553, (int)10243, (float)10496.0f);
+        GL11.glBindTexture((int)3553, (int)0);
+        GL11.glBindTexture((int)3553, (int)this.Field633);
+        GL11.glTexImage2D((int)3553, (int)0, (int)32856, (int)this.Field629, (int)this.Field630, (int)0, (int)6408, (int)5121, (ByteBuffer)null);
+        EXTFramebufferObject.glBindFramebufferEXT((int)36160, (int)this.Field634);
+        EXTFramebufferObject.glFramebufferTexture2DEXT((int)36160, (int)36064, (int)3553, (int)this.Field633, (int)0);
+        EXTFramebufferObject.glBindRenderbufferEXT((int)36161, (int)this.Field635);
+        EXTFramebufferObject.glRenderbufferStorageEXT((int)36161, (int)34041, (int)this.Field629, (int)this.Field630);
+        EXTFramebufferObject.glFramebufferRenderbufferEXT((int)36160, (int)36128, (int)36161, (int)this.Field635);
         this.Method688();
     }
 
@@ -160,23 +161,23 @@ lbl17:
                 }
             }
             if (this.Field638 == -1) break block13;
-            ARBShaderObjects.glAttachObjectARB(this.Field638, this.Field636);
-            ARBShaderObjects.glAttachObjectARB(this.Field638, this.Field637);
-            ARBShaderObjects.glLinkProgramARB(this.Field638);
-            if (ARBShaderObjects.glGetObjectParameteriARB(this.Field638, 35714) == 0) {
+            ARBShaderObjects.glAttachObjectARB((int)this.Field638, (int)this.Field636);
+            ARBShaderObjects.glAttachObjectARB((int)this.Field638, (int)this.Field637);
+            ARBShaderObjects.glLinkProgramARB((int)this.Field638);
+            if (ARBShaderObjects.glGetObjectParameteriARB((int)this.Field638, (int)35714) == 0) {
                 System.err.println(ShaderUtil.Method845(this.Field638));
                 return;
             }
-            ARBShaderObjects.glValidateProgramARB(this.Field638);
-            if (ARBShaderObjects.glGetObjectParameteriARB(this.Field638, 35715) == 0) {
+            ARBShaderObjects.glValidateProgramARB((int)this.Field638);
+            if (ARBShaderObjects.glGetObjectParameteriARB((int)this.Field638, (int)35715) == 0) {
                 System.err.println(ShaderUtil.Method845(this.Field638));
                 return;
             }
-            ARBShaderObjects.glUseProgramObjectARB(0);
+            ARBShaderObjects.glUseProgramObjectARB((int)0);
         }
     }
 
     public int Method692(String string) {
-        return ARBShaderObjects.glGetUniformLocationARB(this.Field638, string);
+        return ARBShaderObjects.glGetUniformLocationARB((int)this.Field638, (CharSequence)string);
     }
 }

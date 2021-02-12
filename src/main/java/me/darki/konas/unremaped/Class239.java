@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.MoveEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.network.Packet;
@@ -19,7 +20,7 @@ extends Module {
             return;
         }
         this.Field2448 = 0;
-        Class239.mc.player.connection.sendPacket(new CPacketPlayer.Position(Class239.mc.player.posX, Class239.mc.player.posY + 3.0, Class239.mc.player.posZ, Class239.mc.player.onGround));
+        Class239.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class239.mc.player.posX, Class239.mc.player.posY + 3.0, Class239.mc.player.posZ, Class239.mc.player.onGround));
     }
 
     @Subscriber
@@ -44,7 +45,7 @@ extends Module {
     }
 
     public Class239() {
-        super("Freeze", "Rubberbands you and gives you temporary godmode on some servers", Category.EXPLOIT);
+        super("Freeze", "Rubberbands you and gives you temporary godmode on some servers", Category.EXPLOIT, new String[0]);
     }
 
     @Override
@@ -52,6 +53,6 @@ extends Module {
         if (Class239.mc.player == null || Class239.mc.world == null) {
             return;
         }
-        Class239.mc.player.connection.sendPacket(new CPacketConfirmTeleport(this.Field2448));
+        Class239.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(this.Field2448));
     }
 }

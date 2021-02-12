@@ -1,7 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.movement.ElytraFly;
 import me.darki.konas.setting.Setting;
@@ -22,8 +24,8 @@ extends Element {
         RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322() / 2.0f, Class140.mc.player.rotationPitch <= 0.0f ? -14974014 : -15441777);
         RenderUtil2.Method1338(this.Method2320(), this.Method2324() + this.Method2322() / 2.0f, this.Method2329(), this.Method2322() / 2.0f, Class140.mc.player.rotationPitch > 0.0f ? -9938892 : -11582680);
         float f = this.Method2324() + (Class140.mc.player.rotationPitch + 90.0f) / 180.0f * this.Method2322();
-        RenderUtil2.Method1338(this.Method2320(), f, this.Method2329(), 2.0f, this.Field2044.getValue().Method774());
-        RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 2.0f, this.Field2044.getValue().Method774());
+        RenderUtil2.Method1338(this.Method2320(), f, this.Method2329(), 2.0f, ((ColorValue)this.Field2044.getValue()).Method774());
+        RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 2.0f, ((ColorValue)this.Field2044.getValue()).Method774());
     }
 
     public Class140() {

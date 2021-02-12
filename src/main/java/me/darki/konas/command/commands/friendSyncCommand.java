@@ -1,8 +1,8 @@
 package me.darki.konas.command.commands;
 
 import me.darki.konas.FriendSyncUtil;
-import me.darki.konas.Class492;
-import me.darki.konas.Class509;
+import me.darki.konas.unremaped.Class492;
+import me.darki.konas.unremaped.Class509;
 import me.darki.konas.friendSyncclients;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

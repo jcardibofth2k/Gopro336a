@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 public class Class389
 extends Enum {
@@ -9,7 +9,7 @@ extends Enum {
     public static Class389[] Field2003;
 
     public static Class389[] Method1831() {
-        return Field2003.clone();
+        return (Class389[])Field2003.clone();
     }
 
     static {

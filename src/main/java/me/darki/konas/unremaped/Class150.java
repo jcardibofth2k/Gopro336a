@@ -1,7 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
+import me.darki.konas.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.mixin.mixins.IInventoryPlayer;
 import me.darki.konas.setting.Setting;
@@ -33,6 +34,6 @@ extends Element {
         float f = Math.max(5.0f, Class557.Method800(string));
         this.Method2323(f + 1.0f);
         this.Method2319(Class557.Method799(string) + 1.0f);
-        Class557.Method801(string, (float)((int)this.Method2320() + (int)this.Method2329()) - Class557.Method800(string), (int)this.Method2324(), this.Field1983.getValue().Method774());
+        Class557.Method801(string, (float)((int)this.Method2320() + (int)this.Method2329()) - Class557.Method800(string), (int)this.Method2324(), ((ColorValue)this.Field1983.getValue()).Method774());
     }
 }

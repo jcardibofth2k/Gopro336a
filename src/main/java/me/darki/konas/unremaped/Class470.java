@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.TickEvent;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.mixin.mixins.ITimer;
 import me.darki.konas.module.Category;
@@ -20,7 +21,7 @@ extends Module {
 
     @Override
     public boolean Method396() {
-        return this.Field2562.getValue() == false;
+        return (Boolean)this.Field2562.getValue() == false;
     }
 
     @Subscriber
@@ -28,18 +29,18 @@ extends Module {
         if (Class470.mc.world == null || Class470.mc.player == null) {
             return;
         }
-        if (this.Field2562.getValue().booleanValue()) {
+        if (((Boolean)this.Field2562.getValue()).booleanValue()) {
             NewGui.INSTANCE.Field1134.Method748(true);
             this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).Method56()).Method96() * 100.0f) / 100.0f + "");
         } else {
             NewGui.INSTANCE.Field1134.Method748(false);
-            float f = this.Field2561.getValue().floatValue();
-            if (this.Field2563.getValue().booleanValue()) {
-                if (this.Field2567 > this.Field2564.getValue() + this.Field2565.getValue()) {
+            float f = ((Float)this.Field2561.getValue()).floatValue();
+            if (((Boolean)this.Field2563.getValue()).booleanValue()) {
+                if (this.Field2567 > (Integer)this.Field2564.getValue() + (Integer)this.Field2565.getValue()) {
                     this.Field2567 = 0;
                 }
-                if (this.Field2567 > this.Field2564.getValue()) {
-                    f = this.Field2566.getValue().floatValue();
+                if (this.Field2567 > (Integer)this.Field2564.getValue()) {
+                    f = ((Float)this.Field2566.getValue()).floatValue();
                 }
             }
             NewGui.INSTANCE.Field1134.Method746(this, 5, f);
@@ -49,7 +50,7 @@ extends Module {
     }
 
     public Class470() {
-        super("Timer", "Changes game tick length", 0, Category.PLAYER);
+        super("Timer", "Changes game tick length", 0, Category.PLAYER, new String[0]);
     }
 
     @Override

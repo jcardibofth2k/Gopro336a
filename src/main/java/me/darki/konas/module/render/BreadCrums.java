@@ -4,8 +4,8 @@ import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import me.darki.konas.Class77;
-import me.darki.konas.Class89;
+import me.darki.konas.unremaped.Class77;
+import me.darki.konas.unremaped.Class89;
 import me.darki.konas.ColorValue;
 import me.darki.konas.TickEvent;
 import me.darki.konas.module.Category;

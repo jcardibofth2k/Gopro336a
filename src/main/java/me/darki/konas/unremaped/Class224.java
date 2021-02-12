@@ -1,7 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import net.minecraft.client.Minecraft;
@@ -50,10 +51,10 @@ extends Class215 {
             }
         }
         Class247.Method2043(this.Field2662, Field319);
-        GL11.glEnable(3089);
+        GL11.glEnable((int)3089);
         RenderUtil2.Method1339(new ScaledResolution(Minecraft.getMinecraft()), this.Method486(), this.Method492(), this.Method489(), this.Method476());
         this.Field2660.forEach(arg_0 -> this.Method2183(n, n2, f, arg_0));
-        GL11.glDisable(3089);
+        GL11.glDisable((int)3089);
     }
 
     public static void Method2180(Class217 class217) {

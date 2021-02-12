@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.module.Category;
 import me.darki.konas.module.client.KonasGui;
@@ -38,10 +38,10 @@ extends Class215 {
         super.Method497(n, n2, f);
         boolean bl2 = bl = NewGui.INSTANCE.Field1131.Method1828().Method2173() == this.Field491;
         if (bl) {
-            Class247.Method2043(this.Field494, this.Method501(n, n2) ? Field315.Method2048(KonasGui.highlight.getValue().floatValue()) : Field315);
+            Class247.Method2043(this.Field494, this.Method501(n, n2) ? Field315.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field315);
             Class247.Method2042(this.Field494, Field317, 1.0f);
         } else {
-            Class247.Method2043(this.Field493, this.Method501(n, n2) ? Field316.Method2048(KonasGui.highlight.getValue().floatValue()) : Field316);
+            Class247.Method2043(this.Field493, this.Method501(n, n2) ? Field316.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field316);
         }
         String string = this.Method483();
         if (string.equals("MOVEMENT")) {

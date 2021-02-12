@@ -1,8 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Locale;
 
+import me.darki.konas.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -23,7 +24,7 @@ extends Module {
     public Setting<Float> Field878 = new Setting<>("Timeout", Float.valueOf(1.0f), Float.valueOf(30.0f), Float.valueOf(0.5f), Float.valueOf(0.5f)).Method1191(Field877::getValue);
     public static Setting<Boolean> Field879 = new Setting<>("Use", false);
     public static Setting<Class312> Field880 = new Setting<>("Mode", Class312.FOOD).Method1191(Field879::getValue);
-    public static Setting<Class531> Field881 = new Setting<>("Items", new Class531());
+    public static Setting<Class531> Field881 = new Setting<>("Items", new Class531(new String[0]));
     public static Class566 Field882 = new Class566();
     public static boolean Field883 = false;
     public long Field884 = -1L;
@@ -38,10 +39,10 @@ extends Module {
                 return;
             }
             if (tickEvent.Method324() != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END) break block6;
-            if (Field879.getValue().booleanValue() && this.Method938(Class309.mc.player.getActiveItemStack()) && Class309.mc.player.getItemInUseCount() <= 0) {
+            if (((Boolean)Field879.getValue()).booleanValue() && this.Method938(Class309.mc.player.getActiveItemStack()) && Class309.mc.player.getItemInUseCount() <= 0) {
                 this.Field887 = Class309.mc.player.inventory.currentItem;
             }
-            if (Field876.getValue().booleanValue()) {
+            if (((Boolean)Field876.getValue()).booleanValue()) {
                 float f = 0.0f;
                 float f2 = 0.0f;
                 for (float f3 : this.Field885) {
@@ -65,12 +66,12 @@ extends Module {
 
     @Subscriber
     public void Method536(Class24 class24) {
-        if (Field877.getValue().booleanValue() && !Field883 && !Field882.Method737(1000.0f * this.Field878.getValue().floatValue()) && class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
+        if (((Boolean)Field877.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.Field878.getValue()).floatValue()) && class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
             Field882.Method738(0L);
-            Class309.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(Class309.mc.player.rotationYaw, Class309.mc.player.rotationPitch, Class309.mc.player.onGround));
+            Class309.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(Class309.mc.player.rotationYaw, Class309.mc.player.rotationPitch, Class309.mc.player.onGround));
         }
         if (class24.getPacket() instanceof CPacketPlayer) {
-            if (Field876.getValue().booleanValue()) {
+            if (((Boolean)Field876.getValue()).booleanValue()) {
                 if (this.Field884 != -1L) {
                     float f;
                     this.Field885[this.Field886 % this.Field885.length] = f = (float)(System.currentTimeMillis() - this.Field884) / 50.0f;
@@ -84,16 +85,16 @@ extends Module {
     @Subscriber
     public void Method937(Class11 class11) {
         block0: {
-            if (!Field874.getValue().booleanValue()) break block0;
+            if (!((Boolean)Field874.getValue()).booleanValue()) break block0;
             class11.setCanceled(true);
         }
     }
 
     @Subscriber
     public void Method130(Class19 class19) {
-        if (this.Field887 != -1 && Field879.getValue().booleanValue()) {
+        if (this.Field887 != -1 && ((Boolean)Field879.getValue()).booleanValue()) {
             Class309.mc.player.inventory.currentItem = this.Field887;
-            Class309.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field887));
+            Class309.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field887));
             this.Field887 = -1;
             return;
         }
@@ -114,13 +115,13 @@ extends Module {
         if (Field880.getValue() == Class312.FOOD) {
             return itemStack.getItem() instanceof ItemFood;
         }
-        return Field881.getValue().Method1146().contains(itemStack.getDisplayName().toLowerCase(Locale.ENGLISH));
+        return ((Class531)Field881.getValue()).Method1146().contains(itemStack.getDisplayName().toLowerCase(Locale.ENGLISH));
     }
 
     @Subscriber
     public void Method939(Class1 class1) {
         block0: {
-            if (!Field875.getValue().booleanValue()) break block0;
+            if (!((Boolean)Field875.getValue()).booleanValue()) break block0;
             class1.setCanceled(true);
         }
     }

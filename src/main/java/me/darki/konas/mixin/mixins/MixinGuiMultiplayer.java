@@ -2,8 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import java.io.File;
 import java.util.List;
-import me.darki.konas.Class261;
-import me.darki.konas.mixin.mixins.IGuiScreen;
+import me.darki.konas.unremaped.Class261;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMultiplayer;

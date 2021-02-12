@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -22,7 +22,7 @@ extends Thread {
             String string = dataInputStream.readUTF();
             Object object = object = string;
             String string2 = "MESSAGE";
-            boolean bl = object.equals(string2);
+            boolean bl = ((String)object).equals(string2);
             if (!bl) continue;
             DataInputStream dataInputStream2 = this.Field758;
             String string3 = dataInputStream2.readUTF();

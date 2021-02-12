@@ -1,8 +1,12 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.Keybind;
+import me.darki.konas.ParentSetting;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
@@ -84,12 +88,12 @@ extends Class183 {
         if (bl) {
             switch (n3) {
                 case 0: {
-                    Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+                    Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
                     this.Method146().toggle();
                     return true;
                 }
                 case 1: {
-                    Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+                    Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
                     this.Method1483(!this.Method1486());
                     return true;
                 }
@@ -185,19 +189,19 @@ extends Class183 {
                 class183.Method1472(f2);
                 f2 += class183.Method1481();
             }
-            int n4 = n3 = this.Field620.isEnabled() ? ClickGUIModule.color.getValue().Method774() : ClickGUIModule.secondary.getValue().Method774();
-            if (ClickGUIModule.hover.getValue().booleanValue()) {
+            int n4 = n3 = this.Field620.isEnabled() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
+            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue()) {
                 if (Class201.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
-                    n3 = this.Field620.isEnabled() ? ClickGUIModule.color.getValue().Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
+                    n3 = this.Field620.isEnabled() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
                 }
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
             int n5 = (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method1480()) / 2.0f);
-            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 4.0f), n5, ClickGUIModule.fony.getValue().Method774());
-            if (this.Field620.Method1646() != 0 && ClickGUIModule.binds.getValue().booleanValue()) {
-                String string = GameSettings.getKeyDisplayString(this.Method146().Method1646());
+            Class548.Method1016(this.Method1480(), (int)(this.Method1475() + 4.0f), n5, ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
+            if (this.Field620.Method1646() != 0 && ((Boolean) ClickGUIModule.binds.getValue()).booleanValue()) {
+                String string = GameSettings.getKeyDisplayString((int)this.Method146().Method1646());
                 string = string.replaceAll("NUMPAD", "");
-                Class548.Method1016(string, (int)(this.Method1475() + this.Method1479() - 4.0f - (Class548.Method1022(string) - 0.5f)), n5, ClickGUIModule.fony.getValue().Method774());
+                Class548.Method1016(string, (int)(this.Method1475() + this.Method1479() - 4.0f - (Class548.Method1022(string) - 0.5f)), n5, ((ColorValue) ClickGUIModule.fony.getValue()).Method774());
             }
             if (!this.Method1486()) break block4;
             this.Method672().forEach(arg_0 -> Class201.Method670(n, n2, f, arg_0));

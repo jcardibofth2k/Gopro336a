@@ -1,6 +1,6 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.module.player.AntiBookBan;
 import net.minecraft.network.NettyCompressionDecoder;
 import org.spongepowered.asm.mixin.Mixin;

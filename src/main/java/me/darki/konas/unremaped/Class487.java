@@ -1,8 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.nio.FloatBuffer;
-import me.darki.konas.Class89;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.ActiveRenderInfo;
@@ -61,8 +61,8 @@ public class Class487 {
     }
 
     public void Method2025(Matrix4f matrix4f, int n) {
-        FloatBuffer floatBuffer = GLAllocation.createDirectFloatBuffer(16);
-        GL11.glGetFloat(n, floatBuffer);
+        FloatBuffer floatBuffer = GLAllocation.createDirectFloatBuffer((int)16);
+        GL11.glGetFloat((int)n, (FloatBuffer)floatBuffer);
         matrix4f.load(floatBuffer);
     }
 
@@ -82,7 +82,7 @@ public class Class487 {
         if (this.Field2237.getRenderViewEntity() == null) {
             return;
         }
-        Vec3d vec3d = ActiveRenderInfo.projectViewFromEntity(this.Field2237.getRenderViewEntity(), this.Field2237.getRenderPartialTicks());
+        Vec3d vec3d = ActiveRenderInfo.projectViewFromEntity((Entity)this.Field2237.getRenderViewEntity(), (double)this.Field2237.getRenderPartialTicks());
         Vec3d vec3d2 = ActiveRenderInfo.getCameraPosition();
         this.Method2025(this.Field2238, 2982);
         this.Method2025(this.Field2239, 2983);

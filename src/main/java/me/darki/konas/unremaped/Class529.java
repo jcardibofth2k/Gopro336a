@@ -1,5 +1,5 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 public interface Class529 {
-    void Method630(T var1);
+    public void Method630(T var1);
 }

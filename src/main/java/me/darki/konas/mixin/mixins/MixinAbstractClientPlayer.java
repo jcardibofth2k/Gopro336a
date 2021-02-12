@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import javax.annotation.Nullable;
-import me.darki.konas.Class8;
+import me.darki.konas.unremaped.Class8;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.util.ResourceLocation;

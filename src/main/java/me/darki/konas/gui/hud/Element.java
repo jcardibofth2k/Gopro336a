@@ -1,6 +1,6 @@
 package me.darki.konas.gui.hud;
 
-import me.darki.konas.Class193;
+import me.darki.konas.unremaped.Class193;
 import me.darki.konas.ColorValue;
 import me.darki.konas.RenderUtil2;
 import me.darki.konas.setting.Setting;

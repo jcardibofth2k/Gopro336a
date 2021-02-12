@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import me.darki.konas.util.ChatUtil;
-import me.darki.konas.Class595;
+import me.darki.konas.unremaped.Class595;
 import me.darki.konas.command.Command;
 
 public class nameMcCommand

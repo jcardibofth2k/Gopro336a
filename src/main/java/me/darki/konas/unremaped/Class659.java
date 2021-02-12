@@ -1,4 +1,6 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
+
+import me.darki.konas.CancelableEvent;
 
 public class Class659
 extends CancelableEvent {
@@ -11,7 +13,7 @@ extends CancelableEvent {
     public float Field1079;
     public float Field1080;
     public float Field1081;
-    public ViewModelMode Field1082;
+    public Class656 Field1082;
 
     public void Method1102(float f) {
         this.Field1080 = f;
@@ -81,7 +83,7 @@ extends CancelableEvent {
         this.Field1075 = f;
     }
 
-    public Class659(float f, float f2, float f3, float f4, float f5, float f6, ViewModelMode viewModelMode) {
+    public Class659(float f, float f2, float f3, float f4, float f5, float f6, Class656 class656) {
         this.Field1073 = f;
         this.Field1074 = f2;
         this.Field1075 = f3;
@@ -91,11 +93,10 @@ extends CancelableEvent {
         this.Field1079 = 0.0f;
         this.Field1080 = 0.0f;
         this.Field1081 = 0.0f;
-        this.Field1082 = viewModelMode;
+        this.Field1082 = class656;
     }
 
-    public
-    ViewModelMode Method1112() {
+    public Class656 Method1112() {
         return this.Field1082;
     }
 

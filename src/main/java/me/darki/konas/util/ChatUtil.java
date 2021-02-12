@@ -1,9 +1,8 @@
 package me.darki.konas.util;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
-import me.darki.konas.Class544;
+import me.darki.konas.unremaped.Class544;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.text.ITextComponent;
 
 public class ChatUtil {
     public static Minecraft Field1020 = Minecraft.getMinecraft();

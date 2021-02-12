@@ -1,8 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class70;
-import me.darki.konas.Class83;
+import me.darki.konas.unremaped.Class70;
+import me.darki.konas.unremaped.Class83;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BlockModelRenderer;
 import net.minecraft.client.renderer.BufferBuilder;

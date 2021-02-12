@@ -1,10 +1,14 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import me.darki.konas.MathUtil;
+import me.darki.konas.MoveEvent;
+import me.darki.konas.PacketEvent;
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -33,7 +37,7 @@ extends Module {
                 this.Field1182 = this.Field1183 - d;
                 this.Field1184 = !this.Field1184;
             } else {
-                List list = Class407.mc.world.getCollisionBoxes(Class407.mc.player, Class407.mc.player.getEntityBoundingBox().offset(0.0, Class407.mc.player.motionY, 0.0));
+                List list = Class407.mc.world.getCollisionBoxes((Entity)Class407.mc.player, Class407.mc.player.getEntityBoundingBox().offset(0.0, Class407.mc.player.motionY, 0.0));
                 if ((list.size() > 0 || Class407.mc.player.collidedVertically) && this.Field1185 > 0) {
                     this.Field1185 = Class407.mc.player.moveForward == 0.0f && Class407.mc.player.moveStrafing == 0.0f ? 0 : 1;
                 }

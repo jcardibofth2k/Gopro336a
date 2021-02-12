@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.managers.CommandManager;
+import me.darki.konas.unremaped.Class648;
 
 public class CommandUtil {
     public static CommandUtil Field163 = new CommandUtil();

@@ -3,7 +3,7 @@ package me.darki.konas.mixin.mixins;
 import cookiedragon.eventsystem.EventDispatcher;
 import java.util.List;
 import javax.annotation.Nullable;
-import me.darki.konas.Class570;
+import me.darki.konas.unremaped.Class570;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;

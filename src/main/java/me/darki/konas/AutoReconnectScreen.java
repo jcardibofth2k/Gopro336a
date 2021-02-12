@@ -1,7 +1,7 @@
 package me.darki.konas;
 
 import java.util.List;
-import me.darki.konas.Class566;
+import me.darki.konas.unremaped.Class566;
 import me.darki.konas.mixin.mixins.IGuiDisconnected;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDisconnected;

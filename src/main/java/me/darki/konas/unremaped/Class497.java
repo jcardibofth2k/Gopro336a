@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
@@ -19,7 +19,7 @@ extends Module {
             if (Class497.mc.gameSettings.thirdPersonView <= 0) break block0;
             this.Field2060 = (float)((double)this.Field2060 + (double)class37.Method215() * 0.15);
             this.Field2061 = (float)((double)this.Field2061 - (double)class37.Method214() * 0.15);
-            this.Field2061 = MathHelper.clamp(this.Field2061, -90.0f, 90.0f);
+            this.Field2061 = MathHelper.clamp((float)this.Field2061, (float)-90.0f, (float)90.0f);
             class37.setCanceled(true);
         }
     }
@@ -34,12 +34,12 @@ extends Module {
     }
 
     public Class497() {
-        super("FreeLook", "Look around in 3rd person", Category.RENDER);
+        super("FreeLook", "Look around in 3rd person", Category.RENDER, new String[0]);
     }
 
     @Override
     public void onDisable() {
-        if (Field2062.getValue().booleanValue()) {
+        if (((Boolean)Field2062.getValue()).booleanValue()) {
             Class497.mc.gameSettings.thirdPersonView = 0;
         }
     }
@@ -48,7 +48,7 @@ extends Module {
     public void onEnable() {
         this.Field2060 = 0.0f;
         this.Field2061 = 0.0f;
-        if (Field2062.getValue().booleanValue()) {
+        if (((Boolean)Field2062.getValue()).booleanValue()) {
             Class497.mc.gameSettings.thirdPersonView = 1;
         }
     }

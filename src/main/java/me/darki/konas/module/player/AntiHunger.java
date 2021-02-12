@@ -2,12 +2,10 @@ package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class24;
+import me.darki.konas.unremaped.Class24;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.entity.Entity;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketPlayer;
 
@@ -21,9 +19,12 @@ extends Module {
         super("AntiHunger", "Prevents hunger loss", Category.PLAYER, "NoHunger");
     }
 
+    /**
+     * edited by Gopro336
+     */
     @Subscriber
     public void Method536(Class24 class24) {
-        CPacketEntityAction cPacketEntityAction;
+        CPacketEntityAction cPacketEntityAction = null;
         if (class24.getPacket() instanceof CPacketEntityAction) {
             cPacketEntityAction = (CPacketEntityAction)class24.getPacket();
             if (sprint.getValue().booleanValue() && (cPacketEntityAction.getAction() == CPacketEntityAction.Action.START_SPRINTING || cPacketEntityAction.getAction() == CPacketEntityAction.Action.STOP_SPRINTING)) {
@@ -31,10 +32,11 @@ extends Module {
             }
         }
         if (class24.getPacket() instanceof CPacketPlayer) {
-            cPacketEntityAction = (CPacketPlayer)class24.getPacket();
+            CPacketPlayer cPacketPlayer;
+            cPacketPlayer = (CPacketPlayer)class24.getPacket();
             boolean bl = AntiHunger.mc.player.onGround;
             if (ground.getValue().booleanValue() && this.Field2015 && bl) {
-                if (cPacketEntityAction.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).Method1702() ? 0.0 : AntiHunger.mc.player.posY)) {
+                if (cPacketPlayer.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).Method1702() ? 0.0 : AntiHunger.mc.player.posY)) {
                     ((ICPacketPlayer)cPacketEntityAction).Method1700(false);
                 }
             }

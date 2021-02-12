@@ -8,12 +8,14 @@ import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class45;
+import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.Class654;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.server.SPacketEntityStatus;
 import net.minecraft.network.play.server.SPacketPlayerListItem;
-import net.minecraft.world.World;
 
 public class AutoGG
 extends Module {

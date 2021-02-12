@@ -1,8 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import java.awt.Color;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.RenderUtil2;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.ClickGUIModule;
 import net.minecraft.client.Minecraft;
@@ -27,12 +29,12 @@ extends Class183 {
         }
         boolean bl = Class190.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl && n3 == 0) {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
             this.Method104(!this.Method103());
             return true;
         }
         if (bl && n3 == 1) {
-            Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0f));
+            Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
             this.Method146().setHoldBind(!this.Method146().Method1630());
             return true;
         }
@@ -68,10 +70,10 @@ extends Class183 {
     @Override
     public void Method105(int n, int n2, float f) {
         super.Method105(n, n2, f);
-        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ClickGUIModule.color.getValue().Method774());
-        int n3 = Class190.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481()) ? new Color(96, 96, 96, 100).hashCode() : ClickGUIModule.secondary.getValue().Method774();
+        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+        int n3 = Class190.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481()) ? new Color(96, 96, 96, 100).hashCode() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
-        Class548.Method1016(this.Method103() ? "Press new bind..." : (this.Method146().Method1630() ? "Hold: " : "Bind: ") + GameSettings.getKeyDisplayString(this.Method146().Method1646()), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method103() ? "Press new bind..." : "Bind: " + GameSettings.getKeyDisplayString(this.Method146().Method1646())) / 2.0f - 0.5f), 0xFFFFFF);
+        Class548.Method1016(this.Method103() ? "Press new bind..." : (this.Method146().Method1630() ? "Hold: " : "Bind: ") + GameSettings.getKeyDisplayString((int)this.Method146().Method1646()), (int)(this.Method1475() + 5.0f), (int)(this.Method1476() + this.Method1481() / 2.0f - Class548.Method1023(this.Method103() ? "Press new bind..." : "Bind: " + GameSettings.getKeyDisplayString((int)this.Method146().Method1646())) / 2.0f - 0.5f), 0xFFFFFF);
     }
 
     public Module Method146() {

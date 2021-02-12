@@ -1,20 +1,18 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class102;
-import me.darki.konas.Class167;
-import me.darki.konas.Class419;
-import me.darki.konas.ColorValue;
-import me.darki.konas.Class46;
+import me.darki.konas.unremaped.Class102;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class419;
+import me.darki.konas.unremaped.Class46;
 import me.darki.konas.module.render.Chams;
-import me.darki.konas.ChamsGlintMode;
+import me.darki.konas.settingEnums.ChamsGlintMode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.entity.Entity;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

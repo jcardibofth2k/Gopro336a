@@ -1,12 +1,9 @@
 package me.darki.konas.command.commands;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.network.PacketBuffer;
 import io.netty.buffer.Unpooled;
-import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.EnumHand;
@@ -16,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import me.darki.konas.util.ChatUtil;
 import me.darki.konas.SyntaxChunk;
-import me.darki.konas.Class589;
+import me.darki.konas.unremaped.Class589;
 import java.io.File;
 import me.darki.konas.command.Command;
 

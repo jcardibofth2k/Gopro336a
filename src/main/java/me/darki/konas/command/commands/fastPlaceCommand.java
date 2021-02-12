@@ -1,7 +1,6 @@
 package me.darki.konas.command.commands;
 
 import me.darki.konas.module.player.FastUse;
-import me.darki.konas.Class443;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

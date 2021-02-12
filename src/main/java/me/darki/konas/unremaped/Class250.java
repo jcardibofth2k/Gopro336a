@@ -1,7 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.mojang.authlib.GameProfile;
-import me.darki.konas.module.render.Chams;
+import me.darki.konas.PlayerPreview;
 import me.darki.konas.module.render.ESP;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;
@@ -21,8 +21,8 @@ extends Class215 {
     @Override
     public void Method497(int n, int n2, float f) {
         super.Method497(n, n2, f);
-        EntityOtherPlayerMP entityOtherPlayerMP = new EntityOtherPlayerMP(Minecraft.getMinecraft().world, new GameProfile(Minecraft.getMinecraft().player.getUniqueID(), Minecraft.getMinecraft().player.getName()));
-        entityOtherPlayerMP.copyLocationAndAnglesFrom(Minecraft.getMinecraft().player);
+        EntityOtherPlayerMP entityOtherPlayerMP = new EntityOtherPlayerMP((World)Minecraft.getMinecraft().world, new GameProfile(Minecraft.getMinecraft().player.getUniqueID(), Minecraft.getMinecraft().player.getName()));
+        entityOtherPlayerMP.copyLocationAndAnglesFrom((Entity)Minecraft.getMinecraft().player);
         entityOtherPlayerMP.posX = -20000.0;
         entityOtherPlayerMP.posZ = -20000.0;
         entityOtherPlayerMP.rotationPitch = -15.0f;
@@ -32,7 +32,7 @@ extends Class215 {
         entityOtherPlayerMP.rotationYawHead = 20.0f;
         entityOtherPlayerMP.prevRotationYawHead = 20.0f;
         entityOtherPlayerMP.ticksExisted = Minecraft.getMinecraft().player.ticksExisted;
-        this.Method1985((int)(this.Method486() + this.Method489() / 2.0f), (int)(this.Method492() + this.Method476() - 10.0f), 100, n, n2, entityOtherPlayerMP, true, true);
+        this.Method1985((int)(this.Method486() + this.Method489() / 2.0f), (int)(this.Method492() + this.Method476() - 10.0f), 100, n, n2, (EntityPlayer)entityOtherPlayerMP, true, true);
     }
 
     public Class250(Setting<PlayerPreview> setting, float f, float f2, float f3, float f4, float f5, float f6) {
@@ -45,23 +45,23 @@ extends Class215 {
         ESP.Field1339 = true;
         GlStateManager.pushMatrix();
         GlStateManager.enableDepth();
-        GlStateManager.color(1.0f, 1.0f, 1.0f);
+        GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f);
         GlStateManager.enableColorMaterial();
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)n, (float)n2, 50.0f);
+        GlStateManager.translate((float)n, (float)n2, (float)50.0f);
         GlStateManager.scale((float)(-n3), (float)n3, (float)n3);
-        GlStateManager.rotate(180.0f, 0.0f, 0.0f, 1.0f);
+        GlStateManager.rotate((float)180.0f, (float)0.0f, (float)0.0f, (float)1.0f);
         float f3 = entityPlayer.renderYawOffset;
         float f4 = entityPlayer.rotationYaw;
         float f5 = entityPlayer.rotationPitch;
         float f6 = entityPlayer.prevRotationYawHead;
         float f7 = entityPlayer.rotationYawHead;
-        GlStateManager.rotate(135.0f, 0.0f, 1.0f, 0.0f);
+        GlStateManager.rotate((float)135.0f, (float)0.0f, (float)1.0f, (float)0.0f);
         RenderHelper.enableStandardItemLighting();
-        GlStateManager.rotate(-135.0f, 0.0f, 1.0f, 0.0f);
+        GlStateManager.rotate((float)-135.0f, (float)0.0f, (float)1.0f, (float)0.0f);
         f = bl ? entityPlayer.rotationYaw * -1.0f : f;
         f2 = bl2 ? entityPlayer.rotationPitch * -1.0f : f2;
-        GlStateManager.rotate(-((float)Math.atan(f2 / 40.0f)) * 20.0f, 1.0f, 0.0f, 0.0f);
+        GlStateManager.rotate((float)(-((float)Math.atan(f2 / 40.0f)) * 20.0f), (float)1.0f, (float)0.0f, (float)0.0f);
         if (!bl) {
             entityPlayer.renderYawOffset = (float)Math.atan(f / 40.0f) * 20.0f;
             entityPlayer.rotationYawHead = entityPlayer.rotationYaw = (float)Math.atan(f / 40.0f) * 40.0f;
@@ -70,11 +70,11 @@ extends Class215 {
         if (!bl2) {
             entityPlayer.rotationPitch = -((float)Math.atan(f2 / 40.0f)) * 20.0f;
         }
-        GlStateManager.translate(0.0f, 0.0f, 0.0f);
+        GlStateManager.translate((float)0.0f, (float)0.0f, (float)0.0f);
         RenderManager renderManager = Minecraft.getMinecraft().getRenderManager();
         renderManager.setPlayerViewY(180.0f);
         renderManager.setRenderShadow(false);
-        renderManager.renderEntity(entityPlayer, 0.0, 0.0, 0.0, 0.0f, 1.0f, false);
+        renderManager.renderEntity((Entity)entityPlayer, 0.0, 0.0, 0.0, 0.0f, 1.0f, false);
         renderManager.setRenderShadow(true);
         if (!bl) {
             entityPlayer.renderYawOffset = f3;
@@ -88,9 +88,9 @@ extends Class215 {
         GlStateManager.popMatrix();
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableRescaleNormal();
-        GlStateManager.setActiveTexture(OpenGlHelper.lightmapTexUnit);
+        GlStateManager.setActiveTexture((int)OpenGlHelper.lightmapTexUnit);
         GlStateManager.disableTexture2D();
-        GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
+        GlStateManager.setActiveTexture((int)OpenGlHelper.defaultTexUnit);
         GlStateManager.disableDepth();
         GlStateManager.popMatrix();
         ESP.Field1339 = false;

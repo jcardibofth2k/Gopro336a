@@ -1,9 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import me.darki.konas.TickEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiIngameMenu;
@@ -29,8 +30,8 @@ public class Class51 {
             if (this.Field224.player == null || this.Field224.world == null) {
                 return;
             }
-            if (!Field223.Method737(Class299.Field1439.getValue().floatValue() * 1000.0f) || Field222.isEmpty() || this.Field224.player.connection.getPlayerInfo((class301 = Field222.poll()).Method1072()) == null) break block1;
-            this.Field224.player.connection.sendPacket(new CPacketChatMessage("/" + (Class299.Field1440.getValue() == Class295.MSG ? "msg" : "w") + " " + class301.Method1072() + " " + class301.Method1073()));
+            if (!Field223.Method737(((Float)Class299.Field1439.getValue()).floatValue() * 1000.0f) || Field222.isEmpty() || this.Field224.player.connection.getPlayerInfo((class301 = Field222.poll()).Method1072()) == null) break block1;
+            this.Field224.player.connection.sendPacket((Packet)new CPacketChatMessage("/" + (Class299.Field1440.getValue() == Class295.MSG ? "msg" : "w") + " " + class301.Method1072() + " " + class301.Method1073()));
             Field223.Method739();
         }
     }

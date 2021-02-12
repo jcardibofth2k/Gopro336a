@@ -1,10 +1,9 @@
 package me.darki.konas.command.commands;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class167;
-import me.darki.konas.Class299;
-import me.darki.konas.Class645;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class299;
+import me.darki.konas.unremaped.Class645;
 import me.darki.konas.command.Command;
 
 public class backupCommand

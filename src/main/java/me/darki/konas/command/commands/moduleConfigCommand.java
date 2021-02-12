@@ -1,10 +1,10 @@
 package me.darki.konas.command.commands;
 
 import java.io.File;
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.util.ChatUtil;
-import me.darki.konas.Class589;
-import me.darki.konas.Class605;
+import me.darki.konas.unremaped.Class589;
+import me.darki.konas.unremaped.Class605;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 

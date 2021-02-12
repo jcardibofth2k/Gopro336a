@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import me.darki.konas.LanguageUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
@@ -64,7 +65,7 @@ extends Module {
     }
 
     public Class332() {
-        super("Translate", "Translate your chat message into any language", Category.MISC);
+        super("Translate", "Translate your chat message into any language", Category.MISC, new String[0]);
     }
 
     @Subscriber

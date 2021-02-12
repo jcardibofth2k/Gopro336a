@@ -7,18 +7,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class28;
-import me.darki.konas.Class408;
-import me.darki.konas.Class409;
-import me.darki.konas.Class413;
+import me.darki.konas.unremaped.Class28;
+import me.darki.konas.unremaped.Class408;
+import me.darki.konas.unremaped.Class409;
+import me.darki.konas.unremaped.Class413;
 import me.darki.konas.ColorValue;
-import me.darki.konas.Class465;
-import me.darki.konas.Class492;
-import me.darki.konas.Class507;
-import me.darki.konas.Class516;
-import me.darki.konas.Class523;
-import me.darki.konas.Class545;
-import me.darki.konas.Class89;
+import me.darki.konas.unremaped.Class465;
+import me.darki.konas.unremaped.Class492;
+import me.darki.konas.unremaped.Class507;
+import me.darki.konas.unremaped.Class516;
+import me.darki.konas.unremaped.Class523;
+import me.darki.konas.unremaped.Class545;
+import me.darki.konas.unremaped.Class89;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -27,7 +27,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 
 public class HoleEsp
 extends Module {

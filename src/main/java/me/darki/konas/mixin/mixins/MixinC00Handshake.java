@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.Class167;
-import me.darki.konas.Class178;
+import me.darki.konas.unremaped.Class167;
+import me.darki.konas.unremaped.Class178;
 import net.minecraft.network.EnumConnectionState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.handshake.client.C00Handshake;

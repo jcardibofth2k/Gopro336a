@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 public class Class330
 extends Enum {
@@ -20,7 +20,7 @@ extends Enum {
     }
 
     public static Class330[] Method595() {
-        return Field527.clone();
+        return (Class330[])Field527.clone();
     }
 
     public static Class330 Method596(String string) {

@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import java.util.Random;
-import me.darki.konas.Class94;
+import me.darki.konas.unremaped.Class94;
 import net.minecraft.block.BlockEnchantmentTable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;

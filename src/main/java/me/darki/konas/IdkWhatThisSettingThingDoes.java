@@ -1,6 +1,7 @@
 package me.darki.konas;
 
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class529;
 import org.jetbrains.annotations.NotNull;
 
 public class IdkWhatThisSettingThingDoes<T>

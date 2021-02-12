@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Class443 {
 
     public Class443(String ... stringArray) {
         for (String string : stringArray) {
-            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName(string) == null) continue;
+            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName((String)string) == null) continue;
             this.Field625.add(string.toUpperCase(Locale.ENGLISH));
         }
     }
@@ -29,7 +29,7 @@ public class Class443 {
 
     public void Method679(ArrayList<String> arrayList) {
         for (String string : arrayList) {
-            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName(string) == null) continue;
+            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName((String)string) == null) continue;
             this.Field625.add(string.toUpperCase(Locale.ENGLISH));
         }
     }
@@ -40,7 +40,7 @@ public class Class443 {
     }
 
     public boolean Method681(String string) {
-        if (!this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) && Block.getBlockFromName(string) != null) {
+        if (!this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) && Block.getBlockFromName((String)string) != null) {
             this.Field625.add(string.toUpperCase(Locale.ENGLISH));
             return true;
         }
@@ -49,7 +49,7 @@ public class Class443 {
 
     public Class443(ArrayList<String> arrayList) {
         for (String string : arrayList) {
-            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName(string) == null) continue;
+            if (this.Field625.contains(string.toUpperCase(Locale.ENGLISH)) || Block.getBlockFromName((String)string) == null) continue;
             this.Field625.add(string.toUpperCase(Locale.ENGLISH));
         }
     }
@@ -59,7 +59,7 @@ public class Class443 {
     }
 
     public void Method683(String string) {
-        Block block = Block.getBlockFromName(string);
+        Block block = Block.getBlockFromName((String)string);
         if (block != null) {
             this.Field624.add(block);
         }

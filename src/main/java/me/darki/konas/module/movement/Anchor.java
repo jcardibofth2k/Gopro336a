@@ -1,14 +1,13 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.Class412;
-import me.darki.konas.Class545;
-import me.darki.konas.Class566;
+import me.darki.konas.unremaped.Class412;
+import me.darki.konas.unremaped.Class545;
+import me.darki.konas.unremaped.Class566;
 import me.darki.konas.MoveEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.math.BlockPos;
 
 public class Anchor

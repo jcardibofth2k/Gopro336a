@@ -1,8 +1,9 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -43,7 +44,7 @@ extends Module {
     public Class566 Field1763 = new Class566();
 
     public static boolean Method128(EntityPlayer entityPlayer) {
-        return Class286.mc.player.getDistance(entityPlayer) < Math.max(Field1748.getValue().floatValue() - 1.0f, 1.0f);
+        return Class286.mc.player.getDistance((Entity)entityPlayer) < Math.max(((Float)Field1748.getValue()).floatValue() - 1.0f, 1.0f);
     }
 
     public static boolean Method138(EntityPlayer entityPlayer) {
@@ -51,7 +52,7 @@ extends Module {
     }
 
     public static Float Method137(EntityPlayer entityPlayer) {
-        return Float.valueOf(Class286.mc.player.getDistance(entityPlayer));
+        return Float.valueOf(Class286.mc.player.getDistance((Entity)entityPlayer));
     }
 
     public static boolean Method1665(EntityPlayer entityPlayer) {
@@ -59,7 +60,7 @@ extends Module {
     }
 
     public static boolean Method141(EntityPlayer entityPlayer) {
-        return !Class546.Method963(entityPlayer);
+        return !Class546.Method963((Entity)entityPlayer);
     }
 
     @Override
@@ -72,7 +73,7 @@ extends Module {
         this.Field1760 = null;
         this.Field1761 = null;
         this.Field1762 = null;
-        this.Field1759 = Field1750.getValue();
+        this.Field1759 = (Integer)Field1750.getValue();
     }
 
     public static boolean Method122(EntityPlayer entityPlayer) {
@@ -92,7 +93,7 @@ extends Module {
     }
 
     public EntityPlayer Method1623() {
-        return Class286.mc.world.playerEntities.stream().filter(Class286::Method141).filter(Class286::Method138).filter(Class286::Method132).filter(Class286::Method122).filter(Class286::Method1665).filter(Class286::Method128).filter(this::Method126).min(Comparator.comparing(Class286::Method137)).orElse(Field1752.getValue().booleanValue() ? Class286.mc.player : null);
+        return Class286.mc.world.playerEntities.stream().filter(Class286::Method141).filter(Class286::Method138).filter(Class286::Method132).filter(Class286::Method122).filter(Class286::Method1665).filter(Class286::Method128).filter(this::Method126).min(Comparator.comparing(Class286::Method137)).orElse((EntityPlayer)(((Boolean)Field1752.getValue()).booleanValue() ? Class286.mc.player : null));
     }
 
     public boolean Method126(EntityPlayer entityPlayer) {
@@ -113,19 +114,19 @@ extends Module {
             int n = Class286.mc.player.inventory.currentItem;
             if (bl) {
                 Class286.mc.player.inventory.currentItem = this.Field1756;
-                Class286.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1756));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1756));
             }
             boolean bl2 = Class286.mc.player.isSprinting();
             boolean bl3 = Class545.Method1004(this.Field1761.Method1982());
             if (bl2) {
-                Class286.mc.player.connection.sendPacket(new CPacketEntityAction(Class286.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class286.mc.player, CPacketEntityAction.Action.STOP_SPRINTING));
             }
             if (bl3) {
-                Class286.mc.player.connection.sendPacket(new CPacketEntityAction(Class286.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class286.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
             Class496.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
-            if (Field1749.getValue() == 2 && Field1751.getValue().booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
-                this.Field1761 = Class496.Method1961(this.Field1760.up(), Field1754.getValue(), true);
+            if ((Integer)Field1749.getValue() == 2 && ((Boolean)Field1751.getValue()).booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
+                this.Field1761 = Class496.Method1961(this.Field1760.up(), (Boolean)Field1754.getValue(), true);
                 if (this.Field1761 != null) {
                     this.Field1758 = this.Field1760;
                     this.Field1757.Method739();
@@ -133,14 +134,14 @@ extends Module {
                 }
             }
             if (bl3) {
-                Class286.mc.player.connection.sendPacket(new CPacketEntityAction(Class286.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class286.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
             }
             if (bl2) {
-                Class286.mc.player.connection.sendPacket(new CPacketEntityAction(Class286.mc.player, CPacketEntityAction.Action.START_SPRINTING));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class286.mc.player, CPacketEntityAction.Action.START_SPRINTING));
             }
-            if (bl && Field1755.getValue().booleanValue()) {
+            if (bl && ((Boolean)Field1755.getValue()).booleanValue()) {
                 Class286.mc.player.inventory.currentItem = n;
-                Class286.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
+                Class286.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
             }
         }
     }
@@ -173,22 +174,22 @@ extends Module {
             if (this.Field1757.Method737(350.0)) {
                 this.Field1758 = null;
             }
-            if (updateEvent.isCanceled() || !Class496.Method1959(Field1754.getValue())) {
+            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)Field1754.getValue())) {
                 return;
             }
             if (Class167.Method1610(PacketFly.class).isEnabled()) {
                 return;
             }
-            if (!(!Field1753.getValue().booleanValue() || Class286.mc.player.onGround && Class286.mc.player.collidedVertically)) {
+            if (!(!((Boolean)Field1753.getValue()).booleanValue() || Class286.mc.player.onGround && Class286.mc.player.collidedVertically)) {
                 return;
             }
-            if (this.Field1759 < Field1750.getValue()) {
+            if (this.Field1759 < (Integer)Field1750.getValue()) {
                 ++this.Field1759;
             }
             if ((entityPlayer = this.Method1623()) == null) {
                 return;
             }
-            if (this.Field1759 < Field1750.getValue()) {
+            if (this.Field1759 < (Integer)Field1750.getValue()) {
                 if (this.Field1762 != null && !this.Field1763.Method737(650.0)) {
                     NewGui.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
                 }
@@ -203,9 +204,9 @@ extends Module {
             }
             this.Field1756 = n;
             if (Class496.Method1965(this.Field1760, false, false)) {
-                this.Field1761 = Class496.Method1962(this.Field1760, Field1754.getValue());
-            } else if (Field1751.getValue().booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
-                this.Field1761 = Class496.Method1962(this.Field1760.up(), Field1754.getValue());
+                this.Field1761 = Class496.Method1962(this.Field1760, (Boolean)Field1754.getValue());
+            } else if (((Boolean)Field1751.getValue()).booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
+                this.Field1761 = Class496.Method1962(this.Field1760.up(), (Boolean)Field1754.getValue());
             }
             if (this.Field1761 == null) break block13;
             this.Field1759 = 0;

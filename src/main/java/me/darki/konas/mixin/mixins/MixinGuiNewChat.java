@@ -1,8 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class55;
-import me.darki.konas.Class647;
+import me.darki.konas.unremaped.Class55;
+import me.darki.konas.unremaped.Class647;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiNewChat;
 import net.minecraft.util.math.MathHelper;

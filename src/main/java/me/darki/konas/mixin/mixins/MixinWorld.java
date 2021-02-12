@@ -1,8 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class79;
-import me.darki.konas.Class85;
+import me.darki.konas.unremaped.Class79;
+import me.darki.konas.unremaped.Class85;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

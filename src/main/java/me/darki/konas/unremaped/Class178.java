@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.buffer.Unpooled;
@@ -25,6 +25,6 @@ extends Module {
     }
 
     public Class178() {
-        super("NoForge", "Prevents client from sending forge signature", Category.CLIENT);
+        super("NoForge", "Prevents client from sending forge signature", Category.CLIENT, new String[0]);
     }
 }

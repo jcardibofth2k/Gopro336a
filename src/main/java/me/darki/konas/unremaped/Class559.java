@@ -1,7 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.Objects;
-import me.darki.konas.Class561;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.ServerData;
@@ -70,7 +70,8 @@ public class Class559 {
         if ((double)Double.compare(class559.Field770, this.Field770) != 0.0) return false;
         if (this.Field771 != class559.Field771) return false;
         if (this.Field773 != class559.Field773) return false;
-        return this.Field772.equalsIgnoreCase(class559.Method813());
+        if (!this.Field772.equalsIgnoreCase(class559.Method813())) return false;
+        return true;
     }
 
     public String toString() {
@@ -131,7 +132,7 @@ public class Class559 {
         double d2 = class559.Method821() - this.Field768 * d;
         double d3 = class559.Method820() - this.Field769 * d;
         double d4 = class559.Method818() - this.Field770 * d;
-        return MathHelper.sqrt(d2 * d2 + d3 * d3 + d4 * d4);
+        return MathHelper.sqrt((double)(d2 * d2 + d3 * d3 + d4 * d4));
     }
 
     public double Method818() {

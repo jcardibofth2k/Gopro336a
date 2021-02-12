@@ -1,8 +1,8 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class58;
-import me.darki.konas.Class650;
+import me.darki.konas.unremaped.Class58;
+import me.darki.konas.unremaped.Class650;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.RenderGlobal;

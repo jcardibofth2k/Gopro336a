@@ -1,4 +1,4 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import com.google.common.collect.Maps;
 import com.google.gson.JsonArray;
@@ -20,7 +20,6 @@ import java.util.function.Consumer;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import kotlin.Pair;
-import me.darki.konas.Class512;
 import me.darki.konas.util.network.Requester;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.text.TextFormatting;
@@ -434,7 +433,7 @@ lbl44:
                 return string11.substring(n4, n6);
             }
             catch (IOException object4) {
-                object4.printStackTrace();
+                ((Throwable)object4).printStackTrace();
             }
         }
         return null;

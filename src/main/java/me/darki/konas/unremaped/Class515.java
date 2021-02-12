@@ -1,6 +1,6 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 @FunctionalInterface
 public interface Class515 {
-    String Method1311();
+    public String Method1311();
 }

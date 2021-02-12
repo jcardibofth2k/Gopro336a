@@ -2,7 +2,7 @@ package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.Class19;
+import me.darki.konas.unremaped.Class19;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.util.MovementInput;

@@ -1,8 +1,8 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.module.movement.AutoWalk;
-import me.darki.konas.Class501;
+import me.darki.konas.unremaped.Class501;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

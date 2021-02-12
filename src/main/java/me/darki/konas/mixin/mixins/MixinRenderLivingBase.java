@@ -1,10 +1,10 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class122;
-import me.darki.konas.Class129;
-import me.darki.konas.Class139;
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class122;
+import me.darki.konas.unremaped.Class129;
+import me.darki.konas.unremaped.Class139;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.module.render.Chams;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.Minecraft;

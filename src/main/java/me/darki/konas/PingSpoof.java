@@ -4,7 +4,9 @@ import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.network.Packet;
+import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.Class89;
 import net.minecraft.network.play.client.CPacketKeepAlive;
 
 public class PingSpoof

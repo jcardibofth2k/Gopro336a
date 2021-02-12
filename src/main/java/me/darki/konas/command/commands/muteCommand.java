@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.Class484;
-import me.darki.konas.Class595;
+import me.darki.konas.unremaped.Class484;
+import me.darki.konas.unremaped.Class595;
 import me.darki.konas.MuteCommandOptions;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

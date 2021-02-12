@@ -1,18 +1,17 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.Class119;
-import me.darki.konas.Class31;
-import me.darki.konas.Class46;
-import me.darki.konas.Class49;
-import me.darki.konas.Class65;
+import me.darki.konas.unremaped.Class119;
+import me.darki.konas.unremaped.Class31;
+import me.darki.konas.unremaped.Class46;
+import me.darki.konas.unremaped.Class49;
+import me.darki.konas.unremaped.Class65;
 import me.darki.konas.ViewModelMode;
-import me.darki.konas.Class659;
+import me.darki.konas.unremaped.Class659;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHandSide;
 import org.spongepowered.asm.mixin.Mixin;

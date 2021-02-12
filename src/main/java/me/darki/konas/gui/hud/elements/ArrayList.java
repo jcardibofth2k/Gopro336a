@@ -2,12 +2,12 @@ package me.darki.konas.gui.hud.elements;
 
 import java.awt.Color;
 import java.util.Comparator;
-import me.darki.konas.Class107;
-import me.darki.konas.Class167;
+import me.darki.konas.unremaped.Class107;
+import me.darki.konas.unremaped.Class167;
 import me.darki.konas.ColorValue;
 import me.darki.konas.RenderUtil2;
-import me.darki.konas.Class556;
-import me.darki.konas.Class557;
+import me.darki.konas.unremaped.Class556;
+import me.darki.konas.unremaped.Class557;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.Module;

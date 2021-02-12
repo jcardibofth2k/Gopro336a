@@ -1,5 +1,6 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
+import me.darki.konas.KonasBeaconGui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.MobEffects;
@@ -22,7 +23,7 @@ extends Class164 {
     }
 
     public void drawButtonForegroundLayer(int n, int n2) {
-        String string = I18n.format(this.Field1788.getName());
+        String string = I18n.format((String)this.Field1788.getName(), (Object[])new Object[0]);
         if (this.Field1789 >= 3 && this.Field1788 != MobEffects.REGENERATION) {
             string = string + " II";
         }

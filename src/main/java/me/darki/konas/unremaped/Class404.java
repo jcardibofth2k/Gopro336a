@@ -1,8 +1,4 @@
-package me.darki.konas;
-
-import me.darki.konas.Class425;
-import me.darki.konas.Class427;
-import me.darki.konas.Class529;
+package me.darki.konas.unremaped;
 
 public class Class404
 implements Class529 {
@@ -11,6 +7,6 @@ implements Class529 {
     }
 
     public void Method630(Object object) {
-        this.Method1229((Class427) object);
+        this.Method1229((Class427)((Object)object));
     }
 }

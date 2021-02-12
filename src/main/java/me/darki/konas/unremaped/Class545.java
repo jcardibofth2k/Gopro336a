@@ -1,9 +1,10 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import me.darki.konas.MathUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockAnvil;
@@ -55,8 +56,8 @@ public class Class545 {
             float f = (float)(vec3d.x - (double)blockPos.getX());
             float f2 = (float)(vec3d.y - (double)blockPos.getY());
             float f3 = (float)(vec3d.z - (double)blockPos.getZ());
-            Class545.Field1012.player.connection.sendPacket(new CPacketPlayerTryUseItemOnBlock(blockPos, enumFacing, enumHand, f, f2, f3));
-            Class545.Field1012.player.connection.sendPacket(new CPacketAnimation(enumHand));
+            Class545.Field1012.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos, enumFacing, enumHand, f, f2, f3));
+            Class545.Field1012.player.connection.sendPacket((Packet)new CPacketAnimation(enumHand));
         } else {
             Class545.Field1012.playerController.processRightClickBlock(Class545.Field1012.player, Class545.Field1012.world, blockPos, enumFacing, vec3d, enumHand);
             Class545.Field1012.player.swingArm(enumHand);
@@ -117,7 +118,7 @@ public class Class545 {
         Block block = Class545.Field1012.world.getBlockState(blockPos).getBlock();
         TileEntity tileEntity = null;
         for (TileEntity tileEntity2 : Class545.Field1012.world.loadedTileEntityList) {
-            if (!tileEntity2.getPos().equals(blockPos)) continue;
+            if (!tileEntity2.getPos().equals((Object)blockPos)) continue;
             tileEntity = tileEntity2;
             break;
         }
@@ -131,11 +132,12 @@ public class Class545 {
         if (block instanceof BlockAnvil) return true;
         if (block instanceof BlockWorkbench) return true;
         if (block instanceof BlockCake) return true;
-        return block instanceof BlockRedstoneDiode;
+        if (!(block instanceof BlockRedstoneDiode)) return false;
+        return true;
     }
 
     public static Vec3d Method1005(BlockPos blockPos) {
-        return new Vec3d(blockPos);
+        return new Vec3d((Vec3i)blockPos);
     }
 
     public static Optional<Class534> Method1006(BlockPos blockPos, boolean bl, boolean bl2) {

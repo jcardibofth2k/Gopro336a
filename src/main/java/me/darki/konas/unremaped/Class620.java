@@ -1,8 +1,8 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import me.darki.konas.SyntaxChunk;
 
-public class FriendCommandOptions
+public class Class620
 extends SyntaxChunk {
     public String Method177(String string) {
         if (string.toLowerCase().startsWith("a")) {
@@ -17,8 +17,7 @@ extends SyntaxChunk {
         return string;
     }
 
-    public
-    FriendCommandOptions(String string) {
+    public Class620(String string) {
         super(string);
     }
 }

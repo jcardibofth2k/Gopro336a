@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.MathUtil;
 import me.darki.konas.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
@@ -31,7 +32,7 @@ public class Class54 {
         if (class653.Method1164() == 0) {
             return;
         }
-        if (Keyboard.isKeyDown(61)) {
+        if (Keyboard.isKeyDown((int)61)) {
             return;
         }
         for (Module object : Class167.Method1619()) {

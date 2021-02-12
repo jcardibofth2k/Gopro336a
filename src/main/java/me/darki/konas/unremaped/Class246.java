@@ -1,10 +1,12 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.lang.invoke.LambdaMetafactory;
 import java.util.LinkedList;
 
+import me.darki.konas.ColorValue;
+import me.darki.konas.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -58,11 +60,11 @@ extends Module {
     public ColorValue Method2046(Class249 class249) {
         if (class249.equals(this.Field2285)) {
             if (this.Field2283 >= 1.0f) {
-                return this.Field2281.getValue();
+                return (ColorValue)this.Field2281.getValue();
             }
-            return this.Field2279.getValue();
+            return (ColorValue)this.Field2279.getValue();
         }
-        return this.Field2277.getValue();
+        return (ColorValue)this.Field2277.getValue();
     }
 
     public Class246() {
@@ -76,7 +78,7 @@ extends Module {
             return;
         }
         Class249 class249 = new Class249(class646.Method1149(), class646.Method1232());
-        if (!this.Field2288.contains(class249) && (Field2274.getValue().booleanValue() || this.Field2288.isEmpty() && this.Field2285 == null)) {
+        if (!this.Field2288.contains(class249) && (((Boolean)Field2274.getValue()).booleanValue() || this.Field2288.isEmpty() && this.Field2285 == null)) {
             this.Field2288.add(class249);
         }
     }
@@ -85,14 +87,14 @@ extends Module {
         block0: {
             if (this.Field2285 == null) break block0;
             Class246.mc.player.swingArm(EnumHand.MAIN_HAND);
-            Class246.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field2285.Method2002(), this.Field2285.Method2000()));
-            Class246.mc.player.connection.sendPacket(new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field2285.Method2002(), this.Field2285.Method2000()));
+            Class246.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field2285.Method2002(), this.Field2285.Method2000()));
+            Class246.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field2285.Method2002(), this.Field2285.Method2000()));
         }
     }
 
     @Subscriber
     public void Method123(Class50 class50) {
-        if (this.Field2287 != null && this.Field2286.Method737(Field2270.getValue().floatValue() * 50.0f)) {
+        if (this.Field2287 != null && this.Field2286.Method737(((Float)Field2270.getValue()).floatValue() * 50.0f)) {
             this.Field2287.run();
             this.Field2287 = null;
         }
@@ -113,7 +115,7 @@ extends Module {
         IBlockState iBlockState3 = iBlockState = iBlockState2;
         WorldClient worldClient2 = Class246.mc.world;
         BlockPos blockPos3 = blockPos;
-        float f = iBlockState3.getBlockHardness(worldClient2, blockPos3);
+        float f = iBlockState3.getBlockHardness((World)worldClient2, blockPos3);
         return f != -1.0f;
     }
 
@@ -125,11 +127,11 @@ extends Module {
         }
         while (!linkedList.isEmpty()) {
             Class249 class249 = (Class249)linkedList.poll();
-            AxisAlignedBB axisAlignedBB = Class246.mc.world.getBlockState(class249.Method2002()).getBoundingBox(Class246.mc.world, class249.Method2002()).offset(class249.Method2002());
+            AxisAlignedBB axisAlignedBB = Class246.mc.world.getBlockState(class249.Method2002()).getBoundingBox((IBlockAccess)Class246.mc.world, class249.Method2002()).offset(class249.Method2002());
             if (axisAlignedBB == null) continue;
             Class507.Method1386();
             Class507.Method1371(axisAlignedBB, true, 1.0, this.Method2047(class249), 63);
-            Class507.Method1374(axisAlignedBB, this.Field2282.getValue().floatValue(), this.Method2046(class249));
+            Class507.Method1374(axisAlignedBB, ((Float)this.Field2282.getValue()).floatValue(), this.Method2046(class249));
             Class507.Method1385();
         }
     }
@@ -145,7 +147,7 @@ extends Module {
         }
         int n2 = Class246.mc.player.inventory.currentItem;
         Class246.mc.player.inventory.currentItem = n;
-        this.Field2283 += iBlockState.getPlayerRelativeBlockHardness(Class246.mc.player, Class246.mc.world, this.Field2285.Method2002());
+        this.Field2283 += iBlockState.getPlayerRelativeBlockHardness((EntityPlayer)Class246.mc.player, (World)Class246.mc.world, this.Field2285.Method2002());
         Class246.mc.player.inventory.currentItem = n2;
     }
 
@@ -157,17 +159,17 @@ extends Module {
         block9: {
             block8: {
                 block7: {
-                    if (!Class496.Method1959(Class246.Field2272.getValue())) {
+                    if (!Class496.Method1959((Boolean)Class246.Field2272.getValue())) {
                         return;
                     }
                     if (this.Field2285 == null) break block7;
                     if (!Class246.mc.world.getBlockState(this.Field2285.Method2002()).getBlock().equals(this.Field2285.Method2001().getBlock())) ** GOTO lbl-1000
-                    v0 = new Vec3d(this.Field2285.Method2002());
+                    v0 = new Vec3d((Vec3i)this.Field2285.Method2002());
                     v1 = new Vec3d(this.Field2285.Method2000().getDirectionVec());
-                    if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v0.add(v1.scale(0.5))) <= (double) Class246.Field2271.getValue().floatValue()) {
+                    if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v0.add(v1.scale(0.5))) <= (double)((Float)Class246.Field2271.getValue()).floatValue()) {
                         this.Method134();
-                        if (Class246.Field2273.getValue().booleanValue() && this.Field2283 >= 1.0f && this.Field2284 == -1 && (var2_2 = AutoTool.Method1850(this.Field2285.Method2002())) != -1 && var2_2 != Class246.mc.player.inventory.currentItem) {
-                            Class246.mc.player.connection.sendPacket(new CPacketHeldItemChange(var2_2));
+                        if (((Boolean)Class246.Field2273.getValue()).booleanValue() && this.Field2283 >= 1.0f && this.Field2284 == -1 && (var2_2 = AutoTool.Method1850(this.Field2285.Method2002())) != -1 && var2_2 != Class246.mc.player.inventory.currentItem) {
+                            Class246.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(var2_2));
                             this.Field2284 = var2_2;
                         }
                     } else lbl-1000:
@@ -176,7 +178,7 @@ extends Module {
                     {
                         this.Field2285 = null;
                         if (this.Field2284 != -1) {
-                            Class246.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field2284));
+                            Class246.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field2284));
                             this.Field2284 = -1;
                         }
                     }
@@ -187,13 +189,12 @@ extends Module {
                 if (!Class246.mc.world.getBlockState(var2_3.Method2002()).getBlock().equals(var2_3.Method2001().getBlock())) ** GOTO lbl-1000
                 v2 = new Vec3d((Vec3i)var2_3.Method2002());
                 v3 = new Vec3d(var2_3.Method2000().getDirectionVec());
-                if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v2.add(v3.scale(0.5))) <= (double) Class246.Field2271.getValue().floatValue()) {
+                if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v2.add(v3.scale(0.5))) <= (double)((Float)Class246.Field2271.getValue()).floatValue()) {
                     this.Field2288.poll();
                     this.Field2285 = var2_3;
                     this.Field2283 = 0.0f;
                     this.Field2286.Method739();
-                    this.Field2287 = (Runnable)LambdaMetafactory.metafactory(null, null, null, ()V, Method124(), ()V)
-                    this;
+                    this.Field2287 = (Runnable)LambdaMetafactory.metafactory(null, null, null, ()V, Method124(), ()V)((Class246)this);
                     this.Method134();
                 } else lbl-1000:
                 // 2 sources
@@ -202,18 +203,18 @@ extends Module {
                     this.Field2288.poll();
                 }
             }
-            if (!Class246.Field2272.getValue().booleanValue() || this.Field2285 == null) break block9;
-            NewGui.INSTANCE.Field1139.Method1942(new Vec3d(this.Field2285.Method2002()).add(new Vec3d(this.Field2285.Method2000().getDirectionVec()).scale(0.5)));
+            if (!((Boolean)Class246.Field2272.getValue()).booleanValue() || this.Field2285 == null) break block9;
+            NewGui.INSTANCE.Field1139.Method1942(new Vec3d((Vec3i)this.Field2285.Method2002()).add(new Vec3d(this.Field2285.Method2000().getDirectionVec()).scale(0.5)));
         }
     }
 
     public ColorValue Method2047(Class249 class249) {
         if (class249.equals(this.Field2285)) {
             if (this.Field2283 >= 1.0f) {
-                return this.Field2280.getValue();
+                return (ColorValue)this.Field2280.getValue();
             }
-            return this.Field2278.getValue();
+            return (ColorValue)this.Field2278.getValue();
         }
-        return this.Field2276.getValue();
+        return (ColorValue)this.Field2276.getValue();
     }
 }

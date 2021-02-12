@@ -1,6 +1,7 @@
-package me.darki.konas;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.PacketEvent;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
 import net.minecraft.util.math.MathHelper;
 
@@ -16,7 +17,7 @@ public class Class456 {
             if (this.Field487 != -1L) {
                 long l = System.currentTimeMillis();
                 float f = (float)(l - this.Field487) / 1000.0f;
-                this.Field488[this.Field489 % this.Field488.length] = MathHelper.clamp(20.0f / f, 0.0f, 20.0f);
+                this.Field488[this.Field489 % this.Field488.length] = MathHelper.clamp((float)(20.0f / f), (float)0.0f, (float)20.0f);
                 ++this.Field489;
             }
             this.Field487 = System.currentTimeMillis();
@@ -31,6 +32,6 @@ public class Class456 {
             f2 += f3;
             f += 1.0f;
         }
-        return MathHelper.clamp(f2 / f, 0.0f, 20.0f);
+        return MathHelper.clamp((float)(f2 / f), (float)0.0f, (float)20.0f);
     }
 }

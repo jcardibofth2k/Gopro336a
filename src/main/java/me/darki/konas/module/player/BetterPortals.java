@@ -1,7 +1,7 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.Class52;
+import me.darki.konas.unremaped.Class52;
 import me.darki.konas.TickEvent;
 import me.darki.konas.mixin.mixins.IEntity;
 import me.darki.konas.module.Category;

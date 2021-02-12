@@ -5,13 +5,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.Class24;
-import me.darki.konas.Class566;
+import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.Class566;
 import me.darki.konas.TickEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.Item;

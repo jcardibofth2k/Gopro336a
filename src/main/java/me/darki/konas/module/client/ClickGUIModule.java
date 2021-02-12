@@ -5,7 +5,8 @@ import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.client.gui.GuiScreen;
+import me.darki.konas.unremaped.Class173;
+import me.darki.konas.unremaped.Class555;
 
 public class ClickGUIModule
 extends Module {

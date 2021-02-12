@@ -3,7 +3,7 @@ package me.darki.konas.command.commands;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Map;
-import me.darki.konas.Class332;
+import me.darki.konas.unremaped.Class332;
 import me.darki.konas.LanguageUtil;
 import me.darki.konas.SyntaxChunk;
 import me.darki.konas.command.Command;

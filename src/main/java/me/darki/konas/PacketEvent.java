@@ -1,6 +1,6 @@
 package me.darki.konas;
 
-import me.darki.konas.Class22;
+import me.darki.konas.unremaped.Class22;
 import net.minecraft.network.Packet;
 
 public class PacketEvent
