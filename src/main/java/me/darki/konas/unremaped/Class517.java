@@ -5,8 +5,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.TickEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -24,7 +24,7 @@ extends Module {
     public ConcurrentHashMap<Integer, Class508> Field1280 = new ConcurrentHashMap();
     public Setting<ColorValue> Field1281 = new Setting<>("Color", new ColorValue(Color.WHITE.hashCode()));
     public Setting<Boolean> Field1282 = new Setting<>("Timeout", true);
-    public Setting<Integer> Field1283 = new Setting<>("Seconds", 10, 100, 0, 1).Method1191(this.Field1282::getValue);
+    public Setting<Integer> Field1283 = new Setting<>("Seconds", 10, 100, 0, 1).visibleIf(this.Field1282::getValue);
 
     @Override
     public void onEnable() {

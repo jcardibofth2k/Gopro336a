@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.module.client.NewGui;
 

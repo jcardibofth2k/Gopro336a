@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.TrayIcon;
 
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -13,7 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class Class235
 extends Module {
     public Setting<Boolean> Field2511 = new Setting<>("NotSelf", false);
-    public Setting<Boolean> Field2512 = new Setting<>("Notify", false).Method1191(this::Method1632);
+    public Setting<Boolean> Field2512 = new Setting<>("Notify", false).visibleIf(this::Method1632);
 
     @Subscriber(priority=20)
     public void Method462(TickEvent tickEvent) {

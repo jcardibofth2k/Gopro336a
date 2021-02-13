@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
 import net.minecraft.util.math.MathHelper;
 

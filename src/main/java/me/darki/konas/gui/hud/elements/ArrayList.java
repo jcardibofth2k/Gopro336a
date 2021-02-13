@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.Comparator;
 import me.darki.konas.unremaped.Class107;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.ColorValue;
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.unremaped.Class556;
 import me.darki.konas.unremaped.Class557;
 import me.darki.konas.command.Command;
@@ -19,11 +19,11 @@ public class ArrayList
 extends Element {
     public Setting<Boolean> Field841 = new Setting<>("Lines", true);
     public Setting<Boolean> Field842 = new Setting<>("Cute", false);
-    public Setting<ColorValue> Field843 = new Setting<>("LineColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), true)).Method1191(this::Method901);
+    public Setting<ColorValue> Field843 = new Setting<>("LineColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), true)).visibleIf(this::Method901);
     public Setting<Boolean> Field844 = new Setting<>("Pulse", true);
-    public Setting<Float> Field845 = new Setting<>("Range", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(this::Method903);
-    public Setting<Float> Field846 = new Setting<>("Spread", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(this::Method900);
-    public Setting<Float> Field847 = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).Method1191(this::Method904);
+    public Setting<Float> Field845 = new Setting<>("Range", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method903);
+    public Setting<Float> Field846 = new Setting<>("Spread", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method900);
+    public Setting<Float> Field847 = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this::Method904);
     public float Field848 = 0.0f;
     public Class107 Field849 = Class107.TOP_RIGHT;
 

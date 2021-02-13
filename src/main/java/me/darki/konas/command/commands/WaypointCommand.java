@@ -3,13 +3,13 @@ package me.darki.konas.command.commands;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.unremaped.Class167;
 import me.darki.konas.unremaped.Class559;
 import me.darki.konas.unremaped.Class561;
 import me.darki.konas.unremaped.Class562;
+import me.darki.konas.util.SyntaxChunk;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class WaypointCommand

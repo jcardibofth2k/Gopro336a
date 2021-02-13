@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.CancelableEvent;
+import me.darki.konas.event.CancelableEvent;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 

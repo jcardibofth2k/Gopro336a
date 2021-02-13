@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.MoveEvent;
+import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.network.Packet;

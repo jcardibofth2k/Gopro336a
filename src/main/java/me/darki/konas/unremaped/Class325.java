@@ -6,10 +6,10 @@ import net.minecraft.util.math.BlockPos;
 public class Class325 {
     public BlockPos Field566;
     public EnumFacing Field567;
-    public Class304 Field568;
+    public Scaffold Field568;
 
-    public Class325(Class304 class304, BlockPos blockPos, EnumFacing enumFacing) {
-        this.Field568 = class304;
+    public Class325(Scaffold scaffold, BlockPos blockPos, EnumFacing enumFacing) {
+        this.Field568 = scaffold;
         this.Field566 = blockPos;
         this.Field567 = enumFacing;
     }

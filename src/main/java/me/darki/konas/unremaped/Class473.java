@@ -5,7 +5,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 import java.util.EventListener;
 
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
 import net.minecraft.util.math.MathHelper;
 

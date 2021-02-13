@@ -6,20 +6,20 @@ import java.math.RoundingMode;
 import java.util.List;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class24;
-import me.darki.konas.unremaped.Class25;
-import me.darki.konas.StrafeMode;
+import me.darki.konas.event.events.EntityUseItemEvent;
+import me.darki.konas.settingEnums.StrafeMode;
 import me.darki.konas.unremaped.Class347;
-import me.darki.konas.UpdateEvent;
-import me.darki.konas.ParentSetting;
+import me.darki.konas.event.events.UpdateEvent;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.unremaped.Class537;
-import me.darki.konas.MathUtil;
+import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.MoveEvent;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -42,16 +42,16 @@ public class Speed
 extends Module {
     public Setting<Double> Field391 = new Setting<>("Speed", 1.0, 10.0, 0.0, 0.1);
     public Setting<Boolean> Field392 = new Setting<>("UseTimer", true);
-    public Setting<Float> Field393 = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).Method1191(this.Field392::getValue);
+    public Setting<Float> Field393 = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(this.Field392::getValue);
     public Setting<StrafeMode> Field394 = new Setting<>("Mode", StrafeMode.STRAFE);
-    public Setting<Boolean> Field395 = new Setting<>("Bypass", false).Method1191(this::Method396);
-    public Setting<Boolean> Field396 = new Setting<>("Hypixel", false).Method1191(this::Method393);
-    public Setting<Boolean> Field397 = new Setting<>("AllowEat", false).Method1191(this::Method539);
-    public Setting<Boolean> Field398 = new Setting<>("Strict", false).Method1191(this::Method538);
+    public Setting<Boolean> Field395 = new Setting<>("Bypass", false).visibleIf(this::Method396);
+    public Setting<Boolean> Field396 = new Setting<>("Hypixel", false).visibleIf(this::Method393);
+    public Setting<Boolean> Field397 = new Setting<>("AllowEat", false).visibleIf(this::Method539);
+    public Setting<Boolean> Field398 = new Setting<>("Strict", false).visibleIf(this::Method538);
     public Setting<Boolean> Field399 = new Setting<>("DisableOnSneak", false);
     public Setting<Boolean> Field400 = new Setting<>("ForceSprint", false);
-    public Setting<Boolean> Field401 = new Setting<>("Boost", false).Method1191(this::Method535);
-    public Setting<Double> Field402 = new Setting<>("BoostFactor", 1.0, 10.0, 0.0, 0.1).Method1191(this::Method519);
+    public Setting<Boolean> Field401 = new Setting<>("Boost", false).visibleIf(this::Method535);
+    public Setting<Double> Field402 = new Setting<>("BoostFactor", 1.0, 10.0, 0.0, 0.1).visibleIf(this::Method519);
     public Setting<ParentSetting> Field403 = new Setting<>("Alternative", new ParentSetting(false));
     public Setting<StrafeMode> Field404 = new Setting<>("AltMode", StrafeMode.ONGROUND).setParentSetting(this.Field403);
     public Setting<Class537> Field405 = new Setting<>("AltBind", new Class537(0)).setParentSetting(this.Field403);
@@ -131,7 +131,7 @@ extends Module {
                 if (Class167.Method1612("ElytraFly").isEnabled()) {
                     return;
                 }
-                if (this.Field400.getValue().booleanValue() && !Speed.mc.player.isSprinting() && MathUtil.Method1080()) {
+                if (this.Field400.getValue().booleanValue() && !Speed.mc.player.isSprinting() && PlayerUtil.Method1080()) {
                     Speed.mc.player.setSprinting(true);
                     Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                 }
@@ -139,7 +139,7 @@ extends Module {
                 break;
             }
             case 2: {
-                if (!MathUtil.Method1080() || Speed.mc.player.collidedHorizontally) {
+                if (!PlayerUtil.Method1080() || Speed.mc.player.collidedHorizontally) {
                     NewGui.INSTANCE.Field1134.Method749(this);
                     return;
                 }
@@ -147,7 +147,7 @@ extends Module {
                     NewGui.INSTANCE.Field1134.Method746(this, 10, 1.15f);
                     Speed.mc.player.jump();
                     boolean bl3 = Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockIce || Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockPackedIce;
-                    double[] dArray = MathUtil.Method1086(this.Method541() * this.Field391.getValue() + (this.Field401.getValue().booleanValue() ? (bl3 ? 0.3 : 0.06 * this.Field402.getValue()) : 0.0));
+                    double[] dArray = PlayerUtil.Method1086(this.Method541() * this.Field391.getValue() + (this.Field401.getValue().booleanValue() ? (bl3 ? 0.3 : 0.06 * this.Field402.getValue()) : 0.0));
                     Speed.mc.player.motionX = dArray[0];
                     Speed.mc.player.motionZ = dArray[1];
                     break;
@@ -169,7 +169,7 @@ extends Module {
         if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             return;
         }
-        if (!MathUtil.Method1080()) {
+        if (!PlayerUtil.Method1080()) {
             this.Field410 = 0.0;
             if (this.Method537() != StrafeMode.SMALLHOP) {
                 Speed.mc.player.motionX = 0.0;
@@ -198,7 +198,7 @@ extends Module {
     }
 
     public StrafeMode Method537() {
-        if (MathUtil.Method1087(this.Field405.getValue().Method851())) {
+        if (PlayerUtil.Method1087(this.Field405.getValue().Method851())) {
             return this.Field404.getValue();
         }
         return this.Field394.getValue();
@@ -368,12 +368,12 @@ extends Module {
                 this.Field415 %= 5;
                 if (this.Field415 != 0) {
                     NewGui.INSTANCE.Field1134.Method749(this);
-                } else if (MathUtil.Method1080()) {
+                } else if (PlayerUtil.Method1080()) {
                     NewGui.INSTANCE.Field1134.Method746(this, 10, 1.3f);
                     Speed.mc.player.motionX *= 1.02f;
                     Speed.mc.player.motionZ *= 1.02f;
                 }
-                if (Speed.mc.player.onGround && MathUtil.Method1080()) {
+                if (Speed.mc.player.onGround && PlayerUtil.Method1080()) {
                     this.Field416 = 2;
                 }
                 if (this.Method504(Speed.mc.player.posY - (double)((int)Speed.mc.player.posY), 3) == this.Method504(0.138, 3)) {
@@ -545,7 +545,7 @@ extends Module {
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 1: {
-                if (!Speed.mc.player.isSprinting() && MathUtil.Method1080()) {
+                if (!Speed.mc.player.isSprinting() && PlayerUtil.Method1080()) {
                     Speed.mc.player.setSprinting(true);
                     Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SPRINTING));
                 }
@@ -577,7 +577,7 @@ extends Module {
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 3: {
                 for (double d = 0.0625; d < this.Field391.getValue(); d += 0.262) {
-                    double[] dArray = MathUtil.Method1086(d);
+                    double[] dArray = PlayerUtil.Method1086(d);
                     Speed.mc.player.connection.sendPacket(new CPacketPlayer.Position(Speed.mc.player.posX + dArray[0], Speed.mc.player.posY, Speed.mc.player.posZ + dArray[1], Speed.mc.player.onGround));
                 }
                 Speed.mc.player.connection.sendPacket(new CPacketPlayer.Position(Speed.mc.player.posX + Speed.mc.player.motionX, Speed.mc.player.posY <= 10.0 ? 255.0 : 1.0, Speed.mc.player.posZ + Speed.mc.player.motionZ, Speed.mc.player.onGround));
@@ -591,7 +591,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method540(Class25 class25) {
+    public void Method540(EntityUseItemEvent entityUseItemEvent) {
         if (!this.Field418 && this.Method537() == StrafeMode.STRAFESTRICT && this.Field397.getValue().booleanValue()) {
             Speed.mc.player.connection.sendPacket(new CPacketEntityAction(Speed.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             this.Field418 = true;

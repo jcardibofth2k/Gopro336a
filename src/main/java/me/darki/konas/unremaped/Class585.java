@@ -2,8 +2,8 @@ package me.darki.konas.unremaped;
 
 import java.io.PrintStream;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;

@@ -8,10 +8,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.PacketEvent;
-import me.darki.konas.ParentSetting;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.setting.ParentSetting;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -43,7 +43,7 @@ extends Module {
     public Setting<Boolean> Field58 = new Setting<>("StrictDirection", false);
     public Setting<Class195> Field59 = new Setting<>("Swap", Class195.NORMAL);
     public Setting<Boolean> Field60 = new Setting<>("Instant", false);
-    public Setting<Boolean> Field61 = new Setting<>("Limit", false).Method1191(this.Field60::getValue);
+    public Setting<Boolean> Field61 = new Setting<>("Limit", false).visibleIf(this.Field60::getValue);
     public Setting<ParentSetting> Field62 = new Setting<>("Render", new ParentSetting(false));
     public Setting<Boolean> Field63 = new Setting<>("ShowMining", true).setParentSetting(this.Field62);
     public Setting<ColorValue> Field64 = new Setting<>("Mining", new ColorValue(0x55FF0000)).setParentSetting(this.Field62);

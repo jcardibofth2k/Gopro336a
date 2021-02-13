@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

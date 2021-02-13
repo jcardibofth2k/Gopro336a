@@ -4,7 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Random;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.gui.inventory.GuiChest;

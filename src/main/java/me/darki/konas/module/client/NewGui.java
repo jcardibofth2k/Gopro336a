@@ -7,9 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import me.darki.konas.*;
+import me.darki.konas.event.EventProcessor;
 import me.darki.konas.managers.CommandManager;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.CommandUtil;
+import me.darki.konas.util.ConfigUtil;
+import me.darki.konas.util.RotationUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import sun.misc.Unsafe;
@@ -161,11 +164,11 @@ lbl142:
         }
         Class589.Method2252(Class589.Field2611, Class589.Field2607);
         Class589.Method2252(Class589.Field2612, Class589.Field2609);
-        Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), Class555.Field814);
+        Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), CfontRenderer.Field814);
         if (new File(Minecraft.getMinecraft().gameDir, "Fonts").exists()) {
-            Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), Class555.Field814);
+            Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), CfontRenderer.Field814);
         } else {
-            Class555.Field814.mkdir();
+            CfontRenderer.Field814.mkdir();
         }
     }
 

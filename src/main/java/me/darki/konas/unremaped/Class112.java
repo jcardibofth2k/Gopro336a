@@ -5,8 +5,8 @@ import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.Comparator;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.MathUtil;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.NewGui;
@@ -110,7 +110,7 @@ extends Element {
         Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2648.getValue()).Method774(), false);
         Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2649.getValue()).Method774(), true);
         Field2472 = true;
-        MathUtil.Method1090((int)this.Method2320() + 50, (int)this.Method2324() + 100, 50, -30.0f, 0.0f, entityPlayer2, (Boolean)this.Field2470.getValue(), (Boolean)this.Field2471.getValue());
+        PlayerUtil.Method1090((int)this.Method2320() + 50, (int)this.Method2324() + 100, 50, -30.0f, 0.0f, entityPlayer2, (Boolean)this.Field2470.getValue(), (Boolean)this.Field2471.getValue());
         Field2472 = false;
         Class557.Method801(entityPlayer2.getDisplayNameString() + this.Method2124(entityPlayer2) + this.Method2126(entityPlayer2), (int)this.Method2320() + 100, (int)this.Method2324() + (int)this.Field2469, Color.WHITE.hashCode());
         DecimalFormat decimalFormat = new DecimalFormat("##");

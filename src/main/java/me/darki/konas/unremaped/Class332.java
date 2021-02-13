@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import me.darki.konas.LanguageUtil;
+import me.darki.konas.util.LanguageUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
@@ -80,8 +80,8 @@ extends Module {
             class648.Cancel();
             this.Field434 = false;
         }
-        if (string.endsWith(Class297.Field1514)) {
-            string = string.substring(0, string.length() - Class297.Field1514.length());
+        if (string.endsWith(ChatAppend.string)) {
+            string = string.substring(0, string.length() - ChatAppend.string.length());
         }
         String[] stringArray = string.split(" ");
         String[] stringArray2 = new String[]{null};

@@ -1,7 +1,8 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.mixin.mixins.ISPacketEntityVelocity;
 import me.darki.konas.mixin.mixins.ISPacketExplosion;
 import me.darki.konas.module.Category;
@@ -10,7 +11,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class34;
 import me.darki.konas.unremaped.Class36;
 import me.darki.konas.unremaped.Class4;
-import me.darki.konas.unremaped.Class572;
+import me.darki.konas.event.events.PushOutOfBlocksEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.projectile.EntityFishHook;
@@ -35,10 +36,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method461(Class572 class572) {
+    public void Method461(PushOutOfBlocksEvent pushOutOfBlocksEvent) {
         block0: {
             if (!noPush.getValue().booleanValue()) break block0;
-            class572.setCanceled(true);
+            pushOutOfBlocksEvent.setCanceled(true);
         }
     }
 

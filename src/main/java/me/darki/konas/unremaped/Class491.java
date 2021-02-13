@@ -8,7 +8,7 @@ import me.darki.konas.setting.Setting;
 public class Class491
 extends Module {
     public static Setting<Boolean> Field2203 = new Setting<>("Offset", false);
-    public static Setting<Float> Field2204 = new Setting<>("Distance", Float.valueOf(0.0f), Float.valueOf(10.0f), Float.valueOf(-10.0f), Float.valueOf(0.5f)).Method1191(Field2203::getValue);
+    public static Setting<Float> Field2204 = new Setting<>("Distance", Float.valueOf(0.0f), Float.valueOf(10.0f), Float.valueOf(-10.0f), Float.valueOf(0.5f)).visibleIf(Field2203::getValue);
 
     @Subscriber
     public void Method1994(Class5 class5) {

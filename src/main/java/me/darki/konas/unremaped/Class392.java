@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.MathUtil;
+import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.module.player.Freecam;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.util.MovementInputFromOptions;
@@ -10,7 +10,7 @@ extends MovementInputFromOptions {
     public Freecam Field1986;
 
     public void updatePlayerMoveState() {
-        if (!MathUtil.Method1087(((Class537)Freecam.control.getValue()).Method851())) {
+        if (!PlayerUtil.Method1087(((Class537)Freecam.control.getValue()).Method851())) {
             super.updatePlayerMoveState();
         } else {
             this.moveStrafe = 0.0f;

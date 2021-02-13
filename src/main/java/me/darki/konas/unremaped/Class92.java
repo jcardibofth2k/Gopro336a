@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.util.RenderUtil2;
 
 import java.awt.Color;
 

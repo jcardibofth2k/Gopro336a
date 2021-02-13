@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Class175
 extends HashMap {
-    public Class184 Field1465;
+    public Notify Field1465;
 
-    public Class175(Class184 class184) {
-        this.Field1465 = class184;
+    public Class175(Notify notify) {
+        this.Field1465 = notify;
         this.put(20700000L, false);
         this.put(21000000L, false);
         this.put(21300000L, false);

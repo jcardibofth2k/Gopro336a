@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 
 public class Class620
 extends SyntaxChunk {

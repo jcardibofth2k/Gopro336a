@@ -5,8 +5,8 @@ import io.netty.util.internal.ConcurrentSet;
 import java.awt.Color;
 import java.util.Set;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;

@@ -4,13 +4,13 @@ import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import me.darki.konas.*;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -33,10 +33,10 @@ import org.lwjgl.util.glu.Cylinder;
 public class Trajectories
 extends Module {
     public static Setting<Boolean> block = new Setting<>("Block", true);
-    public static Setting<Boolean> facing = new Setting<>("Facing", true).Method1191(block::getValue);
+    public static Setting<Boolean> facing = new Setting<>("Facing", true).visibleIf(block::getValue);
     public static Setting<Boolean> vector = new Setting<>("Vector", true);
-    public static Setting<Float> radius = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(Trajectories::Method393);
-    public static Setting<Integer> slices = new Setting<>("Slices", 8, 24, 3, 1).Method1191(Trajectories::Method394);
+    public static Setting<Float> radius = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Trajectories::Method393);
+    public static Setting<Integer> slices = new Setting<>("Slices", 8, 24, 3, 1).visibleIf(Trajectories::Method394);
     public static Setting<ColorValue> fill = new Setting<>("Fill", new ColorValue(584587545, false));
     public static Setting<ColorValue> outline = new Setting<>("Outline", new ColorValue(-2615015, false));
     public static Setting<ColorValue> line = new Setting<>("Line", new ColorValue(-2615015, false));

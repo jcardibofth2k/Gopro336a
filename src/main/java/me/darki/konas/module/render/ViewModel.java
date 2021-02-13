@@ -3,7 +3,7 @@ package me.darki.konas.module.render;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class31;
-import me.darki.konas.ViewModelMode;
+import me.darki.konas.settingEnums.ViewModelMode;
 import me.darki.konas.unremaped.Class659;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -17,8 +17,8 @@ import net.minecraftforge.client.event.EntityViewRenderEvent;
 public class ViewModel
 extends Module {
     public static Setting<Boolean> cancelEating = new Setting<>("CancelEating", false);
-    public static Setting<Boolean> snapEat = new Setting<>("SnapEat", false).Method1191(ViewModel::Method394);
-    public static Setting<Boolean> customEating = new Setting<>("CustomEating", false).Method1191(ViewModel::Method393);
+    public static Setting<Boolean> snapEat = new Setting<>("SnapEat", false).visibleIf(ViewModel::Method394);
+    public static Setting<Boolean> customEating = new Setting<>("CustomEating", false).visibleIf(ViewModel::Method393);
     public static Setting<Float> mainHandX = new Setting<>("MainHandX", Float.valueOf(0.0f), Float.valueOf(100.0f), Float.valueOf(-100.0f), Float.valueOf(1.0f));
     public static Setting<Float> mainHandY = new Setting<>("MainHandY", Float.valueOf(0.0f), Float.valueOf(100.0f), Float.valueOf(-100.0f), Float.valueOf(1.0f));
     public static Setting<Float> mainHandZ = new Setting<>("MainHandZ", Float.valueOf(0.0f), Float.valueOf(100.0f), Float.valueOf(-100.0f), Float.valueOf(1.0f));

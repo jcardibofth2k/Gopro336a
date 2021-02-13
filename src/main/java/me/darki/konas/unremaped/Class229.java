@@ -7,8 +7,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.TickEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -32,9 +32,9 @@ extends Module {
     public Setting<Boolean> Field2614 = new Setting<>("Strict", false);
     public Setting<Float> Field2615 = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public static Setting<Boolean> Field2616 = new Setting<>("Render", true);
-    public static Setting<Boolean> Field2617 = new Setting<>("Fill", true).Method1191(Field2616::getValue);
-    public static Setting<Float> Field2618 = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(Field2616::getValue);
-    public static Setting<ColorValue> Field2619 = new Setting<>("Color", new ColorValue(869950564, true)).Method1191(Field2616::getValue);
+    public static Setting<Boolean> Field2617 = new Setting<>("Fill", true).visibleIf(Field2616::getValue);
+    public static Setting<Float> Field2618 = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Field2616::getValue);
+    public static Setting<ColorValue> Field2619 = new Setting<>("Color", new ColorValue(869950564, true)).visibleIf(Field2616::getValue);
     public Queue<Packet> Field2620 = new LinkedList<Packet>();
     public Vec3d Field2621 = new Vec3d((Vec3i)BlockPos.ORIGIN);
     public AtomicBoolean Field2622 = new AtomicBoolean(false);

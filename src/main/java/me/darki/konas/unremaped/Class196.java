@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;

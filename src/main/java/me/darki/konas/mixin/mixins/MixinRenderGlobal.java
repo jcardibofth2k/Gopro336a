@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class58;
+import me.darki.konas.event.events.FogColorsEvent;
 import me.darki.konas.unremaped.Class650;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -18,7 +18,7 @@ public class MixinRenderGlobal {
     @Redirect(method={"renderSky(FI)V"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/multiplayer/WorldClient;getSkyColor(Lnet/minecraft/entity/Entity;F)Lnet/minecraft/util/math/Vec3d;"))
     public Vec3d Method17(WorldClient worldClient, Entity entityIn, float partialTicks) {
         Vec3d sky = Minecraft.getMinecraft().world.getSkyColor(entityIn, partialTicks);
-        Class58 event = new Class58((float)sky.x, (float)sky.y, (float)sky.z);
+        FogColorsEvent event = new FogColorsEvent((float)sky.x, (float)sky.y, (float)sky.z);
         EventDispatcher.Companion.dispatch(event);
         return new Vec3d(event.Method213(), event.Method215(), event.Method214());
     }

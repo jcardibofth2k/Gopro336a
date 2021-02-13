@@ -3,8 +3,8 @@ package me.darki.konas.unremaped;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.ClickGUIModule;

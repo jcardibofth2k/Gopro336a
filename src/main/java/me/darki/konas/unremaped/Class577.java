@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.module.render.BreadCrums;
 import net.minecraft.util.math.Vec3d;
 import java.io.FileWriter;

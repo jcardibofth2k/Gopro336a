@@ -1,14 +1,15 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class269;
 import me.darki.konas.unremaped.Class570;
-import me.darki.konas.unremaped.Class572;
+import me.darki.konas.event.events.PushOutOfBlocksEvent;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.network.play.client.CPacketPlayer;
 
@@ -26,7 +27,7 @@ extends Module {
             if (mode.getValue() != Class269.NOCLIP) break block3;
             Phase.mc.player.setVelocity(0.0, 0.0, 0.0);
             if (Phase.mc.gameSettings.keyBindForward.isKeyDown() || Phase.mc.gameSettings.keyBindBack.isKeyDown() || Phase.mc.gameSettings.keyBindLeft.isKeyDown() || Phase.mc.gameSettings.keyBindRight.isKeyDown()) {
-                double[] dArray = MathUtil.Method1086(0.06f);
+                double[] dArray = PlayerUtil.Method1086(0.06f);
                 Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX + dArray[0], Phase.mc.player.posY, Phase.mc.player.posZ + dArray[1], Phase.mc.player.onGround));
                 Phase.mc.player.connection.sendPacket(new CPacketPlayer.Position(Phase.mc.player.posX, 0.0, Phase.mc.player.posZ, Phase.mc.player.onGround));
             }
@@ -97,7 +98,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method461(Class572 class572) {
-        class572.setCanceled(true);
+    public void Method461(PushOutOfBlocksEvent pushOutOfBlocksEvent) {
+        pushOutOfBlocksEvent.setCanceled(true);
     }
 }

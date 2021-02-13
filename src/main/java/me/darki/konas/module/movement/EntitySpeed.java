@@ -11,7 +11,7 @@ public class EntitySpeed
 extends Module {
     public static Setting<Float> speed = new Setting<>("Speed", Float.valueOf(3.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public static Setting<Boolean> accelerate = new Setting<>("Accelerate", false);
-    public static Setting<Float> acceleration = new Setting<>("Acceleration", Float.valueOf(0.1f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(accelerate::getValue);
+    public static Setting<Float> acceleration = new Setting<>("Acceleration", Float.valueOf(0.1f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(accelerate::getValue);
     public long Field831 = 0L;
 
     public EntitySpeed() {

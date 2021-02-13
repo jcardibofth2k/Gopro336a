@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.KonasMod;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 public class Class141
 extends Element {
     public static Setting<Class144> Field2009 = new Setting<>("Mode", Class144.IMAGE);
-    public Setting<ColorValue> Field2010 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).Method1191(Class141::Method901);
+    public Setting<ColorValue> Field2010 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Class141::Method901);
 
     public Class141() {
         super("Watermark", 5.0f, 5.0f, 100.0f, 60.0f);

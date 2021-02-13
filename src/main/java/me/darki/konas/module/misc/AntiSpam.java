@@ -2,7 +2,7 @@ package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.network.play.server.SPacketChat;

@@ -4,11 +4,15 @@ import cookiedragon.eventsystem.Subscriber;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.InputUpdateEvent;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.network.play.server.SPacketChat;
 import net.minecraft.util.text.ChatType;
 
@@ -19,7 +23,7 @@ extends Module {
     public Setting<Boolean> rotations = new Setting<>("Rotations", true);
     public Setting<Boolean> move = new Setting<>("Move", true);
     public Setting<Boolean> autoReply = new Setting<>("AutoReply", false);
-    public Setting<Boolean> friendCoords = new Setting<>("FriendCoords", false).Method1191(this::Method396);
+    public Setting<Boolean> friendCoords = new Setting<>("FriendCoords", false).visibleIf(this::Method396);
     public Setting<Float> delay = new Setting<>("Delay", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f));
     public static Setting<Boolean> safe = new Setting<>("Safe", true);
     public Class566 Field2231 = new Class566();
@@ -30,16 +34,16 @@ extends Module {
     public boolean Field2236 = true;
 
     @Subscriber
-    public void Method1709(Class2 class2) {
+    public void Method1709(InputUpdateEvent inputUpdateEvent) {
         block2: {
             if (!this.Field2235) break block2;
             if (this.move.getValue().booleanValue() && this.Field2233.Method737(this.delay.getValue().floatValue() * 100.0f)) {
-                class2.Method81().moveForward = new Random().nextFloat() * 2.0f - 1.0f;
-                class2.Method81().moveStrafe = new Random().nextFloat() * 2.0f - 1.0f;
+                inputUpdateEvent.Method81().moveForward = new Random().nextFloat() * 2.0f - 1.0f;
+                inputUpdateEvent.Method81().moveStrafe = new Random().nextFloat() * 2.0f - 1.0f;
                 this.Field2233.Method739();
             }
             if (this.jump.getValue().booleanValue() && AntiAfk.mc.player.onGround && this.Field2234.Method737(this.delay.getValue().floatValue() * 100.0f)) {
-                class2.Method81().jump = new Random().nextBoolean();
+                inputUpdateEvent.Method81().jump = new Random().nextBoolean();
                 this.Field2234.Method739();
             }
         }
@@ -122,7 +126,7 @@ extends Module {
             this.Field2231.Method739();
             this.Field2236 = false;
         }
-        if (MathUtil.Method1080()) {
+        if (PlayerUtil.Method1080()) {
             this.Field2231.Method739();
         }
         if (this.Field2231.Method737(this.seconds.getValue() * 1000)) {

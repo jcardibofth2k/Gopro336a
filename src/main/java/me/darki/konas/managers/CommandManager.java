@@ -2,35 +2,9 @@ package me.darki.konas.managers;
 
 import java.util.ArrayList;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Command;
-import me.darki.konas.command.commands.WaypointCommand;
-import me.darki.konas.command.commands.HClip;
-import me.darki.konas.command.commands.Party;
-import me.darki.konas.command.commands.backupCommand;
-import me.darki.konas.command.commands.bindCommand;
-import me.darki.konas.command.commands.bookCommand;
-import me.darki.konas.command.commands.drawCommand;
-import me.darki.konas.command.commands.fastPlaceCommand;
-import me.darki.konas.command.commands.fontCommand;
-import me.darki.konas.command.commands.fovCommand;
-import me.darki.konas.command.commands.friendCommand;
-import me.darki.konas.command.commands.friendSyncCommand;
-import me.darki.konas.command.commands.gotoCommand;
-import me.darki.konas.command.commands.grabCommand;
-import me.darki.konas.command.commands.holeFillCommand;
-import me.darki.konas.command.commands.languageCommand;
-import me.darki.konas.command.commands.macroCommand;
-import me.darki.konas.command.commands.moduleConfigCommand;
-import me.darki.konas.command.commands.modulesCommand;
-import me.darki.konas.command.commands.muteCommand;
-import me.darki.konas.command.commands.nameMcCommand;
-import me.darki.konas.command.commands.noDesyncCommand;
-import me.darki.konas.command.commands.nukerCommand;
-import me.darki.konas.command.commands.prefixCommand;
-import me.darki.konas.command.commands.rubberFillCommand;
-import me.darki.konas.command.commands.settingsCommand;
-import me.darki.konas.command.commands.xrayCommand;
+import me.darki.konas.command.SpectateCommand;
+import me.darki.konas.command.commands.*;
 import me.darki.konas.unremaped.*;
 
 public class CommandManager {

@@ -1,6 +1,6 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.SeisureCommand;
+import me.darki.konas.command.commands.SeisureCommand;
 import net.minecraft.client.renderer.GlStateManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

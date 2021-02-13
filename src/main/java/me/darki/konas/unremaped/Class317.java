@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;

@@ -1,7 +1,7 @@
 package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

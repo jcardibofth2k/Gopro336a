@@ -2,7 +2,7 @@ package me.darki.konas.gui.hud.elements;
 
 import java.awt.Color;
 import java.text.DecimalFormat;
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.unremaped.Class557;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;

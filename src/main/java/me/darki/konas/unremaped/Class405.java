@@ -3,8 +3,8 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import me.darki.konas.MathUtil;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -70,7 +70,7 @@ extends Module {
                                 this.Field1243 = 1;
                                 break block10;
                             }
-                            if (!MathUtil.Method1080()) break block12;
+                            if (!PlayerUtil.Method1080()) break block12;
                             v0 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                             if (!(this.Method1221(this.Field1242, v0) < (double)((Float)Class405.Field1237.getValue()).floatValue() * 0.8)) break block12;
                             this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
@@ -196,8 +196,8 @@ extends Module {
             double d = 0.0;
             double d2 = 0.0;
             double d3 = 0.0;
-            if (MathUtil.Method1080()) {
-                double[] dArray = MathUtil.Method1086(((Float)Field1237.getValue()).floatValue());
+            if (PlayerUtil.Method1080()) {
+                double[] dArray = PlayerUtil.Method1086(((Float)Field1237.getValue()).floatValue());
                 d = dArray[0];
                 d3 = dArray[1];
             } else {

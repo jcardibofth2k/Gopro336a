@@ -5,7 +5,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class428;
 import me.darki.konas.unremaped.Class550;
-import me.darki.konas.MoveEvent;
+import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.init.Blocks;

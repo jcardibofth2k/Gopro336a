@@ -3,7 +3,7 @@ package me.darki.konas.command.commands;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import me.darki.konas.SyntaxChunk;
+
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 

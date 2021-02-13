@@ -4,7 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -24,9 +24,9 @@ import net.minecraft.world.World;
 public class Class320
 extends Module {
     public Setting<Class323> Field712 = new Setting<>("Mode", Class323.PACKET);
-    public Setting<Boolean> Field713 = new Setting<>("WebCrits", false).Method1191(this::Method396);
+    public Setting<Boolean> Field713 = new Setting<>("WebCrits", false).visibleIf(this::Method396);
     public Setting<Boolean> Field714 = new Setting<>("Vehicles", false);
-    public Setting<Integer> Field715 = new Setting<>("Hits", 3, 15, 0, 1).Method1191(this.Field714::getValue);
+    public Setting<Integer> Field715 = new Setting<>("Hits", 3, 15, 0, 1).visibleIf(this.Field714::getValue);
     public Setting<Integer> Field716 = new Setting<>("Delay", 1, 10, 1, 1);
     public Setting<Boolean> Field717 = new Setting<>("OnlyWhenKA", true);
     public Queue<CPacketUseEntity> Field718 = new LinkedList<CPacketUseEntity>();

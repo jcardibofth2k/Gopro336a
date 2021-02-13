@@ -2,9 +2,9 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.ParentSetting;
-import me.darki.konas.PlayerPreview;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.setting.ParentSetting;
+import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 

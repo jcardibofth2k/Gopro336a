@@ -3,7 +3,7 @@ package me.darki.konas.module.misc;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -11,6 +11,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class496;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class566;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
@@ -108,7 +109,7 @@ extends Module {
             }
             this.Field1931 = AutoNametag.mc.world.loadedEntityList.stream().filter(this::Method513).map(AutoNametag::Method656).min(Comparator.comparing(AutoNametag::Method1800)).orElse(null);
             if (this.Field1931 != null && Field1922.getValue().booleanValue()) {
-                double[] dArray = MathUtil.Method1088(this.Field1931.posX, this.Field1931.posY, this.Field1931.posZ, AutoNametag.mc.player);
+                double[] dArray = PlayerUtil.Method1088(this.Field1931.posX, this.Field1931.posY, this.Field1931.posZ, AutoNametag.mc.player);
                 this.Field1929 = (float)dArray[0];
                 this.Field1930 = (float)dArray[1];
                 this.Field1928.Method739();

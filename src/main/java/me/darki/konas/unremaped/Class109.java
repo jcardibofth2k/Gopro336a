@@ -4,9 +4,10 @@ import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.lang.reflect.Field;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.gui.hud.elements.*;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;

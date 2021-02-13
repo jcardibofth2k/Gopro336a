@@ -4,7 +4,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.util.List;
 
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 

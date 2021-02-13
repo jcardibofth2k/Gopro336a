@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.List;
 
-import me.darki.konas.CancelableEvent;
+import me.darki.konas.event.CancelableEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;

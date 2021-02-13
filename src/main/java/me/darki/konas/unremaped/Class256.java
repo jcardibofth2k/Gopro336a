@@ -1,7 +1,8 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.OpenGuiEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.mixin.mixins.ISPacketCloseWindow;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -94,16 +95,16 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1451(Class654 class654) {
+    public void Method1451(OpenGuiEvent openGuiEvent) {
         block1: {
             block0: {
-                if (!(class654.Method1161() instanceof GuiContainer) || class654.Method1161() instanceof GuiInventory) break block0;
-                this.Field2054 = (GuiContainer)class654.Method1161();
+                if (!(openGuiEvent.Method1161() instanceof GuiContainer) || openGuiEvent.Method1161() instanceof GuiInventory) break block0;
+                this.Field2054 = (GuiContainer) openGuiEvent.Method1161();
                 break block1;
             }
-            if (!(class654.Method1161() instanceof GuiInventory) || !this.Field2055 || this.Field2054 == null) break block1;
+            if (!(openGuiEvent.Method1161() instanceof GuiInventory) || !this.Field2055 || this.Field2054 == null) break block1;
             this.Field2056 = false;
-            class654.setCanceled(true);
+            openGuiEvent.setCanceled(true);
             mc.displayGuiScreen((GuiScreen)this.Field2054);
         }
     }

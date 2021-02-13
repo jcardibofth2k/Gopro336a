@@ -3,12 +3,16 @@ package me.darki.konas.module.movement;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Random;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.TickEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
@@ -32,35 +36,35 @@ import org.lwjgl.input.Keyboard;
 public class ElytraFly
 extends Module {
     public static Setting<Class403> mode = new Setting<>("Mode", Class403.CONTROL);
-    public static Setting<Float> limit = new Setting<>("Limit", Float.valueOf(1.0f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method987);
-    public static Setting<Float> delay = new Setting<>("Delay", Float.valueOf(5.0f), Float.valueOf(20.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method990);
-    public static Setting<Float> timeout = new Setting<>("Timeout", Float.valueOf(0.5f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method979);
-    public static Setting<Boolean> stopMotion = new Setting<>("StopMotion", true).Method1191(ElytraFly::Method981);
-    public static Setting<Boolean> freeze = new Setting<>("Freeze", false).Method1191(ElytraFly::Method980);
-    public static Setting<Boolean> better = new Setting<>("Better", true).Method1191(ElytraFly::Method982);
-    public static Setting<Boolean> cruiseControl = new Setting<>("CruiseControl", false).Method1191(ElytraFly::Method535);
-    public static Setting<Double> minUpSpeed = new Setting<>("MinUpSpeed", 0.5, 5.0, 0.1, 0.05).Method1191(ElytraFly::Method973);
-    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", false).Method1191(ElytraFly::Method983);
+    public static Setting<Float> limit = new Setting<>("Limit", Float.valueOf(1.0f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method987);
+    public static Setting<Float> delay = new Setting<>("Delay", Float.valueOf(5.0f), Float.valueOf(20.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method990);
+    public static Setting<Float> timeout = new Setting<>("Timeout", Float.valueOf(0.5f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method979);
+    public static Setting<Boolean> stopMotion = new Setting<>("StopMotion", true).visibleIf(ElytraFly::Method981);
+    public static Setting<Boolean> freeze = new Setting<>("Freeze", false).visibleIf(ElytraFly::Method980);
+    public static Setting<Boolean> better = new Setting<>("Better", true).visibleIf(ElytraFly::Method982);
+    public static Setting<Boolean> cruiseControl = new Setting<>("CruiseControl", false).visibleIf(ElytraFly::Method535);
+    public static Setting<Double> minUpSpeed = new Setting<>("MinUpSpeed", 0.5, 5.0, 0.1, 0.05).visibleIf(ElytraFly::Method973);
+    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", false).visibleIf(ElytraFly::Method983);
     public static Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.5f), Float.valueOf(50.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
-    public static Setting<Integer> minSpeed = new Setting<>("MinSpeed", 20, 50, 1, 1).Method1191(ElytraFly::Method539);
+    public static Setting<Integer> minSpeed = new Setting<>("MinSpeed", 20, 50, 1, 1).visibleIf(ElytraFly::Method539);
     public static Setting<Float> upFactor = new Setting<>("UpFactor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
     public static Setting<Float> downFactor = new Setting<>("DownFactor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
-    public static Setting<Boolean> forceHeight = new Setting<>("ForceHeight", false).Method1191(ElytraFly::Method986);
-    public static Setting<Integer> height = new Setting<>("Height", 121, 256, 1, 1).Method1191(ElytraFly::Method984);
-    public static Setting<Boolean> groundSafety = new Setting<>("GroundSafety", false).Method1191(ElytraFly::Method972);
-    public static Setting<Float> triggerHeight = new Setting<>("TriggerHeight", Float.valueOf(0.3f), Float.valueOf(1.0f), Float.valueOf(0.05f), Float.valueOf(0.05f)).Method1191(ElytraFly::Method991);
-    public static Setting<Float> speed = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method977);
-    public static Setting<Float> downSpeed = new Setting<>("DownSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method988);
-    public static Setting<Boolean> instantFly = new Setting<>("InstantFly", true).Method1191(ElytraFly::Method538);
-    public static Setting<Boolean> timer = new Setting<>("Timer", true).Method1191(ElytraFly::Method388);
-    public static Setting<Boolean> speedLimit = new Setting<>("SpeedLimit", true).Method1191(ElytraFly::Method393);
-    public static Setting<Float> maxSpeed = new Setting<>("MaxSpeed", Float.valueOf(2.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method993);
-    public static Setting<Boolean> noDrag = new Setting<>("NoDrag", false).Method1191(ElytraFly::Method989);
-    public static Setting<Boolean> accelerate = new Setting<>("Accelerate", true).Method1191(ElytraFly::Method975);
-    public static Setting<Float> acceleration = new Setting<>("Acceleration", Float.valueOf(1.0f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(ElytraFly::Method519);
-    public static Setting<Class426> strict = new Setting<>("Strict", Class426.NONE).Method1191(ElytraFly::Method994);
-    public static Setting<Boolean> antiKick = new Setting<>("AntiKick", true).Method1191(ElytraFly::Method394);
-    public static Setting<Boolean> infDurability = new Setting<>("InfDurability", true).Method1191(ElytraFly::Method992);
+    public static Setting<Boolean> forceHeight = new Setting<>("ForceHeight", false).visibleIf(ElytraFly::Method986);
+    public static Setting<Integer> height = new Setting<>("Height", 121, 256, 1, 1).visibleIf(ElytraFly::Method984);
+    public static Setting<Boolean> groundSafety = new Setting<>("GroundSafety", false).visibleIf(ElytraFly::Method972);
+    public static Setting<Float> triggerHeight = new Setting<>("TriggerHeight", Float.valueOf(0.3f), Float.valueOf(1.0f), Float.valueOf(0.05f), Float.valueOf(0.05f)).visibleIf(ElytraFly::Method991);
+    public static Setting<Float> speed = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method977);
+    public static Setting<Float> downSpeed = new Setting<>("DownSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method988);
+    public static Setting<Boolean> instantFly = new Setting<>("InstantFly", true).visibleIf(ElytraFly::Method538);
+    public static Setting<Boolean> timer = new Setting<>("Timer", true).visibleIf(ElytraFly::Method388);
+    public static Setting<Boolean> speedLimit = new Setting<>("SpeedLimit", true).visibleIf(ElytraFly::Method393);
+    public static Setting<Float> maxSpeed = new Setting<>("MaxSpeed", Float.valueOf(2.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method993);
+    public static Setting<Boolean> noDrag = new Setting<>("NoDrag", false).visibleIf(ElytraFly::Method989);
+    public static Setting<Boolean> accelerate = new Setting<>("Accelerate", true).visibleIf(ElytraFly::Method975);
+    public static Setting<Float> acceleration = new Setting<>("Acceleration", Float.valueOf(1.0f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(ElytraFly::Method519);
+    public static Setting<Class426> strict = new Setting<>("Strict", Class426.NONE).visibleIf(ElytraFly::Method994);
+    public static Setting<Boolean> antiKick = new Setting<>("AntiKick", true).visibleIf(ElytraFly::Method394);
+    public static Setting<Boolean> infDurability = new Setting<>("InfDurability", true).visibleIf(ElytraFly::Method992);
     public static boolean Field1000 = false;
     public boolean Field1001;
     public double Field1002;
@@ -388,7 +392,7 @@ extends Module {
                         ElytraFly.mc.player.motionX -= vec3d.x * d / d2;
                         ElytraFly.mc.player.motionZ -= vec3d.z * d / d2;
                     } else {
-                        double[] dArray = MathUtil.Method1086(speed.getValue().floatValue());
+                        double[] dArray = PlayerUtil.Method1086(speed.getValue().floatValue());
                         ElytraFly.mc.player.motionX = dArray[0];
                         ElytraFly.mc.player.motionZ = dArray[1];
                     }
@@ -398,7 +402,7 @@ extends Module {
                     ElytraFly.mc.player.motionZ += (vec3d.z / d2 * d3 - ElytraFly.mc.player.motionZ) * 0.1;
                 }
                 if (mode.getValue() == Class403.CONTROL && !ElytraFly.mc.gameSettings.keyBindJump.isKeyDown()) {
-                    double[] dArray = MathUtil.Method1086(speed.getValue().floatValue());
+                    double[] dArray = PlayerUtil.Method1086(speed.getValue().floatValue());
                     ElytraFly.mc.player.motionX = dArray[0];
                     ElytraFly.mc.player.motionZ = dArray[1];
                 }

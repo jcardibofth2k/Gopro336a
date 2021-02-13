@@ -12,7 +12,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.Control;
 import javax.sound.sampled.FloatControl;
 
-import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -20,6 +19,7 @@ import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class480;
 import me.darki.konas.unremaped.Class522;
 import me.darki.konas.unremaped.Class91;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.network.Packet;
@@ -31,7 +31,7 @@ public class HitMarkers
 extends Module {
     public static Setting<Class522> mode = new Setting<>("Mode", Class522.PACKET);
     public static Setting<Boolean> sfx = new Setting<>("SFX", false);
-    public static Setting<Float> volume = new Setting<>("Volume", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).Method1191(sfx::getValue);
+    public static Setting<Float> volume = new Setting<>("Volume", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(sfx::getValue);
     public static Setting<Integer> time = new Setting<>("Time", 5, 20, 1, 1);
     public static Setting<Integer> offset = new Setting<>("Offset", 5, 20, 1, 1);
     public static Setting<Integer> length = new Setting<>("Length", 10, 50, 1, 1);

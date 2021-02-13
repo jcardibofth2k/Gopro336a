@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import me.darki.konas.module.Category;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class475;
-import me.darki.konas.RotationUtil;
+import me.darki.konas.util.RotationUtil;
 import me.darki.konas.unremaped.Class496;
 import me.darki.konas.unremaped.Class523;
-import me.darki.konas.MathUtil;
+import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class545;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class89;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;
@@ -258,7 +258,7 @@ extends Module {
         this.Field2436 = Surround.mc.player.inventory.currentItem;
         this.Field2435 = new BlockPos(Surround.mc.player);
         if (Field2428.getValue().booleanValue()) {
-            MathUtil.Method1083();
+            PlayerUtil.Method1083();
         }
         this.Field2442.clear();
     }
@@ -309,7 +309,7 @@ extends Module {
             bl4 = true;
         }
         if (bl) {
-            MathUtil.Method1081((Vec3d)blockPos2);
+            PlayerUtil.Method1081((Vec3d)blockPos2);
         }
         Class496.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, Field2421.getValue());
         Surround.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));

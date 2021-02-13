@@ -1,9 +1,9 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.Config;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.module.client.Config;
 import me.darki.konas.KonasMod;
-import me.darki.konas.ParentSetting;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.misc.Announcer;
 import me.darki.konas.module.misc.AutoGG;
 import net.minecraft.client.resources.I18n;
@@ -154,7 +154,7 @@ public class Class589
             if (!file.exists()) {
                 file.createNewFile();
                 final BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-                final Iterator<String> iterator = Class299.Field1463.iterator();
+                final Iterator<String> iterator = ExtraChat.Field1463.iterator();
                 while (iterator.hasNext()) {
                     bufferedWriter.write(iterator.next() + "\n");
                 }
@@ -168,8 +168,8 @@ public class Class589
                     c.add(line);
                 }
             }
-            Class299.Field1463.clear();
-            Class299.Field1463.addAll(c);
+            ExtraChat.Field1463.clear();
+            ExtraChat.Field1463.addAll(c);
             return;
         }
         catch (IOException ex2) {
@@ -647,7 +647,7 @@ public class Class589
             if (!file.exists()) {
                 file.createNewFile();
                 final BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-                final Iterator<String> iterator = Class280.Field1780.iterator();
+                final Iterator<String> iterator = BlockAura.Field1780.iterator();
                 while (iterator.hasNext()) {
                     bufferedWriter.write(iterator.next() + "\n");
                 }
@@ -661,11 +661,11 @@ public class Class589
                     c.add(line);
                 }
             }
-            Class280.Field1780.clear();
-            Class280.Field1780.addAll(c);
+            BlockAura.Field1780.clear();
+            BlockAura.Field1780.addAll(c);
             if (c.size() < 4) {
                 for (int i = 0; i <= 4 - c.size(); ++i) {
-                    Class280.Field1780.add("");
+                    BlockAura.Field1780.add("");
                 }
             }
             return;
@@ -1113,7 +1113,7 @@ public class Class589
             Method2219(file);
         }
         Class202.Field678 = true;
-        Class321.Field645 = true;
+        KonasChat.Field645 = true;
         Label_1402: {
             IOException ex;
             try {
@@ -1244,10 +1244,10 @@ public class Class589
                         err8.println(x8);
                         try {
                             fontCommand.Field1351 = jsonArray.get(8).getAsString();
-                            Hud.Field1405 = new Class555(fontCommand.Field1351, 18.0f);
-                            ClickGUIModule.Field1536 = new Class555(fontCommand.Field1351, 17.0f);
-                            Class425.Field957 = new Class555(fontCommand.Field1351, 20.0f);
-                            Class425.Field958 = new Class555(fontCommand.Field1351, 60.0f);
+                            Hud.Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
+                            ClickGUIModule.Field1536 = new CfontRenderer(fontCommand.Field1351, 17.0f);
+                            Class425.Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
+                            Class425.Field958 = new CfontRenderer(fontCommand.Field1351, 60.0f);
                             break Label_0896;
                         }
                         catch (Exception ex12) {
@@ -1333,7 +1333,7 @@ public class Class589
         Method2230();
         Method2221();
         Method2251();
-        Class321.Field645 = false;
+        KonasChat.Field645 = false;
         Class202.Field678 = false;
         if (b) {
             Method2266();

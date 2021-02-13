@@ -1,7 +1,9 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -31,12 +33,12 @@ extends Module {
     public Setting<Float> upFactor = new Setting<>("UpFactor", Float.valueOf(0.5f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public Setting<Float> maxSpeed = new Setting<>("MaxSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public Setting<Class447> glide = new Setting<>("Glide", Class447.CONSTANT);
-    public Setting<Float> glideSpeed = new Setting<>("GlideSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(this::Method396);
-    public Setting<Integer> glideInterval = new Setting<>("GlideInterval", 3, 20, 1, 1).Method1191(this::Method393);
-    public Setting<Integer> glideTicks = new Setting<>("GlideTicks", 1, 5, 1, 1).Method1191(this::Method388);
+    public Setting<Float> glideSpeed = new Setting<>("GlideSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method396);
+    public Setting<Integer> glideInterval = new Setting<>("GlideInterval", 3, 20, 1, 1).visibleIf(this::Method393);
+    public Setting<Integer> glideTicks = new Setting<>("GlideTicks", 1, 5, 1, 1).visibleIf(this::Method388);
     public Setting<Class418> antiKick = new Setting<>("AntiKick", Class418.NONE);
-    public Setting<Integer> antiKickInterval = new Setting<>("AntiKickInterval", 2, 20, 1, 1).Method1191(this::Method394);
-    public Setting<Integer> antiKickTicks = new Setting<>("AntiKickTicks", 1, 5, 1, 1).Method1191(this::Method519);
+    public Setting<Integer> antiKickInterval = new Setting<>("AntiKickInterval", 2, 20, 1, 1).visibleIf(this::Method394);
+    public Setting<Integer> antiKickTicks = new Setting<>("AntiKickTicks", 1, 5, 1, 1).visibleIf(this::Method519);
     public Setting<Boolean> inAir = new Setting<>("InAir", true);
     public Setting<Boolean> inWater = new Setting<>("InWater", true);
     public Setting<Boolean> inLava = new Setting<>("InLava", true);

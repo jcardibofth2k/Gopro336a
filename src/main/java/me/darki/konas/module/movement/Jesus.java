@@ -1,7 +1,8 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.ICPacketVehicleMove;
 import me.darki.konas.module.Category;

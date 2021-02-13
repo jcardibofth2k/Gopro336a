@@ -1,13 +1,18 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.TickEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.settingEnums.StepMode;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.unremaped.Class337;
+import me.darki.konas.unremaped.RubberFill;
 import me.darki.konas.unremaped.Class566;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -175,7 +180,7 @@ extends Module {
         if (module != null && module.isEnabled() && speedDisable.getValue().booleanValue()) {
             this.toggle();
         }
-        if (reverse.getValue().booleanValue() && !Class167.Method1610(Class337.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
+        if (reverse.getValue().booleanValue() && !Class167.Method1610(RubberFill.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
             if (!Step.mc.player.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
                 Step.mc.player.motionY = -3.0;
             }
@@ -222,7 +227,7 @@ extends Module {
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + this.Field2161, Step.mc.player.posZ);
                 }
             } else if (mode.getValue() == StepMode.NCP) {
-                double[] dArray = MathUtil.Method1086(0.1);
+                double[] dArray = PlayerUtil.Method1086(0.1);
                 if (Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 1.0, dArray[1])).isEmpty() && !Step.mc.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(dArray[0], 0.6, dArray[1])).isEmpty() && (double) stepHeight.getValue().floatValue() >= 1.0) {
                     for (double d : Field2162) {
                         Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));

@@ -1,9 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.MoveEvent;
-import me.darki.konas.TickEvent;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.event.events.*;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.IEntity;
 import me.darki.konas.module.Category;
@@ -32,7 +30,7 @@ extends Module {
     public static Setting<Boolean> Field2665 = new Setting<>("AirStrict", false);
     public static Setting<Boolean> Field2666 = new Setting<>("NCP", false).Method1177(4, 47);
     public static Setting<Class461> Field2667 = new Setting<>("Webs", Class461.OFF);
-    public static Setting<Integer> Field2668 = new Setting<>("ShiftTicks", 1, 10, 1, 1).Method1191(Class345::Method394);
+    public static Setting<Integer> Field2668 = new Setting<>("ShiftTicks", 1, 10, 1, 1).visibleIf(Class345::Method394);
     public boolean Field2669;
     public boolean Field2670;
     public boolean Field2671;
@@ -69,10 +67,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1709(Class2 class2) {
+    public void Method1709(InputUpdateEvent inputUpdateEvent) {
         if (Class345.mc.player.isHandActive() && !Class345.mc.player.isRiding()) {
-            class2.Method81().moveStrafe *= 5.0f;
-            class2.Method81().moveForward *= 5.0f;
+            inputUpdateEvent.Method81().moveStrafe *= 5.0f;
+            inputUpdateEvent.Method81().moveForward *= 5.0f;
         }
     }
 
@@ -115,7 +113,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method540(Class25 class25) {
+    public void Method540(EntityUseItemEvent entityUseItemEvent) {
         block6: {
             block7: {
                 if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {

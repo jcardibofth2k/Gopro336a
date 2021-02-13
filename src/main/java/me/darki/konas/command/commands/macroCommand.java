@@ -4,7 +4,7 @@ import java.util.Arrays;
 import me.darki.konas.unremaped.Class152;
 import me.darki.konas.unremaped.Class157;
 import me.darki.konas.unremaped.Class606;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import org.lwjgl.input.Keyboard;

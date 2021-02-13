@@ -5,13 +5,13 @@ import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class167;
 import me.darki.konas.unremaped.Class262;
-import me.darki.konas.unremaped.Class299;
+import me.darki.konas.unremaped.ExtraChat;
 import me.darki.konas.unremaped.Class306;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class545;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class645;
 import me.darki.konas.unremaped.Class653;
 import me.darki.konas.command.Logger;
@@ -32,12 +32,12 @@ import net.minecraft.util.math.Vec3d;
 public class MiddleClick
 extends Module {
     public static Setting<Class306> Field960 = new Setting<>("Action", Class306.MENU);
-    public static Setting<Integer> Field961 = new Setting<>("Range", 40, 250, 10, 10).Method1191(MiddleClick::Method519);
-    public static Setting<Boolean> Field962 = new Setting<>("ThroughWalls", true).Method1191(MiddleClick::Method394);
+    public static Setting<Integer> Field961 = new Setting<>("Range", 40, 250, 10, 10).visibleIf(MiddleClick::Method519);
+    public static Setting<Boolean> Field962 = new Setting<>("ThroughWalls", true).visibleIf(MiddleClick::Method394);
     public Setting<Boolean> Field963 = new Setting<>("Rocket", false);
     public Setting<Boolean> Field964 = new Setting<>("EP", false);
     public Setting<Boolean> Field965 = new Setting<>("XP", false);
-    public Setting<Boolean> Field966 = new Setting<>("XPInHoles", false).Method1191(this.Field965::getValue);
+    public Setting<Boolean> Field966 = new Setting<>("XPInHoles", false).visibleIf(this.Field965::getValue);
     public Class566 Field967 = new Class566();
     public int Field968 = -1;
     public boolean Field969 = true;
@@ -136,7 +136,7 @@ extends Module {
                     Logger.Method1118("Removed \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
                 } else {
                     Class492.Method1990(entity.getName(), entity.getUniqueID().toString());
-                    if (Class167.Method1610(Class299.class).isEnabled() && Class299.Field1451.getValue().booleanValue()) {
+                    if (Class167.Method1610(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(entity.getName(), "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");

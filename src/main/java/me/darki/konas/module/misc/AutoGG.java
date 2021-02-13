@@ -4,13 +4,13 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
 import java.util.Random;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class45;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.unremaped.Class654;
+import me.darki.konas.event.events.OpenGuiEvent;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,9 +56,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1451(Class654 class654) {
+    public void Method1451(OpenGuiEvent openGuiEvent) {
         block0: {
-            if (!(class654.Method1161() instanceof GuiGameOver) || !excuses.getValue().booleanValue() || !this.Field1982.Method737(2000.0)) break block0;
+            if (!(openGuiEvent.Method1161() instanceof GuiGameOver) || !excuses.getValue().booleanValue() || !this.Field1982.Method737(2000.0)) break block0;
             this.Method124();
             this.Field1982.Method739();
         }

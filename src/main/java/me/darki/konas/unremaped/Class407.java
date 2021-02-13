@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-import me.darki.konas.MathUtil;
-import me.darki.konas.MoveEvent;
-import me.darki.konas.PacketEvent;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -87,7 +87,7 @@ extends Module {
 
     @Subscriber
     public void Method135(UpdateEvent updateEvent) {
-        if (!MathUtil.Method1080()) {
+        if (!PlayerUtil.Method1080()) {
             Class407.mc.player.motionX = 0.0;
             Class407.mc.player.motionZ = 0.0;
             this.Field1182 = 0.0;

@@ -1,7 +1,7 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -29,7 +29,7 @@ extends Module {
     public static Setting<Boolean> strict = new Setting<>("Strict", false);
     public static Setting<Boolean> packetEat = new Setting<>("PacketEat", false);
     public static Setting<Boolean> fastBow = new Setting<>("FastBow", false);
-    public static Setting<Boolean> bowBomb = new Setting<>("BowBomb", false).Method1191(fastBow::getValue);
+    public static Setting<Boolean> bowBomb = new Setting<>("BowBomb", false).visibleIf(fastBow::getValue);
     public static Setting<Boolean> fastPlace = new Setting<>("FastPlace", false);
     public static Setting<Boolean> noCrystalPlace = new Setting<>("NoCrystalPlace", false);
     public static Setting<Boolean> placeWhitelist = new Setting<>("PlaceWhitelist", false);

@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.MathUtil;
+import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.module.Module;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
@@ -18,11 +18,11 @@ public class Class54 {
         }
         for (Module module : Class167.Method1619()) {
             if (!module.Method1630()) continue;
-            if (MathUtil.Method1087(module.Method1646()) && !module.isEnabled()) {
+            if (PlayerUtil.Method1087(module.Method1646()) && !module.isEnabled()) {
                 module.toggle();
                 continue;
             }
-            if (MathUtil.Method1087(module.Method1646()) || !module.isEnabled()) continue;
+            if (PlayerUtil.Method1087(module.Method1646()) || !module.isEnabled()) continue;
             module.toggle();
         }
     }

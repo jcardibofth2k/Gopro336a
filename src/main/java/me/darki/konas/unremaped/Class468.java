@@ -3,8 +3,8 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.TickEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -27,10 +27,10 @@ extends Module {
     public static Setting<Boolean> Field2594 = new Setting<>("NotWhenTrajectories", true);
     public Setting<Boolean> Field2595 = new Setting<>("Depth", false);
     public Setting<Boolean> Field2596 = new Setting<>("Vanilla", false);
-    public static Setting<Float> Field2597 = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(Class468::Method519);
-    public static Setting<Integer> Field2598 = new Setting<>("Slices", 8, 24, 3, 1).Method1191(Class468::Method393);
-    public static Setting<Float> Field2599 = new Setting<>("Scale", Float.valueOf(0.6f), Float.valueOf(4.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(Class468::Method388);
-    public static Setting<Double> Field2600 = new Setting<>("SpinSpeed", 15.0, 30.0, 0.0, 0.1).Method1191(Class468::Method394);
+    public static Setting<Float> Field2597 = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method519);
+    public static Setting<Integer> Field2598 = new Setting<>("Slices", 8, 24, 3, 1).visibleIf(Class468::Method393);
+    public static Setting<Float> Field2599 = new Setting<>("Scale", Float.valueOf(0.6f), Float.valueOf(4.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method388);
+    public static Setting<Double> Field2600 = new Setting<>("SpinSpeed", 15.0, 30.0, 0.0, 0.1).visibleIf(Class468::Method394);
     public static Setting<Float> Field2601 = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public Setting<ColorValue> Field2602 = new Setting<>("Color", new ColorValue(575714484));
     public RayTraceResult Field2603;

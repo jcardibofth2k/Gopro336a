@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.CancelableEvent;
+import me.darki.konas.event.CancelableEvent;
 import net.minecraft.entity.EntityLivingBase;
 
 public class Class139

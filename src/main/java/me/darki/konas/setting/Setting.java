@@ -3,7 +3,6 @@ package me.darki.konas.setting;
 import com.viaversion.viafabric.ViaFabric;
 import java.util.function.BooleanSupplier;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.ParentSetting;
 import me.darki.konas.module.Module;
 
 public class Setting<T> {
@@ -114,7 +113,7 @@ public class Setting<T> {
         return this.Field1218;
     }
 
-    public Setting<T> Method1191(BooleanSupplier booleanSupplier) {
+    public Setting<T> visibleIf(BooleanSupplier booleanSupplier) {
         this.Field1220 = booleanSupplier;
         return this;
     }

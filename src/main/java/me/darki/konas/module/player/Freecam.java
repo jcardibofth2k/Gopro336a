@@ -6,11 +6,11 @@ import me.darki.konas.unremaped.Class119;
 import me.darki.konas.unremaped.Class392;
 import me.darki.konas.unremaped.Class398;
 import me.darki.konas.unremaped.Class46;
-import me.darki.konas.KonasPlayer;
+import me.darki.konas.util.KonasPlayer;
 import me.darki.konas.unremaped.Class49;
 import me.darki.konas.unremaped.Class537;
-import me.darki.konas.MathUtil;
-import me.darki.konas.TickEvent;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
@@ -54,9 +54,9 @@ extends Module {
         if (this.Field2464 != (n = Freecam.mc.player.ticksExisted)) {
             this.Field2464 = n;
 <<<<<<< HEAD
-            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(((Class537) control.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
+            this.Field2463 = this.isEnabled() ? (PlayerUtil.Method1087(((Class537) control.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
 =======
-            this.Field2463 = this.isEnabled() ? (MathUtil.Method1087(Field2458.getValue().Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
+            this.Field2463 = this.isEnabled() ? (PlayerUtil.Method1087(Field2458.getValue().Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
 >>>>>>> f776e1904b63ad8ae23617cc10076a951d8b81da
         }
         return this.Field2463;

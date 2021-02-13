@@ -11,9 +11,9 @@ public class ViewPort
 extends Module {
     public static Setting<Boolean> hands = new Setting<>("Hands", true);
     public static Setting<Boolean> fov = new Setting<>("FOV", true);
-    public static Setting<Integer> angle = new Setting<>("Angle", 90, 180, 10, 5).Method1191(fov::getValue);
+    public static Setting<Integer> angle = new Setting<>("Angle", 90, 180, 10, 5).visibleIf(fov::getValue);
     public static Setting<Boolean> aspect = new Setting<>("Aspect", true);
-    public static Setting<Float> ratio = new Setting<>("Ratio", Float.valueOf(1.77f), Float.valueOf(2.5f), Float.valueOf(0.75f), Float.valueOf(0.1f)).Method1191(aspect::getValue);
+    public static Setting<Float> ratio = new Setting<>("Ratio", Float.valueOf(1.77f), Float.valueOf(2.5f), Float.valueOf(0.75f), Float.valueOf(0.1f)).visibleIf(aspect::getValue);
     public static ViewPort Field501;
 
     public static void Method569(float f, float f2, float f3, float f4) {

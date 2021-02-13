@@ -1,7 +1,8 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.AttackEntityEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IItemTool;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -82,11 +83,11 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1847(Class30 class30) {
+    public void Method1847(AttackEntityEvent attackEntityEvent) {
         if (AutoTool.mc.player == null || AutoTool.mc.world == null || !this.weapons.getValue().booleanValue()) {
             return;
         }
-        this.Method1851(this.Method1848(class30.Method293()), false);
+        this.Method1851(this.Method1848(attackEntityEvent.Method293()), false);
     }
 
     public int Method1848(Entity entity) {

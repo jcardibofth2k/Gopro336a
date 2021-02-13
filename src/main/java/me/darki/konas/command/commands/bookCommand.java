@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import me.darki.konas.util.ChatUtil;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.unremaped.Class589;
 import java.io.File;
 import me.darki.konas.command.Command;

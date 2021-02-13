@@ -3,7 +3,7 @@ package me.darki.konas.module.misc;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -11,6 +11,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class566;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.passive.AbstractChestHorse;
@@ -94,7 +95,7 @@ extends Module {
             this.Field1889.Method739();
             this.Field1893 = AutoMount.mc.world.loadedEntityList.stream().filter(this::Method384).min(Comparator.comparing(AutoMount::Method389)).orElse(null);
             if (!rotate.getValue().booleanValue() || this.Field1893 == null) break block2;
-            double[] dArray = MathUtil.Method1088(this.Field1893.posX, this.Field1893.posY, this.Field1893.posZ, AutoMount.mc.player);
+            double[] dArray = PlayerUtil.Method1088(this.Field1893.posX, this.Field1893.posY, this.Field1893.posZ, AutoMount.mc.player);
             this.Field1891 = (float)dArray[0];
             this.Field1892 = (float)dArray[1];
             this.Field1890.Method739();

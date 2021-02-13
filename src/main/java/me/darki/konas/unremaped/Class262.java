@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.io.IOException;
 
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.command.commands.Party;
 import me.darki.konas.module.client.NewGui;
 import net.minecraft.client.audio.ISound;

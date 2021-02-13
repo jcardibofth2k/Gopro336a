@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.StrafeMode;
+import me.darki.konas.settingEnums.StrafeMode;
 
 public class Class347 {
     public static int[] Field2591 = new int[StrafeMode.Method378().length];

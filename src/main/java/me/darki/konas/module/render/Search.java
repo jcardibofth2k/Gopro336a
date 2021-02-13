@@ -4,7 +4,6 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Logger;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderManager;
@@ -12,6 +11,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBarrier;
 import net.minecraft.block.BlockCommandBlock;

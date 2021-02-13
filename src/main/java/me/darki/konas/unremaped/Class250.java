@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
 import com.mojang.authlib.GameProfile;
-import me.darki.konas.PlayerPreview;
+import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.render.ESP;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;

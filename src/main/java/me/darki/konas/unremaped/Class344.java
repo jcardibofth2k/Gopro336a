@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.SprintMode;
+import me.darki.konas.settingEnums.SprintMode;
 
 public class Class344 {
     public static int[] Field2631 = new int[SprintMode.Method398().length];

@@ -8,9 +8,9 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.IdkWhatThisSettingThingDoes;
-import me.darki.konas.ParentSetting;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.module.Category;
@@ -43,8 +43,8 @@ extends Module {
     public static Setting<Boolean> Field912 = new Setting<>("Mobs", false).setParentSetting(Field910);
     public static Setting<Boolean> Field913 = new Setting<>("Players", true).setParentSetting(Field910);
     public static Setting<Boolean> Field914 = new Setting<>("Waypoints", true).setParentSetting(Field910);
-    public static Setting<Boolean> Field915 = new Setting<>("Coords", true).setParentSetting(Field910).Method1191(Field914::getValue);
-    public static Setting<Boolean> Field916 = new Setting<>("Dist", false).setParentSetting(Field910).Method1191(Field914::getValue);
+    public static Setting<Boolean> Field915 = new Setting<>("Coords", true).setParentSetting(Field910).visibleIf(Field914::getValue);
+    public static Setting<Boolean> Field916 = new Setting<>("Dist", false).setParentSetting(Field910).visibleIf(Field914::getValue);
     public static Setting<ParentSetting> Field917 = new Setting<>("Name", new ParentSetting(false));
     public static Setting<Double> Field918 = new Setting<>("NameRange", 150.0, 256.0, 5.0, 0.5).setParentSetting(Field917);
     public static Setting<Boolean> Field919 = new Setting<>("Gamemode", false).setParentSetting(Field917);
@@ -54,7 +54,7 @@ extends Module {
     public static Setting<Boolean> Field923 = new Setting<>("Friends", true).setParentSetting(Field917);
     public static Setting<Boolean> Field924 = new Setting<>("Fill", true).setParentSetting(Field917);
     public static Setting<Boolean> Field925 = new Setting<>("Outline", true).setParentSetting(Field917);
-    public static Setting<Float> Field926 = new Setting<>("LineWidth", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field917).Method1191(Field925::getValue);
+    public static Setting<Float> Field926 = new Setting<>("LineWidth", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field917).visibleIf(Field925::getValue);
     public static Setting<ParentSetting> Field927 = new Setting<>("Colors", new ParentSetting(false));
     public static Setting<ColorValue> Field928 = new Setting<>("FillColorA", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
     public static Setting<ColorValue> Field929 = new Setting<>("FillColorB", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
@@ -85,8 +85,8 @@ extends Module {
     public static Setting<Class427> Field954 = new IdkWhatThisSettingThingDoes("Font", Class427.VANILLA, new Class404());
     public DecimalFormat Field955 = new DecimalFormat("#.##");
     public static ICamera Field956 = new Frustum();
-    public static Class552 Field957 = new Class555(fontCommand.Field1351, 20.0f);
-    public static Class552 Field958 = new Class555(fontCommand.Field1351, 60.0f);
+    public static Class552 Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
+    public static Class552 Field958 = new CfontRenderer(fontCommand.Field1351, 60.0f);
 
     public void Method949(EntityPlayer entityPlayer, ItemStack itemStack, double d, double d2) {
         GL11.glPushMatrix();

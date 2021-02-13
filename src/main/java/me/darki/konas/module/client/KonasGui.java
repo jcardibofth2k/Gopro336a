@@ -1,11 +1,10 @@
 package me.darki.konas.module.client;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.IdkWhatThisSettingThingDoes;
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import net.minecraft.client.gui.GuiScreen;
 
 public class KonasGui
 extends Module {

@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.darki.konas.RotationUtil;
+import me.darki.konas.util.RotationUtil;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.client.NewGui;
@@ -67,7 +67,7 @@ public class Class496 {
     }
 
     public static boolean Method1960(BlockPos blockPos) {
-        return Class496.Field2166.world.getBlockState(blockPos).getBlock().canCollideCheck(Class496.Field2166.world.getBlockState(blockPos), false) || Class288.Field1711.containsKey(blockPos);
+        return Class496.Field2166.world.getBlockState(blockPos).getBlock().canCollideCheck(Class496.Field2166.world.getBlockState(blockPos), false) || AutoTrap.Field1711.containsKey(blockPos);
     }
 
     public static Class490 Method1961(BlockPos blockPos, boolean bl, boolean bl2) {
@@ -103,7 +103,7 @@ public class Class496 {
                 arrayList2.addAll(Class496.Method1971(iBlockState.z - vec3d.z, EnumFacing.NORTH, EnumFacing.SOUTH, !bl3));
                 if (!arrayList2.contains(enumFacing.getOpposite())) continue;
             }
-            if (((iBlockState = Class496.Field2166.world.getBlockState(blockPos2)) == null || !iBlockState.getBlock().canCollideCheck(iBlockState, false) || iBlockState.getMaterial().isReplaceable()) && !Class288.Field1711.containsKey(blockPos2)) continue;
+            if (((iBlockState = Class496.Field2166.world.getBlockState(blockPos2)) == null || !iBlockState.getBlock().canCollideCheck(iBlockState, false) || iBlockState.getMaterial().isReplaceable()) && !AutoTrap.Field1711.containsKey(blockPos2)) continue;
             arrayList.add(enumFacing);
         }
         return arrayList;

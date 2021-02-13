@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;

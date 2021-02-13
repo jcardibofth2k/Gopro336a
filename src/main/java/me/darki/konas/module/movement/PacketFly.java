@@ -7,13 +7,18 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.PushOutOfBlocksEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.settingEnums.*;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -29,7 +34,7 @@ extends Module {
     public static Setting<PacketFlyType> type = new Setting<>("Type", PacketFlyType.FACTOR);
     public static Setting<PacketFlyMode> packetMode = new Setting<>("PacketMode", PacketFlyMode.LIMITJITTER);
     public static Setting<PacketFlyBounds> bounds = new Setting<>("Bounds", PacketFlyBounds.STRICT);
-    public static Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).Method1191(PacketFly::Method388);
+    public static Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(PacketFly::Method388);
     public static Setting<Float> speed = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.05f));
     public static Setting<PacketFlyPhase> phase = new Setting<>("Phase", PacketFlyPhase.FAST);
     public static Setting<PacketFlyAntiKick> antiKick = new Setting<>("AntiKick", PacketFlyAntiKick.NORMAL);
@@ -116,8 +121,8 @@ extends Module {
             this.Field2336 = 5;
         }
         if (bl || !PacketFly.mc.gameSettings.keyBindSneak.isKeyDown() || !PacketFly.mc.gameSettings.keyBindJump.isKeyDown()) {
-            if (MathUtil.Method1080()) {
-                double[] dArray = MathUtil.Method1086((bl && phase.getValue() != PacketFlyPhase.NONE ? (phase.getValue() == PacketFlyPhase.FAST ? (this.Field2343 != 0.0 ? 0.0465 : 0.062) : 0.031) : 0.26) * (double) speed.getValue().floatValue());
+            if (PlayerUtil.Method1080()) {
+                double[] dArray = PlayerUtil.Method1086((bl && phase.getValue() != PacketFlyPhase.NONE ? (phase.getValue() == PacketFlyPhase.FAST ? (this.Field2343 != 0.0 ? 0.0465 : 0.062) : 0.031) : 0.26) * (double) speed.getValue().floatValue());
                 if (dArray[0] != 0.0 || dArray[1] != 0.0) {
                     if (this.Field2336 < 1 || bl) {
                         this.Field2342 = dArray[0];
@@ -296,8 +301,8 @@ extends Module {
     }
 
     @Subscriber
-    public void Method461(Class572 class572) {
-        class572.setCanceled(true);
+    public void Method461(PushOutOfBlocksEvent pushOutOfBlocksEvent) {
+        pushOutOfBlocksEvent.setCanceled(true);
     }
 
     public static double Method2055() {

@@ -1,6 +1,6 @@
 package me.darki.konas.gui.hud.elements;
 
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.mixin.mixins.IInventoryPlayer;
 import net.minecraft.client.renderer.GlStateManager;

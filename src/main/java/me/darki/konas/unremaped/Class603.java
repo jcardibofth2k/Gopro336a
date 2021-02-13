@@ -2,10 +2,10 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
-import me.darki.konas.SearchCommand;
-import me.darki.konas.SeisureCommand;
-import me.darki.konas.SpammerCommand;
-import me.darki.konas.SpectateCommand;
+import me.darki.konas.command.commands.SearchCommand;
+import me.darki.konas.command.commands.SeisureCommand;
+import me.darki.konas.command.commands.SpammerCommand;
+import me.darki.konas.command.SpectateCommand;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.HClip;
 import me.darki.konas.command.commands.Party;

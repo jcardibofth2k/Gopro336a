@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.module.render.ESP;
 import net.minecraft.client.Minecraft;

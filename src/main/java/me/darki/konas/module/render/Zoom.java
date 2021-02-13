@@ -2,7 +2,7 @@ package me.darki.konas.module.render;
 
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.module.Module;
 
 public class Zoom

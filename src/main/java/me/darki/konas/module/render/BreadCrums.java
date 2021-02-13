@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import me.darki.konas.unremaped.Class77;
 import me.darki.konas.unremaped.Class89;
-import me.darki.konas.ColorValue;
-import me.darki.konas.TickEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;

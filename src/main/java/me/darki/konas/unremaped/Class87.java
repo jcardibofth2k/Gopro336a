@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
-import me.darki.konas.PacketEvent;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.TickEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

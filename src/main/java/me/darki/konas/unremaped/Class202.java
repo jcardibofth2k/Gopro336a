@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

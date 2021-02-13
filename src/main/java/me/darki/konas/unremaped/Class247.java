@@ -11,8 +11,8 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Vector2f;
 
 public class Class247 {
-    public static Class555 Field2261 = new Class555(fontCommand.Field1351, 16.0f);
-    public static Class555 Field2262 = new Class555(fontCommand.Field1351, 18.0f);
+    public static CfontRenderer Field2261 = new CfontRenderer(fontCommand.Field1351, 16.0f);
+    public static CfontRenderer Field2262 = new CfontRenderer(fontCommand.Field1351, 18.0f);
 
     public static void Method2042(Class244 class244, Class255 class255, float f) {
         Vector2f[] vector2fArray = class244.Method2029();

@@ -4,7 +4,8 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.event.events.OpenGuiEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -161,10 +162,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1451(Class654 class654) {
+    public void Method1451(OpenGuiEvent openGuiEvent) {
         block0: {
-            if (!(class654.Method1161() instanceof GuiRepair)) break block0;
-            class654.setCanceled(true);
+            if (!(openGuiEvent.Method1161() instanceof GuiRepair)) break block0;
+            openGuiEvent.setCanceled(true);
         }
     }
 

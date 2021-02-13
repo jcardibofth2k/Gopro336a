@@ -6,12 +6,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Logger;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Module;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RotationUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockDirectional;
@@ -44,9 +48,9 @@ import org.lwjgl.opengl.GL11;
 public class PistonAura
 extends Module {
     public Setting<Class214> mode = new Setting<>("Mode", Class214.DAMAGE);
-    public Setting<Boolean> smart = new Setting<>("Smart", true).Method1191(this::Method396);
-    public Setting<Boolean> Field351 = new Setting<>("DisableAfterPush", true).Method1191(this::Method394);
-    public Setting<Boolean> Field352 = new Setting<>("DisableWhenNone", false).Method1191(this::Method388);
+    public Setting<Boolean> smart = new Setting<>("Smart", true).visibleIf(this::Method396);
+    public Setting<Boolean> Field351 = new Setting<>("DisableAfterPush", true).visibleIf(this::Method394);
+    public Setting<Boolean> Field352 = new Setting<>("DisableWhenNone", false).visibleIf(this::Method388);
     public Setting<Integer> Field353 = new Setting<>("TargetRange", 3, 6, 1, 1);
     public Setting<Integer> Field354 = new Setting<>("Delay", 25, 100, 0, 1);
     public static Setting<Integer> Field355 = new Setting<>("ActionShift", 3, 8, 1, 1);

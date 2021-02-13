@@ -3,7 +3,8 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.event.events.DrawScreenEvent;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -51,10 +52,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method625(Class44 class44) {
+    public void Method625(DrawScreenEvent drawScreenEvent) {
         block3: {
-            if (!((Boolean)Field550.getValue()).booleanValue() || !(class44.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
-            Slot slot = ((GuiContainer)class44.Method272()).getSlotUnderMouse();
+            if (!((Boolean)Field550.getValue()).booleanValue() || !(drawScreenEvent.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
+            Slot slot = ((GuiContainer) drawScreenEvent.Method272()).getSlotUnderMouse();
             if (slot == null || !slot.getHasStack()) {
                 return;
             }

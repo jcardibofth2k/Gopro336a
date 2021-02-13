@@ -1,7 +1,9 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.event.events.Event;
+
 public class Class50
-extends Class56 {
+extends Event {
     public static Class50 Field217 = new Class50();
 
     public static Class50 Method346(double d, double d2, double d3, float f, float f2, boolean bl) {

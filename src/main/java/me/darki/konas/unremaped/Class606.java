@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.SyntaxChunk;
 import org.lwjgl.input.Keyboard;
 
 public class Class606

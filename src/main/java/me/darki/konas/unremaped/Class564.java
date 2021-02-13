@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.nio.ByteBuffer;
 
-import me.darki.konas.ShaderUtil;
+import me.darki.konas.util.ShaderUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.shader.Framebuffer;

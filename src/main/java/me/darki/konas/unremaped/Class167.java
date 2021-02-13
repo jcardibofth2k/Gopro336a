@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
-import me.darki.konas.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;

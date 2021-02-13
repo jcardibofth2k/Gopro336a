@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.Class337;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.unremaped.RubberFill;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
@@ -15,10 +15,10 @@ extends Command {
     public void Method174(String[] stringArray) {
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
-                if (!Class337.Field292.getValue().Method684().isEmpty()) {
+                if (!RubberFill.Field292.getValue().Method684().isEmpty()) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("\n");
-                    Class337.Field292.getValue().Method684().forEach(arg_0 -> rubberFillCommand.Method175(stringBuilder, arg_0));
+                    RubberFill.Field292.getValue().Method684().forEach(arg_0 -> rubberFillCommand.Method175(stringBuilder, arg_0));
                     Logger.Method1118(stringBuilder.toString());
                 } else {
                     Logger.Method1118("You dont have any blocks added :(");
@@ -33,13 +33,13 @@ extends Command {
             return;
         }
         if (stringArray[1].equalsIgnoreCase("add")) {
-            if (Class337.Field292.getValue().Method681(stringArray[2])) {
+            if (RubberFill.Field292.getValue().Method681(stringArray[2])) {
                 Logger.Method1118("Added Block &b" + stringArray[2]);
             } else {
                 Logger.Method1119("Couldn't find block &b" + stringArray[2]);
             }
         } else if (stringArray[1].equalsIgnoreCase("del")) {
-            if (Class337.Field292.getValue().Method677(stringArray[2])) {
+            if (RubberFill.Field292.getValue().Method677(stringArray[2])) {
                 Logger.Method1118("Removed Block &b" + stringArray[2]);
             } else {
                 Logger.Method1119("Couldn't find block &b" + stringArray[2]);
@@ -47,7 +47,7 @@ extends Command {
         } else {
             Logger.Method1118(this.Method191());
         }
-        Class337.Field292.getValue().Method680();
+        RubberFill.Field292.getValue().Method680();
     }
 
     public rubberFillCommand() {

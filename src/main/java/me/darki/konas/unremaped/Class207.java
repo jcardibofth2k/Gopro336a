@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.util.math.RoundingUtil;

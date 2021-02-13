@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import me.darki.konas.unremaped.Class557;
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.mixin.mixins.ITimer;

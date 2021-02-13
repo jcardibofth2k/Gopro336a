@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.misc.AutoMend;
@@ -36,12 +36,12 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class AutoArmor
 extends Module {
     public static Setting<Boolean> elytraPrio = new Setting<>("ElytraPrio", false);
-    public static Setting<Boolean> smart = new Setting<>("Smart", false).Method1191(elytraPrio::getValue);
+    public static Setting<Boolean> smart = new Setting<>("Smart", false).visibleIf(elytraPrio::getValue);
     public static Setting<Integer> delay = new Setting<>("Delay", 0, 10, 0, 1);
     public static Setting<Boolean> strict = new Setting<>("Strict", false);
     public static Setting<Boolean> armorSaver = new Setting<>("ArmorSaver", false);
     public static Setting<Boolean> pauseWhenSafe = new Setting<>("PauseWhenSafe", false);
-    public static Setting<Float> depletion = new Setting<>("Depletion", Float.valueOf(0.75f), Float.valueOf(0.95f), Float.valueOf(0.5f), Float.valueOf(0.05f)).Method1191(armorSaver::getValue);
+    public static Setting<Float> depletion = new Setting<>("Depletion", Float.valueOf(0.75f), Float.valueOf(0.95f), Float.valueOf(0.5f), Float.valueOf(0.05f)).visibleIf(armorSaver::getValue);
     public static Setting<Boolean> allowMend = new Setting<>("AllowMend", false);
     public Class566 Field2041 = new Class566();
     public boolean Field2042;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import me.darki.konas.MathUtil;
+import me.darki.konas.util.PlayerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockAnvil;
@@ -73,7 +73,7 @@ public class Class545 {
     }
 
     public static double[] Method999(BlockPos blockPos, EnumFacing enumFacing, EntityPlayer entityPlayer) {
-        return MathUtil.Method1088((double)blockPos.getX() + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5, entityPlayer);
+        return PlayerUtil.Method1088((double)blockPos.getX() + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5, entityPlayer);
     }
 
     public static BlockPos Method1000(Vec3d vec3d) {
@@ -155,7 +155,7 @@ public class Class545 {
     }
 
     public static double[] Method1008(double d, double d2, double d3, EnumFacing enumFacing, EntityPlayer entityPlayer) {
-        return MathUtil.Method1088(d + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, d2 + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, d3 + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5, entityPlayer);
+        return PlayerUtil.Method1088(d + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, d2 + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, d3 + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5, entityPlayer);
     }
 
     public static boolean Method1009(BlockPos blockPos) {

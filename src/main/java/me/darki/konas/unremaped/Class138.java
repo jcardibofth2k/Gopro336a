@@ -2,7 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
 

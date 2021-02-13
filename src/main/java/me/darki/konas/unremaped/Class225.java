@@ -1,10 +1,10 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.MathUtil;
-import me.darki.konas.MoveEvent;
-import me.darki.konas.PacketEvent;
-import me.darki.konas.TickEvent;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.event.events.MoveEvent;
+import me.darki.konas.event.events.PacketEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -29,7 +29,7 @@ extends Module {
         if (Class225.mc.world == null) {
             return;
         }
-        if (MathUtil.Method1084() && Class225.mc.player.posY <= 1.0) {
+        if (PlayerUtil.Method1084() && Class225.mc.player.posY <= 1.0) {
             if (!this.Field2641) return;
             if (!this.Field2642.Method737(1000.0)) return;
             this.Field2641 = false;
@@ -46,7 +46,7 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block0: {
-            if (!((Boolean)this.Field2640.getValue()).booleanValue() || !MathUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
+            if (!((Boolean)this.Field2640.getValue()).booleanValue() || !PlayerUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
             moveEvent.setY(-0.01);
         }
     }

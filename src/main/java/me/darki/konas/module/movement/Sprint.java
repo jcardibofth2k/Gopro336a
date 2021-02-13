@@ -1,11 +1,12 @@
 package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class27;
+import me.darki.konas.settingEnums.SprintMode;
+import me.darki.konas.event.events.PlayerInputUpdateEvent;
 import me.darki.konas.unremaped.Class344;
 import net.minecraft.util.MovementInput;
 
@@ -30,8 +31,8 @@ extends Module {
     }
 
     @Subscriber
-    public void Method2050(Class27 class27) {
-        MovementInput movementInput = class27.Method218();
+    public void Method2050(PlayerInputUpdateEvent playerInputUpdateEvent) {
+        MovementInput movementInput = playerInputUpdateEvent.Method218();
         switch (Class344.Field2631[mode.getValue().ordinal()]) {
             case 1: {
                 this.Field2318 = movementInput.moveForward > 0.0f;

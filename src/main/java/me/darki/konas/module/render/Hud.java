@@ -4,12 +4,14 @@ import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.Comparator;
 
-import me.darki.konas.*;
 import me.darki.konas.command.commands.fontCommand;
+import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
@@ -29,18 +31,18 @@ extends Module {
     public static Setting<Boolean> Field1391 = new Setting<>("Overlap", true);
     public static Setting<Boolean> Field1392 = new Setting<>("PotionIcons", false);
     public static Setting<Boolean> Field1393 = new Setting<>("Blur", false);
-    public static Setting<Boolean> Field1394 = new Setting<>("BlurEverything", true).Method1191(Field1393::getValue);
+    public static Setting<Boolean> Field1394 = new Setting<>("BlurEverything", true).visibleIf(Field1393::getValue);
     public Setting<Boolean> Field1395 = new IdkWhatThisSettingThingDoes("CustomFont", true, new Class159(this));
     public static Setting<Boolean> Field1396 = new Setting<>("Hotbar", true);
     public static Setting<Boolean> Field1397 = new Setting<>("XPBar", true);
     public static Setting<Class165> Field1398 = new Setting<>("ArmorMode", Class165.BOTH);
-    public static Setting<Class189> Field1399 = new Setting<>("NumberMode", Class189.PERCENTAGE).Method1191(Hud::Method388);
-    public static Setting<Class163> Field1400 = new Setting<>("ColorMode", Class163.DYNAMIC).Method1191(Hud::Method394);
-    public static Setting<ColorValue> Field1401 = new Setting<>("Color", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).Method1191(Hud::Method393);
+    public static Setting<Class189> Field1399 = new Setting<>("NumberMode", Class189.PERCENTAGE).visibleIf(Hud::Method388);
+    public static Setting<Class163> Field1400 = new Setting<>("ColorMode", Class163.DYNAMIC).visibleIf(Hud::Method394);
+    public static Setting<ColorValue> Field1401 = new Setting<>("Color", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Hud::Method393);
     public static Setting<Boolean> Field1402 = new Setting<>("Health", true);
     public static Setting<Boolean> Field1403 = new Setting<>("Food", true);
     public static Setting<Boolean> Field1404 = new Setting<>("Crosshair", true);
-    public static Class555 Field1405 = new Class555(fontCommand.Field1351, 18.0f);
+    public static CfontRenderer Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
 
     @Subscriber
     public void Method1454(RenderGameOverlayEvent.Post post) {
@@ -65,14 +67,14 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1451(Class654 class654) {
+    public void Method1451(OpenGuiEvent openGuiEvent) {
         block2: {
             block1: {
                 if (Hud.mc.player == null || Hud.mc.world == null) {
                     return;
                 }
-                if (class654.Method1161() == null || !Field1393.getValue().booleanValue() || class654.Method1161() instanceof GuiChat) break block1;
-                if (!(class654.Method1161() instanceof Class193) && !Field1394.getValue().booleanValue()) break block2;
+                if (openGuiEvent.Method1161() == null || !Field1393.getValue().booleanValue() || openGuiEvent.Method1161() instanceof GuiChat) break block1;
+                if (!(openGuiEvent.Method1161() instanceof Class193) && !Field1394.getValue().booleanValue()) break block2;
                 Hud.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
                 break block2;
             }

@@ -7,13 +7,15 @@ import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.client.gui.GuiGameOver;
@@ -140,10 +142,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1451(Class654 class654) {
-        if (class654.Method1161() instanceof GuiConnecting || class654.Method1161() instanceof GuiDownloadTerrain || class654.Method1161() instanceof GuiDisconnected || class654.Method1161() instanceof GuiMultiplayer) {
+    public void Method1451(OpenGuiEvent openGuiEvent) {
+        if (openGuiEvent.Method1161() instanceof GuiConnecting || openGuiEvent.Method1161() instanceof GuiDownloadTerrain || openGuiEvent.Method1161() instanceof GuiDisconnected || openGuiEvent.Method1161() instanceof GuiMultiplayer) {
             this.Field1919.clear();
-        } else if (class654.Method1161() instanceof GuiGameOver && this.Field1911.getValue().booleanValue()) {
+        } else if (openGuiEvent.Method1161() instanceof GuiGameOver && this.Field1911.getValue().booleanValue()) {
             if (this.Field1912.getValue().booleanValue()) {
                 NewGui.INSTANCE.Field1138.Method764();
             }

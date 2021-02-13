@@ -6,7 +6,7 @@ import me.darki.konas.unremaped.Class31;
 import me.darki.konas.unremaped.Class46;
 import me.darki.konas.unremaped.Class49;
 import me.darki.konas.unremaped.Class65;
-import me.darki.konas.ViewModelMode;
+import me.darki.konas.settingEnums.ViewModelMode;
 import me.darki.konas.unremaped.Class659;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;

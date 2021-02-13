@@ -3,8 +3,8 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
-import me.darki.konas.ColorValue;
-import me.darki.konas.ParentSetting;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.mixin.mixins.IDestroyBlockProgress;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IPlayerControllerMP;
@@ -33,10 +33,10 @@ extends Module {
     public Setting<Boolean> Field1194 = new Setting<>("BWireframe", false).setParentSetting(Field1190);
     public Setting<Float> Field1195 = new Setting<>("BWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).setParentSetting(Field1190);
     public Setting<ColorValue> Field1196 = new Setting<>("BOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1197 = new Setting<>("BCrossOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190).Method1191(this::Method396);
+    public Setting<ColorValue> Field1197 = new Setting<>("BCrossOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190).visibleIf(this::Method396);
     public Setting<Boolean> Field1198 = new Setting<>("BFill", true).setParentSetting(Field1190);
     public Setting<ColorValue> Field1199 = new Setting<>("BFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1200 = new Setting<>("BCrossFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190).Method1191(this::Method394);
+    public Setting<ColorValue> Field1200 = new Setting<>("BCrossFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190).visibleIf(this::Method394);
     public Setting<Boolean> Field1201 = new Setting<>("DynamicColor", true).setParentSetting(Field1190);
     public Setting<Boolean> Field1202 = new Setting<>("BTracer", false).setParentSetting(Field1190);
     public Setting<ColorValue> Field1203 = new Setting<>("BTracerColor", new ColorValue(-65536)).setParentSetting(Field1190);

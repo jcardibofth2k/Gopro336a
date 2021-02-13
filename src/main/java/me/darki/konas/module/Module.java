@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.unremaped.Class184;
-import me.darki.konas.Keybind;
+import me.darki.konas.unremaped.Notify;
+import me.darki.konas.setting.Keybind;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.setting.Setting;
@@ -19,7 +19,7 @@ public abstract class Module {
     public String Field1713 = null;
     public String description = "";
     public Setting<Keybind> Bind = new Setting<>("Bind", new Keybind(0)).setDescription("Sets the module toggle key");
-    public Setting<Boolean> holdBind = new Setting<>("Hold", false).Method1191/*visibleIf*/(Module::Method396/*hasHoldBind*/).setDescription("Only activate while bind is being held down");
+    public Setting<Boolean> holdBind = new Setting<>("Hold", false).visibleIf(Module::hasHoldBind).setDescription("Only activate while bind is being held down");
     public Category category;
     public ArrayList<String> Field1718 = new ArrayList();
     public boolean enabled;
@@ -78,7 +78,7 @@ public abstract class Module {
     }
 
     public boolean Method1632() {
-        return Class167.Method1610(Class184.class).isEnabled();
+        return Class167.Method1610(Notify.class).isEnabled();
     }
 
     public void Method1633(int n, int n2) {
@@ -94,7 +94,7 @@ public abstract class Module {
         return this.Field1720;
     }
 
-    public static boolean Method396() {
+    public static boolean hasHoldBind() {
         return false;
     }
 
@@ -111,9 +111,9 @@ public abstract class Module {
     public void Method1637(String string, TrayIcon.MessageType messageType) {
         block0: {
             boolean bl;
-            Class184 class184 = (Class184)Class167.Method1610(Class184.class);
-            if (class184 == null || !class184.isEnabled() || !(bl = ((Boolean)Class167.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
-            class184.Method1468(this.getName(), string, messageType);
+            Notify notify = (Notify)Class167.Method1610(Notify.class);
+            if (notify == null || !notify.isEnabled() || !(bl = ((Boolean)Class167.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
+            notify.Method1468(this.getName(), string, messageType);
         }
     }
 

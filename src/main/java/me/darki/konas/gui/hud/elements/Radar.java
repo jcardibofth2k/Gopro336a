@@ -3,7 +3,7 @@ package me.darki.konas.gui.hud.elements;
 import java.awt.Color;
 
 import me.darki.konas.unremaped.Class492;
-import me.darki.konas.RenderUtil2;
+import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;

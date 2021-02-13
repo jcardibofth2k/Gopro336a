@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.PacketFlyMode;
-import me.darki.konas.PacketFlyType;
+import me.darki.konas.settingEnums.PacketFlyMode;
+import me.darki.konas.settingEnums.PacketFlyType;
 
 public class Class271 {
     public static int[] Field1984;

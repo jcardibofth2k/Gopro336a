@@ -3,16 +3,16 @@ package me.darki.konas.mixin.mixins;
 import com.mojang.authlib.GameProfile;
 import cookiedragon.eventsystem.EventDispatcher;
 import me.darki.konas.unremaped.Class0;
-import me.darki.konas.KonasBeaconGui;
+import me.darki.konas.gui.screen.KonasBeaconGui;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class26;
-import me.darki.konas.unremaped.Class309;
+import me.darki.konas.unremaped.NoDesync;
 import me.darki.konas.unremaped.Class46;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.unremaped.Class550;
-import me.darki.konas.MoveEvent;
+import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.unremaped.Class648;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -84,11 +84,11 @@ extends EntityPlayer {
         if (this.world.isBlockLoaded(new BlockPos(this.posX, 0.0, this.posZ))) {
             super.onUpdate();
             UpdateEvent event = UpdateEvent.Method273(this.Field2379.player.posX, this.Field2379.player.getEntityBoundingBox().minY, this.Field2379.player.posY, this.Field2379.player.rotationYaw, this.Field2379.player.rotationPitch, this.Field2379.player.onGround);
-            Class309.Field883 = true;
+            NoDesync.Field883 = true;
             EventDispatcher.Companion.dispatch(event);
             if (NewGui.INSTANCE.Field1139.Method1940()) {
                 ci.cancel();
-                Class309.Field882.Method739();
+                NoDesync.Field882.Method739();
                 if (this.isRiding()) {
                     this.Field2380.sendPacket(new CPacketPlayer.Rotation(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944(), this.onGround));
                     this.Field2380.sendPacket(new CPacketInput(this.moveStrafing, this.moveForward, this.Field2381.jump, this.Field2381.sneak));
@@ -102,7 +102,7 @@ extends EntityPlayer {
                 Class50 postEvent = Class50.Method346(this.Field2379.player.posX, this.Field2379.player.posY, this.Field2379.player.posY, this.Field2379.player.rotationYaw, this.Field2379.player.rotationPitch, this.Field2379.player.onGround);
                 EventDispatcher.Companion.dispatch(postEvent);
             } else {
-                Class309.Field883 = false;
+                NoDesync.Field883 = false;
             }
         }
         NewGui.INSTANCE.Field1139.Method1938();

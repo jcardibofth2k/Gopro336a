@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import io.netty.channel.ChannelHandlerContext;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class419;
 import net.minecraft.network.NetworkManager;

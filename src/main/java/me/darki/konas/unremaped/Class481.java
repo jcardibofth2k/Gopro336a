@@ -1,8 +1,8 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.ColorValue;
-import me.darki.konas.UpdateEvent;
+import me.darki.konas.setting.ColorValue;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.mixin.mixins.ITimer;
 import me.darki.konas.module.Category;

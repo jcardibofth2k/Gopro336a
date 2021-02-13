@@ -3,14 +3,14 @@ package me.darki.konas.module.misc;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
-import me.darki.konas.*;
+import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class477;
 import me.darki.konas.unremaped.Class496;
-import me.darki.konas.unremaped.Class56;
+import me.darki.konas.event.events.Event;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.init.Items;
@@ -29,7 +29,7 @@ extends Module {
     public Setting<Boolean> armor = new Setting<>("Armor", false);
     public Setting<Integer> threshold = new Setting<>("Threshold", 60, 100, 0, 1);
     public Setting<Boolean> attackCheck = new Setting<>("AttackCheck", true);
-    public Setting<Float> crystalRange = new Setting<>("CrystalRange", 6.0f, 10.0f, 0.0f, 0.1f).Method1191(this.attackCheck::getValue);
+    public Setting<Float> crystalRange = new Setting<>("CrystalRange", 6.0f, 10.0f, 0.0f, 0.1f).visibleIf(this.attackCheck::getValue);
     public boolean Field1951 = false;
     public static boolean Field1952 = false;
     public float Field1953 = 0.0f;
@@ -66,7 +66,7 @@ extends Module {
     }
 
     @Subscriber(priority=10)
-    public void Method948(Class56 class56) {
+    public void Method948(Event event) {
         block11: {
             block12: {
                 ItemStack itemStack;
@@ -83,8 +83,8 @@ extends Module {
                 }
                 this.Field1953 = AutoMend.mc.player.getHealth() + AutoMend.mc.player.getAbsorptionAmount();
                 if (AutoMend.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() != Items.EXPERIENCE_BOTTLE && (!this.autoSwitch.getValue().booleanValue() || this.Method464() == -1)) break block11;
-                if (!(class56 instanceof UpdateEvent)) break block12;
-                if (class56.isCanceled() || !Class496.Method1966()) {
+                if (!(event instanceof UpdateEvent)) break block12;
+                if (event.isCanceled() || !Class496.Method1966()) {
                     return;
                 }
                 this.Field1951 = false;

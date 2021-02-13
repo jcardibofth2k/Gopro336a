@@ -5,17 +5,17 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.Set;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class106;
-import me.darki.konas.unremaped.Class113;
+import me.darki.konas.event.events.EventIdkPlsRename;
 import me.darki.konas.unremaped.Class13;
 import me.darki.konas.unremaped.Class131;
 import me.darki.konas.unremaped.Class137;
 import me.darki.konas.unremaped.Class142;
-import me.darki.konas.unremaped.Class148;
-import me.darki.konas.PacketEvent;
+import me.darki.konas.event.events.RenderBlockOverlayEvent;
+import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class417;
-import me.darki.konas.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
 import me.darki.konas.unremaped.Class569;
-import me.darki.konas.TickEvent;
+import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class642;
 import me.darki.konas.unremaped.Class79;
 import me.darki.konas.unremaped.Class93;
@@ -49,10 +49,10 @@ extends Module {
     public Setting<Boolean> Field1105 = new Setting<>("NoBossBar", false);
     public Setting<Boolean> Field1106 = new IdkWhatThisSettingThingDoes("NoBats", true, this::Method145);
     public Setting<Class417> Field1107 = new Setting<>("Armor", Class417.NONE);
-    public Setting<Boolean> Field1108 = new Setting<>("Head", true).Method1191(this::Method394);
-    public Setting<Boolean> Field1109 = new Setting<>("Chestplate", false).Method1191(this::Method539);
-    public Setting<Boolean> Field1110 = new Setting<>("Leggings", false).Method1191(this::Method393);
-    public Setting<Boolean> Field1111 = new Setting<>("Boots", false).Method1191(this::Method519);
+    public Setting<Boolean> Field1108 = new Setting<>("Head", true).visibleIf(this::Method394);
+    public Setting<Boolean> Field1109 = new Setting<>("Chestplate", false).visibleIf(this::Method539);
+    public Setting<Boolean> Field1110 = new Setting<>("Leggings", false).visibleIf(this::Method393);
+    public Setting<Boolean> Field1111 = new Setting<>("Boots", false).visibleIf(this::Method519);
     public Setting<Boolean> Field1112 = new Setting<>("OwnShadow", true);
     public Setting<Boolean> Field1113 = new Setting<>("Mob", false);
     public Setting<Boolean> Field1114 = new Setting<>("Object", false);
@@ -221,10 +221,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1133(Class148 class148) {
+    public void Method1133(RenderBlockOverlayEvent renderBlockOverlayEvent) {
         block5: {
             boolean bl = false;
-            switch (class148.Method1825()) {
+            switch (renderBlockOverlayEvent.Method1825()) {
                 case FIRE: {
                     if (!this.Field1104.getValue().booleanValue()) break;
                     bl = true;
@@ -241,7 +241,7 @@ extends Module {
                 }
             }
             if (!bl) break block5;
-            class148.Cancel();
+            renderBlockOverlayEvent.Cancel();
         }
     }
 
@@ -269,10 +269,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1136(Class113 class113) {
+    public void Method1136(EventIdkPlsRename eventIdkPlsRename) {
         block0: {
-            if (!this.Field1120.getValue().booleanValue() || !class113.Method348().getMaterial().equals(Material.LAVA)) break block0;
-            class113.Cancel();
+            if (!this.Field1120.getValue().booleanValue() || !eventIdkPlsRename.Method348().getMaterial().equals(Material.LAVA)) break block0;
+            eventIdkPlsRename.Cancel();
         }
     }
 

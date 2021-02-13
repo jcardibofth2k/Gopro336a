@@ -2,7 +2,7 @@ package me.darki.konas.module.movement;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.MoveEvent;
+import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 

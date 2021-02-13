@@ -1,10 +1,9 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.KonasGuiChat;
+import me.darki.konas.gui.screen.KonasGuiChat;
 import me.darki.konas.command.Command;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

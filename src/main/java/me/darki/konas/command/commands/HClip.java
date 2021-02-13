@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.MathUtil;
-import me.darki.konas.SyntaxChunk;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
@@ -23,7 +23,7 @@ extends Command {
                         block53: {
                             if (var1_1.length != 2) break block56;
                             v0 = HClip.Field123.player.rotationYaw;
-                            v1 = MathUtil.Method1089(v0);
+                            v1 = PlayerUtil.Method1089(v0);
                             var2_2 = v1;
                             v2 = HClip.Field123.player;
                             v3 = v2.getRidingEntity();

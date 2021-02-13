@@ -5,13 +5,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Logger;
 import me.darki.konas.mixin.mixins.IGuiBrewingStand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.util.PotionUtil;
 import net.minecraft.block.BlockBrewingStand;
 import net.minecraft.client.gui.inventory.GuiBrewingStand;
 import net.minecraft.init.Items;
@@ -153,7 +154,7 @@ extends Module {
                 List<BlockPos> list = Class545.Method1003(AutoBrew.mc.player.getPosition(), 4);
                 BlockPos blockPos = list.stream().filter(AutoBrew::Method515).min(Comparator.comparing(AutoBrew::Method127)).orElse(null);
                 if (blockPos != null) {
-                    MathUtil.Method1081(new Vec3d(blockPos.getX(), (double)blockPos.getY() + 0.5, blockPos.getZ()));
+                    PlayerUtil.Method1081(new Vec3d(blockPos.getX(), (double)blockPos.getY() + 0.5, blockPos.getZ()));
                     AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos, EnumFacing.UP, new Vec3d(blockPos.getX(), (double)blockPos.getY() + 0.5, blockPos.getZ()), EnumHand.MAIN_HAND);
                     AutoBrew.mc.player.swingArm(EnumHand.MAIN_HAND);
                     this.Field2201 = true;

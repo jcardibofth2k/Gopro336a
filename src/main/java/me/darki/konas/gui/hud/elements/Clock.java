@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class557;

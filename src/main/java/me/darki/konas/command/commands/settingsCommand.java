@@ -2,10 +2,10 @@ package me.darki.konas.command.commands;
 
 import java.util.ArrayList;
 import me.darki.konas.unremaped.Class167;
-import me.darki.konas.ColorValue;
+import me.darki.konas.setting.ColorValue;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.unremaped.Class605;
-import me.darki.konas.Keybind;
+import me.darki.konas.setting.Keybind;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;

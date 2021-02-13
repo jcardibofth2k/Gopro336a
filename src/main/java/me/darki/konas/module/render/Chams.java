@@ -1,12 +1,14 @@
 package me.darki.konas.module.render;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.*;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.setting.ParentSetting;
+import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.ChamsGlintMode;
 import me.darki.konas.unremaped.Class102;
+import me.darki.konas.setting.ColorValue;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -68,7 +70,7 @@ extends Module {
     public static Setting<Float> bounciness = new Setting<>("Bounciness", 1.0f, 10.0f, 0.1f, 0.1f).setParentSetting(crystal);
     public static Setting<ParentSetting> hand = new Setting<>("Hand", new ParentSetting(false));
     public static Setting<Boolean> hands = new Setting<>("Hands", true).setParentSetting(hand);
-    public static Setting<ColorValue> handColor = new Setting<>("HandColor", new ColorValue(469762303)).Method1191(hands::getValue).setParentSetting(hand);
+    public static Setting<ColorValue> handColor = new Setting<>("HandColor", new ColorValue(469762303)).visibleIf(hands::getValue).setParentSetting(hand);
     public static Setting<ChamsGlintMode> hGlint = new Setting<>("HGlint", ChamsGlintMode.NONE).setParentSetting(hand);
     public static Setting<Float> hGlintSpeed = new Setting<>("HGlintSpeed", 5.0f, 20.0f, 0.1f, 0.1f).setParentSetting(hand);
     public static Setting<Float> hGlintScale = new Setting<>("HGlintScale", 1.0f, 10.0f, 0.1f, 0.1f).setParentSetting(hand);
