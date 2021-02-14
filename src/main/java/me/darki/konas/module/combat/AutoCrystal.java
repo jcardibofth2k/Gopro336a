@@ -98,21 +98,24 @@ extends Module {
     public static Setting<Boolean> inhibit = new Setting<>("Inhibit", false).setParentSetting(antiCheat).setDescription("Prevent unnesasary attacks");
     public static Setting<Boolean> limit = new Setting<>("Limit", true).setParentSetting(antiCheat).setDescription("Limit attacks");
     public static Setting<ACYawstepMode> yawStep = new Setting<>("YawStep", ACYawstepMode.OFF).setParentSetting(antiCheat).setDescription("Rotate slower");
-    public static Setting<Float> yawAngle = new Setting<>("YawAngle", Float.valueOf(0.3f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(antiCheat).setDescription("Maximum angle to rotate by per tick");
+    public static Setting<Float> yawAngle = new Setting<>("YawAngle", 0.3f, 1.0f, 0.1f, 0.1f).setParentSetting(antiCheat).setDescription("Maximum angle to rotate by per tick");
     public static Setting<Integer> yawTicks = new Setting<>("YawTicks", 1, 5, 1, 1).setParentSetting(antiCheat).setDescription("Rotate slower by this amount of ticks");
+
     public static Setting<ParentSetting> placements = new Setting<>("Placements", new ParentSetting(false));
     public static Setting<Boolean> check = new Setting<>("Check", true).setParentSetting(placements).setDescription("Check if you will be able to break the crystals you place");
     public static Setting<ACInteractMode> interact = new Setting<>("Interact", ACInteractMode.NORMAL).setParentSetting(placements).setDescription("Changes how you interact with blocks while placing");
     public static Setting<Boolean> protocol = new Setting<>("Protocol", false).setParentSetting(placements).setDescription("Place in 1x1x1 areas");
     public static Setting<Boolean> setting = new Setting<>("PlaceInFire", false).setParentSetting(placements).setDescription("Place in fires");
+
     public static Setting<ParentSetting> speeds = new Setting<>("Speeds", new ParentSetting(false));
     public static Setting<ACComfirmMode> confirm = new Setting<>("Confirm", ACComfirmMode.OFF).setParentSetting(speeds).setDescription("Do not place elsewhere until previous placement has been executed");
     public static Setting<Integer> ticksExisted = new Setting<>("TicksExisted", 0, 20, 0, 1).setParentSetting(speeds).setDescription("Tick delay for 2b2t");
     public static Setting<Integer> attackTicks = new Setting<>("AttackTicks", 3, 20, 1, 1).setParentSetting(speeds).setDescription("Amount of ticks to attack crystals for").visibleIf(AutoCrystal::Method519);
-    public static Setting<Float> breakSpeed = new Setting<>("BreakSpeed", Float.valueOf(20.0f), Float.valueOf(20.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)).setParentSetting(speeds).setDescription("Crystal break speed");
+    public static Setting<Float> breakSpeed = new Setting<>("BreakSpeed", 20.0f, 20.0f, 1.0f, Float.valueOf(0.1f)).setParentSetting(speeds).setDescription("Crystal break speed");
     public static Setting<Float> placeSpeed = new Setting<>("PlaceSpeed", Float.valueOf(20.0f), Float.valueOf(20.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)).setParentSetting(speeds).setDescription("Crystal place speed");
     public static Setting<ACSyncMode> sync = new Setting<>("Sync", ACSyncMode.STRICT).setParentSetting(speeds).setDescription("Syncronizes breaking and placing");
     public static Setting<Float> offset = new Setting<>("Offset", Float.valueOf(0.0f), Float.valueOf(0.8f), Float.valueOf(0.0f), Float.valueOf(0.1f)).setParentSetting(speeds).visibleIf(AutoCrystal::Method992).setDescription("Syncronization offset");
+
     public static Setting<ParentSetting> ranges = new Setting<>("Ranges", new ParentSetting(false));
     public static Setting<Float> enemyRange = new Setting<>("EnemyRange", Float.valueOf(8.0f), Float.valueOf(15.0f), Float.valueOf(4.0f), Float.valueOf(0.5f)).setParentSetting(ranges).setDescription("Range from which to select target(s)");
     public static Setting<Float> crystalRange = new Setting<>("CrystalRange", Float.valueOf(6.0f), Float.valueOf(12.0f), Float.valueOf(2.0f), Float.valueOf(0.5f)).setParentSetting(ranges).setDescription("Maximum range between enemies and placements");
@@ -120,10 +123,12 @@ extends Module {
     public static Setting<Float> breakWalls = new Setting<>("BreakWalls", Float.valueOf(1.5f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)).setParentSetting(ranges).setDescription("Break range for breaking crystals through walls");
     public static Setting<Float> placeRange = new Setting<>("PlaceRange", Float.valueOf(4.0f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)).setParentSetting(ranges).setDescription("Place range for visible blocks");
     public static Setting<Float> placeWalls = new Setting<>("PlaceWalls", Float.valueOf(3.0f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f)).setParentSetting(ranges).setDescription("Place range for placing through walls");
+
     public static Setting<ParentSetting> swap = new Setting<>("Swap", new ParentSetting(false));
     public static Setting<ACSwapMode> autoSwap = new Setting<>("AutoSwap", ACSwapMode.OFF).setParentSetting(swap).setDescription("Auto Swap");
     public static Setting<ACSwapMode> antiWeakness = new Setting<>("AntiWeakness", ACSwapMode.OFF).setParentSetting(swap).setDescription("Swap to sword before hitting crystal when weaknessed");
     public static Setting<Float> swapDelay = new Setting<>("SwapDelay", Float.valueOf(5.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.5f)).setParentSetting(swap).setDescription("Delay for hitting crystals after swapping");
+
     public static Setting<ParentSetting> damages = new Setting<>("Damages", new ParentSetting(false));
     public static Setting<ACTargetMode> target = new Setting<>("Target", ACTargetMode.ALL).setParentSetting(damages).setDescription("Algorithm to use for selecting target(s)");
     public static Setting<Float> minDamage = new Setting<>("MinDamage", Float.valueOf(6.0f), Float.valueOf(20.0f), Float.valueOf(0.0f), Float.valueOf(0.5f)).setParentSetting(damages).setDescription("Minimum amount of damage for placing crystals");
@@ -133,10 +138,12 @@ extends Module {
     public static Setting<Class537> facePlace = new Setting<>("FacePlace", new Class537(56)).setParentSetting(damages);
     public static Setting<Boolean> armorBreaker = new Setting<>("ArmorBreaker", true).setParentSetting(damages);
     public static Setting<Float> depletion = new Setting<>("Depletion", Float.valueOf(0.9f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(damages).visibleIf(armorBreaker::getValue);
+
     public static Setting<ParentSetting> prediction = new Setting<>("Prediction", new ParentSetting(false));
     public static Setting<Boolean> collision = new Setting<>("Collision", false).setParentSetting(prediction).setDescription("Simulate collision when predicting motion");
     public static Setting<Integer> predictTicks = new Setting<>("PredictTicks", 1, 10, 0, 1).setParentSetting(prediction).setDescription("Predict target motion by this amount of ticks");
     public static Setting<Boolean> predictDestruction = new Setting<>("PredictDestruction", false).setParentSetting(prediction).setDescription("Ignore destructable blocks when doing damage calculations");
+
     public static Setting<ParentSetting> pause = new Setting<>("Pause", new ParentSetting(false));
     public static Setting<Boolean> mining = new Setting<>("Mining", false).setParentSetting(pause);
     public static Setting<Boolean> gapping = new Setting<>("Gapping", false).setParentSetting(pause);
@@ -145,6 +152,7 @@ extends Module {
     public static Setting<Boolean> pistonAura = new Setting<>("PistonAura", true).setParentSetting(pause);
     public static Setting<Float> health = new Setting<>("Health", Float.valueOf(2.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.5f)).setParentSetting(pause);
     public static Setting<Boolean> disableOnTP = new Setting<>("DisableOnTP", false).setParentSetting(pause);
+
     public static Setting<ParentSetting> render = new Setting<>("Render", new ParentSetting(false));
     public static Setting<Boolean> swing = new Setting<>("Swing", false).setParentSetting(render).setDescription("Swing arm client-side");
     public static Setting<Boolean> box = new Setting<>("Box", true).setParentSetting(render);
@@ -164,6 +172,7 @@ extends Module {
     public static Setting<Float> animSpeed = new Setting<>("AnimSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(render);
     public static Setting<Float> width = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(render);
     public static Setting<ColorValue> targetColor = new Setting<>("TargetColor", new ColorValue(869950564, true)).setParentSetting(render);
+
     public Vec3d Field1620 = null;
     public float[] Field1621 = new float[]{0.0f, 0.0f};
     public Class566 Field1622 = new Class566();

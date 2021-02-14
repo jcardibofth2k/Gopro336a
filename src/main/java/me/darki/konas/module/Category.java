@@ -23,7 +23,8 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public Category() {
+    public Category(String s, int n) {
+        super(s, n);
         void var2_-1;
         void var1_-1;
     }
