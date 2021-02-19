@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.RubberFill;
+import me.darki.konas.module.exploit.RubberFill;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

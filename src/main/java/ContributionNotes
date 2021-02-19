@@ -1,0 +1,3 @@
+Notes,
+parameterization (ExampleClass1<ExampleClass2>), has been somewhat removed by the obfuscator. Add it back where you see fit.
+Focus on remapping, but contributions that fix code errors will also be much appreciated.

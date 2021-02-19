@@ -316,7 +316,7 @@ extends Module {
     }
 
     public boolean Method388() {
-        List list;
+        Module list;
         if (Field465.getValue().booleanValue() && (list = Class167.Method1610(AutoCrystal.class)) != null) {
             AutoCrystal autoCrystal = (AutoCrystal) list;
             if (((Module) list).isEnabled()) {
@@ -355,7 +355,8 @@ extends Module {
                 return false;
             }
         }
-        if (Field462.getValue().booleanValue() && !Class545.Method1009((BlockPos)(list = new BlockPos(KillAura.mc.player)))) {
+        BlockPos pos;
+        if (Field462.getValue().booleanValue() && !Class545.Method1009((BlockPos)(pos = new BlockPos(KillAura.mc.player)))) {
             this.Field484 = null;
             if (Field458.getValue().booleanValue() && this.Field483 != -1) {
                 KillAura.mc.player.inventory.currentItem = this.Field483;
@@ -364,12 +365,12 @@ extends Module {
             }
             return false;
         }
-        list = KillAura.mc.world.loadedEntityList.stream().filter(this::Method513).sorted(Comparator.comparing(KillAura::Method558)).collect(Collectors.toList());
-        if (!list.isEmpty()) {
-            if (this.Field484 == null || !this.Field484.equals(list.get(0))) {
+        List entityList = KillAura.mc.world.loadedEntityList.stream().filter(this::Method513).sorted(Comparator.comparing(KillAura::Method558)).collect(Collectors.toList());
+        if (!entityList.isEmpty()) {
+            if (this.Field484 == null || !this.Field484.equals(entityList.get(0))) {
                 this.Field482 = System.currentTimeMillis();
             }
-            this.Field484 = (Entity)list.get(0);
+            this.Field484 = (Entity)entityList.get(0);
         } else {
             this.Field484 = null;
         }
@@ -493,67 +494,65 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
-        block10: {
-            int n;
-            int n2;
-            int n3;
-            float f;
-            if (KillAura.mc.player == null || KillAura.mc.world == null) {
-                return;
-            }
-            if (!Field469.getValue().booleanValue() || this.Field484 == null || Field470.getValue().booleanValue() && this.Field485.Method737(3500.0)) break block10;
+    public void Method139(final Class89 class89) {
+        if (KillAura.mc.player == null || KillAura.mc.world == null) {
+            return;
+        }
+        if ((boolean)KillAura.Field469.getValue() && this.Field484 != null && (!(boolean)KillAura.Field470.getValue() || !this.Field485.Method737(3500.0))) {
             GlStateManager.pushMatrix();
             Class507.Method1386();
-            if (Field471.getValue().booleanValue()) {
+            if (KillAura.Field471.getValue()) {
                 GlStateManager.enableDepth();
             }
-            IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
-            float[] fArray = Color.RGBtoHSB(Field478.getValue().Method769(), Field478.getValue().Method770(), Field478.getValue().Method779(), null);
-            float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
-            int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
-            ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-            double d = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
-            double d2 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
-            double d3 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
-            double d4 = -Math.cos((double)(System.currentTimeMillis() - this.Field482) / 1000.0 * (double) Field476.getValue().floatValue()) * ((double)this.Field484.height / 2.0) + (double)this.Field484.height / 2.0;
-            GL11.glLineWidth(Field477.getValue().floatValue());
+            final IRenderManager renderManager = (IRenderManager)KillAura.mc.getRenderManager();
+            final float[] rgBtoHSB = Color.RGBtoHSB((KillAura.Field478.getValue()).Method769(), (KillAura.Field478.getValue()).Method770(), (KillAura.Field478.getValue()).Method779(), null);
+            float n2;
+            final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
+            int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
+            final ArrayList<Vec3d> list = new ArrayList<Vec3d>();
+            final double n4 = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * class89.Method436() - renderManager.Method69();
+            final double n5 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * class89.Method436() - renderManager.Method70();
+            final double n6 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * class89.Method436() - renderManager.Method71();
+            final double n7 = -Math.cos((System.currentTimeMillis() - this.Field482) / 1000.0 * (float)KillAura.Field476.getValue()) * (this.Field484.height / 2.0) + this.Field484.height / 2.0;
+            GL11.glLineWidth((float)KillAura.Field477.getValue());
             GL11.glBegin(1);
-            for (n3 = 0; n3 <= 360; ++n3) {
-                Vec3d vec3d = new Vec3d(d + Math.sin((double)n3 * Math.PI / 180.0) * 0.5, d2 + d4 + 0.01, d3 + Math.cos((double)n3 * Math.PI / 180.0) * 0.5);
-                arrayList.add(vec3d);
+            for (int i = 0; i <= 360; ++i) {
+                list.add(new Vec3d(n4 + Math.sin(i * 3.141592653589793 / 180.0) * 0.5, n5 + n7 + 0.01, n6 + Math.cos(i * 3.141592653589793 / 180.0) * 0.5));
             }
-            for (n3 = 0; n3 < arrayList.size() - 1; ++n3) {
-                float f3;
-                int n5 = n4 >> 16 & 0xFF;
-                n2 = n4 >> 8 & 0xFF;
-                n = n4 & 0xFF;
-                float f4 = Field473.getValue().booleanValue() ? (Field474.getValue().booleanValue() ? (float)Math.max(0.0, -0.3183098861837907 * Math.atan(Math.tan(Math.PI * (double)((float)n3 + 1.0f) / (double)arrayList.size() + (double)System.currentTimeMillis() / 1000.0 * (double) Field475.getValue().floatValue()))) : (float)Math.max(0.0, Math.abs(Math.sin((double)(((float)n3 + 1.0f) / (float)arrayList.size()) * Math.PI + (double)System.currentTimeMillis() / 1000.0 * (double) Field475.getValue().floatValue())) * 2.0 - 1.0)) : (f3 = Field472.getValue() != false ? 1.0f : (float) Field478.getValue().Method782() / 255.0f);
-                if (Field478.getValue().Method783()) {
-                    GL11.glColor4f((float)n5 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, f3);
-                } else {
-                    GL11.glColor4f((float) Field478.getValue().Method769() / 255.0f, (float) Field478.getValue().Method770() / 255.0f, (float) Field478.getValue().Method779() / 255.0f, f3);
+            for (int j = 0; j < list.size() - 1; ++j) {
+                final int n8 = n3 >> 16 & 0xFF;
+                final int n9 = n3 >> 8 & 0xFF;
+                final int n10 = n3 & 0xFF;
+                final float n11 = KillAura.Field473.getValue() ? (KillAura.Field474.getValue() ? ((float)Math.max(0.0, -0.3183098861837907 * Math.atan(Math.tan(3.141592653589793 * (j + 1.0f) / (float)list.size() + System.currentTimeMillis() / 1000.0 * (float)KillAura.Field475.getValue())))) : ((float)Math.max(0.0, Math.abs(Math.sin((j + 1.0f) / list.size() * 3.141592653589793 + System.currentTimeMillis() / 1000.0 * (float)KillAura.Field475.getValue())) * 2.0 - 1.0))) : (KillAura.Field472.getValue() ? 1.0f : ((KillAura.Field478.getValue()).Method782() / 255.0f));
+                if ((KillAura.Field478.getValue()).Method783()) {
+                    GL11.glColor4f(n8 / 255.0f, n9 / 255.0f, n10 / 255.0f, n11);
                 }
-                GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
-                GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
-                n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
+                else {
+                    GL11.glColor4f((KillAura.Field478.getValue()).Method769() / 255.0f, (KillAura.Field478.getValue()).Method770() / 255.0f, (KillAura.Field478.getValue()).Method779() / 255.0f, n11);
+                }
+                GL11.glVertex3d(list.get(j).x, list.get(j).y, list.get(j).z);
+                GL11.glVertex3d(list.get(j + 1).x, list.get(j + 1).y, list.get(j + 1).z);
+                n2 += 0.0027777778f;
+                n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             }
             GL11.glEnd();
-            if (Field472.getValue().booleanValue()) {
-                f2 = f;
+            if (KillAura.Field472.getValue()) {
+                float h = n;
                 GL11.glBegin(9);
-                for (n3 = 0; n3 < arrayList.size() - 1; ++n3) {
-                    int n6 = n4 >> 16 & 0xFF;
-                    n2 = n4 >> 8 & 0xFF;
-                    n = n4 & 0xFF;
-                    if (Field478.getValue().Method783()) {
-                        GL11.glColor4f((float)n6 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, (float) Field478.getValue().Method782() / 255.0f);
-                    } else {
-                        GL11.glColor4f((float) Field478.getValue().Method769() / 255.0f, (float) Field478.getValue().Method770() / 255.0f, (float) Field478.getValue().Method779() / 255.0f, (float) Field478.getValue().Method782() / 255.0f);
+                for (int k = 0; k < list.size() - 1; ++k) {
+                    final int n12 = n3 >> 16 & 0xFF;
+                    final int n13 = n3 >> 8 & 0xFF;
+                    final int n14 = n3 & 0xFF;
+                    if ((KillAura.Field478.getValue()).Method783()) {
+                        GL11.glColor4f(n12 / 255.0f, n13 / 255.0f, n14 / 255.0f, (KillAura.Field478.getValue()).Method782() / 255.0f);
                     }
-                    GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
-                    GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
-                    n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
+                    else {
+                        GL11.glColor4f((KillAura.Field478.getValue()).Method769() / 255.0f, (KillAura.Field478.getValue()).Method770() / 255.0f, (KillAura.Field478.getValue()).Method779() / 255.0f, (KillAura.Field478.getValue()).Method782() / 255.0f);
+                    }
+                    GL11.glVertex3d(list.get(k).x, list.get(k).y, list.get(k).z);
+                    GL11.glVertex3d(list.get(k + 1).x, list.get(k + 1).y, list.get(k + 1).z);
+                    h += 0.0027777778f;
+                    n3 = Color.getHSBColor(h, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
                 }
                 GL11.glEnd();
             }
