@@ -23,6 +23,10 @@ This is a WIP and contributions to improve this will be accepted
 
 Skid it.
 
+Its not perfect so dont complain when you have errors skiding it into your shit oyvey base
+
+If u can't instantly just copy and paste the module into ur oyvey base and have it work don't cry to us fix it urself (RIP Mint devs in this line)
+
 It is NOT buildable (and never will be unless someone else does it)
 
 As stated earlier, minecraft mappings have already been applied. Dont get the renamed "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
