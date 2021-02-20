@@ -3,7 +3,8 @@ Konas Client
 
 Deobfuscated and partialy remaped manually
 
-This is a WIP and contributions to improve this will be accepted
+This is a WIP and WILL get better with time
+Contributions to improve this will be accepted
 
 ```
 1st, Deobfuscated
