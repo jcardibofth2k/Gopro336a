@@ -5,6 +5,8 @@ Deobfuscated and partialy remaped manually
 
 This is a WIP and WILL get better with time.
 
+Not a buildable src
+
 Contributions to improve this will be accepted
 
 ```
