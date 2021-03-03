@@ -33,14 +33,14 @@ If u can't instantly just copy and paste the module into ur oyvey base and have 
 
 It is NOT buildable.
 
-As stated earlier, minecraft mappings have already been applied. Dont get the renamed "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
+As stated earlier, minecraft mappings have already been applied. Don't get the renamed "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
 
 Skiding is cringe
 
 
 # For Contributors
 
-Any contributions to this deobf+remap will be GREATLY apperciated. This deobf has many, many, other classes, methods, and fields that still use the Gerneric names. Manually remapping an entire client like this is alot for 1 person to do (I have a life), and can become dulling. Contributions can consist of refactoring of Classes, Fields, and Methods to names that make sense. Intelij Ideas's refactoring tool works well for this.
+Any contributions to this deobf+remap will be GREATLY apperciated. This deobf has many, many, other classes, methods, and fields that still use the Gerneric names. Manually remapping an entire client like this is alot for 1 person to do (I have a life), and can become dulling. Contributions can consist of refactoring of Classes, Fields, and Methods to names that make sense. Intelij Idea's refactoring tool works well for this.
 
 The reason this is a gradle project even though it is not meant to be built is because that was the easiest way to setup an environment with all the dependencies. The deobfuscated files are excluded from the build process.
 
