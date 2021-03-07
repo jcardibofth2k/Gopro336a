@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class308;
 import me.darki.konas.unremaped.Class311;
@@ -317,7 +317,7 @@ extends Module {
 
     public boolean Method388() {
         List list;
-        if (Field465.getValue().booleanValue() && (list = Class167.Method1610(AutoCrystal.class)) != null) {
+        if (Field465.getValue().booleanValue() && (list = ModuleManager.getModuleByClass(AutoCrystal.class)) != null) {
             AutoCrystal autoCrystal = (AutoCrystal) list;
             if (((Module) list).isEnabled()) {
                 if (Field466.getValue().booleanValue()) {

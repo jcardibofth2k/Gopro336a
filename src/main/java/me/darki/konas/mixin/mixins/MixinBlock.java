@@ -3,7 +3,7 @@ package me.darki.konas.mixin.mixins;
 import cookiedragon.eventsystem.EventDispatcher;
 import java.util.List;
 import javax.annotation.Nullable;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class443;
 import me.darki.konas.XRay;
 import me.darki.konas.unremaped.Class643;
@@ -48,10 +48,10 @@ public class MixinBlock {
 
     @Inject(method={"isFullCube"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method1840(IBlockState blockState, CallbackInfoReturnable<Boolean> info) {
-        if (Class167.Method1610(XRay.class) == null) {
+        if (ModuleManager.getModuleByClass(XRay.class) == null) {
             return;
         }
-        if (Class167.Method1610(XRay.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(XRay.class).isEnabled()) {
             info.setReturnValue(((Class443) XRay.blocks.getValue()).Method682().contains(Block.class.cast(this)));
             info.cancel();
         }

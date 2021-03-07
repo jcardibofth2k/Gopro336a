@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.module.combat.PistonAura;
 import me.darki.konas.module.movement.PacketFly;
@@ -111,7 +112,7 @@ extends Module {
         if (!(!((Boolean)Field1699.getValue()).booleanValue() || AutoTrap.mc.player.onGround && AutoTrap.mc.player.collidedVertically)) {
             return;
         }
-        if (Class167.Method1610(PacketFly.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
             return;
         }
         if (this.Field1706 < (Integer)Field1695.getValue()) {
@@ -153,7 +154,7 @@ extends Module {
         block3: {
             PistonAura pistonAura;
             block2: {
-                pistonAura = (PistonAura)Class167.Method1610(PistonAura.class);
+                pistonAura = (PistonAura) ModuleManager.getModuleByClass(PistonAura.class);
                 if (pistonAura.Field373 == null) break block2;
                 if (pistonAura.Field374.equals((Object)enumFacing)) {
                     return false;
@@ -176,7 +177,7 @@ extends Module {
     }
 
     public EntityPlayer Method1623() {
-        Waypoints waypoints = (Waypoints)Class167.Method1610(Waypoints.class);
+        Waypoints waypoints = (Waypoints) ModuleManager.getModuleByClass(Waypoints.class);
         Stream stream = AutoTrap.mc.world.playerEntities.stream();
         if (((Boolean)Field1702.getValue()).booleanValue()) {
             stream = Stream.concat(AutoTrap.mc.world.playerEntities.stream(), waypoints.Method1799().keySet().stream());

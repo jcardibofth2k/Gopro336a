@@ -13,7 +13,7 @@ import me.darki.konas.unremaped.Class142;
 import me.darki.konas.event.events.RenderBlockOverlayEvent;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class417;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.unremaped.Class569;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class642;
@@ -47,7 +47,7 @@ extends Module {
     public Setting<Boolean> Field1103 = new Setting<>("NoLightning", true);
     public Setting<Boolean> Field1104 = new Setting<>("NoFire", true);
     public Setting<Boolean> Field1105 = new Setting<>("NoBossBar", false);
-    public Setting<Boolean> Field1106 = new IdkWhatThisSettingThingDoes("NoBats", true, this::Method145);
+    public Setting<Boolean> Field1106 = new ListenableSettingDecorator("NoBats", true, this::Method145);
     public Setting<Class417> Field1107 = new Setting<>("Armor", Class417.NONE);
     public Setting<Boolean> Field1108 = new Setting<>("Head", true).visibleIf(this::Method394);
     public Setting<Boolean> Field1109 = new Setting<>("Chestplate", false).visibleIf(this::Method539);

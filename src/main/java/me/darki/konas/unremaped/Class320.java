@@ -7,6 +7,7 @@ import java.util.Queue;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockWeb;
 import net.minecraft.entity.Entity;
@@ -49,7 +50,7 @@ extends Module {
         if (Class320.mc.player == null || Class320.mc.world == null) {
             return;
         }
-        if (!Class167.Method1612("KillAura").isEnabled() && ((Boolean)this.Field717.getValue()).booleanValue()) {
+        if (!ModuleManager.Method1612("KillAura").isEnabled() && ((Boolean)this.Field717.getValue()).booleanValue()) {
             return;
         }
         if ((this.Field712.getValue() == Class323.JUMP || this.Field712.getValue() == Class323.SMALLJUMP) && this.Field719 != null && this.Field720 != null) {

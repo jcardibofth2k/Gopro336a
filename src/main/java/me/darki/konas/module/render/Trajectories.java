@@ -8,6 +8,7 @@ import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
@@ -59,7 +60,7 @@ extends Module {
     }
 
     public static boolean Method651(EntityLivingBase entityLivingBase) {
-        Module module = Class167.Method1612("BowAim");
+        Module module = ModuleManager.Method1612("BowAim");
         if (entityLivingBase == Trajectories.mc.player && module != null) {
             return module.isEnabled() && !Class317.Field763.Method737(350.0);
         }

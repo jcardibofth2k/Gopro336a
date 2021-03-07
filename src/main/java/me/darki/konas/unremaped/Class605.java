@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.module.Module;
 
@@ -10,7 +11,7 @@ extends SyntaxChunk {
     }
 
     public String Method177(String string) {
-        for (Module module : Class167.Method1619()) {
+        for (Module module : ModuleManager.Method1619()) {
             if (module.getName().toLowerCase().startsWith(string.toLowerCase())) {
                 return module.getName();
             }

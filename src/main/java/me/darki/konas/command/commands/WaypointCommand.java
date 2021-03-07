@@ -5,7 +5,7 @@ import java.util.Map;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class559;
 import me.darki.konas.unremaped.Class561;
 import me.darki.konas.unremaped.Class562;
@@ -18,7 +18,7 @@ extends Command {
 
     @Override
     public void Method174(String[] stringArray) {
-        Waypoints waypoints = (Waypoints) Class167.Method1610(Waypoints.class);
+        Waypoints waypoints = (Waypoints) ModuleManager.getModuleByClass(Waypoints.class);
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
                 StringBuilder stringBuilder = new StringBuilder();

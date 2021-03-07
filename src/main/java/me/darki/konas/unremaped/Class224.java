@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -25,7 +26,7 @@ extends Class215 {
     public Class224(String string, float f, float f2, float f3, float f4, float f5, float f6) {
         super(string, f, f2, f3, f4, f5, f6);
         int n = 0;
-        for (Module module : Class167.Method1619()) {
+        for (Module module : ModuleManager.Method1619()) {
             if (!module.getName().toLowerCase().contains(string.toLowerCase())) continue;
             this.Field2660.add(new Class217(module, this.Method486(), this.Method492(), 0.0f, (float)n, f5, 32.0f));
             n += 40;

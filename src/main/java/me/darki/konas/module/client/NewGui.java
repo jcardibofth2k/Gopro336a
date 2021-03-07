@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import me.darki.konas.event.EventProcessor;
 import me.darki.konas.managers.CommandManager;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.CommandUtil;
 import me.darki.konas.util.ConfigUtil;
@@ -37,7 +38,7 @@ public class NewGui {
     public void Method1138() {
         block52: {
             block51: {
-                Class167.Method1620();
+                ModuleManager.Method1620();
                 CommandManager.Method206();
                 this.Field1136 = new Class109();
                 this.Field1136.Method2200();
@@ -149,7 +150,7 @@ lbl142:
     }
 
     public void Method1139() {
-        Class167.Field1692.start();
+        ModuleManager.Field1692.start();
         if (!Class589.Field2606.exists()) {
             Class589.Field2606.mkdir();
         }

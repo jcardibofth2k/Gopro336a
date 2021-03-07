@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.StreamSupport;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.unremaped.Class305;
@@ -106,7 +106,7 @@ extends Module {
                 if (updateEvent.isCanceled() || !Class496.Method1959(rotate.getValue())) {
                     return;
                 }
-                if (Class167.Method1610(PacketFly.class).isEnabled()) {
+                if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
                     return;
                 }
                 if (this.Field1050 < actionInterval.getValue()) {

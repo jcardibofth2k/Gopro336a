@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.ChatUtil;
 import me.darki.konas.unremaped.Class605;
 import me.darki.konas.unremaped.Class606;
@@ -17,11 +17,11 @@ extends Command {
             ChatUtil.Method1034(this.Method191());
             return;
         }
-        if (Class167.Method1612(stringArray[1]) == null) {
+        if (ModuleManager.Method1612(stringArray[1]) == null) {
             ChatUtil.Method1034("Module not found");
             return;
         }
-        Module module = Class167.Method1612(stringArray[1]);
+        Module module = ModuleManager.Method1612(stringArray[1]);
         if (Keyboard.getKeyIndex(stringArray[2].toUpperCase()) != 0) {
             n = Keyboard.getKeyIndex(stringArray[2].toUpperCase());
         } else if (stringArray[2].equalsIgnoreCase("none")) {

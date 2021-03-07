@@ -9,7 +9,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.StepMode;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.RubberFill;
 import me.darki.konas.unremaped.Class566;
 import me.darki.konas.util.PlayerUtil;
@@ -43,7 +43,7 @@ extends Module {
         if (Step.mc.world == null || Step.mc.player == null) {
             return;
         }
-        Module module = Class167.Method1612("Speed");
+        Module module = ModuleManager.Method1612("Speed");
         if (module != null && module.isEnabled() && speedDisable.getValue().booleanValue()) {
             this.toggle();
         }
@@ -176,11 +176,11 @@ extends Module {
 
     @Subscriber
     public void onUpdate(UpdateEvent updateEvent) {
-        Module module = Class167.Method1612("Speed");
+        Module module = ModuleManager.Method1612("Speed");
         if (module != null && module.isEnabled() && speedDisable.getValue().booleanValue()) {
             this.toggle();
         }
-        if (reverse.getValue().booleanValue() && !Class167.Method1610(RubberFill.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
+        if (reverse.getValue().booleanValue() && !ModuleManager.getModuleByClass(RubberFill.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
             if (!Step.mc.player.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
                 Step.mc.player.motionY = -3.0;
             }

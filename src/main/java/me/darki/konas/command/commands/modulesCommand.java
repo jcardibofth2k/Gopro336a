@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;
@@ -20,6 +20,6 @@ extends Command {
     public void Method174(String[] stringArray) {
         Logger.Method1118("&bModules:");
         Logger.Method1118(" ");
-        Class167.Method1619().forEach(modulesCommand::Method1335);
+        ModuleManager.Method1619().forEach(modulesCommand::Method1335);
     }
 }

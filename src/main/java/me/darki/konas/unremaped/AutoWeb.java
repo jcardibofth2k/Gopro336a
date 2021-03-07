@@ -7,6 +7,7 @@ import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.setting.Setting;
@@ -177,7 +178,7 @@ extends Module {
             if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)Field1754.getValue())) {
                 return;
             }
-            if (Class167.Method1610(PacketFly.class).isEnabled()) {
+            if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
                 return;
             }
             if (!(!((Boolean)Field1753.getValue()).booleanValue() || AutoWeb.mc.player.onGround && AutoWeb.mc.player.collidedVertically)) {

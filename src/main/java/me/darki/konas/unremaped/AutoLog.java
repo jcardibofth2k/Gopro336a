@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
@@ -75,7 +76,7 @@ extends Module {
     }
 
     public void Method134() {
-        AutoReconnect autoReconnect = (AutoReconnect)Class167.Method1610(AutoReconnect.class);
+        AutoReconnect autoReconnect = (AutoReconnect) ModuleManager.getModuleByClass(AutoReconnect.class);
         if (autoReconnect != null) {
             if (autoReconnect.isEnabled()) {
                 autoReconnect.toggle();

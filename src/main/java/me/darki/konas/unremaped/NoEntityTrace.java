@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.misc.MiddleClick;
 import me.darki.konas.setting.Setting;
 import net.minecraft.item.ItemPickaxe;
@@ -16,7 +17,7 @@ extends Module {
 
     @Subscriber
     public void Method584(Class33 class33) {
-        if (NoEntityTrace.mc.gameSettings.keyBindPickBlock.isKeyDown() && Class167.Method1610(MiddleClick.class).isEnabled()) {
+        if (NoEntityTrace.mc.gameSettings.keyBindPickBlock.isKeyDown() && ModuleManager.getModuleByClass(MiddleClick.class).isEnabled()) {
             return;
         }
         if (!(!((Boolean)this.Field514.getValue()).booleanValue() || NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || ((Boolean)this.Field515.getValue()).booleanValue() && NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {

@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class77;
 import net.minecraft.client.multiplayer.WorldClient;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinWorldClient {
     @Inject(method={"<init>"}, at={@At(value="RETURN")})
     private void Method28(CallbackInfo callbackInfo) {
-        Class167.Method1608();
+        ModuleManager.handleWorldJoin();
         Class77 event = new Class77();
         EventDispatcher.Companion.dispatch(event);
     }

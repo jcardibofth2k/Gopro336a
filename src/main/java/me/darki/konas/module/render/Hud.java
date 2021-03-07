@@ -8,7 +8,7 @@ import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
@@ -32,7 +32,7 @@ extends Module {
     public static Setting<Boolean> Field1392 = new Setting<>("PotionIcons", false);
     public static Setting<Boolean> Field1393 = new Setting<>("Blur", false);
     public static Setting<Boolean> Field1394 = new Setting<>("BlurEverything", true).visibleIf(Field1393::getValue);
-    public Setting<Boolean> Field1395 = new IdkWhatThisSettingThingDoes("CustomFont", true, new Class159(this));
+    public Setting<Boolean> Field1395 = new ListenableSettingDecorator("CustomFont", true, new Class159(this));
     public static Setting<Boolean> Field1396 = new Setting<>("Hotbar", true);
     public static Setting<Boolean> Field1397 = new Setting<>("XPBar", true);
     public static Setting<Class165> Field1398 = new Setting<>("ArmorMode", Class165.BOTH);

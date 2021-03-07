@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import me.darki.konas.unremaped.Class102;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class419;
 import me.darki.konas.unremaped.Class46;
 import me.darki.konas.module.render.Chams;
@@ -40,7 +40,7 @@ public abstract class MixinRenderPlayer {
 
     @Inject(method={"doRender"}, at={@At(value="HEAD")})
     private void Method3(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
-        if (Class167.Method1610(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
+        if (ModuleManager.getModuleByClass(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
             this.Field3 = entity.prevRotationYawHead;
             this.Field5 = entity.prevRotationPitch;
             this.Field0 = entity.rotationPitch;
@@ -56,7 +56,7 @@ public abstract class MixinRenderPlayer {
 
     @Inject(method={"doRender"}, at={@At(value="RETURN")})
     private void Method4(AbstractClientPlayer entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
-        if (Class167.Method1610(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
+        if (ModuleManager.getModuleByClass(Class419.class).isEnabled() && entity == Minecraft.getMinecraft().player) {
             this.Field4 = entity.rotationYawHead;
             this.Field6 = entity.rotationPitch;
             entity.rotationPitch = this.Field0;
@@ -99,7 +99,7 @@ public abstract class MixinRenderPlayer {
             GL11.glPopAttrib();
             this.Field7 = false;
         }
-        if (Chams.hGlint.getValue() != ChamsGlintMode.NONE && Class167.Method1610(Chams.class).isEnabled()) {
+        if (Chams.hGlint.getValue() != ChamsGlintMode.NONE && ModuleManager.getModuleByClass(Chams.class).isEnabled()) {
             ModelPlayer modelplayer = this.Method1();
             this.Method2(clientPlayer);
             GlStateManager.enableBlend();

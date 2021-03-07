@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
@@ -166,7 +167,7 @@ extends Gui {
             this.Field539 += (float)(Class557.Method802() + 3);
         }
         this.Method617(this.Field537 + 1.0f + (float)((Class557.Method802() + 3) * Category.Method1764().length));
-        return Class167.Method1616(category);
+        return ModuleManager.Method1616(category);
     }
 
     public void Method121() {

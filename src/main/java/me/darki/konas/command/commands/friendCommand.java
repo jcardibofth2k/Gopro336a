@@ -2,7 +2,7 @@ package me.darki.konas.command.commands;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import java.util.regex.Pattern;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.ExtraChat;
 import me.darki.konas.unremaped.Class469;
 import me.darki.konas.unremaped.Class492;
@@ -65,7 +65,7 @@ extends Command {
                     }
                     EntityPlayer entityPlayer = Minecraft.getMinecraft().world.getPlayerEntityByName(stringArray[2]);
                     Class492.Method1990(entityPlayer.getName(), entityPlayer.getUniqueID().toString().replace("-", ""));
-                    if (Class167.Method1610(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
+                    if (ModuleManager.getModuleByClass(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + stringArray[2] + "&f as friend");
@@ -75,7 +75,7 @@ extends Command {
                         return;
                     }
                     Class492.Method1990(Class509.Method1351(Class509.Method1349(stringArray[2])), Class509.Method1349(stringArray[2]));
-                    if (Class167.Method1610(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
+                    if (ModuleManager.getModuleByClass(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(stringArray[2], "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added &b" + Class509.Method1351(Class509.Method1349(stringArray[2])) + "&f as friend");

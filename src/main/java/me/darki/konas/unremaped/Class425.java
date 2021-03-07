@@ -8,8 +8,9 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.fontCommand;
@@ -82,7 +83,7 @@ extends Module {
     public static Setting<Double> Field951 = new Setting<>("YOffset", 0.2, 1.0, 0.0, 0.05).setParentSetting(Field942);
     public static Setting<ParentSetting> Field952 = new Setting<>("Misc", new ParentSetting(false));
     public static Setting<Boolean> Field953 = new Setting<>("SelfNametag", false).setParentSetting(Field952);
-    public static Setting<Class427> Field954 = new IdkWhatThisSettingThingDoes("Font", Class427.VANILLA, new Class404());
+    public static Setting<Class427> Field954 = new ListenableSettingDecorator("Font", Class427.VANILLA, new Class404());
     public DecimalFormat Field955 = new DecimalFormat("#.##");
     public static ICamera Field956 = new Frustum();
     public static Class552 Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
@@ -338,7 +339,7 @@ lbl78:
             Field956.setPosition(Class425.mc.getRenderViewEntity().posX, Class425.mc.getRenderViewEntity().posY, Class425.mc.getRenderViewEntity().posZ);
         }
         Class425.mc.world.loadedEntityList.stream().filter(Class425::Method513).filter(this::Method384).filter(Class425::Method386).forEach(arg_0 -> this.Method954(vec3d, arg_0));
-        if (((Boolean)Field914.getValue()).booleanValue() && (waypoints = (Waypoints)Class167.Method1610(Waypoints.class)) != null && waypoints.Method1651()) {
+        if (((Boolean)Field914.getValue()).booleanValue() && (waypoints = (Waypoints) ModuleManager.getModuleByClass(Waypoints.class)) != null && waypoints.Method1651()) {
             EntityPlayer entityPlayer;
             for (Class559 object : NewGui.INSTANCE.Field1138.Method759()) {
                 entityPlayer = new Vec3d(object.Method821(), object.Method820(), object.Method818()).add(0.5, 2.2, 0.5);
@@ -406,7 +407,7 @@ lbl78:
         double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
         d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
         double d2 = (Double)Field945.getValue() * d;
-        if (Class167.Method1610(Zoom.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(Zoom.class).isEnabled()) {
             d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
         }
         if (Field954.getValue() != Class427.HIGHRES) {
@@ -461,7 +462,7 @@ lbl78:
         if (Field954.getValue() != Class427.HIGHRES) {
             GL11.glScaled((double)(1.0 / d2), (double)(1.0 / d2), (double)1.0);
             d2 = (Double)Field945.getValue() * d;
-            if (Class167.Method1610(Zoom.class).isEnabled()) {
+            if (ModuleManager.getModuleByClass(Zoom.class).isEnabled()) {
                 d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
             }
             GL11.glScaled((double)d2, (double)d2, (double)1.0);

@@ -3,7 +3,7 @@ package me.darki.konas.gui.hud.elements;
 import java.awt.Color;
 import java.util.Comparator;
 import me.darki.konas.unremaped.Class107;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.unremaped.Class556;
@@ -42,7 +42,7 @@ extends Element {
         if (this.Field841.getValue().booleanValue()) {
             RenderUtil2.Method1338(this.Method2320() + (bl ? this.Method2329() - f - 2.0f : f + 2.0f), this.Method2324() + (float)nArray[0], 1.0f, (int)(Class557.Method799(string) + 1.5f), n);
         }
-        Class557.Method801(string, (int)((float)((int)this.Method2320()) + (bl ? this.Method2329() - f : 0.0f)), (int)(this.Method2324() + (float)nArray[0] + 0.5f), module.Method1635() ? n : Color.GRAY.getRGB());
+        Class557.Method801(string, (int)((float)((int)this.Method2320()) + (bl ? this.Method2329() - f : 0.0f)), (int)(this.Method2324() + (float)nArray[0] + 0.5f), module.isVisible() ? n : Color.GRAY.getRGB());
         nArray[0] = nArray[0] + (int)(Class557.Method799(string) + 1.5f);
         nArray2[0] = nArray2[0] + 1;
     }
@@ -55,7 +55,7 @@ extends Element {
         int[] nArray2 = new int[]{1};
         boolean bl = this.Field849 == Class107.TOP_LEFT || this.Field849 == Class107.TOP_RIGHT;
         boolean bl2 = this.Field849 == Class107.BOTTOM_RIGHT || this.Field849 == Class107.TOP_RIGHT;
-        java.util.ArrayList<Module> arrayList = Class167.Method1613();
+        java.util.ArrayList<Module> arrayList = ModuleManager.getEnabledVisibleModules();
         this.Field848 = (float)arrayList.stream().mapToDouble(ArrayList::Method897).max().orElse(0.0);
         this.Method2323(this.Field848);
         arrayList.stream().sorted(Comparator.comparingInt(arg_0 -> ArrayList.Method898(bl, arg_0))).forEach(arg_0 -> this.Method895(bl2, nArray, nArray2, arg_0));
@@ -63,7 +63,7 @@ extends Element {
     }
 
     public int Method896(int n) {
-        int n2 = Class167.Method1611().size();
+        int n2 = ModuleManager.getEnabledModules().size();
         int n3 = new Color(91, 206, 250).getRGB();
         int n4 = Color.WHITE.getRGB();
         int n5 = new Color(245, 169, 184).getRGB();

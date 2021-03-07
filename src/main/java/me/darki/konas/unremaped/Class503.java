@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
@@ -16,7 +16,7 @@ import net.minecraft.potion.PotionEffect;
 public class Class503
 extends Module {
     public float Field1371;
-    public IdkWhatThisSettingThingDoes<Class505> Field1372 = new IdkWhatThisSettingThingDoes("Mode", Class505.NORMAL, this::Method1442);
+    public ListenableSettingDecorator<Class505> Field1372 = new ListenableSettingDecorator("Mode", Class505.NORMAL, this::Method1442);
     public Setting<Boolean> Field1373 = new Setting<>("Sine", false).visibleIf(this::Method394);
     public Setting<Boolean> Field1374 = new Setting<>("Cancel", false).visibleIf(this::Method388);
     public long Field1375;

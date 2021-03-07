@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
 import java.util.ArrayList;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.unremaped.Class605;
@@ -20,18 +20,18 @@ extends Command {
             Logger.Method1118(this.Method191());
             return;
         }
-        if (Class167.Method1612(stringArray[1]) == null) {
+        if (ModuleManager.Method1612(stringArray[1]) == null) {
             Logger.Method1118("Module not found");
             return;
         }
-        Module module = Class167.Method1612(stringArray[1]);
-        if (Class167.Method1615(module) == null) {
+        Module module = ModuleManager.Method1612(stringArray[1]);
+        if (ModuleManager.Method1615(module) == null) {
             Logger.Method1119(module.getName() + " does not have any settings");
             return;
         }
         Logger.Method1118(module.getName() + "'s Settings:");
         Logger.Method1118(" ");
-        for (Setting setting : Class167.Method1615(module)) {
+        for (Setting setting : ModuleManager.Method1615(module)) {
             if (setting.getValue() instanceof Enum) {
                 ArrayList<String> arrayList = new ArrayList<String>();
                 for (Object obj : setting.getValue().getClass().getEnumConstants()) {

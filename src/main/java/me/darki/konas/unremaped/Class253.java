@@ -29,7 +29,7 @@ extends Class215 {
                 Enum enum_ = ((Enum[])((Enum)this.Field2173.getValue()).getClass().getEnumConstants())[i];
                 if (enum_.name().equalsIgnoreCase(((Enum)this.Field2173.getValue()).toString())) continue;
                 if (Class253.Method487(n, n2, this.Method486(), this.Method492() + f, this.Method489(), 20.0)) {
-                    this.Field2173.Method1154(enum_.name());
+                    this.Field2173.setEnumValue(enum_.name());
                     this.Field2174 = false;
                     return true;
                 }
