@@ -1,9 +1,10 @@
 package me.darki.konas.unremaped;
 
 import me.darki.konas.module.client.ClickGUIModule;
+import me.darki.konas.setting.IRunnable;
 
 public class Class173
-implements Class529 {
+implements IRunnable {
     public ClickGUIModule Field1547;
 
     public void Method631(Boolean bl) {

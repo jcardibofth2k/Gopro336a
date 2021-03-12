@@ -2,9 +2,10 @@ package me.darki.konas.unremaped;
 
 import me.darki.konas.module.Module;
 import me.darki.konas.module.player.GuiMove;
+import me.darki.konas.setting.IRunnable;
 
 public class Class356
-implements Class529 {
+implements IRunnable {
     public GuiMove Field2513;
 
     public Class356(GuiMove guiMove) {
