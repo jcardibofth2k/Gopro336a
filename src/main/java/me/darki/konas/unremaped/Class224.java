@@ -26,7 +26,7 @@ extends Class215 {
     public Class224(String string, float f, float f2, float f3, float f4, float f5, float f6) {
         super(string, f, f2, f3, f4, f5, f6);
         int n = 0;
-        for (Module module : ModuleManager.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (!module.getName().toLowerCase().contains(string.toLowerCase())) continue;
             this.Field2660.add(new Class217(module, this.Method486(), this.Method492(), 0.0f, (float)n, f5, 32.0f));
             n += 40;

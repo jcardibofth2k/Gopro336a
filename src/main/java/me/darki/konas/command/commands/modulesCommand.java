@@ -20,6 +20,6 @@ extends Command {
     public void Method174(String[] stringArray) {
         Logger.Method1118("&bModules:");
         Logger.Method1118(" ");
-        ModuleManager.Method1619().forEach(modulesCommand::Method1335);
+        ModuleManager.getModules().forEach(modulesCommand::Method1335);
     }
 }

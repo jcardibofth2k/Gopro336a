@@ -128,7 +128,7 @@ public class Setting<T> {
     }
 
     public Module getParentModule() {
-        for (Module module : ModuleManager.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (ModuleManager.Method1617(module.getName(), this.Method1183()) == null) continue;
             return module;
         }

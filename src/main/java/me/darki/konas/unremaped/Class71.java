@@ -167,7 +167,7 @@ extends Gui {
             this.Field539 += (float)(Class557.Method802() + 3);
         }
         this.Method617(this.Field537 + 1.0f + (float)((Class557.Method802() + 3) * Category.Method1764().length));
-        return ModuleManager.Method1616(category);
+        return ModuleManager.getModulesByCategory(category);
     }
 
     public void Method121() {

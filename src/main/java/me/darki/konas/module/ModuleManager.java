@@ -158,11 +158,14 @@ public class ModuleManager {
         return var2;
     }
 
-    public static ArrayList<Module> Method1616(Category var0) {
-        Object var10000 = null;
-        ArrayList var1 = new ArrayList();
-        modules.forEach(ModuleManager::Method1618);
-        return var1;
+    public static ArrayList<Module> getModulesByCategory(Category category) {
+        ArrayList<Module> modulesInCategory = new ArrayList<>();
+        modules.forEach(module -> {
+            if (module.getCategory() == category) {
+                modulesInCategory.add(module);
+            }
+        });
+        return modulesInCategory;
     }
 
     public static Setting Method1617(String var0, String var1) {
@@ -189,8 +192,7 @@ public class ModuleManager {
 
     }
 
-    public static ArrayList<Module> Method1619() {
-        Object var10000 = null;
+    public static ArrayList<Module> getModules() {
         return modules;
     }
 

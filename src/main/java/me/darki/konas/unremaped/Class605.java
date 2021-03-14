@@ -11,7 +11,7 @@ extends SyntaxChunk {
     }
 
     public String Method177(String string) {
-        for (Module module : ModuleManager.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (module.getName().toLowerCase().startsWith(string.toLowerCase())) {
                 return module.getName();
             }

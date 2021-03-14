@@ -89,7 +89,7 @@ extends Class215 {
         super(category.name(), f, f2, f3, f4, f5, f6);
         this.Field2542 = category;
         int n = 0;
-        for (Module module : ModuleManager.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (module.getCategory() != this.Field2542) continue;
             this.Field2543.add(new Class217(module, this.Method486(), this.Method492(), 0.0f, (float)n, f5, 32.0f));
             n += 40;

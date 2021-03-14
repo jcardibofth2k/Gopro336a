@@ -56,7 +56,7 @@ public class Class589
     
     public static JsonArray Method2217() {
         final JsonArray jsonArray = new JsonArray();
-        final Iterator<Module> iterator = ModuleManager.Method1619().iterator();
+        final Iterator<Module> iterator = ModuleManager.getModules().iterator();
         while (iterator.hasNext()) {
             jsonArray.add((JsonElement)Method2226(iterator.next()));
         }
@@ -697,7 +697,7 @@ public class Class589
     }
     
     public static void Method2253(final JsonObject jsonObject) throws NullPointerException {
-        final Module module = ModuleManager.Method1619().stream().filter(Class589::Method2248).findFirst().orElse(null);
+        final Module module = ModuleManager.getModules().stream().filter(Class589::Method2248).findFirst().orElse(null);
         if (module != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(module.getName());
             try {

@@ -17,7 +17,7 @@ public class Class54 {
         if (Minecraft.getMinecraft().currentScreen != null && (Minecraft.getMinecraft().currentScreen instanceof Class193 || Minecraft.getMinecraft().currentScreen instanceof GuiChat)) {
             return;
         }
-        for (Module module : ModuleManager.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (!module.Method1630()) continue;
             if (PlayerUtil.Method1087(module.Method1646()) && !module.isEnabled()) {
                 module.toggle();
@@ -36,7 +36,7 @@ public class Class54 {
         if (Keyboard.isKeyDown((int)61)) {
             return;
         }
-        for (Module object : ModuleManager.Method1619()) {
+        for (Module object : ModuleManager.getModules()) {
             if (object.Method1630() || object.Method1646() != class653.Method1164()) continue;
             object.toggle();
         }
