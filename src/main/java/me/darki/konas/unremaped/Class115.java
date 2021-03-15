@@ -9,8 +9,8 @@ import me.darki.konas.setting.Setting;
 public class Class115
 extends Element {
     public static Class71 Field2502 = new Class71();
-    public static Setting<ColorValue> Field2503 = new Setting<>("Selected", new ColorValue(Color.BLUE.hashCode(), true));
-    public static Setting<ColorValue> Field2504 = new Setting<>("Toggled", new ColorValue(Color.BLUE.hashCode(), true));
+    public static Setting<ColorValue> selected = new Setting<>("Selected", new ColorValue(Color.BLUE.hashCode(), true));
+    public static Setting<ColorValue> toggled = new Setting<>("Toggled", new ColorValue(Color.BLUE.hashCode(), true));
 
     @Override
     public void Method2158(int n) {

@@ -31,11 +31,11 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
 public class Class208
 extends Module {
-    public static Setting<Boolean> Field546 = new Setting<>("Texture", true);
-    public static Setting<Boolean> Field547 = new Setting<>("CustomColor", false);
-    public static Setting<ColorValue> Field548 = new Setting<>("Color", new ColorValue(-65281, true));
-    public static Setting<Boolean> Field549 = new Setting<>("Shulkers", true);
-    public static Setting<Boolean> Field550 = new Setting<>("Maps", true);
+    public static Setting<Boolean> texture = new Setting<>("Texture", true);
+    public static Setting<Boolean> customColor = new Setting<>("CustomColor", false);
+    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(-65281, true));
+    public static Setting<Boolean> shulkers = new Setting<>("Shulkers", true);
+    public static Setting<Boolean> maps = new Setting<>("Maps", true);
     public int Field551;
     public int Field552;
 
@@ -45,7 +45,7 @@ extends Module {
 
     @Subscriber
     public void Method624(ItemTooltipEvent itemTooltipEvent) {
-        if (((Boolean)Field550.getValue()).booleanValue() && itemTooltipEvent.getItemStack().getItem() instanceof ItemMap) {
+        if (((Boolean)maps.getValue()).booleanValue() && itemTooltipEvent.getItemStack().getItem() instanceof ItemMap) {
             itemTooltipEvent.getToolTip().clear();
             itemTooltipEvent.getToolTip().add(itemTooltipEvent.getItemStack().getDisplayName());
         }
@@ -54,7 +54,7 @@ extends Module {
     @Subscriber
     public void Method625(DrawScreenEvent drawScreenEvent) {
         block3: {
-            if (!((Boolean)Field550.getValue()).booleanValue() || !(drawScreenEvent.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
+            if (!((Boolean)maps.getValue()).booleanValue() || !(drawScreenEvent.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
             Slot slot = ((GuiContainer) drawScreenEvent.Method272()).getSlotUnderMouse();
             if (slot == null || !slot.getHasStack()) {
                 return;
@@ -87,7 +87,7 @@ extends Module {
 
     @Subscriber
     public void Method626(Class136 class136) {
-        if (((Boolean)Field550.getValue()).booleanValue() && class136.Method1926().getItem() instanceof ItemMap) {
+        if (((Boolean)maps.getValue()).booleanValue() && class136.Method1926().getItem() instanceof ItemMap) {
             this.Field551 = class136.Method1928();
             this.Field552 = class136.Method1927();
         }
@@ -100,14 +100,14 @@ extends Module {
         RenderHelper.disableStandardItemLighting();
         GlStateManager.disableLighting();
         GlStateManager.disableDepth();
-        if (((Boolean)Field546.getValue()).booleanValue()) {
+        if (((Boolean)texture.getValue()).booleanValue()) {
             NBTTagCompound nBTTagCompound2;
             int n3 = 144;
             int n4 = n + 12;
             int n5 = n2 - 12;
             int n6 = 48 + Class557.Method802();
             Class208.mc.getRenderItem().zLevel = 300.0f;
-            Color color = (Boolean)Field547.getValue() != false ? new Color(((ColorValue)Field548.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
+            Color color = (Boolean)customColor.getValue() != false ? new Color(((ColorValue)color.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             this.Method629((double)n4 - 8.5, n5 - 3, 0.0, 0.0, n3 + 3, n6 + 6, color);
             Class208.mc.fontRenderer.drawString(itemStack.getDisplayName(), n + 8, n2 - 12, 0xFFFFFF);
             GlStateManager.enableBlend();
@@ -139,7 +139,7 @@ extends Module {
             int n10 = n2 - 12;
             int n11 = 48 + Class557.Method802();
             Class208.mc.getRenderItem().zLevel = 300.0f;
-            Color color = (Boolean)Field547.getValue() != false ? new Color(((ColorValue)Field548.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
+            Color color = (Boolean)customColor.getValue() != false ? new Color(((ColorValue)color.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             Color color2 = new Color(color.getRed(), color.getGreen(), color.getBlue(), 150);
             GuiScreen.drawRect((int)(n9 - 3), (int)(n10 - 3), (int)((int)((float)n9 + f + 3.0f)), (int)(n10 + n11 + 3), (int)color2.getRGB());
             ItemStack itemStack3 = itemStack;
@@ -183,7 +183,7 @@ extends Module {
     @Subscriber
     public void Method628(Class116 class116) {
         block0: {
-            if (!((Boolean)Field549.getValue()).booleanValue() || !(class116.Method2102().getItem() instanceof ItemShulkerBox)) break block0;
+            if (!((Boolean)shulkers.getValue()).booleanValue() || !(class116.Method2102().getItem() instanceof ItemShulkerBox)) break block0;
             this.Method627(class116.Method2102(), class116.Method2103(), class116.Method2101());
             class116.setCanceled(true);
         }

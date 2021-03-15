@@ -13,7 +13,7 @@ import net.minecraftforge.event.world.WorldEvent;
 public class AutoReconnect
 extends Module {
     public ServerData Field1733;
-    public Setting<Integer> Field1734 = new Setting<>("Delay", 5, 30, 1, 1);
+    public Setting<Integer> delay = new Setting<>("Delay", 5, 30, 1, 1);
 
     public void Method124() {
         ServerData serverData = mc.getCurrentServerData();
@@ -36,7 +36,7 @@ extends Module {
         block0: {
             if (!(openGuiEvent.Method1161() instanceof GuiDisconnected)) break block0;
             this.Method124();
-            openGuiEvent.Method1160(new AutoReconnectScreen((GuiDisconnected) openGuiEvent.Method1161(), this.Field1733, (Integer)this.Field1734.getValue()));
+            openGuiEvent.Method1160(new AutoReconnectScreen((GuiDisconnected) openGuiEvent.Method1161(), this.Field1733, (Integer)this.delay.getValue()));
         }
     }
 }

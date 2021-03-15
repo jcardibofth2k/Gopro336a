@@ -11,7 +11,7 @@ public class Class497
 extends Module {
     public float Field2060 = 0.0f;
     public float Field2061 = 0.0f;
-    public static Setting<Boolean> Field2062 = new Setting<>("AutoThirdPerson", true);
+    public static Setting<Boolean> autoThirdPerson = new Setting<>("AutoThirdPerson", true);
 
     @Subscriber
     public void Method1923(Class37 class37) {
@@ -39,7 +39,7 @@ extends Module {
 
     @Override
     public void onDisable() {
-        if (((Boolean)Field2062.getValue()).booleanValue()) {
+        if (((Boolean)autoThirdPerson.getValue()).booleanValue()) {
             Class497.mc.gameSettings.thirdPersonView = 0;
         }
     }
@@ -48,7 +48,7 @@ extends Module {
     public void onEnable() {
         this.Field2060 = 0.0f;
         this.Field2061 = 0.0f;
-        if (((Boolean)Field2062.getValue()).booleanValue()) {
+        if (((Boolean)autoThirdPerson.getValue()).booleanValue()) {
             Class497.mc.gameSettings.thirdPersonView = 1;
         }
     }

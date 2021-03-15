@@ -16,11 +16,11 @@ import net.minecraft.init.Items;
 
 public class AutoLog
 extends Module {
-    public static Setting<Class300> Field1485 = new Setting<>("Mode", Class300.HEALTH);
-    public static Setting<Float> Field1486 = new Setting<>("Health", Float.valueOf(10.0f), Float.valueOf(22.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(AutoLog::Method393);
-    public Setting<Float> Field1487 = new Setting<>("CrystalRange", Float.valueOf(10.0f), Float.valueOf(15.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(AutoLog::Method394);
-    public static Setting<Boolean> Field1488 = new Setting<>("IgnoreTotem", true).visibleIf(AutoLog::Method539);
-    public Setting<Boolean> Field1489 = new Setting<>("Notify", false).visibleIf(this::Method1632);
+    public static Setting<Class300> mode = new Setting<>("Mode", Class300.HEALTH);
+    public static Setting<Float> health = new Setting<>("Health", Float.valueOf(10.0f), Float.valueOf(22.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(AutoLog::Method393);
+    public Setting<Float> crystalRange = new Setting<>("CrystalRange", Float.valueOf(10.0f), Float.valueOf(15.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(AutoLog::Method394);
+    public static Setting<Boolean> ignoreTotem = new Setting<>("IgnoreTotem", true).visibleIf(AutoLog::Method539);
+    public Setting<Boolean> notify = new Setting<>("Notify", false).visibleIf(this::Method1632);
 
     public boolean Method519() {
         for (int i = 0; i < 36; ++i) {
@@ -43,9 +43,9 @@ extends Module {
                         if (AutoLog.mc.world == null || AutoLog.mc.player == null) {
                             return;
                         }
-                        if (Field1485.getValue() != Class300.HEALTH) break block5;
-                        if (!(AutoLog.mc.player.getHealth() <= ((Float)Field1486.getValue()).floatValue())) break block4;
-                        if (!((Boolean)Field1488.getValue()).booleanValue()) break block6;
+                        if (mode.getValue() != Class300.HEALTH) break block5;
+                        if (!(AutoLog.mc.player.getHealth() <= ((Float)health.getValue()).floatValue())) break block4;
+                        if (!((Boolean)ignoreTotem.getValue()).booleanValue()) break block6;
                         this.Method134();
                         break block4;
                     }
@@ -53,7 +53,7 @@ extends Module {
                     this.Method134();
                     break block4;
                 }
-                if (Field1485.getValue() != Class300.PLAYER) break block7;
+                if (mode.getValue() != Class300.PLAYER) break block7;
                 for (EntityPlayer entityPlayer : AutoLog.mc.world.playerEntities) {
                     if (entityPlayer == AutoLog.mc.player || Class492.Method1989(entityPlayer.getName()) || Class546.Method963((Entity)entityPlayer)) continue;
                     this.Method134();
@@ -61,7 +61,7 @@ extends Module {
                 }
                 break block4;
             }
-            if (!((Boolean)Field1488.getValue()).booleanValue() && this.Method519()) {
+            if (!((Boolean)ignoreTotem.getValue()).booleanValue() && this.Method519()) {
                 return;
             }
             float f = 0.0f;
@@ -82,7 +82,7 @@ extends Module {
             }
         }
         this.toggle();
-        if (((Boolean)this.Field1489.getValue()).booleanValue()) {
+        if (((Boolean)this.notify.getValue()).booleanValue()) {
             this.Method1637("You have AutoLogged!", TrayIcon.MessageType.ERROR);
         }
         AutoLog.mc.player.inventory.currentItem = 1000;
@@ -93,18 +93,18 @@ extends Module {
     }
 
     public static boolean Method393() {
-        return Field1485.getValue() == Class300.HEALTH;
+        return mode.getValue() == Class300.HEALTH;
     }
 
     public static boolean Method539() {
-        return Field1485.getValue() != Class300.PLAYER;
+        return mode.getValue() != Class300.PLAYER;
     }
 
     public static boolean Method394() {
-        return Field1485.getValue() == Class300.CRYSTALDMG;
+        return mode.getValue() == Class300.CRYSTALDMG;
     }
 
     public boolean Method386(Entity entity) {
-        return AutoLog.mc.player.getDistance(entity) <= ((Float)this.Field1487.getValue()).floatValue();
+        return AutoLog.mc.player.getDistance(entity) <= ((Float)this.crystalRange.getValue()).floatValue();
     }
 }

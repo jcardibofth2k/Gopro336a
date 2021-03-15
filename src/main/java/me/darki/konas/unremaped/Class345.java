@@ -25,12 +25,12 @@ import net.minecraft.util.math.BlockPos;
 
 public class Class345
 extends Module {
-    public static Setting<Boolean> Field2663 = new Setting<>("Glide", false);
-    public static Setting<Boolean> Field2664 = new Setting<>("Strict", false);
-    public static Setting<Boolean> Field2665 = new Setting<>("AirStrict", false);
-    public static Setting<Boolean> Field2666 = new Setting<>("NCP", false).Method1177(4, 47);
-    public static Setting<Class461> Field2667 = new Setting<>("Webs", Class461.OFF);
-    public static Setting<Integer> Field2668 = new Setting<>("ShiftTicks", 1, 10, 1, 1).visibleIf(Class345::Method394);
+    public static Setting<Boolean> glide = new Setting<>("Glide", false);
+    public static Setting<Boolean> strict = new Setting<>("Strict", false);
+    public static Setting<Boolean> airStrict = new Setting<>("AirStrict", false);
+    public static Setting<Boolean> nCP = new Setting<>("NCP", false).Method1177(4, 47);
+    public static Setting<Class461> webs = new Setting<>("Webs", Class461.OFF);
+    public static Setting<Integer> shiftTicks = new Setting<>("ShiftTicks", 1, 10, 1, 1).visibleIf(Class345::Method394);
     public boolean Field2669;
     public boolean Field2670;
     public boolean Field2671;
@@ -42,7 +42,7 @@ extends Module {
         }
         Item item = Class345.mc.player.getActiveItemStack().getItem();
         if (!Class345.mc.player.isHandActive() && item instanceof ItemFood || item instanceof ItemBow || item instanceof ItemPotion || !(item instanceof ItemFood) || !(item instanceof ItemBow) || !(item instanceof ItemPotion)) {
-            if (this.Field2669 && ((Boolean)Field2664.getValue()).booleanValue()) {
+            if (this.Field2669 && ((Boolean)strict.getValue()).booleanValue()) {
                 Class345.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class345.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
                 this.Field2669 = false;
             }
@@ -61,7 +61,7 @@ extends Module {
             if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                 return;
             }
-            if (!((Boolean)Field2666.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
+            if (!((Boolean)nCP.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !nCP.Method1178()) break block2;
             Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.RELEASE_USE_ITEM, BlockPos.ORIGIN, EnumFacing.DOWN));
         }
     }
@@ -87,7 +87,7 @@ extends Module {
     }
 
     public static boolean Method394() {
-        return Field2667.getValue() == Class461.TIMER;
+        return webs.getValue() == Class461.TIMER;
     }
 
     @Subscriber
@@ -97,10 +97,10 @@ extends Module {
                 if (this.Field2671) {
                     return;
                 }
-                if (Field2667.getValue() == Class461.OFF) break block2;
-                if (Field2667.getValue() != Class461.TIMER || Class345.mc.world.getBlockState(new BlockPos((Entity)Class345.mc.player)).getBlock() != Blocks.WEB) break block3;
+                if (webs.getValue() == Class461.OFF) break block2;
+                if (webs.getValue() != Class461.TIMER || Class345.mc.world.getBlockState(new BlockPos((Entity)Class345.mc.player)).getBlock() != Blocks.WEB) break block3;
                 if (!(moveEvent.getY() < 0.0)) break block2;
-                for (int i = 0; i < (Integer)Field2668.getValue(); ++i) {
+                for (int i = 0; i < (Integer)shiftTicks.getValue(); ++i) {
                     this.Field2671 = true;
                     Class345.mc.player.move(moveEvent.getMoverType(), 0.0, moveEvent.getY(), 0.0);
                     Class550.Method883(Class345.mc.player.rotationYaw, Class345.mc.player.rotationPitch);
@@ -119,15 +119,15 @@ extends Module {
                 if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                     return;
                 }
-                if (((Boolean)Field2663.getValue()).booleanValue()) {
+                if (((Boolean)glide.getValue()).booleanValue()) {
                     if (!this.Field2670) {
                         Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(Class345.mc.player.rotationYaw, Class345.mc.player.rotationPitch, false));
                     }
                     this.Field2670 = true;
                 }
-                if (this.Field2669 || !((Boolean)Field2664.getValue()).booleanValue()) break block6;
-                if (!((Boolean)Field2665.getValue()).booleanValue() || !Class345.mc.player.onGround) break block7;
-                if (!((Boolean)Field2663.getValue()).booleanValue()) break block6;
+                if (this.Field2669 || !((Boolean)strict.getValue()).booleanValue()) break block6;
+                if (!((Boolean)airStrict.getValue()).booleanValue() || !Class345.mc.player.onGround) break block7;
+                if (!((Boolean)glide.getValue()).booleanValue()) break block6;
             }
             Class345.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity)Class345.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             this.Field2669 = true;
@@ -143,7 +143,7 @@ extends Module {
             if (Class345.mc.player.getActiveItemStack().getItem() instanceof ItemBow) {
                 return;
             }
-            if (!((Boolean)Field2666.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !Field2666.Method1178()) break block2;
+            if (!((Boolean)nCP.getValue()).booleanValue() || !(Class345.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword) || !nCP.Method1178()) break block2;
             Class345.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(new BlockPos(-1, -1, -1), EnumFacing.DOWN, EnumHand.MAIN_HAND, 0.0f, 0.0f, 0.0f));
         }
     }

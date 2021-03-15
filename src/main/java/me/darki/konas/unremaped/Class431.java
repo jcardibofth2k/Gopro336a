@@ -21,7 +21,7 @@ public class Class431
 extends Module {
     public ICamera Field799 = new Frustum();
     public Set<ChunkPos> Field800 = new ConcurrentSet();
-    public Setting<ColorValue> Field801 = new Setting<>("Color", new ColorValue(new Color(0.8392157f, 0.3372549f, 0.5764706f, 0.39215687f).hashCode(), false));
+    public Setting<ColorValue> color = new Setting<>("Color", new ColorValue(new Color(0.8392157f, 0.3372549f, 0.5764706f, 0.39215687f).hashCode(), false));
 
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
@@ -55,7 +55,7 @@ extends Module {
                 double d = Class431.mc.player.lastTickPosX + (Class431.mc.player.posX - Class431.mc.player.lastTickPosX) * (double)class89.Method436();
                 double d2 = Class431.mc.player.lastTickPosY + (Class431.mc.player.posY - Class431.mc.player.lastTickPosY) * (double)class89.Method436();
                 double d3 = Class431.mc.player.lastTickPosZ + (Class431.mc.player.posZ - Class431.mc.player.lastTickPosZ) * (double)class89.Method436();
-                Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)this.Field801.getValue()).Method774());
+                Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)this.color.getValue()).Method774());
             }
             GlStateManager.popMatrix();
         }

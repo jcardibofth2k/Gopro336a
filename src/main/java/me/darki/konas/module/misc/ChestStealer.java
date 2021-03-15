@@ -15,8 +15,8 @@ import net.minecraft.inventory.Slot;
 
 public class ChestStealer
 extends Module {
-    public Setting<Integer> Field2175 = new Setting<>("Delay", 100, 1000, 1, 1);
-    public Setting<Boolean> Field2176 = new Setting<>("Random", false);
+    public Setting<Integer> delay = new Setting<>("Delay", 100, 1000, 1, 1);
+    public Setting<Boolean> random = new Setting<>("Random", false);
     public Class566 Field2177 = new Class566();
 
     public boolean Method1975(Container container) {
@@ -40,7 +40,7 @@ extends Module {
                 Slot slot = guiChest.inventorySlots.getSlot(i);
                 if (!slot.getHasStack()) continue;
                 Random random = new Random();
-                if (!this.Field2177.Method737(this.Field2175.getValue() + (this.Field2176.getValue() != false ? random.nextInt(this.Field2175.getValue()) : 0))) continue;
+                if (!this.Field2177.Method737(this.delay.getValue() + (this.random.getValue() != false ? random.nextInt(this.delay.getValue()) : 0))) continue;
                 ChestStealer.mc.playerController.windowClick(containerChest.windowId, i, 0, ClickType.QUICK_MOVE, ChestStealer.mc.player);
                 this.Field2177.Method739();
             }

@@ -36,21 +36,21 @@ import net.minecraft.world.IBlockAccess;
 
 public class Class192
 extends Module {
-    public Setting<Boolean> Field54 = new Setting<>("Rotate", true);
-    public Setting<Boolean> Field55 = new Setting<>("Swing", true);
-    public Setting<Float> Field56 = new Setting<>("Range", Float.valueOf(4.0f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
-    public Setting<Float> Field57 = new Setting<>("Delay", Float.valueOf(2.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
-    public Setting<Boolean> Field58 = new Setting<>("StrictDirection", false);
-    public Setting<Class195> Field59 = new Setting<>("Swap", Class195.NORMAL);
-    public Setting<Boolean> Field60 = new Setting<>("Instant", false);
-    public Setting<Boolean> Field61 = new Setting<>("Limit", false).visibleIf(this.Field60::getValue);
-    public Setting<ParentSetting> Field62 = new Setting<>("Render", new ParentSetting(false));
-    public Setting<Boolean> Field63 = new Setting<>("ShowMining", true).setParentSetting(this.Field62);
-    public Setting<ColorValue> Field64 = new Setting<>("Mining", new ColorValue(0x55FF0000)).setParentSetting(this.Field62);
-    public Setting<ColorValue> Field65 = new Setting<>("MiningOutline", new ColorValue(Color.RED.hashCode())).setParentSetting(this.Field62);
-    public Setting<ColorValue> Field66 = new Setting<>("Ready", new ColorValue(0x5500FF00)).setParentSetting(this.Field62);
-    public Setting<ColorValue> Field67 = new Setting<>("ReadyOutline", new ColorValue(Color.GREEN.hashCode())).setParentSetting(this.Field62);
-    public Setting<Float> Field68 = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).setParentSetting(this.Field62);
+    public Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public Setting<Boolean> swing = new Setting<>("Swing", true);
+    public Setting<Float> range = new Setting<>("Range", Float.valueOf(4.0f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
+    public Setting<Float> delay = new Setting<>("Delay", Float.valueOf(2.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
+    public Setting<Boolean> strictDirection = new Setting<>("StrictDirection", false);
+    public Setting<Class195> swap = new Setting<>("Swap", Class195.NORMAL);
+    public Setting<Boolean> instant = new Setting<>("Instant", false);
+    public Setting<Boolean> limit = new Setting<>("Limit", false).visibleIf(this.Field60::getValue);
+    public Setting<ParentSetting> render = new Setting<>("Render", new ParentSetting(false));
+    public Setting<Boolean> showMining = new Setting<>("ShowMining", true).setParentSetting(this.Field62);
+    public Setting<ColorValue> mining = new Setting<>("Mining", new ColorValue(0x55FF0000)).setParentSetting(this.Field62);
+    public Setting<ColorValue> miningOutline = new Setting<>("MiningOutline", new ColorValue(Color.RED.hashCode())).setParentSetting(this.Field62);
+    public Setting<ColorValue> ready = new Setting<>("Ready", new ColorValue(0x5500FF00)).setParentSetting(this.Field62);
+    public Setting<ColorValue> readyOutline = new Setting<>("ReadyOutline", new ColorValue(Color.GREEN.hashCode())).setParentSetting(this.Field62);
+    public Setting<Float> width = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).setParentSetting(this.Field62);
     public Class566 Field69 = new Class566();
     public BlockPos Field70;
     public BlockPos Field71;
@@ -63,7 +63,7 @@ extends Module {
     public int Field78 = -1;
 
     public boolean Method122(EntityPlayer entityPlayer) {
-        return Class192.mc.player.getDistance((Entity)entityPlayer) <= ((Float)this.Field56.getValue()).floatValue();
+        return Class192.mc.player.getDistance((Entity)entityPlayer) <= ((Float)this.range.getValue()).floatValue();
     }
 
     public Class192() {
@@ -85,11 +85,11 @@ extends Module {
 
     public void Method124() {
         block1: {
-            if (((Boolean)this.Field61.getValue()).booleanValue()) {
+            if (((Boolean)this.limit.getValue()).booleanValue()) {
                 Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72.getOpposite()));
             }
             Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
-            if (!((Boolean)this.Field55.getValue()).booleanValue()) break block1;
+            if (!((Boolean)this.swing.getValue()).booleanValue()) break block1;
             Class192.mc.player.swingArm(EnumHand.MAIN_HAND);
         }
     }
@@ -169,7 +169,7 @@ extends Module {
         block0: {
             Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, this.Field71, this.Field72));
             Class192.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, this.Field71, this.Field72));
-            if (!((Boolean)this.Field55.getValue()).booleanValue()) break block0;
+            if (!((Boolean)this.swing.getValue()).booleanValue()) break block0;
             Class192.mc.player.swingArm(EnumHand.MAIN_HAND);
         }
     }
@@ -181,7 +181,7 @@ extends Module {
             ArrayList<BlockPos> arrayList;
             BlockPos blockPos;
             EntityPlayer entityPlayer;
-            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)this.Field54.getValue())) {
+            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)this.rotate.getValue())) {
                 return;
             }
             if (this.Field71 != null) {
@@ -194,8 +194,8 @@ extends Module {
                     } else {
                         int n;
                         this.Field75 = true;
-                        if (this.Field59.getValue() != Class195.OFF && (n = AutoTool.Method1850(this.Field71)) != -1 && n != Class192.mc.player.inventory.currentItem) {
-                            if (this.Field59.getValue() == Class195.SILENT) {
+                        if (this.swap.getValue() != Class195.OFF && (n = AutoTool.Method1850(this.Field71)) != -1 && n != Class192.mc.player.inventory.currentItem) {
+                            if (this.swap.getValue() == Class195.SILENT) {
                                 this.Field78 = Class192.mc.player.inventory.currentItem;
                                 Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
                                 this.Field69.Method739();
@@ -206,13 +206,13 @@ extends Module {
                         }
                     }
                 }
-            } else if (this.Field76.Method737(((Float)this.Field57.getValue()).floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (BlockPos)(arrayList = Class465.Method2284(new BlockPos((Entity)entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, (Boolean)this.Field58.getValue())) != null) {
+            } else if (this.Field76.Method737(((Float)this.delay.getValue()).floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (BlockPos)(arrayList = Class465.Method2284(new BlockPos((Entity)entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, (Boolean)this.strictDirection.getValue())) != null) {
                 this.Field71 = blockPos;
                 this.Field72 = enumFacing;
                 this.Field73 = 0.0f;
                 this.Field75 = false;
                 this.Field76.Method739();
-                if (((Boolean)this.Field60.getValue()).booleanValue() && this.Field71.equals((Object)this.Field70)) {
+                if (((Boolean)this.instant.getValue()).booleanValue() && this.Field71.equals((Object)this.Field70)) {
                     this.Field73 = 1.0f;
                     this.Field74.Method739();
                     this.Field77 = this::Method124;
@@ -220,7 +220,7 @@ extends Module {
                     this.Field77 = this::Method134;
                 }
             }
-            if (!((Boolean)this.Field54.getValue()).booleanValue() || this.Field71 == null) break block13;
+            if (!((Boolean)this.rotate.getValue()).booleanValue() || this.Field71 == null) break block13;
             Vec3d vec3d = new Vec3d((Vec3i)this.Field71).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field72.getDirectionVec()).scale(0.5));
             NewGui.INSTANCE.Field1139.Method1942(vec3d);
         }

@@ -28,30 +28,29 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class Hud
 extends Module {
-    public static Setting<Boolean> Field1391 = new Setting<>("Overlap", true);
-    public static Setting<Boolean> Field1392 = new Setting<>("PotionIcons", false);
-    public static Setting<Boolean> Field1393 = new Setting<>("Blur", false);
-    public static Setting<Boolean> Field1394 = new Setting<>("BlurEverything", true).visibleIf(Field1393::getValue);
-    public Setting<Boolean> Field1395 = new IdkWhatThisSettingThingDoes("CustomFont", true, new Class159(this));
-    public static Setting<Boolean> Field1396 = new Setting<>("Hotbar", true);
-    public static Setting<Boolean> Field1397 = new Setting<>("XPBar", true);
-    public static Setting<Class165> Field1398 = new Setting<>("ArmorMode", Class165.BOTH);
-    public static Setting<Class189> Field1399 = new Setting<>("NumberMode", Class189.PERCENTAGE).visibleIf(Hud::Method388);
-    public static Setting<Class163> Field1400 = new Setting<>("ColorMode", Class163.DYNAMIC).visibleIf(Hud::Method394);
-    public static Setting<ColorValue> Field1401 = new Setting<>("Color", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Hud::Method393);
-    public static Setting<Boolean> Field1402 = new Setting<>("Health", true);
-    public static Setting<Boolean> Field1403 = new Setting<>("Food", true);
-    public static Setting<Boolean> Field1404 = new Setting<>("Crosshair", true);
+    public static Setting<Boolean> overlap = new Setting<>("Overlap", true);
+    public static Setting<Boolean> potionIcons = new Setting<>("PotionIcons", false);
+    public static Setting<Boolean> blur = new Setting<>("Blur", false);
+    public static Setting<Boolean> blurEverything = new Setting<>("BlurEverything", true).visibleIf(Field1393::getValue);
+    public static Setting<Boolean> hotbar = new Setting<>("Hotbar", true);
+    public static Setting<Boolean> xPBar = new Setting<>("XPBar", true);
+    public static Setting<Class165> armorMode = new Setting<>("ArmorMode", Class165.BOTH);
+    public static Setting<Class189> numberMode = new Setting<>("NumberMode", Class189.PERCENTAGE).visibleIf(Hud::Method388);
+    public static Setting<Class163> colorMode = new Setting<>("ColorMode", Class163.DYNAMIC).visibleIf(Hud::Method394);
+    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Hud::Method393);
+    public static Setting<Boolean> health = new Setting<>("Health", true);
+    public static Setting<Boolean> food = new Setting<>("Food", true);
+    public static Setting<Boolean> crosshair = new Setting<>("Crosshair", true);
     public static CfontRenderer Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
 
     @Subscriber
     public void Method1454(RenderGameOverlayEvent.Post post) {
-        GuiIngameForge.renderHealth = Field1402.getValue();
-        GuiIngameForge.renderArmor = Field1398.getValue() == Class165.BOTH || Field1398.getValue() == Class165.VANILLA;
-        GuiIngameForge.renderExperiance = Field1397.getValue();
-        GuiIngameForge.renderHotbar = Field1396.getValue();
-        GuiIngameForge.renderFood = Field1403.getValue();
-        GuiIngameForge.renderCrosshairs = Field1404.getValue();
+        GuiIngameForge.renderHealth = health.getValue();
+        GuiIngameForge.renderArmor = armorMode.getValue() == Class165.BOTH || armorMode.getValue() == Class165.VANILLA;
+        GuiIngameForge.renderExperiance = xPBar.getValue();
+        GuiIngameForge.renderHotbar = hotbar.getValue();
+        GuiIngameForge.renderFood = food.getValue();
+        GuiIngameForge.renderCrosshairs = crosshair.getValue();
     }
 
     public String Method1455(PotionEffect potionEffect) {
@@ -62,7 +61,7 @@ extends Module {
         int n = itemStack.getMaxDamage();
         int n2 = n - itemStack.getItemDamage();
         int n3 = (int)Math.round((double)n2 / ((double)n * 0.01));
-        boolean bl = Field1399.getValue() == Class189.PERCENTAGE;
+        boolean bl = numberMode.getValue() == Class189.PERCENTAGE;
         return bl ? n3 : n2;
     }
 
@@ -73,8 +72,8 @@ extends Module {
                 if (Hud.mc.player == null || Hud.mc.world == null) {
                     return;
                 }
-                if (openGuiEvent.Method1161() == null || !Field1393.getValue().booleanValue() || openGuiEvent.Method1161() instanceof GuiChat) break block1;
-                if (!(openGuiEvent.Method1161() instanceof Class193) && !Field1394.getValue().booleanValue()) break block2;
+                if (openGuiEvent.Method1161() == null || !blur.getValue().booleanValue() || openGuiEvent.Method1161() instanceof GuiChat) break block1;
+                if (!(openGuiEvent.Method1161() instanceof Class193) && !blurEverything.getValue().booleanValue()) break block2;
                 Hud.mc.entityRenderer.loadShader(new ResourceLocation("shaders/post/blur.json"));
                 break block2;
             }
@@ -88,7 +87,7 @@ extends Module {
     }
 
     public static boolean Method393() {
-        return Field1400.getValue() == Class163.STATIC && (Field1398.getValue() == Class165.BOTH || Field1398.getValue() == Class165.KONAS);
+        return colorMode.getValue() == Class163.STATIC && (armorMode.getValue() == Class165.BOTH || armorMode.getValue() == Class165.KONAS);
     }
 
     public int Method1458(PotionEffect potionEffect) {
@@ -124,14 +123,14 @@ extends Module {
     }
 
     public static boolean Method388() {
-        return Field1398.getValue() == Class165.BOTH || Field1398.getValue() == Class165.KONAS;
+        return armorMode.getValue() == Class165.BOTH || armorMode.getValue() == Class165.KONAS;
     }
 
     public int Method1459(ItemStack itemStack) {
-        if (Field1400.getValue() == Class163.DYNAMIC) {
+        if (colorMode.getValue() == Class163.DYNAMIC) {
             return itemStack.getItem().getRGBDurabilityForDisplay(itemStack);
         }
-        return Field1401.getValue().Method774();
+        return color.getValue().Method774();
     }
 
     public String Method1460(PotionEffect potionEffect) {
@@ -148,13 +147,13 @@ extends Module {
     }
 
     public static boolean Method394() {
-        return Field1398.getValue() == Class165.BOTH || Field1398.getValue() == Class165.KONAS;
+        return armorMode.getValue() == Class165.BOTH || armorMode.getValue() == Class165.KONAS;
     }
 
     @Subscriber
     public void Method1462(Class12 class12) {
         block0: {
-            if (!Field1392.getValue().booleanValue()) break block0;
+            if (!potionIcons.getValue().booleanValue()) break block0;
             class12.Cancel();
         }
     }
@@ -164,7 +163,7 @@ extends Module {
         if (Hud.mc.world == null || Hud.mc.player == null) {
             return;
         }
-        if (Field1398.getValue() == Class165.KONAS || Field1398.getValue() == Class165.BOTH) {
+        if (armorMode.getValue() == Class165.KONAS || armorMode.getValue() == Class165.BOTH) {
             ScaledResolution scaledResolution = new ScaledResolution(mc);
             int n = 3;
             for (int i = 3; i >= 0; --i) {

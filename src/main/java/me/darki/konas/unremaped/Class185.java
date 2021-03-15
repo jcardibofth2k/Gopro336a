@@ -27,11 +27,11 @@ import net.minecraft.util.math.BlockPos;
 
 public class Class185
 extends Module {
-    public static Setting<Boolean> Field1380 = new Setting<>("PressurePlates", true);
-    public static Setting<Integer> Field1381 = new Setting<>("MinHeight", 2, 5, 2, 1);
-    public static Setting<Integer> Field1382 = new Setting<>("Range", 2, 5, 1, 1);
-    public static Setting<Integer> Field1383 = new Setting<>("Interval", 0, 20, 0, 1);
-    public static Setting<Double> Field1384 = new Setting<>("Range", 4.0, 6.0, 1.0, 0.1);
+    public static Setting<Boolean> pressurePlates = new Setting<>("PressurePlates", true);
+    public static Setting<Integer> minHeight = new Setting<>("MinHeight", 2, 5, 2, 1);
+    public static Setting<Integer> range = new Setting<>("Range", 2, 5, 1, 1);
+    public static Setting<Integer> interval = new Setting<>("Interval", 0, 20, 0, 1);
+    public static Setting<Double> range = new Setting<>("Range", 4.0, 6.0, 1.0, 0.1);
     public int Field1385 = 0;
     public Class490 Field1386 = null;
     public int Field1387 = -1;
@@ -63,7 +63,7 @@ extends Module {
     public void onEnable() {
         this.Field1386 = null;
         this.Field1387 = -1;
-        this.Field1385 = (Integer)Field1383.getValue();
+        this.Field1385 = (Integer)interval.getValue();
     }
 
     public static boolean Method122(EntityPlayer entityPlayer) {
@@ -80,17 +80,17 @@ extends Module {
         if (Class167.Method1610(PacketFly.class).isEnabled()) {
             return;
         }
-        if (this.Field1385 < (Integer)Field1383.getValue()) {
+        if (this.Field1385 < (Integer)interval.getValue()) {
             ++this.Field1385;
         }
-        if (this.Field1385 < (Integer)Field1383.getValue()) {
+        if (this.Field1385 < (Integer)interval.getValue()) {
             return;
         }
         EntityPlayer entityPlayer = this.Method1453();
         if (entityPlayer == null) {
             return;
         }
-        if (((Boolean)Field1380.getValue()).booleanValue() && !(Class185.mc.world.getBlockState(new BlockPos((Entity)entityPlayer)).getBlock() instanceof BlockPressurePlate)) {
+        if (((Boolean)pressurePlates.getValue()).booleanValue() && !(Class185.mc.world.getBlockState(new BlockPos((Entity)entityPlayer)).getBlock() instanceof BlockPressurePlate)) {
             this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer), true);
             if (this.Field1386 != null) {
                 int n = this.Method464();
@@ -104,8 +104,8 @@ extends Module {
                 return;
             }
         }
-        for (int i = 0; i < (Integer)Field1382.getValue(); ++i) {
-            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer).up((Integer)Field1381.getValue() + i), true);
+        for (int i = 0; i < (Integer)range.getValue(); ++i) {
+            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer).up((Integer)minHeight.getValue() + i), true);
             if (this.Field1386 == null) continue;
             int n = this.Method524();
             if (n == -1) {
@@ -138,7 +138,7 @@ extends Module {
     }
 
     public static boolean Method126(EntityPlayer entityPlayer) {
-        return (double)Class185.mc.player.getDistance((Entity)entityPlayer) < (Double)Field1384.getValue();
+        return (double)Class185.mc.player.getDistance((Entity)entityPlayer) < (Double)range.getValue();
     }
 
     public static boolean Method128(EntityPlayer entityPlayer) {

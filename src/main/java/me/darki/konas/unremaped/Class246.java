@@ -28,19 +28,19 @@ import net.minecraft.world.World;
 
 public class Class246
 extends Module {
-    public static Setting<Float> Field2270 = new Setting<>("Delay", Float.valueOf(0.1f), Float.valueOf(5.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
-    public static Setting<Float> Field2271 = new Setting<>("Reach", Float.valueOf(4.2f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
-    public static Setting<Boolean> Field2272 = new Setting<>("Rotate", false);
-    public static Setting<Boolean> Field2273 = new Setting<>("AutoSwap", false);
-    public static Setting<Boolean> Field2274 = new Setting<>("Queue", false);
-    public static Setting<Boolean> Field2275 = new Setting<>("Render", false);
-    public Setting<ColorValue> Field2276 = new Setting<>("Queue", new ColorValue(0x550000FF)).visibleIf(Field2275::getValue);
-    public Setting<ColorValue> Field2277 = new Setting<>("QueueOutline", new ColorValue(Color.BLUE.hashCode())).visibleIf(Field2275::getValue);
-    public Setting<ColorValue> Field2278 = new Setting<>("Mining", new ColorValue(0x55FF0000)).visibleIf(Field2275::getValue);
-    public Setting<ColorValue> Field2279 = new Setting<>("MiningOutline", new ColorValue(Color.RED.hashCode())).visibleIf(Field2275::getValue);
-    public Setting<ColorValue> Field2280 = new Setting<>("Ready", new ColorValue(0x5500FF00)).visibleIf(Field2275::getValue);
-    public Setting<ColorValue> Field2281 = new Setting<>("ReadyOutline", new ColorValue(Color.GREEN.hashCode())).visibleIf(Field2275::getValue);
-    public Setting<Float> Field2282 = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(Field2275::getValue);
+    public static Setting<Float> delay = new Setting<>("Delay", Float.valueOf(0.1f), Float.valueOf(5.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
+    public static Setting<Float> reach = new Setting<>("Reach", Float.valueOf(4.2f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
+    public static Setting<Boolean> rotate = new Setting<>("Rotate", false);
+    public static Setting<Boolean> autoSwap = new Setting<>("AutoSwap", false);
+    public static Setting<Boolean> queue = new Setting<>("Queue", false);
+    public static Setting<Boolean> render = new Setting<>("Render", false);
+    public Setting<ColorValue> queue = new Setting<>("Queue", new ColorValue(0x550000FF)).visibleIf(Field2275::getValue);
+    public Setting<ColorValue> queueOutline = new Setting<>("QueueOutline", new ColorValue(Color.BLUE.hashCode())).visibleIf(Field2275::getValue);
+    public Setting<ColorValue> mining = new Setting<>("Mining", new ColorValue(0x55FF0000)).visibleIf(Field2275::getValue);
+    public Setting<ColorValue> miningOutline = new Setting<>("MiningOutline", new ColorValue(Color.RED.hashCode())).visibleIf(Field2275::getValue);
+    public Setting<ColorValue> ready = new Setting<>("Ready", new ColorValue(0x5500FF00)).visibleIf(Field2275::getValue);
+    public Setting<ColorValue> readyOutline = new Setting<>("ReadyOutline", new ColorValue(Color.GREEN.hashCode())).visibleIf(Field2275::getValue);
+    public Setting<Float> width = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(Field2275::getValue);
     public float Field2283;
     public int Field2284;
     public Class249 Field2285;
@@ -60,11 +60,11 @@ extends Module {
     public ColorValue Method2046(Class249 class249) {
         if (class249.equals(this.Field2285)) {
             if (this.Field2283 >= 1.0f) {
-                return (ColorValue)this.Field2281.getValue();
+                return (ColorValue)this.readyOutline.getValue();
             }
-            return (ColorValue)this.Field2279.getValue();
+            return (ColorValue)this.miningOutline.getValue();
         }
-        return (ColorValue)this.Field2277.getValue();
+        return (ColorValue)this.queueOutline.getValue();
     }
 
     public Class246() {
@@ -78,7 +78,7 @@ extends Module {
             return;
         }
         Class249 class249 = new Class249(class646.Method1149(), class646.Method1232());
-        if (!this.Field2288.contains(class249) && (((Boolean)Field2274.getValue()).booleanValue() || this.Field2288.isEmpty() && this.Field2285 == null)) {
+        if (!this.Field2288.contains(class249) && (((Boolean)queue.getValue()).booleanValue() || this.Field2288.isEmpty() && this.Field2285 == null)) {
             this.Field2288.add(class249);
         }
     }
@@ -94,7 +94,7 @@ extends Module {
 
     @Subscriber
     public void Method123(Class50 class50) {
-        if (this.Field2287 != null && this.Field2286.Method737(((Float)Field2270.getValue()).floatValue() * 50.0f)) {
+        if (this.Field2287 != null && this.Field2286.Method737(((Float)delay.getValue()).floatValue() * 50.0f)) {
             this.Field2287.run();
             this.Field2287 = null;
         }
@@ -131,7 +131,7 @@ extends Module {
             if (axisAlignedBB == null) continue;
             Class507.Method1386();
             Class507.Method1371(axisAlignedBB, true, 1.0, this.Method2047(class249), 63);
-            Class507.Method1374(axisAlignedBB, ((Float)this.Field2282.getValue()).floatValue(), this.Method2046(class249));
+            Class507.Method1374(axisAlignedBB, ((Float)this.width.getValue()).floatValue(), this.Method2046(class249));
             Class507.Method1385();
         }
     }
@@ -159,16 +159,16 @@ extends Module {
         block9: {
             block8: {
                 block7: {
-                    if (!Class496.Method1959((Boolean)Class246.Field2272.getValue())) {
+                    if (!Class496.Method1959((Boolean)Class246.rotate.getValue())) {
                         return;
                     }
                     if (this.Field2285 == null) break block7;
                     if (!Class246.mc.world.getBlockState(this.Field2285.Method2002()).getBlock().equals(this.Field2285.Method2001().getBlock())) ** GOTO lbl-1000
                     v0 = new Vec3d((Vec3i)this.Field2285.Method2002());
                     v1 = new Vec3d(this.Field2285.Method2000().getDirectionVec());
-                    if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v0.add(v1.scale(0.5))) <= (double)((Float)Class246.Field2271.getValue()).floatValue()) {
+                    if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v0.add(v1.scale(0.5))) <= (double)((Float)Class246.reach.getValue()).floatValue()) {
                         this.Method134();
-                        if (((Boolean)Class246.Field2273.getValue()).booleanValue() && this.Field2283 >= 1.0f && this.Field2284 == -1 && (var2_2 = AutoTool.Method1850(this.Field2285.Method2002())) != -1 && var2_2 != Class246.mc.player.inventory.currentItem) {
+                        if (((Boolean)Class246.autoSwap.getValue()).booleanValue() && this.Field2283 >= 1.0f && this.Field2284 == -1 && (var2_2 = AutoTool.Method1850(this.Field2285.Method2002())) != -1 && var2_2 != Class246.mc.player.inventory.currentItem) {
                             Class246.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(var2_2));
                             this.Field2284 = var2_2;
                         }
@@ -189,7 +189,7 @@ extends Module {
                 if (!Class246.mc.world.getBlockState(var2_3.Method2002()).getBlock().equals(var2_3.Method2001().getBlock())) ** GOTO lbl-1000
                 v2 = new Vec3d((Vec3i)var2_3.Method2002());
                 v3 = new Vec3d(var2_3.Method2000().getDirectionVec());
-                if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v2.add(v3.scale(0.5))) <= (double)((Float)Class246.Field2271.getValue()).floatValue()) {
+                if (Class246.mc.player.getPositionEyes(1.0f).distanceTo(v2.add(v3.scale(0.5))) <= (double)((Float)Class246.reach.getValue()).floatValue()) {
                     this.Field2288.poll();
                     this.Field2285 = var2_3;
                     this.Field2283 = 0.0f;
@@ -203,7 +203,7 @@ extends Module {
                     this.Field2288.poll();
                 }
             }
-            if (!((Boolean)Class246.Field2272.getValue()).booleanValue() || this.Field2285 == null) break block9;
+            if (!((Boolean)Class246.rotate.getValue()).booleanValue() || this.Field2285 == null) break block9;
             NewGui.INSTANCE.Field1139.Method1942(new Vec3d((Vec3i)this.Field2285.Method2002()).add(new Vec3d(this.Field2285.Method2000().getDirectionVec()).scale(0.5)));
         }
     }
@@ -211,10 +211,10 @@ extends Module {
     public ColorValue Method2047(Class249 class249) {
         if (class249.equals(this.Field2285)) {
             if (this.Field2283 >= 1.0f) {
-                return (ColorValue)this.Field2280.getValue();
+                return (ColorValue)this.ready.getValue();
             }
-            return (ColorValue)this.Field2278.getValue();
+            return (ColorValue)this.mining.getValue();
         }
-        return (ColorValue)this.Field2276.getValue();
+        return (ColorValue)this.queue.getValue();
     }
 }
