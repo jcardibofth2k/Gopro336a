@@ -24,26 +24,26 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 
 public class ExtraChat
 extends Module {
-    public static Setting<Float> Field1439 = new Setting<>("Delay", Float.valueOf(0.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(1.0f));
-    public static Setting<Class295> Field1440 = new Setting<>("Mode", Class295.MSG);
-    public static Setting<Boolean> Field1441 = new Setting<>("AutoBackup", false);
-    public static Setting<Boolean> Field1442 = new Setting<>("Global", false).visibleIf(Field1441::getValue);
-    public Setting<Boolean> Field1443 = new Setting<>("PopBackup", true).visibleIf(Field1441::getValue);
-    public Setting<Boolean> Field1444 = new Setting<>("Taunt", false);
-    public Setting<Boolean> Field1445 = new Setting<>("AntiRacism", false);
-    public Setting<Boolean> Field1446 = new Setting<>("AntiCoordLeak", false);
-    public Setting<Boolean> Field1447 = new Setting<>("Embarrass", false).visibleIf(this.Field1445::getValue);
-    public Setting<Boolean> Field1448 = new Setting<>("AutoGroom", false);
-    public Setting<Float> Field1449 = new Setting<>("TauntDelay", Float.valueOf(15.0f), Float.valueOf(30.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this.Field1444::getValue);
-    public Setting<Float> Field1450 = new Setting<>("GroomDelay", Float.valueOf(15.0f), Float.valueOf(30.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this.Field1448::getValue);
-    public static Setting<Boolean> Field1451 = new Setting<>("NotifyFriended", false);
-    public Setting<Boolean> Field1452 = new Setting<>("PartyChat", false);
-    public Setting<Boolean> Field1453 = new Setting<>("Longer", false);
-    public Setting<Integer> Field1454 = new Setting<>("ChatHeight", 200, 500, 0, 0).visibleIf(this.Field1453::getValue);
-    public Setting<Boolean> Field1455 = new Setting<>("Clear", false);
-    public Setting<Boolean> Field1456 = new Setting<>("ChatTimestamps", true);
-    public Setting<Boolean> Field1457 = new Setting<>("24HourFormat", true).visibleIf(this.Field1456::getValue);
-    public Setting<Boolean> Field1458 = new Setting<>("Hours", true).visibleIf(this.Field1456::getValue);
+    public static Setting<Float> delay = new Setting<>("Delay", Float.valueOf(0.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(1.0f));
+    public static Setting<Class295> mode = new Setting<>("Mode", Class295.MSG);
+    public static Setting<Boolean> autoBackup = new Setting<>("AutoBackup", false);
+    public static Setting<Boolean> global = new Setting<>("Global", false).visibleIf(Field1441::getValue);
+    public Setting<Boolean> popBackup = new Setting<>("PopBackup", true).visibleIf(Field1441::getValue);
+    public Setting<Boolean> taunt = new Setting<>("Taunt", false);
+    public Setting<Boolean> antiRacism = new Setting<>("AntiRacism", false);
+    public Setting<Boolean> antiCoordLeak = new Setting<>("AntiCoordLeak", false);
+    public Setting<Boolean> embarrass = new Setting<>("Embarrass", false).visibleIf(this.Field1445::getValue);
+    public Setting<Boolean> autoGroom = new Setting<>("AutoGroom", false);
+    public Setting<Float> tauntDelay = new Setting<>("TauntDelay", Float.valueOf(15.0f), Float.valueOf(30.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this.Field1444::getValue);
+    public Setting<Float> groomDelay = new Setting<>("GroomDelay", Float.valueOf(15.0f), Float.valueOf(30.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this.Field1448::getValue);
+    public static Setting<Boolean> notifyFriended = new Setting<>("NotifyFriended", false);
+    public Setting<Boolean> partyChat = new Setting<>("PartyChat", false);
+    public Setting<Boolean> longer = new Setting<>("Longer", false);
+    public Setting<Integer> chatHeight = new Setting<>("ChatHeight", 200, 500, 0, 0).visibleIf(this.Field1453::getValue);
+    public Setting<Boolean> clear = new Setting<>("Clear", false);
+    public Setting<Boolean> chatTimestamps = new Setting<>("ChatTimestamps", true);
+    public Setting<Boolean> 24HourFormat = new Setting<>("24HourFormat", true).visibleIf(this.Field1456::getValue);
+    public Setting<Boolean> hours = new Setting<>("Hours", true).visibleIf(this.Field1456::getValue);
     public Setting<Boolean> Field1459;
     public Setting<Boolean> Field1460;
     public Setting<Boolean> Field1461;
@@ -56,21 +56,21 @@ extends Module {
         block7: {
             Class645 class645;
             Object object;
-            if (((Boolean)this.Field1445.getValue()).booleanValue() && (clientChatReceivedEvent.getMessage().getUnformattedText().toLowerCase().contains("nigger") || clientChatReceivedEvent.getMessage().getUnformattedText().toLowerCase().contains("nigga")) && ((Optional)(object = KonasChat.Method715(clientChatReceivedEvent.getMessage().getUnformattedText()))).isPresent()) {
-                if (((Boolean)this.Field1447.getValue()).booleanValue()) {
+            if (((Boolean)this.antiRacism.getValue()).booleanValue() && (clientChatReceivedEvent.getMessage().getUnformattedText().toLowerCase().contains("nigger") || clientChatReceivedEvent.getMessage().getUnformattedText().toLowerCase().contains("nigga")) && ((Optional)(object = KonasChat.Method715(clientChatReceivedEvent.getMessage().getUnformattedText()))).isPresent()) {
+                if (((Boolean)this.embarrass.getValue()).booleanValue()) {
                     ExtraChat.mc.player.sendChatMessage((String)((Map.Entry)((Optional)object).get()).getKey() + ", don't be racist");
                 } else {
                     class645 = new Class645((String)((Map.Entry)((Optional)object).get()).getKey(), "Don't be racist");
                     EventDispatcher.Companion.dispatch(class645);
                 }
             }
-            if (!((Boolean)this.Field1456.getValue()).booleanValue()) break block7;
+            if (!((Boolean)this.chatTimestamps.getValue()).booleanValue()) break block7;
             object = new StringBuilder();
             if (((Boolean)this.Field1461.getValue()).booleanValue()) {
                 ((StringBuilder)object).append("<");
             }
-            if (((Boolean)this.Field1458.getValue()).booleanValue()) {
-                ((StringBuilder)object).append((Boolean)this.Field1457.getValue() != false ? "HH" : "hh").append((Boolean)this.Field1459.getValue() != false || (Boolean)this.Field1460.getValue() != false ? ":" : "");
+            if (((Boolean)this.hours.getValue()).booleanValue()) {
+                ((StringBuilder)object).append((Boolean)this.24HourFormat.getValue() != false ? "HH" : "hh").append((Boolean)this.Field1459.getValue() != false || (Boolean)this.Field1460.getValue() != false ? ":" : "");
             }
             if (((Boolean)this.Field1459.getValue()).booleanValue()) {
                 ((StringBuilder)object).append("mm").append((Boolean)this.Field1460.getValue() != false ? ":" : "");
@@ -78,7 +78,7 @@ extends Module {
             if (((Boolean)this.Field1460.getValue()).booleanValue()) {
                 ((StringBuilder)object).append("ss");
             }
-            ((StringBuilder)object).append((Boolean)this.Field1457.getValue() != false ? "" : "aa").append((Boolean)this.Field1461.getValue() != false ? "> " : " ");
+            ((StringBuilder)object).append((Boolean)this.24HourFormat.getValue() != false ? "" : "aa").append((Boolean)this.Field1461.getValue() != false ? "> " : " ");
             class645 = new TextComponentString(ChatFormatting.GRAY + new SimpleDateFormat(((StringBuilder)object).toString()).format(new Date()) + ChatFormatting.RESET);
             class645.appendSibling(clientChatReceivedEvent.getMessage());
             clientChatReceivedEvent.setMessage((ITextComponent)class645);
@@ -87,12 +87,12 @@ extends Module {
 
     @Subscriber
     public void Method552(Class648 class648) {
-        if (((Boolean)this.Field1446.getValue()).booleanValue() && class648.Method1201().replaceAll("\\D", "").length() >= 6) {
+        if (((Boolean)this.antiCoordLeak.getValue()).booleanValue() && class648.Method1201().replaceAll("\\D", "").length() >= 6) {
             class648.Cancel();
             ChatUtil.Method1034("AntiCoordLeak: Blocked message because it contained 6 or more digits", new Object[0]);
             return;
         }
-        if (((Boolean)this.Field1452.getValue()).booleanValue() && !class648.Method1201().startsWith(Command.Method190()) && !class648.Method1201().startsWith("/")) {
+        if (((Boolean)this.partyChat.getValue()).booleanValue() && !class648.Method1201().startsWith(Command.Method190()) && !class648.Method1201().startsWith("/")) {
             class648.Cancel();
             for (String string : Party.Field2509) {
                 Class645 class645 = new Class645(string, class648.Method1201());
@@ -108,11 +108,11 @@ extends Module {
         if (ExtraChat.mc.player == null || ExtraChat.mc.world == null) {
             return;
         }
-        if (((Boolean)this.Field1448.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.Field1450.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null && !Class492.Method1989(entity.getName())) {
+        if (((Boolean)this.autoGroom.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.groomDelay.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null && !Class492.Method1989(entity.getName())) {
             class645 = new Class645(entity.getName(), Field1464.get(this.Field1462.nextInt(Field1464.size())).replaceAll("<player>", entity.getName()));
             EventDispatcher.Companion.dispatch(class645);
         }
-        if (((Boolean)this.Field1444.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.Field1449.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null) {
+        if (((Boolean)this.taunt.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.tauntDelay.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null) {
             if (!Class492.Method1989(entity.getName())) {
                 class645 = new Class645(entity.getName(), Field1463.get(this.Field1462.nextInt(Field1463.size())).replaceAll("<player>", entity.getName()));
                 EventDispatcher.Companion.dispatch(class645);
@@ -149,16 +149,16 @@ extends Module {
     @Subscriber
     public void Method1499(Class55 class55) {
         block0: {
-            if (!((Boolean)this.Field1453.getValue()).booleanValue()) break block0;
-            class55.Method343((Integer)this.Field1454.getValue());
+            if (!((Boolean)this.longer.getValue()).booleanValue()) break block0;
+            class55.Method343((Integer)this.chatHeight.getValue());
         }
     }
 
     @Subscriber
     public void Method1500(Class43 class43) {
-        if (((Boolean)Field1441.getValue()).booleanValue() && ((Boolean)this.Field1443.getValue()).booleanValue() && class43.Method265().getUniqueID().equals(ExtraChat.mc.player.getUniqueID())) {
+        if (((Boolean)autoBackup.getValue()).booleanValue() && ((Boolean)this.popBackup.getValue()).booleanValue() && class43.Method265().getUniqueID().equals(ExtraChat.mc.player.getUniqueID())) {
             String string = "I just popped at X:" + ExtraChat.mc.player.getPosition().getX() + " Y:" + ExtraChat.mc.player.getPosition().getY() + " Z:" + ExtraChat.mc.player.getPosition().getZ() + " in the " + (ExtraChat.mc.player.dimension == -1 ? "Nether" : "Overworld") + ", and I need backup!";
-            if (((Boolean)Field1442.getValue()).booleanValue()) {
+            if (((Boolean)global.getValue()).booleanValue()) {
                 ExtraChat.mc.player.sendChatMessage(string);
             } else {
                 for (String string2 : Party.Field2509) {
@@ -172,7 +172,7 @@ extends Module {
     @Subscriber
     public void Method1501(Class647 class647) {
         block0: {
-            if (!((Boolean)this.Field1455.getValue()).booleanValue()) break block0;
+            if (!((Boolean)this.clear.getValue()).booleanValue()) break block0;
             class647.Cancel();
         }
     }

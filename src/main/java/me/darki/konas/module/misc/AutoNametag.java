@@ -25,13 +25,13 @@ import net.minecraft.util.EnumHand;
 
 public class AutoNametag
 extends Module {
-    public static Setting<Float> Field1921 = new Setting<>("Range", Float.valueOf(4.3f), Float.valueOf(6.0f), Float.valueOf(0.5f), Float.valueOf(0.1f));
-    public static Setting<Boolean> Field1922 = new Setting<>("Rotate", true);
-    public static Setting<Boolean> Field1923 = new Setting<>("IgnoreNamed", true);
-    public static Setting<Boolean> Field1924 = new Setting<>("AutoSwitch", true);
-    public static Setting<Boolean> Field1925 = new Setting<>("Withers", true);
-    public static Setting<Boolean> Field1926 = new Setting<>("Mobs", false);
-    public static Setting<Boolean> Field1927 = new Setting<>("Animals", false);
+    public static Setting<Float> range = new Setting<>("Range", Float.valueOf(4.3f), Float.valueOf(6.0f), Float.valueOf(0.5f), Float.valueOf(0.1f));
+    public static Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public static Setting<Boolean> ignoreNamed = new Setting<>("IgnoreNamed", true);
+    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", true);
+    public static Setting<Boolean> withers = new Setting<>("Withers", true);
+    public static Setting<Boolean> mobs = new Setting<>("Mobs", false);
+    public static Setting<Boolean> animals = new Setting<>("Animals", false);
     public Class566 Field1928 = new Class566();
     public float Field1929;
     public float Field1930;
@@ -47,16 +47,16 @@ extends Module {
     }
 
     public boolean Method513(Entity entity) {
-        if (!entity.getCustomNameTag().isEmpty() && Field1923.getValue().booleanValue()) {
+        if (!entity.getCustomNameTag().isEmpty() && ignoreNamed.getValue().booleanValue()) {
             return false;
         }
-        if (Field1927.getValue().booleanValue() && entity instanceof EntityAnimal) {
+        if (animals.getValue().booleanValue() && entity instanceof EntityAnimal) {
             return true;
         }
-        if (Field1926.getValue().booleanValue() && entity instanceof IMob) {
+        if (mobs.getValue().booleanValue() && entity instanceof IMob) {
             return true;
         }
-        return Field1925.getValue() != false && entity instanceof EntityWither;
+        return withers.getValue() != false && entity instanceof EntityWither;
     }
 
     @Subscriber
@@ -90,7 +90,7 @@ extends Module {
             this.Field1932 = AutoNametag.mc.player.inventory.currentItem;
             if (!(AutoNametag.mc.player.getHeldItemMainhand().getItem() instanceof ItemNameTag) && !this.Method394()) {
                 int n = -1;
-                if (Field1924.getValue().booleanValue()) {
+                if (autoSwitch.getValue().booleanValue()) {
                     for (int i = 0; i < 9; ++i) {
                         ItemStack itemStack2 = AutoNametag.mc.player.inventory.getStackInSlot(i);
                         if (itemStack2.isEmpty() || !(itemStack2.getItem() instanceof ItemNameTag) || !itemStack2.hasDisplayName()) continue;
@@ -108,13 +108,13 @@ extends Module {
                 return;
             }
             this.Field1931 = AutoNametag.mc.world.loadedEntityList.stream().filter(this::Method513).map(AutoNametag::Method656).min(Comparator.comparing(AutoNametag::Method1800)).orElse(null);
-            if (this.Field1931 != null && Field1922.getValue().booleanValue()) {
+            if (this.Field1931 != null && rotate.getValue().booleanValue()) {
                 double[] dArray = PlayerUtil.Method1088(this.Field1931.posX, this.Field1931.posY, this.Field1931.posZ, AutoNametag.mc.player);
                 this.Field1929 = (float)dArray[0];
                 this.Field1930 = (float)dArray[1];
                 this.Field1928.Method739();
             }
-            if (!Field1922.getValue().booleanValue() || this.Field1928.Method737(350.0)) break block7;
+            if (!rotate.getValue().booleanValue() || this.Field1928.Method737(350.0)) break block7;
             NewGui.INSTANCE.Field1139.Method1937(this.Field1929, this.Field1930);
         }
     }

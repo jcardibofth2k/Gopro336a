@@ -46,15 +46,15 @@ import net.minecraft.util.text.TextComponentString;
 
 public class BlockAura
 extends Module {
-    public static Setting<Boolean> Field1769 = new Setting<>("Grass", true);
-    public static Setting<Boolean> Field1770 = new Setting<>("AutoSign", true);
-    public static Setting<Boolean> Field1771 = new Setting<>("SourceRemover", true);
-    public static Setting<Boolean> Field1772 = new Setting<>("AutoSwitch", true);
-    public static Setting<Integer> Field1773 = new Setting<>("PlaceDelay", 40, 100, 1, 1);
-    public static Setting<Integer> Field1774 = new Setting<>("BreakDelay", 2, 20, 1, 1);
-    public static Setting<Integer> Field1775 = new Setting<>("RangeXZ", 3, 10, 1, 1);
-    public static Setting<Integer> Field1776 = new Setting<>("RangeY", 3, 10, 1, 1);
-    public static Setting<Boolean> Field1777 = new Setting<>("Rotations", true);
+    public static Setting<Boolean> grass = new Setting<>("Grass", true);
+    public static Setting<Boolean> autoSign = new Setting<>("AutoSign", true);
+    public static Setting<Boolean> sourceRemover = new Setting<>("SourceRemover", true);
+    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", true);
+    public static Setting<Integer> placeDelay = new Setting<>("PlaceDelay", 40, 100, 1, 1);
+    public static Setting<Integer> breakDelay = new Setting<>("BreakDelay", 2, 20, 1, 1);
+    public static Setting<Integer> rangeXZ = new Setting<>("RangeXZ", 3, 10, 1, 1);
+    public static Setting<Integer> rangeY = new Setting<>("RangeY", 3, 10, 1, 1);
+    public static Setting<Boolean> rotations = new Setting<>("Rotations", true);
     public ArrayList<BlockPos> Field1778 = new ArrayList();
     public ArrayList<BlockPos> Field1779 = new ArrayList();
     public static ArrayList<String> Field1780 = new ArrayList();
@@ -103,7 +103,7 @@ extends Module {
     public void Method948(Event event) {
         block13: {
             block12: {
-                if (!((Boolean)Field1771.getValue()).booleanValue()) {
+                if (!((Boolean)sourceRemover.getValue()).booleanValue()) {
                     return;
                 }
                 if (!(event instanceof UpdateEvent)) break block12;
@@ -111,7 +111,7 @@ extends Module {
                 this.Field1782 = null;
                 int n = this.Method464();
                 this.Field1783 = -1;
-                Iterable iterable = BlockPos.getAllInBox((BlockPos) BlockAura.mc.player.getPosition().add(-((Integer)Field1775.getValue()).intValue(), -((Integer)Field1776.getValue()).intValue(), -((Integer)Field1775.getValue()).intValue()), (BlockPos) BlockAura.mc.player.getPosition().add(((Integer)Field1775.getValue()).intValue(), ((Integer)Field1776.getValue()).intValue(), ((Integer)Field1775.getValue()).intValue()));
+                Iterable iterable = BlockPos.getAllInBox((BlockPos) BlockAura.mc.player.getPosition().add(-((Integer)rangeXZ.getValue()).intValue(), -((Integer)rangeY.getValue()).intValue(), -((Integer)rangeXZ.getValue()).intValue()), (BlockPos) BlockAura.mc.player.getPosition().add(((Integer)rangeXZ.getValue()).intValue(), ((Integer)rangeY.getValue()).intValue(), ((Integer)rangeXZ.getValue()).intValue()));
                 BlockPos blockPos = StreamSupport.stream(iterable.spliterator(), false).filter(BlockAura::Method512).filter(BlockAura::Method1683).min(Comparator.comparing(BlockAura::Method1686)).orElse(null);
                 if (blockPos != null) {
                     if (BlockAura.mc.world.getBlockState(blockPos).getMaterial().isReplaceable()) {
@@ -126,14 +126,14 @@ extends Module {
                             this.Field1784 = true;
                             return;
                         }
-                    } else if (this.Field1787.Method737((Integer)Field1773.getValue() * 10)) {
+                    } else if (this.Field1787.Method737((Integer)placeDelay.getValue() * 10)) {
                         this.Field1784 = false;
                         return;
                     }
                 }
                 break block13;
             }
-            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.Method737((Integer)Field1773.getValue() * 2) || this.Field1783 == -1) break block13;
+            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.Method737((Integer)placeDelay.getValue() * 2) || this.Field1783 == -1) break block13;
             boolean bl = BlockAura.mc.player.inventory.currentItem != this.Field1783;
             boolean bl2 = BlockAura.mc.player.isSprinting();
             int n = BlockAura.mc.player.inventory.currentItem;
@@ -182,7 +182,7 @@ extends Module {
     }
 
     public void Method1679(BlockPos blockPos) {
-        if (((Boolean)Field1777.getValue()).booleanValue()) {
+        if (((Boolean)rotations.getValue()).booleanValue()) {
             this.Method1677((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5, (EntityPlayer) BlockAura.mc.player);
         }
         BlockAura.mc.playerController.clickBlock(blockPos, EnumFacing.UP);
@@ -196,7 +196,7 @@ extends Module {
             if (BlockAura.mc.world == null || BlockAura.mc.player == null) {
                 return;
             }
-            if (!(openGuiEvent.Method1161() instanceof GuiEditSign) || !((Boolean)Field1770.getValue()).booleanValue()) break block1;
+            if (!(openGuiEvent.Method1161() instanceof GuiEditSign) || !((Boolean)autoSign.getValue()).booleanValue()) break block1;
             GuiEditSign guiEditSign = (GuiEditSign) openGuiEvent.Method1161();
             TileEntitySign tileEntitySign = ((IGuiEditSign)guiEditSign).Method48();
             this.Method1680(tileEntitySign.getPos());
@@ -234,7 +234,7 @@ extends Module {
         if (!itemStack.isEmpty() && itemStack.getItem() instanceof ItemBlock) {
             return BlockAura.mc.player.inventory.currentItem;
         }
-        if (((Boolean)Field1772.getValue()).booleanValue()) {
+        if (((Boolean)autoSwitch.getValue()).booleanValue()) {
             for (int i = 0; i < 9; ++i) {
                 itemStack = BlockAura.mc.player.inventory.getStackInSlot(i);
                 if (itemStack.isEmpty() || !(itemStack.getItem() instanceof ItemBlock)) continue;
@@ -259,16 +259,16 @@ extends Module {
                 return;
             }
             this.Field1778.clear();
-            Iterable iterable = BlockPos.getAllInBox((BlockPos) BlockAura.mc.player.getPosition().add(-((Integer)Field1775.getValue()).intValue(), -((Integer)Field1776.getValue()).intValue(), -((Integer)Field1775.getValue()).intValue()), (BlockPos) BlockAura.mc.player.getPosition().add(((Integer)Field1775.getValue()).intValue(), ((Integer)Field1776.getValue()).intValue(), ((Integer)Field1775.getValue()).intValue()));
-            if (((Boolean)Field1769.getValue()).booleanValue()) {
+            Iterable iterable = BlockPos.getAllInBox((BlockPos) BlockAura.mc.player.getPosition().add(-((Integer)rangeXZ.getValue()).intValue(), -((Integer)rangeY.getValue()).intValue(), -((Integer)rangeXZ.getValue()).intValue()), (BlockPos) BlockAura.mc.player.getPosition().add(((Integer)rangeXZ.getValue()).intValue(), ((Integer)rangeY.getValue()).intValue(), ((Integer)rangeXZ.getValue()).intValue()));
+            if (((Boolean)grass.getValue()).booleanValue()) {
                 this.Field1778 = (ArrayList)StreamSupport.stream(iterable.spliterator(), false).filter(BlockAura::Method522).filter(this::Method526).sorted(Comparator.comparing(BlockAura::Method1678)).collect(Collectors.toList());
-                if (!this.Field1778.isEmpty() && BlockAura.mc.player.ticksExisted % (Integer)Field1774.getValue() == 0) {
+                if (!this.Field1778.isEmpty() && BlockAura.mc.player.ticksExisted % (Integer)breakDelay.getValue() == 0) {
                     this.Method1679(this.Field1778.get(0));
                 }
             }
-            if (!((Boolean)Field1770.getValue()).booleanValue()) break block4;
+            if (!((Boolean)autoSign.getValue()).booleanValue()) break block4;
             this.Field1779 = (ArrayList)StreamSupport.stream(iterable.spliterator(), false).filter(BlockAura::Method1684).filter(this::Method1681).filter(this::Method515).sorted(Comparator.comparing(BlockAura::Method1676)).collect(Collectors.toList());
-            if (!this.Field1779.isEmpty() && BlockAura.mc.player.ticksExisted % (Integer)Field1774.getValue() == 0) {
+            if (!this.Field1779.isEmpty() && BlockAura.mc.player.ticksExisted % (Integer)breakDelay.getValue() == 0) {
                 this.Method1680(this.Field1779.get(0));
             }
         }

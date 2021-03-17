@@ -6,7 +6,7 @@ import me.darki.konas.setting.Setting;
 
 public class Config
 extends Module {
-    public static Setting<Boolean> Field1792 = new Setting<>("OverwriteFriends", false);
+    public static Setting<Boolean> overwriteFriends = new Setting<>("OverwriteFriends", false);
 
     public Config() {
         super("Config", "Settings for Config", Category.CLIENT);

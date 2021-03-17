@@ -21,19 +21,19 @@ import net.minecraft.entity.passive.EntityWolf;
 
 public class MobRadar
 extends Element {
-    public Setting<ColorValue> Field2382 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
-    public static Setting<Boolean> Field2383 = new Setting<>("Ghasts", true);
-    public static Setting<Boolean> Field2384 = new Setting<>("Slimes", true);
-    public static Setting<Boolean> Field2385 = new Setting<>("Donkeys", true);
-    public static Setting<Boolean> Field2386 = new Setting<>("Llamas", true);
-    public static Setting<Boolean> Field2387 = new Setting<>("Cats", true);
-    public static Setting<Boolean> Field2388 = new Setting<>("Dogs", true);
-    public static Setting<Boolean> Field2389 = new Setting<>("Parrots", true);
-    public static Setting<ParentSetting> Field2390 = new Setting<>("Display", new ParentSetting(false));
-    public static Setting<Boolean> Field2391 = new Setting<>("Health", true).setParentSetting(Field2390);
-    public static Setting<Boolean> Field2392 = new Setting<>("EntityID", true).setParentSetting(Field2390);
-    public static Setting<Boolean> Field2393 = new Setting<>("Distance", true).setParentSetting(Field2390);
-    public static Setting<Boolean> Field2394 = new Setting<>("Coordinates", true).setParentSetting(Field2390);
+    public Setting<ColorValue> textColor = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
+    public static Setting<Boolean> ghasts = new Setting<>("Ghasts", true);
+    public static Setting<Boolean> slimes = new Setting<>("Slimes", true);
+    public static Setting<Boolean> donkeys = new Setting<>("Donkeys", true);
+    public static Setting<Boolean> llamas = new Setting<>("Llamas", true);
+    public static Setting<Boolean> cats = new Setting<>("Cats", true);
+    public static Setting<Boolean> dogs = new Setting<>("Dogs", true);
+    public static Setting<Boolean> parrots = new Setting<>("Parrots", true);
+    public static Setting<ParentSetting> display = new Setting<>("Display", new ParentSetting(false));
+    public static Setting<Boolean> health = new Setting<>("Health", true).setParentSetting(Field2390);
+    public static Setting<Boolean> entityID = new Setting<>("EntityID", true).setParentSetting(Field2390);
+    public static Setting<Boolean> distance = new Setting<>("Distance", true).setParentSetting(Field2390);
+    public static Setting<Boolean> coordinates = new Setting<>("Coordinates", true).setParentSetting(Field2390);
 
     public MobRadar() {
         super("MobRadar", 500.0f, 400.0f, 10.0f, 10.0f);
@@ -59,7 +59,7 @@ extends Element {
     }
 
     public void Method2098(float[] fArray, float[] fArray2, Entity entity) {
-        Class557.Method801(this.Method2099((EntityLivingBase)entity), this.Method2320(), this.Method2324() + fArray[0], this.Field2382.getValue().Method774());
+        Class557.Method801(this.Method2099((EntityLivingBase)entity), this.Method2320(), this.Method2324() + fArray[0], this.textColor.getValue().Method774());
         fArray[0] = fArray[0] + Class557.Method799(this.Method2099((EntityLivingBase)entity));
         if (Class557.Method800(this.Method2099((EntityLivingBase)entity)) > fArray2[0]) {
             fArray2[0] = Class557.Method800(this.Method2099((EntityLivingBase)entity));
@@ -72,10 +72,10 @@ extends Element {
         String string2 = " [" + entityLivingBase.getEntityId() + "]";
         String string3 = " \u00c2\u00a7c" + decimalFormat.format(MobRadar.mc.player.getDistance(entityLivingBase));
         String string4 = " \u00c2\u00a7rXYZ " + entityLivingBase.getPosition().getX() + " " + entityLivingBase.getPosition().getY() + " " + entityLivingBase.getPosition().getZ();
-        return entityLivingBase.getName() + (Field2391.getValue() != false ? string : "") + (Field2392.getValue() != false ? string2 : "") + (Field2393.getValue() != false ? string3 : "") + (Field2394.getValue().booleanValue() ? string4 : "");
+        return entityLivingBase.getName() + (health.getValue() != false ? string : "") + (entityID.getValue() != false ? string2 : "") + (distance.getValue() != false ? string3 : "") + (coordinates.getValue().booleanValue() ? string4 : "");
     }
 
     public static boolean Method2100(Entity entity) {
-        return Field2383.getValue() != false && entity instanceof EntityGhast || Field2384.getValue() != false && entity instanceof EntitySlime || Field2385.getValue() != false && entity instanceof EntityDonkey || Field2386.getValue() != false && entity instanceof EntityLlama || Field2387.getValue() != false && entity instanceof EntityOcelot || Field2388.getValue() != false && entity instanceof EntityWolf || Field2389.getValue() != false && entity instanceof EntityParrot;
+        return ghasts.getValue() != false && entity instanceof EntityGhast || slimes.getValue() != false && entity instanceof EntitySlime || donkeys.getValue() != false && entity instanceof EntityDonkey || llamas.getValue() != false && entity instanceof EntityLlama || cats.getValue() != false && entity instanceof EntityOcelot || dogs.getValue() != false && entity instanceof EntityWolf || parrots.getValue() != false && entity instanceof EntityParrot;
     }
 }

@@ -19,8 +19,8 @@ import net.minecraft.network.play.server.SPacketPlayerPosLook;
 
 public class Class265
 extends Module {
-    public static Setting<Integer> Field2017 = new Setting<>("FallDistance", 3, 30, 1, 1);
-    public static Setting<Class268> Field2018 = new Setting<>("Mode", Class268.PACKET);
+    public static Setting<Integer> fallDistance = new Setting<>("FallDistance", 3, 30, 1, 1);
+    public static Setting<Class268> mode = new Setting<>("Mode", Class268.PACKET);
     public double Field2019 = 256.0;
     public int Field2020;
     public ArrayList<CPacketPlayer> Field2021 = new ArrayList();
@@ -33,11 +33,11 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         if (class24.getPacket() instanceof CPacketPlayer) {
-            switch (Class245.Field2222[((Class268)((Object)Field2018.getValue())).ordinal()]) {
+            switch (Class245.Field2222[((Class268)((Object)mode.getValue())).ordinal()]) {
                 case 3: {
-                    if (!(Class265.mc.player.fallDistance > Math.min(3.0f, (float)((Integer)Field2017.getValue()).intValue()))) break;
+                    if (!(Class265.mc.player.fallDistance > Math.min(3.0f, (float)((Integer)fallDistance.getValue()).intValue()))) break;
                     if (((CPacketPlayer)class24.getPacket()).getY(Class265.mc.player.posY) < this.Field2019) {
-                        ((ICPacketPlayer)class24.getPacket()).Method1698(Class265.mc.player.posY + (double)Math.min(3.0f, (float)((Integer)Field2017.getValue()).intValue()));
+                        ((ICPacketPlayer)class24.getPacket()).Method1698(Class265.mc.player.posY + (double)Math.min(3.0f, (float)((Integer)fallDistance.getValue()).intValue()));
                         this.Field2019 = ((CPacketPlayer)class24.getPacket()).getY(Class265.mc.player.posY);
                         break;
                     }
@@ -46,7 +46,7 @@ extends Module {
                     break;
                 }
                 case 4: {
-                    if (!(Class265.mc.player.fallDistance > (float)((Integer)Field2017.getValue()).intValue())) break;
+                    if (!(Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue())) break;
                     ((ICPacketPlayer)class24.getPacket()).Method1700(true);
                     break;
                 }
@@ -60,8 +60,8 @@ extends Module {
             if (Class265.mc.player == null || Class265.mc.world == null) {
                 return;
             }
-            if (Field2018.getValue() != Class268.PACKET) break block2;
-            if (Class265.mc.player.fallDistance > (float)((Integer)Field2017.getValue()).intValue() && !Class265.mc.player.onGround) {
+            if (mode.getValue() != Class268.PACKET) break block2;
+            if (Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue() && !Class265.mc.player.onGround) {
                 moveEvent.setX(0.0);
                 moveEvent.setY(-0.062);
                 moveEvent.setZ(0.0);
@@ -74,9 +74,9 @@ extends Module {
         if (Class265.mc.player == null || Class265.mc.world == null) {
             return;
         }
-        switch (Class245.Field2222[((Class268)((Object)Field2018.getValue())).ordinal()]) {
+        switch (Class245.Field2222[((Class268)((Object)mode.getValue())).ordinal()]) {
             case 1: {
-                if (!(Class265.mc.player.fallDistance > (float)((Integer)Field2017.getValue()).intValue())) break;
+                if (!(Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue())) break;
                 if (this.Field2020 <= 0) {
                     CPacketPlayer.Position position = new CPacketPlayer.Position(PacketFly.Method2055(), 1.0, PacketFly.Method2055(), Class265.mc.player.onGround);
                     this.Field2021.add((CPacketPlayer)position);
@@ -96,7 +96,7 @@ extends Module {
                 break;
             }
             case 2: {
-                if (!(Class265.mc.player.fallDistance > (float)((Integer)Field2017.getValue()).intValue())) break;
+                if (!(Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue())) break;
                 Class265.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class265.mc.player.posX, 10000.0, Class265.mc.player.posZ, Class265.mc.player.onGround));
                 break;
             }
@@ -112,7 +112,7 @@ extends Module {
         if (Class265.mc.player == null || Class265.mc.world == null) {
             return;
         }
-        if (Field2018.getValue() == Class268.PACKET && Class265.mc.player.fallDistance > (float)((Integer)Field2017.getValue()).intValue() && packetEvent.getPacket() instanceof SPacketPlayerPosLook) {
+        if (mode.getValue() == Class268.PACKET && Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue() && packetEvent.getPacket() instanceof SPacketPlayerPosLook) {
             if (!(Class265.mc.currentScreen instanceof GuiDownloadTerrain)) {
                 if (Class265.mc.player.isEntityAlive()) {
                     if (this.Field2020 <= 0) {

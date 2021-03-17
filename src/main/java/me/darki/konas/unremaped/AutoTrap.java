@@ -32,16 +32,16 @@ import net.minecraft.util.math.MathHelper;
 
 public class AutoTrap
 extends Module {
-    public static Setting<Float> Field1693 = new Setting<>("TargetRange", Float.valueOf(4.5f), Float.valueOf(16.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
-    public static Setting<Integer> Field1694 = new Setting<>("ActionShift", 3, 8, 1, 1);
-    public static Setting<Integer> Field1695 = new Setting<>("ActionInterval", 0, 10, 0, 1);
-    public static Setting<Boolean> Field1696 = new Setting<>("Top", true);
-    public static Setting<Boolean> Field1697 = new Setting<>("Piston", false);
-    public static Setting<Class537> Field1698 = new Setting<>("Self", new Class537(0));
-    public static Setting<Boolean> Field1699 = new Setting<>("Strict", false);
-    public static Setting<Boolean> Field1700 = new Setting<>("Rotate", true);
-    public static Setting<Boolean> Field1701 = new Setting<>("DisableWhenDone", false);
-    public static Setting<Boolean> Field1702 = new Setting<>("LogoutSpots", false);
+    public static Setting<Float> targetRange = new Setting<>("TargetRange", Float.valueOf(4.5f), Float.valueOf(16.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
+    public static Setting<Integer> actionShift = new Setting<>("ActionShift", 3, 8, 1, 1);
+    public static Setting<Integer> actionInterval = new Setting<>("ActionInterval", 0, 10, 0, 1);
+    public static Setting<Boolean> top = new Setting<>("Top", true);
+    public static Setting<Boolean> piston = new Setting<>("Piston", false);
+    public static Setting<Class537> self = new Setting<>("Self", new Class537(0));
+    public static Setting<Boolean> strict = new Setting<>("Strict", false);
+    public static Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public static Setting<Boolean> disableWhenDone = new Setting<>("DisableWhenDone", false);
+    public static Setting<Boolean> logoutSpots = new Setting<>("LogoutSpots", false);
     public int Field1703;
     public Class566 Field1704 = new Class566();
     public BlockPos Field1705;
@@ -91,7 +91,7 @@ extends Module {
         this.Field1707 = null;
         this.Field1708 = null;
         this.Field1709 = null;
-        this.Field1706 = (Integer)Field1695.getValue();
+        this.Field1706 = (Integer)actionInterval.getValue();
     }
 
     @Subscriber(priority=70)
@@ -105,16 +105,16 @@ extends Module {
         this.Field1707 = null;
         int n2 = Class475.Method2142();
         Field1711.forEach((arg_0, arg_1) -> AutoTrap.Method1052(n2, arg_0, arg_1));
-        if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)Field1700.getValue())) {
+        if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)rotate.getValue())) {
             return;
         }
-        if (!(!((Boolean)Field1699.getValue()).booleanValue() || AutoTrap.mc.player.onGround && AutoTrap.mc.player.collidedVertically)) {
+        if (!(!((Boolean)strict.getValue()).booleanValue() || AutoTrap.mc.player.onGround && AutoTrap.mc.player.collidedVertically)) {
             return;
         }
         if (Class167.Method1610(PacketFly.class).isEnabled()) {
             return;
         }
-        if (this.Field1706 < (Integer)Field1695.getValue()) {
+        if (this.Field1706 < (Integer)actionInterval.getValue()) {
             ++this.Field1706;
         }
         if ((n = this.Method464()) == -1) {
@@ -127,7 +127,7 @@ extends Module {
         if (entityPlayer == null) {
             return;
         }
-        if (this.Field1706 < (Integer)Field1695.getValue()) {
+        if (this.Field1706 < (Integer)actionInterval.getValue()) {
             if (this.Field1709 != null && !this.Field1710.Method737(650.0)) {
                 NewGui.INSTANCE.Field1139.Method1937(this.Field1709.Method1979(), this.Field1709.Method1978());
             }
@@ -136,14 +136,14 @@ extends Module {
         this.Field1707 = new BlockPos(entityPlayer.posX, entityPlayer.posY, entityPlayer.posZ);
         BlockPos blockPos = this.Method1626(this.Field1707);
         if (blockPos != null) {
-            this.Field1708 = Class496.Method1962(blockPos, (Boolean)Field1700.getValue());
+            this.Field1708 = Class496.Method1962(blockPos, (Boolean)rotate.getValue());
             if (this.Field1708 != null) {
                 Field1711.put(blockPos, System.currentTimeMillis());
                 this.Field1706 = 0;
                 this.Field1705 = blockPos;
                 this.Field1704.Method739();
             }
-        } else if (((Boolean)Field1701.getValue()).booleanValue()) {
+        } else if (((Boolean)disableWhenDone.getValue()).booleanValue()) {
             this.toggle();
             return;
         }
@@ -178,10 +178,10 @@ extends Module {
     public EntityPlayer Method1623() {
         Waypoints waypoints = (Waypoints)Class167.Method1610(Waypoints.class);
         Stream stream = AutoTrap.mc.world.playerEntities.stream();
-        if (((Boolean)Field1702.getValue()).booleanValue()) {
+        if (((Boolean)logoutSpots.getValue()).booleanValue()) {
             stream = Stream.concat(AutoTrap.mc.world.playerEntities.stream(), waypoints.Method1799().keySet().stream());
         }
-        return stream.filter(AutoTrap::Method128).filter(AutoTrap::Method122).filter(AutoTrap::Method141).filter(AutoTrap::Method126).filter(this::Method132).min(Comparator.comparing(AutoTrap::Method1622)).orElse((EntityPlayer)(PlayerUtil.Method1087(((Class537)Field1698.getValue()).Method851()) ? AutoTrap.mc.player : null));
+        return stream.filter(AutoTrap::Method128).filter(AutoTrap::Method122).filter(AutoTrap::Method141).filter(AutoTrap::Method126).filter(this::Method132).min(Comparator.comparing(AutoTrap::Method1622)).orElse((EntityPlayer)(PlayerUtil.Method1087(((Class537)self.getValue()).Method851()) ? AutoTrap.mc.player : null));
     }
 
     public AutoTrap() {
@@ -203,7 +203,7 @@ extends Module {
     }
 
     public static boolean Method126(EntityPlayer entityPlayer) {
-        return AutoTrap.mc.player.getDistance((Entity)entityPlayer) < Math.max(((Float)Field1693.getValue()).floatValue() - 1.0f, 1.0f);
+        return AutoTrap.mc.player.getDistance((Entity)entityPlayer) < Math.max(((Float)targetRange.getValue()).floatValue() - 1.0f, 1.0f);
     }
 
     public boolean Method1624(BlockPos blockPos, boolean bl) {
@@ -241,10 +241,10 @@ extends Module {
                 AutoTrap.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoTrap.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
             Class496.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
-            for (int i = 0; i < (Integer)Field1694.getValue() - 1; ++i) {
+            for (int i = 0; i < (Integer)actionShift.getValue() - 1; ++i) {
                 BlockPos blockPos = this.Method1626(this.Field1707);
                 if (blockPos != null) {
-                    Class490 class490 = Class496.Method1961(blockPos, (Boolean)Field1700.getValue(), true);
+                    Class490 class490 = Class496.Method1961(blockPos, (Boolean)rotate.getValue(), true);
                     if (class490 == null) break;
                     this.Field1708 = class490;
                     Field1711.put(blockPos, System.currentTimeMillis());
@@ -253,7 +253,7 @@ extends Module {
                     this.Field1704.Method739();
                     continue;
                 }
-                if (!((Boolean)Field1701.getValue()).booleanValue()) break;
+                if (!((Boolean)disableWhenDone.getValue()).booleanValue()) break;
                 this.toggle();
                 if (bl) {
                     AutoTrap.mc.player.inventory.currentItem = n;
@@ -306,14 +306,14 @@ extends Module {
             enumFacing = block[i];
             blockPos3 = null;
             d2 = 0.0;
-            if (this.Method1624(blockPos.up().offset(enumFacing), false) && (!((Boolean)Field1697.getValue()).booleanValue() || this.Method1572(blockPos.up(), enumFacing)) && (d = AutoTrap.mc.player.getDistance((double)(blockPos2 = blockPos.up().offset(enumFacing)).getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5)) >= d2) {
+            if (this.Method1624(blockPos.up().offset(enumFacing), false) && (!((Boolean)piston.getValue()).booleanValue() || this.Method1572(blockPos.up(), enumFacing)) && (d = AutoTrap.mc.player.getDistance((double)(blockPos2 = blockPos.up().offset(enumFacing)).getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5)) >= d2) {
                 blockPos3 = blockPos2;
                 d2 = d;
             }
             if (blockPos3 == null) continue;
             return blockPos3;
         }
-        if (((Boolean)Field1696.getValue()).booleanValue() && ((block = AutoTrap.mc.world.getBlockState(blockPos.up().up()).getBlock()) instanceof BlockAir || block instanceof BlockLiquid)) {
+        if (((Boolean)top.getValue()).booleanValue() && ((block = AutoTrap.mc.world.getBlockState(blockPos.up().up()).getBlock()) instanceof BlockAir || block instanceof BlockLiquid)) {
             if (this.Method1624(blockPos.up().up(), false)) {
                 return blockPos.up().up();
             }

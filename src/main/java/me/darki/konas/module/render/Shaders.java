@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class Shaders
 extends Module {
-    public Setting<SecretShaderMode> Field528 = new Setting<>("Shader", SecretShaderMode.ANTIALIAS);
+    public Setting<SecretShaderMode> shader = new Setting<>("Shader", SecretShaderMode.ANTIALIAS);
 
     public Shaders() {
         super("Shaders", "Enable 1.8 shaders", Category.RENDER);

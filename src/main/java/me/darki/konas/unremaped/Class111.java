@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class Class111
 extends Element {
-    public Setting<Class114> Field2541 = new Setting<>("Background", Class114.TEXTURE);
+    public Setting<Class114> background = new Setting<>("Background", Class114.TEXTURE);
 
     @Override
     public void onRender2D() {
@@ -21,7 +21,7 @@ extends Element {
         int n3;
         int n4;
         super.onRender2D();
-        if (this.Field2541.getValue() == Class114.TEXTURE) {
+        if (this.background.getValue() == Class114.TEXTURE) {
             GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
             mc.getTextureManager().bindTexture(new ResourceLocation("textures/gui/container/generic_54.png"));
             Class111.mc.ingameGUI.drawTexturedModalRect(this.Method2320(), this.Method2324(), 7, 17, 162, 54);
@@ -31,7 +31,7 @@ extends Element {
             for (n3 = 0; n3 < 9; ++n3) {
                 n2 = (int)(this.Method2320() + 1.0f + (float)(n3 * 18));
                 n = (int)(this.Method2324() + 1.0f + (float)(n4 * 18));
-                if (this.Field2541.getValue() != Class114.OUTLINE) continue;
+                if (this.background.getValue() != Class114.OUTLINE) continue;
                 Gui.drawRect((int)(n2 - 1), (int)(n - 1), (int)(n2 - 1 + 18), (int)(n - 1 + 18), (int)new Color(26, 26, 26, 40).hashCode());
                 Class516.Method1278(n2 - 1, n - 1, n2 - 1 + 18, n - 1 + 18, 2.0f, Class556.Method807(300, new float[]{1.0f, 1.0f, 1.0f}));
             }

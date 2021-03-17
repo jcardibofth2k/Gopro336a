@@ -7,11 +7,11 @@ import me.darki.konas.setting.Setting;
 
 public class Reach
 extends Module {
-    public static Setting<Float> Field2095 = new Setting<>("Reach", Float.valueOf(4.0f), Float.valueOf(10.0f), Float.valueOf(0.5f), Float.valueOf(0.5f));
+    public static Setting<Float> reach = new Setting<>("Reach", Float.valueOf(4.0f), Float.valueOf(10.0f), Float.valueOf(0.5f), Float.valueOf(0.5f));
 
     @Subscriber
     public void Method1947(Class571 class571) {
-        class571.Method572(((Float)Field2095.getValue()).floatValue());
+        class571.Method572(((Float)reach.getValue()).floatValue());
     }
 
     public Reach() {

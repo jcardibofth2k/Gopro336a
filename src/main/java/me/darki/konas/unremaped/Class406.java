@@ -26,28 +26,28 @@ import org.lwjgl.opengl.GL11;
 
 public class Class406
 extends Module {
-    public static Setting<ParentSetting> Field1190 = new Setting<>("Breaking", new ParentSetting(false));
-    public Setting<Class400> Field1191 = new Setting<>("BRenderMove", Class400.GROW).setParentSetting(Field1190);
-    public Setting<Float> Field1192 = new Setting<>("BRange", Float.valueOf(15.0f), Float.valueOf(255.0f), Float.valueOf(5.0f), Float.valueOf(5.0f)).setParentSetting(Field1190);
-    public Setting<Boolean> Field1193 = new Setting<>("BOutline", true).setParentSetting(Field1190);
-    public Setting<Boolean> Field1194 = new Setting<>("BWireframe", false).setParentSetting(Field1190);
-    public Setting<Float> Field1195 = new Setting<>("BWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1196 = new Setting<>("BOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1197 = new Setting<>("BCrossOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190).visibleIf(this::Method396);
-    public Setting<Boolean> Field1198 = new Setting<>("BFill", true).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1199 = new Setting<>("BFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1200 = new Setting<>("BCrossFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190).visibleIf(this::Method394);
-    public Setting<Boolean> Field1201 = new Setting<>("DynamicColor", true).setParentSetting(Field1190);
-    public Setting<Boolean> Field1202 = new Setting<>("BTracer", false).setParentSetting(Field1190);
-    public Setting<ColorValue> Field1203 = new Setting<>("BTracerColor", new ColorValue(-65536)).setParentSetting(Field1190);
-    public Setting<Boolean> Field1204 = new Setting<>("ShowName", false).setParentSetting(Field1190);
-    public static Setting<ParentSetting> Field1205 = new Setting<>("Placing", new ParentSetting(false));
-    public Setting<Boolean> Field1206 = new Setting<>("POutline", true).setParentSetting(Field1205);
-    public Setting<Boolean> Field1207 = new Setting<>("PWireframe", false).setParentSetting(Field1205);
-    public Setting<Float> Field1208 = new Setting<>("PWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).setParentSetting(Field1205);
-    public Setting<ColorValue> Field1209 = new Setting<>("POutlineColor", new ColorValue(-16776961)).setParentSetting(Field1205);
-    public Setting<Boolean> Field1210 = new Setting<>("PFill", true).setParentSetting(Field1205);
-    public Setting<ColorValue> Field1211 = new Setting<>("PFillColor", new ColorValue(0x660000FF)).setParentSetting(Field1205);
+    public static Setting<ParentSetting> breaking = new Setting<>("Breaking", new ParentSetting(false));
+    public Setting<Class400> bRenderMove = new Setting<>("BRenderMove", Class400.GROW).setParentSetting(Field1190);
+    public Setting<Float> bRange = new Setting<>("BRange", Float.valueOf(15.0f), Float.valueOf(255.0f), Float.valueOf(5.0f), Float.valueOf(5.0f)).setParentSetting(Field1190);
+    public Setting<Boolean> bOutline = new Setting<>("BOutline", true).setParentSetting(Field1190);
+    public Setting<Boolean> bWireframe = new Setting<>("BWireframe", false).setParentSetting(Field1190);
+    public Setting<Float> bWidth = new Setting<>("BWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).setParentSetting(Field1190);
+    public Setting<ColorValue> bOutlineColor = new Setting<>("BOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190);
+    public Setting<ColorValue> bCrossOutlineColor = new Setting<>("BCrossOutlineColor", new ColorValue(-65536)).setParentSetting(Field1190).visibleIf(this::Method396);
+    public Setting<Boolean> bFill = new Setting<>("BFill", true).setParentSetting(Field1190);
+    public Setting<ColorValue> bFillColor = new Setting<>("BFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190);
+    public Setting<ColorValue> bCrossFillColor = new Setting<>("BCrossFillColor", new ColorValue(0x66FF0000)).setParentSetting(Field1190).visibleIf(this::Method394);
+    public Setting<Boolean> dynamicColor = new Setting<>("DynamicColor", true).setParentSetting(Field1190);
+    public Setting<Boolean> bTracer = new Setting<>("BTracer", false).setParentSetting(Field1190);
+    public Setting<ColorValue> bTracerColor = new Setting<>("BTracerColor", new ColorValue(-65536)).setParentSetting(Field1190);
+    public Setting<Boolean> showName = new Setting<>("ShowName", false).setParentSetting(Field1190);
+    public static Setting<ParentSetting> placing = new Setting<>("Placing", new ParentSetting(false));
+    public Setting<Boolean> pOutline = new Setting<>("POutline", true).setParentSetting(Field1205);
+    public Setting<Boolean> pWireframe = new Setting<>("PWireframe", false).setParentSetting(Field1205);
+    public Setting<Float> pWidth = new Setting<>("PWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).setParentSetting(Field1205);
+    public Setting<ColorValue> pOutlineColor = new Setting<>("POutlineColor", new ColorValue(-16776961)).setParentSetting(Field1205);
+    public Setting<Boolean> pFill = new Setting<>("PFill", true).setParentSetting(Field1205);
+    public Setting<ColorValue> pFillColor = new Setting<>("PFillColor", new ColorValue(0x660000FF)).setParentSetting(Field1205);
 
     public static Color Method1169(Color color, Color color2, double d, int n) {
         double d2 = Class406.Method1170(color.getRed(), color2.getRed(), d);
@@ -58,11 +58,11 @@ extends Module {
 
     @Override
     public boolean Method396() {
-        return this.Field1191.getValue() == Class400.CROSS;
+        return this.bRenderMove.getValue() == Class400.CROSS;
     }
 
     public boolean Method394() {
-        return this.Field1191.getValue() == Class400.CROSS;
+        return this.bRenderMove.getValue() == Class400.CROSS;
     }
 
     public void Method732(double d, double d2, double d3, double d4, double d5, double d6, int n) {
@@ -104,28 +104,28 @@ extends Module {
             float f = ((IPlayerControllerMP)Class406.mc.playerController).Method295();
             BlockPos blockPos = ((IPlayerControllerMP)Class406.mc.playerController).Method296();
             AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Class406.mc.world, blockPos).offset(blockPos);
-            switch (Class402.Field1230[((Class400)((Object)this.Field1191.getValue())).ordinal()]) {
+            switch (Class402.Field1230[((Class400)((Object)this.bRenderMove.getValue())).ordinal()]) {
                 case 1: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
                 case 2: {
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
                 case 3: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1200.getValue(), (ColorValue)this.Field1197.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.bCrossFillColor.getValue(), (ColorValue)this.bCrossOutlineColor.getValue(), f);
                     break;
                 }
                 default: {
-                    this.Method1173(axisAlignedBB, (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB, (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
             }
-            if (((Boolean)this.Field1202.getValue()).booleanValue()) {
+            if (((Boolean)this.bTracer.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.Field1203.getValue()).Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
             }
         }
         ((IRenderGlobal)Class406.mc.renderGlobal).Method74().forEach(this::Method1171);
@@ -137,17 +137,17 @@ extends Module {
 
     public void Method1172(AxisAlignedBB axisAlignedBB) {
         block3: {
-            if (((Boolean)this.Field1210.getValue()).booleanValue()) {
+            if (((Boolean)this.pFill.getValue()).booleanValue()) {
                 Class507.Method1386();
-                Class507.Method1379(axisAlignedBB, (ColorValue)this.Field1211.getValue());
+                Class507.Method1379(axisAlignedBB, (ColorValue)this.pFillColor.getValue());
                 Class507.Method1385();
             }
-            if (!((Boolean)this.Field1206.getValue()).booleanValue()) break block3;
+            if (!((Boolean)this.pOutline.getValue()).booleanValue()) break block3;
             Class507.Method1386();
-            if (((Boolean)this.Field1207.getValue()).booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).Method69(), -((IRenderManager)Module.mc.getRenderManager()).Method70(), -((IRenderManager)Module.mc.getRenderManager()).Method71()), ((ColorValue)this.Field1209.getValue()).Method774(), ((Float)this.Field1208.getValue()).floatValue());
+            if (((Boolean)this.pWireframe.getValue()).booleanValue()) {
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).Method69(), -((IRenderManager)Module.mc.getRenderManager()).Method70(), -((IRenderManager)Module.mc.getRenderManager()).Method71()), ((ColorValue)this.pOutlineColor.getValue()).Method774(), ((Float)this.pWidth.getValue()).floatValue());
             } else {
-                Class507.Method1374(axisAlignedBB, ((Float)this.Field1208.getValue()).floatValue(), (ColorValue)this.Field1209.getValue());
+                Class507.Method1374(axisAlignedBB, ((Float)this.pWidth.getValue()).floatValue(), (ColorValue)this.pOutlineColor.getValue());
             }
             Class507.Method1385();
         }
@@ -155,21 +155,21 @@ extends Module {
 
     public void Method1173(AxisAlignedBB axisAlignedBB, ColorValue colorValue, ColorValue class4402, float f) {
         block4: {
-            if (((Boolean)this.Field1201.getValue()).booleanValue()) {
+            if (((Boolean)this.dynamicColor.getValue()).booleanValue()) {
                 colorValue = new ColorValue(Class406.Method1174(f, colorValue.Method782()).getRGB());
                 class4402 = colorValue.Method784(class4402.Method782());
             }
-            if (((Boolean)this.Field1198.getValue()).booleanValue()) {
+            if (((Boolean)this.bFill.getValue()).booleanValue()) {
                 Class507.Method1386();
                 Class507.Method1379(axisAlignedBB, colorValue);
                 Class507.Method1385();
             }
-            if (!((Boolean)this.Field1193.getValue()).booleanValue()) break block4;
+            if (!((Boolean)this.bOutline.getValue()).booleanValue()) break block4;
             Class507.Method1386();
-            if (((Boolean)this.Field1194.getValue()).booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), ((Float)this.Field1195.getValue()).floatValue());
+            if (((Boolean)this.bWireframe.getValue()).booleanValue()) {
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), ((Float)this.bWidth.getValue()).floatValue());
             } else {
-                Class507.Method1374(axisAlignedBB, ((Float)this.Field1195.getValue()).floatValue(), class4402);
+                Class507.Method1374(axisAlignedBB, ((Float)this.bWidth.getValue()).floatValue(), class4402);
             }
             Class507.Method1385();
         }
@@ -193,35 +193,35 @@ extends Module {
             if (Class406.mc.playerController.getIsHittingBlock() && ((IPlayerControllerMP)Class406.mc.playerController).Method296().equals((Object)blockPos)) {
                 return;
             }
-            if (Class406.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) > (double)((Float)this.Field1192.getValue()).floatValue()) {
+            if (Class406.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) > (double)((Float)this.bRange.getValue()).floatValue()) {
                 return;
             }
             float f = Math.min(1.0f, (float)destroyBlockProgress.getPartialBlockDamage() / 8.0f);
             AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Class406.mc.world, blockPos).offset(blockPos);
-            switch (Class402.Field1230[((Class400)((Object)this.Field1191.getValue())).ordinal()]) {
+            switch (Class402.Field1230[((Class400)((Object)this.bRenderMove.getValue())).ordinal()]) {
                 case 1: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
                 case 2: {
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
                 case 3: {
-                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
-                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.Field1200.getValue(), (ColorValue)this.Field1197.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink(0.5 - (double)f * 0.5), (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
+                    this.Method1173(axisAlignedBB.shrink((double)f * 0.5), (ColorValue)this.bCrossFillColor.getValue(), (ColorValue)this.bCrossOutlineColor.getValue(), f);
                     break;
                 }
                 default: {
-                    this.Method1173(axisAlignedBB, (ColorValue)this.Field1199.getValue(), (ColorValue)this.Field1196.getValue(), f);
+                    this.Method1173(axisAlignedBB, (ColorValue)this.bFillColor.getValue(), (ColorValue)this.bOutlineColor.getValue(), f);
                     break;
                 }
             }
-            if (((Boolean)this.Field1202.getValue()).booleanValue()) {
+            if (((Boolean)this.bTracer.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.Field1203.getValue()).Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
             }
-            if (((Boolean)this.Field1204.getValue()).booleanValue()) {
+            if (((Boolean)this.showName.getValue()).booleanValue()) {
                 int n = ((IDestroyBlockProgress)destroyBlockProgress).Method908();
                 Entity entity = Class406.mc.world.getEntityByID(n);
                 if (entity == null || entity == Class406.mc.player) {
