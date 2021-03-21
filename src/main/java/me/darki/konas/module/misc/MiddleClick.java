@@ -31,13 +31,13 @@ import net.minecraft.util.math.Vec3d;
 
 public class MiddleClick
 extends Module {
-    public static Setting<Class306> Field960 = new Setting<>("Action", Class306.MENU);
-    public static Setting<Integer> Field961 = new Setting<>("Range", 40, 250, 10, 10).visibleIf(MiddleClick::Method519);
-    public static Setting<Boolean> Field962 = new Setting<>("ThroughWalls", true).visibleIf(MiddleClick::Method394);
-    public Setting<Boolean> Field963 = new Setting<>("Rocket", false);
-    public Setting<Boolean> Field964 = new Setting<>("EP", false);
-    public Setting<Boolean> Field965 = new Setting<>("XP", false);
-    public Setting<Boolean> Field966 = new Setting<>("XPInHoles", false).visibleIf(this.Field965::getValue);
+    public static Setting<Class306> action = new Setting<>("Action", Class306.MENU);
+    public static Setting<Integer> range = new Setting<>("Range", 40, 250, 10, 10).visibleIf(MiddleClick::Method519);
+    public static Setting<Boolean> throughWalls = new Setting<>("ThroughWalls", true).visibleIf(MiddleClick::Method394);
+    public Setting<Boolean> rocket = new Setting<>("Rocket", false);
+    public Setting<Boolean> eP = new Setting<>("EP", false);
+    public Setting<Boolean> xP = new Setting<>("XP", false);
+    public Setting<Boolean> xPInHoles = new Setting<>("XPInHoles", false).visibleIf(this.Field965::getValue);
     public Class566 Field967 = new Class566();
     public int Field968 = -1;
     public boolean Field969 = true;
@@ -48,7 +48,7 @@ extends Module {
             Vec3d vec3d = MiddleClick.mc.player.getPositionEyes(1.0f);
             for (float f = 0.0f; f < (float)n; f += 0.5f) {
                 vec3d = vec3d.add(MiddleClick.mc.player.getLookVec().scale(0.5));
-                if (!Field962.getValue().booleanValue() && MiddleClick.mc.world.getBlockState(new BlockPos(vec3d.x, vec3d.y, vec3d.z)).getBlock() != Blocks.AIR) {
+                if (!throughWalls.getValue().booleanValue() && MiddleClick.mc.world.getBlockState(new BlockPos(vec3d.x, vec3d.y, vec3d.z)).getBlock() != Blocks.AIR) {
                     return null;
                 }
                 for (EntityPlayer entityPlayer : MiddleClick.mc.world.playerEntities) {
@@ -83,7 +83,7 @@ extends Module {
     @Subscriber
     public void Method123(Class50 class50) {
         if (GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock) && this.Field967.Method737(350.0)) {
-            if (this.Field965.getValue().booleanValue() && (!this.Field966.getValue().booleanValue() || Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
+            if (this.xP.getValue().booleanValue() && (!this.xPInHoles.getValue().booleanValue() || Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
                 int n = this.Method524();
                 if (this.Field969) {
                     this.Field968 = MiddleClick.mc.player.inventory.currentItem;
@@ -116,7 +116,7 @@ extends Module {
     }
 
     public static boolean Method394() {
-        return Field960.getValue() == Class306.MENU;
+        return action.getValue() == Class306.MENU;
     }
 
     @Subscriber
@@ -128,7 +128,7 @@ extends Module {
         if (class653.Method1164() != MiddleClick.mc.gameSettings.keyBindPickBlock.getKeyCode()) {
             return;
         }
-        if (Field960.getValue() == Class306.FRIEND && MiddleClick.mc.objectMouseOver.entityHit != null) {
+        if (action.getValue() == Class306.FRIEND && MiddleClick.mc.objectMouseOver.entityHit != null) {
             Entity entity = MiddleClick.mc.objectMouseOver.entityHit;
             if (entity instanceof EntityPlayer) {
                 if (Class492.Method1989(entity.getName())) {
@@ -145,7 +145,7 @@ extends Module {
                 return;
             }
         }
-        if (this.Field963.getValue().booleanValue() && this.Method969() != -1) {
+        if (this.rocket.getValue().booleanValue() && this.Method969() != -1) {
             this.Field967.Method739();
             int n2 = this.Method969();
             n = MiddleClick.mc.player.inventory.currentItem;
@@ -158,7 +158,7 @@ extends Module {
                 return;
             }
         }
-        if (this.Field964.getValue().booleanValue() && (!this.Field965.getValue().booleanValue() || this.Field966.getValue().booleanValue() && !Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
+        if (this.eP.getValue().booleanValue() && (!this.xP.getValue().booleanValue() || this.xPInHoles.getValue().booleanValue() && !Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
             int n3 = this.getBlockInHotbar();
             n = MiddleClick.mc.player.inventory.currentItem;
             if (n3 != -1) {
@@ -203,7 +203,7 @@ extends Module {
     }
 
     public static boolean Method519() {
-        return Field960.getValue() == Class306.MENU;
+        return action.getValue() == Class306.MENU;
     }
 
     @Subscriber
@@ -215,13 +215,13 @@ extends Module {
             if (tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END) {
                 return;
             }
-            if (Field960.getValue() != Class306.MENU) {
+            if (action.getValue() != Class306.MENU) {
                 return;
             }
             if (!GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock)) {
                 return;
             }
-            EntityPlayer entityPlayer = MiddleClick.Method968(Field961.getValue());
+            EntityPlayer entityPlayer = MiddleClick.Method968(range.getValue());
             if (entityPlayer == null) break block5;
             this.Field967.Method739();
             if (MiddleClick.mc.currentScreen == null) {

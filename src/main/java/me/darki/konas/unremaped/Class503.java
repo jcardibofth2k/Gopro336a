@@ -17,8 +17,8 @@ public class Class503
 extends Module {
     public float Field1371;
     public ListenableSettingDecorator<Class505> Field1372 = new ListenableSettingDecorator("Mode", Class505.NORMAL, this::Method1442);
-    public Setting<Boolean> Field1373 = new Setting<>("Sine", false).visibleIf(this::Method394);
-    public Setting<Boolean> Field1374 = new Setting<>("Cancel", false).visibleIf(this::Method388);
+    public Setting<Boolean> sine = new Setting<>("Sine", false).visibleIf(this::Method394);
+    public Setting<Boolean> cancel = new Setting<>("Cancel", false).visibleIf(this::Method388);
     public long Field1375;
 
     public void Method1442(Class505 class505) {
@@ -88,7 +88,7 @@ extends Module {
             return;
         }
         if (this.Field1372.getValue() == Class505.GAMMA) {
-            Class503.mc.gameSettings.gammaSetting = (Boolean)this.Field1373.getValue() != false ? this.Field1371 + 20.0f * Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field1375) / 1000.0f) : this.Field1371 + 20.0f;
+            Class503.mc.gameSettings.gammaSetting = (Boolean)this.sine.getValue() != false ? this.Field1371 + 20.0f * Math.min(1.0f, (float)(System.currentTimeMillis() - this.Field1375) / 1000.0f) : this.Field1371 + 20.0f;
         } else if (this.Field1372.getValue() == Class505.NORMAL) {
             Arrays.fill(Class503.mc.world.provider.getLightBrightnessTable(), 1.0f);
         } else {
@@ -103,7 +103,7 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         block1: {
-            if (!(packetEvent.getPacket() instanceof SPacketEntityEffect) || !((Boolean)this.Field1374.getValue()).booleanValue()) break block1;
+            if (!(packetEvent.getPacket() instanceof SPacketEntityEffect) || !((Boolean)this.cancel.getValue()).booleanValue()) break block1;
             SPacketEntityEffect sPacketEntityEffect = (SPacketEntityEffect) packetEvent.getPacket();
             if (Class503.mc.player != null && sPacketEntityEffect.getEntityId() == Class503.mc.player.getEntityId() && (sPacketEntityEffect.getEffectId() == 9 || sPacketEntityEffect.getEffectId() == 15)) {
                 packetEvent.setCanceled(true);

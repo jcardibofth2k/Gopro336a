@@ -12,15 +12,15 @@ import net.minecraft.util.EnumHand;
 
 public class NoEntityTrace
 extends Module {
-    public Setting<Boolean> Field514 = new Setting<>("PickaxeOnly", false);
-    public Setting<Boolean> Field515 = new Setting<>("SwordOnly", false);
+    public Setting<Boolean> pickaxeOnly = new Setting<>("PickaxeOnly", false);
+    public Setting<Boolean> swordOnly = new Setting<>("SwordOnly", false);
 
     @Subscriber
     public void Method584(Class33 class33) {
         if (NoEntityTrace.mc.gameSettings.keyBindPickBlock.isKeyDown() && ModuleManager.getModuleByClass(MiddleClick.class).isEnabled()) {
             return;
         }
-        if (!(!((Boolean)this.Field514.getValue()).booleanValue() || NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || ((Boolean)this.Field515.getValue()).booleanValue() && NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {
+        if (!(!((Boolean)this.pickaxeOnly.getValue()).booleanValue() || NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemPickaxe || ((Boolean)this.swordOnly.getValue()).booleanValue() && NoEntityTrace.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() instanceof ItemSword)) {
             return;
         }
         class33.setCanceled(true);

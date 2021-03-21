@@ -8,8 +8,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 
 public abstract class Element {
-    public Setting<ColorValue> Field2648 = new Setting<>("Color", new ColorValue(0, false));
-    public Setting<ColorValue> Field2649 = new Setting<>("Outline", new ColorValue(0x888888, false));
+    public Setting<ColorValue> color = new Setting<>("Color", new ColorValue(0, false));
+    public Setting<ColorValue> outline = new Setting<>("Outline", new ColorValue(0x888888, false));
     public String Field2650;
     public float Field2651;
     public float Field2652;
@@ -49,7 +49,7 @@ public abstract class Element {
     }
 
     public void onRender2D() {
-        RenderUtil2.Method1337(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.Field2649.getValue().Method774(), this.Field2648.getValue().Method774());
+        RenderUtil2.Method1337(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.outline.getValue().Method774(), this.color.getValue().Method774());
     }
 
     public void Method2319(float f) {

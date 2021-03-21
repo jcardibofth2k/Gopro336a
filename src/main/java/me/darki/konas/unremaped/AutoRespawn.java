@@ -9,7 +9,7 @@ import net.minecraft.client.gui.GuiGameOver;
 
 public class AutoRespawn
 extends Module {
-    public Setting<Boolean> Field1808 = new Setting<>("Safe", false);
+    public Setting<Boolean> safe = new Setting<>("Safe", false);
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
@@ -18,7 +18,7 @@ extends Module {
             if (AutoRespawn.mc.player == null || AutoRespawn.mc.world == null) {
                 return;
             }
-            boolean bl2 = bl = (Boolean)this.Field1808.getValue() == false || AutoRespawn.mc.player.getHealth() < 0.0f || AutoRespawn.mc.player.isDead;
+            boolean bl2 = bl = (Boolean)this.safe.getValue() == false || AutoRespawn.mc.player.getHealth() < 0.0f || AutoRespawn.mc.player.isDead;
             if (!(AutoRespawn.mc.currentScreen instanceof GuiGameOver) || !bl) break block1;
             AutoRespawn.mc.player.respawnPlayer();
         }

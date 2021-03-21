@@ -17,13 +17,13 @@ import net.minecraft.client.gui.ScaledResolution;
 
 public class ArrayList
 extends Element {
-    public Setting<Boolean> Field841 = new Setting<>("Lines", true);
-    public Setting<Boolean> Field842 = new Setting<>("Cute", false);
-    public Setting<ColorValue> Field843 = new Setting<>("LineColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), true)).visibleIf(this::Method901);
-    public Setting<Boolean> Field844 = new Setting<>("Pulse", true);
-    public Setting<Float> Field845 = new Setting<>("Range", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method903);
-    public Setting<Float> Field846 = new Setting<>("Spread", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method900);
-    public Setting<Float> Field847 = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this::Method904);
+    public Setting<Boolean> lines = new Setting<>("Lines", true);
+    public Setting<Boolean> cute = new Setting<>("Cute", false);
+    public Setting<ColorValue> lineColor = new Setting<>("LineColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), true)).visibleIf(this::Method901);
+    public Setting<Boolean> pulse = new Setting<>("Pulse", true);
+    public Setting<Float> range = new Setting<>("Range", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method903);
+    public Setting<Float> spread = new Setting<>("Spread", Float.valueOf(1.0f), Float.valueOf(2.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(this::Method900);
+    public Setting<Float> speed = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(this::Method904);
     public float Field848 = 0.0f;
     public Class107 Field849 = Class107.TOP_RIGHT;
 
@@ -39,7 +39,7 @@ extends Element {
         String string = this.Method894(module);
         RenderUtil2.Method1338(this.Method2320() + (bl ? this.Method2329() - f - 2.0f : 0.0f), this.Method2324() + (float)nArray[0], f + 2.0f, (int)(Class557.Method799(string) + 1.5f), new Color(20, 20, 20, 60).hashCode());
         int n = this.Method902(nArray2[0]);
-        if (this.Field841.getValue().booleanValue()) {
+        if (this.lines.getValue().booleanValue()) {
             RenderUtil2.Method1338(this.Method2320() + (bl ? this.Method2329() - f - 2.0f : f + 2.0f), this.Method2324() + (float)nArray[0], 1.0f, (int)(Class557.Method799(string) + 1.5f), n);
         }
         Class557.Method801(string, (int)((float)((int)this.Method2320()) + (bl ? this.Method2329() - f : 0.0f)), (int)(this.Method2324() + (float)nArray[0] + 0.5f), module.isVisible() ? n : Color.GRAY.getRGB());
@@ -110,7 +110,7 @@ extends Element {
     }
 
     public boolean Method900() {
-        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
+        return this.pulse.getValue() != false && !this.lineColor.getValue().Method783();
     }
 
     public ArrayList() {
@@ -118,28 +118,28 @@ extends Element {
     }
 
     public boolean Method901() {
-        return this.Field842.getValue() == false;
+        return this.cute.getValue() == false;
     }
 
     public int Method902(int n) {
-        float[] fArray = Color.RGBtoHSB(this.Field843.getValue().Method778() >> 16 & 0xFF, this.Field843.getValue().Method778() >> 8 & 0xFF, this.Field843.getValue().Method778() & 0xFF, null);
-        if (this.Field842.getValue().booleanValue()) {
+        float[] fArray = Color.RGBtoHSB(this.lineColor.getValue().Method778() >> 16 & 0xFF, this.lineColor.getValue().Method778() >> 8 & 0xFF, this.lineColor.getValue().Method778() & 0xFF, null);
+        if (this.cute.getValue().booleanValue()) {
             return this.Method896(n - 1);
         }
-        if (this.Field844.getValue().booleanValue()) {
-            if (this.Field843.getValue().Method783()) {
+        if (this.pulse.getValue().booleanValue()) {
+            if (this.lineColor.getValue().Method783()) {
                 return Class556.Method807(300 * n, fArray);
             }
-            return Class556.Method805(n, fArray, this.Field846.getValue().floatValue(), this.Field847.getValue().floatValue(), this.Field845.getValue().floatValue());
+            return Class556.Method805(n, fArray, this.spread.getValue().floatValue(), this.speed.getValue().floatValue(), this.range.getValue().floatValue());
         }
-        return this.Field843.getValue().Method774();
+        return this.lineColor.getValue().Method774();
     }
 
     public boolean Method903() {
-        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
+        return this.pulse.getValue() != false && !this.lineColor.getValue().Method783();
     }
 
     public boolean Method904() {
-        return this.Field844.getValue() != false && !this.Field843.getValue().Method783();
+        return this.pulse.getValue() != false && !this.lineColor.getValue().Method783();
     }
 }

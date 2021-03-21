@@ -38,52 +38,54 @@ import net.minecraft.util.math.Vec3d;
 import org.lwjgl.opengl.GL11;
 
 public class Class425
-extends Module {
-    public static Setting<ParentSetting> Field910 = new Setting<>("Targets", new ParentSetting(false));
-    public static Setting<Boolean> Field911 = new Setting<>("Animals", false).setParentSetting(Field910);
-    public static Setting<Boolean> Field912 = new Setting<>("Mobs", false).setParentSetting(Field910);
-    public static Setting<Boolean> Field913 = new Setting<>("Players", true).setParentSetting(Field910);
-    public static Setting<Boolean> Field914 = new Setting<>("Waypoints", true).setParentSetting(Field910);
-    public static Setting<Boolean> Field915 = new Setting<>("Coords", true).setParentSetting(Field910).visibleIf(Field914::getValue);
-    public static Setting<Boolean> Field916 = new Setting<>("Dist", false).setParentSetting(Field910).visibleIf(Field914::getValue);
-    public static Setting<ParentSetting> Field917 = new Setting<>("Name", new ParentSetting(false));
-    public static Setting<Double> Field918 = new Setting<>("NameRange", 150.0, 256.0, 5.0, 0.5).setParentSetting(Field917);
-    public static Setting<Boolean> Field919 = new Setting<>("Gamemode", false).setParentSetting(Field917);
-    public static Setting<Boolean> Field920 = new Setting<>("Ping", false).setParentSetting(Field917);
-    public static Setting<Boolean> Field921 = new Setting<>("Health", true).setParentSetting(Field917);
-    public static Setting<Boolean> Field922 = new Setting<>("Pops", false).setParentSetting(Field917);
-    public static Setting<Boolean> Field923 = new Setting<>("Friends", true).setParentSetting(Field917);
-    public static Setting<Boolean> Field924 = new Setting<>("Fill", true).setParentSetting(Field917);
-    public static Setting<Boolean> Field925 = new Setting<>("Outline", true).setParentSetting(Field917);
-    public static Setting<Float> Field926 = new Setting<>("LineWidth", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field917).visibleIf(Field925::getValue);
-    public static Setting<ParentSetting> Field927 = new Setting<>("Colors", new ParentSetting(false));
-    public static Setting<ColorValue> Field928 = new Setting<>("FillColorA", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field929 = new Setting<>("FillColorB", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field930 = new Setting<>("FillColorC", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field931 = new Setting<>("FillColorD", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field932 = new Setting<>("OutlineColorA", new ColorValue(-805306368)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field933 = new Setting<>("OutlineColorB", new ColorValue(-805306368)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field934 = new Setting<>("OutlineColorC", new ColorValue(-805306368)).setParentSetting(Field927);
-    public static Setting<ColorValue> Field935 = new Setting<>("OutlineColorD", new ColorValue(-805306368)).setParentSetting(Field927);
-    public static Setting<ParentSetting> Field936 = new Setting<>("Info", new ParentSetting(false));
-    public static Setting<Double> Field937 = new Setting<>("ArmorRange", 30.0, 256.0, 5.0, 0.5).setParentSetting(Field936);
-    public static Setting<Boolean> Field938 = new Setting<>("Armor", true).setParentSetting(Field936);
-    public static Setting<Boolean> Field939 = new Setting<>("Stacks", true).setParentSetting(Field936);
-    public static Setting<Boolean> Field940 = new Setting<>("Durability", true).setParentSetting(Field936);
-    public static Setting<Boolean> Field941 = new Setting<>("Enchants", true).setParentSetting(Field936);
-    public static Setting<ParentSetting> Field942 = new Setting<>("Scaling", new ParentSetting(false));
-    public static Setting<Boolean> Field943 = new Setting<>("FrustumCheck", true).setParentSetting(Field942);
-    public static Setting<Double> Field944 = new Setting<>("ZoomFactor", 3.0, 10.0, 0.0, 0.1).setParentSetting(Field942);
-    public static Setting<Double> Field945 = new Setting<>("Scale", 1.0, 5.0, 0.0, 0.1).setParentSetting(Field942);
-    public static Setting<Double> Field946 = new Setting<>("ScaleFactor", 2.0, 5.0, 0.0, 0.1).setParentSetting(Field942);
-    public static Setting<Double> Field947 = new Setting<>("ScaleLimit", 3.0, 10.0, 0.0, 0.1).setParentSetting(Field942);
-    public static Setting<Integer> Field948 = new Setting<>("ArmorSpacing", 42, 70, 0, 1).setParentSetting(Field942);
-    public static Setting<Integer> Field949 = new Setting<>("EnchantSpacing", 70, 100, -30, 5).setParentSetting(Field942);
-    public static Setting<Double> Field950 = new Setting<>("EnchantScale", 1.0, 2.5, 0.5, 0.05).setParentSetting(Field942);
-    public static Setting<Double> Field951 = new Setting<>("YOffset", 0.2, 1.0, 0.0, 0.05).setParentSetting(Field942);
-    public static Setting<ParentSetting> Field952 = new Setting<>("Misc", new ParentSetting(false));
-    public static Setting<Boolean> Field953 = new Setting<>("SelfNametag", false).setParentSetting(Field952);
+extends Module {      
+      
+    public static Setting<ParentSetting> targets = new Setting<>("Targets", new ParentSetting(false));
+    public static Setting<Boolean> animals = new Setting<>("Animals", false).setParentSetting(Field910);
+    public static Setting<Boolean> mobs = new Setting<>("Mobs", false).setParentSetting(Field910);
+    public static Setting<Boolean> players = new Setting<>("Players", true).setParentSetting(Field910);
+    public static Setting<Boolean> waypoints = new Setting<>("Waypoints", true).setParentSetting(Field910);
+    public static Setting<Boolean> coords = new Setting<>("Coords", true).setParentSetting(Field910).visibleIf(Field914::getValue);
+    public static Setting<Boolean> dist = new Setting<>("Dist", false).setParentSetting(Field910).visibleIf(Field914::getValue);
+    public static Setting<ParentSetting> name = new Setting<>("Name", new ParentSetting(false));
+    public static Setting<Double> nameRange = new Setting<>("NameRange", 150.0, 256.0, 5.0, 0.5).setParentSetting(Field917);
+    public static Setting<Boolean> gamemode = new Setting<>("Gamemode", false).setParentSetting(Field917);
+    public static Setting<Boolean> ping = new Setting<>("Ping", false).setParentSetting(Field917);
+    public static Setting<Boolean> health = new Setting<>("Health", true).setParentSetting(Field917);
+    public static Setting<Boolean> pops = new Setting<>("Pops", false).setParentSetting(Field917);
+    public static Setting<Boolean> friends = new Setting<>("Friends", true).setParentSetting(Field917);
+    public static Setting<Boolean> fill = new Setting<>("Fill", true).setParentSetting(Field917);
+    public static Setting<Boolean> outline = new Setting<>("Outline", true).setParentSetting(Field917);
+    public static Setting<Float> lineWidth = new Setting<>("LineWidth", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field917).visibleIf(Field925::getValue);
+    public static Setting<ParentSetting> colors = new Setting<>("Colors", new ParentSetting(false));
+    public static Setting<ColorValue> fillColorA = new Setting<>("FillColorA", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
+    public static Setting<ColorValue> fillColorB = new Setting<>("FillColorB", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
+    public static Setting<ColorValue> fillColorC = new Setting<>("FillColorC", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
+    public static Setting<ColorValue> fillColorD = new Setting<>("FillColorD", new ColorValue(Integer.MIN_VALUE)).setParentSetting(Field927);
+    public static Setting<ColorValue> outlineColorA = new Setting<>("OutlineColorA", new ColorValue(-805306368)).setParentSetting(Field927);
+    public static Setting<ColorValue> outlineColorB = new Setting<>("OutlineColorB", new ColorValue(-805306368)).setParentSetting(Field927);
+    public static Setting<ColorValue> outlineColorC = new Setting<>("OutlineColorC", new ColorValue(-805306368)).setParentSetting(Field927);
+    public static Setting<ColorValue> outlineColorD = new Setting<>("OutlineColorD", new ColorValue(-805306368)).setParentSetting(Field927);
+    public static Setting<ParentSetting> info = new Setting<>("Info", new ParentSetting(false));
+    public static Setting<Double> armorRange = new Setting<>("ArmorRange", 30.0, 256.0, 5.0, 0.5).setParentSetting(Field936);
+    public static Setting<Boolean> armor = new Setting<>("Armor", true).setParentSetting(Field936);
+    public static Setting<Boolean> stacks = new Setting<>("Stacks", true).setParentSetting(Field936);
+    public static Setting<Boolean> durability = new Setting<>("Durability", true).setParentSetting(Field936);
+    public static Setting<Boolean> enchants = new Setting<>("Enchants", true).setParentSetting(Field936);
+    public static Setting<ParentSetting> scaling = new Setting<>("Scaling", new ParentSetting(false));
+    public static Setting<Boolean> frustumCheck = new Setting<>("FrustumCheck", true).setParentSetting(Field942);
+    public static Setting<Double> zoomFactor = new Setting<>("ZoomFactor", 3.0, 10.0, 0.0, 0.1).setParentSetting(Field942);
+    public static Setting<Double> scale = new Setting<>("Scale", 1.0, 5.0, 0.0, 0.1).setParentSetting(Field942);
+    public static Setting<Double> scaleFactor = new Setting<>("ScaleFactor", 2.0, 5.0, 0.0, 0.1).setParentSetting(Field942);
+    public static Setting<Double> scaleLimit = new Setting<>("ScaleLimit", 3.0, 10.0, 0.0, 0.1).setParentSetting(Field942);
+    public static Setting<Integer> armorSpacing = new Setting<>("ArmorSpacing", 42, 70, 0, 1).setParentSetting(Field942);
+    public static Setting<Integer> enchantSpacing = new Setting<>("EnchantSpacing", 70, 100, -30, 5).setParentSetting(Field942);
+    public static Setting<Double> enchantScale = new Setting<>("EnchantScale", 1.0, 2.5, 0.5, 0.05).setParentSetting(Field942);
+    public static Setting<Double> yOffset = new Setting<>("YOffset", 0.2, 1.0, 0.0, 0.05).setParentSetting(Field942);
+    public static Setting<ParentSetting> misc = new Setting<>("Misc", new ParentSetting(false));
+    public static Setting<Boolean> selfNametag = new Setting<>("SelfNametag", false).setParentSetting(Field952);
     public static Setting<Class427> Field954 = new ListenableSettingDecorator("Font", Class427.VANILLA, new Class404());
+  
     public DecimalFormat Field955 = new DecimalFormat("#.##");
     public static ICamera Field956 = new Frustum();
     public static Class552 Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
@@ -160,14 +162,14 @@ extends Module {
     }
 
     public static boolean Method386(Entity entity) {
-        return (Boolean)Field943.getValue() == false || Field956.isBoundingBoxInFrustum(entity.getEntityBoundingBox().grow(2.0));
+        return (Boolean)frustumCheck.getValue() == false || Field956.isBoundingBoxInFrustum(entity.getEntityBoundingBox().grow(2.0));
     }
 
     public void Method953(String string, Vec3d vec3d, Vec3d vec3d2, Vec3d vec3d3) {
         GL11.glPushMatrix();
-        double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
-        d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
-        double d2 = (Double)Field945.getValue() * d;
+        double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)scaleLimit.getValue() * 10.0)) * 0.2;
+        d = 1.0 / (d * (Double)scaleFactor.getValue() + 1.0);
+        double d2 = (Double)scale.getValue() * d;
         if (Field954.getValue() != Class427.HIGHRES) {
             d2 *= 3.0;
         }
@@ -175,19 +177,19 @@ extends Module {
         GL11.glScaled((double)d2, (double)d2, (double)1.0);
         float f = Class551.Method877(string);
         float f2 = Class551.Method882(string);
-        if (((Boolean)Field924.getValue()).booleanValue()) {
-            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)Field928.getValue(), (ColorValue)Field929.getValue(), (ColorValue)Field930.getValue(), (ColorValue)Field931.getValue(), false);
+        if (((Boolean)fill.getValue()).booleanValue()) {
+            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)fillColorA.getValue(), (ColorValue)fillColorB.getValue(), (ColorValue)fillColorC.getValue(), (ColorValue)fillColorD.getValue(), false);
         }
-        if (((Boolean)Field925.getValue()).booleanValue()) {
-            GL11.glLineWidth((float)((Float)Field926.getValue()).floatValue());
-            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)Field932.getValue(), (ColorValue)Field933.getValue(), (ColorValue)Field934.getValue(), (ColorValue)Field935.getValue(), true);
+        if (((Boolean)outline.getValue()).booleanValue()) {
+            GL11.glLineWidth((float)((Float)lineWidth.getValue()).floatValue());
+            Class425.Method951(-(f / 2.0f) * 1.05f, -f2, f / 2.0f * 1.05f, f2 * 0.1f, (ColorValue)outlineColorA.getValue(), (ColorValue)outlineColorB.getValue(), (ColorValue)outlineColorC.getValue(), (ColorValue)outlineColorD.getValue(), true);
         }
         Class551.Method878(string, -(f / 2.0f), -f2, -1);
         GL11.glPopMatrix();
     }
 
     public void Method954(Vec3d vec3d, Entity entity) {
-        Vec3d vec3d2 = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.height + (Double)Field951.getValue(), 0.0);
+        Vec3d vec3d2 = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.height + (Double)yOffset.getValue(), 0.0);
         Vec3d vec3d3 = NewGui.INSTANCE.Field1137.Method2026(vec3d2);
         this.Method958(entity, vec3d3, vec3d, vec3d2);
     }
@@ -212,7 +214,7 @@ extends Module {
     public void Method956(ItemStack var1_1, double var2_2, double var4_3) {
         block35: {
             if (var1_1.isEmpty()) break block35;
-            if (var1_1.getCount() != 1 && ((Boolean)Class425.Field939.getValue()).booleanValue()) {
+            if (var1_1.getCount() != 1 && ((Boolean)Class425.stacks.getValue()).booleanValue()) {
                 var6_4 = String.valueOf(var1_1.getCount());
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
@@ -230,7 +232,7 @@ extends Module {
                 GlStateManager.enableDepth();
                 GlStateManager.enableBlend();
             }
-            if (var1_1.getItem().showDurabilityBar(var1_1) && ((Boolean)Class425.Field940.getValue()).booleanValue()) {
+            if (var1_1.getItem().showDurabilityBar(var1_1) && ((Boolean)Class425.durability.getValue()).booleanValue()) {
                 GlStateManager.disableLighting();
                 GlStateManager.disableDepth();
                 GlStateManager.disableTexture2D();
@@ -250,13 +252,13 @@ extends Module {
                 GlStateManager.enableLighting();
                 GlStateManager.enableDepth();
             }
-            if (!((Boolean)Class425.Field941.getValue()).booleanValue()) break block35;
-            var6_6 = ((Integer)Class425.Field949.getValue()).intValue();
+            if (!((Boolean)Class425.enchants.getValue()).booleanValue()) break block35;
+            var6_6 = ((Integer)Class425.enchantSpacing.getValue()).intValue();
             GlStateManager.disableLighting();
             GlStateManager.disableDepth();
             GlStateManager.disableBlend();
             GlStateManager.translate((double)(var2_2 + 5.0), (double)(var4_3 + 10.0), (double)0.0);
-            var7_7 = 0.13 * (Double)Class425.Field950.getValue();
+            var7_7 = 0.13 * (Double)Class425.enchantScale.getValue();
             if (Class425.Field954.getValue() != Class427.HIGHRES) {
                 var7_7 *= 3.0;
                 var6_6 /= 3.0f;
@@ -335,24 +337,26 @@ lbl78:
     public void Method466(Class91 class91) {
         Waypoints waypoints;
         Vec3d vec3d = new Vec3d(Class425.mc.getRenderViewEntity().lastTickPosX + (Class425.mc.getRenderViewEntity().posX - Class425.mc.getRenderViewEntity().lastTickPosX) * (double)mc.getRenderPartialTicks(), Class425.mc.getRenderViewEntity().lastTickPosY + (Class425.mc.getRenderViewEntity().posY - Class425.mc.getRenderViewEntity().lastTickPosY) * (double)mc.getRenderPartialTicks(), Class425.mc.getRenderViewEntity().lastTickPosZ + (Class425.mc.getRenderViewEntity().posZ - Class425.mc.getRenderViewEntity().lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, 2.0, 0.0);
-        if (((Boolean)Field943.getValue()).booleanValue()) {
+        if (((Boolean)frustumCheck.getValue()).booleanValue()) {
             Field956.setPosition(Class425.mc.getRenderViewEntity().posX, Class425.mc.getRenderViewEntity().posY, Class425.mc.getRenderViewEntity().posZ);
         }
         Class425.mc.world.loadedEntityList.stream().filter(Class425::Method513).filter(this::Method384).filter(Class425::Method386).forEach(arg_0 -> this.Method954(vec3d, arg_0));
-        if (((Boolean)Field914.getValue()).booleanValue() && (waypoints = (Waypoints) ModuleManager.getModuleByClass(Waypoints.class)) != null && waypoints.Method1651()) {
+      
+        if (((Boolean)waypoints.getValue()).booleanValue() && (waypoints = (Waypoints)Class167.Method1610(Waypoints.class)) != null && waypoints.Method1651()) {
+
             EntityPlayer entityPlayer;
             for (Class559 object : NewGui.INSTANCE.Field1138.Method759()) {
                 entityPlayer = new Vec3d(object.Method821(), object.Method820(), object.Method818()).add(0.5, 2.2, 0.5);
                 Vec3d vec3d2 = NewGui.INSTANCE.Field1137.Method2026((Vec3d)entityPlayer);
                 String string = object.Method819();
-                if (((Boolean)Field915.getValue()).booleanValue()) {
+                if (((Boolean)coords.getValue()).booleanValue()) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
                     double d = Double.parseDouble(decimalFormat.format(object.Method821()));
                     double d2 = Double.parseDouble(decimalFormat.format(object.Method820()));
                     double d3 = Double.parseDouble(decimalFormat.format(object.Method818()));
                     string = string + " " + d + ", " + d2 + ", " + d3;
                 }
-                if (((Boolean)Field916.getValue()).booleanValue()) {
+                if (((Boolean)dist.getValue()).booleanValue()) {
                     string = string + " " + (int)entityPlayer.distanceTo(vec3d);
                 }
                 this.Method953(string, vec3d2, vec3d, (Vec3d)entityPlayer);
@@ -363,13 +367,13 @@ lbl78:
                 double d = Double.parseDouble(this.Field955.format(entityPlayer.posX));
                 double d4 = Double.parseDouble(this.Field955.format(entityPlayer.posY));
                 double d5 = Double.parseDouble(this.Field955.format(entityPlayer.posZ));
-                Vec3d vec3d3 = new Vec3d(d, d4, d5).add(0.0, (double)entityPlayer.height + (Double)Field951.getValue(), 0.0);
+                Vec3d vec3d3 = new Vec3d(d, d4, d5).add(0.0, (double)entityPlayer.height + (Double)yOffset.getValue(), 0.0);
                 Vec3d vec3d4 = NewGui.INSTANCE.Field1137.Method2026(vec3d3);
                 String string = entityPlayer.getName();
-                if (((Boolean)Field915.getValue()).booleanValue()) {
+                if (((Boolean)coords.getValue()).booleanValue()) {
                     string = string + " " + d + ", " + d4 + ", " + d5;
                 }
-                if (((Boolean)Field916.getValue()).booleanValue()) {
+                if (((Boolean)dist.getValue()).booleanValue()) {
                     string = string + " " + (int)vec3d3.distanceTo(vec3d);
                 }
                 this.Method953(string, vec3d4, vec3d, vec3d3);
@@ -384,17 +388,17 @@ lbl78:
     }
 
     public boolean Method384(Entity entity) {
-        if ((double)entity.getDistance((Entity)Class425.mc.player) > (Double)Field918.getValue()) {
+        if ((double)entity.getDistance((Entity)Class425.mc.player) > (Double)nameRange.getValue()) {
             return false;
         }
-        if (((Boolean)Field911.getValue()).booleanValue() && entity instanceof EntityAnimal) {
+        if (((Boolean)animals.getValue()).booleanValue() && entity instanceof EntityAnimal) {
             return true;
         }
-        if (((Boolean)Field912.getValue()).booleanValue() && entity instanceof IMob) {
+        if (((Boolean)mobs.getValue()).booleanValue() && entity instanceof IMob) {
             return true;
         }
-        if (((Boolean)Field913.getValue()).booleanValue() && entity instanceof EntityPlayer && !Class546.Method963(entity)) {
-            return (Boolean)Field953.getValue() != false || !(entity instanceof EntityPlayerSP);
+        if (((Boolean)players.getValue()).booleanValue() && entity instanceof EntityPlayer && !Class546.Method963(entity)) {
+            return (Boolean)selfNametag.getValue() != false || !(entity instanceof EntityPlayerSP);
         }
         return false;
     }
@@ -404,11 +408,13 @@ lbl78:
         float f;
         int n;
         GL11.glPushMatrix();
+
         double d = MathHelper.clamp((double)vec3d2.distanceTo(vec3d3), (double)0.0, (double)((Double)Field947.getValue() * 10.0)) * 0.2;
         d = 1.0 / (d * (Double)Field946.getValue() + 1.0);
         double d2 = (Double)Field945.getValue() * d;
         if (ModuleManager.getModuleByClass(Zoom.class).isEnabled()) {
             d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
+
         }
         if (Field954.getValue() != Class427.HIGHRES) {
             d2 *= 3.0;
@@ -420,15 +426,15 @@ lbl78:
             string2 = "god";
         }
         if (entity instanceof EntityPlayer) {
-            if (((Boolean)Field919.getValue()).booleanValue()) {
+            if (((Boolean)gamemode.getValue()).booleanValue()) {
                 string2 = string2 + (((EntityPlayer)entity).isCreative() ? " [C]" : " [S]");
             }
-            if (((Boolean)Field920.getValue()).booleanValue() && mc.getConnection() != null && mc.getConnection().getPlayerInfo(entity.getUniqueID()) != null) {
+            if (((Boolean)ping.getValue()).booleanValue() && mc.getConnection() != null && mc.getConnection().getPlayerInfo(entity.getUniqueID()) != null) {
                 n = mc.getConnection().getPlayerInfo(entity.getUniqueID()).getResponseTime();
                 string2 = string2 + " " + n + "ms";
             }
         }
-        if (((Boolean)Field921.getValue()).booleanValue() && entity instanceof EntityLivingBase) {
+        if (((Boolean)health.getValue()).booleanValue() && entity instanceof EntityLivingBase) {
             EntityLivingBase entityLivingBase = (EntityLivingBase)entity;
             f = Class425.Method957(entityLivingBase.getHealth() + entityLivingBase.getAbsorptionAmount(), 1);
             if (entity.getName().equalsIgnoreCase("antiflame")) {
@@ -438,7 +444,7 @@ lbl78:
             string = string.replace(".0", "");
             string2 = string2 + " " + string + ChatFormatting.RESET.toString();
         }
-        if (((Boolean)Field922.getValue()).booleanValue()) {
+        if (((Boolean)pops.getValue()).booleanValue()) {
             n = 0;
             if (Class87.Field262.containsKey(entity.getName())) {
                 n = Class87.Field262.get(entity.getName());
@@ -447,20 +453,21 @@ lbl78:
         }
         float f2 = Class551.Method877(string2);
         f = Class551.Method882(string2);
-        if (((Boolean)Field924.getValue()).booleanValue()) {
-            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)Field928.getValue(), (ColorValue)Field929.getValue(), (ColorValue)Field930.getValue(), (ColorValue)Field931.getValue(), false);
+        if (((Boolean)fill.getValue()).booleanValue()) {
+            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)fillColorA.getValue(), (ColorValue)fillColorB.getValue(), (ColorValue)fillColorC.getValue(), (ColorValue)fillColorD.getValue(), false);
         }
-        if (((Boolean)Field925.getValue()).booleanValue()) {
-            GL11.glLineWidth((float)((Float)Field926.getValue()).floatValue());
-            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)Field932.getValue(), (ColorValue)Field933.getValue(), (ColorValue)Field934.getValue(), (ColorValue)Field935.getValue(), true);
+        if (((Boolean)outline.getValue()).booleanValue()) {
+            GL11.glLineWidth((float)((Float)lineWidth.getValue()).floatValue());
+            Class425.Method951(-(f2 / 2.0f) * 1.05f, -f, f2 / 2.0f * 1.05f, f * 0.1f, (ColorValue)outlineColorA.getValue(), (ColorValue)outlineColorB.getValue(), (ColorValue)outlineColorC.getValue(), (ColorValue)outlineColorD.getValue(), true);
         }
         if (Field954.getValue() == Class427.VANILLA) {
             f += 0.5f;
         }
-        Class551.Method878((((Boolean)Field923.getValue()).booleanValue() ? (Class492.Method1988(entity.getUniqueID().toString()) ? Command.Field122 + "b" : "") : "") + string2, -(f2 / 2.0f), Field954.getValue() == Class427.VANILLA ? -f + 2.0f : -f, -1);
+        Class551.Method878((((Boolean)friends.getValue()).booleanValue() ? (Class492.Method1988(entity.getUniqueID().toString()) ? Command.Field122 + "b" : "") : "") + string2, -(f2 / 2.0f), Field954.getValue() == Class427.VANILLA ? -f + 2.0f : -f, -1);
         GL11.glColor4f((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
         if (Field954.getValue() != Class427.HIGHRES) {
             GL11.glScaled((double)(1.0 / d2), (double)(1.0 / d2), (double)1.0);
+          
             d2 = (Double)Field945.getValue() * d;
             if (ModuleManager.getModuleByClass(Zoom.class).isEnabled()) {
                 d2 *= (double)((Float) Zoom.Field778.getValue()).floatValue() * (Double)Field944.getValue();
@@ -468,25 +475,25 @@ lbl78:
             GL11.glScaled((double)d2, (double)d2, (double)1.0);
             f *= 3.0f;
         }
-        if (((Boolean)Field938.getValue()).booleanValue() && entity instanceof EntityPlayer) {
+        if (((Boolean)armor.getValue()).booleanValue() && entity instanceof EntityPlayer) {
             string = (EntityPlayer)entity;
-            if ((double)entity.getDistance((Entity)Class425.mc.player) <= (Double)Field937.getValue()) {
+            if ((double)entity.getDistance((Entity)Class425.mc.player) <= (Double)armorRange.getValue()) {
                 double d3 = 0.0;
                 for (ItemStack itemStack : string.inventory.armorInventory) {
                     if (itemStack == null) continue;
-                    d3 -= (double)((Integer)Field948.getValue()).intValue() / 2.0;
+                    d3 -= (double)((Integer)armorSpacing.getValue()).intValue() / 2.0;
                 }
                 if (string.getHeldItemMainhand() != null) {
                     Iterator iterator = string.getHeldItemMainhand().copy();
-                    this.Method949((EntityPlayer)string, (ItemStack)iterator, d3 -= (double)((Integer)Field948.getValue()).intValue(), -((double)f + 55.0));
-                    d3 += (double)((Integer)Field948.getValue()).intValue();
+                    this.Method949((EntityPlayer)string, (ItemStack)iterator, d3 -= (double)((Integer)armorSpacing.getValue()).intValue(), -((double)f + 55.0));
+                    d3 += (double)((Integer)armorSpacing.getValue()).intValue();
                 }
                 for (int i = 3; i >= 0; --i) {
                     ItemStack itemStack;
                     itemStack = (ItemStack)string.inventory.armorInventory.get(i);
                     if (itemStack == null) continue;
                     this.Method949((EntityPlayer)string, itemStack, d3, -((double)f + 55.0));
-                    d3 += (double)((Integer)Field948.getValue()).intValue();
+                    d3 += (double)((Integer)armorSpacing.getValue()).intValue();
                 }
                 if (string.getHeldItemOffhand() != null) {
                     ItemStack itemStack = string.getHeldItemOffhand().copy();

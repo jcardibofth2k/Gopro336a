@@ -38,15 +38,17 @@ extends Module {
     public TrayIcon Field1408;
     public SystemTray Field1409;
     public int Field1410 = 0;
-    public Setting<Boolean> Field1411 = new Setting<>("Modules", true);
-    public Setting<Boolean> Field1412 = new Setting<>("2b2tKick", false);
+
+    public Setting<Boolean> modules = new Setting<>("Modules", true);
+    public Setting<Boolean> 2b2tKick = new Setting<>("2b2tKick", false);
     public ListenableSettingDecorator<Boolean> Field1413 = new ListenableSettingDecorator("KillStreak", false, this::Method145);
-    public Setting<Boolean> Field1414 = new Setting<>("Donkeys", false);
-    public Setting<Boolean> Field1415 = new Setting<>("Llamas", false);
-    public Setting<Boolean> Field1416 = new Setting<>("Slimes", false);
-    public Setting<Boolean> Field1417 = new Setting<>("Ghasts", false);
-    public Setting<Boolean> Field1418 = new Setting<>("Sound", true);
+    public Setting<Boolean> donkeys = new Setting<>("Donkeys", false);
+    public Setting<Boolean> llamas = new Setting<>("Llamas", false);
+    public Setting<Boolean> slimes = new Setting<>("Slimes", false);
+    public Setting<Boolean> ghasts = new Setting<>("Ghasts", false);
+    public Setting<Boolean> sound = new Setting<>("Sound", true);
     public ListenableSettingDecorator<Boolean> Field1419 = new ListenableSettingDecorator("SystemTray", false, this::Method1469);
+
     public ArrayList<Entity> Field1420 = new ArrayList();
     public Class566 Field1421 = new Class566();
     public HashMap<Long, Boolean> Field1422 = new Class175(this);
@@ -152,35 +154,35 @@ extends Module {
 
     @Subscriber
     public void Method974(TickEvent tickEvent) {
-        if (!((Boolean)this.Field1417.getValue()).booleanValue() && !((Boolean)this.Field1414.getValue()).booleanValue() && !((Boolean)this.Field1415.getValue()).booleanValue() && !((Boolean)this.Field1416.getValue()).booleanValue() || Notify.mc.player == null || Notify.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
+        if (!((Boolean)this.ghasts.getValue()).booleanValue() && !((Boolean)this.donkeys.getValue()).booleanValue() && !((Boolean)this.llamas.getValue()).booleanValue() && !((Boolean)this.slimes.getValue()).booleanValue() || Notify.mc.player == null || Notify.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
             return;
         }
         for (Entity entity : Notify.mc.world.loadedEntityList) {
-            if (entity instanceof EntityDonkey && ((Boolean)this.Field1414.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntityDonkey && ((Boolean)this.donkeys.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bDonkey &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
+                if (!((Boolean)this.sound.getValue()).booleanValue()) continue;
                 mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
                 continue;
             }
-            if (entity instanceof EntityLlama && ((Boolean)this.Field1415.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntityLlama && ((Boolean)this.llamas.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bLlama &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
+                if (!((Boolean)this.sound.getValue()).booleanValue()) continue;
                 mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
                 continue;
             }
-            if (entity instanceof EntitySlime && ((Boolean)this.Field1416.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
+            if (entity instanceof EntitySlime && ((Boolean)this.slimes.getValue()).booleanValue() && !this.Field1420.contains(entity)) {
                 Logger.Method1118("Found &bSlime &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
                 this.Field1420.add(entity);
-                if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
+                if (!((Boolean)this.sound.getValue()).booleanValue()) continue;
                 mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
                 continue;
             }
-            if (!(entity instanceof EntityGhast) || !((Boolean)this.Field1417.getValue()).booleanValue() || this.Field1420.contains(entity)) continue;
+            if (!(entity instanceof EntityGhast) || !((Boolean)this.ghasts.getValue()).booleanValue() || this.Field1420.contains(entity)) continue;
             Logger.Method1118("Found &bGhast &fat &bx=" + entity.getPosition().getX() + ",y=" + entity.getPosition().getY() + ",z=" + entity.getPosition().getZ());
             this.Field1420.add(entity);
-            if (!((Boolean)this.Field1418.getValue()).booleanValue()) continue;
+            if (!((Boolean)this.sound.getValue()).booleanValue()) continue;
             mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.ENTITY_PLAYER_LEVELUP, (float)1.0f));
         }
     }
@@ -194,7 +196,7 @@ extends Module {
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
-        if (Notify.mc.player == null || Notify.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || !((Boolean)this.Field1412.getValue()).booleanValue()) {
+        if (Notify.mc.player == null || Notify.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || !((Boolean)this.2b2tKick.getValue()).booleanValue()) {
             return;
         }
         if (this.Field1421.Method737(2.07E7) && !this.Field1422.get(20700000L).booleanValue()) {

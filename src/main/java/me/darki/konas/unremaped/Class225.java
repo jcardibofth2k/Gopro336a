@@ -16,7 +16,7 @@ import net.minecraft.network.play.server.SPacketPlayerPosLook;
 
 public class Class225
 extends Module {
-    public Setting<Boolean> Field2640 = new Setting<>("Float", false);
+    public Setting<Boolean> float = new Setting<>("Float", false);
     public boolean Field2641 = true;
     public Class566 Field2642 = new Class566();
 
@@ -46,7 +46,7 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block0: {
-            if (!((Boolean)this.Field2640.getValue()).booleanValue() || !PlayerUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
+            if (!((Boolean)this.float.getValue()).booleanValue() || !PlayerUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
             moveEvent.setY(-0.01);
         }
     }

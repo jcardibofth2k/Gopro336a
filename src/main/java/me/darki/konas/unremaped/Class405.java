@@ -26,16 +26,16 @@ import net.minecraft.util.math.Vec3d;
 
 public class Class405
 extends Module {
-    public static Setting<Boolean> Field1231 = new Setting<>("FixYaw", true);
-    public static Setting<Boolean> Field1232 = new Setting<>("AntiKick", true);
-    public static Setting<Boolean> Field1233 = new Setting<>("Confirm", false);
-    public static Setting<Boolean> Field1234 = new Setting<>("Bypass", true);
-    public static Setting<Boolean> Field1235 = new Setting<>("Semi", true);
-    public static Setting<Boolean> Field1236 = new Setting<>("Constrict", false);
-    public static Setting<Float> Field1237 = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(50.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
-    public static Setting<Float> Field1238 = new Setting<>("VSpeed", Float.valueOf(0.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
-    public static Setting<Integer> Field1239 = new Setting<>("SafetyFactor", 2, 10, 0, 1);
-    public static Setting<Integer> Field1240 = new Setting<>("MaxSetbacks", 10, 20, 0, 1);
+    public static Setting<Boolean> fixYaw = new Setting<>("FixYaw", true);
+    public static Setting<Boolean> antiKick = new Setting<>("AntiKick", true);
+    public static Setting<Boolean> confirm = new Setting<>("Confirm", false);
+    public static Setting<Boolean> bypass = new Setting<>("Bypass", true);
+    public static Setting<Boolean> semi = new Setting<>("Semi", true);
+    public static Setting<Boolean> constrict = new Setting<>("Constrict", false);
+    public static Setting<Float> speed = new Setting<>("Speed", Float.valueOf(1.0f), Float.valueOf(50.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
+    public static Setting<Float> vSpeed = new Setting<>("VSpeed", Float.valueOf(0.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
+    public static Setting<Integer> safetyFactor = new Setting<>("SafetyFactor", 2, 10, 0, 1);
+    public static Setting<Integer> maxSetbacks = new Setting<>("MaxSetbacks", 10, 20, 0, 1);
     public int Field1241;
     public Vec3d Field1242 = null;
     public int Field1243;
@@ -64,7 +64,7 @@ extends Module {
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
                                 this.Field1241 = var2_2.getTeleportId();
-                                if ((Integer)Class405.Field1240.getValue() <= 0) break block10;
+                                if ((Integer)Class405.maxSetbacks.getValue() <= 0) break block10;
                                 if (this.Field1242 != null) break block11;
                                 this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                                 this.Field1243 = 1;
@@ -72,14 +72,14 @@ extends Module {
                             }
                             if (!PlayerUtil.Method1080()) break block12;
                             v0 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
-                            if (!(this.Method1221(this.Field1242, v0) < (double)((Float)Class405.Field1237.getValue()).floatValue() * 0.8)) break block12;
+                            if (!(this.Method1221(this.Field1242, v0) < (double)((Float)Class405.speed.getValue()).floatValue() * 0.8)) break block12;
                             this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                             ++this.Field1243;
                             break block10;
                         }
                         if (!Class405.mc.gameSettings.keyBindJump.isKeyDown() && !Class405.mc.gameSettings.keyBindSneak.isKeyDown()) break block13;
                         v1 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
-                        if (!(this.Method1223(this.Field1242, v1) < (double)((Float)Class405.Field1238.getValue()).floatValue() * 0.5)) break block13;
+                        if (!(this.Method1223(this.Field1242, v1) < (double)((Float)Class405.vSpeed.getValue()).floatValue() * 0.5)) break block13;
                         this.Field1242 = new Vec3d(var2_2.getX(), var2_2.getY(), var2_2.getZ());
                         ++this.Field1243;
                         break block10;
@@ -101,7 +101,7 @@ extends Module {
                         this.Field1243 = 1;
                     }
                 }
-                if ((Integer)Class405.Field1240.getValue() > 0 && this.Field1243 > (Integer)Class405.Field1240.getValue()) {
+                if ((Integer)Class405.maxSetbacks.getValue() > 0 && this.Field1243 > (Integer)Class405.maxSetbacks.getValue()) {
                     return;
                 }
                 if (Class405.mc.player.isEntityAlive() && Class405.mc.world.isBlockLoaded(new BlockPos(Class405.mc.player.posX, Class405.mc.player.posY, Class405.mc.player.posZ)) && !(Class405.mc.currentScreen instanceof GuiDownloadTerrain)) {
@@ -109,14 +109,14 @@ extends Module {
                         this.Field1241 = var2_2.getTeleportId();
                         return;
                     }
-                    if (!((Boolean)Class405.Field1233.getValue()).booleanValue()) {
+                    if (!((Boolean)Class405.confirm.getValue()).booleanValue()) {
                         Class405.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(var2_2.getTeleportId()));
                     }
                     var1_1.setCanceled(true);
                 }
             }
             if (!(var1_1.getPacket() instanceof SPacketMoveVehicle) || !Class405.mc.player.isRiding()) break block14;
-            if (((Boolean)Class405.Field1235.getValue()).booleanValue()) {
+            if (((Boolean)Class405.semi.getValue()).booleanValue()) {
                 this.Field1244.set(true);
             } else {
                 var1_1.setCanceled(true);
@@ -139,19 +139,19 @@ extends Module {
                         this.toggle();
                         return;
                     }
-                    if (!((Boolean)Field1234.getValue()).booleanValue()) {
+                    if (!((Boolean)bypass.getValue()).booleanValue()) {
                         return;
                     }
                     if (!(class24.getPacket() instanceof CPacketVehicleMove)) break block2;
                     if (!Class405.mc.player.isRiding() || Class405.mc.player.ticksExisted % 2 != 0) break block3;
-                    Class405.mc.playerController.interactWithEntity((EntityPlayer)Class405.mc.player, Class405.mc.player.getRidingEntity(), (Boolean)Field1236.getValue() != false ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+                    Class405.mc.playerController.interactWithEntity((EntityPlayer)Class405.mc.player, Class405.mc.player.getRidingEntity(), (Boolean)constrict.getValue() != false ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
                     break block3;
                 }
                 if (!(class24.getPacket() instanceof CPacketPlayer.Rotation) || !Class405.mc.player.isRiding()) break block4;
                 class24.Cancel();
                 break block3;
             }
-            if (!(class24.getPacket() instanceof CPacketInput) || ((Boolean)Field1235.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 2 != 0) break block3;
+            if (!(class24.getPacket() instanceof CPacketInput) || ((Boolean)semi.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 2 != 0) break block3;
             class24.Cancel();
         }
     }
@@ -197,7 +197,7 @@ extends Module {
             double d2 = 0.0;
             double d3 = 0.0;
             if (PlayerUtil.Method1080()) {
-                double[] dArray = PlayerUtil.Method1086(((Float)Field1237.getValue()).floatValue());
+                double[] dArray = PlayerUtil.Method1086(((Float)speed.getValue()).floatValue());
                 d = dArray[0];
                 d3 = dArray[1];
             } else {
@@ -205,31 +205,31 @@ extends Module {
                 d3 = 0.0;
             }
             if (Class405.mc.gameSettings.keyBindJump.isKeyDown()) {
-                d2 = ((Float)Field1238.getValue()).floatValue();
-                if (((Boolean)Field1232.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 20 == 0) {
+                d2 = ((Float)vSpeed.getValue()).floatValue();
+                if (((Boolean)antiKick.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 20 == 0) {
                     d2 = -0.04;
                 }
             } else if (Class405.mc.gameSettings.keyBindSneak.isKeyDown()) {
-                d2 = -((Float)Field1238.getValue()).floatValue();
-            } else if (((Boolean)Field1232.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 4 == 0) {
+                d2 = -((Float)vSpeed.getValue()).floatValue();
+            } else if (((Boolean)antiKick.getValue()).booleanValue() && Class405.mc.player.ticksExisted % 4 == 0) {
                 d2 = -0.04;
             }
-            if (((Boolean)Field1231.getValue()).booleanValue()) {
+            if (((Boolean)fixYaw.getValue()).booleanValue()) {
                 entityBoat.rotationYaw = Class405.mc.player.rotationYaw;
             }
-            if ((Integer)Field1239.getValue() > 0 && !Class405.mc.world.isBlockLoaded(new BlockPos(entityBoat.posX + d * (double)((Integer)Field1239.getValue()).intValue(), entityBoat.posY + d2 * (double)((Integer)Field1239.getValue()).intValue(), entityBoat.posZ + d3 * (double)((Integer)Field1239.getValue()).intValue()), false)) {
+            if ((Integer)safetyFactor.getValue() > 0 && !Class405.mc.world.isBlockLoaded(new BlockPos(entityBoat.posX + d * (double)((Integer)safetyFactor.getValue()).intValue(), entityBoat.posY + d2 * (double)((Integer)safetyFactor.getValue()).intValue(), entityBoat.posZ + d3 * (double)((Integer)safetyFactor.getValue()).intValue()), false)) {
                 d = 0.0;
                 d3 = 0.0;
             }
-            if (!((Boolean)Field1235.getValue()).booleanValue() || Class405.mc.player.ticksExisted % 2 != 0) {
-                if (this.Field1244.get() && ((Boolean)Field1235.getValue()).booleanValue()) {
+            if (!((Boolean)semi.getValue()).booleanValue() || Class405.mc.player.ticksExisted % 2 != 0) {
+                if (this.Field1244.get() && ((Boolean)semi.getValue()).booleanValue()) {
                     entityBoat.setVelocity(0.0, 0.0, 0.0);
                     this.Field1244.set(false);
                 } else {
                     entityBoat.setVelocity(d, d2, d3);
                 }
             }
-            if (((Boolean)Field1233.getValue()).booleanValue()) {
+            if (((Boolean)confirm.getValue()).booleanValue()) {
                 ++this.Field1241;
                 Class405.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(this.Field1241));
             }

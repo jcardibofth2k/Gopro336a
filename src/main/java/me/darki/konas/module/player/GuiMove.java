@@ -29,7 +29,8 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiMove
 extends Module {
-    public Setting<Boolean> Field2005 = new Setting<>("Strict", false);
+  
+    public Setting<Boolean> strict = new Setting<>("Strict", false);
     public ListenableSettingDecorator<Boolean> Field2006 = new ListenableSettingDecorator("Crouch", false, new Class356(this));
     public ArrayList<KeyBinding> Field2007 = new ArrayList();
 
@@ -40,7 +41,7 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         block3: {
-            if (!this.Field2005.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
+            if (!this.strict.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
             if (GuiMove.mc.player.isActiveItemStackBlocking()) {
                 GuiMove.mc.playerController.onStoppedUsingItem(GuiMove.mc.player);
             }
@@ -90,7 +91,7 @@ extends Module {
     @Subscriber
     public void Method1837(Class644 class644) {
         block2: {
-            if (!this.Field2005.getValue().booleanValue()) {
+            if (!this.strict.getValue().booleanValue()) {
                 return;
             }
             if (GuiMove.mc.player.isSneaking()) {

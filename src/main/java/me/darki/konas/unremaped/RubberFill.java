@@ -31,12 +31,12 @@ import net.minecraft.util.math.Vec3i;
 
 public class RubberFill
 extends Module {
-    public Setting<Boolean> Field288 = new Setting<>("Rotate", true);
-    public Setting<Boolean> Field289 = new Setting<>("Swing", true);
-    public Setting<Boolean> Field290 = new Setting<>("Strict", false);
-    public Setting<Boolean> Field291 = new Setting<>("Skulls", true);
-    public static Setting<Class443> Field292 = new Setting<>("CustomBlocks", new Class443(new String[0]));
-    public static Setting<Class348> Field293 = new Setting<>("Filter", Class348.NONE);
+    public Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public Setting<Boolean> swing = new Setting<>("Swing", true);
+    public Setting<Boolean> strict = new Setting<>("Strict", false);
+    public Setting<Boolean> skulls = new Setting<>("Skulls", true);
+    public static Setting<Class443> customBlocks = new Setting<>("CustomBlocks", new Class443(new String[0]));
+    public static Setting<Class348> filter = new Setting<>("Filter", Class348.NONE);
     public Class346 Field294 = Class346.WAITING;
     public Class566 Field295 = new Class566();
 
@@ -65,7 +65,7 @@ extends Module {
                 this.toggle();
                 return;
             }
-            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || ((Boolean)this.Field290.getValue()).booleanValue()) break block1;
+            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || ((Boolean)this.strict.getValue()).booleanValue()) break block1;
             ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method40(RubberFill.mc.player.rotationYaw);
             ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method41(RubberFill.mc.player.rotationPitch);
         }
@@ -91,7 +91,7 @@ extends Module {
             return;
         }
         if (RubberFill.mc.world.getBlockState(new BlockPos((Entity) RubberFill.mc.player)).getBlock() == Blocks.AIR) {
-            if (((Boolean)this.Field291.getValue()).booleanValue() && RubberFill.mc.world.getBlockState(new BlockPos((Entity) RubberFill.mc.player).up(2)).getBlock() != Blocks.AIR) {
+            if (((Boolean)this.skulls.getValue()).booleanValue() && RubberFill.mc.world.getBlockState(new BlockPos((Entity) RubberFill.mc.player).up(2)).getBlock() != Blocks.AIR) {
                 if (this.getBlockInHotbar() == -1) {
                     this.toggle();
                     return;
@@ -100,7 +100,7 @@ extends Module {
                 BlockPos blockPos2 = blockPos.down();
                 EnumFacing enumFacing = EnumFacing.UP;
                 Vec3d vec3d = new Vec3d((Vec3i)blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
-                if (((Boolean)this.Field288.getValue()).booleanValue()) {
+                if (((Boolean)this.rotate.getValue()).booleanValue()) {
                     if (((IEntityPlayerSP) RubberFill.mc.player).Method240() < 0.0f) {
                         RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(RubberFill.mc.player.rotationYaw, 0.0f, true));
                     }
@@ -118,7 +118,7 @@ extends Module {
                     RubberFill.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.getBlockInHotbar()));
                 }
                 RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos2, enumFacing, EnumHand.MAIN_HAND, f, f2, f3));
-                if (((Boolean)this.Field289.getValue()).booleanValue()) {
+                if (((Boolean)this.swing.getValue()).booleanValue()) {
                     RubberFill.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
                 }
                 if (bl) {
@@ -137,7 +137,7 @@ extends Module {
             BlockPos blockPos3 = blockPos.down();
             EnumFacing enumFacing = EnumFacing.UP;
             Vec3d vec3d = new Vec3d((Vec3i)blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
-            if (((Boolean)this.Field288.getValue()).booleanValue()) {
+            if (((Boolean)this.rotate.getValue()).booleanValue()) {
                 if (((IEntityPlayerSP) RubberFill.mc.player).Method240() < 0.0f) {
                     RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(RubberFill.mc.player.rotationYaw, 0.0f, true));
                 }
@@ -163,7 +163,7 @@ extends Module {
                 RubberFill.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Method464()));
             }
             RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(blockPos3, enumFacing, EnumHand.MAIN_HAND, f, f4, f5));
-            if (((Boolean)this.Field289.getValue()).booleanValue()) {
+            if (((Boolean)this.swing.getValue()).booleanValue()) {
                 RubberFill.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
             }
             if (bl) {
@@ -230,7 +230,7 @@ extends Module {
             ItemStack itemStack = RubberFill.mc.player.inventory.getStackInSlot(i);
             if (itemStack == ItemStack.EMPTY || !(itemStack.getItem() instanceof ItemBlock)) continue;
             Block block = ((ItemBlock)itemStack.getItem()).getBlock();
-            if (Field293.getValue() == Class348.BLACKLIST ? ((Class443)Field292.getValue()).Method682().contains(block) : Field293.getValue() == Class348.WHITELIST && !((Class443)Field292.getValue()).Method682().contains(block)) continue;
+            if (filter.getValue() == Class348.BLACKLIST ? ((Class443)customBlocks.getValue()).Method682().contains(block) : filter.getValue() == Class348.WHITELIST && !((Class443)customBlocks.getValue()).Method682().contains(block)) continue;
             n = i;
             break;
         }

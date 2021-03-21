@@ -22,9 +22,9 @@ import org.lwjgl.opengl.GL11;
 public class Class517
 extends Module {
     public ConcurrentHashMap<Integer, Class508> Field1280 = new ConcurrentHashMap();
-    public Setting<ColorValue> Field1281 = new Setting<>("Color", new ColorValue(Color.WHITE.hashCode()));
-    public Setting<Boolean> Field1282 = new Setting<>("Timeout", true);
-    public Setting<Integer> Field1283 = new Setting<>("Seconds", 10, 100, 0, 1).visibleIf(this.Field1282::getValue);
+    public Setting<ColorValue> color = new Setting<>("Color", new ColorValue(Color.WHITE.hashCode()));
+    public Setting<Boolean> timeout = new Setting<>("Timeout", true);
+    public Setting<Integer> seconds = new Setting<>("Seconds", 10, 100, 0, 1).visibleIf(this.Field1282::getValue);
 
     @Override
     public void onEnable() {
@@ -78,7 +78,7 @@ extends Module {
                 return;
             }
             Class517.mc.world.loadedEntityList.stream().filter(Class517::Method386).forEach(this::Method1253);
-            if (!((Boolean)this.Field1282.getValue()).booleanValue()) break block1;
+            if (!((Boolean)this.timeout.getValue()).booleanValue()) break block1;
             this.Field1280.forEach(this::Method1255);
         }
     }
@@ -105,7 +105,7 @@ extends Module {
         GlStateManager.disableTexture2D();
         GL11.glHint((int)3154, (int)4354);
         GlStateManager.depthMask((boolean)false);
-        GlStateManager.color((float)((float)((ColorValue)this.Field1281.getValue()).Method775().getRed() / 255.0f), (float)((float)((ColorValue)this.Field1281.getValue()).Method775().getGreen() / 255.0f), (float)((float)((ColorValue)this.Field1281.getValue()).Method775().getBlue() / 255.0f), (float)((float)((ColorValue)this.Field1281.getValue()).Method775().getAlpha() / 255.0f));
+        GlStateManager.color((float)((float)((ColorValue)this.color.getValue()).Method775().getRed() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getGreen() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getBlue() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getAlpha() / 255.0f));
         double d = Class517.mc.player.lastTickPosX + (Class517.mc.player.posX - Class517.mc.player.lastTickPosX) * (double)class89.Method436();
         double d2 = Class517.mc.player.lastTickPosY + (Class517.mc.player.posY - Class517.mc.player.lastTickPosY) * (double)class89.Method436();
         double d3 = Class517.mc.player.lastTickPosZ + (Class517.mc.player.posZ - Class517.mc.player.lastTickPosZ) * (double)class89.Method436();
@@ -119,7 +119,7 @@ extends Module {
     }
 
     public void Method1255(Integer n, Class508 class508) {
-        if (System.currentTimeMillis() - class508.Method1363() > 1000L * (long)((Integer)this.Field1283.getValue()).intValue()) {
+        if (System.currentTimeMillis() - class508.Method1363() > 1000L * (long)((Integer)this.seconds.getValue()).intValue()) {
             this.Field1280.remove(n);
         }
     }

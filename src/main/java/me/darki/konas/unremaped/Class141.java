@@ -13,8 +13,8 @@ import net.minecraft.util.ResourceLocation;
 
 public class Class141
 extends Element {
-    public static Setting<Class144> Field2009 = new Setting<>("Mode", Class144.IMAGE);
-    public Setting<ColorValue> Field2010 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Class141::Method901);
+    public static Setting<Class144> mode = new Setting<>("Mode", Class144.IMAGE);
+    public Setting<ColorValue> textColor = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false)).visibleIf(Class141::Method901);
 
     public Class141() {
         super("Watermark", 5.0f, 5.0f, 100.0f, 60.0f);
@@ -23,12 +23,12 @@ extends Element {
     @Override
     public void onRender2D() {
         super.onRender2D();
-        switch (Class118.Field2446[((Class144)((Object)Field2009.getValue())).ordinal()]) {
+        switch (Class118.Field2446[((Class144)((Object)mode.getValue())).ordinal()]) {
             case 1: {
                 String string = KonasMod.Field732 + " " + "0.10.2";
                 this.Method2319(Class557.Method799(string) + 1.0f);
                 this.Method2323(Class557.Method800(string) + 1.0f);
-                Class557.Method801(string, (int)this.Method2320(), (int)this.Method2324(), ((ColorValue)this.Field2010.getValue()).Method774());
+                Class557.Method801(string, (int)this.Method2320(), (int)this.Method2324(), ((ColorValue)this.textColor.getValue()).Method774());
                 break;
             }
             case 2: {
@@ -45,6 +45,6 @@ extends Element {
     }
 
     public static boolean Method901() {
-        return Field2009.getValue() == Class144.TEXT;
+        return mode.getValue() == Class144.TEXT;
     }
 }

@@ -15,10 +15,10 @@ import net.minecraft.util.math.MathHelper;
 
 public class Class351
 extends Module {
-    public static Setting<Class364> Field2529 = new Setting<>("Mode", Class364.SPIN);
-    public static Setting<Class353> Field2530 = new Setting<>("Pitch", Class353.JITTER);
-    public static Setting<Integer> Field2531 = new Setting<>("Speed", 10, 55, 1, 1);
-    public static Setting<Integer> Field2532 = new Setting<>("YawAdd", 0, 180, -180, 10);
+    public static Setting<Class364> mode = new Setting<>("Mode", Class364.SPIN);
+    public static Setting<Class353> pitch = new Setting<>("Pitch", Class353.JITTER);
+    public static Setting<Integer> speed = new Setting<>("Speed", 10, 55, 1, 1);
+    public static Setting<Integer> yawAdd = new Setting<>("YawAdd", 0, 180, -180, 10);
     public float Field2533 = 0.0f;
     public float Field2534 = 0.0f;
 
@@ -48,10 +48,10 @@ extends Module {
         if (updateEvent.isCanceled() || !Class496.Method1966()) {
             return;
         }
-        this.Field2533 = Field2529.getValue() == Class364.SPIN ? (this.Field2533 += (float)((Integer)Field2531.getValue()).intValue()) : (Field2529.getValue() == Class364.JITTER ? (Math.random() > 0.5 ? (float)((double)this.Field2533 + (double)((Integer)Field2531.getValue()).intValue() * Math.random()) : (float)((double)this.Field2533 - (double)((Integer)Field2531.getValue()).intValue() * Math.random())) : ((entityPlayer = this.Method1054()) != null ? RotationUtil.Method1946(Class351.mc.player.getPositionEyes(1.0f), entityPlayer.getPositionEyes(1.0f))[0] - 180.0f : Class351.mc.player.rotationYaw));
-        this.Field2533 += (float)((Integer)Field2532.getValue()).intValue();
+        this.Field2533 = mode.getValue() == Class364.SPIN ? (this.Field2533 += (float)((Integer)speed.getValue()).intValue()) : (mode.getValue() == Class364.JITTER ? (Math.random() > 0.5 ? (float)((double)this.Field2533 + (double)((Integer)speed.getValue()).intValue() * Math.random()) : (float)((double)this.Field2533 - (double)((Integer)speed.getValue()).intValue() * Math.random())) : ((entityPlayer = this.Method1054()) != null ? RotationUtil.Method1946(Class351.mc.player.getPositionEyes(1.0f), entityPlayer.getPositionEyes(1.0f))[0] - 180.0f : Class351.mc.player.rotationYaw));
+        this.Field2533 += (float)((Integer)yawAdd.getValue()).intValue();
         this.Field2533 = MathHelper.wrapDegrees((int)((int)this.Field2533));
-        this.Field2534 = Field2530.getValue() == Class353.NONE ? Class351.mc.player.rotationPitch : (Field2530.getValue() == Class353.JITTER ? (Math.random() > 0.5 ? (float)((double)this.Field2534 + (double)((Integer)Field2531.getValue()).intValue() * Math.random()) : (float)((double)this.Field2534 - (double)((Integer)Field2531.getValue()).intValue() * Math.random())) : (Field2530.getValue() == Class353.STARE ? ((entityPlayer = this.Method1054()) != null ? RotationUtil.Method1946(Class351.mc.player.getPositionEyes(1.0f), entityPlayer.getPositionEyes(1.0f))[1] : Class351.mc.player.rotationPitch) : 90.0f));
+        this.Field2534 = pitch.getValue() == Class353.NONE ? Class351.mc.player.rotationPitch : (pitch.getValue() == Class353.JITTER ? (Math.random() > 0.5 ? (float)((double)this.Field2534 + (double)((Integer)speed.getValue()).intValue() * Math.random()) : (float)((double)this.Field2534 - (double)((Integer)speed.getValue()).intValue() * Math.random())) : (pitch.getValue() == Class353.STARE ? ((entityPlayer = this.Method1054()) != null ? RotationUtil.Method1946(Class351.mc.player.getPositionEyes(1.0f), entityPlayer.getPositionEyes(1.0f))[1] : Class351.mc.player.rotationPitch) : 90.0f));
         if (this.Field2534 > 89.0f) {
             this.Field2534 = 89.0f;
         } else if (this.Field2534 < -89.0f) {
