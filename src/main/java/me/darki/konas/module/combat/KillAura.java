@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class308;
 import me.darki.konas.unremaped.Class311;

@@ -1,7 +1,7 @@
 package me.darki.konas.module.render;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -30,7 +30,7 @@ extends Module {
         if (ViewPort.mc.player != null && ViewPort.mc.player.getName().equalsIgnoreCase("johnmcswag")) {
             this.toggle();
             Logger.Method1119("Johnmcswag can not use this module!");
-            for (Module module : Class167.Method1611()) {
+            for (Module module : ModuleManager.getEnabledModules()) {
                 module.toggle();
             }
         }

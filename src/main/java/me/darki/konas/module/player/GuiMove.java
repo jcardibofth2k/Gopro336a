@@ -8,7 +8,7 @@ import me.darki.konas.unremaped.Class193;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class262;
 import me.darki.konas.unremaped.Class356;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class644;
 import me.darki.konas.unremaped.Class658;
@@ -29,7 +29,9 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiMove
 extends Module {
+  
     public Setting<Boolean> strict = new Setting<>("Strict", false);
+    public ListenableSettingDecorator<Boolean> Field2006 = new ListenableSettingDecorator("Crouch", false, new Class356(this));
     public ArrayList<KeyBinding> Field2007 = new ArrayList();
 
     public static ArrayList Method1835(GuiMove guiMove) {

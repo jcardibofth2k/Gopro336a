@@ -13,7 +13,7 @@ import me.darki.konas.unremaped.Class142;
 import me.darki.konas.event.events.RenderBlockOverlayEvent;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class417;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.unremaped.Class569;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class642;
@@ -42,11 +42,13 @@ import net.minecraft.util.SoundEvent;
 public class NoRender
 extends Module {
     public static Set<SoundEvent> Field1100 = Sets.newHashSet(SoundEvents.ENTITY_BAT_AMBIENT, SoundEvents.ENTITY_BAT_DEATH, SoundEvents.ENTITY_BAT_HURT, SoundEvents.ENTITY_BAT_LOOP, SoundEvents.ENTITY_BAT_TAKEOFF);
+
     public Setting<Boolean> noHurtCam = new Setting<>("NoHurtCam", true);
     public Setting<Boolean> noWeather = new Setting<>("NoWeather", true);
     public Setting<Boolean> noLightning = new Setting<>("NoLightning", true);
     public Setting<Boolean> noFire = new Setting<>("NoFire", true);
     public Setting<Boolean> noBossBar = new Setting<>("NoBossBar", false);
+    public Setting<Boolean> Field1106 = new ListenableSettingDecorator("NoBats", true, this::Method145);
     public Setting<Class417> armor = new Setting<>("Armor", Class417.NONE);
     public Setting<Boolean> head = new Setting<>("Head", true).visibleIf(this::Method394);
     public Setting<Boolean> chestplate = new Setting<>("Chestplate", false).visibleIf(this::Method539);
@@ -68,6 +70,7 @@ extends Module {
     public Setting<Boolean> beacon = new Setting<>("Beacon", false);
     public static Setting<Boolean> toasts = new Setting<>("Toasts", true);
     public Setting<Boolean> chat = new Setting<>("Chat", false);
+  
     public EntityPlayer.EnumChatVisibility Field1128 = null;
 
     public boolean Method394() {

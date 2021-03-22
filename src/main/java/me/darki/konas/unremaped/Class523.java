@@ -1,6 +1,7 @@
 package me.darki.konas.unremaped;
 
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.render.Render;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -178,11 +179,11 @@ public class Class523 {
         if (Module.mc.world == null) {
             return;
         }
-        if (!Class167.Method1610(Class406.class).isEnabled()) {
+        if (!ModuleManager.getModuleByClass(Class406.class).isEnabled()) {
             return;
         }
         AxisAlignedBB axisAlignedBB = Module.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Module.mc.world, blockPos).offset(blockPos);
-        ((Class406)Class167.Method1610(Class406.class)).Method1172(axisAlignedBB);
+        ((Class406) ModuleManager.getModuleByClass(Class406.class)).Method1172(axisAlignedBB);
     }
 
     public static void Method1219(AxisAlignedBB axisAlignedBB, int n, float f) {

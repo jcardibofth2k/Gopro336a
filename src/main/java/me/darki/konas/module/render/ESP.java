@@ -13,6 +13,7 @@ import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.mixin.mixins.IShaderGroup;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -686,7 +687,7 @@ extends Module {
     }
 
     public static void Method1326(EntityPlayer entityPlayer, ModelPlayer modelPlayer, float f) {
-        if (!skeleton.getValue().booleanValue() || !Class167.Method1612("ESP").isEnabled()) {
+        if (!skeleton.getValue().booleanValue() || !ModuleManager.Method1612("ESP").isEnabled()) {
             return;
         }
         GlStateManager.pushMatrix();

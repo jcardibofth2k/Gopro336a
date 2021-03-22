@@ -13,7 +13,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.misc.AutoMend;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class482;
 import me.darki.konas.unremaped.Class566;
@@ -74,7 +74,7 @@ extends Module {
             if (pauseWhenSafe.getValue().booleanValue() && (object = AutoArmor.mc.world.loadedEntityList.stream().filter(AutoArmor::Method386).collect(Collectors.toList())).isEmpty()) {
                 return;
             }
-            if (AutoMend.Field1952 && Class167.Method1612("AutoMend").isEnabled()) {
+            if (AutoMend.Field1952 && ModuleManager.Method1612("AutoMend").isEnabled()) {
                 return;
             }
             if (allowMend.getValue().booleanValue() && !this.Field2041.Method737(500.0)) {
@@ -109,7 +109,7 @@ extends Module {
                 return;
             }
             boolean bl3 = elytraPrio.getValue();
-            if (smart.getValue().booleanValue() && !Class167.Method1610(ElytraFly.class).isEnabled()) {
+            if (smart.getValue().booleanValue() && !ModuleManager.getModuleByClass(ElytraFly.class).isEnabled()) {
                 bl3 = false;
             }
             HashSet<Class482> hashSet = new HashSet<Class482>();

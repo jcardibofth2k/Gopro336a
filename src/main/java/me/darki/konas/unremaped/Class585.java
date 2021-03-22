@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.io.PrintStream;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
@@ -311,8 +312,8 @@ lbl89:
     }
 
     public Setting Method2302(Module module, String string) {
-        if (Class167.Method1617(module.getName(), string) != null) {
-            return Class167.Method1617(module.getName(), string);
+        if (ModuleManager.Method1617(module.getName(), string) != null) {
+            return ModuleManager.Method1617(module.getName(), string);
         }
         Logger.Method1119("Setting not found");
         return null;
@@ -389,7 +390,7 @@ lbl89:
         }
         if (this.Field2638 != null) {
             if (this.Field2638 instanceof String) {
-                setting.Method1154((String)this.Field2638);
+                setting.setEnumValue((String)this.Field2638);
             } else {
                 setting.setValue(this.Field2638);
             }
@@ -410,8 +411,8 @@ lbl89:
     }
 
     public Module Method2304(String string) {
-        if (Class167.Method1612(string) != null) {
-            return Class167.Method1612(string);
+        if (ModuleManager.Method1612(string) != null) {
+            return ModuleManager.Method1612(string);
         }
         return null;
     }

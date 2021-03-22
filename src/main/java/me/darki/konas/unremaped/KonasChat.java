@@ -15,7 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.module.ModuleManager;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.command.Command;
@@ -40,7 +41,7 @@ extends Module {
     public DataInputStream Field647;
     public DataOutputStream Field648;
     public String Field649;
-    public IdkWhatThisSettingThingDoes<Class324> Field650;
+    public ListenableSettingDecorator<Class324> Field650;
     public Setting<Boolean> Field651;
     public String Field652 = "kcr";
     public ConcurrentHashMap<String, String> Field653;
@@ -86,8 +87,8 @@ extends Module {
         if (KonasChat.mc.player == null || KonasChat.mc.world == null) {
             return;
         }
-        if (Class167.Method1610(ChatAppend.class).isEnabled()) {
-            Class167.Method1610(ChatAppend.class).Method1647(false);
+        if (ModuleManager.getModuleByClass(ChatAppend.class).isEnabled()) {
+            ModuleManager.getModuleByClass(ChatAppend.class).Method1647(false);
         }
         ArrayList<ChatLine> arrayList = new ArrayList<ChatLine>(((IGuiNewChat) KonasChat.mc.ingameGUI.getChatGUI()).Method244());
         for (ChatLine chatLine : arrayList) {
@@ -226,7 +227,7 @@ extends Module {
         super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC, new String[0]);
         this.Field644 = new Class566();
         this.Field649 = null;
-        this.Field650 = new IdkWhatThisSettingThingDoes("Mode", Class324.ROT13, this::Method718);
+        this.Field650 = new ListenableSettingDecorator("Mode", Class324.ROT13, this::Method718);
         this.Field651 = new Setting<>("Encrypt", true);
         this.Field652 = "kcr";
         this.Field653 = new ConcurrentHashMap();

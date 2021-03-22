@@ -1,6 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.module.Module;
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,7 @@ public class Class54 {
         if (Minecraft.getMinecraft().currentScreen != null && (Minecraft.getMinecraft().currentScreen instanceof Class193 || Minecraft.getMinecraft().currentScreen instanceof GuiChat)) {
             return;
         }
-        for (Module module : Class167.Method1619()) {
+        for (Module module : ModuleManager.getModules()) {
             if (!module.Method1630()) continue;
             if (PlayerUtil.Method1087(module.Method1646()) && !module.isEnabled()) {
                 module.toggle();
@@ -35,11 +36,11 @@ public class Class54 {
         if (Keyboard.isKeyDown((int)61)) {
             return;
         }
-        for (Module object : Class167.Method1619()) {
+        for (Module object : ModuleManager.getModules()) {
             if (object.Method1630() || object.Method1646() != class653.Method1164()) continue;
             object.toggle();
         }
-        if (Class167.Method1610(Class191.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(Class191.class).isEnabled()) {
             for (Class152 class152 : Class157.Method1704()) {
                 if (class152.Method1757() != class653.Method1164()) continue;
                 Field201 = true;

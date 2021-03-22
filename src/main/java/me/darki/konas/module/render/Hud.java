@@ -8,7 +8,7 @@ import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
@@ -28,10 +28,12 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class Hud
 extends Module {
+
     public static Setting<Boolean> overlap = new Setting<>("Overlap", true);
     public static Setting<Boolean> potionIcons = new Setting<>("PotionIcons", false);
     public static Setting<Boolean> blur = new Setting<>("Blur", false);
     public static Setting<Boolean> blurEverything = new Setting<>("BlurEverything", true).visibleIf(Field1393::getValue);
+    public Setting<Boolean> Field1395 = new ListenableSettingDecorator("CustomFont", true, new Class159(this));
     public static Setting<Boolean> hotbar = new Setting<>("Hotbar", true);
     public static Setting<Boolean> xPBar = new Setting<>("XPBar", true);
     public static Setting<Class165> armorMode = new Setting<>("ArmorMode", Class165.BOTH);
@@ -41,6 +43,8 @@ extends Module {
     public static Setting<Boolean> health = new Setting<>("Health", true);
     public static Setting<Boolean> food = new Setting<>("Food", true);
     public static Setting<Boolean> crosshair = new Setting<>("Crosshair", true);
+
+  
     public static CfontRenderer Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
 
     @Subscriber

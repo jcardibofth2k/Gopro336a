@@ -7,6 +7,7 @@ import java.util.Queue;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockWeb;
 import net.minecraft.entity.Entity;

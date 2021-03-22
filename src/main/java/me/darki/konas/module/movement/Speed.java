@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class24;
@@ -105,13 +105,13 @@ extends Module {
             double d2 = Speed.mc.player.posZ - Speed.mc.player.prevPosZ;
             this.Field411 = Math.sqrt(d * d + d2 * d2);
         }
-        if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
+        if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             NewGui.INSTANCE.Field1134.Method749(this);
             return;
         }
         int n = MathHelper.floor(Speed.mc.player.getEntityBoundingBox().minY - 0.2);
         boolean bl2 = bl = Jesus.Method834(BlockLiquid.class, n) != null;
-        if (Class167.Method1610(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
+        if (ModuleManager.getModuleByClass(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
             return;
         }
         this.Method1645(this.Method537().name().substring(0, 1).toUpperCase() + this.Method537().name().substring(1).toLowerCase());
@@ -125,10 +125,10 @@ extends Module {
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 1: {
-                if (Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
+                if (ModuleManager.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
                     return;
                 }
-                if (Class167.Method1612("ElytraFly").isEnabled()) {
+                if (ModuleManager.Method1612("ElytraFly").isEnabled()) {
                     return;
                 }
                 if (this.forceSprint.getValue().booleanValue() && !Speed.mc.player.isSprinting() && PlayerUtil.Method1080()) {
@@ -166,7 +166,7 @@ extends Module {
 
     @Subscriber(priority=1000)
     public void Method135(UpdateEvent updateEvent) {
-        if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
+        if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             return;
         }
         if (!PlayerUtil.Method1080()) {
@@ -234,12 +234,12 @@ extends Module {
         if (this.disableOnSneak.getValue().booleanValue() && Speed.mc.player.isSneaking()) {
             return;
         }
-        if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
+        if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             return;
         }
         int n = MathHelper.floor(Speed.mc.player.getEntityBoundingBox().minY - 0.2);
         boolean bl2 = bl = Jesus.Method834(BlockLiquid.class, n) != null;
-        if (Class167.Method1610(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
+        if (ModuleManager.getModuleByClass(Jesus.class).isEnabled() && (Speed.mc.player.isInWater() || Speed.mc.player.isInLava() || bl)) {
             return;
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
@@ -305,10 +305,10 @@ extends Module {
                 break;
             }
             case 1: {
-                if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
+                if (this.Method537() == StrafeMode.STRAFEOLD && ModuleManager.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
                     return;
                 }
-                if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("ElytraFly").isEnabled()) {
+                if (this.Method537() == StrafeMode.STRAFEOLD && ModuleManager.Method1612("ElytraFly").isEnabled()) {
                     return;
                 }
                 if (!Speed.mc.player.isSprinting()) {
@@ -540,7 +540,7 @@ extends Module {
         this.Field407 = 1;
         this.Field422 = 4;
         this.Field425 = 2;
-        if (this.Method537() == StrafeMode.STRAFEOLD && Class167.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
+        if (this.Method537() == StrafeMode.STRAFEOLD && ModuleManager.Method1612("LongJump").isEnabled() && LongJump.disableStrafe.getValue().booleanValue()) {
             return;
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
@@ -571,7 +571,7 @@ extends Module {
         if (Speed.mc.player == null || Speed.mc.world == null) {
             return;
         }
-        if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
+        if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
             return;
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
@@ -606,7 +606,7 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         block2: {
             block1: {
-                if (Class167.Method1610(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
+                if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
                     return;
                 }
                 if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook)) break block1;

@@ -12,7 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.settingEnums.ACComfirmMode;
 import me.darki.konas.settingEnums.ACInteractMode;
@@ -502,7 +502,7 @@ extends Module {
     }
 
     public void Method1561() {
-        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && ModuleManager.getModuleByClass(KillAura.class).isEnabled() || pistonAura.getValue() != false && ModuleManager.getModuleByClass(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
             this.Field1620 = null;
             return;
         }
@@ -660,7 +660,7 @@ extends Module {
                 this.Field1639.put((EntityPlayer)sPacketEntityStatus.getEntity(AutoCrystal.mc.world), new Class566());
                 break block14;
             }
-            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !disableOnTP.getValue().booleanValue() || Class167.Method1610(PacketFly.class).isEnabled()) break block14;
+            if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || !disableOnTP.getValue().booleanValue() || ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) break block14;
             this.toggle();
         }
     }
@@ -714,7 +714,7 @@ extends Module {
             if (this.Field1638.containsKey(sPacketSpawnObject.getEntityID())) {
                 return;
             }
-            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && ModuleManager.getModuleByClass(KillAura.class).isEnabled() || pistonAura.getValue() != false && ModuleManager.getModuleByClass(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
                 this.Field1620 = null;
                 return;
             }

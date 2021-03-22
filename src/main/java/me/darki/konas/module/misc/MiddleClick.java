@@ -3,7 +3,7 @@ package me.darki.konas.module.misc;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class262;
 import me.darki.konas.unremaped.ExtraChat;
 import me.darki.konas.unremaped.Class306;
@@ -136,7 +136,7 @@ extends Module {
                     Logger.Method1118("Removed \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
                 } else {
                     Class492.Method1990(entity.getName(), entity.getUniqueID().toString());
-                    if (Class167.Method1610(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
+                    if (ModuleManager.getModuleByClass(ExtraChat.class).isEnabled() && ExtraChat.Field1451.getValue().booleanValue()) {
                         EventDispatcher.Companion.dispatch(new Class645(entity.getName(), "I just friended you on Konas!"));
                     }
                     Logger.Method1118("Added \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
