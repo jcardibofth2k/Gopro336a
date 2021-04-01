@@ -132,11 +132,11 @@ extends Gui {
             RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, nArray[0], Class557.Method802() + 3, new Color(43, 43, 43, 200).hashCode());
             int n2 = 65;
             if (this.Field545 == arrayList.indexOf(module)) {
-                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.Field2503.getValue()).Method774());
+                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.selected.getValue()).Method774());
                 n2 = 67;
             }
             if (module.isEnabled()) {
-                n = ((ColorValue)Class115.Field2504.getValue()).Method774();
+                n = ((ColorValue)Class115.toggled.getValue()).Method774();
             }
             Class557.Method801(module.getName(), (int)f + n2, (int)f2 + (int)(this.Field539 + 2.0f), n);
             this.Field539 += (float)(Class557.Method802() + 3);
@@ -159,11 +159,11 @@ extends Gui {
             int n2 = 6;
             RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 57.0f, Class557.Method802() + 3, n);
             if (category2.equals((Object)category)) {
-                RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.Field2503.getValue()).Method774());
+                RenderUtil2.Method1338(f + 2.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.selected.getValue()).Method774());
                 n2 = 8;
                 this.Field542 = this.Field539;
             }
-            Class557.Method801(category2.toString().substring(0, 1).toUpperCase() + category2.toString().substring(1).toLowerCase(), (int)(f + (float)n2), (int)((float)((int)f2) + (this.Field539 + 2.0f)), category2.equals((Object)this.Field544) ? ((ColorValue)Class115.Field2503.getValue()).Method774() : Color.white.hashCode());
+            Class557.Method801(category2.toString().substring(0, 1).toUpperCase() + category2.toString().substring(1).toLowerCase(), (int)(f + (float)n2), (int)((float)((int)f2) + (this.Field539 + 2.0f)), category2.equals((Object)this.Field544) ? ((ColorValue)Class115.selected.getValue()).Method774() : Color.white.hashCode());
             this.Field539 += (float)(Class557.Method802() + 3);
         }
         this.Method617(this.Field537 + 1.0f + (float)((Class557.Method802() + 3) * Category.Method1764().length));

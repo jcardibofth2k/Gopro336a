@@ -42,7 +42,6 @@ import net.minecraft.util.SoundEvent;
 public class NoRender
 extends Module {
     public static Set<SoundEvent> Field1100 = Sets.newHashSet(SoundEvents.ENTITY_BAT_AMBIENT, SoundEvents.ENTITY_BAT_DEATH, SoundEvents.ENTITY_BAT_HURT, SoundEvents.ENTITY_BAT_LOOP, SoundEvents.ENTITY_BAT_TAKEOFF);
-
     public Setting<Boolean> noHurtCam = new Setting<>("NoHurtCam", true);
     public Setting<Boolean> noWeather = new Setting<>("NoWeather", true);
     public Setting<Boolean> noLightning = new Setting<>("NoLightning", true);
@@ -70,7 +69,6 @@ extends Module {
     public Setting<Boolean> beacon = new Setting<>("Beacon", false);
     public static Setting<Boolean> toasts = new Setting<>("Toasts", true);
     public Setting<Boolean> chat = new Setting<>("Chat", false);
-  
     public EntityPlayer.EnumChatVisibility Field1128 = null;
 
     public boolean Method394() {

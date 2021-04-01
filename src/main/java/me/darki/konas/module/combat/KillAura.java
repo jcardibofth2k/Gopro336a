@@ -317,7 +317,7 @@ extends Module {
 
     public boolean Method388() {
         List list;
-        if (disableWhenCA.getValue().booleanValue() && (list = Class167.Method1610(AutoCrystal.class)) != null) {
+        if (disableWhenCA.getValue().booleanValue() && (list = ModuleManager.getModuleByClass(AutoCrystal.class)) != null) {
             AutoCrystal autoCrystal = (AutoCrystal) list;
             if (((Module) list).isEnabled()) {
                 if (onlyWhenNoTargets.getValue().booleanValue()) {

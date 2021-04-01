@@ -38,7 +38,6 @@ extends Module {
     public TrayIcon Field1408;
     public SystemTray Field1409;
     public int Field1410 = 0;
-
     public Setting<Boolean> modules = new Setting<>("Modules", true);
     public Setting<Boolean> 2b2tKick = new Setting<>("2b2tKick", false);
     public ListenableSettingDecorator<Boolean> Field1413 = new ListenableSettingDecorator("KillStreak", false, this::Method145);
@@ -48,7 +47,6 @@ extends Module {
     public Setting<Boolean> ghasts = new Setting<>("Ghasts", false);
     public Setting<Boolean> sound = new Setting<>("Sound", true);
     public ListenableSettingDecorator<Boolean> Field1419 = new ListenableSettingDecorator("SystemTray", false, this::Method1469);
-
     public ArrayList<Entity> Field1420 = new ArrayList();
     public Class566 Field1421 = new Class566();
     public HashMap<Long, Boolean> Field1422 = new Class175(this);

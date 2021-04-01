@@ -546,7 +546,7 @@ public class Class589
                 System.err.println("Friends Array not found!");
                 return;
             }
-            if (Config.Field1792.getValue()) {
+            if (Config.overwriteFriends.getValue()) {
                 Class492.Method1986();
             }
             final Iterator iterator = asJsonArray.iterator();
@@ -1504,7 +1504,7 @@ public class Class589
         String x;
         try {
             final JsonArray method2256 = Method2256(file);
-            if (Config.Field1792.getValue()) {
+            if (Config.overwriteFriends.getValue()) {
                 final JsonObject jsonObject = new JsonObject();
                 jsonObject.add("Friends", (JsonElement)Method2245());
                 method2256.set(3, (JsonElement)jsonObject);
