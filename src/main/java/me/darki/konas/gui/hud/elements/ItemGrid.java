@@ -14,10 +14,10 @@ extends Element {
     @Override
     public void onRender2D() {
         super.onRender2D();
-        int n = ((IInventoryPlayer) ItemGrid.mc.player.inventory).Method27().stream().mapToInt(ItemGrid::Method2003).sum();
-        int n2 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).Method27().stream().mapToInt(ItemGrid::Method2004).sum();
-        int n3 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).Method27().stream().mapToInt(ItemGrid::Method1811).sum();
-        int n4 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).Method27().stream().mapToInt(ItemGrid::Method2007).sum();
+        int n = ((IInventoryPlayer) ItemGrid.mc.player.inventory).getAllInventories().stream().mapToInt(ItemGrid::Method2003).sum();
+        int n2 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).getAllInventories().stream().mapToInt(ItemGrid::Method2004).sum();
+        int n3 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).getAllInventories().stream().mapToInt(ItemGrid::Method1811).sum();
+        int n4 = ((IInventoryPlayer) ItemGrid.mc.player.inventory).getAllInventories().stream().mapToInt(ItemGrid::Method2007).sum();
         this.Method2008(new ItemStack(Items.END_CRYSTAL, n), (int)this.Method2320() + 2, (int)this.Method2324() + 2);
         this.Method2008(new ItemStack(Items.GOLDEN_APPLE, n2, 1), (int)this.Method2320() + 22, (int)this.Method2324() + 2);
         this.Method2008(new ItemStack(Items.TOTEM_OF_UNDYING, n3), (int)this.Method2320() + 2, (int)this.Method2324() + 22);

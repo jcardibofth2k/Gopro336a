@@ -183,9 +183,9 @@ extends Module {
             this.Field1128 = null;
         }
         if (this.noWeather.getValue().booleanValue()) {
-            if ((double)((IWorld)NoRender.mc.world).Method220() > 0.9) {
+            if ((double)((IWorld)NoRender.mc.world).getRainingStrength() > 0.9) {
                 this.Method1645("Thunder");
-            } else if ((double)((IWorld)NoRender.mc.world).Method220() > 0.2) {
+            } else if ((double)((IWorld)NoRender.mc.world).getRainingStrength() > 0.2) {
                 this.Method1645("Rain");
             } else {
                 this.Method1645("Clear");

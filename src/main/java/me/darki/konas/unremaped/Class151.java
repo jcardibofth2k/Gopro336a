@@ -134,7 +134,7 @@ extends GuiScreen {
         this.buttonList.add(new GuiButton(5, this.width / 2 - 100, this.height / 4 + 168 + 18, "Login through browser"));
         ((GuiButton)this.buttonList.get((int)3)).visible = false;
         this.Field1965 = new GuiTextField(2, this.fontRenderer, this.width / 2 - 100, 66, 200, 20);
-        ((IGuiTextField)this.Field1965).Method1604(320);
+        ((IGuiTextField)this.Field1965).setMaxStringLength(320);
         this.Field1966 = new Class158(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);
         this.Field1965.setFocused(true);
     }

@@ -188,8 +188,8 @@ extends Module {
                 } else {
                     this.Method561(this.Field484);
                 }
-                if (yawAngle.getValue().floatValue() < 1.0f && Math.abs(f = (float)MathHelper.wrapDegrees(Field480 - (double)((IEntityPlayerSP)KillAura.mc.player).Method238())) > 180.0f * yawAngle.getValue().floatValue()) {
-                    Field480 = ((IEntityPlayerSP)KillAura.mc.player).Method238() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
+                if (yawAngle.getValue().floatValue() < 1.0f && Math.abs(f = (float)MathHelper.wrapDegrees(Field480 - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw())) > 180.0f * yawAngle.getValue().floatValue()) {
+                    Field480 = ((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                     bl = false;
                 }
                 NewGui.INSTANCE.Field1139.Method1937((float)Field480, (float)Field481);
@@ -449,7 +449,7 @@ extends Module {
                         double d6 = vec3d3.z - vec3d.z;
                         double[] dArray2 = new double[]{MathHelper.wrapDegrees((float)Math.toDegrees(Math.atan2(d6, d4)) - 90.0f), MathHelper.wrapDegrees((float)(-Math.toDegrees(Math.atan2(d5, Math.sqrt(d4 * d4 + d6 * d6)))))};
                         if (vec3d2 != null && dArray != null) {
-                            if (!(Math.hypot(((dArray2[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray2[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()))) continue;
+                            if (!(Math.hypot(((dArray2[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray2[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()))) continue;
                             vec3d2 = vec3d3;
                             dArray = dArray2;
                             continue;
@@ -460,9 +460,9 @@ extends Module {
                 }
             }
             if (vec3d2 == null || dArray == null) break block4;
-            d2 = ((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0;
-            d = ((dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()) % 360.0 + 540.0) % 360.0 - 180.0;
-            double[] dArray3 = new double[]{(double)((IEntityPlayerSP)KillAura.mc.player).Method238() + (d2 > 180.0 ? 180.0 : Math.max(d2, -180.0)), (double)((IEntityPlayerSP)KillAura.mc.player).Method240() + (d > 180.0 ? 180.0 : Math.max(d, -180.0))};
+            d2 = ((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0;
+            d = ((dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()) % 360.0 + 540.0) % 360.0 - 180.0;
+            double[] dArray3 = new double[]{(double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw() + (d2 > 180.0 ? 180.0 : Math.max(d2, -180.0)), (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch() + (d > 180.0 ? 180.0 : Math.max(d, -180.0))};
             KillAura.Method559((float)dArray3[0], (float)dArray3[1]);
         }
     }
@@ -513,9 +513,9 @@ extends Module {
             float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
             int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
             ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-            double d = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
-            double d2 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
-            double d3 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
+            double d = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * (double)class89.Method436() - iRenderManager.getRenderPosX();
+            double d2 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * (double)class89.Method436() - iRenderManager.getRenderPosY();
+            double d3 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * (double)class89.Method436() - iRenderManager.getRenderPosZ();
             double d4 = -Math.cos((double)(System.currentTimeMillis() - this.Field482) / 1000.0 * (double) animSpeed.getValue().floatValue()) * ((double)this.Field484.height / 2.0) + (double)this.Field484.height / 2.0;
             GL11.glLineWidth(width.getValue().floatValue());
             GL11.glBegin(1);

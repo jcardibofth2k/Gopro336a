@@ -59,8 +59,8 @@ extends Module {
                                 }
                                 if (!(var1_1.getPacket() instanceof SPacketPlayerPosLook) || !Class405.mc.player.isRiding()) break block9;
                                 var2_2 = (SPacketPlayerPosLook)var1_1.getPacket();
-                                ((ISPacketPlayerPosLook)var2_2).Method40(Class405.mc.player.rotationYaw);
-                                ((ISPacketPlayerPosLook)var2_2).Method41(Class405.mc.player.rotationPitch);
+                                ((ISPacketPlayerPosLook)var2_2).setYaw(Class405.mc.player.rotationYaw);
+                                ((ISPacketPlayerPosLook)var2_2).setPitch(Class405.mc.player.rotationPitch);
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
                                 var2_2.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
                                 this.Field1241 = var2_2.getTeleportId();

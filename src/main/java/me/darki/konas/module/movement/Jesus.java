@@ -147,15 +147,15 @@ extends Module {
                 if (!(class24.getPacket() instanceof CPacketPlayer) || Jesus.mc.player.ticksExisted <= 20 || !mode.getValue().equals(Class435.SOLID) || Jesus.mc.player.getRidingEntity() != null || Jesus.mc.gameSettings.keyBindJump.isKeyDown() || !(Jesus.mc.player.fallDistance < 3.0f)) break block18;
                 CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
                 if (!Jesus.Method393() || Jesus.Method394()) break block17;
-                ((ICPacketPlayer)cPacketPlayer).Method1700(false);
+                ((ICPacketPlayer)cPacketPlayer).setOnGround(false);
                 if (strict.getValue().booleanValue()) {
                     this.Field788 += 0.12f;
                     if (this.Field788 > 0.4f) {
                         this.Field788 = 0.2f;
                     }
-                    ((ICPacketPlayer)cPacketPlayer).Method1698(cPacketPlayer.getY(Jesus.mc.player.posY) - (double)this.Field788);
+                    ((ICPacketPlayer)cPacketPlayer).setY(cPacketPlayer.getY(Jesus.mc.player.posY) - (double)this.Field788);
                 } else {
-                    ((ICPacketPlayer)cPacketPlayer).Method1698(Jesus.mc.player.ticksExisted % 2 == 0 ? cPacketPlayer.getY(Jesus.mc.player.posY) - 0.05 : cPacketPlayer.getY(Jesus.mc.player.posY));
+                    ((ICPacketPlayer)cPacketPlayer).setY(Jesus.mc.player.ticksExisted % 2 == 0 ? cPacketPlayer.getY(Jesus.mc.player.posY) - 0.05 : cPacketPlayer.getY(Jesus.mc.player.posY));
                 }
                 break block17;
             }
@@ -164,20 +164,20 @@ extends Module {
             if (Jesus.Method393() && Jesus.mc.player.fallDistance < 3.0f && !Jesus.mc.player.movementInput.jump && !Jesus.Method394() && !Jesus.mc.player.isSneaking()) {
                 double d = cPacketVehicleMove.getY();
                 if (Jesus.mc.player.ticksExisted % 3 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.48);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.48);
                 } else if (Jesus.mc.player.ticksExisted % 4 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.33);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.33);
                 } else if (Jesus.mc.player.ticksExisted % 5 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.73);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.73);
                 } else if (Jesus.mc.player.ticksExisted % 6 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.63);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.63);
                 } else if (Jesus.mc.player.ticksExisted % 7 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.42);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.42);
                 } else if (Jesus.mc.player.ticksExisted % 8 == 0) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.52);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.52);
                 }
                 if (cPacketVehicleMove.getY() == d) {
-                    ((ICPacketVehicleMove)cPacketVehicleMove).Method337(cPacketVehicleMove.getY() - 0.3);
+                    ((ICPacketVehicleMove)cPacketVehicleMove).setY(cPacketVehicleMove.getY() - 0.3);
                 }
             }
         }

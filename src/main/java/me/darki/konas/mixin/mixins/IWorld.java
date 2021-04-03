@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={World.class})
 public interface IWorld {
     @Accessor(value="rainingStrength")
-    float Method220();
+    float getRainingStrength();
 
     @Accessor(value="thunderingStrength")
-    float Method221();
+    float getThunderingStrength();
 }

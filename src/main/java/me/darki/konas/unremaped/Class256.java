@@ -72,7 +72,7 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         if (packetEvent.getPacket() instanceof SPacketCloseWindow) {
             SPacketCloseWindow sPacketCloseWindow = (SPacketCloseWindow) packetEvent.getPacket();
-            if (this.Field2054 != null && ((ISPacketCloseWindow)sPacketCloseWindow).Method2195() == this.Field2054.inventorySlots.windowId) {
+            if (this.Field2054 != null && ((ISPacketCloseWindow)sPacketCloseWindow).getWindowId() == this.Field2054.inventorySlots.windowId) {
                 this.Field2055 = false;
                 this.Field2056 = false;
                 this.Field2054 = null;

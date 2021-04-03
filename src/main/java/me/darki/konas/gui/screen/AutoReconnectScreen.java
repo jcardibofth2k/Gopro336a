@@ -69,9 +69,9 @@ extends GuiScreen {
     }
 
     public AutoReconnectScreen(GuiDisconnected guiDisconnected, ServerData serverData, int n) {
-        this.Field1846 = ((IGuiDisconnected)guiDisconnected).Method32();
-        this.Field1843 = ((IGuiDisconnected)guiDisconnected).Method31();
-        this.Field1844 = ((IGuiDisconnected)guiDisconnected).Method33();
+        this.Field1846 = ((IGuiDisconnected)guiDisconnected).getParentScreen();
+        this.Field1843 = ((IGuiDisconnected)guiDisconnected).getReason();
+        this.Field1844 = ((IGuiDisconnected)guiDisconnected).getMessage();
         this.Field1848 = serverData;
         this.Field1849 = new Class566();
         this.Field1850 = n;

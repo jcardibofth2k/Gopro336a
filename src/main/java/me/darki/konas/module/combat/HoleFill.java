@@ -229,9 +229,9 @@ extends Module {
             //Vec3d vec3d = new Vec3d((Vec3i)this.Field1046.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
             Vec3d vec3d = new Vec3d(this.Field1046.Method1982()).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
             Class496.Method1969(this.Field1046.Method1982(), vec3d, EnumHand.MAIN_HAND, this.Field1046.Method1980(), true, swing.getValue());
-            double d = HoleFill.mc.player.posX - ((IEntityPlayerSP)HoleFill.mc.player).Method232();
-            double d2 = HoleFill.mc.player.posY - ((IEntityPlayerSP)HoleFill.mc.player).Method234();
-            double d3 = HoleFill.mc.player.posZ - ((IEntityPlayerSP)HoleFill.mc.player).Method236();
+            double d = HoleFill.mc.player.posX - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosX();
+            double d2 = HoleFill.mc.player.posY - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosY();
+            double d3 = HoleFill.mc.player.posZ - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosZ();
             boolean bl4 = d * d + d2 * d2 + d3 * d3 > 9.0E-4;
             for (int i = 0; i < actionShift.getValue() - 1 && !bl4; ++i) {
                 Class490 class490;

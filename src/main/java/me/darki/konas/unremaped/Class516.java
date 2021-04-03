@@ -31,9 +31,9 @@ public class Class516 {
     public static void Method1257(Entity entity, int n, float f) {
         block0: {
             IRenderManager iRenderManager = (IRenderManager)Field1284.getRenderManager();
-            double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)f - iRenderManager.Method69();
-            double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)f - iRenderManager.Method70();
-            double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)f - iRenderManager.Method71();
+            double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)f - iRenderManager.getRenderPosX();
+            double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)f - iRenderManager.getRenderPosY();
+            double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)f - iRenderManager.getRenderPosZ();
             AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
             AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d, axisAlignedBB.minY - entity.posY + d2, axisAlignedBB.minZ - entity.posZ + d3, axisAlignedBB.maxX - entity.posX + d, axisAlignedBB.maxY - entity.posY + d2, axisAlignedBB.maxZ - entity.posZ + d3);
             if (entity == Class516.Field1284.player) break block0;
@@ -112,9 +112,9 @@ public class Class516 {
         GL11.glDisable((int)2929);
         GL11.glDepthMask((boolean)false);
         sphere.setDrawStyle(100013);
-        double d4 = ((IRenderManager)Field1284.getRenderManager()).Method69();
-        double d5 = ((IRenderManager)Field1284.getRenderManager()).Method70();
-        double d6 = ((IRenderManager)Field1284.getRenderManager()).Method71();
+        double d4 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosX();
+        double d5 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosY();
+        double d6 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosZ();
         GL11.glTranslated((double)(d - d4), (double)(d2 - d5), (double)(d3 - d6));
         sphere.draw(f, n, n2);
         GL11.glLineWidth((float)2.0f);
@@ -288,9 +288,9 @@ public class Class516 {
         GlStateManager.disableAlpha();
         GlStateManager.disableDepth();
         GlStateManager.depthMask((boolean)false);
-        double d3 = ((IRenderManager)Field1284.getRenderManager()).Method69();
-        double d4 = ((IRenderManager)Field1284.getRenderManager()).Method70();
-        double d5 = ((IRenderManager)Field1284.getRenderManager()).Method71();
+        double d3 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosX();
+        double d4 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosY();
+        double d5 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosZ();
         GL11.glColor4d((double)f, (double)f2, (double)f3, (double)f4);
         for (BlockPos blockPos : collection) {
             GlStateManager.pushMatrix();
@@ -445,9 +445,9 @@ public class Class516 {
     }
 
     public static void Method1279(Vec3d vec3d, Vec3d vec3d2, Color color) {
-        double d = ((IRenderManager)Field1284.getRenderManager()).Method69();
-        double d2 = ((IRenderManager)Field1284.getRenderManager()).Method70();
-        double d3 = ((IRenderManager)Field1284.getRenderManager()).Method71();
+        double d = ((IRenderManager)Field1284.getRenderManager()).getRenderPosX();
+        double d2 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosY();
+        double d3 = ((IRenderManager)Field1284.getRenderManager()).getRenderPosZ();
         Vec3d vec3d3 = vec3d.add(-d, -d2, -d3);
         Vec3d vec3d4 = vec3d2.add(-d, -d2, -d3);
         Tessellator tessellator = Tessellator.getInstance();
@@ -460,9 +460,9 @@ public class Class516 {
 
     public static void Method1280(Entity entity, int n, double d) {
         IRenderManager iRenderManager = (IRenderManager)Field1284.getRenderManager();
-        double d2 = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * d - iRenderManager.Method69();
-        double d3 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * d - iRenderManager.Method70();
-        double d4 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * d - iRenderManager.Method71();
+        double d2 = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * d - iRenderManager.getRenderPosX();
+        double d3 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * d - iRenderManager.getRenderPosY();
+        double d4 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * d - iRenderManager.getRenderPosZ();
         AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
         AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d2, axisAlignedBB.minY - entity.posY + d3, axisAlignedBB.minZ - entity.posZ + d4, axisAlignedBB.maxX - entity.posX + d2, axisAlignedBB.maxY - entity.posY + d3, axisAlignedBB.maxZ - entity.posZ + d4);
         GL11.glBlendFunc((int)770, (int)771);
@@ -585,9 +585,9 @@ public class Class516 {
     }
 
     public static void Method1287(double d, double d2, double d3, double d4, Color color) {
-        double d5 = d - ((IRenderManager)Field1284.getRenderManager()).Method69();
-        double d6 = d2 - ((IRenderManager)Field1284.getRenderManager()).Method70();
-        double d7 = d3 - ((IRenderManager)Field1284.getRenderManager()).Method71();
+        double d5 = d - ((IRenderManager)Field1284.getRenderManager()).getRenderPosX();
+        double d6 = d2 - ((IRenderManager)Field1284.getRenderManager()).getRenderPosY();
+        double d7 = d3 - ((IRenderManager)Field1284.getRenderManager()).getRenderPosZ();
         GL11.glColor4f((float)((float)color.getRed() / 255.0f), (float)((float)color.getGreen() / 255.0f), (float)((float)color.getBlue() / 255.0f), (float)((float)color.getAlpha() / 255.0f));
         GL11.glBegin((int)1);
         for (int i = 0; i <= 360; ++i) {

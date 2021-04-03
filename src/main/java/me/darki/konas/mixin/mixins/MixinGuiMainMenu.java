@@ -43,7 +43,7 @@ extends GuiScreen {
     @Inject(method={"addSingleplayerMultiplayerButtons"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method23(int p_73969_1_, int p_73969_2_, CallbackInfo ci) {
         IGuiScreen screen = (IGuiScreen) this;
-        List<GuiButton> buttonList = screen.Method2086();
+        List<GuiButton> buttonList = screen.getButtonList();
         buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_, 98, 20, I18n.format("menu.singleplayer")));
         buttonList.add(new GuiButton(69420, this.width / 2 + 2, p_73969_1_, 98, 20, "Discord"));
         buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_, 98, 20, I18n.format("menu.multiplayer")));
@@ -52,7 +52,7 @@ extends GuiScreen {
         buttonList.add(this.Field13);
         this.Field14 = new GuiButton(6, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 2, 98, 20, I18n.format("fml.menu.mods"));
         buttonList.add(this.Field14);
-        screen.Method2085(buttonList);
+        screen.setButtonList(buttonList);
         ci.cancel();
     }
 }

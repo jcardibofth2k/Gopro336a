@@ -72,8 +72,8 @@ extends Module {
                 block2: {
                     if (Class233.mc.player.inventory.getCurrentItem().getItem() != Items.BOW) break block1;
                     Class233.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(0.0f, -90.0f, Class233.mc.player.onGround));
-                    ((IEntityPlayerSP)Class233.mc.player).Method237(0.0f);
-                    ((IEntityPlayerSP)Class233.mc.player).Method239(-90.0f);
+                    ((IEntityPlayerSP)Class233.mc.player).setLastReportedYaw(0.0f);
+                    ((IEntityPlayerSP)Class233.mc.player).setLastReportedPitch(-90.0f);
                     if (Class233.mc.player.getItemInUseMaxCount() < 3) break block2;
                     this.Field2481 = false;
                     Class233.mc.playerController.onStoppedUsingItem((EntityPlayer)Class233.mc.player);

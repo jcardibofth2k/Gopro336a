@@ -259,9 +259,9 @@ extends Module {
             float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
             int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
             ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-            double d = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
-            double d2 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
-            double d3 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
+            double d = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * (double)class89.Method436() - iRenderManager.getRenderPosX();
+            double d2 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * (double)class89.Method436() - iRenderManager.getRenderPosY();
+            double d3 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * (double)class89.Method436() - iRenderManager.getRenderPosZ();
             double d4 = -Math.cos((double)System.currentTimeMillis() / 1000.0 * (double) animSpeed.getValue().floatValue()) * ((double)this.Field1652.height / 2.0) + (double)this.Field1652.height / 2.0;
             GL11.glLineWidth(width.getValue().floatValue());
             GL11.glBegin(1);
@@ -378,13 +378,13 @@ extends Module {
             }
             if (yawAngle.getValue().floatValue() < 1.0f && yawStep.getValue() != ACYawstepMode.OFF && (this.Field1623 != null || yawStep.getValue() == ACYawstepMode.FULL)) {
                 if (this.Field1654 > 0) {
-                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238();
+                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw();
                     this.Field1623 = null;
                     this.Field1624 = null;
                 } else {
-                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).Method238());
+                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw());
                     if (Math.abs(f) > 180.0f * yawAngle.getValue().floatValue()) {
-                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
+                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                         this.Field1623 = null;
                         this.Field1624 = null;
                         this.Field1654 = yawTicks.getValue();
@@ -731,8 +731,8 @@ extends Module {
             this.Field1638.put(sPacketSpawnObject.getEntityID(), System.currentTimeMillis());
             this.Field1648 = new Vec3d(sPacketSpawnObject.getX(), sPacketSpawnObject.getY(), sPacketSpawnObject.getZ());
             CPacketUseEntity cPacketUseEntity = new CPacketUseEntity();
-            ((ICPacketUseEntity)cPacketUseEntity).Method506(sPacketSpawnObject.getEntityID());
-            ((ICPacketUseEntity)cPacketUseEntity).Method507(CPacketUseEntity.Action.ATTACK);
+            ((ICPacketUseEntity)cPacketUseEntity).setEntityId(sPacketSpawnObject.getEntityID());
+            ((ICPacketUseEntity)cPacketUseEntity).setAction(CPacketUseEntity.Action.ATTACK);
             AutoCrystal.mc.player.connection.sendPacket(new CPacketAnimation(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
             AutoCrystal.mc.player.connection.sendPacket(cPacketUseEntity);
             this.Method1559(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
