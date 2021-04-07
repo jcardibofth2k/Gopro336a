@@ -31,8 +31,8 @@ extends Module {
         entityOtherPlayerMP.posX += (double)n2;
         entityOtherPlayerMP.posZ += (double)n3;
         if (((Boolean)copyInventory.getValue()).booleanValue()) {
-            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method25((NonNullList<ItemStack>) FakePlayer.mc.player.inventory.armorInventory);
-            ((IInventoryPlayer)entityOtherPlayerMP.inventory).Method26((NonNullList<ItemStack>) FakePlayer.mc.player.inventory.mainInventory);
+            ((IInventoryPlayer)entityOtherPlayerMP.inventory).setArmorInventory((NonNullList<ItemStack>) FakePlayer.mc.player.inventory.armorInventory);
+            ((IInventoryPlayer)entityOtherPlayerMP.inventory).setMainInventory((NonNullList<ItemStack>) FakePlayer.mc.player.inventory.mainInventory);
             entityOtherPlayerMP.inventory.currentItem = FakePlayer.mc.player.inventory.currentItem;
             entityOtherPlayerMP.setHeldItem(EnumHand.MAIN_HAND, FakePlayer.mc.player.getHeldItemMainhand());
             entityOtherPlayerMP.setHeldItem(EnumHand.OFF_HAND, FakePlayer.mc.player.getHeldItemOffhand());

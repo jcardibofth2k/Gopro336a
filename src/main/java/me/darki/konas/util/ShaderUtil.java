@@ -70,9 +70,9 @@ public class ShaderUtil {
             entity.lastTickPosY = entity.posY;
             entity.lastTickPosZ = entity.posZ;
         }
-        double d = ShaderUtil.Method840(entity.posX, entity.lastTickPosX) - ((IRenderManager) mc.getRenderManager()).Method69();
-        double d2 = ShaderUtil.Method840(entity.posY, entity.lastTickPosY) - ((IRenderManager) mc.getRenderManager()).Method70();
-        double d3 = ShaderUtil.Method840(entity.posZ, entity.lastTickPosZ) - ((IRenderManager) mc.getRenderManager()).Method71();
+        double d = ShaderUtil.Method840(entity.posX, entity.lastTickPosX) - ((IRenderManager) mc.getRenderManager()).getRenderPosX();
+        double d2 = ShaderUtil.Method840(entity.posY, entity.lastTickPosY) - ((IRenderManager) mc.getRenderManager()).getRenderPosY();
+        double d3 = ShaderUtil.Method840(entity.posZ, entity.lastTickPosZ) - ((IRenderManager) mc.getRenderManager()).getRenderPosZ();
         return new double[]{d, d2, d3};
     }
 

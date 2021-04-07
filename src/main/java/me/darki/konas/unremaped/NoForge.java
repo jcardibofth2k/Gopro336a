@@ -20,7 +20,7 @@ extends Module {
                 break block0;
             }
             if (!(class24.getPacket() instanceof CPacketCustomPayload) || !((CPacketCustomPayload)class24.getPacket()).getChannelName().equalsIgnoreCase("MC|Brand")) break block0;
-            ((ICPacketCustomPayload)class24.getPacket()).Method1801(new PacketBuffer(Unpooled.buffer()).writeString("vanilla"));
+            ((ICPacketCustomPayload)class24.getPacket()).setData(new PacketBuffer(Unpooled.buffer()).writeString("vanilla"));
         }
     }
 

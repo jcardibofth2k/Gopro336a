@@ -36,8 +36,8 @@ extends Module {
             cPacketPlayer = (CPacketPlayer)class24.getPacket();
             boolean bl = AntiHunger.mc.player.onGround;
             if (ground.getValue().booleanValue() && this.Field2015 && bl) {
-                if (cPacketPlayer.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).Method1702() ? 0.0 : AntiHunger.mc.player.posY)) {
-                    ((ICPacketPlayer)cPacketEntityAction).Method1700(false);
+                if (cPacketPlayer.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).isMoving() ? 0.0 : AntiHunger.mc.player.posY)) {
+                    ((ICPacketPlayer)cPacketEntityAction).setOnGround(false);
                 }
             }
             this.Field2015 = bl;

@@ -18,8 +18,8 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && !(NoRotate.mc.currentScreen instanceof GuiDownloadTerrain)) {
             SPacketPlayerPosLook sPacketPlayerPosLook = (SPacketPlayerPosLook) packetEvent.getPacket();
-            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method40(NoRotate.mc.player.rotationYaw);
-            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method41(NoRotate.mc.player.rotationPitch);
+            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setYaw(NoRotate.mc.player.rotationYaw);
+            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setPitch(NoRotate.mc.player.rotationPitch);
             sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
             sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
         }

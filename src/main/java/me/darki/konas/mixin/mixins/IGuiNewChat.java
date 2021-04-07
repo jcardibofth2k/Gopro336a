@@ -9,20 +9,20 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={GuiNewChat.class})
 public interface IGuiNewChat {
     @Accessor(value="drawnChatLines")
-    List<ChatLine> Method244();
+    List<ChatLine> getDrawnChatLines();
 
     @Accessor(value="drawnChatLines")
-    void Method245(List <ChatLine> var1);
+    void setDrawnChatLines(List <ChatLine> var1);
 
     @Accessor(value="scrollPos")
-    int Method246();
+    int getScrollPos();
 
     @Accessor(value="scrollPos")
-    void Method247(int var1);
+    void setScrollPos(int var1);
 
     @Accessor(value="isScrolled")
-    boolean Method248();
+    boolean isScrolled();
 
     @Accessor(value="isScrolled")
-    void Method249(boolean var1);
+    void setIsScrolled(boolean var1);
 }

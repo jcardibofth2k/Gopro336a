@@ -50,7 +50,7 @@ extends Module {
         if (Class320.mc.player == null || Class320.mc.world == null) {
             return;
         }
-        if (!Class167.Method1612("KillAura").isEnabled() && ((Boolean)this.onlyWhenKA.getValue()).booleanValue()) {
+        if (!ModuleManager.Method1612("KillAura").isEnabled() && ((Boolean)this.onlyWhenKA.getValue()).booleanValue()) {
             return;
         }
         if ((this.mode.getValue() == Class323.JUMP || this.mode.getValue() == Class323.SMALLJUMP) && this.Field719 != null && this.Field720 != null) {
