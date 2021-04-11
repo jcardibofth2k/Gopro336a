@@ -22,17 +22,17 @@ import org.lwjgl.util.glu.Cylinder;
 
 public class Class468
 extends Module {
-    public static Setting<Class462> Field2592 = new Setting<>("Mode", Class462.FULL);
-    public Setting<Boolean> Field2593 = new Setting<>("Facing", false);
-    public static Setting<Boolean> Field2594 = new Setting<>("NotWhenTrajectories", true);
-    public Setting<Boolean> Field2595 = new Setting<>("Depth", false);
-    public Setting<Boolean> Field2596 = new Setting<>("Vanilla", false);
-    public static Setting<Float> Field2597 = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method519);
-    public static Setting<Integer> Field2598 = new Setting<>("Slices", 8, 24, 3, 1).visibleIf(Class468::Method393);
-    public static Setting<Float> Field2599 = new Setting<>("Scale", Float.valueOf(0.6f), Float.valueOf(4.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method388);
-    public static Setting<Double> Field2600 = new Setting<>("SpinSpeed", 15.0, 30.0, 0.0, 0.1).visibleIf(Class468::Method394);
-    public static Setting<Float> Field2601 = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
-    public Setting<ColorValue> Field2602 = new Setting<>("Color", new ColorValue(575714484));
+    public static Setting<Class462> mode = new Setting<>("Mode", Class462.FULL);
+    public Setting<Boolean> facing = new Setting<>("Facing", false);
+    public static Setting<Boolean> notWhenTrajectories = new Setting<>("NotWhenTrajectories", true);
+    public Setting<Boolean> depth = new Setting<>("Depth", false);
+    public Setting<Boolean> vanilla = new Setting<>("Vanilla", false);
+    public static Setting<Float> radius = new Setting<>("Radius", Float.valueOf(0.1f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method519);
+    public static Setting<Integer> slices = new Setting<>("Slices", 8, 24, 3, 1).visibleIf(Class468::Method393);
+    public static Setting<Float> scale = new Setting<>("Scale", Float.valueOf(0.6f), Float.valueOf(4.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Class468::Method388);
+    public static Setting<Double> spinSpeed = new Setting<>("SpinSpeed", 15.0, 30.0, 0.0, 0.1).visibleIf(Class468::Method394);
+    public static Setting<Float> width = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
+    public Setting<ColorValue> color = new Setting<>("Color", new ColorValue(575714484));
     public RayTraceResult Field2603;
     public static Class566 Field2604 = new Class566();
 
@@ -44,12 +44,12 @@ extends Module {
                 if (Class468.mc.world == null || Class468.mc.player == null) {
                     return;
                 }
-                if (Field2592.getValue() != Class462.VECTOR) {
-                    if (Field2592.getValue() != Class462.BASED) {
+                if (mode.getValue() != Class462.VECTOR) {
+                    if (mode.getValue() != Class462.BASED) {
                         return;
                     }
                 }
-                if (((Boolean)Field2594.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
+                if (((Boolean)notWhenTrajectories.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
                     return;
                 }
                 rayTraceResult = Class468.mc.objectMouseOver;
@@ -57,18 +57,18 @@ extends Module {
                     return;
                 }
                 if (rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK) break block11;
-                if (Field2592.getValue() != Class462.VECTOR) break block12;
+                if (mode.getValue() != Class462.VECTOR) break block12;
                 GlStateManager.pushMatrix();
                 Class507.Method1386();
-                GlStateManager.glLineWidth((float)((Float)Field2601.getValue()).floatValue());
+                GlStateManager.glLineWidth((float)((Float)width.getValue()).floatValue());
                 GlStateManager.disableTexture2D();
                 GlStateManager.depthMask((boolean)false);
-                if (!((Boolean)this.Field2595.getValue()).booleanValue()) {
+                if (!((Boolean)this.depth.getValue()).booleanValue()) {
                     GlStateManager.disableDepth();
                 }
-                GL11.glLineWidth((float)((Float)Field2601.getValue()).floatValue());
-                GL11.glColor4f((float)((float)((ColorValue)this.Field2602.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)this.Field2602.getValue()).Method782() / 255.0f));
-                GlStateManager.translate((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
+                GL11.glLineWidth((float)((Float)width.getValue()).floatValue());
+                GL11.glColor4f((float)((float)((ColorValue)this.color.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method782() / 255.0f));
+                GlStateManager.translate((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ()));
                 EnumFacing enumFacing = rayTraceResult.sideHit;
                 switch (enumFacing) {
                     case NORTH: 
@@ -85,9 +85,9 @@ extends Module {
                 Cylinder cylinder = new Cylinder();
                 GlStateManager.rotate((float)-90.0f, (float)1.0f, (float)0.0f, (float)0.0f);
                 cylinder.setDrawStyle(100011);
-                cylinder.draw(((Float)Field2597.getValue()).floatValue() * 2.0f, ((Float)Field2597.getValue()).floatValue(), 0.0f, ((Integer)Field2598.getValue()).intValue(), 1);
+                cylinder.draw(((Float)radius.getValue()).floatValue() * 2.0f, ((Float)radius.getValue()).floatValue(), 0.0f, ((Integer)slices.getValue()).intValue(), 1);
                 GlStateManager.color((float)1.0f, (float)1.0f, (float)1.0f, (float)1.0f);
-                if (!((Boolean)this.Field2595.getValue()).booleanValue()) {
+                if (!((Boolean)this.depth.getValue()).booleanValue()) {
                     GlStateManager.enableDepth();
                 }
                 GlStateManager.depthMask((boolean)true);
@@ -96,32 +96,32 @@ extends Module {
                 GlStateManager.popMatrix();
                 break block11;
             }
-            if (Field2592.getValue() != Class462.BASED) break block11;
-            this.Method2215(rayTraceResult, ((Float)Field2599.getValue()).floatValue(), (Double)Field2600.getValue(), ((ColorValue)this.Field2602.getValue()).Method775());
+            if (mode.getValue() != Class462.BASED) break block11;
+            this.Method2215(rayTraceResult, ((Float)scale.getValue()).floatValue(), (Double)spinSpeed.getValue(), ((ColorValue)this.color.getValue()).Method775());
         }
     }
 
     public static boolean Method388() {
-        return Field2592.getValue() == Class462.BASED;
+        return mode.getValue() == Class462.BASED;
     }
 
     public void Method1172(@NotNull AxisAlignedBB axisAlignedBB) {
         if (Class468.mc.world == null || Class468.mc.player == null) {
             return;
         }
-        if (((Boolean)Field2594.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
+        if (((Boolean)notWhenTrajectories.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
             return;
         }
         GlStateManager.pushMatrix();
         Class507.Method1386();
-        if (((Boolean)this.Field2595.getValue()).booleanValue()) {
+        if (((Boolean)this.depth.getValue()).booleanValue()) {
             GlStateManager.enableDepth();
             GlStateManager.depthMask((boolean)true);
         }
-        if (Field2592.getValue() == Class462.FULL) {
-            Class507.Method1379(axisAlignedBB, (ColorValue)this.Field2602.getValue());
+        if (mode.getValue() == Class462.FULL) {
+            Class507.Method1379(axisAlignedBB, (ColorValue)this.color.getValue());
         }
-        Class507.Method1374(axisAlignedBB, ((Float)Field2601.getValue()).floatValue(), ((ColorValue)this.Field2602.getValue()).Method784(255));
+        Class507.Method1374(axisAlignedBB, ((Float)width.getValue()).floatValue(), ((ColorValue)this.color.getValue()).Method784(255));
         GlStateManager.resetColor();
         Class507.Method1385();
         GlStateManager.popMatrix();
@@ -142,7 +142,7 @@ extends Module {
         GL11.glDisable((int)2896);
         GL11.glLineWidth((float)2.0f);
         GL11.glColor4f((float)((float)color.getRed() / 255.0f), (float)((float)color.getGreen() / 255.0f), (float)((float)color.getBlue() / 255.0f), (float)((float)color.getAlpha() / 255.0f));
-        GL11.glTranslated((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
+        GL11.glTranslated((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ()));
         switch (rayTraceResult.sideHit) {
             case WEST: {
                 GL11.glRotatef((float)90.0f, (float)0.0f, (float)0.0f, (float)1.0f);
@@ -207,15 +207,15 @@ extends Module {
     }
 
     public static boolean Method394() {
-        return Field2592.getValue() == Class462.BASED;
+        return mode.getValue() == Class462.BASED;
     }
 
     public static boolean Method519() {
-        return Field2592.getValue() == Class462.VECTOR;
+        return mode.getValue() == Class462.VECTOR;
     }
 
     public static boolean Method393() {
-        return Field2592.getValue() == Class462.VECTOR;
+        return mode.getValue() == Class462.VECTOR;
     }
 
     @Subscriber
@@ -227,14 +227,14 @@ extends Module {
             if (this.Field2603 == null) {
                 return;
             }
-            if (Field2592.getValue() == Class462.VECTOR || Field2592.getValue() == Class462.BASED) {
+            if (mode.getValue() == Class462.VECTOR || mode.getValue() == Class462.BASED) {
                 return;
             }
             if (this.Field2603.typeOfHit != RayTraceResult.Type.BLOCK) break block12;
             BlockPos blockPos = this.Field2603.getBlockPos();
             IBlockState iBlockState = Class468.mc.world.getBlockState(blockPos);
             AxisAlignedBB axisAlignedBB = iBlockState.getSelectedBoundingBox((World)Class468.mc.world, blockPos);
-            if (((Boolean)this.Field2593.getValue()).booleanValue()) {
+            if (((Boolean)this.facing.getValue()).booleanValue()) {
                 switch (this.Field2603.sideHit) {
                     case DOWN: {
                         axisAlignedBB = new AxisAlignedBB(axisAlignedBB.minX, axisAlignedBB.minY, axisAlignedBB.minZ, axisAlignedBB.maxX, axisAlignedBB.minY, axisAlignedBB.maxZ);
@@ -272,7 +272,7 @@ extends Module {
     @Subscriber
     public void Method2216(Class40 class40) {
         block0: {
-            if (((Boolean)this.Field2596.getValue()).booleanValue()) break block0;
+            if (((Boolean)this.vanilla.getValue()).booleanValue()) break block0;
             class40.setCanceled(true);
         }
     }

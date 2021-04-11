@@ -15,7 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.module.ModuleManager;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.command.Command;
@@ -40,7 +41,7 @@ extends Module {
     public DataInputStream Field647;
     public DataOutputStream Field648;
     public String Field649;
-    public IdkWhatThisSettingThingDoes<Class324> Field650;
+    public ListenableSettingDecorator<Class324> Field650;
     public Setting<Boolean> Field651;
     public String Field652 = "kcr";
     public ConcurrentHashMap<String, String> Field653;
@@ -86,20 +87,20 @@ extends Module {
         if (KonasChat.mc.player == null || KonasChat.mc.world == null) {
             return;
         }
-        if (Class167.Method1610(ChatAppend.class).isEnabled()) {
-            Class167.Method1610(ChatAppend.class).Method1647(false);
+        if (ModuleManager.getModuleByClass(ChatAppend.class).isEnabled()) {
+            ModuleManager.getModuleByClass(ChatAppend.class).Method1647(false);
         }
-        ArrayList<ChatLine> arrayList = new ArrayList<ChatLine>(((IGuiNewChat) KonasChat.mc.ingameGUI.getChatGUI()).Method244());
+        ArrayList<ChatLine> arrayList = new ArrayList<ChatLine>(((IGuiNewChat) KonasChat.mc.ingameGUI.getChatGUI()).getDrawnChatLines());
         for (ChatLine chatLine : arrayList) {
             for (Map.Entry<String, String> entry : this.Field653.entrySet()) {
                 String string = entry.getKey();
                 String string2 = entry.getValue();
                 if (!chatLine.getChatComponent().getUnformattedText().contains(string2)) continue;
-                ((IChatLine)chatLine).Method263((ITextComponent)new Class532(Command.Field122 + "bKonasChat:" + Command.Field122 + "r " + chatLine.getChatComponent().getFormattedText().replace(string2, string)));
+                ((IChatLine)chatLine).setLineString((ITextComponent)new Class532(Command.Field122 + "bKonasChat:" + Command.Field122 + "r " + chatLine.getChatComponent().getFormattedText().replace(string2, string)));
                 this.Field653.remove(string);
             }
         }
-        ((IGuiNewChat) KonasChat.mc.ingameGUI.getChatGUI()).Method245(arrayList);
+        ((IGuiNewChat) KonasChat.mc.ingameGUI.getChatGUI()).setDrawnChatLines(arrayList);
     }
 
     @Override
@@ -226,7 +227,7 @@ extends Module {
         super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC, new String[0]);
         this.Field644 = new Class566();
         this.Field649 = null;
-        this.Field650 = new IdkWhatThisSettingThingDoes("Mode", Class324.ROT13, this::Method718);
+        this.Field650 = new ListenableSettingDecorator("Mode", Class324.ROT13, this::Method718);
         this.Field651 = new Setting<>("Encrypt", true);
         this.Field652 = "kcr";
         this.Field653 = new ConcurrentHashMap();
@@ -239,7 +240,7 @@ extends Module {
             Optional<Map.Entry<String, String>> optional;
             if (!(packetEvent.getPacket() instanceof SPacketChat) || !(optional = KonasChat.Method715(((SPacketChat) packetEvent.getPacket()).getChatComponent().getUnformattedText())).isPresent() || !(entry = optional.get()).getValue().startsWith("kcr")) break block0;
             String string = this.Method717(entry.getValue().substring("kcr".length()));
-            ((ISPacketChat) packetEvent.getPacket()).Method606((ITextComponent)new Class532(Command.Field122 + "bKonasChat: " + Command.Field122 + "f<" + entry.getKey() + "> " + Command.Field122 + "r" + string));
+            ((ISPacketChat) packetEvent.getPacket()).setChatComponent((ITextComponent)new Class532(Command.Field122 + "bKonasChat: " + Command.Field122 + "f<" + entry.getKey() + "> " + Command.Field122 + "r" + string));
         }
     }
 

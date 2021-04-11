@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -201,7 +202,7 @@ extends Module {
                 return;
             }
             if (((Boolean)this.crystal.getValue()).booleanValue()) {
-                if (Class167.Method1610(AutoCrystal.class).isEnabled()) {
+                if (ModuleManager.getModuleByClass(AutoCrystal.class).isEnabled()) {
                     this.Method387(Items.END_CRYSTAL);
                     return;
                 }

@@ -8,6 +8,7 @@ import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
@@ -59,7 +60,7 @@ extends Module {
     }
 
     public static boolean Method651(EntityLivingBase entityLivingBase) {
-        Module module = Class167.Method1612("BowAim");
+        Module module = ModuleManager.Method1612("BowAim");
         if (entityLivingBase == Trajectories.mc.player && module != null) {
             return module.isEnabled() && !Class317.Field763.Method737(350.0);
         }
@@ -107,7 +108,7 @@ extends Module {
     public void Method653(EntityLivingBase entityLivingBase, float f) {
         boolean bl = Trajectories.mc.gameSettings.viewBobbing;
         Trajectories.mc.gameSettings.viewBobbing = false;
-        ((IEntityRenderer) Trajectories.mc.entityRenderer).Method1908(f, 0);
+        ((IEntityRenderer) Trajectories.mc.entityRenderer).setupCameraTransform(f, 0);
         GL11.glPushAttrib(1048575);
         GL11.glPushMatrix();
         GL11.glDisable(2896);
@@ -140,7 +141,7 @@ extends Module {
         GL11.glPopMatrix();
         GL11.glPopAttrib();
         Trajectories.mc.gameSettings.viewBobbing = bl;
-        ((IEntityRenderer) Trajectories.mc.entityRenderer).Method1908(f, 0);
+        ((IEntityRenderer) Trajectories.mc.entityRenderer).setupCameraTransform(f, 0);
     }
 
     public void Method654(EntityLivingBase entityLivingBase, float f) {
@@ -228,7 +229,7 @@ extends Module {
         } else {
             GL11.glColor4f((float) vectorColor.getValue().Method769() / 255.0f, (float) vectorColor.getValue().Method770() / 255.0f, (float) vectorColor.getValue().Method779() / 255.0f, (float) vectorColor.getValue().Method782() / 255.0f);
         }
-        GlStateManager.translate(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69(), rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70(), rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71());
+        GlStateManager.translate(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
         EnumFacing enumFacing = rayTraceResult.sideHit;
         switch (enumFacing) {
             case NORTH: 

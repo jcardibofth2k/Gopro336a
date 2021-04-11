@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.settingEnums.ACComfirmMode;
 import me.darki.konas.settingEnums.ACInteractMode;
@@ -252,6 +252,7 @@ extends Module {
             if (AutoCrystal.depth.getValue()) {
                 GlStateManager.enableDepth();
             }
+
             final IRenderManager renderManager = (IRenderManager)AutoCrystal.mc.getRenderManager();
             final float[] rgBtoHSB = Color.RGBtoHSB((AutoCrystal.targetColor.getValue()).Method769(), (AutoCrystal.targetColor.getValue()).Method770(), (AutoCrystal.targetColor.getValue()).Method779(), null);
             float n2;
@@ -263,6 +264,7 @@ extends Module {
             final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.Method71();
             final double n7 = -Math.cos(System.currentTimeMillis() / 1000.0 * (float)AutoCrystal.animSpeed.getValue()) * (this.Field1652.height / 2.0) + this.Field1652.height / 2.0;
             GL11.glLineWidth((float)AutoCrystal.width.getValue());
+
             GL11.glBegin(1);
             for (int i = 0; i <= 360; ++i) {
                 list.add(new Vec3d(n4 + Math.sin(i * 3.141592653589793 / 180.0) * 0.5, n5 + n7 + 0.01, n6 + Math.cos(i * 3.141592653589793 / 180.0) * 0.5));
@@ -379,13 +381,13 @@ extends Module {
             }
             if (yawAngle.getValue().floatValue() < 1.0f && yawStep.getValue() != ACYawstepMode.OFF && (this.Field1623 != null || yawStep.getValue() == ACYawstepMode.FULL)) {
                 if (this.Field1654 > 0) {
-                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238();
+                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw();
                     this.Field1623 = null;
                     this.Field1624 = null;
                 } else {
-                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).Method238());
+                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw());
                     if (Math.abs(f) > 180.0f * yawAngle.getValue().floatValue()) {
-                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
+                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                         this.Field1623 = null;
                         this.Field1624 = null;
                         this.Field1654 = yawTicks.getValue();
@@ -503,7 +505,7 @@ extends Module {
     }
 
     public void Method1561() {
-        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+        if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && ModuleManager.getModuleByClass(KillAura.class).isEnabled() || pistonAura.getValue() != false && ModuleManager.getModuleByClass(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
             this.Field1620 = null;
             return;
         }
@@ -642,6 +644,7 @@ extends Module {
             }
         }
         else if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && (boolean)AutoCrystal.disableOnTP.getValue() && !Class167.Method1610(PacketFly.class).isEnabled()) {
+
             this.toggle();
         }
     }
@@ -695,7 +698,7 @@ extends Module {
             if (this.Field1638.containsKey(sPacketSpawnObject.getEntityID())) {
                 return;
             }
-            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && Class167.Method1610(KillAura.class).isEnabled() || pistonAura.getValue() != false && Class167.Method1610(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
+            if (AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount() < health.getValue().floatValue() || killAura.getValue() != false && ModuleManager.getModuleByClass(KillAura.class).isEnabled() || pistonAura.getValue() != false && ModuleManager.getModuleByClass(PistonAura.class).isEnabled() || gapping.getValue() != false && AutoCrystal.mc.player.getActiveItemStack().getItem() instanceof ItemFood || mining.getValue().booleanValue() && AutoCrystal.mc.playerController.getIsHittingBlock() && AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemTool) {
                 this.Field1620 = null;
                 return;
             }
@@ -712,8 +715,8 @@ extends Module {
             this.Field1638.put(sPacketSpawnObject.getEntityID(), System.currentTimeMillis());
             this.Field1648 = new Vec3d(sPacketSpawnObject.getX(), sPacketSpawnObject.getY(), sPacketSpawnObject.getZ());
             CPacketUseEntity cPacketUseEntity = new CPacketUseEntity();
-            ((ICPacketUseEntity)cPacketUseEntity).Method506(sPacketSpawnObject.getEntityID());
-            ((ICPacketUseEntity)cPacketUseEntity).Method507(CPacketUseEntity.Action.ATTACK);
+            ((ICPacketUseEntity)cPacketUseEntity).setEntityId(sPacketSpawnObject.getEntityID());
+            ((ICPacketUseEntity)cPacketUseEntity).setAction(CPacketUseEntity.Action.ATTACK);
             AutoCrystal.mc.player.connection.sendPacket(new CPacketAnimation(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
             AutoCrystal.mc.player.connection.sendPacket(cPacketUseEntity);
             this.Method1559(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);

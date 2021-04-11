@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.gui.hud.elements.*;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -34,7 +34,7 @@ public class Class109 {
         for (Field var6_6 : var1_1.getClass().getDeclaredFields()) {
             if (!Setting.class.isAssignableFrom(var6_6.getType())) continue;
             var6_6.setAccessible(true);
-            v0 = IdkWhatThisSettingThingDoes.class;
+            v0 = ListenableSettingDecorator.class;
             v1 = var6_6;
             v2 = v1.getType();
             v3 = v0.isAssignableFrom(v2);
@@ -43,7 +43,7 @@ public class Class109 {
             v5 = var6_6;
             v6 = var1_1;
             v7 = v5.get(v6);
-            v8 = (IdkWhatThisSettingThingDoes)v7;
+            v8 = (ListenableSettingDecorator)v7;
             v4.add(v8);
             continue;
 lbl28:

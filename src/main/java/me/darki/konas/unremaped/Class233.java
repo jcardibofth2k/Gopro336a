@@ -19,13 +19,13 @@ import net.minecraft.world.World;
 
 public class Class233
 extends Module {
-    public static Setting<Boolean> Field2473 = new Setting<>("Swiftness", false);
-    public static Setting<Boolean> Field2474 = new Setting<>("Strength", false);
-    public static Setting<Boolean> Field2475 = new Setting<>("Toggelable", false);
-    public static Setting<Boolean> Field2476 = new Setting<>("AutoSwitch", false);
-    public static Setting<Boolean> Field2477 = new Setting<>("Rearrange", false);
-    public static Setting<Boolean> Field2478 = new Setting<>("NoGapSwitch", false);
-    public static Setting<Integer> Field2479 = new Setting<>("MinHealth", 20, 36, 0, 1);
+    public static Setting<Boolean> swiftness = new Setting<>("Swiftness", false);
+    public static Setting<Boolean> strength = new Setting<>("Strength", false);
+    public static Setting<Boolean> toggelable = new Setting<>("Toggelable", false);
+    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", false);
+    public static Setting<Boolean> rearrange = new Setting<>("Rearrange", false);
+    public static Setting<Boolean> noGapSwitch = new Setting<>("NoGapSwitch", false);
+    public static Setting<Integer> minHealth = new Setting<>("MinHealth", 20, 36, 0, 1);
     public Class566 Field2480 = new Class566();
     public boolean Field2481 = false;
 
@@ -42,25 +42,25 @@ extends Module {
                 if (!this.Field2480.Method737(2500.0)) {
                     return;
                 }
-                if (Class233.mc.player.getHealth() + Class233.mc.player.getAbsorptionAmount() < (float)((Integer)Field2479.getValue()).intValue()) {
+                if (Class233.mc.player.getHealth() + Class233.mc.player.getAbsorptionAmount() < (float)((Integer)minHealth.getValue()).intValue()) {
                     return;
                 }
-                if (((Boolean)Field2478.getValue()).booleanValue() && Class233.mc.player.getActiveItemStack().getItem() instanceof ItemFood) {
+                if (((Boolean)noGapSwitch.getValue()).booleanValue() && Class233.mc.player.getActiveItemStack().getItem() instanceof ItemFood) {
                     return;
                 }
-                if (((Boolean)Field2474.getValue()).booleanValue() && !Class233.mc.player.isPotionActive(MobEffects.STRENGTH)) {
+                if (((Boolean)strength.getValue()).booleanValue() && !Class233.mc.player.isPotionActive(MobEffects.STRENGTH)) {
                     if (this.Method1925("Arrow of Strength")) {
                         this.Method135(updateEvent);
-                    } else if (((Boolean)Field2475.getValue()).booleanValue()) {
+                    } else if (((Boolean)toggelable.getValue()).booleanValue()) {
                         this.toggle();
                     }
                 }
-                if (!((Boolean)Field2473.getValue()).booleanValue() || Class233.mc.player.isPotionActive(MobEffects.SPEED)) break block9;
+                if (!((Boolean)swiftness.getValue()).booleanValue() || Class233.mc.player.isPotionActive(MobEffects.SPEED)) break block9;
                 if (!this.Method1925("Arrow of Swiftness")) break block10;
                 this.Method135(updateEvent);
                 break block9;
             }
-            if (!((Boolean)Field2475.getValue()).booleanValue()) break block9;
+            if (!((Boolean)toggelable.getValue()).booleanValue()) break block9;
             this.toggle();
         }
     }
@@ -72,12 +72,12 @@ extends Module {
                 block2: {
                     if (Class233.mc.player.inventory.getCurrentItem().getItem() != Items.BOW) break block1;
                     Class233.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(0.0f, -90.0f, Class233.mc.player.onGround));
-                    ((IEntityPlayerSP)Class233.mc.player).Method237(0.0f);
-                    ((IEntityPlayerSP)Class233.mc.player).Method239(-90.0f);
+                    ((IEntityPlayerSP)Class233.mc.player).setLastReportedYaw(0.0f);
+                    ((IEntityPlayerSP)Class233.mc.player).setLastReportedPitch(-90.0f);
                     if (Class233.mc.player.getItemInUseMaxCount() < 3) break block2;
                     this.Field2481 = false;
                     Class233.mc.playerController.onStoppedUsingItem((EntityPlayer)Class233.mc.player);
-                    if (((Boolean)Field2475.getValue()).booleanValue()) {
+                    if (((Boolean)toggelable.getValue()).booleanValue()) {
                         this.toggle();
                     }
                     this.Field2480.Method739();
@@ -88,7 +88,7 @@ extends Module {
                 this.Field2481 = true;
                 break block3;
             }
-            if (!((Boolean)Field2476.getValue()).booleanValue() || (n = this.Method464()) == -1 || n == Class233.mc.player.inventory.currentItem) break block3;
+            if (!((Boolean)autoSwitch.getValue()).booleanValue() || (n = this.Method464()) == -1 || n == Class233.mc.player.inventory.currentItem) break block3;
             Class233.mc.player.inventory.currentItem = n;
             Class233.mc.playerController.updateController();
         }
@@ -114,7 +114,7 @@ extends Module {
             if (bl) {
                 return true;
             }
-            if (((Boolean)Field2477.getValue()).booleanValue()) {
+            if (((Boolean)rearrange.getValue()).booleanValue()) {
                 return this.Method2132(i, string);
             }
             return false;

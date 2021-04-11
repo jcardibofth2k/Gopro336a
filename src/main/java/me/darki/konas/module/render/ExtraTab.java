@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class133;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.settingEnums.ExtraTabMode;
 import me.darki.konas.command.Command;
@@ -45,7 +45,7 @@ extends Module {
     }
 
     public static List<NetworkPlayerInfo> Method1448(List<NetworkPlayerInfo> list, List<NetworkPlayerInfo> list2) {
-        if (Class167.Method1610(ExtraTab.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(ExtraTab.class).isEnabled()) {
             if (sortMode.getValue() == ExtraTabMode.VANILLA) {
                 return list.stream().filter(ExtraTab::Method1446).limit(maxSize.getValue().intValue()).collect(Collectors.toList());
             }

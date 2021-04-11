@@ -2,9 +2,10 @@ package me.darki.konas.unremaped;
 
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.setting.IRunnable;
 
 public class Class181
-implements Class529 {
+implements IRunnable {
     public Class202 Field1407;
 
     public Class181(Class202 class202) {

@@ -15,10 +15,10 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class VisualRange
 extends Module {
-    public Setting<Boolean> Field553 = new Setting<>("OneLine", false);
-    public Setting<Boolean> Field554 = new Setting<>("Leaves", true);
-    public Setting<Boolean> Field555 = new Setting<>("IgnoreFriends", true);
-    public Setting<Boolean> Field556 = new Setting<>("Notify", false).visibleIf(this::Method1632);
+    public Setting<Boolean> oneLine = new Setting<>("OneLine", false);
+    public Setting<Boolean> leaves = new Setting<>("Leaves", true);
+    public Setting<Boolean> ignoreFriends = new Setting<>("IgnoreFriends", true);
+    public Setting<Boolean> notify = new Setting<>("Notify", false).visibleIf(this::Method1632);
     public CopyOnWriteArrayList<EntityPlayer> Field557 = new CopyOnWriteArrayList();
 
     public VisualRange() {
@@ -34,21 +34,21 @@ extends Module {
             this.Field557 = new CopyOnWriteArrayList();
         }
         for (EntityPlayer entityPlayer : VisualRange.mc.world.playerEntities) {
-            if (entityPlayer == VisualRange.mc.player || Class546.Method963((Entity)entityPlayer) || ((Boolean)this.Field555.getValue()).booleanValue() && Class492.Method1989(entityPlayer.getName()) || this.Field557.contains(entityPlayer)) continue;
+            if (entityPlayer == VisualRange.mc.player || Class546.Method963((Entity)entityPlayer) || ((Boolean)this.ignoreFriends.getValue()).booleanValue() && Class492.Method1989(entityPlayer.getName()) || this.Field557.contains(entityPlayer)) continue;
             this.Field557.add(entityPlayer);
-            if (((Boolean)this.Field553.getValue()).booleanValue()) {
+            if (((Boolean)this.oneLine.getValue()).booleanValue()) {
                 Logger.Method1117(entityPlayer.getName() + Command.Field122 + "a entered" + Command.Field122 + "f Visual Range!", 5555);
             } else {
                 Logger.Method1118(entityPlayer.getName() + Command.Field122 + "a entered" + Command.Field122 + "f Visual Range!");
             }
-            if (!((Boolean)this.Field556.getValue()).booleanValue()) continue;
+            if (!((Boolean)this.notify.getValue()).booleanValue()) continue;
             this.Method1637(entityPlayer.getName() + " has entered Visual Range!", TrayIcon.MessageType.WARNING);
         }
         for (EntityPlayer entityPlayer : this.Field557) {
             if (VisualRange.mc.world.playerEntities.contains(entityPlayer)) continue;
             this.Field557.remove(entityPlayer);
-            if (!((Boolean)this.Field554.getValue()).booleanValue() || !((Boolean)this.Field555.getValue()).booleanValue() || Class492.Method1989(entityPlayer.getName())) continue;
-            if (((Boolean)this.Field553.getValue()).booleanValue()) {
+            if (!((Boolean)this.leaves.getValue()).booleanValue() || !((Boolean)this.ignoreFriends.getValue()).booleanValue() || Class492.Method1989(entityPlayer.getName())) continue;
+            if (((Boolean)this.oneLine.getValue()).booleanValue()) {
                 Logger.Method1117(entityPlayer.getName() + Command.Field122 + "c left" + Command.Field122 + "f Visual Range!", 5555);
                 continue;
             }

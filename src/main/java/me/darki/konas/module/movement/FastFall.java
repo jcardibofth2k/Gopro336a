@@ -13,10 +13,10 @@ import net.minecraft.util.math.BlockPos;
 
 public class FastFall
 extends Module {
-    public static Setting<Boolean> Field1091 = new Setting<>("Accelerate", true);
-    public static Setting<Class428> Field1092 = new Setting<>("Horizontal", Class428.CANCEL);
-    public static Setting<Float> Field1093 = new Setting<>("Multiplier", Float.valueOf(1.0f), Float.valueOf(50.0f), Float.valueOf(1.0f), Float.valueOf(0.5f));
-    public static Setting<Integer> Field1094 = new Setting<>("ShiftTicks", 1, 10, 0, 1);
+    public static Setting<Boolean> accelerate = new Setting<>("Accelerate", true);
+    public static Setting<Class428> horizontal = new Setting<>("Horizontal", Class428.CANCEL);
+    public static Setting<Float> multiplier = new Setting<>("Multiplier", Float.valueOf(1.0f), Float.valueOf(50.0f), Float.valueOf(1.0f), Float.valueOf(0.5f));
+    public static Setting<Integer> shiftTicks = new Setting<>("ShiftTicks", 1, 10, 0, 1);
     public boolean Field1095;
     public boolean Field1096;
 
@@ -27,16 +27,16 @@ extends Module {
                 return;
             }
             if (!this.Field1095 || FastFall.mc.player.onGround || !(moveEvent.getY() < 0.0)) break block3;
-            for (int i = 0; i < Field1094.getValue(); ++i) {
+            for (int i = 0; i < shiftTicks.getValue(); ++i) {
                 this.Field1096 = true;
-                FastFall.mc.player.move(moveEvent.getMoverType(), Field1092.getValue() == Class428.BOOST ? moveEvent.getX() : 0.0, moveEvent.getY(), Field1092.getValue() == Class428.BOOST ? moveEvent.getZ() : 0.0);
+                FastFall.mc.player.move(moveEvent.getMoverType(), horizontal.getValue() == Class428.BOOST ? moveEvent.getX() : 0.0, moveEvent.getY(), horizontal.getValue() == Class428.BOOST ? moveEvent.getZ() : 0.0);
                 this.Field1096 = false;
                 Class550.Method883(FastFall.mc.player.rotationYaw, FastFall.mc.player.rotationPitch);
-                if (!Field1091.getValue().booleanValue()) continue;
+                if (!accelerate.getValue().booleanValue()) continue;
                 moveEvent.setY(moveEvent.getY() - 0.08);
                 FastFall.mc.player.motionY -= 0.08;
             }
-            if (Field1092.getValue() == Class428.CANCEL) {
+            if (horizontal.getValue() == Class428.CANCEL) {
                 moveEvent.setX(0.0);
                 moveEvent.setZ(0.0);
             }
@@ -54,7 +54,7 @@ extends Module {
             return;
         }
         if (FastFall.mc.player.onGround) {
-            FastFall.mc.player.motionY = -0.0784 * (double) Field1093.getValue().floatValue();
+            FastFall.mc.player.motionY = -0.0784 * (double) multiplier.getValue().floatValue();
             this.Field1095 = true;
         }
         if (FastFall.mc.player.motionY > 0.0) {

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import me.darki.konas.event.events.Event;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.util.RotationUtil;
@@ -443,7 +444,7 @@ extends Module {
 
     @Subscriber(priority=11)
     public void Method948(Event event) {
-        if (!Class167.Method1610(Sprint.class).isEnabled() && (((Boolean) down.getValue()).booleanValue() && Scaffold.mc.gameSettings.keyBindSneak.isKeyDown() || !((Boolean) sprint.getValue()).booleanValue())) {
+        if (!ModuleManager.getModuleByClass(Sprint.class).isEnabled() && (((Boolean) down.getValue()).booleanValue() && Scaffold.mc.gameSettings.keyBindSneak.isKeyDown() || !((Boolean) sprint.getValue()).booleanValue())) {
             Scaffold.mc.player.setSprinting(false);
         }
         int n = (Boolean) down.getValue() != false && Keyboard.isKeyDown((int)56) ? 2 : 1;

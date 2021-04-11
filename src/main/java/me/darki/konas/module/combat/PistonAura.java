@@ -49,27 +49,27 @@ public class PistonAura
 extends Module {
     public Setting<Class214> mode = new Setting<>("Mode", Class214.DAMAGE);
     public Setting<Boolean> smart = new Setting<>("Smart", true).visibleIf(this::Method396);
-    public Setting<Boolean> Field351 = new Setting<>("DisableAfterPush", true).visibleIf(this::Method394);
-    public Setting<Boolean> Field352 = new Setting<>("DisableWhenNone", false).visibleIf(this::Method388);
-    public Setting<Integer> Field353 = new Setting<>("TargetRange", 3, 6, 1, 1);
-    public Setting<Integer> Field354 = new Setting<>("Delay", 25, 100, 0, 1);
-    public static Setting<Integer> Field355 = new Setting<>("ActionShift", 3, 8, 1, 1);
-    public static Setting<Integer> Field356 = new Setting<>("ActionInterval", 0, 10, 0, 1);
-    public Setting<Boolean> Field357 = new Setting<>("Strict", false);
-    public Setting<Boolean> Field358 = new Setting<>("RayTrace", false);
-    public Setting<Boolean> Field359 = new Setting<>("AntiSuicide", false);
-    public Setting<Boolean> Field360 = new Setting<>("Mine", false);
-    public static Setting<ParentSetting> Field361 = new Setting<>("Render", new ParentSetting(false));
-    public static Setting<Boolean> Field362 = new Setting<>("Current", true).setParentSetting(Field361);
-    public static Setting<ColorValue> Field363 = new Setting<>("ColorC", new ColorValue(1354711231)).setParentSetting(Field361);
-    public static Setting<ColorValue> Field364 = new Setting<>("OutlineC", new ColorValue(-4243265)).setParentSetting(Field361);
-    public static Setting<Boolean> Field365 = new Setting<>("Full", true).setParentSetting(Field361);
-    public static Setting<ColorValue> Field366 = new Setting<>("ColorF", new ColorValue(817840192)).setParentSetting(Field361);
-    public static Setting<ColorValue> Field367 = new Setting<>("OutlineF", new ColorValue(-809549760)).setParentSetting(Field361);
-    public static Setting<Boolean> Field368 = new Setting<>("Arrow", true).setParentSetting(Field361);
-    public static Setting<ColorValue> Field369 = new Setting<>("ArrowColor", new ColorValue(-65281)).setParentSetting(Field361);
-    public static Setting<Boolean> Field370 = new Setting<>("Top", false).setParentSetting(Field361);
-    public static Setting<Boolean> Field371 = new Setting<>("Bottom", true).setParentSetting(Field361);
+    public Setting<Boolean> disableAfterPush = new Setting<>("DisableAfterPush", true).visibleIf(this::Method394);
+    public Setting<Boolean> disableWhenNone = new Setting<>("DisableWhenNone", false).visibleIf(this::Method388);
+    public Setting<Integer> targetRange = new Setting<>("TargetRange", 3, 6, 1, 1);
+    public Setting<Integer> delay = new Setting<>("Delay", 25, 100, 0, 1);
+    public static Setting<Integer> actionShift = new Setting<>("ActionShift", 3, 8, 1, 1);
+    public static Setting<Integer> actionInterval = new Setting<>("ActionInterval", 0, 10, 0, 1);
+    public Setting<Boolean> strict = new Setting<>("Strict", false);
+    public Setting<Boolean> rayTrace = new Setting<>("RayTrace", false);
+    public Setting<Boolean> antiSuicide = new Setting<>("AntiSuicide", false);
+    public Setting<Boolean> mine = new Setting<>("Mine", false);
+    public static Setting<ParentSetting> render = new Setting<>("Render", new ParentSetting(false));
+    public static Setting<Boolean> current = new Setting<>("Current", true).setParentSetting(Field361);
+    public static Setting<ColorValue> colorC = new Setting<>("ColorC", new ColorValue(1354711231)).setParentSetting(Field361);
+    public static Setting<ColorValue> outlineC = new Setting<>("OutlineC", new ColorValue(-4243265)).setParentSetting(Field361);
+    public static Setting<Boolean> full = new Setting<>("Full", true).setParentSetting(Field361);
+    public static Setting<ColorValue> colorF = new Setting<>("ColorF", new ColorValue(817840192)).setParentSetting(Field361);
+    public static Setting<ColorValue> outlineF = new Setting<>("OutlineF", new ColorValue(-809549760)).setParentSetting(Field361);
+    public static Setting<Boolean> arrow = new Setting<>("Arrow", true).setParentSetting(Field361);
+    public static Setting<ColorValue> arrowColor = new Setting<>("ArrowColor", new ColorValue(-65281)).setParentSetting(Field361);
+    public static Setting<Boolean> top = new Setting<>("Top", false).setParentSetting(Field361);
+    public static Setting<Boolean> bottom = new Setting<>("Bottom", true).setParentSetting(Field361);
     public Class220 Field372 = Class220.SEARCHING;
     public BlockPos Field373;
     public EnumFacing Field374;
@@ -126,7 +126,7 @@ extends Module {
     }
 
     public boolean Method126(EntityPlayer entityPlayer) {
-        return PistonAura.mc.player.getDistance(entityPlayer) < (float) this.Field353.getValue().intValue();
+        return PistonAura.mc.player.getDistance(entityPlayer) < (float) this.targetRange.getValue().intValue();
     }
 
     public static Float Method514(Entity entity) {
@@ -171,7 +171,7 @@ extends Module {
             if (this.Field383.Method737(1000.0)) {
                 return;
             }
-            if (Field362.getValue().booleanValue()) {
+            if (current.getValue().booleanValue()) {
                 blockPos = null;
                 switch (Class216.Field286[this.Field372.ordinal()]) {
                     case 1: {
@@ -189,16 +189,16 @@ extends Module {
                 }
                 if (blockPos != null) {
                     axisAlignedBB = PistonAura.mc.world.getBlockState(blockPos).getBoundingBox(PistonAura.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                     Class523.Method1216();
-                    Class523.Method1217(axisAlignedBB, Field363.getValue().Method774());
+                    Class523.Method1217(axisAlignedBB, colorC.getValue().Method774());
                     Class523.Method1214();
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, Field364.getValue().Method774(), 1.5f);
+                    Class523.Method1215(axisAlignedBB, outlineC.getValue().Method774(), 1.5f);
                     Class523.Method1214();
                 }
             }
-            if (Field365.getValue().booleanValue()) {
+            if (full.getValue().booleanValue()) {
                 blockPos = null;
                 switch (this.Field374) {
                     case NORTH: {
@@ -218,21 +218,21 @@ extends Module {
                     }
                 }
                 if (blockPos != null) {
-                    blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                     Class523.Method1216();
-                    Class523.Method1217((AxisAlignedBB)blockPos, Field366.getValue().Method774());
+                    Class523.Method1217((AxisAlignedBB)blockPos, colorF.getValue().Method774());
                     Class523.Method1214();
                     Class523.Method1216();
-                    Class523.Method1215((AxisAlignedBB)blockPos, Field367.getValue().Method774(), 1.5f);
+                    Class523.Method1215((AxisAlignedBB)blockPos, outlineF.getValue().Method774(), 1.5f);
                     Class523.Method1214();
                 }
             }
-            if (!Field368.getValue().booleanValue()) break block26;
+            if (!arrow.getValue().booleanValue()) break block26;
             blockPos = null;
             axisAlignedBB = null;
             Vec3d vec3d = null;
             BlockPos blockPos2 = this.Field373.offset(this.Field374, 2);
-            Vec3d vec3d2 = new Vec3d((double)blockPos2.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).Method69(), (double)(blockPos2.getY() + 1) - ((IRenderManager)mc.getRenderManager()).Method70(), (double)blockPos2.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).Method71());
+            Vec3d vec3d2 = new Vec3d((double)blockPos2.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), (double)(blockPos2.getY() + 1) - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), (double)blockPos2.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
             switch (this.Field374) {
                 case NORTH: {
                     blockPos = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z - 0.5);
@@ -269,8 +269,8 @@ extends Module {
                 GL11.glDisable(2929);
                 GL11.glDepthMask(false);
                 GL11.glLineWidth(5.0f);
-                GL11.glColor4f((float)(Field369.getValue().Method774() >> 16 & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() >> 8 & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() & 0xFF) / 255.0f, (float)(Field369.getValue().Method774() >> 24 & 0xFF) / 255.0f);
-                if (Field370.getValue().booleanValue()) {
+                GL11.glColor4f((float)(arrowColor.getValue().Method774() >> 16 & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() >> 8 & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() >> 24 & 0xFF) / 255.0f);
+                if (top.getValue().booleanValue()) {
                     GL11.glBegin(1);
                     GL11.glVertex3d(blockPos.x, blockPos.y, blockPos.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
@@ -280,7 +280,7 @@ extends Module {
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
                     GL11.glEnd();
                 }
-                if (Field371.getValue().booleanValue()) {
+                if (bottom.getValue().booleanValue()) {
                     GL11.glBegin(1);
                     GL11.glVertex3d(blockPos.x, blockPos.y - 1.0, blockPos.z);
                     GL11.glVertex3d((double)axisAlignedBB.x, (double)(axisAlignedBB.y - 1.0), (double)axisAlignedBB.z);
@@ -361,7 +361,7 @@ extends Module {
     }
 
     public boolean Method522(BlockPos blockPos) {
-        if (!this.Method515(blockPos) && !this.Field360.getValue().booleanValue()) {
+        if (!this.Method515(blockPos) && !this.mine.getValue().booleanValue()) {
             return false;
         }
         for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
@@ -376,12 +376,12 @@ extends Module {
             Block block = ((ItemBlock)itemStack.getItem()).getBlock();
             if (block == Blocks.REDSTONE_BLOCK) {
                 if (!this.Method515(blockPos.offset(enumFacing, 3))) {
-                    if (!this.Field360.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_TORCH && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_BLOCK) continue;
+                    if (!this.mine.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_TORCH && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() != Blocks.REDSTONE_BLOCK) continue;
                     this.Field378 = blockPos.offset(enumFacing, 3);
                 }
             } else {
                 optional = Class545.Method1006(blockPos.offset(enumFacing, 3), false, true);
-                if (!optional.isPresent() && this.Field360.getValue().booleanValue() && (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_TORCH || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_BLOCK)) {
+                if (!optional.isPresent() && this.mine.getValue().booleanValue() && (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_TORCH || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 3)).getBlock() == Blocks.REDSTONE_BLOCK)) {
                     this.Field378 = blockPos.offset(enumFacing, 3);
                 }
                 if (!optional.isPresent() && this.Field378 == null && ((ItemBlock) PistonAura.mc.player.inventory.getStackInSlot(this.Method527()).getItem()).getBlock() == Blocks.REDSTONE_TORCH) {
@@ -389,7 +389,7 @@ extends Module {
                         if (blockPos2.equals(enumFacing) || blockPos2.equals(enumFacing.getOpposite())) continue;
                         optional = Class545.Method1006(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2), false, true);
                         if (optional.isPresent()) break;
-                        if (!this.Field360.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2)).getBlock() != Blocks.REDSTONE_TORCH) continue;
+                        if (!this.mine.getValue().booleanValue() || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2)).getBlock() != Blocks.REDSTONE_TORCH) continue;
                         this.Field378 = blockPos.offset(enumFacing, 2).offset((EnumFacing)blockPos2);
                         break;
                     }
@@ -397,7 +397,7 @@ extends Module {
                 if (!optional.isPresent() && this.Field378 == null) continue;
             }
             optional = Class545.Method997(blockPos.offset(enumFacing, 2));
-            boolean bl = this.Field380 = this.Field360.getValue() != false && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() instanceof BlockPistonBase;
+            boolean bl = this.Field380 = this.mine.getValue() != false && PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() instanceof BlockPistonBase;
             if (!optional.isPresent() && !this.Field380) continue;
             if (!this.Field380) {
                 BlockPos blockPos2;
@@ -405,7 +405,7 @@ extends Module {
                 EnumFacing enumFacing2 = optional.get().Field1090;
                 double[] dArray = Class545.Method1008(blockPos3.getX(), blockPos3.getY(), blockPos3.getZ(), enumFacing2, PistonAura.mc.player);
                 blockPos2 = EnumFacing.fromAngle(dArray[0]);
-                if (Math.abs(dArray[1]) > 55.0 || blockPos2 != enumFacing || this.Field358.getValue().booleanValue() && !this.Method526(optional.get().Field1089)) continue;
+                if (Math.abs(dArray[1]) > 55.0 || blockPos2 != enumFacing || this.rayTrace.getValue().booleanValue() && !this.Method526(optional.get().Field1089)) continue;
                 this.Field376 = blockPos3;
                 this.Field377 = enumFacing2;
             }
@@ -449,7 +449,7 @@ extends Module {
             this.Field385 = 0;
             this.Field384.run();
             this.Field384 = null;
-            for (int i = 0; i < Field355.getValue() - 1; ++i) {
+            for (int i = 0; i < actionShift.getValue() - 1; ++i) {
                 this.Method528(true);
                 if (this.Field384 == null) {
                     return;
@@ -485,7 +485,7 @@ extends Module {
     public void Method525(boolean bl, int n, boolean bl2, boolean bl3, Optional optional, Vec3d vec3d) {
         this.Field381.Method739();
         this.Field383.Method739();
-        this.Field382 = this.Field354.getValue() * 10;
+        this.Field382 = this.delay.getValue() * 10;
         if (bl) {
             PistonAura.mc.player.inventory.currentItem = n;
             PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
@@ -508,12 +508,12 @@ extends Module {
     }
 
     public boolean Method386(Entity entity) {
-        return PistonAura.mc.player.getDistance(entity) <= (float)(this.Field353.getValue() + 4);
+        return PistonAura.mc.player.getDistance(entity) <= (float)(this.targetRange.getValue() + 4);
     }
 
     @Subscriber(priority=99)
     public void Method135(UpdateEvent updateEvent) {
-        if (this.Field385 < Field356.getValue()) {
+        if (this.Field385 < actionInterval.getValue()) {
             ++this.Field385;
         }
         if (updateEvent.isCanceled() || !Class496.Method1966()) {
@@ -522,7 +522,7 @@ extends Module {
         if (this.Field372 == Class220.BREAKING) {
             NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
         }
-        if (this.Field385 < Field356.getValue()) {
+        if (this.Field385 < actionInterval.getValue()) {
             return;
         }
         this.Method528(false);
@@ -570,13 +570,13 @@ extends Module {
     public void Method528(boolean bl) {
         block43: {
             block42: {
-                if (this.Field388.Method737(1000.0) && this.Field352.getValue().booleanValue()) {
+                if (this.Field388.Method737(1000.0) && this.disableWhenNone.getValue().booleanValue()) {
                     this.toggle();
                 }
                 if (!this.Field381.Method737(this.Field382)) {
                     return;
                 }
-                if (this.Field357.getValue().booleanValue() && Math.sqrt(PistonAura.mc.player.motionX * PistonAura.mc.player.motionX + PistonAura.mc.player.motionZ * PistonAura.mc.player.motionZ) > 9.0E-4) {
+                if (this.strict.getValue().booleanValue() && Math.sqrt(PistonAura.mc.player.motionX * PistonAura.mc.player.motionX + PistonAura.mc.player.motionZ * PistonAura.mc.player.motionZ) > 9.0E-4) {
                     return;
                 }
                 if (this.mode.getValue() != Class214.DAMAGE) break block42;
@@ -695,12 +695,12 @@ extends Module {
                     case 4: {
                         Entity entity = PistonAura.mc.world.loadedEntityList.stream().filter(PistonAura::Method513).filter(this::Method386).min(Comparator.comparing(PistonAura::Method514)).orElse(null);
                         if (entity != null) {
-                            if (this.Field359.getValue().booleanValue() && Class475.Method2156((EntityEnderCrystal)entity, PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
+                            if (this.antiSuicide.getValue().booleanValue() && Class475.Method2156((EntityEnderCrystal)entity, PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
                                 return;
                             }
                             this.Field381.Method739();
                             this.Field383.Method739();
-                            this.Field382 = this.Field354.getValue() * 10;
+                            this.Field382 = this.delay.getValue() * 10;
                             if (bl) {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), entity.getPositionVector());
                                 Class550.Method883(fArray[0], fArray[1]);
@@ -739,19 +739,19 @@ extends Module {
                 Object object;
                 if (this.smart.getValue().booleanValue() && !Class545.Method1009(new BlockPos(entityPlayer)) && PistonAura.mc.world.getBlockState(new BlockPos(entityPlayer)).getBlock() == Blocks.AIR) continue;
                 BlockPos blockPos = new BlockPos(entityPlayer).up();
-                if (this.Field359.getValue().booleanValue() && blockPos.equals(new BlockPos(PistonAura.mc.player))) continue;
+                if (this.antiSuicide.getValue().booleanValue() && blockPos.equals(new BlockPos(PistonAura.mc.player))) continue;
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     if (!(PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase) && (this.Field387.Method737(Class475.Method2142() + 150) || !blockPos.offset(enumFacing).equals(this.Field386)) || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase && !(object = PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getValue((IProperty)BlockDirectional.FACING)).equals(enumFacing.getOpposite())) continue;
-                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), this.Field358.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.Field358.getValue())) == null) break block8;
+                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), this.rayTrace.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.rayTrace.getValue())) == null) break block8;
                     this.Field384 = () -> this.Method530(n4, (Class490)object);
                     return;
                 }
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     Class490 class490;
-                    if (!Class496.Method1967(blockPos.offset(enumFacing), this.Field358.getValue()) || !(this.Field358.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
+                    if (!Class496.Method1967(blockPos.offset(enumFacing), this.rayTrace.getValue()) || !(this.rayTrace.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
                     object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.offset(enumFacing).getX() + 0.5, (double)blockPos.offset(enumFacing).getY() + 1.0, (double)blockPos.offset(enumFacing).getZ() + 0.5));
                     EnumFacing enumFacing2 = EnumFacing.fromAngle((double)object[0]);
-                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, this.Field358.getValue())) == null) continue;
+                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, this.rayTrace.getValue())) == null) continue;
                     this.Field384 = () -> this.Method523(n, class490, blockPos, enumFacing);
                     return;
                 }
@@ -784,7 +784,7 @@ extends Module {
                 PistonAura.mc.player.inventory.currentItem = n2;
                 PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n2));
             }
-            if (!this.Field351.getValue().booleanValue()) break block2;
+            if (!this.disableAfterPush.getValue().booleanValue()) break block2;
             this.toggle();
         }
     }

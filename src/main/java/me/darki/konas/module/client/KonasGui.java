@@ -1,7 +1,7 @@
 package me.darki.konas.module.client;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -37,7 +37,7 @@ extends Module {
     public static Setting<Float> highlight = new Setting<>("Highlight", Float.valueOf(0.7f), Float.valueOf(0.9f), Float.valueOf(0.5f), Float.valueOf(0.1f));
     public static Setting<Boolean> reload = new Setting<>("Reload", false);
     public static Setting<Integer> height = new Setting<>("Height", 400, 600, 300, 10);
-    public static IdkWhatThisSettingThingDoes<Boolean> singleColumn = new IdkWhatThisSettingThingDoes("SingleColumn", false, KonasGui::Method145);
+    public static ListenableSettingDecorator<Boolean> singleColumn = new ListenableSettingDecorator("SingleColumn", false, KonasGui::Method145);
     public static int Field110 = -1;
 
     @Override

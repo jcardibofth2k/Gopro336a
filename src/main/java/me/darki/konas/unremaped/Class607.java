@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.util.Base64;
 import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.Charsets;
+import me.darki.konas.module.ModuleManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,7 +25,7 @@ extends Thread {
 
     @Override
     public void run() {
-        Class167.Field1691 = "cool";
+        ModuleManager.Field1691 = "cool";
     }
 
     public String Method199(String string, String string2) {

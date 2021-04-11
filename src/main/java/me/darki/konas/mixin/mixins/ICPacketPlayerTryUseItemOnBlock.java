@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketPlayerTryUseItemOnBlock.class})
 public interface ICPacketPlayerTryUseItemOnBlock {
     @Accessor(value="placedBlockDirection")
-    void Method30(EnumFacing var1);
+    void setPlacedBlockDirection(EnumFacing var1);
 }

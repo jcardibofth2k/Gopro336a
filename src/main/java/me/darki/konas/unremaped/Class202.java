@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -10,8 +10,8 @@ public class Class202
 extends Module {
     public Class566 Field677 = new Class566();
     public static boolean Field678 = true;
-    public IdkWhatThisSettingThingDoes<Boolean> Field679 = new IdkWhatThisSettingThingDoes("Cute", false, new Class181(this));
-    public IdkWhatThisSettingThingDoes<Boolean> Field680 = new IdkWhatThisSettingThingDoes("Invite", true, new Class205(this));
+    public ListenableSettingDecorator<Boolean> Field679 = new ListenableSettingDecorator("Cute", false, new Class181(this));
+    public ListenableSettingDecorator<Boolean> Field680 = new ListenableSettingDecorator("Invite", true, new Class205(this));
 
     @Override
     public void onDisable() {
@@ -21,7 +21,7 @@ extends Module {
         NewGui.INSTANCE.Field1140.Method594();
     }
 
-    public static IdkWhatThisSettingThingDoes Method740(Class202 class202) {
+    public static ListenableSettingDecorator Method740(Class202 class202) {
         return class202.Field679;
     }
 
@@ -48,7 +48,7 @@ extends Module {
         }
     }
 
-    public static IdkWhatThisSettingThingDoes Method742(Class202 class202) {
+    public static ListenableSettingDecorator Method742(Class202 class202) {
         return class202.Field680;
     }
 }

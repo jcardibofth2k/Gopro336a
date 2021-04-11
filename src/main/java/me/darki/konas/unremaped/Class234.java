@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.PlayerPreview;
@@ -100,7 +101,7 @@ extends Class215 {
         if (parentSetting == null && !module.getDescription().isEmpty()) {
             f6 += 16.0f;
         }
-        for (Setting setting : Class167.Method1615(module)) {
+        for (Setting setting : ModuleManager.Method1615(module)) {
             Class215 class215;
             if ((setting.Method1199() || parentSetting != null) && (setting.Method1200() == null || setting.Method1200().getValue() != parentSetting)) continue;
             if (setting.getValue() instanceof Boolean) {

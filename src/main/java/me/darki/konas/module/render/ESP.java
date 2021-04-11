@@ -13,6 +13,7 @@ import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.mixin.mixins.IShaderGroup;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -272,7 +273,7 @@ extends Module {
         GL11.glDisable(2929);
         GL11.glDisable(2896);
         GL11.glDepthMask(false);
-        ((IEntityRenderer) ESP.mc.entityRenderer).Method1908(mc.getRenderPartialTicks(), 0);
+        ((IEntityRenderer) ESP.mc.entityRenderer).setupCameraTransform(mc.getRenderPartialTicks(), 0);
         GL11.glMatrixMode(5888);
         this.Field1340.bindFramebuffer(false);
         GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -351,7 +352,7 @@ extends Module {
             GlStateManager.color(1.0f, 1.0f, 1.0f);
             GlStateManager.pushMatrix();
             Vec3d vec3d = new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).add(new Vec3d((entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()));
-            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d.z - ((IRenderManager)mc.getRenderManager()).Method71());
+            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), vec3d.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), vec3d.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
             GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
             GlStateManager.rotate(-ESP.mc.getRenderManager().playerViewY, 0.0f, 1.0f, 0.0f);
             Minecraft minecraft = mc;
@@ -526,7 +527,7 @@ extends Module {
             } else if (Field1325.getValue() == Class483.OUTLINE) {
                 for (BlockPos blockPos : this.Field1337) {
                     axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                     n = Field1327.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
                         n = Field1329.getValue().Method774();
@@ -538,7 +539,7 @@ extends Module {
             } else {
                 for (BlockPos blockPos : this.Field1337) {
                     axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                     n = Field1326.getValue().Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
                         n = Field1328.getValue().Method774();
@@ -619,7 +620,7 @@ extends Module {
                 Integer n = this.Method1331(tileEntity);
                 if (n == null) continue;
                 AxisAlignedBB axisAlignedBB2 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
-                axisAlignedBB2 = axisAlignedBB2.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                axisAlignedBB2 = axisAlignedBB2.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                 Class523.Method1216();
                 Class523.Method1215(axisAlignedBB2, n, Field1318.getValue().floatValue());
                 Class523.Method1214();
@@ -630,7 +631,7 @@ extends Module {
                 Integer n = this.Method1331(tileEntity);
                 if (n == null) continue;
                 AxisAlignedBB axisAlignedBB3 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
-                axisAlignedBB3 = axisAlignedBB3.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
+                axisAlignedBB3 = axisAlignedBB3.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
                 Class523.Method1216();
                 Class523.Method1217(axisAlignedBB3, n);
                 Class523.Method1214();
@@ -686,7 +687,7 @@ extends Module {
     }
 
     public static void Method1326(EntityPlayer entityPlayer, ModelPlayer modelPlayer, float f) {
-        if (!skeleton.getValue().booleanValue() || !Class167.Method1612("ESP").isEnabled()) {
+        if (!skeleton.getValue().booleanValue() || !ModuleManager.Method1612("ESP").isEnabled()) {
             return;
         }
         GlStateManager.pushMatrix();
@@ -708,7 +709,7 @@ extends Module {
         GL11.glEnable(2848);
         GL11.glLineWidth(2.0f);
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).Method69(), d2 - ((IRenderManager)mc.getRenderManager()).Method70(), d3 - ((IRenderManager)mc.getRenderManager()).Method71());
+        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), d2 - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), d3 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
         float f2 = entityPlayer.prevRenderYawOffset + (entityPlayer.renderYawOffset - entityPlayer.prevRenderYawOffset) * f;
         GL11.glRotatef(-f2, 0.0f, 1.0f, 0.0f);
         float f3 = entityPlayer.isSneaking() ? 0.6f : 0.75f;
@@ -959,7 +960,7 @@ extends Module {
             return;
         }
         if (mode.getValue().equals(Class486.GLOW)) {
-            ((IShaderGroup)((IRenderGlobal) ESP.mc.renderGlobal).Method73()).Method1220().forEach(ESP::Method1334);
+            ((IShaderGroup)((IRenderGlobal) ESP.mc.renderGlobal).getEntityOutlineShader()).getShadersList().forEach(ESP::Method1334);
             for (Object object : ESP.mc.world.loadedEntityList) {
                 if (object.getTeam() == null) {
                     this.Method1329((Entity)object, this.Method1333((Entity)object), "");

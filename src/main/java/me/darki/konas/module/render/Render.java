@@ -6,7 +6,7 @@ import me.darki.konas.setting.Setting;
 
 public class Render
 extends Module {
-    public static Setting<Boolean> Field432 = new Setting<>("SlowRender", false).setDescription("Prevents culling");
+    public static Setting<Boolean> slowRender = new Setting<>("SlowRender", false).setDescription("Prevents culling");
 
     @Override
     public void onEnable() {

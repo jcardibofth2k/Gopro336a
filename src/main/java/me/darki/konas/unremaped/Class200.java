@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
@@ -303,7 +304,7 @@ extends Class90 {
     @Override
     public void Method712() {
         float f = this.Method911();
-        ArrayList<Module> arrayList = Class167.Method1616(this.Method694());
+        ArrayList<Module> arrayList = ModuleManager.getModulesByCategory(this.Method694());
         arrayList.sort(Comparator.comparing(Module::getName));
         for (Module module : arrayList) {
             this.Method706().add(new Class201(module, this.Method922(), this.Method921(), 2.0f, f, this.Method910() - 4.0f, 14.0f));

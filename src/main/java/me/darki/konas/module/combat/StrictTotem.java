@@ -12,8 +12,8 @@ import net.minecraft.util.EnumHand;
 
 public class StrictTotem
 extends Module {
-    public static Setting<Integer> Field2553 = new Setting<>("Delay", 0, 20, 0, 1);
-    public static Setting<Boolean> Field2554 = new Setting<>("CancelMotion", false);
+    public static Setting<Integer> delay = new Setting<>("Delay", 0, 20, 0, 1);
+    public static Setting<Boolean> cancelMotion = new Setting<>("CancelMotion", false);
     public Class566 Field2555 = new Class566();
     public boolean Field2556 = false;
 
@@ -29,8 +29,8 @@ extends Module {
             for (int i = 44; i >= 9; --i) {
                 if (StrictTotem.mc.player.inventoryContainer.getSlot(i).getStack().getItem() != Items.TOTEM_OF_UNDYING) continue;
                 this.Field2556 = true;
-                if (this.Field2555.Method737((float) Field2553.getValue().intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
-                    if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (this.Field2555.Method737((float) delay.getValue().intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
+                    if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
                         StrictTotem.mc.player.motionZ = 0.0;
@@ -38,8 +38,8 @@ extends Module {
                     }
                     StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, StrictTotem.mc.player);
                 }
-                if (this.Field2555.Method737((float) Field2553.getValue().intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
-                    if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (this.Field2555.Method737((float) delay.getValue().intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
+                    if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
                         StrictTotem.mc.player.motionZ = 0.0;
@@ -51,8 +51,8 @@ extends Module {
                         return;
                     }
                 }
-                if (!this.Field2555.Method737((float) Field2553.getValue().intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
-                if (Field2554.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
+                if (!this.Field2555.Method737((float) delay.getValue().intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
+                if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                     StrictTotem.mc.player.motionX = 0.0;
                     StrictTotem.mc.player.motionY = 0.0;
                     StrictTotem.mc.player.motionZ = 0.0;

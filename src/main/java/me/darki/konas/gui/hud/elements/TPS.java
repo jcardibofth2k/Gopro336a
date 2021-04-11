@@ -11,7 +11,7 @@ import me.darki.konas.setting.ColorValue;
 
 public class TPS
 extends Element {
-    public Setting<ColorValue> Field2205 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
+    public Setting<ColorValue> textColor = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
 
     public TPS() {
         super("TPS", 0.0f, 200.0f, 5.0f, 10.0f);

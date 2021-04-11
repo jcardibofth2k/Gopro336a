@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.setting.Keybind;
 import me.darki.konas.setting.ParentSetting;
@@ -41,7 +42,7 @@ extends Class183 {
     public void Method667() {
         super.Method667();
         float f = this.Method1481();
-        for (Setting setting : Class167.Method1615(this.Method146())) {
+        for (Setting setting : ModuleManager.Method1615(this.Method146())) {
             float f2;
             float f3 = f2 = setting.Method1199() ? 4.0f : 2.0f;
             if (setting.getValue() instanceof Keybind) {

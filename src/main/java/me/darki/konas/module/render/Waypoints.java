@@ -27,30 +27,30 @@ import net.minecraft.util.math.Vec3d;
 
 public class Waypoints
 extends Module {
-    public Setting<ParentSetting> Field1895 = new Setting<>("Custom", new ParentSetting(false));
-    public Setting<Boolean> Field1896 = new Setting<>("CTracers", false).setParentSetting(this.Field1895);
-    public Setting<ColorValue> Field1897 = new Setting<>("CTracersC", new ColorValue(-16776961)).setParentSetting(this.Field1895);
-    public Setting<Boolean> Field1898 = new Setting<>("CFill", true).setParentSetting(this.Field1895);
-    public Setting<ColorValue> Field1899 = new Setting<>("CFillC", new ColorValue(0x550000FF)).setParentSetting(this.Field1895);
-    public Setting<Boolean> Field1900 = new Setting<>("COutline", true).setParentSetting(this.Field1895);
-    public Setting<ColorValue> Field1901 = new Setting<>("COutlineC", new ColorValue(-16776961)).setParentSetting(this.Field1895);
-    public Setting<ParentSetting> Field1902 = new Setting<>("Logouts", new ParentSetting(false));
-    public Setting<Boolean> Field1903 = new Setting<>("RenderLogouts", true).setParentSetting(this.Field1902);
-    public Setting<Boolean> Field1904 = new Setting<>("LTracers", false).setParentSetting(this.Field1902);
-    public Setting<ColorValue> Field1905 = new Setting<>("LTracersC", new ColorValue(-16777216)).setParentSetting(this.Field1902);
-    public Setting<Boolean> Field1906 = new Setting<>("LFill", true).setParentSetting(this.Field1902);
-    public Setting<ColorValue> Field1907 = new Setting<>("LFillC", new ColorValue(0x55FF00FF)).setParentSetting(this.Field1902);
-    public Setting<Boolean> Field1908 = new Setting<>("LOutline", true).setParentSetting(this.Field1902);
-    public Setting<ColorValue> Field1909 = new Setting<>("LOutlineC", new ColorValue(-65536)).setParentSetting(this.Field1902);
-    public Setting<ParentSetting> Field1910 = new Setting<>("Deaths", new ParentSetting(false));
-    public Setting<Boolean> Field1911 = new Setting<>("RenderDeaths", true).setParentSetting(this.Field1910);
-    public Setting<Boolean> Field1912 = new Setting<>("OnlyLast", false).setParentSetting(this.Field1910);
-    public Setting<Boolean> Field1913 = new Setting<>("DTracers", false).setParentSetting(this.Field1910);
-    public Setting<ColorValue> Field1914 = new Setting<>("DTracersC", new ColorValue(-16711936)).setParentSetting(this.Field1910);
-    public Setting<Boolean> Field1915 = new Setting<>("DFill", true).setParentSetting(this.Field1910);
-    public Setting<ColorValue> Field1916 = new Setting<>("DFillC", new ColorValue(0x5500FF00)).setParentSetting(this.Field1910);
-    public Setting<Boolean> Field1917 = new Setting<>("DOutline", true).setParentSetting(this.Field1910);
-    public Setting<ColorValue> Field1918 = new Setting<>("DOutlineC", new ColorValue(-16711936)).setParentSetting(this.Field1910);
+    public Setting<ParentSetting> custom = new Setting<>("Custom", new ParentSetting(false));
+    public Setting<Boolean> cTracers = new Setting<>("CTracers", false).setParentSetting(this.Field1895);
+    public Setting<ColorValue> cTracersC = new Setting<>("CTracersC", new ColorValue(-16776961)).setParentSetting(this.Field1895);
+    public Setting<Boolean> cFill = new Setting<>("CFill", true).setParentSetting(this.Field1895);
+    public Setting<ColorValue> cFillC = new Setting<>("CFillC", new ColorValue(0x550000FF)).setParentSetting(this.Field1895);
+    public Setting<Boolean> cOutline = new Setting<>("COutline", true).setParentSetting(this.Field1895);
+    public Setting<ColorValue> cOutlineC = new Setting<>("COutlineC", new ColorValue(-16776961)).setParentSetting(this.Field1895);
+    public Setting<ParentSetting> logouts = new Setting<>("Logouts", new ParentSetting(false));
+    public Setting<Boolean> renderLogouts = new Setting<>("RenderLogouts", true).setParentSetting(this.Field1902);
+    public Setting<Boolean> lTracers = new Setting<>("LTracers", false).setParentSetting(this.Field1902);
+    public Setting<ColorValue> lTracersC = new Setting<>("LTracersC", new ColorValue(-16777216)).setParentSetting(this.Field1902);
+    public Setting<Boolean> lFill = new Setting<>("LFill", true).setParentSetting(this.Field1902);
+    public Setting<ColorValue> lFillC = new Setting<>("LFillC", new ColorValue(0x55FF00FF)).setParentSetting(this.Field1902);
+    public Setting<Boolean> lOutline = new Setting<>("LOutline", true).setParentSetting(this.Field1902);
+    public Setting<ColorValue> lOutlineC = new Setting<>("LOutlineC", new ColorValue(-65536)).setParentSetting(this.Field1902);
+    public Setting<ParentSetting> deaths = new Setting<>("Deaths", new ParentSetting(false));
+    public Setting<Boolean> renderDeaths = new Setting<>("RenderDeaths", true).setParentSetting(this.Field1910);
+    public Setting<Boolean> onlyLast = new Setting<>("OnlyLast", false).setParentSetting(this.Field1910);
+    public Setting<Boolean> dTracers = new Setting<>("DTracers", false).setParentSetting(this.Field1910);
+    public Setting<ColorValue> dTracersC = new Setting<>("DTracersC", new ColorValue(-16711936)).setParentSetting(this.Field1910);
+    public Setting<Boolean> dFill = new Setting<>("DFill", true).setParentSetting(this.Field1910);
+    public Setting<ColorValue> dFillC = new Setting<>("DFillC", new ColorValue(0x5500FF00)).setParentSetting(this.Field1910);
+    public Setting<Boolean> dOutline = new Setting<>("DOutline", true).setParentSetting(this.Field1910);
+    public Setting<ColorValue> dOutlineC = new Setting<>("DOutlineC", new ColorValue(-16711936)).setParentSetting(this.Field1910);
     public ConcurrentHashMap<EntityPlayer, Long> Field1919 = new ConcurrentHashMap();
     public DecimalFormat Field1920 = new DecimalFormat("#.##");
 
@@ -59,7 +59,7 @@ extends Module {
         if (Waypoints.mc.player == null || Waypoints.mc.world == null) {
             return;
         }
-        if (!this.Field1903.getValue().booleanValue()) {
+        if (!this.renderLogouts.getValue().booleanValue()) {
             return;
         }
         EntityPlayer entityPlayer = Waypoints.mc.world.getPlayerEntityByUUID(class15.Method209());
@@ -75,36 +75,36 @@ extends Module {
             ColorValue class4403 = null;
             switch (Class199.Field47[class197.ordinal()]) {
                 case 1: {
-                    if (this.Field1900.getValue().booleanValue()) {
-                        colorValue = this.Field1901.getValue();
+                    if (this.cOutline.getValue().booleanValue()) {
+                        colorValue = this.cOutlineC.getValue();
                     }
-                    if (this.Field1898.getValue().booleanValue()) {
-                        class4402 = this.Field1899.getValue();
+                    if (this.cFill.getValue().booleanValue()) {
+                        class4402 = this.cFillC.getValue();
                     }
-                    if (!this.Field1896.getValue().booleanValue()) break;
-                    class4403 = this.Field1897.getValue();
+                    if (!this.cTracers.getValue().booleanValue()) break;
+                    class4403 = this.cTracersC.getValue();
                     break;
                 }
                 case 2: {
-                    if (this.Field1908.getValue().booleanValue()) {
-                        colorValue = this.Field1909.getValue();
+                    if (this.lOutline.getValue().booleanValue()) {
+                        colorValue = this.lOutlineC.getValue();
                     }
-                    if (this.Field1906.getValue().booleanValue()) {
-                        class4402 = this.Field1907.getValue();
+                    if (this.lFill.getValue().booleanValue()) {
+                        class4402 = this.lFillC.getValue();
                     }
-                    if (!this.Field1904.getValue().booleanValue()) break;
-                    class4403 = this.Field1905.getValue();
+                    if (!this.lTracers.getValue().booleanValue()) break;
+                    class4403 = this.lTracersC.getValue();
                     break;
                 }
                 case 3: {
-                    if (this.Field1917.getValue().booleanValue()) {
-                        colorValue = this.Field1918.getValue();
+                    if (this.dOutline.getValue().booleanValue()) {
+                        colorValue = this.dOutlineC.getValue();
                     }
-                    if (this.Field1915.getValue().booleanValue()) {
-                        class4402 = this.Field1916.getValue();
+                    if (this.dFill.getValue().booleanValue()) {
+                        class4402 = this.dFillC.getValue();
                     }
-                    if (!this.Field1913.getValue().booleanValue()) break;
-                    class4403 = this.Field1914.getValue();
+                    if (!this.dTracers.getValue().booleanValue()) break;
+                    class4403 = this.dTracersC.getValue();
                 }
             }
             if (class4402 != null) {
@@ -120,7 +120,7 @@ extends Module {
             if (class4403 == null) break block13;
             Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Waypoints.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Waypoints.mc.player.rotationYaw)));
             Vec3d vec3d2 = new Vec3d(axisAlignedBB.minX + (axisAlignedBB.maxX - axisAlignedBB.minX) * 0.5, axisAlignedBB.minY + (axisAlignedBB.maxY - axisAlignedBB.minY) * 0.5, axisAlignedBB.minZ + (axisAlignedBB.maxZ - axisAlignedBB.minZ) * 0.5);
-            Search.Method732(vec3d.x, vec3d.y + (double) Waypoints.mc.player.getEyeHeight(), vec3d.z, vec3d2.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d2.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d2.z - ((IRenderManager)mc.getRenderManager()).Method71(), class4403.Method774());
+            Search.Method732(vec3d.x, vec3d.y + (double) Waypoints.mc.player.getEyeHeight(), vec3d.z, vec3d2.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), vec3d2.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), vec3d2.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ(), class4403.Method774());
         }
     }
 
@@ -129,7 +129,7 @@ extends Module {
         if (Waypoints.mc.world == null || Waypoints.mc.player == null) {
             return;
         }
-        if (this.Field1903.getValue().booleanValue()) {
+        if (this.renderLogouts.getValue().booleanValue()) {
             for (Map.Entry object : this.Field1919.entrySet()) {
                 EntityPlayer entityPlayer = (EntityPlayer)object.getKey();
                 if (entityPlayer == Waypoints.mc.player) continue;
@@ -145,8 +145,8 @@ extends Module {
     public void Method1451(OpenGuiEvent openGuiEvent) {
         if (openGuiEvent.Method1161() instanceof GuiConnecting || openGuiEvent.Method1161() instanceof GuiDownloadTerrain || openGuiEvent.Method1161() instanceof GuiDisconnected || openGuiEvent.Method1161() instanceof GuiMultiplayer) {
             this.Field1919.clear();
-        } else if (openGuiEvent.Method1161() instanceof GuiGameOver && this.Field1911.getValue().booleanValue()) {
-            if (this.Field1912.getValue().booleanValue()) {
+        } else if (openGuiEvent.Method1161() instanceof GuiGameOver && this.renderDeaths.getValue().booleanValue()) {
+            if (this.onlyLast.getValue().booleanValue()) {
                 NewGui.INSTANCE.Field1138.Method764();
             }
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");
@@ -160,7 +160,7 @@ extends Module {
         if (Waypoints.mc.player == null || Waypoints.mc.world == null) {
             return;
         }
-        if (!this.Field1903.getValue().booleanValue()) {
+        if (!this.renderLogouts.getValue().booleanValue()) {
             return;
         }
         for (Map.Entry<EntityPlayer, Long> entry : this.Field1919.entrySet()) {

@@ -1,6 +1,6 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.render.Chams;
 import me.darki.konas.settingEnums.ChamsGlintMode;
 import me.darki.konas.module.render.ESP;
@@ -43,7 +43,7 @@ extends Render {
 
     @Redirect(method={"doRender(Lnet/minecraft/entity/item/EntityEnderCrystal;DDDFF)V"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/model/ModelBase;render(Lnet/minecraft/entity/Entity;FFFFFF)V"))
     private void Method62(ModelBase modelBase, Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-        if (Class167.Method1610(Chams.class).isEnabled() && !ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
+        if (ModuleManager.getModuleByClass(Chams.class).isEnabled() && !ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
             if (Chams.crystals.getValue().booleanValue() && Chams.cRender.getValue().booleanValue()) {
                 GL11.glScalef(Chams.scale.getValue().floatValue(), Chams.scale.getValue().floatValue(), Chams.scale.getValue().floatValue());
                 if (!Chams.cRenderDepth.getValue().booleanValue()) {
@@ -61,7 +61,7 @@ extends Render {
             } else if (!Chams.crystals.getValue().booleanValue()) {
                 modelBase.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
             }
-        } else if (Class167.Method1610(Chams.class).isEnabled() && ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
+        } else if (ModuleManager.getModuleByClass(Chams.class).isEnabled() && ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
             GL11.glScalef(Chams.scale.getValue().floatValue(), Chams.scale.getValue().floatValue(), Chams.scale.getValue().floatValue());
             modelBase.render(entityIn, limbSwing, limbSwingAmount * Chams.spinSpeed.getValue().floatValue(), ageInTicks * Chams.bounciness.getValue().floatValue(), netHeadYaw, headPitch, scale);
             GL11.glScalef(1.0f / Chams.scale.getValue().floatValue(), 1.0f / Chams.scale.getValue().floatValue(), 1.0f / Chams.scale.getValue().floatValue());
@@ -72,7 +72,7 @@ extends Render {
 
     @Inject(method={"doRender(Lnet/minecraft/entity/item/EntityEnderCrystal;DDDFF)V"}, at={@At(value="RETURN")}, cancellable=true)
     public void Method63(EntityEnderCrystal entity, double x, double y, double z, float entityYaw, float partialTicks, CallbackInfo ci) {
-        if (Class167.Method1610(Chams.class).isEnabled() && !ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
+        if (ModuleManager.getModuleByClass(Chams.class).isEnabled() && !ESP.Field1342 && Chams.crystals.getValue().booleanValue()) {
             float f4;
             float f3;
             if (Chams.cFill.getValue().booleanValue()) {

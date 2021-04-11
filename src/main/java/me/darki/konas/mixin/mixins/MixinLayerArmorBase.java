@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class478;
 import me.darki.konas.module.render.ESP;
 import me.darki.konas.unremaped.Class569;
@@ -32,8 +32,8 @@ public class MixinLayerArmorBase {
 
     @Redirect(method={"renderEnchantedGlint"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V"))
     private static void Method893(float colorRed, float colorGreen, float colorBlue, float colorAlpha) {
-        if (colorBlue == 0.608f && Class167.Method1610(Class478.class).isEnabled()) {
-            GlStateManager.color((float) Class478.Field2508.getValue().Method769() / 255.0f, (float) Class478.Field2508.getValue().Method770() / 255.0f, (float) Class478.Field2508.getValue().Method779() / 255.0f, (float) Class478.Field2508.getValue().Method782() / 255.0f);
+        if (colorBlue == 0.608f && ModuleManager.getModuleByClass(Class478.class).isEnabled()) {
+            GlStateManager.color((float) Class478.enchantColor.getValue().Method769() / 255.0f, (float) Class478.enchantColor.getValue().Method770() / 255.0f, (float) Class478.enchantColor.getValue().Method779() / 255.0f, (float) Class478.enchantColor.getValue().Method782() / 255.0f);
         } else {
             GlStateManager.color(colorRed, colorGreen, colorBlue, colorAlpha);
         }

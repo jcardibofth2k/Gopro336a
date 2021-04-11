@@ -12,7 +12,7 @@ import net.minecraft.util.NonNullList;
 
 public class Totems
 extends Element {
-    public Setting<ColorValue> Field2360 = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
+    public Setting<ColorValue> textColor = new Setting<>("TextColor", new ColorValue(new Color(255, 85, 255, 255).hashCode(), false));
 
     public static boolean Method1812(ItemStack itemStack) {
         return itemStack.getItem() == Items.TOTEM_OF_UNDYING;
@@ -29,11 +29,11 @@ extends Element {
     @Override
     public void onRender2D() {
         super.onRender2D();
-        int n = ((IInventoryPlayer) Totems.mc.player.inventory).Method27().stream().mapToInt(Totems::Method1811).sum();
+        int n = ((IInventoryPlayer) Totems.mc.player.inventory).getAllInventories().stream().mapToInt(Totems::Method1811).sum();
         String string = n + " Totems";
         float f = Math.max(5.0f, Class557.Method800(string));
         this.Method2323(f + 1.0f);
         this.Method2319(Class557.Method799(string) + 1.0f);
-        Class557.Method801(string, (float)((int)this.Method2320() + (int)this.Method2329()) - Class557.Method800(string), (int)this.Method2324(), this.Field2360.getValue().Method774());
+        Class557.Method801(string, (float)((int)this.Method2320() + (int)this.Method2329()) - Class557.Method800(string), (int)this.Method2324(), this.textColor.getValue().Method774());
     }
 }

@@ -1,9 +1,10 @@
 package me.darki.konas.unremaped;
 
 import me.darki.konas.command.Logger;
+import me.darki.konas.setting.IRunnable;
 
 public class Class205
-implements Class529 {
+implements IRunnable {
     public Class202 Field558;
 
     public void Method630(Object object) {

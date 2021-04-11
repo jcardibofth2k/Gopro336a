@@ -2,18 +2,18 @@ package me.darki.konas.setting;
 
 import com.viaversion.viafabric.ViaFabric;
 import java.util.function.BooleanSupplier;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.Module;
 
 public class Setting<T> {
-    public String Field1212;
+    public String name;
     public String description = "";
     public T value;
     public T minimum;
     public T maximum;
     public T increment;
-    public int Field1218 = 0;
-    public int Field1219 = 1000;
+    public int minProtocol = 0;
+    public int maxProtocol = 1000;
     public BooleanSupplier Field1220 = Setting::Method1186;
     public Setting<ParentSetting> parentSetting = null;
 
@@ -22,20 +22,20 @@ public class Setting<T> {
     }
 
     public Setting<T> Method1177(int n, int n2) {
-        this.Field1218 = n;
-        this.Field1219 = n2;
+        this.minProtocol = n;
+        this.maxProtocol = n2;
         return this;
     }
 
     public boolean Method1178() {
-        if (ViaFabric.getInstance().getVersion() < this.Field1218) {
+        if (ViaFabric.getInstance().getVersion() < this.minProtocol) {
             return false;
         }
-        return ViaFabric.getInstance().getVersion() <= this.Field1219;
+        return ViaFabric.getInstance().getVersion() <= this.maxProtocol;
     }
 
-    public void Method1179(String string) {
-        this.Field1212 = string;
+    public void setName(String string) {
+        this.name = string;
     }
 
     public boolean Method1180() {
@@ -48,7 +48,7 @@ public class Setting<T> {
         return this.Field1220.getAsBoolean();
     }
 
-    public void Method1181(T t) {
+    public void setIncrement(T t) {
         this.increment = t;
     }
 
@@ -57,16 +57,16 @@ public class Setting<T> {
     }
 
     public String Method1183() {
-        return this.Field1212;
+        return this.name;
     }
 
     public Setting(String string, T t) {
-        this.Field1212 = string;
+        this.name = string;
         this.value = t;
     }
 
-    public int Method1184() {
-        return this.Field1219;
+    public int getMaxProtocol() {
+        return this.maxProtocol;
     }
 
     public T getValue() {
@@ -102,15 +102,15 @@ public class Setting<T> {
     }
 
     public Setting(String string, T t, T t2, T t3, T t4) {
-        this.Field1212 = string;
+        this.name = string;
         this.value = t;
         this.maximum = t2;
         this.minimum = t3;
         this.increment = t4;
     }
 
-    public int Method1190() {
-        return this.Field1218;
+    public int getMinProtocol() {
+        return this.minProtocol;
     }
 
     public Setting<T> visibleIf(BooleanSupplier booleanSupplier) {
@@ -127,9 +127,9 @@ public class Setting<T> {
         return this;
     }
 
-    public Module Method1194() {
-        for (Module module : Class167.Method1619()) {
-            if (Class167.Method1617(module.getName(), this.Method1183()) == null) continue;
+    public Module getParentModule() {
+        for (Module module : ModuleManager.getModules()) {
+            if (ModuleManager.Method1617(module.getName(), this.Method1183()) == null) continue;
             return module;
         }
         return null;
@@ -144,9 +144,9 @@ public class Setting<T> {
         return -1;
     }
 
-    public void Method1154(String string) {
-        if (this.Method1198(string) != null) {
-            this.value = (T)this.Method1198(string);
+    public void setEnumValue(String string) {
+        if (this.getEnumByString(string) != null) {
+            this.value = (T)this.getEnumByString(string);
         }
     }
 
@@ -158,7 +158,7 @@ public class Setting<T> {
         this.maximum = t;
     }
 
-    public Enum Method1198(String string) {
+    public Enum getEnumByString(String string) {
         for (Enum enum_ : ((Enum)this.value).getClass().getEnumConstants()) {
             if (!enum_.name().equalsIgnoreCase(string)) continue;
             return enum_;

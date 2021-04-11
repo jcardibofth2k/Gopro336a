@@ -8,7 +8,7 @@ import me.darki.konas.unremaped.Class193;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class262;
 import me.darki.konas.unremaped.Class356;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class644;
 import me.darki.konas.unremaped.Class658;
@@ -29,8 +29,8 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiMove
 extends Module {
-    public Setting<Boolean> Field2005 = new Setting<>("Strict", false);
-    public IdkWhatThisSettingThingDoes<Boolean> Field2006 = new IdkWhatThisSettingThingDoes("Crouch", false, new Class356(this));
+    public Setting<Boolean> strict = new Setting<>("Strict", false);
+    public ListenableSettingDecorator<Boolean> Field2006 = new ListenableSettingDecorator("Crouch", false, new Class356(this));
     public ArrayList<KeyBinding> Field2007 = new ArrayList();
 
     public static ArrayList Method1835(GuiMove guiMove) {
@@ -40,7 +40,7 @@ extends Module {
     @Subscriber
     public void Method536(Class24 class24) {
         block3: {
-            if (!this.Field2005.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
+            if (!this.strict.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
             if (GuiMove.mc.player.isActiveItemStackBlocking()) {
                 GuiMove.mc.playerController.onStoppedUsingItem(GuiMove.mc.player);
             }
@@ -90,7 +90,7 @@ extends Module {
     @Subscriber
     public void Method1837(Class644 class644) {
         block2: {
-            if (!this.Field2005.getValue().booleanValue()) {
+            if (!this.strict.getValue().booleanValue()) {
                 return;
             }
             if (GuiMove.mc.player.isSneaking()) {

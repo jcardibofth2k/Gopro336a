@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={RenderManager.class})
 public interface IRenderManager {
     @Accessor(value="renderPosX")
-    double Method69();
+    double getRenderPosX();
 
     @Accessor(value="renderPosY")
-    double Method70();
+    double getRenderPosY();
 
     @Accessor(value="renderPosZ")
-    double Method71();
+    double getRenderPosZ();
 }

@@ -13,7 +13,7 @@ import me.darki.konas.unremaped.Class142;
 import me.darki.konas.event.events.RenderBlockOverlayEvent;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class417;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.unremaped.Class569;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class642;
@@ -42,37 +42,37 @@ import net.minecraft.util.SoundEvent;
 public class NoRender
 extends Module {
     public static Set<SoundEvent> Field1100 = Sets.newHashSet(SoundEvents.ENTITY_BAT_AMBIENT, SoundEvents.ENTITY_BAT_DEATH, SoundEvents.ENTITY_BAT_HURT, SoundEvents.ENTITY_BAT_LOOP, SoundEvents.ENTITY_BAT_TAKEOFF);
-    public Setting<Boolean> Field1101 = new Setting<>("NoHurtCam", true);
-    public Setting<Boolean> Field1102 = new Setting<>("NoWeather", true);
-    public Setting<Boolean> Field1103 = new Setting<>("NoLightning", true);
-    public Setting<Boolean> Field1104 = new Setting<>("NoFire", true);
-    public Setting<Boolean> Field1105 = new Setting<>("NoBossBar", false);
-    public Setting<Boolean> Field1106 = new IdkWhatThisSettingThingDoes("NoBats", true, this::Method145);
-    public Setting<Class417> Field1107 = new Setting<>("Armor", Class417.NONE);
-    public Setting<Boolean> Field1108 = new Setting<>("Head", true).visibleIf(this::Method394);
-    public Setting<Boolean> Field1109 = new Setting<>("Chestplate", false).visibleIf(this::Method539);
-    public Setting<Boolean> Field1110 = new Setting<>("Leggings", false).visibleIf(this::Method393);
-    public Setting<Boolean> Field1111 = new Setting<>("Boots", false).visibleIf(this::Method519);
-    public Setting<Boolean> Field1112 = new Setting<>("OwnShadow", true);
-    public Setting<Boolean> Field1113 = new Setting<>("Mob", false);
-    public Setting<Boolean> Field1114 = new Setting<>("Object", false);
-    public Setting<Boolean> Field1115 = new Setting<>("XP", true);
-    public Setting<Boolean> Field1116 = new Setting<>("Explosions", true);
-    public Setting<Boolean> Field1117 = new Setting<>("Fireworks", false);
-    public Setting<Boolean> Field1118 = new Setting<>("Item", false);
-    public Setting<Boolean> Field1119 = new Setting<>("Water", true);
-    public Setting<Boolean> Field1120 = new Setting<>("Lava", true);
-    public Setting<Boolean> Field1121 = new Setting<>("Blocks", true);
-    public Setting<Boolean> Field1122 = new Setting<>("EnchantmentTable", false);
-    public Setting<Boolean> Field1123 = new Setting<>("Signs", false);
-    public Setting<Boolean> Field1124 = new Setting<>("Maps", false);
-    public Setting<Boolean> Field1125 = new Setting<>("Beacon", false);
-    public static Setting<Boolean> Field1126 = new Setting<>("Toasts", true);
-    public Setting<Boolean> Field1127 = new Setting<>("Chat", false);
+    public Setting<Boolean> noHurtCam = new Setting<>("NoHurtCam", true);
+    public Setting<Boolean> noWeather = new Setting<>("NoWeather", true);
+    public Setting<Boolean> noLightning = new Setting<>("NoLightning", true);
+    public Setting<Boolean> noFire = new Setting<>("NoFire", true);
+    public Setting<Boolean> noBossBar = new Setting<>("NoBossBar", false);
+    public Setting<Boolean> Field1106 = new ListenableSettingDecorator("NoBats", true, this::Method145);
+    public Setting<Class417> armor = new Setting<>("Armor", Class417.NONE);
+    public Setting<Boolean> head = new Setting<>("Head", true).visibleIf(this::Method394);
+    public Setting<Boolean> chestplate = new Setting<>("Chestplate", false).visibleIf(this::Method539);
+    public Setting<Boolean> leggings = new Setting<>("Leggings", false).visibleIf(this::Method393);
+    public Setting<Boolean> boots = new Setting<>("Boots", false).visibleIf(this::Method519);
+    public Setting<Boolean> ownShadow = new Setting<>("OwnShadow", true);
+    public Setting<Boolean> mob = new Setting<>("Mob", false);
+    public Setting<Boolean> object = new Setting<>("Object", false);
+    public Setting<Boolean> xP = new Setting<>("XP", true);
+    public Setting<Boolean> explosions = new Setting<>("Explosions", true);
+    public Setting<Boolean> fireworks = new Setting<>("Fireworks", false);
+    public Setting<Boolean> item = new Setting<>("Item", false);
+    public Setting<Boolean> water = new Setting<>("Water", true);
+    public Setting<Boolean> lava = new Setting<>("Lava", true);
+    public Setting<Boolean> blocks = new Setting<>("Blocks", true);
+    public Setting<Boolean> enchantmentTable = new Setting<>("EnchantmentTable", false);
+    public Setting<Boolean> signs = new Setting<>("Signs", false);
+    public Setting<Boolean> maps = new Setting<>("Maps", false);
+    public Setting<Boolean> beacon = new Setting<>("Beacon", false);
+    public static Setting<Boolean> toasts = new Setting<>("Toasts", true);
+    public Setting<Boolean> chat = new Setting<>("Chat", false);
     public EntityPlayer.EnumChatVisibility Field1128 = null;
 
     public boolean Method394() {
-        return this.Field1107.getValue() == Class417.SELECT;
+        return this.armor.getValue() == Class417.SELECT;
     }
 
     public NoRender() {
@@ -82,7 +82,7 @@ extends Module {
     @Subscriber
     public void Method1126(Class142 class142) {
         block0: {
-            if (!this.Field1124.getValue().booleanValue()) break block0;
+            if (!this.maps.getValue().booleanValue()) break block0;
             class142.setCanceled(true);
         }
     }
@@ -94,24 +94,24 @@ extends Module {
                 block3: {
                     block2: {
                         block0: {
-                            if (this.Field1107.getValue() != Class417.ALL) break block0;
+                            if (this.armor.getValue() != Class417.ALL) break block0;
                             class569.Cancel();
                             break block1;
                         }
-                        if (this.Field1107.getValue() != Class417.SELECT) break block1;
-                        if (class569.Method663() != EntityEquipmentSlot.HEAD || !this.Field1108.getValue().booleanValue()) break block2;
+                        if (this.armor.getValue() != Class417.SELECT) break block1;
+                        if (class569.Method663() != EntityEquipmentSlot.HEAD || !this.head.getValue().booleanValue()) break block2;
                         class569.Cancel();
                         break block1;
                     }
-                    if (class569.Method663() != EntityEquipmentSlot.CHEST || !this.Field1109.getValue().booleanValue()) break block3;
+                    if (class569.Method663() != EntityEquipmentSlot.CHEST || !this.chestplate.getValue().booleanValue()) break block3;
                     class569.Cancel();
                     break block1;
                 }
-                if (class569.Method663() != EntityEquipmentSlot.LEGS || !this.Field1110.getValue().booleanValue()) break block4;
+                if (class569.Method663() != EntityEquipmentSlot.LEGS || !this.leggings.getValue().booleanValue()) break block4;
                 class569.Cancel();
                 break block1;
             }
-            if (class569.Method663() != EntityEquipmentSlot.FEET || !this.Field1111.getValue().booleanValue()) break block1;
+            if (class569.Method663() != EntityEquipmentSlot.FEET || !this.boots.getValue().booleanValue()) break block1;
             class569.Cancel();
         }
     }
@@ -130,7 +130,7 @@ extends Module {
     @Subscriber
     public void Method1128(Class137 class137) {
         block0: {
-            if (!this.Field1123.getValue().booleanValue()) break block0;
+            if (!this.signs.getValue().booleanValue()) break block0;
             class137.Cancel();
         }
     }
@@ -143,19 +143,19 @@ extends Module {
     @Subscriber
     public void Method1129(Class106 class106) {
         block0: {
-            if (!this.Field1125.getValue().booleanValue()) break block0;
+            if (!this.beacon.getValue().booleanValue()) break block0;
             class106.Cancel();
         }
     }
 
     public boolean Method519() {
-        return this.Field1107.getValue() == Class417.SELECT;
+        return this.armor.getValue() == Class417.SELECT;
     }
 
     @Subscriber
     public void Method1130(Class93 class93) {
         block0: {
-            if (!this.Field1101.getValue().booleanValue()) break block0;
+            if (!this.noHurtCam.getValue().booleanValue()) break block0;
             class93.Cancel();
         }
     }
@@ -163,7 +163,7 @@ extends Module {
     @Subscriber
     public void Method1131(Class94 class94) {
         block0: {
-            if (!this.Field1122.getValue().booleanValue()) break block0;
+            if (!this.enchantmentTable.getValue().booleanValue()) break block0;
             class94.Cancel();
         }
     }
@@ -173,7 +173,7 @@ extends Module {
         if (NoRender.mc.world == null || NoRender.mc.player == null) {
             return;
         }
-        if (this.Field1127.getValue().booleanValue()) {
+        if (this.chat.getValue().booleanValue()) {
             if (this.Field1128 == null) {
                 this.Field1128 = NoRender.mc.gameSettings.chatVisibility;
             }
@@ -182,10 +182,10 @@ extends Module {
             NoRender.mc.gameSettings.chatVisibility = this.Field1128;
             this.Field1128 = null;
         }
-        if (this.Field1102.getValue().booleanValue()) {
-            if ((double)((IWorld)NoRender.mc.world).Method220() > 0.9) {
+        if (this.noWeather.getValue().booleanValue()) {
+            if ((double)((IWorld)NoRender.mc.world).getRainingStrength() > 0.9) {
                 this.Method1645("Thunder");
-            } else if ((double)((IWorld)NoRender.mc.world).Method220() > 0.2) {
+            } else if ((double)((IWorld)NoRender.mc.world).getRainingStrength() > 0.2) {
                 this.Method1645("Rain");
             } else {
                 this.Method1645("Clear");
@@ -198,7 +198,7 @@ extends Module {
     @Subscriber
     public void Method1132(Class79 class79) {
         block0: {
-            if (!this.Field1102.getValue().booleanValue()) break block0;
+            if (!this.noWeather.getValue().booleanValue()) break block0;
             class79.Cancel();
         }
     }
@@ -206,16 +206,16 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         block3: {
-            if (packetEvent.getPacket() instanceof SPacketSpawnGlobalEntity && this.Field1103.getValue().booleanValue() && ((SPacketSpawnGlobalEntity) packetEvent.getPacket()).getType() == 1) {
+            if (packetEvent.getPacket() instanceof SPacketSpawnGlobalEntity && this.noLightning.getValue().booleanValue() && ((SPacketSpawnGlobalEntity) packetEvent.getPacket()).getType() == 1) {
                 packetEvent.setCanceled(true);
             }
-            if (packetEvent.getPacket() instanceof SPacketMaps && this.Field1124.getValue().booleanValue()) {
+            if (packetEvent.getPacket() instanceof SPacketMaps && this.maps.getValue().booleanValue()) {
                 packetEvent.setCanceled(true);
             }
             if (this.Field1106.getValue().booleanValue() && (packetEvent.getPacket() instanceof SPacketSpawnMob && ((SPacketSpawnMob) packetEvent.getPacket()).getEntityType() == 65 || packetEvent.getPacket() instanceof SPacketSoundEffect && Field1100.contains(((SPacketSoundEffect) packetEvent.getPacket()).getSound()))) {
                 packetEvent.Cancel();
             }
-            if (!(packetEvent.getPacket() instanceof SPacketSpawnMob && this.Field1113.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.Field1114.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnExperienceOrb && this.Field1115.getValue() != false || packetEvent.getPacket() instanceof SPacketExplosion && this.Field1116.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.Field1118.getValue() != false && ((SPacketSpawnObject) packetEvent.getPacket()).getType() == 2) && (!(packetEvent.getPacket() instanceof SPacketSpawnObject) || !this.Field1117.getValue().booleanValue() || ((SPacketSpawnObject) packetEvent.getPacket()).getType() != 76)) break block3;
+            if (!(packetEvent.getPacket() instanceof SPacketSpawnMob && this.mob.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.object.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnExperienceOrb && this.xP.getValue() != false || packetEvent.getPacket() instanceof SPacketExplosion && this.explosions.getValue() != false || packetEvent.getPacket() instanceof SPacketSpawnObject && this.item.getValue() != false && ((SPacketSpawnObject) packetEvent.getPacket()).getType() == 2) && (!(packetEvent.getPacket() instanceof SPacketSpawnObject) || !this.fireworks.getValue().booleanValue() || ((SPacketSpawnObject) packetEvent.getPacket()).getType() != 76)) break block3;
             packetEvent.Cancel();
         }
     }
@@ -226,17 +226,17 @@ extends Module {
             boolean bl = false;
             switch (renderBlockOverlayEvent.Method1825()) {
                 case FIRE: {
-                    if (!this.Field1104.getValue().booleanValue()) break;
+                    if (!this.noFire.getValue().booleanValue()) break;
                     bl = true;
                     break;
                 }
                 case WATER: {
-                    if (!this.Field1119.getValue().booleanValue()) break;
+                    if (!this.water.getValue().booleanValue()) break;
                     bl = true;
                     break;
                 }
                 case BLOCK: {
-                    if (!this.Field1121.getValue().booleanValue()) break;
+                    if (!this.blocks.getValue().booleanValue()) break;
                     bl = true;
                 }
             }
@@ -255,7 +255,7 @@ extends Module {
     @Subscriber
     public void Method1134(Class131 class131) {
         block0: {
-            if (!this.Field1112.getValue().booleanValue()) break block0;
+            if (!this.ownShadow.getValue().booleanValue()) break block0;
             class131.setCanceled(true);
         }
     }
@@ -263,7 +263,7 @@ extends Module {
     @Subscriber
     public void Method1135(Class13 class13) {
         block0: {
-            if (!this.Field1117.getValue().booleanValue() || !(class13.Method261() instanceof ParticleFirework.Overlay) && !(class13.Method261() instanceof ParticleFirework.Spark) && !(class13.Method261() instanceof ParticleFirework.Starter)) break block0;
+            if (!this.fireworks.getValue().booleanValue() || !(class13.Method261() instanceof ParticleFirework.Overlay) && !(class13.Method261() instanceof ParticleFirework.Spark) && !(class13.Method261() instanceof ParticleFirework.Starter)) break block0;
             class13.setCanceled(true);
         }
     }
@@ -271,7 +271,7 @@ extends Module {
     @Subscriber
     public void Method1136(EventIdkPlsRename eventIdkPlsRename) {
         block0: {
-            if (!this.Field1120.getValue().booleanValue() || !eventIdkPlsRename.Method348().getMaterial().equals(Material.LAVA)) break block0;
+            if (!this.lava.getValue().booleanValue() || !eventIdkPlsRename.Method348().getMaterial().equals(Material.LAVA)) break block0;
             eventIdkPlsRename.Cancel();
         }
     }
@@ -279,17 +279,17 @@ extends Module {
     @Subscriber
     public void Method1137(Class642 class642) {
         block0: {
-            if (!this.Field1105.getValue().booleanValue()) break block0;
+            if (!this.noBossBar.getValue().booleanValue()) break block0;
             class642.Cancel();
         }
     }
 
     public boolean Method539() {
-        return this.Field1107.getValue() == Class417.SELECT;
+        return this.armor.getValue() == Class417.SELECT;
     }
 
     public boolean Method393() {
-        return this.Field1107.getValue() == Class417.SELECT;
+        return this.armor.getValue() == Class417.SELECT;
     }
 
     public static void Method561(Entity entity) {

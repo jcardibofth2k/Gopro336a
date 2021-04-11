@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.Config;
 import me.darki.konas.KonasMod;
@@ -55,7 +56,7 @@ public class Class589
     
     public static JsonArray Method2217() {
         final JsonArray jsonArray = new JsonArray();
-        final Iterator<Module> iterator = Class167.Method1619().iterator();
+        final Iterator<Module> iterator = ModuleManager.getModules().iterator();
         while (iterator.hasNext()) {
             jsonArray.add((JsonElement)Method2226(iterator.next()));
         }
@@ -221,9 +222,9 @@ public class Class589
         final JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("Bind", GameSettings.getKeyDisplayString(module.Method1646()));
         jsonObject.addProperty("Enabled", Boolean.valueOf(module.isEnabled()));
-        jsonObject.addProperty("Visible", Boolean.valueOf(module.Method1635()));
-        if (Class167.Method1615(module) != null) {
-            for (final Setting setting : Class167.Method1615(module)) {
+        jsonObject.addProperty("Visible", Boolean.valueOf(module.isVisible()));
+        if (ModuleManager.Method1615(module) != null) {
+            for (final Setting setting : ModuleManager.Method1615(module)) {
                 if (setting.getValue() instanceof Number) {
                     jsonObject.addProperty(setting.Method1183(), (Number)setting.getValue());
                 }
@@ -545,7 +546,7 @@ public class Class589
                 System.err.println("Friends Array not found!");
                 return;
             }
-            if (Config.Field1792.getValue()) {
+            if (Config.overwriteFriends.getValue()) {
                 Class492.Method1986();
             }
             final Iterator iterator = asJsonArray.iterator();
@@ -604,7 +605,7 @@ public class Class589
                             setting.setValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsBoolean());
                         }
                         else if (setting.getValue() instanceof Enum) {
-                            setting.Method1154(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsString());
+                            setting.setEnumValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsString());
                         }
                         else if (setting.getValue() instanceof String) {
                             setting.setValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsString());
@@ -696,7 +697,7 @@ public class Class589
     }
     
     public static void Method2253(final JsonObject jsonObject) throws NullPointerException {
-        final Module module = Class167.Method1619().stream().filter(Class589::Method2248).findFirst().orElse(null);
+        final Module module = ModuleManager.getModules().stream().filter(Class589::Method2248).findFirst().orElse(null);
         if (module != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(module.getName());
             try {
@@ -704,9 +705,9 @@ public class Class589
                 if (module.isEnabled() != asJsonObject.getAsJsonPrimitive("Enabled").getAsBoolean()) {
                     module.toggle();
                 }
-                module.Method1634(asJsonObject.getAsJsonPrimitive("Visible").getAsBoolean());
-                if (!Class167.Method1615(module).isEmpty()) {
-                    for (final Setting setting : Class167.Method1615(module)) {
+                module.setVisible(asJsonObject.getAsJsonPrimitive("Visible").getAsBoolean());
+                if (!ModuleManager.Method1615(module).isEmpty()) {
+                    for (final Setting setting : ModuleManager.Method1615(module)) {
                         try {
                             if (setting.getValue() instanceof Float) {
                                 setting.setValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsFloat());
@@ -724,7 +725,7 @@ public class Class589
                                 ((ParentSetting)setting.getValue()).Method1231(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsBoolean());
                             }
                             else if (setting.getValue() instanceof Enum) {
-                                setting.Method1154(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsString());
+                                setting.setEnumValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsString());
                             }
                             else if (setting.getValue() instanceof Class537) {
                                 setting.setValue(new Class537(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsInt()));
@@ -1503,7 +1504,7 @@ public class Class589
         String x;
         try {
             final JsonArray method2256 = Method2256(file);
-            if (Config.Field1792.getValue()) {
+            if (Config.overwriteFriends.getValue()) {
                 final JsonObject jsonObject = new JsonObject();
                 jsonObject.add("Friends", (JsonElement)Method2245());
                 method2256.set(3, (JsonElement)jsonObject);

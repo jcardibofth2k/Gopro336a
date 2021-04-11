@@ -3,7 +3,7 @@ package me.darki.konas.module.client;
 import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class173;
 import me.darki.konas.unremaped.CfontRenderer;
@@ -25,7 +25,7 @@ extends Module {
     public static Setting<Boolean> outline = new Setting<>("Outline", false).visibleIf(ClickGUIModule::Method393);
     public static Setting<Integer> thickness = new Setting<>("Thickness", 1, 5, 1, 1).visibleIf(ClickGUIModule::Method394);
     public static Setting<Integer> animationSpeed = new Setting<>("AnimationSpeed", 10, 20, 1, 1).visibleIf(animate::getValue);
-    public Setting<Boolean> customFont = new IdkWhatThisSettingThingDoes("CustomFont", true, new Class173(this));
+    public Setting<Boolean> customFont = new ListenableSettingDecorator("CustomFont", true, new Class173(this));
     public static CfontRenderer Field1536 = new CfontRenderer(fontCommand.Field1351, 17.0f);
 
     public ClickGUIModule() {

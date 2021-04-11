@@ -1,7 +1,7 @@
 package me.darki.konas.command.commands;
 
 import java.io.File;
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.ChatUtil;
 import me.darki.konas.unremaped.Class589;
 import me.darki.konas.unremaped.Class605;
@@ -35,10 +35,10 @@ extends Command {
                     ChatUtil.Method1033("Saved Friends to Config (h)%s", stringArray[3]);
                     break;
                 }
-                if (Class167.Method1612(stringArray[2]) == null) {
+                if (ModuleManager.Method1612(stringArray[2]) == null) {
                     ChatUtil.Method1034("Module (h)%s(r) is invalid!", stringArray[2]);
                 }
-                Class589.Method2241(Class167.Method1612(stringArray[2]), file);
+                Class589.Method2241(ModuleManager.Method1612(stringArray[2]), file);
                 ChatUtil.Method1033("Saved Module (h)%s(r) to Config (h)%s", stringArray[2], stringArray[3]);
                 break;
             }
@@ -52,10 +52,10 @@ extends Command {
                     ChatUtil.Method1033("Loaded Friends from Config (h)%s", stringArray[3]);
                     break;
                 }
-                if (Class167.Method1612(stringArray[2]) == null) {
+                if (ModuleManager.Method1612(stringArray[2]) == null) {
                     ChatUtil.Method1034("Module (h)%s(r) is invalid", stringArray[2]);
                 }
-                Class589.Method2265(Class167.Method1612(stringArray[2]), file);
+                Class589.Method2265(ModuleManager.Method1612(stringArray[2]), file);
                 ChatUtil.Method1033("Loaded Module (h)%s(r) from Config (h)%s", stringArray[2], stringArray[3]);
                 break;
             }

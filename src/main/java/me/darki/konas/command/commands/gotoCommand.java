@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.movement.AutoWalk;
 import me.darki.konas.unremaped.Class501;
 import me.darki.konas.util.SyntaxChunk;
@@ -27,7 +27,7 @@ extends Command {
                 Logger.Method1118(this.Method191());
                 return;
             }
-            Module module = Class167.Method1612("AutoWalk");
+            Module module = ModuleManager.Method1612("AutoWalk");
             if (module == null) {
                 return;
             }

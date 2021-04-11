@@ -1,6 +1,6 @@
 package me.darki.konas.command.commands;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class605;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
@@ -14,9 +14,9 @@ extends Command {
             Logger.Method1119(this.Method191());
             return;
         }
-        Module module = Class167.Method1612(stringArray[1]);
+        Module module = ModuleManager.Method1612(stringArray[1]);
         if (module != null) {
-            module.Method1634(!module.Method1635());
+            module.setVisible(!module.isVisible());
             Logger.Method1118("Drawn Module &b" + module.getName());
         } else {
             Logger.Method1119("Unknown Module &b" + stringArray[1]);

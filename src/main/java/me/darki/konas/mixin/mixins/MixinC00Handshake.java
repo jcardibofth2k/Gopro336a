@@ -1,6 +1,6 @@
 package me.darki.konas.mixin.mixins;
 
-import me.darki.konas.unremaped.Class167;
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.NoForge;
 import net.minecraft.network.EnumConnectionState;
 import net.minecraft.network.PacketBuffer;
@@ -24,7 +24,7 @@ public class MixinC00Handshake {
 
     @Inject(method={"writePacketData"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method446(PacketBuffer buf, CallbackInfo info) {
-        if (Class167.Method1610(NoForge.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(NoForge.class).isEnabled()) {
             System.out.println("Cancelling packet data");
             info.cancel();
             buf.writeVarInt(this.Field269);

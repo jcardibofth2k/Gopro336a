@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.ArrayList;
 
+import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Module;
@@ -47,7 +48,7 @@ extends Class215 {
         float f8 = 16.0f;
         this.Field2506.add(new Class234("General", module, null, this.Method486(), this.Method492(), 16.0f, f7, 296.0f, false));
         f7 += 16.0f + this.Field2506.get(0).Method476();
-        for (Setting setting : Class167.Method1615(module)) {
+        for (Setting setting : ModuleManager.Method1615(module)) {
             if (!(setting.getValue() instanceof ParentSetting)) continue;
             if (bl && f7 < f8) {
                 bl = false;

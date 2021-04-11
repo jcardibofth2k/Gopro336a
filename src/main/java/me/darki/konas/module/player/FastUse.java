@@ -44,16 +44,16 @@ extends Module {
         }
         if (fastPlace.getValue().booleanValue()) {
             if (item instanceof ItemBlock && (whitelist.getValue().Method682().contains(((ItemBlock)item).getBlock()) || !placeWhitelist.getValue().booleanValue())) {
-                ((IMinecraft)mc).Method57(0);
+                ((IMinecraft)mc).setRightClickDelayTimer(0);
                 return true;
             }
             if (item2 instanceof ItemBlock && (whitelist.getValue().Method682().contains(((ItemBlock)item2).getBlock()) || !placeWhitelist.getValue().booleanValue())) {
-                ((IMinecraft)mc).Method57(0);
+                ((IMinecraft)mc).setRightClickDelayTimer(0);
                 return true;
             }
         }
         if (item instanceof ItemFood) {
-            ((IMinecraft)mc).Method57(0);
+            ((IMinecraft)mc).setRightClickDelayTimer(0);
             return true;
         }
         return false;
@@ -103,8 +103,8 @@ extends Module {
                 FastUse.mc.player.stopActiveHand();
                 return;
             }
-            if (!this.Method394() || ((IMinecraft)mc).Method58() == 0) break block4;
-            ((IMinecraft)mc).Method57(0);
+            if (!this.Method394() || ((IMinecraft)mc).getRightClickDelayTimer() == 0) break block4;
+            ((IMinecraft)mc).setRightClickDelayTimer(0);
         }
     }
 

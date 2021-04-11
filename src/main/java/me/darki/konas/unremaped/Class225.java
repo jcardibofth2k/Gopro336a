@@ -16,7 +16,7 @@ import net.minecraft.network.play.server.SPacketPlayerPosLook;
 
 public class Class225
 extends Module {
-    public Setting<Boolean> Field2640 = new Setting<>("Float", false);
+    public Setting<Boolean> float = new Setting<>("Float", false);
     public boolean Field2641 = true;
     public Class566 Field2642 = new Class566();
 
@@ -46,7 +46,7 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         block0: {
-            if (!((Boolean)this.Field2640.getValue()).booleanValue() || !PlayerUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
+            if (!((Boolean)this.float.getValue()).booleanValue() || !PlayerUtil.Method1084() || !(Class225.mc.player.posY <= 1.0)) break block0;
             moveEvent.setY(-0.01);
         }
     }
@@ -55,8 +55,8 @@ extends Module {
     public void Method131(PacketEvent packetEvent) {
         if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && !(Class225.mc.currentScreen instanceof GuiDownloadTerrain)) {
             SPacketPlayerPosLook sPacketPlayerPosLook = (SPacketPlayerPosLook) packetEvent.getPacket();
-            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method40(Class225.mc.player.rotationYaw);
-            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method41(Class225.mc.player.rotationPitch);
+            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setYaw(Class225.mc.player.rotationYaw);
+            ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setPitch(Class225.mc.player.rotationPitch);
             sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
             sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
         }

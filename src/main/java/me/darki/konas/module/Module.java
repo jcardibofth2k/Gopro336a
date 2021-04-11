@@ -6,7 +6,6 @@ import java.awt.TrayIcon;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import me.darki.konas.unremaped.Class167;
 import me.darki.konas.unremaped.Notify;
 import me.darki.konas.setting.Keybind;
 import me.darki.konas.command.Command;
@@ -16,14 +15,14 @@ import net.minecraft.client.Minecraft;
 
 public abstract class Module {
     public String name;
-    public String Field1713 = null;
+    public String extraInfo = null;
     public String description = "";
     public Setting<Keybind> Bind = new Setting<>("Bind", new Keybind(0)).setDescription("Sets the module toggle key");
     public Setting<Boolean> holdBind = new Setting<>("Hold", false).visibleIf(Module::hasHoldBind).setDescription("Only activate while bind is being held down");
     public Category category;
-    public ArrayList<String> Field1718 = new ArrayList();
+    public ArrayList<String> aliases = new ArrayList();
     public boolean enabled;
-    public boolean Field1720 = true;
+    public boolean visible = true;
     public static Minecraft mc = Minecraft.getMinecraft();
     public int min = 0;
     public int max = 1000;
@@ -65,7 +64,7 @@ public abstract class Module {
         this.name = string;
         this.description = string2;
         this.category = category;
-        Collections.addAll(this.Field1718, stringArray);
+        Collections.addAll(this.aliases, stringArray);
         EventDispatcher.Companion.register(this);
     }
 
@@ -73,12 +72,12 @@ public abstract class Module {
         this.name = string;
         this.Bind.getValue().Method850(n);
         this.category = category;
-        Collections.addAll(this.Field1718, stringArray);
+        Collections.addAll(this.aliases, stringArray);
         EventDispatcher.Companion.register(this);
     }
 
     public boolean Method1632() {
-        return Class167.Method1610(Notify.class).isEnabled();
+        return ModuleManager.getModuleByClass(Notify.class).isEnabled();
     }
 
     public void Method1633(int n, int n2) {
@@ -86,12 +85,12 @@ public abstract class Module {
         this.max = n2;
     }
 
-    public void Method1634(boolean bl) {
-        this.Field1720 = bl;
+    public void setVisible(boolean bl) {
+        this.visible = bl;
     }
 
-    public boolean Method1635() {
-        return this.Field1720;
+    public boolean isVisible() {
+        return this.visible;
     }
 
     public static boolean hasHoldBind() {
@@ -103,7 +102,7 @@ public abstract class Module {
             if (Module.mc.player == null || Module.mc.world == null) {
                 return;
             }
-            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").isEnabled()) break block1;
+            if (!((Boolean) ModuleManager.Method1617("Notify", "Modules").getValue()).booleanValue() || !ModuleManager.Method1612("Notify").isEnabled()) break block1;
             Logger.Method1120(module.getName() + Command.Field122 + "a enabled");
         }
     }
@@ -111,8 +110,8 @@ public abstract class Module {
     public void Method1637(String string, TrayIcon.MessageType messageType) {
         block0: {
             boolean bl;
-            Notify notify = (Notify)Class167.Method1610(Notify.class);
-            if (notify == null || !notify.isEnabled() || !(bl = ((Boolean)Class167.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
+            Notify notify = (Notify) ModuleManager.getModuleByClass(Notify.class);
+            if (notify == null || !notify.isEnabled() || !(bl = ((Boolean) ModuleManager.Method1617("Notify", "SystemTray").getValue()).booleanValue())) break block0;
             notify.Method1468(this.getName(), string, messageType);
         }
     }
@@ -122,7 +121,7 @@ public abstract class Module {
         this.description = string2;
         this.Bind.getValue().Method850(n);
         this.category = category;
-        Collections.addAll(this.Field1718, stringArray);
+        Collections.addAll(this.aliases, stringArray);
         EventDispatcher.Companion.register(this);
     }
 
@@ -130,7 +129,7 @@ public abstract class Module {
     }
 
     public ArrayList<String> Method1638() {
-        return this.Field1718;
+        return this.aliases;
     }
 
     public Category getCategory() {
@@ -158,13 +157,13 @@ public abstract class Module {
             if (Module.mc.player == null || Module.mc.world == null) {
                 return;
             }
-            if (!((Boolean)Class167.Method1617("Notify", "Modules").getValue()).booleanValue() || !Class167.Method1612("Notify").isEnabled()) break block1;
+            if (!((Boolean) ModuleManager.Method1617("Notify", "Modules").getValue()).booleanValue() || !ModuleManager.Method1612("Notify").isEnabled()) break block1;
             Logger.Method1120(module.getName() + Command.Field122 + "c disabled");
         }
     }
 
     public void Method1645(String string) {
-        this.Field1713 = string;
+        this.extraInfo = string;
     }
 
     public int Method1646() {
@@ -174,7 +173,7 @@ public abstract class Module {
     public Module(String string, Category category, String ... stringArray) {
         this.name = string;
         this.category = category;
-        Collections.addAll(this.Field1718, stringArray);
+        Collections.addAll(this.aliases, stringArray);
         EventDispatcher.Companion.register(this);
     }
 
@@ -190,7 +189,7 @@ public abstract class Module {
     }
 
     public void Method1649(ArrayList<String> arrayList) {
-        this.Field1718 = arrayList;
+        this.aliases = arrayList;
     }
 
     public void setDescription(String string) {
@@ -206,6 +205,6 @@ public abstract class Module {
     }
 
     public String Method756() {
-        return this.Field1713;
+        return this.extraInfo;
     }
 }

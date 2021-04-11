@@ -1,7 +1,9 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.setting.IRunnable;
+
 public class Class159
-implements Class529 {
+implements IRunnable {
     public Hud Field1820;
 
     public void Method630(Object object) {

@@ -43,19 +43,19 @@ import net.minecraft.util.math.Vec3d;
 
 public class Surround
 extends Module {
-    public static Setting<Boolean> Field2420 = new Setting<>("Rotate", true);
-    public static Setting<Boolean> Field2421 = new Setting<>("Swing", true);
-    public static Setting<Boolean> Field2422 = new Setting<>("Packet", true);
-    public static Setting<Boolean> Field2423 = new Setting<>("Force", false);
-    public static Setting<Boolean> Field2424 = new Setting<>("Full", true);
-    public static Setting<Boolean> Field2425 = new Setting<>("Strict", false);
-    public static Setting<Integer> Field2426 = new Setting<>("ActionShift", 3, 8, 1, 1);
-    public static Setting<Float> Field2427 = new Setting<>("ActionInterval", Float.valueOf(0.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
-    public static Setting<Boolean> Field2428 = new Setting<>("Center", true);
-    public static Setting<Boolean> Field2429 = new Setting<>("Queue", true);
-    public static Setting<Boolean> Field2430 = new Setting<>("Clear", false);
-    public static Setting<Boolean> Field2431 = new Setting<>("AutoDisable", true);
-    public static Setting<Boolean> Field2432 = new Setting<>("EChest", false);
+    public static Setting<Boolean> rotate = new Setting<>("Rotate", true);
+    public static Setting<Boolean> swing = new Setting<>("Swing", true);
+    public static Setting<Boolean> packet = new Setting<>("Packet", true);
+    public static Setting<Boolean> force = new Setting<>("Force", false);
+    public static Setting<Boolean> full = new Setting<>("Full", true);
+    public static Setting<Boolean> strict = new Setting<>("Strict", false);
+    public static Setting<Integer> actionShift = new Setting<>("ActionShift", 3, 8, 1, 1);
+    public static Setting<Float> actionInterval = new Setting<>("ActionInterval", Float.valueOf(0.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f));
+    public static Setting<Boolean> center = new Setting<>("Center", true);
+    public static Setting<Boolean> queue = new Setting<>("Queue", true);
+    public static Setting<Boolean> clear = new Setting<>("Clear", false);
+    public static Setting<Boolean> autoDisable = new Setting<>("AutoDisable", true);
+    public static Setting<Boolean> eChest = new Setting<>("EChest", false);
     public static boolean Field2433 = false;
     public Class566 Field2434 = new Class566();
     public BlockPos Field2435;
@@ -73,7 +73,7 @@ extends Module {
         ItemStack itemStack;
         int n;
         int n2 = -1;
-        if (Field2432.getValue().booleanValue()) {
+        if (eChest.getValue().booleanValue()) {
             for (n = 0; n < 9; ++n) {
                 itemStack = Surround.mc.player.inventory.getStackInSlot(n);
                 if (itemStack == ItemStack.EMPTY || !(itemStack.getItem() instanceof ItemBlock) || !((block = ((ItemBlock)itemStack.getItem()).getBlock()) instanceof BlockEnderChest)) continue;
@@ -98,7 +98,7 @@ extends Module {
         this.Field2443 = null;
         this.Field2441 = new ArrayList<Vec3d>();
         if (this.Method539()) {
-            if (Field2424.getValue().booleanValue()) {
+            if (full.getValue().booleanValue()) {
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, 0.0, 0.0));
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, 0.0, 0.0));
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 0.0, 1.0));
@@ -110,7 +110,7 @@ extends Module {
             this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 1.0, -1.0));
         } else {
             this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, -1.0, 0.0));
-            if (Field2424.getValue().booleanValue()) {
+            if (full.getValue().booleanValue()) {
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, -1.0, 0.0));
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, -1.0, 0.0));
                 this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, -1.0, 1.0));
@@ -131,23 +131,23 @@ extends Module {
             return;
         }
         for (BlockPos blockPos2 : arrayList) {
-            if (this.Field2438 > Field2426.getValue()) {
+            if (this.Field2438 > actionShift.getValue()) {
                 return;
             }
             if (this.Field2442.containsKey(blockPos2) || this.Method512(blockPos2)) continue;
             if (this.Method526(blockPos2)) {
-                if (!Field2430.getValue().booleanValue()) continue;
+                if (!clear.getValue().booleanValue()) continue;
                 blockPos = null;
                 for (Entity entity : Surround.mc.world.loadedEntityList) {
                     if (entity == null || (double)Surround.mc.player.getDistance(entity) > 2.4 || !(entity instanceof EntityEnderCrystal) || entity.isDead) continue;
                     blockPos = (EntityEnderCrystal)entity;
                 }
                 if (blockPos != null) {
-                    if (Field2420.getValue().booleanValue()) {
+                    if (rotate.getValue().booleanValue()) {
                         Object object = RotationUtil.Method1946(Surround.mc.player.getPositionEyes(mc.getRenderPartialTicks()), blockPos.getPositionEyes(mc.getRenderPartialTicks()));
                         Surround.mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float)object[0], (float)MathHelper.normalizeAngle((int)object[1], 360), Surround.mc.player.onGround));
-                        ((IEntityPlayerSP)Surround.mc.player).Method237((float)object[0]);
-                        ((IEntityPlayerSP)Surround.mc.player).Method239(MathHelper.normalizeAngle((int)object[1], 360));
+                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedYaw((float)object[0]);
+                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedPitch(MathHelper.normalizeAngle((int)object[1], 360));
                     }
                     mc.getConnection().sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                     mc.getConnection().sendPacket(new CPacketUseEntity((Entity)blockPos));
@@ -168,7 +168,7 @@ extends Module {
         if (Surround.mc.world == null || Surround.mc.player == null) {
             return;
         }
-        if (packetEvent.getPacket() instanceof SPacketBlockChange && Field2429.getValue().booleanValue()) {
+        if (packetEvent.getPacket() instanceof SPacketBlockChange && queue.getValue().booleanValue()) {
             SPacketBlockChange sPacketBlockChange = (SPacketBlockChange) packetEvent.getPacket();
             if (sPacketBlockChange.blockState.getBlock() == Blocks.AIR && Surround.mc.player.getDistance(sPacketBlockChange.getBlockPosition().getX(), sPacketBlockChange.getBlockPosition().getY(), sPacketBlockChange.getBlockPosition().getZ()) < 1.75) {
                 mc.addScheduledTask(this::Method124);
@@ -242,11 +242,11 @@ extends Module {
         if (Surround.mc.player.inventory.currentItem != this.Field2436 && Surround.mc.player.inventory.currentItem != this.Field2439) {
             this.Field2436 = Surround.mc.player.inventory.currentItem;
         }
-        if (Field2431.getValue().booleanValue() && !this.Field2435.equals(new BlockPos(Surround.mc.player))) {
+        if (autoDisable.getValue().booleanValue() && !this.Field2435.equals(new BlockPos(Surround.mc.player))) {
             this.toggle();
             return true;
         }
-        return !this.Field2434.Method737(Field2427.getValue().floatValue() * 10.0f);
+        return !this.Field2434.Method737(actionInterval.getValue().floatValue() * 10.0f);
     }
 
     @Override
@@ -257,7 +257,7 @@ extends Module {
         }
         this.Field2436 = Surround.mc.player.inventory.currentItem;
         this.Field2435 = new BlockPos(Surround.mc.player);
-        if (Field2428.getValue().booleanValue()) {
+        if (center.getValue().booleanValue()) {
             PlayerUtil.Method1083();
         }
         this.Field2442.clear();
@@ -291,7 +291,7 @@ extends Module {
         boolean bl4 = false;
         EnumFacing enumFacing2 = null;
         double d = 69420.0;
-        for (EnumFacing enumFacing3 : Class496.Method1963(blockPos, Field2425.getValue(), false)) {
+        for (EnumFacing enumFacing3 : Class496.Method1963(blockPos, strict.getValue(), false)) {
             blockPos2 = blockPos.offset(enumFacing3);
             Vec3d vec3d = new Vec3d(blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
             if (!(Surround.mc.player.getPositionVector().add(0.0, (double)Surround.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < d)) continue;
@@ -311,12 +311,12 @@ extends Module {
         if (bl) {
             PlayerUtil.Method1081((Vec3d)blockPos2);
         }
-        Class496.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, Field2421.getValue());
+        Class496.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, swing.getValue());
         Surround.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
-        if (!Field2423.getValue().booleanValue()) {
+        if (!force.getValue().booleanValue()) {
             this.Field2442.put(blockPos, System.currentTimeMillis());
         }
-        ((IMinecraft)mc).Method57(0);
+        ((IMinecraft)mc).setRightClickDelayTimer(0);
         return bl4 || bl3;
     }
 

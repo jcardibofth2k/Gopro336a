@@ -1,5 +1,5 @@
 //Fernflower
-package me.darki.konas.unremaped;
+package me.darki.konas.module;
 
 import com.konasclient.loader.Loader;
 import cookiedragon.eventsystem.EventDispatcher;
@@ -10,18 +10,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.stream.Collectors;
 
-import me.darki.konas.setting.IdkWhatThisSettingThingDoes;
-import me.darki.konas.module.Category;
-import me.darki.konas.module.Module;
+import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class10;
+import me.darki.konas.unremaped.Class607;
+import me.darki.konas.unremaped.Class7;
 import net.minecraft.launchwrapper.Launch;
 
-public class Class167 {
-    public static ArrayList<Module> Field1690 = new ArrayList();
+public class ModuleManager {
+    public static ArrayList<Module> modules = new ArrayList();
     public static String Field1691;
     public static Class607 Field1692 = new Class607();
 
-    public static void Method1607(String var0, byte[] var1) {
+    public static void init(String var0, byte[] var1) {
         Object var10000 = null;
         if (var0.startsWith("me.darki.konas")) {
             try {
@@ -34,7 +35,7 @@ public class Class167 {
                         Constructor var6 = var3[var5];
                         if (var6.getParameterCount() == 0) {
                             Module var7 = (Module)var2.newInstance();
-                            Field1690.add(var7);
+                            modules.add(var7);
                         }
                     }
                 }
@@ -44,23 +45,16 @@ public class Class167 {
 
     }
 
-    public static void Method1608() {
-        Object var10000 = null;
-        Iterator var0 = Field1690.iterator();
-
-        while(var0.hasNext()) {
-            Module var1 = (Module)var0.next();
-            if (!var1.isValidViaFabricVers()) {
-                if (var1.isEnabled()) {
-                    var1.toggle();
+    public static void handleWorldJoin() {
+        for (Module module : modules) {
+            if (!module.isValidViaFabricVers()) {
+                if (module.isEnabled()) {
+                    module.toggle();
                 }
-
-                EventDispatcher.Companion.unsubscribe((Object)var1);
+                EventDispatcher.Companion.unsubscribe(module);
             }
         }
-
     }
-
     public static void Method1609(ArrayList var0, Module var1) {
         Object var10000 = null;
         if (var1.isEnabled()) {
@@ -69,32 +63,27 @@ public class Class167 {
 
     }
 
-    public static Module Method1610(Class<? extends Module> var0) {
-        Object var10000 = null;
-        Iterator var1 = Field1690.iterator();
-
-        Module var2;
-        do {
-            if (!var1.hasNext()) {
-                return null;
-            }
-
-            var2 = (Module)var1.next();
-        } while(var2.getClass() != var0);
-
-        return var2;
+    public static Module getModuleByClass(Class<? extends Module> clazz) {
+        for (Module module : modules) {
+            if (module.getClass() == clazz) return module;
+        }
+        return null;
     }
 
-    public static ArrayList<Module> Method1611() {
-        Object var10000 = null;
-        ArrayList var0 = new ArrayList();
-        Field1690.forEach(Class167::Method1609);
-        return var0;
+    public static ArrayList<Module> getEnabledModules() {
+        ArrayList<Module> enabledModules = new ArrayList<>();
+        modules.forEach(module -> {
+            if (module.isEnabled()) {
+                enabledModules.add(module);
+            }
+        });
+
+        return enabledModules;
     }
 
     public static Module Method1612(String var0) {
         Object var10000 = null;
-        Iterator var1 = Field1690.iterator();
+        Iterator var1 = modules.iterator();
 
         while(var1.hasNext()) {
             Module var2 = (Module)var1.next();
@@ -115,14 +104,13 @@ public class Class167 {
         return null;
     }
 
-    public static ArrayList<Module> Method1613() {
-        Object var10000 = null;
-        return (ArrayList)Field1690.stream().filter(Class167::Method1621).filter(Class167::Method1614).collect(Collectors.toList());
+    public static ArrayList<Module> getEnabledVisibleModules() {
+        return (ArrayList<Module>) modules.stream().filter(m -> m.isEnabled()).filter(m -> m.isVisible()).collect(Collectors.toList());
     }
 
     public static boolean Method1614(Module var0) {
         Object var10000 = null;
-        return var0.Method1635();
+        return var0.isVisible();
     }
 
     public static ArrayList<Setting> Method1615(Module var0) {
@@ -140,8 +128,8 @@ public class Class167 {
                 var6.setAccessible(true);
 
                 try {
-                    if (IdkWhatThisSettingThingDoes.class.isAssignableFrom(var6.getType())) {
-                        var2.add((IdkWhatThisSettingThingDoes)var6.get(var1));
+                    if (ListenableSettingDecorator.class.isAssignableFrom(var6.getType())) {
+                        var2.add((ListenableSettingDecorator)var6.get(var1));
                     } else {
                         var2.add((Setting)var6.get(var1));
                     }
@@ -170,11 +158,14 @@ public class Class167 {
         return var2;
     }
 
-    public static ArrayList<Module> Method1616(Category var0) {
-        Object var10000 = null;
-        ArrayList var1 = new ArrayList();
-        Field1690.forEach(Class167::Method1618);
-        return var1;
+    public static ArrayList<Module> getModulesByCategory(Category category) {
+        ArrayList<Module> modulesInCategory = new ArrayList<>();
+        modules.forEach(module -> {
+            if (module.getCategory() == category) {
+                modulesInCategory.add(module);
+            }
+        });
+        return modulesInCategory;
     }
 
     public static Setting Method1617(String var0, String var1) {
@@ -201,9 +192,8 @@ public class Class167 {
 
     }
 
-    public static ArrayList<Module> Method1619() {
-        Object var10000 = null;
-        return Field1690;
+    public static ArrayList<Module> getModules() {
+        return modules;
     }
 
     public static void Method1620() {
@@ -230,7 +220,7 @@ public class Class167 {
             }
 
             EventDispatcher.Companion.dispatch(new Class10());
-            Loader.getResourceCache().forEach(Class167::Method1607);
+            Loader.getResourceCache().forEach(ModuleManager::init);
             EventDispatcher.Companion.dispatch(new Class7());
         } catch (Exception var3) {
         }

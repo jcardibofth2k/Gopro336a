@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
+import me.darki.konas.module.ModuleManager;
 
 public class Class580
 extends Command {
@@ -11,8 +12,8 @@ extends Command {
             Logger.Method1119(this.Method191());
             return;
         }
-        if (Class167.Method1612(stringArray[1]) != null) {
-            Class167.Method1612(stringArray[1]).toggle();
+        if (ModuleManager.Method1612(stringArray[1]) != null) {
+            ModuleManager.Method1612(stringArray[1]).toggle();
         } else {
             Logger.Method1119("Invalid Module");
         }
