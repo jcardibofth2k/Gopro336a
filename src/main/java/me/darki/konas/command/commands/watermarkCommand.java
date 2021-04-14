@@ -1,13 +1,13 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.command.commands;
 
 import me.darki.konas.KonasMod;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
-public class Class593
+public class watermarkCommand
 extends Command {
-    public Class593() {
+    public watermarkCommand() {
         super("watermark", "Change the watermark", new SyntaxChunk("<watermark>"));
     }
 

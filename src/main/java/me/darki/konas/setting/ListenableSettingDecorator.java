@@ -1,5 +1,4 @@
 package me.darki.konas.setting;
-
 import org.jetbrains.annotations.NotNull;
 
 public class ListenableSettingDecorator<T>

@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.util.Collections;
 
+import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.module.render.Hud;
@@ -9,7 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 
 public class Class88
-extends Class90 {
+extends Frame {
     public Element Field268;
 
     public Class88(Element element) {
@@ -24,8 +25,8 @@ extends Class90 {
                 return;
             }
         }
-        float f3 = f + this.Method913();
-        float f4 = f2 + this.Method915();
+        float f3 = f + this.getPreviousX();
+        float f4 = f2 + this.getPreviousY();
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
         if (f3 < 0.0f) {
             f3 = 0.0f;
@@ -41,69 +42,69 @@ extends Class90 {
         }
         this.Field268.Method2337(f3);
         this.Field268.Method2328(f4);
-        this.Method445(f3);
+        this.setPosX(f3);
         this.Method442(f4);
     }
 
     @Override
-    public void Method440(boolean bl) {
-        super.Method440(bl);
+    public void setExtended(boolean bl) {
+        super.setExtended(bl);
         this.Field268.Method2325(bl);
     }
 
     @Override
-    public void Method101(int n, int n2, float f) {
+    public void onRender(int n, int n2, float f) {
         block5: {
-            super.Method101(n, n2, f);
+            super.onRender(n, n2, f);
             if (!Class193.Method120() || !this.Field268.Method2338()) {
                 return;
             }
-            if (this.Method917()) {
+            if (this.isDragging()) {
                 this.Method439(n, n2);
             }
-            this.Method445(this.Field268.Method2320());
+            this.setPosX(this.Field268.Method2320());
             this.Method442(this.Field268.Method2324());
             this.Method918(this.Field268.Method2329());
             this.Method919(this.Field268.Method2322());
-            this.Method440(this.Field268.Method2338());
+            this.setExtended(this.Field268.Method2338());
             ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-            if (this.Method922() < 0.0f) {
-                this.Method445(0.0f);
+            if (this.getPosX() < 0.0f) {
+                this.setPosX(0.0f);
             }
-            if (this.Method922() + this.Method910() > (float)scaledResolution.getScaledWidth()) {
-                this.Method445((float)scaledResolution.getScaledWidth() - this.Method910());
+            if (this.getPosX() + this.getWidth() > (float)scaledResolution.getScaledWidth()) {
+                this.setPosX((float)scaledResolution.getScaledWidth() - this.getWidth());
             }
             if (this.Method921() < 0.0f) {
                 this.Method442(0.0f);
             }
-            if (!(this.Method921() + this.Method911() > (float)scaledResolution.getScaledHeight())) break block5;
-            this.Method442((float)scaledResolution.getScaledHeight() - this.Method911());
+            if (!(this.Method921() + this.getHeight() > (float)scaledResolution.getScaledHeight())) break block5;
+            this.Method442((float)scaledResolution.getScaledHeight() - this.getHeight());
         }
     }
 
     @Override
-    public boolean Method100(int n, int n2, int n3) {
+    public boolean onMouseClicked(int n, int n2, int n3) {
         boolean bl;
         block5: {
-            super.Method100(n, n2, n3);
+            super.onMouseClicked(n, n2, n3);
             if (!Class193.Method120()) {
                 return false;
             }
             this.Field268.Method2332(n, n2, n3);
-            boolean bl2 = Class88.Method916(n, n2, this.Method922(), this.Method921(), this.Method910(), this.Method911());
+            boolean bl2 = Class88.isMouseWithinBounds(n, n2, this.getPosX(), this.Method921(), this.getWidth(), this.getHeight());
             bl = false;
             switch (n3) {
                 case 0: {
-                    if (!bl2 || !this.Method914()) break;
-                    this.Method441(true);
-                    this.Method923(this.Method922() - (float)n);
-                    this.Method912(this.Method921() - (float)n2);
+                    if (!bl2 || !this.isExtended()) break;
+                    this.setDragging(true);
+                    this.setPreviousX(this.getPosX() - (float)n);
+                    this.setPreviousY(this.Method921() - (float)n2);
                     bl = true;
                     break;
                 }
                 case 1: {
                     if (!bl2) break;
-                    this.Method440(!this.Method914());
+                    this.setExtended(!this.isExtended());
                     bl = true;
                 }
             }
@@ -114,8 +115,8 @@ extends Class90 {
     }
 
     @Override
-    public void Method441(boolean bl) {
-        super.Method441(bl);
+    public void setDragging(boolean bl) {
+        super.setDragging(bl);
         this.Field268.Method2327(bl);
     }
 
@@ -129,19 +130,19 @@ extends Class90 {
     }
 
     @Override
-    public void Method444(int n, int n2, int n3) {
+    public void onMouseReleased(int n, int n2, int n3) {
         block1: {
-            super.Method444(n, n2, n3);
+            super.onMouseReleased(n, n2, n3);
             if (!Class193.Method120()) {
                 return;
             }
-            if (n3 != 0 || !this.Method917()) break block1;
-            this.Method441(false);
+            if (n3 != 0 || !this.isDragging()) break block1;
+            this.setDragging(false);
         }
     }
 
     @Override
-    public void Method445(float f) {
-        super.Method445(f);
+    public void setPosX(float f) {
+        super.setPosX(f);
     }
 }

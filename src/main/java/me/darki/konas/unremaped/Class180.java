@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import me.darki.konas.gui.clickgui.component.Component;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.util.RenderUtil2;
@@ -11,9 +12,9 @@ import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
 
 public class Class180
-extends Class183 {
+extends Component {
     public Element Field1436;
-    public ArrayList<Class183> Field1437 = new ArrayList();
+    public ArrayList<Component> Field1437 = new ArrayList();
 
     @Override
     public void Method647(int n, int n2, int n3) {
@@ -24,16 +25,16 @@ extends Class183 {
         }
     }
 
-    public static void Method669(char c, int n, Class183 class183) {
+    public static void Method669(char c, int n, Component class183) {
         class183.Method102(c, n);
     }
 
-    public ArrayList<Class183> Method672() {
+    public ArrayList<Component> Method672() {
         return this.Field1437;
     }
 
-    public void Method666(Class183 class183) {
-        class183.Method665(this.Method1475(), this.Method1476());
+    public void Method666(Component class183) {
+        class183.onMove(this.Method1475(), this.Method1476());
     }
 
     @Override
@@ -45,9 +46,9 @@ extends Class183 {
         }
     }
 
-    public ArrayList<Class183> Method1494() {
-        ArrayList<Class183> arrayList = new ArrayList<Class183>();
-        for (Class183 class183 : this.Method672()) {
+    public ArrayList<Component> Method1494() {
+        ArrayList<Component> arrayList = new ArrayList<Component>();
+        for (Component class183 : this.Method672()) {
             if (class183 instanceof Class177) {
                 if (!((Class177)class183).Method583().Method1180()) continue;
                 arrayList.add(class183);
@@ -73,14 +74,14 @@ extends Class183 {
         return arrayList;
     }
 
-    public static void Method668(int n, int n2, int n3, long l, Class183 class183) {
+    public static void Method668(int n, int n2, int n3, long l, Component class183) {
         class183.Method649(n, n2, n3, l);
     }
 
     @Override
     public boolean Method106(int n, int n2, int n3) {
         super.Method106(n, n2, n3);
-        boolean bl = Class180.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
+        boolean bl = Class180.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl) {
             switch (n3) {
                 case 0: {
@@ -88,13 +89,13 @@ extends Class183 {
                     return true;
                 }
                 case 1: {
-                    this.Method1483(!this.Method1486());
+                    this.setExtended(!this.Method1486());
                     return true;
                 }
             }
         }
         if (this.Method1486()) {
-            for (Class183 class183 : this.Method1494()) {
+            for (Component class183 : this.Method1494()) {
                 if (!class183.Method106(n, n2, n3)) continue;
                 return true;
             }
@@ -117,12 +118,12 @@ extends Class183 {
             int n3;
             super.Method105(n, n2, f);
             float f2 = this.Method1481();
-            for (Class183 class183 : this.Method1494()) {
-                class183.Method1472(f2);
+            for (Component class183 : this.Method1494()) {
+                class183.setYOffset(f2);
                 f2 += class183.Method1481();
             }
             int n4 = n3 = this.Field1436.Method2338() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class180.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class180.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
                 n3 = this.Field1436.Method2338() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
@@ -132,13 +133,13 @@ extends Class183 {
         }
     }
 
-    public static void Method670(int n, int n2, float f, Class183 class183) {
+    public static void Method670(int n, int n2, float f, Component class183) {
         class183.Method105(n, n2, f);
     }
 
     @Override
-    public void Method665(float f, float f2) {
-        super.Method665(f, f2);
+    public void onMove(float f, float f2) {
+        super.onMove(f, f2);
         this.Method1494().forEach(this::Method666);
     }
 
@@ -174,7 +175,7 @@ extends Class183 {
             this.Method672().add(new Class174(setting, this.Method1475(), this.Method1476(), f3, f, this.Method1479() - f2, 60.0f));
             f += 12.0f;
         }
-        this.Method1494().forEach(Class183::Method667);
+        this.Method1494().forEach(Component::Method667);
     }
 
     @Override
@@ -186,7 +187,7 @@ extends Class183 {
         }
     }
 
-    public static void Method673(int n, int n2, int n3, Class183 class183) {
+    public static void Method673(int n, int n2, int n3, Component class183) {
         class183.Method647(n, n2, n3);
     }
 }
