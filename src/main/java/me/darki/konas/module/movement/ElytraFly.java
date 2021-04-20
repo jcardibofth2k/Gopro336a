@@ -291,9 +291,9 @@ extends Module {
             if (!(class24.getPacket() instanceof CPacketPlayer) || strict.getValue() != Class426.NCP || mode.getValue() != Class403.PACKET || this.Field1001 || !(Math.abs(ElytraFly.mc.player.motionX) >= 0.05) && !(Math.abs(ElytraFly.mc.player.motionZ) >= 0.05)) break block2;
             double d = 1.0E-8 + 1.0E-8 * (1.0 + (double)this.Field1005.nextInt(1 + (this.Field1005.nextBoolean() ? this.Field1005.nextInt(34) : this.Field1005.nextInt(43))));
             if (ElytraFly.mc.player.onGround || ElytraFly.mc.player.ticksExisted % 2 == 0) {
-                ((ICPacketPlayer)class24.getPacket()).Method1698(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) + d);
+                ((ICPacketPlayer)class24.getPacket()).setY(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) + d);
             } else {
-                ((ICPacketPlayer)class24.getPacket()).Method1698(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) - d);
+                ((ICPacketPlayer)class24.getPacket()).setY(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) - d);
             }
         }
     }

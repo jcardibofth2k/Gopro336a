@@ -64,7 +64,7 @@ extends Module {
                         Vec3d vec3d6 = vec3d3;
                         double[] dArray3 = dArray2;
                         if (vec3d != null && dArray != null) {
-                            if (!(Math.hypot(((dArray3[0] - (double)((IEntityPlayerSP) Nuker.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray3[1] - (double)((IEntityPlayerSP) Nuker.mc.player).Method240()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP) Nuker.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP) Nuker.mc.player).Method240()))) continue;
+                            if (!(Math.hypot(((dArray3[0] - (double)((IEntityPlayerSP) Nuker.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray3[1] - (double)((IEntityPlayerSP) Nuker.mc.player).getLastReportedPitch()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP) Nuker.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP) Nuker.mc.player).getLastReportedPitch()))) continue;
                             vec3d = vec3d6;
                             dArray = dArray3;
                             continue;
@@ -142,8 +142,8 @@ extends Module {
                 class24.setCanceled(true);
                 Nuker.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(Nuker.mc.player.posX), cPacketPlayer.getY(Nuker.mc.player.posY), cPacketPlayer.getZ(Nuker.mc.player.posZ), this.Field742, this.Field743, cPacketPlayer.isOnGround()));
             } else {
-                ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field742);
-                ((ICPacketPlayer)cPacketPlayer).Method1697(this.Field743);
+                ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field742);
+                ((ICPacketPlayer)cPacketPlayer).setPitch(this.Field743);
             }
         }
     }

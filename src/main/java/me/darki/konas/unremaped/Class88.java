@@ -19,7 +19,7 @@ extends Frame {
     }
 
     public void Method439(float f, float f2) {
-        if (!((Boolean) Hud.Field1391.getValue()).booleanValue()) {
+        if (!((Boolean) Hud.overlap.getValue()).booleanValue()) {
             for (Element element : NewGui.INSTANCE.Field1136.Method2196()) {
                 if (element.equals(this.Field268) || !(f > element.Method2320()) || !(f < element.Method2320() + element.Method2329()) || !(f2 > element.Method2324()) || !(f2 < element.Method2324() + element.Method2322())) continue;
                 return;

@@ -115,8 +115,8 @@ extends Module {
                     class24.setCanceled(true);
                     AutoMount.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(cPacketPlayer.getX(AutoMount.mc.player.posX), cPacketPlayer.getY(AutoMount.mc.player.posY), cPacketPlayer.getZ(AutoMount.mc.player.posZ), this.Field1891, this.Field1892, cPacketPlayer.isOnGround()));
                 } else {
-                    ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field1891);
-                    ((ICPacketPlayer)cPacketPlayer).Method1697(this.Field1892);
+                    ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field1891);
+                    ((ICPacketPlayer)cPacketPlayer).setPitch(this.Field1892);
                 }
             }
             if (!bypass.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity)class24.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;

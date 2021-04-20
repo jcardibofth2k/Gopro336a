@@ -86,8 +86,8 @@ extends Module {
                 class24.setCanceled(true);
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(BlockAura.mc.player.posX), cPacketPlayer.getY(BlockAura.mc.player.posY), cPacketPlayer.getZ(BlockAura.mc.player.posZ), this.Field1785, this.Field1786, cPacketPlayer.isOnGround()));
             } else {
-                ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field1785);
-                ((ICPacketPlayer)cPacketPlayer).Method1697(this.Field1786);
+                ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field1785);
+                ((ICPacketPlayer)cPacketPlayer).setPitch(this.Field1786);
             }
         }
     }
@@ -198,7 +198,7 @@ extends Module {
             }
             if (!(openGuiEvent.Method1161() instanceof GuiEditSign) || !((Boolean)autoSign.getValue()).booleanValue()) break block1;
             GuiEditSign guiEditSign = (GuiEditSign) openGuiEvent.Method1161();
-            TileEntitySign tileEntitySign = ((IGuiEditSign)guiEditSign).Method48();
+            TileEntitySign tileEntitySign = ((IGuiEditSign)guiEditSign).getTileSign();
             this.Method1680(tileEntitySign.getPos());
             openGuiEvent.Cancel();
         }

@@ -8,38 +8,38 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={ItemRenderer.class}, priority=0x7FFFFFFF)
 public interface IItemRenderer {
     @Accessor(value="equippedProgressMainHand")
-    void Method2285(float var1);
+    void setEquippedProgressMainHand(float var1);
 
     @Accessor(value="equippedProgressMainHand")
-    float Method2286();
+    float getEquippedProgressMainHand();
 
     @Accessor(value="equippedProgressOffHand")
-    void Method2287(float var1);
+    void setEquippedProgressOffHand(float var1);
 
     @Accessor(value="equippedProgressOffHand")
-    float Method2288();
+    float getEquippedProgressOffHand();
 
     @Accessor(value="prevEquippedProgressMainHand")
-    void Method2289(float var1);
+    void setPrevEquippedProgressMainHand(float var1);
 
     @Accessor(value="prevEquippedProgressMainHand")
-    float Method2290();
+    float getPrevEquippedProgressMainHand();
 
     @Accessor(value="prevEquippedProgressOffHand")
-    void Method2291(float var1);
+    void setPrevEquippedProgressOffHand(float var1);
 
     @Accessor(value="prevEquippedProgressOffHand")
-    float Method2292();
+    float getPrevEquippedProgressOffHand();
 
     @Accessor(value="itemStackMainHand")
-    void Method2293(ItemStack var1);
+    void setItemStackMainHand(ItemStack var1);
 
     @Accessor(value="itemStackMainHand")
-    ItemStack Method2294();
+    ItemStack getItemStackMainHand();
 
     @Accessor(value="itemStackOffHand")
-    void Method2295(ItemStack var1);
+    void setItemStackOffHand(ItemStack var1);
 
     @Accessor(value="itemStackOffHand")
-    ItemStack Method2296();
+    ItemStack getItemStackOffHand();
 }

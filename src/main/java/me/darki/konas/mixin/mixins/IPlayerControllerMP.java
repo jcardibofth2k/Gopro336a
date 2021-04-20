@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={PlayerControllerMP.class})
 public interface IPlayerControllerMP {
     @Accessor(value="curBlockDamageMP")
-    float Method295();
+    float getCurBlockDamageMP();
 
     @Accessor(value="currentBlock")
-    BlockPos Method296();
+    BlockPos getCurrentBlock();
 }

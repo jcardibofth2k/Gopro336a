@@ -193,7 +193,7 @@ extends Module {
         block0: {
             if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field427) break block0;
             this.Field427 = false;
-            ((ICPacketPlayer)class24.getPacket()).Method1700(true);
+            ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
         }
     }
 

@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={GuiBrewingStand.class})
 public interface IGuiBrewingStand {
     @Accessor(value="tileBrewingStand")
-    IInventory Method21();
+    IInventory getTileBrewingStand();
 }

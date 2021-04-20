@@ -76,17 +76,17 @@ extends Module {
                     if (horizontal.getValue().floatValue() == 0.0f && vertical.getValue().floatValue() == 0.0f) {
                         packetEvent.setCanceled(true);
                     } else {
-                        ((ISPacketEntityVelocity)sPacketEntityVelocity).Method76((int)((float)sPacketEntityVelocity.getMotionX() * horizontal.getValue().floatValue()));
-                        ((ISPacketEntityVelocity)sPacketEntityVelocity).Method78((int)((float)sPacketEntityVelocity.getMotionY() * vertical.getValue().floatValue()));
-                        ((ISPacketEntityVelocity)sPacketEntityVelocity).Method80((int)((float)sPacketEntityVelocity.getMotionZ() * horizontal.getValue().floatValue()));
+                        ((ISPacketEntityVelocity)sPacketEntityVelocity).setMotionX((int)((float)sPacketEntityVelocity.getMotionX() * horizontal.getValue().floatValue()));
+                        ((ISPacketEntityVelocity)sPacketEntityVelocity).setMotionY((int)((float)sPacketEntityVelocity.getMotionY() * vertical.getValue().floatValue()));
+                        ((ISPacketEntityVelocity)sPacketEntityVelocity).setMotionZ((int)((float)sPacketEntityVelocity.getMotionZ() * horizontal.getValue().floatValue()));
                     }
                     break block5;
                 }
                 if (!(packetEvent.getPacket() instanceof SPacketExplosion)) break block6;
                 SPacketExplosion sPacketExplosion = (SPacketExplosion) packetEvent.getPacket();
-                ((ISPacketExplosion)sPacketExplosion).Method471((int)(sPacketExplosion.getMotionX() * horizontal.getValue().floatValue()));
-                ((ISPacketExplosion)sPacketExplosion).Method473((int)(sPacketExplosion.getMotionY() * vertical.getValue().floatValue()));
-                ((ISPacketExplosion)sPacketExplosion).Method475((int)(sPacketExplosion.getMotionZ() * horizontal.getValue().floatValue()));
+                ((ISPacketExplosion)sPacketExplosion).setMotionX((int)(sPacketExplosion.getMotionX() * horizontal.getValue().floatValue()));
+                ((ISPacketExplosion)sPacketExplosion).setMotionY((int)(sPacketExplosion.getMotionY() * vertical.getValue().floatValue()));
+                ((ISPacketExplosion)sPacketExplosion).setMotionZ((int)(sPacketExplosion.getMotionZ() * horizontal.getValue().floatValue()));
                 break block5;
             }
             if (!(packetEvent.getPacket() instanceof SPacketEntityStatus) || !noHook.getValue().booleanValue() || (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() != 31 || (entity = sPacketEntityStatus.getEntity(Velocity.mc.world)) == null || !(entity instanceof EntityFishHook)) break block5;
