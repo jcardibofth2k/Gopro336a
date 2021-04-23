@@ -83,8 +83,8 @@ public class FriendSyncUtil
     static {
         FriendSyncUtil.Field2644 = System.getProperty("file.separator");
         FriendSyncUtil.Field2645 = System.getProperty("user.home") + FriendSyncUtil.Field2644 + "Future" + FriendSyncUtil.Field2644 + "friends.json";
-        FriendSyncUtil.Field2646 = Minecraft.getMinecraft().gameDir + FriendSyncUtil.Field2644 + "pyro" + FriendSyncUtil.Field2644 + "friends.json";
-        FriendSyncUtil.Field2647 = Minecraft.getMinecraft().gameDir + FriendSyncUtil.Field2644 + "rusherhack" + FriendSyncUtil.Field2644 + "friends.json";
+        FriendSyncUtil.Field2646 = Minecraft.getMinecraft().mcDataDir + FriendSyncUtil.Field2644 + "pyro" + FriendSyncUtil.Field2644 + "friends.json";
+        FriendSyncUtil.Field2647 = Minecraft.getMinecraft().mcDataDir + FriendSyncUtil.Field2644 + "rusherhack" + FriendSyncUtil.Field2644 + "friends.json";
     }
     
     public static Set<String> Method2314() {

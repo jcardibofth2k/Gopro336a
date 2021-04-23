@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.config.Config;
 import me.darki.konas.event.EventProcessor;
 import me.darki.konas.managers.CommandManager;
 import me.darki.konas.module.ModuleManager;
@@ -124,7 +125,7 @@ public class NewGui {
             Class473.Field2557 = new Class473();
             this.Field1132 = new Class166(Minecraft.getMinecraft().currentScreen);
             this.Field1132.Method121();
-            Class589.Method2274(Class589.Method2223(), true);
+            Config.Method2274(Config.Method2223(), true);
             Runtime.getRuntime().addShutdownHook(new Class588());
             v38 = "os.arch";
             v39 = System.getProperty(v38);
@@ -151,23 +152,23 @@ lbl142:
 
     public void Method1139() {
         ModuleManager.Field1692.start();
-        if (!Class589.Field2606.exists()) {
-            Class589.Field2606.mkdir();
+        if (!Config.KONAS_FOLDER.exists()) {
+            Config.KONAS_FOLDER.mkdir();
         }
-        if (!Class589.Field2608.exists()) {
-            Class589.Field2608.mkdir();
+        if (!Config.CONFIGS.exists()) {
+            Config.CONFIGS.mkdir();
         }
-        if (Class589.Field2606.listFiles() != null) {
-            List list = Arrays.stream(Class589.Field2606.listFiles()).filter(NewGui::Method1140).collect(Collectors.toList());
+        if (Config.KONAS_FOLDER.listFiles() != null) {
+            List list = Arrays.stream(Config.KONAS_FOLDER.listFiles()).filter(NewGui::Method1140).collect(Collectors.toList());
             for (File file : list) {
-                Class589.Method2252(file, new File(Class589.Field2608, file.getName()));
+                Config.Method2252(file, new File(Config.CONFIGS, file.getName()));
             }
         }
-        Class589.Method2252(Class589.Field2611, Class589.Field2607);
-        Class589.Method2252(Class589.Field2612, Class589.Field2609);
-        Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), CfontRenderer.Field814);
-        if (new File(Minecraft.getMinecraft().gameDir, "Fonts").exists()) {
-            Class589.Method2252(new File(Minecraft.getMinecraft().gameDir, "Fonts"), CfontRenderer.Field814);
+        Config.Method2252(Config.oldConfigs, Config.CONFIG);
+        Config.Method2252(Config.oldAccounts, Config.ACCOUNTS);
+        Config.Method2252(new File(Minecraft.getMinecraft().mcDataDir, "Fonts"), CfontRenderer.Field814);
+        if (new File(Minecraft.getMinecraft().mcDataDir, "Fonts").exists()) {
+            Config.Method2252(new File(Minecraft.getMinecraft().mcDataDir, "Fonts"), CfontRenderer.Field814);
         } else {
             CfontRenderer.Field814.mkdir();
         }

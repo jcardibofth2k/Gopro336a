@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import me.darki.konas.command.commands.*;
 import me.darki.konas.command.commands.SpectateCommand;
 import me.darki.konas.command.Command;
+import me.darki.konas.command.commands.configCommand;
 
 public class Class603 {
     public static ArrayList<Command> commands = new ArrayList();
@@ -34,7 +35,7 @@ public class Class603 {
         commands.add(new fovCommand());
         commands.add(new grabCommand());
         commands.add(new macroCommand());
-        commands.add(new Class576());
+        commands.add(new configCommand());
         commands.add(new fontCommand());
         commands.add(new WaypointCommand());
         commands.add(new SpammerCommand());

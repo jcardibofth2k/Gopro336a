@@ -1,15 +1,19 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.config;
 
 import me.darki.konas.gui.clickgui.component.Component;
 import me.darki.konas.gui.clickgui.frame.CategoryFrame;
 import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.client.ClickGUIModule;
+import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.misc.Spammer;
+import me.darki.konas.module.render.Hud;
 import me.darki.konas.setting.ColorValue;
-import me.darki.konas.module.client.Config;
 import me.darki.konas.KonasMod;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.misc.Announcer;
 import me.darki.konas.module.misc.AutoGG;
+import me.darki.konas.unremaped.*;
 import net.minecraft.client.resources.I18n;
 import org.lwjgl.input.Keyboard;
 import com.google.gson.JsonParser;
@@ -44,18 +48,21 @@ import com.google.gson.JsonArray;
 import java.io.File;
 import net.minecraft.client.Minecraft;
 
-public class Class589
+public class Config
 {
-    public static Minecraft Field2605;
-    public static File Field2606;
-    public static File Field2607;
-    public static File Field2608;
-    public static File Field2609;
-    public static File Field2610;
+    //this class is so fucked bro
+    //obf stripped so much data :(
+    public static Minecraft mc = Minecraft.getMinecraft();
+    
+    public static File KONAS_FOLDER = new File(mc.mcDataDir, "Konas");
+    public static File CONFIG = new File(KONAS_FOLDER, "config.json");
+    public static File CONFIGS = new File(KONAS_FOLDER, "configs");
+    public static File ACCOUNTS = new File(KONAS_FOLDER, "accounts.json");
+    public static File currentConfig;
     @Deprecated
-    public static File Field2611;
+    public static File oldConfigs = new File(mc.mcDataDir + File.separator + "KonasConfig.json");
     @Deprecated
-    public static File Field2612;
+    public static File oldAccounts = new File(mc.mcDataDir + File.separator + "accounts.json");;
     
     public static JsonArray Method2217() {
         final JsonArray jsonArray = new JsonArray();
@@ -138,11 +145,11 @@ public class Class589
     }
     
     public static List<File> Method2220() {
-        if (!Class589.Field2606.exists() || Class589.Field2606.listFiles() == null) {
+        if (!Config.KONAS_FOLDER.exists() || Config.KONAS_FOLDER.listFiles() == null) {
             return null;
         }
-        if (Class589.Field2608.listFiles() != null) {
-            return Arrays.stream(Class589.Field2608.listFiles()).filter(Class589::Method2235).collect((Collector<? super File, ?, List<File>>)Collectors.toList());
+        if (Config.CONFIGS.listFiles() != null) {
+            return Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2235).collect((Collector<? super File, ?, List<File>>)Collectors.toList());
         }
         return null;
     }
@@ -150,7 +157,7 @@ public class Class589
     public static void Method2221() {
         IOException ex;
         try {
-            final File parent = new File(Class589.Field2606, "extrachat");
+            final File parent = new File(Config.KONAS_FOLDER, "extrachat");
             final File file = new File(parent, "taunts.txt");
             if (!parent.exists()) {
                 parent.mkdirs();
@@ -197,16 +204,16 @@ public class Class589
     }
     
     public static File Method2223() {
-        if (!Class589.Field2606.exists() || Class589.Field2606.listFiles() == null) {
-            Class589.Field2606.mkdir();
-            return Class589.Field2607;
+        if (!Config.KONAS_FOLDER.exists() || Config.KONAS_FOLDER.listFiles() == null) {
+            Config.KONAS_FOLDER.mkdir();
+            return Config.CONFIG;
         }
-        if (Class589.Field2608.listFiles() != null) {
-            final List<? super File> list = Arrays.stream(Class589.Field2608.listFiles()).filter(Class589::Method2246).collect((Collector<? super File, ?, List<? super File>>)Collectors.toList());
-            list.add(Class589.Field2607);
-            return list.stream().max(Comparator.comparingLong(File::lastModified)).orElse(Class589.Field2607);
+        if (Config.CONFIGS.listFiles() != null) {
+            final List<? super File> list = Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2246).collect((Collector<? super File, ?, List<? super File>>)Collectors.toList());
+            list.add(Config.CONFIG);
+            return list.stream().max(Comparator.comparingLong(File::lastModified)).orElse(Config.CONFIG);
         }
-        return Class589.Field2607;
+        return Config.CONFIG;
     }
     
     public static void Method2224(final Component class183) {
@@ -323,9 +330,9 @@ public class Class589
         PrintStream err;
         String x;
         try {
-            final File file = new File(Class589.Field2605.gameDir + File.separator + "Konas" + File.separator + "announcer");
-            final File file2 = new File(Class589.Field2605.gameDir + File.separator + "Konas" + File.separator + "announcer" + File.separator + "welcome.txt");
-            final File file3 = new File(Class589.Field2605.gameDir + File.separator + "Konas" + File.separator + "announcer" + File.separator + "goodbye.txt");
+            final File file = new File(Config.mc.mcDataDir + File.separator + "Konas" + File.separator + "announcer");
+            final File file2 = new File(Config.mc.mcDataDir + File.separator + "Konas" + File.separator + "announcer" + File.separator + "welcome.txt");
+            final File file3 = new File(Config.mc.mcDataDir + File.separator + "Konas" + File.separator + "announcer" + File.separator + "goodbye.txt");
             if (!file.exists()) {
                 file.mkdirs();
             }
@@ -390,11 +397,11 @@ public class Class589
         PrintStream err;
         String x;
         try {
-            if (!Class589.Field2609.exists()) {
-                Class589.Field2609.createNewFile();
+            if (!Config.ACCOUNTS.exists()) {
+                Config.ACCOUNTS.createNewFile();
             }
             final Gson create = new GsonBuilder().setPrettyPrinting().create();
-            final FileWriter fileWriter = new FileWriter(Class589.Field2609);
+            final FileWriter fileWriter = new FileWriter(Config.ACCOUNTS);
             final JsonArray jsonArray = new JsonArray();
             final Iterator<Class170> iterator = (Iterator<Class170>) NewGui.INSTANCE.Field1132.Field1739.iterator();
             while (iterator.hasNext()) {
@@ -445,7 +452,7 @@ public class Class589
     
     public static void Method2238(final Component class183) {
         if (class183 instanceof Class180) {
-            ((Class180)class183).Method672().forEach(Class589::Method2255);
+            ((Class180)class183).Method672().forEach(Config::Method2255);
         }
     }
     
@@ -494,14 +501,14 @@ public class Class589
     }
     
     static {
-        Class589.Field2605 = Minecraft.getMinecraft();
-        Class589.Field2606 = new File(Class589.Field2605.gameDir, "Konas");
-        Class589.Field2607 = new File(Class589.Field2606, "config.json");
-        Class589.Field2608 = new File(Class589.Field2606, "configs");
-        Class589.Field2609 = new File(Class589.Field2606, "accounts.json");
-        Class589.Field2610 = null;
-        Class589.Field2611 = new File(Class589.Field2605.gameDir + File.separator + "KonasConfig.json");
-        Class589.Field2612 = new File(Class589.Field2605.gameDir + File.separator + "accounts.json");
+        Config.mc = Minecraft.getMinecraft();
+        Config.KONAS_FOLDER = new File(Config.mc.mcDataDir, "Konas");
+        Config.CONFIG = new File(Config.KONAS_FOLDER, "config.json");
+        Config.CONFIGS = new File(Config.KONAS_FOLDER, "configs");
+        Config.ACCOUNTS = new File(Config.KONAS_FOLDER, "accounts.json");
+        Config.currentConfig = null;
+        Config.oldConfigs = new File(Config.mc.mcDataDir + File.separator + "KonasConfig.json");
+        Config.oldAccounts = new File(Config.mc.mcDataDir + File.separator + "accounts.json");
     }
     
     public static void Method2242(final JsonObject jsonObject) {
@@ -549,7 +556,7 @@ public class Class589
                 System.err.println("Friends Array not found!");
                 return;
             }
-            if (Config.overwriteFriends.getValue()) {
+            if (me.darki.konas.module.client.Config.overwriteFriends.getValue()) {
                 Class492.Method1986();
             }
             final Iterator iterator = asJsonArray.iterator();
@@ -582,7 +589,7 @@ public class Class589
     }
     
     public static void Method2250(final JsonObject jsonObject) throws NullPointerException {
-        final Element element = NewGui.INSTANCE.Field1136.Method2196().stream().filter(Class589::Method2269).findFirst().orElse(null);
+        final Element element = NewGui.INSTANCE.Field1136.Method2196().stream().filter(Config::Method2269).findFirst().orElse(null);
         if (element != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(element.Method2316());
             try {
@@ -619,14 +626,14 @@ public class Class589
                             ((ColorValue)setting.getValue()).Method780(asJsonArray.get(1).getAsBoolean());
                         }
                         else if (setting.getValue() instanceof Class443) {
-                            asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Class589::Method2240);
+                            asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Config::Method2240);
                             ((Class443)setting.getValue()).Method680();
                         }
                         else {
                             if (!(setting.getValue() instanceof Class531)) {
                                 continue;
                             }
-                            asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Class589::Method2271);
+                            asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Config::Method2271);
                         }
                     }
                 }
@@ -643,7 +650,7 @@ public class Class589
     public static void Method2251() {
         IOException ex;
         try {
-            final File parent = new File(Class589.Field2606, "blockaura");
+            final File parent = new File(Config.KONAS_FOLDER, "blockaura");
             final File file = new File(parent, "sign.txt");
             if (!parent.exists()) {
                 parent.mkdirs();
@@ -700,7 +707,7 @@ public class Class589
     }
     
     public static void Method2253(final JsonObject jsonObject) throws NullPointerException {
-        final Module module = ModuleManager.getModules().stream().filter(Class589::Method2248).findFirst().orElse(null);
+        final Module module = ModuleManager.getModules().stream().filter(Config::Method2248).findFirst().orElse(null);
         if (module != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(module.getName());
             try {
@@ -743,17 +750,17 @@ public class Class589
                                 ((ColorValue)setting.getValue()).Method781(asJsonArray.get(2).getAsInt());
                             }
                             else if (setting.getValue() instanceof Class443) {
-                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Class589::Method2234);
+                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Config::Method2234);
                                 ((Class443)setting.getValue()).Method680();
                             }
                             else if (setting.getValue() instanceof Class531) {
-                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Class589::Method2254);
+                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Config::Method2254);
                             }
                             else {
                                 if (!(setting.getValue() instanceof Class526)) {
                                     continue;
                                 }
-                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Class589::Method2260);
+                                asJsonObject.getAsJsonArray(setting.Method1183()).forEach(Config::Method2260);
                             }
                         }
                         catch (Exception ex) {}
@@ -812,7 +819,7 @@ public class Class589
     }
     
     public static void Method2259(final JsonObject jsonObject) throws NullPointerException {
-        final Frame class90 = NewGui.INSTANCE.Field1130.Method119().stream().filter(Class589::Method2237).findFirst().orElse(null);
+        final Frame class90 = NewGui.INSTANCE.Field1130.Method119().stream().filter(Config::Method2237).findFirst().orElse(null);
         if (class90 instanceof Class88) {
             return;
         }
@@ -970,11 +977,11 @@ public class Class589
         PrintStream err2;
         String x2;
         try {
-            if (!Class589.Field2609.exists()) {
+            if (!Config.ACCOUNTS.exists()) {
                 Method2232();
                 return;
             }
-            final FileReader fileReader = new FileReader(Class589.Field2609);
+            final FileReader fileReader = new FileReader(Config.ACCOUNTS);
             final JsonParser jsonParser = new JsonParser();
             JsonArray jsonArray = null;
             Label_0114: {
@@ -1028,7 +1035,7 @@ public class Class589
     
     public static void Method2268(final Component class183) {
         if (class183 instanceof Class201) {
-            ((Class201)class183).Method671().forEach(Class589::Method2224);
+            ((Class201)class183).Method671().forEach(Config::Method2224);
         }
     }
     
@@ -1037,7 +1044,7 @@ public class Class589
     }
     
     public static void Method2270() {
-        Method2219(Class589.Field2607);
+        Method2219(Config.CONFIG);
     }
     
     public static void Method2271(final Setting setting, final JsonElement jsonElement) {
@@ -1113,7 +1120,7 @@ public class Class589
     }
     
     public static void Method2274(final File file, final boolean b) {
-        if (!file.exists() || !Class589.Field2609.exists()) {
+        if (!file.exists() || !Config.ACCOUNTS.exists()) {
             Method2219(file);
         }
         Class202.Field678 = true;
@@ -1276,7 +1283,7 @@ public class Class589
                     err10.println(x10);
                 }
                 if (asJsonArray != null) {
-                    asJsonArray.forEach((Consumer)Class589::Method2272);
+                    asJsonArray.forEach((Consumer) Config::Method2272);
                 }
                 JsonObject jsonObject3 = null;
                 Label_1050: {
@@ -1294,22 +1301,22 @@ public class Class589
                 }
                 Class425.Method955((Class427)Class425.Field954.getValue());
                 if (asJsonArray2 != null) {
-                    asJsonArray2.forEach((Consumer)Class589::Method2229);
+                    asJsonArray2.forEach((Consumer) Config::Method2229);
                 }
                 if (asJsonArray3 != null) {
-                    asJsonArray3.forEach((Consumer)Class589::Method2227);
+                    asJsonArray3.forEach((Consumer) Config::Method2227);
                 }
                 if (asJsonArray5 != null) {
                     Class157.Method1707();
-                    asJsonArray5.forEach((Consumer)Class589::Method2222);
+                    asJsonArray5.forEach((Consumer) Config::Method2222);
                 }
                 if (asJsonArray6 != null) {
                     NewGui.INSTANCE.Field1138.Method765();
-                    asJsonArray6.forEach((Consumer)Class589::Method2239);
+                    asJsonArray6.forEach((Consumer) Config::Method2239);
                 }
                 if (asJsonArray4 != null) {
                     Class492.Method1986();
-                    asJsonArray4.forEach((Consumer)Class589::Method2233);
+                    asJsonArray4.forEach((Consumer) Config::Method2233);
                 }
                 if (jsonObject != null) {
                     Method2242(jsonObject);
@@ -1317,10 +1324,10 @@ public class Class589
                 if (jsonObject2 != null) {
                     Method2236(jsonObject2);
                 }
-                NewGui.INSTANCE.Field1130.Method119().forEach(Class589::Method2278);
+                NewGui.INSTANCE.Field1130.Method119().forEach(Config::Method2278);
                 if (asJsonArray7 != null) {
                     Class484.Method2070();
-                    asJsonArray7.forEach((Consumer)Class589::Method2267);
+                    asJsonArray7.forEach((Consumer) Config::Method2267);
                 }
                 if (jsonObject3 != null) {
                     Method2243(jsonObject3);
@@ -1332,7 +1339,7 @@ public class Class589
             }
             ex.printStackTrace();
         }
-        Class589.Field2610 = file;
+        Config.currentConfig = file;
         Method2276();
         Method2230();
         Method2221();
@@ -1358,7 +1365,7 @@ public class Class589
         PrintStream err;
         String x;
         try {
-            final File parent = new File(Class589.Field2606, "autogg");
+            final File parent = new File(Config.KONAS_FOLDER, "autogg");
             final File file = new File(parent, "gg.txt");
             final File file2 = new File(parent, "ez.txt");
             final File file3 = new File(parent, "log.txt");
@@ -1475,7 +1482,7 @@ public class Class589
         PrintStream err;
         String string;
         try {
-            final File parent = new File(Class589.Field2606, "spammer");
+            final File parent = new File(Config.KONAS_FOLDER, "spammer");
             if (!parent.exists()) {
                 parent.mkdirs();
             }
@@ -1483,7 +1490,7 @@ public class Class589
             if (b && !file.exists()) {
                 file.createNewFile();
             }
-            new Thread(Class589::Method2264).start();
+            new Thread(Config::Method2264).start();
             return;
         }
         catch (IOException ex) {
@@ -1495,10 +1502,10 @@ public class Class589
     
     public static void Method2278(final Frame class90) {
         if (class90 instanceof Class200) {
-            ((Class200)class90).Method706().forEach(Class589::Method2268);
+            ((Class200)class90).Method706().forEach(Config::Method2268);
         }
         else if (class90 instanceof CategoryFrame) {
-            ((CategoryFrame)class90).getComponents().forEach(Class589::Method2238);
+            ((CategoryFrame)class90).getComponents().forEach(Config::Method2238);
         }
     }
     
@@ -1507,7 +1514,7 @@ public class Class589
         String x;
         try {
             final JsonArray method2256 = Method2256(file);
-            if (Config.overwriteFriends.getValue()) {
+            if (me.darki.konas.module.client.Config.overwriteFriends.getValue()) {
                 final JsonObject jsonObject = new JsonObject();
                 jsonObject.add("Friends", (JsonElement)Method2245());
                 method2256.set(3, (JsonElement)jsonObject);

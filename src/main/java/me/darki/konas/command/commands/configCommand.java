@@ -1,14 +1,16 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.command.commands;
 
 import com.google.common.io.Files;
 import java.io.File;
 import java.util.List;
 
+import me.darki.konas.config.Config;
+import me.darki.konas.util.ChatUtil;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
-public class Class576
+public class configCommand
 extends Command {
     @Override
     public void Method174(String[] stringArray) {
@@ -18,21 +20,21 @@ extends Command {
                 return;
             }
         }
-        if (!Class589.Field2608.exists()) {
-            Class589.Field2608.mkdir();
+        if (!Config.CONFIGS.exists()) {
+            Config.CONFIGS.mkdir();
         }
         if (stringArray[1].equalsIgnoreCase("list")) {
-            List<File> list = Class589.Method2220();
+            List<File> list = Config.Method2220();
             ChatUtil.Method1033("(h)Configs:", new Object[0]);
             ChatUtil.Method1031();
-            if (Class589.Field2610.toPath() == Class589.Field2607.toPath()) {
+            if (Config.currentConfig.toPath() == Config.CONFIG.toPath()) {
                 ChatUtil.Method1033("(h)default", new Object[0]);
             } else {
                 ChatUtil.Method1033("default", new Object[0]);
             }
             if (list != null && !list.isEmpty()) {
                 for (File file : list) {
-                    if (file.toPath() == Class589.Field2610.toPath()) {
+                    if (file.toPath() == Config.currentConfig.toPath()) {
                         ChatUtil.Method1033("(h)%s", Files.getNameWithoutExtension(file.getName()));
                         continue;
                     }
@@ -42,10 +44,10 @@ extends Command {
             return;
         }
         if (stringArray[1].equalsIgnoreCase("current")) {
-            if (Class589.Field2610 == Class589.Field2607) {
+            if (Config.currentConfig == Config.CONFIG) {
                 ChatUtil.Method1033("Currently selected config: (h)default", new Object[0]);
             } else {
-                ChatUtil.Method1033("Currently selected config: (h)%s", Files.getNameWithoutExtension(Class589.Field2610.getName()));
+                ChatUtil.Method1033("Currently selected config: (h)%s", Files.getNameWithoutExtension(Config.currentConfig.getName()));
             }
             return;
         }
@@ -53,10 +55,10 @@ extends Command {
             ChatUtil.Method1034(this.Method191(), new Object[0]);
             return;
         }
-        File file = new File(Class589.Field2608, stringArray[2] + ".json");
+        File file = new File(Config.CONFIGS, stringArray[2] + ".json");
         boolean bl = stringArray[2].equalsIgnoreCase("default");
         if (bl) {
-            file = Class589.Field2607;
+            file = Config.CONFIG;
         }
         switch (stringArray[1].toLowerCase()) {
             case "create": {
@@ -64,9 +66,9 @@ extends Command {
                     ChatUtil.Method1034("Config (h)%s(r) already exists!", bl ? "default" : stringArray[2]);
                     return;
                 }
-                Class589.Method2219(Class589.Field2610);
-                Class589.Method2219(file);
-                Class589.Method2274(file, false);
+                Config.Method2219(Config.currentConfig);
+                Config.Method2219(file);
+                Config.Method2274(file, false);
                 ChatUtil.Method1033("Created Config (h)%s", bl ? "default" : stringArray[2]);
                 break;
             }
@@ -75,7 +77,7 @@ extends Command {
                     ChatUtil.Method1034("Config (h)%s(r) doesn't exist!", bl ? "default" : stringArray[2]);
                     return;
                 }
-                Class589.Method2219(file);
+                Config.Method2219(file);
                 ChatUtil.Method1033("Saved Config (h)%s", bl ? "default" : stringArray[2]);
                 break;
             }
@@ -86,8 +88,8 @@ extends Command {
                     ChatUtil.Method1034("Config (h)%s(r) doesn't exist!", objectArray);
                     return;
                 }
-                Class589.Method2219(Class589.Field2610);
-                Class589.Method2274(file, false);
+                Config.Method2219(Config.currentConfig);
+                Config.Method2274(file, false);
                 ChatUtil.Method1033("Loaded Config (h)%s", bl ? "default" : stringArray[2]);
                 break;
             }
@@ -96,7 +98,7 @@ extends Command {
                     ChatUtil.Method1034("Config (h)%s(r) doesn't exist!", bl ? "default" : stringArray[2]);
                     return;
                 }
-                Class589.Method2274(file, false);
+                Config.Method2274(file, false);
                 ChatUtil.Method1033("Forceloaded Config (h)%s", bl ? "default" : stringArray[2]);
                 break;
             }
@@ -109,7 +111,7 @@ extends Command {
                     ChatUtil.Method1034("Config (h)%s(r) doesn't exist!", stringArray[2]);
                     return;
                 }
-                if (Class589.Method2244(file)) {
+                if (Config.Method2244(file)) {
                     ChatUtil.Method1033("Deleted Config (h)%s", stringArray[2]);
                     break;
                 }
@@ -123,7 +125,7 @@ extends Command {
         }
     }
 
-    public Class576() {
+    public configCommand() {
         super("config", "Load different configs", new SyntaxChunk("<create/save/load/forceload/delete/list/current>"), new SyntaxChunk("<name/default>"));
     }
 }

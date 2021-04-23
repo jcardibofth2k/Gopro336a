@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import me.darki.konas.config.Config;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.module.render.BreadCrums;
 import net.minecraft.util.math.Vec3d;
@@ -141,7 +142,7 @@ public class Class577 extends Command
     }
     
     static {
-        Class577.Field490 = new File(Class589.Field2606, "breadcrums");
+        Class577.Field490 = new File(Config.KONAS_FOLDER, "breadcrums");
     }
     
     public Class577() {

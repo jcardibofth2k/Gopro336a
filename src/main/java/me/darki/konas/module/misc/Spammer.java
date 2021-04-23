@@ -11,10 +11,11 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class526;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.unremaped.Class589;
+import me.darki.konas.config.Config;
 
 public class Spammer
 extends Module {
+    //whoever renamed these fields and didn't refactor is a bitch on god
     public Setting<Float> delay = new Setting<>("Delay", 5.0f, 20.0f, 0.1f, 0.1f);
     public static Setting<Class526> spamFileList = new Setting<>("SpamFileList", new Class526());
     public Setting<Boolean> random = new Setting<>("Random", true);
@@ -89,7 +90,7 @@ extends Module {
         if (Field796 >= spamFileList.getValue().Method1225().size()) {
             Field796 = 0;
         }
-        Class589.Method2277(spamFileList.getValue().Method1225().get(Field796), true);
+        Config.Method2277(spamFileList.getValue().Method1225().get(Field796), true);
     }
 
     public Spammer() {

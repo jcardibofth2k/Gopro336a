@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import java.io.File;
 import java.util.List;
-import me.darki.konas.unremaped.Class261;
+import me.darki.konas.gui.protocol.GuiProtocolSlider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -19,8 +19,8 @@ extends GuiScreen {
     public void Method279(CallbackInfo ci) {
         IGuiScreen screen = (IGuiScreen) this;
         List<GuiButton> buttonList = screen.getButtonList();
-        if (!new File(Minecraft.getMinecraft().gameDir, "novia").exists()) {
-            buttonList.add(new Class261(1200, this.width / 2 + 4 + 76 + 76, this.height - 28, 105, 20));
+        if (!new File(Minecraft.getMinecraft().mcDataDir, "novia").exists()) {
+            buttonList.add(new GuiProtocolSlider(1200, this.width / 2 + 4 + 76 + 76, this.height - 28, 105, 20));
             screen.setButtonList(buttonList);
         }
     }
