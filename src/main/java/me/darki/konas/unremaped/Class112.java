@@ -107,8 +107,8 @@ extends Element {
         if (entityPlayer2 == null || entityPlayer2.isDead || entityPlayer2.getHealth() <= 0.0f) {
             return;
         }
-        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.color.getValue()).Method774(), false);
-        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.outline.getValue()).Method774(), true);
+        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2648.getValue()).Method774(), false);
+        Class112.Method2130(this.Method2320(), this.Method2324(), this.Method2320() + this.Method2329(), this.Method2324() + this.Method2322(), ((ColorValue)this.Field2649.getValue()).Method774(), true);
         Field2472 = true;
         PlayerUtil.Method1090((int)this.Method2320() + 50, (int)this.Method2324() + 100, 50, -30.0f, 0.0f, entityPlayer2, (Boolean)this.yaw.getValue(), (Boolean)this.pitch.getValue());
         Field2472 = false;
@@ -175,7 +175,7 @@ extends Element {
 
     public Class112() {
         super("Target", 200.0f, 600.0f, 200.0f, 105.0f);
-        ((ColorValue)this.color.getValue()).Method771(Integer.MIN_VALUE);
-        ((ColorValue)this.outline.getValue()).Method771(-805306368);
+        ((ColorValue)this.Field2648.getValue()).Method771(Integer.MIN_VALUE);
+        ((ColorValue)this.Field2649.getValue()).Method771(-805306368);
     }
 }

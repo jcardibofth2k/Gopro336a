@@ -29,6 +29,7 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiMove
 extends Module {
+  
     public Setting<Boolean> strict = new Setting<>("Strict", false);
     public ListenableSettingDecorator<Boolean> Field2006 = new ListenableSettingDecorator("Crouch", false, new Class356(this));
     public ArrayList<KeyBinding> Field2007 = new ArrayList();

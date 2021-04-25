@@ -104,7 +104,7 @@ extends Module {
                 n = i;
                 continue;
             }
-            if (!(itemStack.getItem() instanceof ItemTool) || !((f2 = ((IItemTool)itemStack.getItem()).getAttackDamage() + EnchantmentHelper.getModifierForCreature(itemStack, entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED)) > f)) continue;
+            if (!(itemStack.getItem() instanceof ItemTool) || !((f2 = ((IItemTool)itemStack.getItem()).Method262() + EnchantmentHelper.getModifierForCreature(itemStack, entity instanceof EntityLivingBase ? ((EntityLivingBase)entity).getCreatureAttribute() : EnumCreatureAttribute.UNDEFINED)) > f)) continue;
             f = f2;
             n = i;
         }

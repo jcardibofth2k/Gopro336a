@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={RenderGlobal.class})
 public interface IRenderGlobal {
     @Accessor(value="entityOutlineShader")
-    ShaderGroup getEntityOutlineShader();
+    ShaderGroup Method73();
 
     @Accessor(value="damagedBlocks")
-    Map<Integer, DestroyBlockProgress> getDamagedBlocks();
+    Map<Integer, DestroyBlockProgress> Method74();
 }

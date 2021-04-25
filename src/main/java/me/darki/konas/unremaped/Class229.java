@@ -96,9 +96,9 @@ extends Module {
             float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
             int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
             ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-            double d = this.Field2621.x - iRenderManager.getRenderPosX();
-            double d2 = this.Field2621.y - iRenderManager.getRenderPosY();
-            double d3 = this.Field2621.z - iRenderManager.getRenderPosZ();
+            double d = this.Field2621.x - iRenderManager.Method69();
+            double d2 = this.Field2621.y - iRenderManager.Method70();
+            double d3 = this.Field2621.z - iRenderManager.Method71();
             GL11.glShadeModel((int)7425);
             GlStateManager.disableCull();
             GL11.glLineWidth((float)((Float)width.getValue()).floatValue());

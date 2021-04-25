@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={Path.class})
 public interface IPath {
     @Accessor(value="points")
-    PathPoint[] getPoints();
+    PathPoint[] Method222();
 }

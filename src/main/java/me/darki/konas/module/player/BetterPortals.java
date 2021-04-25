@@ -44,7 +44,7 @@ extends Module {
             return;
         }
         if (allowGuis.getValue().booleanValue()) {
-            ((IEntity) BetterPortals.mc.player).setInPortal(false);
+            ((IEntity) BetterPortals.mc.player).Method44(false);
         }
         if (noRender.getValue().booleanValue()) {
             GuiIngameForge.renderPortal = false;

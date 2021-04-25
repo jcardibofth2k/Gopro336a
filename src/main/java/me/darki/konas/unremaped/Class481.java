@@ -56,7 +56,7 @@ extends Module {
             float f3 = ((Float)this.gap.getValue()).floatValue();
             float f4 = Math.max(((Float)this.width.getValue()).floatValue(), 0.5f);
             float f5 = ((Float)this.size.getValue()).floatValue();
-            float f6 = ((ITimer)((IMinecraft)mc).getTimer()).getTickLength();
+            float f6 = ((ITimer)((IMinecraft)mc).Method56()).Method96();
             Class481.Method2075(f - (f3 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.motionGap.getValue()).floatValue()) - (f5 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.motionSize.getValue()).floatValue()), f2 - (f4 += Interpolation.Method361(this.Field2378, this.Field2377, Math.min((float)(System.currentTimeMillis() - this.Field2376) / f6, 1.0f)) * ((Float)this.motionWidth.getValue()).floatValue()) / 2.0f, f - f3, f2 + f4 / 2.0f, ((ColorValue)this.color.getValue()).Method774());
             Class481.Method2075(f + f3 + f5, f2 - f4 / 2.0f, f + f3, f2 + f4 / 2.0f, ((ColorValue)this.color.getValue()).Method774());
             Class481.Method2075(f - f4 / 2.0f, f2 + f3 + f5, f + f4 / 2.0f, f2 + f3, ((ColorValue)this.color.getValue()).Method774());

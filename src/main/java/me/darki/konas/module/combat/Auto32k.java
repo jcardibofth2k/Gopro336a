@@ -159,9 +159,9 @@ extends Module {
         float f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
         int n2 = Color.getHSBColor(f, fArray[1], fArray[2]).getRGB();
         ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-        double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)class89.Method436() - iRenderManager.getRenderPosX();
-        double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)class89.Method436() - iRenderManager.getRenderPosY();
-        double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)class89.Method436() - iRenderManager.getRenderPosZ();
+        double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
+        double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
+        double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
         GL11.glLineWidth(width.getValue().floatValue());
         GL11.glBegin(1);
         for (n = 0; n <= 360; ++n) {
@@ -178,7 +178,7 @@ extends Module {
             } else {
                 GL11.glColor4f((float) color.getValue().Method769() / 255.0f, (float) color.getValue().Method770() / 255.0f, (float) color.getValue().Method779() / 255.0f, (float) color.getValue().Method782() / 255.0f);
             }
-            if (!combine.getValue().booleanValue() || this.Method1521(entity, arrayList.get(n).x + iRenderManager.getRenderPosX(), entity.posY, arrayList.get(n).z + iRenderManager.getRenderPosZ())) {
+            if (!combine.getValue().booleanValue() || this.Method1521(entity, arrayList.get(n).x + iRenderManager.Method69(), entity.posY, arrayList.get(n).z + iRenderManager.Method71())) {
                 GL11.glVertex3d(arrayList.get(n).x, arrayList.get(n).y, arrayList.get(n).z);
                 GL11.glVertex3d(arrayList.get(n + 1).x, arrayList.get(n + 1).y, arrayList.get(n + 1).z);
             }

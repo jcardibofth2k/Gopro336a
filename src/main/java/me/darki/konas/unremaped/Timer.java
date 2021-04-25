@@ -31,7 +31,7 @@ extends Module {
         }
         if (((Boolean)this.tpsSync.getValue()).booleanValue()) {
             NewGui.INSTANCE.Field1134.Method748(true);
-            this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).getTimer()).getTickLength() * 100.0f) / 100.0f + "");
+            this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).Method56()).Method96() * 100.0f) / 100.0f + "");
         } else {
             NewGui.INSTANCE.Field1134.Method748(false);
             float f = ((Float)this.timerSpeed.getValue()).floatValue();
@@ -44,7 +44,7 @@ extends Module {
                 }
             }
             NewGui.INSTANCE.Field1134.Method746(this, 5, f);
-            this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).getTimer()).getTickLength() * 100.0f) / 100.0f + "");
+            this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).Method56()).Method96() * 100.0f) / 100.0f + "");
             ++this.Field2567;
         }
     }

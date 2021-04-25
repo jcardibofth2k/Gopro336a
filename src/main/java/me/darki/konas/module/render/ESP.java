@@ -2,6 +2,7 @@ package me.darki.konas.module.render;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,6 +15,7 @@ import me.darki.konas.mixin.mixins.IShaderGroup;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.client.NewGui;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -62,7 +64,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
+import me.darki.konas.*;
 
 public class ESP
 extends Module {
@@ -70,7 +75,7 @@ extends Module {
     public static Setting<Class486> mode = new Setting<>("Mode", Class486.SHADER).setParentSetting(entities);
     public static Setting<Boolean> skeleton = new Setting<>("Skeleton", false).setParentSetting(entities);
     public static Setting<Boolean> csgo = new Setting<>("Csgo", false).setParentSetting(entities);
-    public static Setting<Float> width = new Setting<>("Width", Float.valueOf(5.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(entities);
+    public static Setting<Float> width = new Setting<>("Width", 5.0f, 10.0f, 0.1f, 0.1f).setParentSetting(entities);
     public static Setting<Double> quality = new Setting<>("Quality", 2.0, 10.0, 0.1, 0.1).setParentSetting(entities).visibleIf(ESP::Method394);
     public static Setting<Boolean> shaderOutline = new Setting<>("ShaderOutline", true).setParentSetting(entities).visibleIf(ESP::Method980);
     public static Setting<Boolean> shaderFade = new Setting<>("ShaderFade", true).setParentSetting(entities).visibleIf(ESP::Method388);
@@ -196,7 +201,7 @@ extends Module {
     }
 
     public ESP() {
-        ("ESP", 0, Category.RENDER, new String[0])
+        super("ESP", 0, Category.RENDER, new String[0]);
     }
 
     public static void Method1318(Entity entity) {
@@ -273,7 +278,7 @@ extends Module {
         GL11.glDisable(2929);
         GL11.glDisable(2896);
         GL11.glDepthMask(false);
-        ((IEntityRenderer) ESP.mc.entityRenderer).setupCameraTransform(mc.getRenderPartialTicks(), 0);
+        ((IEntityRenderer) ESP.mc.entityRenderer).Method1908(mc.getRenderPartialTicks(), 0);
         GL11.glMatrixMode(5888);
         this.Field1340.bindFramebuffer(false);
         GL11.glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -352,7 +357,7 @@ extends Module {
             GlStateManager.color(1.0f, 1.0f, 1.0f);
             GlStateManager.pushMatrix();
             Vec3d vec3d = new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).add(new Vec3d((entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()));
-            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), vec3d.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), vec3d.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d.z - ((IRenderManager)mc.getRenderManager()).Method71());
             GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
             GlStateManager.rotate(-ESP.mc.getRenderManager().playerViewY, 0.0f, 1.0f, 0.0f);
             Minecraft minecraft = mc;
@@ -420,24 +425,24 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
-        AxisAlignedBB axisAlignedBB;
+    public void Method139(final Class89 class89) {
         if (ESP.mc.world == null || ESP.mc.player == null) {
             return;
         }
-        if (Field1311.getValue().booleanValue()) {
+        if (ESP.Field1311.getValue()) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
             GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
-            for (Entity object : ESP.mc.world.loadedEntityList) {
-                if (!(object instanceof EntityEnderPearl) || !((double)mc.getRenderViewEntity().getDistance(object) < 250.0)) continue;
-                Class516.Method1280(object, Field1312.getValue().Method774(), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth(1.0f);
-                Class516.Method1257(object, Field1312.getValue().Method774(), class89.Method436());
+            for (final Entity entity : ESP.mc.world.loadedEntityList) {
+                if (entity instanceof EntityEnderPearl && ESP.mc.getRenderViewEntity().getDistance(entity) < 250.0) {
+                    Class516.Method1280(entity, (ESP.Field1312.getValue()).Method774(), class89.Method436());
+                    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                    GlStateManager.glLineWidth(1.0f);
+                    Class516.Method1257(entity, (ESP.Field1312.getValue()).Method774(), class89.Method436());
+                }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
@@ -447,26 +452,27 @@ extends Module {
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (csgo.getValue().booleanValue()) {
-            if (mc.getRenderManager() == null) {
+        if (ESP.csgo.getValue()) {
+            if (ESP.mc.getRenderManager() == null) {
                 return;
             }
             ESP.mc.world.loadedEntityList.stream().filter(ESP::Method395).forEach(this::Method1322);
             GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         }
-        if (mode.getValue() == Class486.BOX) {
+        if (ESP.mode.getValue() == Class486.BOX) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
             GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
-            for (Entity entity : ESP.mc.world.loadedEntityList) {
-                if (entity == ESP.mc.player || !this.Method386(entity)) continue;
-                Class516.Method1280(entity, this.Method1315(entity), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth(1.0f);
-                Class516.Method1257(entity, this.Method1315(entity), class89.Method436());
+            for (final Entity entity2 : ESP.mc.world.loadedEntityList) {
+                if (entity2 != ESP.mc.player && this.Method386(entity2)) {
+                    Class516.Method1280(entity2, this.Method1315(entity2), class89.Method436());
+                    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                    GlStateManager.glLineWidth(1.0f);
+                    Class516.Method1257(entity2, this.Method1315(entity2), class89.Method436());
+                }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
@@ -476,19 +482,20 @@ extends Module {
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (Field1313.getValue().booleanValue()) {
+        if (ESP.Field1313.getValue()) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
             GlStateManager.disableTexture2D();
             GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
-            for (Entity entity : ESP.mc.world.loadedEntityList) {
-                if (entity == ESP.mc.player || !(entity instanceof EntityItem)) continue;
-                Class516.Method1280(entity, this.Method1315(entity), class89.Method436());
-                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                GlStateManager.glLineWidth(1.0f);
-                Class516.Method1257(entity, this.Method1315(entity), class89.Method436());
+            for (final Entity entity3 : ESP.mc.world.loadedEntityList) {
+                if (entity3 != ESP.mc.player && entity3 instanceof EntityItem) {
+                    Class516.Method1280(entity3, this.Method1315(entity3), class89.Method436());
+                    GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                    GlStateManager.glLineWidth(1.0f);
+                    Class516.Method1257(entity3, this.Method1315(entity3), class89.Method436());
+                }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
@@ -498,22 +505,21 @@ extends Module {
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (Field1324.getValue().booleanValue()) {
-            int n;
-            if (Field1325.getValue() == Class483.LINE) {
+        if (ESP.Field1324.getValue()) {
+            if (ESP.Field1325.getValue() == Class483.LINE) {
                 GlStateManager.pushMatrix();
                 Class516.Method1289();
                 GlStateManager.enableBlend();
-                GlStateManager.glLineWidth(Field1331.getValue().floatValue());
+                GlStateManager.glLineWidth((float)ESP.Field1331.getValue());
                 GlStateManager.disableTexture2D();
                 GlStateManager.depthMask(false);
                 GlStateManager.disableDepth();
                 GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-                for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = new AxisAlignedBB(blockPos.getX(), blockPos.getY(), blockPos.getZ(), blockPos.getX() + 1, blockPos.getY(), blockPos.getZ() + 1);
-                    n = Field1327.getValue().Method774();
+                for (final BlockPos blockPos : this.Field1337) {
+                    final AxisAlignedBB axisAlignedBB = new AxisAlignedBB((double)blockPos.getX(), (double)blockPos.getY(), (double)blockPos.getZ(), (double)(blockPos.getX() + 1), (double)blockPos.getY(), (double)(blockPos.getZ() + 1));
+                    int n = (ESP.Field1327.getValue()).Method774();
                     if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = Field1329.getValue().Method774();
+                        n = (ESP.Field1329.getValue()).Method774();
                     }
                     Class516.Method1281(axisAlignedBB, n);
                 }
@@ -524,44 +530,46 @@ extends Module {
                 GlStateManager.disableBlend();
                 Class516.Method1261();
                 GlStateManager.popMatrix();
-            } else if (Field1325.getValue() == Class483.OUTLINE) {
-                for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                    n = Field1327.getValue().Method774();
-                    if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = Field1329.getValue().Method774();
+            }
+            else if (ESP.Field1325.getValue() == Class483.OUTLINE) {
+                for (final BlockPos blockPos2 : this.Field1337) {
+                    final AxisAlignedBB offset = ESP.mc.world.getBlockState(blockPos2).getBoundingBox((IBlockAccess)ESP.mc.world, blockPos2).offset(blockPos2);
+                    final AxisAlignedBB offset2 = offset.setMaxY(offset.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    int n2 = (ESP.Field1327.getValue()).Method774();
+                    if (ESP.mc.world.getBlockState(blockPos2.up()).getBlock() == Blocks.AIR) {
+                        n2 = (ESP.Field1329.getValue()).Method774();
                     }
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, n, Field1331.getValue().floatValue());
+                    Class523.Method1215(offset2, n2, (float)ESP.Field1331.getValue());
                     Class523.Method1214();
                 }
-            } else {
-                for (BlockPos blockPos : this.Field1337) {
-                    axisAlignedBB = ESP.mc.world.getBlockState(blockPos).getBoundingBox(ESP.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.setMaxY(axisAlignedBB.minY + Field1332.getValue()).offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                    n = Field1326.getValue().Method774();
-                    if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = Field1328.getValue().Method774();
+            }
+            else {
+                for (final BlockPos blockPos3 : this.Field1337) {
+                    final AxisAlignedBB offset3 = ESP.mc.world.getBlockState(blockPos3).getBoundingBox((IBlockAccess)ESP.mc.world, blockPos3).offset(blockPos3);
+                    final AxisAlignedBB offset4 = offset3.setMaxY(offset3.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    int n3 = (ESP.Field1326.getValue()).Method774();
+                    if (ESP.mc.world.getBlockState(blockPos3.up()).getBlock() == Blocks.AIR) {
+                        n3 = (ESP.Field1328.getValue()).Method774();
                     }
                     Class523.Method1216();
-                    Class523.Method1217(axisAlignedBB, n);
+                    Class523.Method1217(offset4, n3);
                     Class523.Method1214();
-                    n = Field1327.getValue().Method774();
-                    if (ESP.mc.world.getBlockState(blockPos.up()).getBlock() == Blocks.AIR) {
-                        n = Field1329.getValue().Method774();
+                    int n4 = (ESP.Field1327.getValue()).Method774();
+                    if (ESP.mc.world.getBlockState(blockPos3.up()).getBlock() == Blocks.AIR) {
+                        n4 = (ESP.Field1329.getValue()).Method774();
                     }
                     Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, n, Field1331.getValue().floatValue());
+                    Class523.Method1215(offset4, n4, (float)ESP.Field1331.getValue());
                     Class523.Method1214();
                 }
             }
         }
-        if (Field1333.getValue().booleanValue()) {
-            if (mc.getRenderViewEntity() == null) {
+        if (ESP.Field1333.getValue()) {
+            if (ESP.mc.getRenderViewEntity() == null) {
                 return;
             }
-            Field1336.setPosition(ESP.mc.getRenderViewEntity().posX, ESP.mc.getRenderViewEntity().posY, ESP.mc.getRenderViewEntity().posZ);
+            ESP.Field1336.setPosition(ESP.mc.getRenderViewEntity().posX, ESP.mc.getRenderViewEntity().posY, ESP.mc.getRenderViewEntity().posZ);
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.disableTexture2D();
@@ -569,14 +577,11 @@ extends Module {
             GlStateManager.disableDepth();
             GlStateManager.depthMask(false);
             GlStateManager.glLineWidth(2.0f);
-            for (Class479 class479 : this.Field1338) {
-                axisAlignedBB = new AxisAlignedBB(class479.Method2109(), 0.0, class479.Method2107(), class479.Method2109() + 16, 0.0, class479.Method2107() + 16);
+            for (final Class479 class90 : this.Field1338) {
+                final AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB((double)class90.Method2109(), 0.0, (double)class90.Method2107(), (double)(class90.Method2109() + 16), 0.0, (double)(class90.Method2107() + 16));
                 GlStateManager.pushMatrix();
-                if (Field1336.isBoundingBoxInFrustum(axisAlignedBB)) {
-                    double d = ESP.mc.getRenderViewEntity().lastTickPosX + (ESP.mc.getRenderViewEntity().posX - ESP.mc.getRenderViewEntity().lastTickPosX) * (double)class89.Method436();
-                    double d2 = ESP.mc.getRenderViewEntity().lastTickPosY + (ESP.mc.getRenderViewEntity().posY - ESP.mc.getRenderViewEntity().lastTickPosY) * (double)class89.Method436();
-                    double d3 = ESP.mc.getRenderViewEntity().lastTickPosZ + (ESP.mc.getRenderViewEntity().posZ - ESP.mc.getRenderViewEntity().lastTickPosZ) * (double)class89.Method436();
-                    Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, Field1334.getValue().Method774());
+                if (ESP.Field1336.isBoundingBoxInFrustum(axisAlignedBB2)) {
+                    Class502.Method1414(axisAlignedBB2.offset(-(ESP.mc.getRenderViewEntity().lastTickPosX + (ESP.mc.getRenderViewEntity().posX - ESP.mc.getRenderViewEntity().lastTickPosX) * class89.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosY + (ESP.mc.getRenderViewEntity().posY - ESP.mc.getRenderViewEntity().lastTickPosY) * class89.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosZ + (ESP.mc.getRenderViewEntity().posZ - ESP.mc.getRenderViewEntity().lastTickPosZ) * class89.Method436())), 3, (ESP.Field1334.getValue()).Method774());
                 }
                 GlStateManager.popMatrix();
             }
@@ -588,24 +593,25 @@ extends Module {
             Class516.Method1261();
             GlStateManager.popMatrix();
         }
-        if (!Field1316.getValue().booleanValue()) {
+        if (!(boolean)ESP.Field1316.getValue()) {
             return;
         }
-        if (Field1317.getValue() == Class483.LINE) {
+        if (ESP.Field1317.getValue() == Class483.LINE) {
             GlStateManager.pushMatrix();
             Class516.Method1289();
             GlStateManager.enableBlend();
-            GlStateManager.glLineWidth(Field1318.getValue().floatValue());
+            GlStateManager.glLineWidth((float)ESP.Field1318.getValue());
             GlStateManager.disableTexture2D();
             GlStateManager.depthMask(false);
             GlStateManager.disableDepth();
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-            for (TileEntity tileEntity : ESP.mc.world.loadedTileEntityList) {
-                axisAlignedBB = tileEntity.getPos();
-                IBlockState iBlockState = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB);
-                Integer n = this.Method1331(tileEntity);
-                if (n == null) continue;
-                Class516.Method1285(iBlockState.getSelectedBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB), new Color(n));
+            for (final TileEntity tileEntity : ESP.mc.world.loadedTileEntityList) {
+                final BlockPos pos = tileEntity.getPos();
+                final IBlockState blockState = ESP.mc.world.getBlockState(pos);
+                final Integer method1331 = this.Method1331(tileEntity);
+                if (method1331 != null) {
+                    Class516.Method1285(blockState.getSelectedBoundingBox((World)ESP.mc.world, pos), new Color(method1331));
+                }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
             GlStateManager.enableDepth();
@@ -614,30 +620,32 @@ extends Module {
             GlStateManager.disableBlend();
             Class516.Method1261();
             GlStateManager.popMatrix();
-        } else if (Field1317.getValue() == Class483.OUTLINE) {
-            for (TileEntity tileEntity : ESP.mc.world.loadedTileEntityList) {
-                axisAlignedBB = tileEntity.getPos();
-                Integer n = this.Method1331(tileEntity);
-                if (n == null) continue;
-                AxisAlignedBB axisAlignedBB2 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
-                axisAlignedBB2 = axisAlignedBB2.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                Class523.Method1216();
-                Class523.Method1215(axisAlignedBB2, n, Field1318.getValue().floatValue());
-                Class523.Method1214();
+        }
+        else if (ESP.Field1317.getValue() == Class483.OUTLINE) {
+            for (final TileEntity tileEntity2 : ESP.mc.world.loadedTileEntityList) {
+                final BlockPos pos2 = tileEntity2.getPos();
+                final Integer method1332 = this.Method1331(tileEntity2);
+                if (method1332 != null) {
+                    final AxisAlignedBB offset5 = ESP.mc.world.getBlockState(pos2).getBoundingBox((IBlockAccess)ESP.mc.world, pos2).offset(pos2).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    Class523.Method1216();
+                    Class523.Method1215(offset5, method1332, (float)ESP.Field1318.getValue());
+                    Class523.Method1214();
+                }
             }
-        } else {
-            for (TileEntity tileEntity : ESP.mc.world.loadedTileEntityList) {
-                axisAlignedBB = tileEntity.getPos();
-                Integer n = this.Method1331(tileEntity);
-                if (n == null) continue;
-                AxisAlignedBB axisAlignedBB3 = ESP.mc.world.getBlockState((BlockPos)axisAlignedBB).getBoundingBox(ESP.mc.world, (BlockPos)axisAlignedBB).offset((BlockPos)axisAlignedBB);
-                axisAlignedBB3 = axisAlignedBB3.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                Class523.Method1216();
-                Class523.Method1217(axisAlignedBB3, n);
-                Class523.Method1214();
-                Class523.Method1216();
-                Class523.Method1215(axisAlignedBB3, n, Field1318.getValue().floatValue());
-                Class523.Method1214();
+        }
+        else {
+            for (final TileEntity tileEntity3 : ESP.mc.world.loadedTileEntityList) {
+                final BlockPos pos3 = tileEntity3.getPos();
+                final Integer method1333 = this.Method1331(tileEntity3);
+                if (method1333 != null) {
+                    final AxisAlignedBB offset6 = ESP.mc.world.getBlockState(pos3).getBoundingBox((IBlockAccess)ESP.mc.world, pos3).offset(pos3).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    Class523.Method1216();
+                    Class523.Method1217(offset6, method1333);
+                    Class523.Method1214();
+                    Class523.Method1216();
+                    Class523.Method1215(offset6, method1333, (float)ESP.Field1318.getValue());
+                    Class523.Method1214();
+                }
             }
         }
     }
@@ -709,7 +717,7 @@ extends Module {
         GL11.glEnable(2848);
         GL11.glLineWidth(2.0f);
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), d2 - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), d3 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).Method69(), d2 - ((IRenderManager)mc.getRenderManager()).Method70(), d3 - ((IRenderManager)mc.getRenderManager()).Method71());
         float f2 = entityPlayer.prevRenderYawOffset + (entityPlayer.renderYawOffset - entityPlayer.prevRenderYawOffset) * f;
         GL11.glRotatef(-f2, 0.0f, 1.0f, 0.0f);
         float f3 = entityPlayer.isSneaking() ? 0.6f : 0.75f;
@@ -955,37 +963,43 @@ extends Module {
     }
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void Method462(TickEvent tickEvent){
         if (ESP.mc.world == null || ESP.mc.player == null) {
             return;
         }
         if (mode.getValue().equals(Class486.GLOW)) {
-            ((IShaderGroup)((IRenderGlobal) ESP.mc.renderGlobal).getEntityOutlineShader()).getShadersList().forEach(ESP::Method1334);
-            for (Object object : ESP.mc.world.loadedEntityList) {
-                if (object.getTeam() == null) {
-                    this.Method1329((Entity)object, this.Method1333((Entity)object), "");
-                    continue;
+            ((IShaderGroup)((IRenderGlobal)ESP.mc.renderGlobal).Method73()).Method1220().forEach(ESP::Method1334);
+            for (final Entity entity : ESP.mc.world.loadedEntityList) {
+                if (entity.getTeam() == null) {
+                    this.Method1329(entity, this.Method1333(entity), "");
                 }
-                this.Method1329((Entity)object, this.Method1333((Entity)object), object.getTeam().getName());
-            }
-        } else {
-            for (Object object : ESP.mc.world.loadedEntityList) {
-                object.setGlowing(false);
+                else {
+                    this.Method1329(entity, this.Method1333(entity), entity.getTeam().getName());
+                }
             }
         }
-        if (Field1324.getValue().booleanValue()) {
+        else {
+            final Iterator<Entity> iterator2 = ESP.mc.world.loadedEntityList.iterator();
+            while (iterator2.hasNext()) {
+                iterator2.next().setGlowing(false);
+            }
+        }
+        if (ESP.Field1324.getValue()) {
             this.Field1337.clear();
-            if (ESP.mc.player.posY < (double) Field1330.getValue().intValue()) {
-                Object object;
-                Iterable iterable = BlockPos.getAllInBox(new BlockPos(ESP.mc.player.posX - 6.0, 0.0, ESP.mc.player.posZ - 6.0), new BlockPos(ESP.mc.player.posX + 6.0, 0.0, ESP.mc.player.posZ + 6.0));
-                object = iterable.iterator();
-                while (object.hasNext()) {
-                    IBlockState iBlockState;
-                    IBlockState iBlockState2;
-                    BlockPos blockPos = (BlockPos)object.next();
-                    IBlockState iBlockState3 = ESP.mc.world.getBlockState(blockPos);
-                    if (iBlockState3.getBlock() == Blocks.BEDROCK || iBlockState3.getBlock() == Blocks.END_PORTAL_FRAME || (iBlockState2 = ESP.mc.world.getBlockState(blockPos.add(0, 1, 0))).getBlock() == Blocks.BEDROCK || iBlockState2.getBlock() == Blocks.END_PORTAL_FRAME || (iBlockState = ESP.mc.world.getBlockState(blockPos.add(0, 2, 0))).getBlock() == Blocks.BEDROCK || iBlockState.getBlock() == Blocks.END_PORTAL_FRAME) continue;
-                    this.Field1337.add(blockPos);
+            if (ESP.mc.player.posY < (int)ESP.Field1330.getValue()) {
+                for (final BlockPos e : BlockPos.getAllInBox(new BlockPos(ESP.mc.player.posX - 6.0, 0.0, ESP.mc.player.posZ - 6.0), new BlockPos(ESP.mc.player.posX + 6.0, 0.0, ESP.mc.player.posZ + 6.0))) {
+                    final IBlockState blockState = ESP.mc.world.getBlockState(e);
+                    if (blockState.getBlock() != Blocks.BEDROCK && blockState.getBlock() != Blocks.END_PORTAL_FRAME) {
+                        final IBlockState blockState2 = ESP.mc.world.getBlockState(e.add(0, 1, 0));
+                        if (blockState2.getBlock() == Blocks.BEDROCK || blockState2.getBlock() == Blocks.END_PORTAL_FRAME) {
+                            continue;
+                        }
+                        final IBlockState blockState3 = ESP.mc.world.getBlockState(e.add(0, 2, 0));
+                        if (blockState3.getBlock() == Blocks.BEDROCK || blockState3.getBlock() == Blocks.END_PORTAL_FRAME) {
+                            continue;
+                        }
+                        this.Field1337.add(e);
+                    }
                 }
             }
         }

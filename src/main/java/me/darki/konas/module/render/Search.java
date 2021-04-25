@@ -70,7 +70,7 @@ extends Module {
         GL11.glColor4f((float)(n >> 16 & 0xFF) / 255.0f, (float)(n >> 8 & 0xFF) / 255.0f, (float)(n & 0xFF) / 255.0f, (float)(n >> 24 & 0xFF) / 255.0f);
         GlStateManager.disableLighting();
         GL11.glLoadIdentity();
-        ((IEntityRenderer) Search.mc.entityRenderer).orientCamera(mc.getRenderPartialTicks());
+        ((IEntityRenderer) Search.mc.entityRenderer).Method1909(mc.getRenderPartialTicks());
         GL11.glEnable(2848);
         GL11.glBegin(1);
         GL11.glVertex3d(d, d2, d3);
@@ -129,7 +129,7 @@ extends Module {
                     continue;
                 }
                 blockPos = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Search.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Search.mc.player.rotationYaw)));
-                Search.Method732(blockPos.x, blockPos.y + (double) Search.mc.player.getEyeHeight(), blockPos.z, class448.Field615 - ((IRenderManager)mc.getRenderManager()).getRenderPosX() + 0.5, class448.Field616 - ((IRenderManager)mc.getRenderManager()).getRenderPosY() + 0.5, class448.Field617 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ() + 0.5, color.getValue().Method774());
+                Search.Method732(blockPos.x, blockPos.y + (double) Search.mc.player.getEyeHeight(), blockPos.z, class448.Field615 - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, class448.Field616 - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, class448.Field617 - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, color.getValue().Method774());
             }
         }
     }

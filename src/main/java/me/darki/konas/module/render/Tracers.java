@@ -135,7 +135,7 @@ extends Module {
         for (Entity entity : Tracers.mc.world.loadedEntityList) {
             int n;
             if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= range.getValue().floatValue())) continue;
-            Vec3d vec3d = Class502.Method1393(entity, class89.Method436()).subtract(((IRenderManager)mc.getRenderManager()).getRenderPosX(), ((IRenderManager)mc.getRenderManager()).getRenderPosY(), ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+            Vec3d vec3d = Class502.Method1393(entity, class89.Method436()).subtract(((IRenderManager)mc.getRenderManager()).Method69(), ((IRenderManager)mc.getRenderManager()).Method70(), ((IRenderManager)mc.getRenderManager()).Method71());
             GL11.glBlendFunc(770, 771);
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.glLineWidth(width.getValue().floatValue());
@@ -149,7 +149,7 @@ extends Module {
             GlStateManager.color(1.0f, 1.0f, 1.0f);
             boolean bl = Tracers.mc.gameSettings.viewBobbing;
             Tracers.mc.gameSettings.viewBobbing = false;
-            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(class89.Method436(), 0);
+            ((IEntityRenderer)Tracers.mc.entityRenderer).Method1908(class89.Method436(), 0);
             Vec3d vec3d2 = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Tracers.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Tracers.mc.player.rotationYaw)));
             if (showTargets.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
                 int n2 = NewGui.INSTANCE.Field1133.Method428(entity);
@@ -160,7 +160,7 @@ extends Module {
             Class502.Method1408((float)vec3d2.x, (float)vec3d2.y + Tracers.mc.player.getEyeHeight(), (float)vec3d2.z, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z, width.getValue().floatValue(), n);
             Class502.Method1408((float)vec3d.x, (float)vec3d.y, (float)vec3d.z, (float)vec3d.x, (float)vec3d.y + entity.getEyeHeight(), (float)vec3d.z, width.getValue().floatValue(), n);
             Tracers.mc.gameSettings.viewBobbing = bl;
-            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(class89.Method436(), 0);
+            ((IEntityRenderer)Tracers.mc.entityRenderer).Method1908(class89.Method436(), 0);
             GlStateManager.enableCull();
             GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();

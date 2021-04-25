@@ -189,7 +189,7 @@ extends Module {
                 }
                 if (blockPos != null) {
                     axisAlignedBB = PistonAura.mc.world.getBlockState(blockPos).getBoundingBox(PistonAura.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+                    axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                     Class523.Method1216();
                     Class523.Method1217(axisAlignedBB, colorC.getValue().Method774());
                     Class523.Method1214();
@@ -218,7 +218,7 @@ extends Module {
                     }
                 }
                 if (blockPos != null) {
-                    blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+                    blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71());
                     Class523.Method1216();
                     Class523.Method1217((AxisAlignedBB)blockPos, colorF.getValue().Method774());
                     Class523.Method1214();
@@ -232,7 +232,7 @@ extends Module {
             axisAlignedBB = null;
             Vec3d vec3d = null;
             BlockPos blockPos2 = this.Field373.offset(this.Field374, 2);
-            Vec3d vec3d2 = new Vec3d((double)blockPos2.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), (double)(blockPos2.getY() + 1) - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), (double)blockPos2.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+            Vec3d vec3d2 = new Vec3d((double)blockPos2.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).Method69(), (double)(blockPos2.getY() + 1) - ((IRenderManager)mc.getRenderManager()).Method70(), (double)blockPos2.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).Method71());
             switch (this.Field374) {
                 case NORTH: {
                     blockPos = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z - 0.5);

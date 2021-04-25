@@ -55,7 +55,7 @@ public class Logger {
         if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
             return;
         }
-        if (Class54.Field201 && Class191.oneLine.getValue().booleanValue()) {
+        if (Class54.Field201 && Class191.Field111.getValue().booleanValue()) {
             Logger.Method1117(string, 4444);
             return;
         }

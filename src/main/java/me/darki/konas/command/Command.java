@@ -10,7 +10,7 @@ public abstract class Command {
     public String Field118;
     public String[] Field119;
     public ArrayList<SyntaxChunk> Field120 = new ArrayList();
-    public static String prefix = ".";
+    public static String Field121 = ".";
     public static char Field122 = (char)167;
     public static Minecraft Field123 = Minecraft.getMinecraft();
 
@@ -52,7 +52,7 @@ public abstract class Command {
     }
 
     public static String Method190() {
-        return prefix;
+        return Field121;
     }
 
     public String Method191() {
@@ -81,7 +81,7 @@ public abstract class Command {
     }
 
     public static void Method196(String string) {
-        prefix = string;
+        Field121 = string;
     }
 
     public void Method197(String string) {

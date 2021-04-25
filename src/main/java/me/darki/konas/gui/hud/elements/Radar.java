@@ -33,8 +33,8 @@ extends Element {
             int n3 = (int)((double)this.Method2329() * 0.425);
             int n4 = (int)((float)n + this.Method2329() / 2.0f);
             int n5 = (int)((float)n2 + this.Method2322() / 2.0f);
-            RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.color.getValue().Method774());
-            RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 1.0f, this.outline.getValue().Method774());
+            RenderUtil2.Method1338(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), this.Field2648.getValue().Method774());
+            RenderUtil2.Method1336(this.Method2320(), this.Method2324(), this.Method2329(), this.Method2322(), 1.0f, this.Field2649.getValue().Method774());
             GL11.glPushMatrix();
             GL11.glDisable(3553);
             GL11.glBlendFunc(770, 771);
@@ -111,8 +111,8 @@ extends Element {
 
     public Radar() {
         super("Radar", 2.0f, 100.0f, 100.0f, 100.0f);
-        this.color.getValue().Method771(new Color(31, 31, 31, 170).hashCode());
-        this.outline.getValue().Method771(new Color(255, 85, 255, 255).hashCode());
+        this.Field2648.getValue().Method771(new Color(31, 31, 31, 170).hashCode());
+        this.Field2649.getValue().Method771(new Color(255, 85, 255, 255).hashCode());
     }
 
     public boolean shouldRender(Object object) {

@@ -79,7 +79,7 @@ public class Class523 {
         GL11.glDisable((int)3553);
         GL11.glDisable((int)2929);
         GL11.glDepthMask((boolean)false);
-        if (!((Boolean)Render.slowRender.getValue()).booleanValue()) {
+        if (!((Boolean)Render.Field432.getValue()).booleanValue()) {
             GL11.glEnable((int)2884);
         }
         GL11.glEnable((int)2848);

@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={BlockSlab.class})
 public interface IBlockSlab {
     @Accessor(value="AABB_BOTTOM_HALF")
-    AxisAlignedBB getAABBBottomHalf();
+    AxisAlignedBB Method319();
 
     @Accessor(value="AABB_TOP_HALF")
-    AxisAlignedBB getAABBTopHalf();
+    AxisAlignedBB Method320();
 }

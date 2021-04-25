@@ -8,65 +8,65 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value={EntityPlayerSP.class})
 public interface IEntityPlayerSP {
     @Accessor(value="serverSneakState")
-    void setServerSneakState(boolean var1);
+    void Method223(boolean var1);
 
     @Accessor(value="serverSneakState")
-    boolean getServerSneakState();
+    boolean Method224();
 
     @Accessor(value="serverSprintState")
-    void setServerSprintState(boolean var1);
+    void Method225(boolean var1);
 
     @Accessor(value="serverSprintState")
-    boolean getServerSprintState();
+    boolean Method226();
 
     @Accessor(value="prevOnGround")
-    void setPrevOnGround(boolean var1);
+    void Method227(boolean var1);
 
     @Accessor(value="prevOnGround")
-    boolean wasPrevOnGround();
+    boolean Method228();
 
     @Accessor(value="autoJumpEnabled")
-    void setAutoJumpEnabled(boolean var1);
+    void Method229(boolean var1);
 
     @Accessor(value="autoJumpEnabled")
-    boolean isAutoJumpEnabled();
+    boolean Method230();
 
     @Accessor(value="lastReportedPosX")
-    void setLastReportedPosX(double var1);
+    void Method231(double var1);
 
     @Accessor(value="lastReportedPosX")
-    double getLastReportedPosX();
+    double Method232();
 
     @Accessor(value="lastReportedPosY")
-    void setLastReportedPosY(double var1);
+    void Method233(double var1);
 
     @Accessor(value="lastReportedPosY")
-    double getLastReportedPosY();
+    double Method234();
 
     @Accessor(value="lastReportedPosZ")
-    void setLastReportedPosZ(double var1);
+    void Method235(double var1);
 
     @Accessor(value="lastReportedPosZ")
-    double getLastReportedPosZ();
+    double Method236();
 
     @Accessor(value="lastReportedYaw")
-    void setLastReportedYaw(float var1);
+    void Method237(float var1);
 
     @Accessor(value="lastReportedYaw")
-    float getLastReportedYaw();
+    float Method238();
 
     @Accessor(value="lastReportedPitch")
-    void setLastReportedPitch(float var1);
+    void Method239(float var1);
 
     @Accessor(value="lastReportedPitch")
-    float getLastReportedPitch();
+    float Method240();
 
     @Accessor(value="positionUpdateTicks")
-    void setPositionUpdateTicks(int var1);
+    void Method241(int var1);
 
     @Accessor(value="positionUpdateTicks")
-    int getPositionUpdateTicks();
+    int Method242();
 
     @Invoker(value="onUpdateWalkingPlayer")
-    void onUpdateWalkingPlayer();
+    void Method243();
 }

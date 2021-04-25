@@ -7,8 +7,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={Timer.class})
 public interface ITimer {
     @Accessor(value="tickLength")
-    float getTickLength();
+    float Method96();
 
     @Accessor(value="tickLength")
-    void setTickLength(float var1);
+    void Method97(float var1);
 }

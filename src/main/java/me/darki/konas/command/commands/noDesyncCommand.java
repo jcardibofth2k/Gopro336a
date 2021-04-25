@@ -15,10 +15,10 @@ extends Command {
     public void Method174(String[] stringArray) {
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
-                if (!NoDesync.items.getValue().Method1146().isEmpty()) {
+                if (!NoDesync.Field881.getValue().Method1146().isEmpty()) {
                     StringBuilder stringBuilder = new StringBuilder();
                     stringBuilder.append("\n");
-                    NoDesync.items.getValue().Method1146().forEach(arg_0 -> noDesyncCommand.Method175(stringBuilder, arg_0));
+                    NoDesync.Field881.getValue().Method1146().forEach(arg_0 -> noDesyncCommand.Method175(stringBuilder, arg_0));
                     Logger.Method1118(stringBuilder.toString());
                 } else {
                     Logger.Method1118("You dont have any items added :(");
@@ -33,9 +33,9 @@ extends Command {
             return;
         }
         if (stringArray[1].equalsIgnoreCase("add")) {
-            NoDesync.items.getValue().Method1147(stringArray[2]);
+            NoDesync.Field881.getValue().Method1147(stringArray[2]);
         } else if (stringArray[1].equalsIgnoreCase("del")) {
-            NoDesync.items.getValue().Method1144(stringArray[2]);
+            NoDesync.Field881.getValue().Method1144(stringArray[2]);
         } else {
             Logger.Method1118(this.Method191());
         }

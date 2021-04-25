@@ -106,7 +106,7 @@ extends Module {
             }
             if (this.mode.getValue() == Class408.WIREFRAME) {
                 Class523.Method1216();
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ()), class4402.Method774(), this.width.getValue().floatValue());
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), this.width.getValue().floatValue());
                 Class523.Method1214();
             }
             if (this.mode.getValue() != Class408.FADE) break block14;
@@ -199,7 +199,7 @@ extends Module {
             }
             if (this.mode.getValue() == Class408.WIREFRAME) {
                 Class523.Method1216();
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ()), class4402.Method774(), this.width.getValue().floatValue());
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), this.width.getValue().floatValue());
                 Class523.Method1214();
             }
             if (this.mode.getValue() != Class408.FADE) break block10;

@@ -1,53 +1,53 @@
-package me.darki.konas.gui.clickgui.component;
+package me.darki.konas.unremaped;
 
-public abstract class Component {
-    public String name;
+public abstract class Class183 {
+    public String Field1423;
     public float Field1424;
     public float Field1425;
     public float Field1426;
     public float Field1427;
-    public float offsetX;
-    public float offsetY;
+    public float Field1428;
+    public float Field1429;
     public float Field1430;
     public float Field1431;
-    public float width;
-    public float height;
-    public boolean dragging;
-    public boolean extended;
+    public float Field1432;
+    public float Field1433;
+    public boolean Field1434;
+    public boolean Field1435;
 
-    public float getOffsetY() {
-        return this.offsetY;
+    public float Method1470() {
+        return this.Field1429;
     }
 
     public void Method1471(float f) {
         this.Field1431 = f;
     }
 
-    public void setYOffset(float f) {
-        this.offsetY = f;
+    public void Method1472(float f) {
+        this.Field1429 = f;
     }
 
     public boolean Method106(int n, int n2, int n3) {
         return false;
     }
 
-    public float getXOffset() {
-        return this.offsetX;
+    public float Method1473() {
+        return this.Field1428;
     }
 
     public void Method102(char c, int n) {
     }
 
-    public Component(String string, float f, float f2, float f3, float f4, float f5, float f6) {
-        this.name = string;
+    public Class183(String string, float f, float f2, float f3, float f4, float f5, float f6) {
+        this.Field1423 = string;
         this.Field1424 = f;
         this.Field1425 = f2;
-        this.offsetX = f3;
-        this.offsetY = f4;
+        this.Field1428 = f3;
+        this.Field1429 = f4;
         this.Field1430 = f + f3;
         this.Field1431 = f2 + f4;
-        this.width = f5;
-        this.height = f6;
+        this.Field1432 = f5;
+        this.Field1433 = f6;
     }
 
     public void Method1474(float f) {
@@ -74,18 +74,18 @@ public abstract class Component {
     }
 
     public float Method1479() {
-        return this.width;
+        return this.Field1432;
     }
 
     public void Method105(int n, int n2, float f) {
     }
 
     public String Method1480() {
-        return this.name;
+        return this.Field1423;
     }
 
     public float Method1481() {
-        return this.height;
+        return this.Field1433;
     }
 
     public float Method1482() {
@@ -95,12 +95,12 @@ public abstract class Component {
     public void Method649(int n, int n2, int n3, long l) {
     }
 
-    public void setExtended(boolean bl) {
-        this.extended = bl;
+    public void Method1483(boolean bl) {
+        this.Field1435 = bl;
     }
 
     public void Method1484(float f) {
-        this.offsetX = f;
+        this.Field1428 = f;
     }
 
     public void Method1485(float f) {
@@ -108,11 +108,11 @@ public abstract class Component {
     }
 
     public boolean Method1486() {
-        return this.extended;
+        return this.Field1435;
     }
 
     public boolean Method1487() {
-        return this.dragging;
+        return this.Field1434;
     }
 
     public float Method1488() {
@@ -130,22 +130,22 @@ public abstract class Component {
         this.Field1426 = f;
     }
 
-    public void onMove(float f, float f2) {
+    public void Method665(float f, float f2) {
         this.Method1474(f);
         this.Method1485(f2);
-        this.Method1491(this.Method1488() + this.getXOffset());
-        this.Method1471(this.Method1489() + this.getOffsetY());
+        this.Method1491(this.Method1488() + this.Method1473());
+        this.Method1471(this.Method1489() + this.Method1470());
     }
 
     public void Method1491(float f) {
         this.Field1430 = f;
     }
 
-    public void setDragging(boolean bl) {
-        this.dragging = bl;
+    public void Method1492(boolean bl) {
+        this.Field1434 = bl;
     }
 
-    public static boolean isMouseWithinBounds(int n, int n2, double d, double d2, double d3, double d4) {
+    public static boolean Method1493(int n, int n2, double d, double d2, double d3, double d4) {
         return (double)n >= d && (double)n <= d + d3 && (double)n2 >= d2 && (double)n2 <= d2 + d4;
     }
 }

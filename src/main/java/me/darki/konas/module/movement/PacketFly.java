@@ -225,8 +225,8 @@ extends Module {
                         }
                     }
                 }
-                ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setYaw(PacketFly.mc.player.rotationYaw);
-                ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setPitch(PacketFly.mc.player.rotationPitch);
+                ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method40(PacketFly.mc.player.rotationYaw);
+                ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method41(PacketFly.mc.player.rotationPitch);
                 sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.X_ROT);
                 sPacketPlayerPosLook.getFlags().remove(SPacketPlayerPosLook.EnumFlags.Y_ROT);
                 this.Field2330 = sPacketPlayerPosLook.getTeleportId();

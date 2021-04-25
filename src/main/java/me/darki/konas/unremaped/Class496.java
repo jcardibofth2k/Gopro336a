@@ -134,8 +134,8 @@ public class Class496 {
             if (!bl) break block4;
             if (bl2) {
                 Class496.Field2166.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation((float)object[0], (float)object[1], Class496.Field2166.player.onGround));
-                ((IEntityPlayerSP)Class496.Field2166.player).setLastReportedYaw((float)object[0]);
-                ((IEntityPlayerSP)Class496.Field2166.player).setLastReportedPitch((float)object[1]);
+                ((IEntityPlayerSP)Class496.Field2166.player).Method237((float)object[0]);
+                ((IEntityPlayerSP)Class496.Field2166.player).Method239((float)object[1]);
             } else {
                 NewGui.INSTANCE.Field1139.Method1937((float)object[0], (float)object[1]);
             }
@@ -171,7 +171,7 @@ public class Class496 {
         if (bl2) {
             Class496.Field2166.player.connection.sendPacket((Packet)new CPacketAnimation(enumHand));
         }
-        ((IMinecraft)Field2166).setRightClickDelayTimer(4);
+        ((IMinecraft)Field2166).Method57(4);
     }
 
     public static boolean Method1970(BlockPos blockPos, boolean bl, boolean bl2, boolean bl3) {

@@ -120,7 +120,7 @@ extends Module {
             if (class4403 == null) break block13;
             Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Waypoints.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Waypoints.mc.player.rotationYaw)));
             Vec3d vec3d2 = new Vec3d(axisAlignedBB.minX + (axisAlignedBB.maxX - axisAlignedBB.minX) * 0.5, axisAlignedBB.minY + (axisAlignedBB.maxY - axisAlignedBB.minY) * 0.5, axisAlignedBB.minZ + (axisAlignedBB.maxZ - axisAlignedBB.minZ) * 0.5);
-            Search.Method732(vec3d.x, vec3d.y + (double) Waypoints.mc.player.getEyeHeight(), vec3d.z, vec3d2.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), vec3d2.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), vec3d2.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ(), class4403.Method774());
+            Search.Method732(vec3d.x, vec3d.y + (double) Waypoints.mc.player.getEyeHeight(), vec3d.z, vec3d2.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d2.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d2.z - ((IRenderManager)mc.getRenderManager()).Method71(), class4403.Method774());
         }
     }
 

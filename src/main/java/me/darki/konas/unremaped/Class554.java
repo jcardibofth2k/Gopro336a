@@ -32,7 +32,7 @@ extends Class564 {
         EXTFramebufferObject.glBindFramebufferEXT((int)36160, (int)this.Field634);
         int n = Math.max(Minecraft.getDebugFPS(), 30);
         GL11.glClear((int)16640);
-        ((IEntityRenderer)Class554.Field626.entityRenderer).updateFogColor(((IEntityRenderer)Class554.Field626.entityRenderer).getRenderEndNanoTime() + (long)(1000000000 / n));
+        ((IEntityRenderer)Class554.Field626.entityRenderer).Method1911(((IEntityRenderer)Class554.Field626.entityRenderer).Method1915() + (long)(1000000000 / n));
         ARBShaderObjects.glUseProgramObjectARB((int)this.Field638);
         ARBShaderObjects.glUniform1iARB((int)this.Field821, (int)0);
         GL13.glActiveTexture((int)33984);

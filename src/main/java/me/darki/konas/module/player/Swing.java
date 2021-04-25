@@ -47,13 +47,13 @@ extends Module {
             }
         } else if (this.mode.getValue() == Class395.OFFHAND) {
             cPacketAnimation = (CPacketAnimation)class24.getPacket();
-            ((ICPacketAnimation)cPacketAnimation).setHand(EnumHand.OFF_HAND);
+            ((ICPacketAnimation)cPacketAnimation).Method1602(EnumHand.OFF_HAND);
         } else if (this.mode.getValue() == Class395.MAINHAND) {
             cPacketAnimation = (CPacketAnimation)class24.getPacket();
-            ((ICPacketAnimation)cPacketAnimation).setHand(EnumHand.MAIN_HAND);
+            ((ICPacketAnimation)cPacketAnimation).Method1602(EnumHand.MAIN_HAND);
         } else if (this.mode.getValue() == Class395.OPPOSITE) {
             cPacketAnimation = (CPacketAnimation)class24.getPacket();
-            ((ICPacketAnimation)cPacketAnimation).setHand(cPacketAnimation.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
+            ((ICPacketAnimation)cPacketAnimation).Method1602(cPacketAnimation.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
         }
         if (this.render.getValue() == false) return;
         cPacketAnimation = ((CPacketAnimation)class24.getPacket()).getHand();

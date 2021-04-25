@@ -44,6 +44,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemShield;
 import net.minecraft.item.ItemSword;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
 import net.minecraft.network.play.client.CPacketPlayer;
@@ -54,50 +55,55 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class KillAura
 extends Module {
-    public static Setting<Float> range = new Setting<>("Range", Float.valueOf(4.3f), Float.valueOf(6.0f), Float.valueOf(1.0f), Float.valueOf(0.5f));
+    public static Setting<Float> range = new Setting<>("Range", 4.3f, 6.0f, 1.0f, 0.5f);
+    
     public static Setting<ParentSetting> targeting = new Setting<>("Targeting", new ParentSetting(false));
-    public static Setting<Boolean> animals = new Setting<>("Animals", false).setParentSetting(Field440);
-    public static Setting<Boolean> mobs = new Setting<>("Mobs", true).setParentSetting(Field440);
-    public static Setting<Boolean> bullets = new Setting<>("Bullets", false).setParentSetting(Field440);
-    public static Setting<Boolean> players = new Setting<>("Players", true).setParentSetting(Field440);
-    public static Setting<Boolean> attackFriends = new Setting<>("AttackFriends", false).setParentSetting(Field440);
+    public static Setting<Boolean> animals = new Setting<>("Animals", false).setParentSetting(targeting);
+    public static Setting<Boolean> mobs = new Setting<>("Mobs", true).setParentSetting(targeting);
+    public static Setting<Boolean> bullets = new Setting<>("Bullets", false).setParentSetting(targeting);
+    public static Setting<Boolean> players = new Setting<>("Players", true).setParentSetting(targeting);
+    public static Setting<Boolean> attackFriends = new Setting<>("AttackFriends", false).setParentSetting(targeting);
+    
     public static Setting<ParentSetting> antiCheat = new Setting<>("AntiCheat", new ParentSetting(false));
-    public static Setting<Class330> timing = new Setting<>("Timing", Class330.SEQUENTIAL).setParentSetting(Field446);
-    public static Setting<Class308> rotate = new Setting<>("Rotate", Class308.TRACK).setParentSetting(Field446);
-    public static Setting<Float> wallsRange = new Setting<>("WallsRange", Float.valueOf(3.0f), Float.valueOf(6.0f), Float.valueOf(0.5f), Float.valueOf(0.5f)).setParentSetting(Field446);
-    public static Setting<Boolean> strict = new Setting<>("Strict", false).setParentSetting(Field446);
-    public static Setting<Float> yawAngle = new Setting<>("YawAngle", Float.valueOf(1.0f), Float.valueOf(1.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field446);
-    public static Setting<Class327> tPSSync = new Setting<>("TPSSync", Class327.NORMAL).setParentSetting(Field446);
+    public static Setting<Class330> timing = new Setting<>("Timing", Class330.SEQUENTIAL).setParentSetting(antiCheat);
+    public static Setting<Class308> rotate = new Setting<>("Rotate", Class308.TRACK).setParentSetting(antiCheat);
+    public static Setting<Float> wallsRange = new Setting<>("WallsRange", 3.0f, 6.0f, 0.5f, 0.5f).setParentSetting(antiCheat);
+    public static Setting<Boolean> strict = new Setting<>("Strict", false).setParentSetting(antiCheat);
+    public static Setting<Float> yawAngle = new Setting<>("YawAngle", 1.0f, 1.0f, 0.1f, 0.1f).setParentSetting(antiCheat);
+    public static Setting<Class327> tPSSync = new Setting<>("TPSSync", Class327.NORMAL).setParentSetting(antiCheat);
     public static Setting<ParentSetting> speed = new Setting<>("Speed", new ParentSetting(false));
-    public static Setting<Class311> mode = new Setting<>("Mode", Class311.DYNAMIC).setParentSetting(Field453);
-    public static Setting<Integer> tickDelay = new Setting<>("TickDelay", 12, 20, 0, 1).visibleIf(KillAura::Method519).setParentSetting(Field453);
+    public static Setting<Class311> mode = new Setting<>("Mode", Class311.DYNAMIC).setParentSetting(speed);
+    public static Setting<Integer> tickDelay = new Setting<>("TickDelay", 12, 20, 0, 1).visibleIf(KillAura::Method519).setParentSetting(speed);
+    
     public static Setting<ParentSetting> misc = new Setting<>("Misc", new ParentSetting(false));
-    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", true).setParentSetting(Field456);
-    public static Setting<Boolean> switchBack = new Setting<>("SwitchBack", false).setParentSetting(Field456);
-    public static Setting<Boolean> noGapSwitch = new Setting<>("NoGapSwitch", true).setParentSetting(Field456);
-    public static Setting<Boolean> autoBlock = new Setting<>("AutoBlock", false).setParentSetting(Field456);
-    public static Setting<Boolean> swordOnly = new Setting<>("SwordOnly", false).setParentSetting(Field456);
-    public static Setting<Boolean> onlyInHoles = new Setting<>("OnlyInHoles", false).setParentSetting(Field456);
-    public static Setting<Boolean> onlyWhenFalling = new Setting<>("OnlyWhenFalling", false).setParentSetting(Field456);
-    public static Setting<Boolean> onlyInAir = new Setting<>("OnlyInAir", false).setParentSetting(Field456);
-    public static Setting<Boolean> disableWhenCA = new Setting<>("DisableWhenCA", false).setParentSetting(Field456);
-    public static Setting<Boolean> onlyWhenNoTargets = new Setting<>("OnlyWhenNoTargets", true).visibleIf(Field465::getValue).setParentSetting(Field456);
-    public static Setting<Boolean> check32k = new Setting<>("Check32k", false).visibleIf(KillAura::Method393).setParentSetting(Field456);
+    public static Setting<Boolean> autoSwitch = new Setting<>("AutoSwitch", true).setParentSetting(misc);
+    public static Setting<Boolean> switchBack = new Setting<>("SwitchBack", false).setParentSetting(misc);
+    public static Setting<Boolean> noGapSwitch = new Setting<>("NoGapSwitch", true).setParentSetting(misc);
+    public static Setting<Boolean> autoBlock = new Setting<>("AutoBlock", false).setParentSetting(misc);
+    public static Setting<Boolean> swordOnly = new Setting<>("SwordOnly", false).setParentSetting(misc);
+    public static Setting<Boolean> onlyInHoles = new Setting<>("OnlyInHoles", false).setParentSetting(misc);
+    public static Setting<Boolean> onlyWhenFalling = new Setting<>("OnlyWhenFalling", false).setParentSetting(misc);
+    public static Setting<Boolean> onlyInAir = new Setting<>("OnlyInAir", false).setParentSetting(misc);
+    public static Setting<Boolean> disableWhenCA = new Setting<>("DisableWhenCA", false).setParentSetting(misc);
+    public static Setting<Boolean> onlyWhenNoTargets = new Setting<>("OnlyWhenNoTargets", true).visibleIf(disableWhenCA::getValue).setParentSetting(misc);
+    public static Setting<Boolean> check32k = new Setting<>("Check32k", false).visibleIf(KillAura::Method393).setParentSetting(misc);
+    
     public static Setting<ParentSetting> render = new Setting<>("Render", new ParentSetting(false));
-    public static Setting<Boolean> targetRender = new Setting<>("TargetRender", true).setParentSetting(Field468);
-    public static Setting<Boolean> onlyWhenHitting = new Setting<>("OnlyWhenHitting", true).setParentSetting(Field468);
-    public static Setting<Boolean> depth = new Setting<>("Depth", true).setParentSetting(Field468);
-    public static Setting<Boolean> fill = new Setting<>("Fill", false).setParentSetting(Field468);
-    public static Setting<Boolean> orbit = new Setting<>("Orbit", true).setParentSetting(Field468);
-    public static Setting<Boolean> trail = new Setting<>("Trail", true).setParentSetting(Field468);
-    public static Setting<Float> orbitSpeed = new Setting<>("OrbitSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field468);
-    public static Setting<Float> animSpeed = new Setting<>("AnimSpeed", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field468);
-    public static Setting<Float> width = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).setParentSetting(Field468);
-    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(869950564, true)).setParentSetting(Field468);
+    public static Setting<Boolean> targetRender = new Setting<>("TargetRender", true).setParentSetting(render);
+    public static Setting<Boolean> onlyWhenHitting = new Setting<>("OnlyWhenHitting", true).setParentSetting(render);
+    public static Setting<Boolean> depth = new Setting<>("Depth", true).setParentSetting(render);
+    public static Setting<Boolean> fill = new Setting<>("Fill", false).setParentSetting(render);
+    public static Setting<Boolean> orbit = new Setting<>("Orbit", true).setParentSetting(render);
+    public static Setting<Boolean> trail = new Setting<>("Trail", true).setParentSetting(render);
+    public static Setting<Float> orbitSpeed = new Setting<>("OrbitSpeed", 1.0f, 10.0f, 0.1f, 0.1f).setParentSetting(render);
+    public static Setting<Float> animSpeed = new Setting<>("AnimSpeed", 1.0f, 10.0f, 0.1f, 0.1f).setParentSetting(render);
+    public static Setting<Float> width = new Setting<>("Width", 2.5f, 5.0f, 0.1f, 0.1f).setParentSetting(render);
+    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(869950564, true)).setParentSetting(render);
     public int Field479 = 0;
     public static double Field480;
     public static double Field481;
@@ -188,8 +194,8 @@ extends Module {
                 } else {
                     this.Method561(this.Field484);
                 }
-                if (yawAngle.getValue().floatValue() < 1.0f && Math.abs(f = (float)MathHelper.wrapDegrees(Field480 - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw())) > 180.0f * yawAngle.getValue().floatValue()) {
-                    Field480 = ((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
+                if (yawAngle.getValue().floatValue() < 1.0f && Math.abs(f = (float)MathHelper.wrapDegrees(Field480 - (double)((IEntityPlayerSP)KillAura.mc.player).Method238())) > 180.0f * yawAngle.getValue().floatValue()) {
+                    Field480 = ((IEntityPlayerSP)KillAura.mc.player).Method238() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                     bl = false;
                 }
                 NewGui.INSTANCE.Field1139.Method1937((float)Field480, (float)Field481);
@@ -316,70 +322,69 @@ extends Module {
     }
 
     public boolean Method388() {
-
-        Module list;
-        if (Field465.getValue().booleanValue() && (list = Class167.Method1610(AutoCrystal.class)) != null) {
-
-            AutoCrystal autoCrystal = (AutoCrystal) list;
-            if (((Module) list).isEnabled()) {
-                if (onlyWhenNoTargets.getValue().booleanValue()) {
-                    if (autoCrystal.Method1554() != null || autoCrystal.Method1573() != null) {
+        if (disableWhenCA.getValue()) {
+            final Module method1610 = ModuleManager.getModuleByClass(AutoCrystal.class);
+            if (method1610 != null) {
+                final AutoCrystal autoCrystal = (AutoCrystal)method1610;
+                if (method1610.isEnabled()) {
+                    if (!(boolean)onlyWhenNoTargets.getValue()) {
                         this.Field484 = null;
-                        if (switchBack.getValue().booleanValue() && this.Field483 != -1) {
-                            KillAura.mc.player.inventory.currentItem = this.Field483;
-                            KillAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field483));
+                        if ((boolean)switchBack.getValue() && this.Field483 != -1) {
+                            mc.player.inventory.currentItem = this.Field483;
+                            mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field483));
                             this.Field483 = -1;
                         }
                         return false;
                     }
-                } else {
-                    this.Field484 = null;
-                    if (switchBack.getValue().booleanValue() && this.Field483 != -1) {
-                        KillAura.mc.player.inventory.currentItem = this.Field483;
-                        KillAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field483));
-                        this.Field483 = -1;
+                    if (autoCrystal.Method1554() != null || autoCrystal.Method1573() != null) {
+                        this.Field484 = null;
+                        if ((boolean)switchBack.getValue() && this.Field483 != -1) {
+                            mc.player.inventory.currentItem = this.Field483;
+                            mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field483));
+                            this.Field483 = -1;
+                        }
+                        return false;
                     }
-                    return false;
                 }
             }
         }
-        if (swordOnly.getValue().booleanValue()) {
-            if (!(KillAura.mc.player.getHeldItemMainhand().getItem() instanceof ItemSword)) {
+        if (swordOnly.getValue()) {
+            if (!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword)) {
                 return false;
             }
-            if (check32k.getValue().booleanValue() && EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, KillAura.mc.player.getHeldItemMainhand()) < 6) {
+            if (check32k.getValue() && EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, mc.player.getHeldItemMainhand()) < 6) {
                 this.Field484 = null;
-                if (switchBack.getValue().booleanValue() && this.Field483 != -1) {
-                    KillAura.mc.player.inventory.currentItem = this.Field483;
-                    KillAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field483));
+                if ((boolean)switchBack.getValue() && this.Field483 != -1) {
+                    mc.player.inventory.currentItem = this.Field483;
+                    mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field483));
                     this.Field483 = -1;
                 }
                 return false;
             }
         }
-
-        BlockPos pos;
-        if (Field462.getValue().booleanValue() && !Class545.Method1009((BlockPos)(pos = new BlockPos(KillAura.mc.player)))) {
-
+        if ((boolean)onlyInHoles.getValue() && !Class545.Method1009(new BlockPos((Entity)mc.player))) {
             this.Field484 = null;
-            if (switchBack.getValue().booleanValue() && this.Field483 != -1) {
-                KillAura.mc.player.inventory.currentItem = this.Field483;
-                KillAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field483));
-                this.Field483 = -1;
+            if (switchBack.getValue()) {
+                if (this.Field483 != -1) {
+                    mc.player.inventory.currentItem = this.Field483;
+                    mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field483));
+                    this.Field483 = -1;
+                }
             }
             return false;
         }
-        List entityList = KillAura.mc.world.loadedEntityList.stream().filter(this::Method513).sorted(Comparator.comparing(KillAura::Method558)).collect(Collectors.toList());
-        if (!entityList.isEmpty()) {
-            if (this.Field484 == null || !this.Field484.equals(entityList.get(0))) {
+        final List<Entity> list = mc.world.loadedEntityList.stream().filter(this::Method513).sorted(Comparator.comparing(KillAura::Method558)).collect(Collectors.toList());
+        if (!list.isEmpty()) {
+            if (this.Field484 == null || !this.Field484.equals(list.get(0))) {
                 this.Field482 = System.currentTimeMillis();
             }
-            this.Field484 = (Entity)entityList.get(0);
-        } else {
+            this.Field484 = list.get(0);
+        }
+        else {
             this.Field484 = null;
         }
-        if (autoBlock.getValue().booleanValue() && this.Field484 != null && !KillAura.mc.player.isActiveItemStackBlocking() && KillAura.mc.player.getHeldItemOffhand().getItem() instanceof ItemShield) {
-            KillAura.mc.playerController.processRightClick(KillAura.mc.player, KillAura.mc.world, EnumHand.OFF_HAND);
+        if ((boolean)autoBlock.getValue() && this.Field484 != null && !mc.player.isActiveItemStackBlocking() && mc.player.getHeldItemOffhand().getItem() instanceof ItemShield) {
+            mc.playerController.processRightClick((EntityPlayer)mc.player, mc.world, EnumHand.OFF_HAND);
         }
         return true;
     }
@@ -454,7 +459,7 @@ extends Module {
                         double d6 = vec3d3.z - vec3d.z;
                         double[] dArray2 = new double[]{MathHelper.wrapDegrees((float)Math.toDegrees(Math.atan2(d6, d4)) - 90.0f), MathHelper.wrapDegrees((float)(-Math.toDegrees(Math.atan2(d5, Math.sqrt(d4 * d4 + d6 * d6)))))};
                         if (vec3d2 != null && dArray != null) {
-                            if (!(Math.hypot(((dArray2[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray2[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()))) continue;
+                            if (!(Math.hypot(((dArray2[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray2[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()) < Math.hypot(((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0, dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()))) continue;
                             vec3d2 = vec3d3;
                             dArray = dArray2;
                             continue;
@@ -465,9 +470,9 @@ extends Module {
                 }
             }
             if (vec3d2 == null || dArray == null) break block4;
-            d2 = ((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw()) % 360.0 + 540.0) % 360.0 - 180.0;
-            d = ((dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch()) % 360.0 + 540.0) % 360.0 - 180.0;
-            double[] dArray3 = new double[]{(double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw() + (d2 > 180.0 ? 180.0 : Math.max(d2, -180.0)), (double)((IEntityPlayerSP)KillAura.mc.player).getLastReportedPitch() + (d > 180.0 ? 180.0 : Math.max(d, -180.0))};
+            d2 = ((dArray[0] - (double)((IEntityPlayerSP)KillAura.mc.player).Method238()) % 360.0 + 540.0) % 360.0 - 180.0;
+            d = ((dArray[1] - (double)((IEntityPlayerSP)KillAura.mc.player).Method240()) % 360.0 + 540.0) % 360.0 - 180.0;
+            double[] dArray3 = new double[]{(double)((IEntityPlayerSP)KillAura.mc.player).Method238() + (d2 > 180.0 ? 180.0 : Math.max(d2, -180.0)), (double)((IEntityPlayerSP)KillAura.mc.player).Method240() + (d > 180.0 ? 180.0 : Math.max(d, -180.0))};
             KillAura.Method559((float)dArray3[0], (float)dArray3[1]);
         }
     }
@@ -502,14 +507,14 @@ extends Module {
         if (KillAura.mc.player == null || KillAura.mc.world == null) {
             return;
         }
-        if ((boolean)KillAura.Field469.getValue() && this.Field484 != null && (!(boolean)KillAura.Field470.getValue() || !this.Field485.Method737(3500.0))) {
+        if (KillAura.targetRender.getValue() && this.Field484 != null && (!(boolean)KillAura.onlyWhenHitting.getValue() || !this.Field485.Method737(3500.0))) {
             GlStateManager.pushMatrix();
             Class507.Method1386();
-            if (KillAura.Field471.getValue()) {
+            if (KillAura.depth.getValue()) {
                 GlStateManager.enableDepth();
             }
             final IRenderManager renderManager = (IRenderManager)KillAura.mc.getRenderManager();
-            final float[] rgBtoHSB = Color.RGBtoHSB((KillAura.Field478.getValue()).Method769(), (KillAura.Field478.getValue()).Method770(), (KillAura.Field478.getValue()).Method779(), null);
+            final float[] rgBtoHSB = Color.RGBtoHSB((KillAura.color.getValue()).Method769(), (KillAura.color.getValue()).Method770(), (KillAura.color.getValue()).Method779(), null);
             float n2;
             final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
             int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
@@ -517,9 +522,8 @@ extends Module {
             final double n4 = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * class89.Method436() - renderManager.Method69();
             final double n5 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * class89.Method436() - renderManager.Method70();
             final double n6 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * class89.Method436() - renderManager.Method71();
-            final double n7 = -Math.cos((System.currentTimeMillis() - this.Field482) / 1000.0 * (float)KillAura.Field476.getValue()) * (this.Field484.height / 2.0) + this.Field484.height / 2.0;
-            GL11.glLineWidth((float)KillAura.Field477.getValue());
-
+            final double n7 = -Math.cos((System.currentTimeMillis() - this.Field482) / 1000.0 * (float)KillAura.animSpeed.getValue()) * (this.Field484.height / 2.0) + this.Field484.height / 2.0;
+            GL11.glLineWidth((float)KillAura.width.getValue());
             GL11.glBegin(1);
             for (int i = 0; i <= 360; ++i) {
                 list.add(new Vec3d(n4 + Math.sin(i * 3.141592653589793 / 180.0) * 0.5, n5 + n7 + 0.01, n6 + Math.cos(i * 3.141592653589793 / 180.0) * 0.5));
@@ -528,13 +532,12 @@ extends Module {
                 final int n8 = n3 >> 16 & 0xFF;
                 final int n9 = n3 >> 8 & 0xFF;
                 final int n10 = n3 & 0xFF;
-                final float n11 = KillAura.Field473.getValue() ? (KillAura.Field474.getValue() ? ((float)Math.max(0.0, -0.3183098861837907 * Math.atan(Math.tan(3.141592653589793 * (j + 1.0f) / (float)list.size() + System.currentTimeMillis() / 1000.0 * (float)KillAura.Field475.getValue())))) : ((float)Math.max(0.0, Math.abs(Math.sin((j + 1.0f) / list.size() * 3.141592653589793 + System.currentTimeMillis() / 1000.0 * (float)KillAura.Field475.getValue())) * 2.0 - 1.0))) : (KillAura.Field472.getValue() ? 1.0f : ((KillAura.Field478.getValue()).Method782() / 255.0f));
-                if ((KillAura.Field478.getValue()).Method783()) {
+                final float n11 = KillAura.orbit.getValue() ? (KillAura.trail.getValue() ? ((float)Math.max(0.0, -0.3183098861837907 * Math.atan(Math.tan(3.141592653589793 * (j + 1.0f) / (float)list.size() + System.currentTimeMillis() / 1000.0 * (float)KillAura.orbitSpeed.getValue())))) : ((float)Math.max(0.0, Math.abs(Math.sin((j + 1.0f) / list.size() * 3.141592653589793 + System.currentTimeMillis() / 1000.0 * (float)KillAura.orbitSpeed.getValue())) * 2.0 - 1.0))) : (KillAura.fill.getValue() ? 1.0f : ((KillAura.color.getValue()).Method782() / 255.0f));
+                if ((KillAura.color.getValue()).Method783()) {
                     GL11.glColor4f(n8 / 255.0f, n9 / 255.0f, n10 / 255.0f, n11);
-
                 }
                 else {
-                    GL11.glColor4f((KillAura.Field478.getValue()).Method769() / 255.0f, (KillAura.Field478.getValue()).Method770() / 255.0f, (KillAura.Field478.getValue()).Method779() / 255.0f, n11);
+                    GL11.glColor4f((KillAura.color.getValue()).Method769() / 255.0f, (KillAura.color.getValue()).Method770() / 255.0f, (KillAura.color.getValue()).Method779() / 255.0f, n11);
                 }
                 GL11.glVertex3d(list.get(j).x, list.get(j).y, list.get(j).z);
                 GL11.glVertex3d(list.get(j + 1).x, list.get(j + 1).y, list.get(j + 1).z);
@@ -542,20 +545,18 @@ extends Module {
                 n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             }
             GL11.glEnd();
-
-            if (KillAura.Field472.getValue()) {
+            if (KillAura.fill.getValue()) {
                 float h = n;
                 GL11.glBegin(9);
                 for (int k = 0; k < list.size() - 1; ++k) {
                     final int n12 = n3 >> 16 & 0xFF;
                     final int n13 = n3 >> 8 & 0xFF;
                     final int n14 = n3 & 0xFF;
-                    if ((KillAura.Field478.getValue()).Method783()) {
-                        GL11.glColor4f(n12 / 255.0f, n13 / 255.0f, n14 / 255.0f, (KillAura.Field478.getValue()).Method782() / 255.0f);
+                    if ((KillAura.color.getValue()).Method783()) {
+                        GL11.glColor4f(n12 / 255.0f, n13 / 255.0f, n14 / 255.0f, (KillAura.color.getValue()).Method782() / 255.0f);
                     }
                     else {
-                        GL11.glColor4f((KillAura.Field478.getValue()).Method769() / 255.0f, (KillAura.Field478.getValue()).Method770() / 255.0f, (KillAura.Field478.getValue()).Method779() / 255.0f, (KillAura.Field478.getValue()).Method782() / 255.0f);
-
+                        GL11.glColor4f((KillAura.color.getValue()).Method769() / 255.0f, (KillAura.color.getValue()).Method770() / 255.0f, (KillAura.color.getValue()).Method779() / 255.0f, (KillAura.color.getValue()).Method782() / 255.0f);
                     }
                     GL11.glVertex3d(list.get(k).x, list.get(k).y, list.get(k).z);
                     GL11.glVertex3d(list.get(k + 1).x, list.get(k + 1).y, list.get(k + 1).z);
@@ -569,4 +570,75 @@ extends Module {
             GlStateManager.popMatrix();
         }
     }
+
+    /*@Subscriber
+    public void Method139(Class89 class89) {
+        block10: {
+            int n;
+            int n2;
+            int n3;
+            float f;
+            if (KillAura.mc.player == null || KillAura.mc.world == null) {
+                return;
+            }
+            if (!targetRender.getValue().booleanValue() || this.Field484 == null || onlyWhenHitting.getValue().booleanValue() && this.Field485.Method737(3500.0)) break block10;
+            GlStateManager.pushMatrix();
+            Class507.Method1386();
+            if (depth.getValue().booleanValue()) {
+                GlStateManager.enableDepth();
+            }
+            IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
+            float[] fArray = Color.RGBtoHSB(color.getValue().Method769(), color.getValue().Method770(), color.getValue().Method779(), null);
+            float f2 = f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
+            int n4 = Color.getHSBColor(f2, fArray[1], fArray[2]).getRGB();
+            ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
+            double d = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * (double)class89.Method436() - iRenderManager.Method69();
+            double d2 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * (double)class89.Method436() - iRenderManager.Method70();
+            double d3 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * (double)class89.Method436() - iRenderManager.Method71();
+            double d4 = -Math.cos((double)(System.currentTimeMillis() - this.Field482) / 1000.0 * (double) animSpeed.getValue().floatValue()) * ((double)this.Field484.height / 2.0) + (double)this.Field484.height / 2.0;
+            GL11.glLineWidth(width.getValue().floatValue());
+            GL11.glBegin(1);
+            for (n3 = 0; n3 <= 360; ++n3) {
+                Vec3d vec3d = new Vec3d(d + Math.sin((double)n3 * Math.PI / 180.0) * 0.5, d2 + d4 + 0.01, d3 + Math.cos((double)n3 * Math.PI / 180.0) * 0.5);
+                arrayList.add(vec3d);
+            }
+            for (n3 = 0; n3 < arrayList.size() - 1; ++n3) {
+                float f3;
+                int n5 = n4 >> 16 & 0xFF;
+                n2 = n4 >> 8 & 0xFF;
+                n = n4 & 0xFF;
+                float f4 = orbit.getValue().booleanValue() ? (trail.getValue().booleanValue() ? (float)Math.max(0.0, -0.3183098861837907 * Math.atan(Math.tan(Math.PI * (double)((float)n3 + 1.0f) / (double)arrayList.size() + (double)System.currentTimeMillis() / 1000.0 * (double) orbitSpeed.getValue().floatValue()))) : (float)Math.max(0.0, Math.abs(Math.sin((double)(((float)n3 + 1.0f) / (float)arrayList.size()) * Math.PI + (double)System.currentTimeMillis() / 1000.0 * (double) orbitSpeed.getValue().floatValue())) * 2.0 - 1.0)) : (f3 = fill.getValue() != false ? 1.0f : (float) color.getValue().Method782() / 255.0f);
+                if (color.getValue().Method783()) {
+                    GL11.glColor4f((float)n5 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, f3);
+                } else {
+                    GL11.glColor4f((float) color.getValue().Method769() / 255.0f, (float) color.getValue().Method770() / 255.0f, (float) color.getValue().Method779() / 255.0f, f3);
+                }
+                GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
+                GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
+                n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
+            }
+            GL11.glEnd();
+            if (fill.getValue().booleanValue()) {
+                f2 = f;
+                GL11.glBegin(9);
+                for (n3 = 0; n3 < arrayList.size() - 1; ++n3) {
+                    int n6 = n4 >> 16 & 0xFF;
+                    n2 = n4 >> 8 & 0xFF;
+                    n = n4 & 0xFF;
+                    if (color.getValue().Method783()) {
+                        GL11.glColor4f((float)n6 / 255.0f, (float)n2 / 255.0f, (float)n / 255.0f, (float) color.getValue().Method782() / 255.0f);
+                    } else {
+                        GL11.glColor4f((float) color.getValue().Method769() / 255.0f, (float) color.getValue().Method770() / 255.0f, (float) color.getValue().Method779() / 255.0f, (float) color.getValue().Method782() / 255.0f);
+                    }
+                    GL11.glVertex3d(arrayList.get(n3).x, arrayList.get(n3).y, arrayList.get(n3).z);
+                    GL11.glVertex3d(arrayList.get(n3 + 1).x, arrayList.get(n3 + 1).y, arrayList.get(n3 + 1).z);
+                    n4 = Color.getHSBColor(f2 += 0.0027777778f, fArray[1], fArray[2]).getRGB();
+                }
+                GL11.glEnd();
+            }
+            GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+            Class507.Method1385();
+            GlStateManager.popMatrix();
+        }
+    }*/
 }

@@ -10,11 +10,11 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={InventoryPlayer.class})
 public interface IInventoryPlayer {
     @Accessor(value="armorInventory")
-    void setArmorInventory(NonNullList <ItemStack> var1);
+    void Method25(NonNullList <ItemStack> var1);
 
     @Accessor(value="mainInventory")
-    void setMainInventory(NonNullList <ItemStack> var1);
+    void Method26(NonNullList <ItemStack> var1);
 
     @Accessor(value="allInventories")
-    List<NonNullList<ItemStack>> getAllInventories();
+    List<NonNullList<ItemStack>> Method27();
 }

@@ -17,9 +17,9 @@ extends GuiChat {
     public void drawScreen(int n, int n2, float f) {
         block2: {
             KonasGuiChat.drawRect(2, this.height - 14, this.width - 2, this.height - 2, Integer.MIN_VALUE);
-            int n3 = ((IGuiTextField)this.inputField).getFontRenderer().getStringWidth(this.inputField.getText() + "") + 4;
+            int n3 = ((IGuiTextField)this.inputField).Method1603().getStringWidth(this.inputField.getText() + "") + 4;
             int n4 = this.inputField.getEnableBackgroundDrawing() ? this.inputField.y + (this.inputField.height - 8) / 2 : this.inputField.y;
-            ((IGuiTextField)this.inputField).getFontRenderer().drawStringWithShadow(this.Method1450(this.inputField.getText()), (float)n3, (float)n4, 0x606060);
+            ((IGuiTextField)this.inputField).Method1603().drawStringWithShadow(this.Method1450(this.inputField.getText()), (float)n3, (float)n4, 0x606060);
             this.inputField.drawTextBox();
             if (!this.Field1379) {
                 return;

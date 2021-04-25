@@ -1,8 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.gui.clickgui.component.Component;
-import me.darki.konas.gui.clickgui.frame.CategoryFrame;
-import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.Config;
@@ -68,14 +65,14 @@ public class Class589
     
     public static JsonArray Method2218() {
         final JsonArray jsonArray = new JsonArray();
-        for (final Frame class90 : NewGui.INSTANCE.Field1130.Method119()) {
+        for (final Class90 class90 : NewGui.INSTANCE.Field1130.Method119()) {
             if (class90 instanceof Class88) {
                 continue;
             }
             final JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("X", (Number)class90.getPosX());
+            jsonObject.addProperty("X", (Number)class90.Method922());
             jsonObject.addProperty("Y", (Number)class90.Method921());
-            jsonObject.addProperty("Extended", Boolean.valueOf(class90.setExtended()));
+            jsonObject.addProperty("Extended", Boolean.valueOf(class90.Method914()));
             final JsonObject jsonObject2 = new JsonObject();
             jsonObject2.add(class90.Method920(), (JsonElement)jsonObject);
             jsonArray.add((JsonElement)jsonObject2);
@@ -209,7 +206,7 @@ public class Class589
         return Class589.Field2607;
     }
     
-    public static void Method2224(final Component class183) {
+    public static void Method2224(final Class183 class183) {
         if (class183 instanceof Class174) {
             ((Class174)class183).Method1510();
         }
@@ -439,11 +436,11 @@ public class Class589
         catch (NullPointerException ex) {}
     }
     
-    public static boolean Method2237(final JsonObject jsonObject, final Frame class90) {
+    public static boolean Method2237(final JsonObject jsonObject, final Class90 class90) {
         return jsonObject.getAsJsonObject(class90.Method920()) != null;
     }
     
-    public static void Method2238(final Component class183) {
+    public static void Method2238(final Class183 class183) {
         if (class183 instanceof Class180) {
             ((Class180)class183).Method672().forEach(Class589::Method2255);
         }
@@ -549,7 +546,7 @@ public class Class589
                 System.err.println("Friends Array not found!");
                 return;
             }
-            if (Config.overwriteFriends.getValue()) {
+            if (Config.Field1792.getValue()) {
                 Class492.Method1986();
             }
             final Iterator iterator = asJsonArray.iterator();
@@ -772,7 +769,7 @@ public class Class589
         ((Class531)setting.getValue()).Method1147(jsonElement.getAsString());
     }
     
-    public static void Method2255(final Component class183) {
+    public static void Method2255(final Class183 class183) {
         if (class183 instanceof Class174) {
             ((Class174)class183).Method1510();
         }
@@ -812,16 +809,16 @@ public class Class589
     }
     
     public static void Method2259(final JsonObject jsonObject) throws NullPointerException {
-        final Frame class90 = NewGui.INSTANCE.Field1130.Method119().stream().filter(Class589::Method2237).findFirst().orElse(null);
+        final Class90 class90 = NewGui.INSTANCE.Field1130.Method119().stream().filter(Class589::Method2237).findFirst().orElse(null);
         if (class90 instanceof Class88) {
             return;
         }
         if (class90 != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(class90.Method920());
             try {
-                class90.setPosX((float)asJsonObject.getAsJsonPrimitive("X").getAsInt());
+                class90.Method445((float)asJsonObject.getAsJsonPrimitive("X").getAsInt());
                 class90.Method442((float)asJsonObject.getAsJsonPrimitive("Y").getAsInt());
-                class90.setExtended(asJsonObject.getAsJsonPrimitive("Extended").getAsBoolean());
+                class90.Method440(asJsonObject.getAsJsonPrimitive("Extended").getAsBoolean());
             }
             catch (Exception ex) {
                 throw new NullPointerException("Error parsing frame: " + class90.Method920());
@@ -1026,7 +1023,7 @@ public class Class589
         Method2263(jsonElement.getAsJsonObject());
     }
     
-    public static void Method2268(final Component class183) {
+    public static void Method2268(final Class183 class183) {
         if (class183 instanceof Class201) {
             ((Class201)class183).Method671().forEach(Class589::Method2224);
         }
@@ -1493,12 +1490,12 @@ public class Class589
         err.println(string);
     }
     
-    public static void Method2278(final Frame class90) {
+    public static void Method2278(final Class90 class90) {
         if (class90 instanceof Class200) {
             ((Class200)class90).Method706().forEach(Class589::Method2268);
         }
-        else if (class90 instanceof CategoryFrame) {
-            ((CategoryFrame)class90).getComponents().forEach(Class589::Method2238);
+        else if (class90 instanceof Class105) {
+            ((Class105)class90).Method2208().forEach(Class589::Method2238);
         }
     }
     
@@ -1507,7 +1504,7 @@ public class Class589
         String x;
         try {
             final JsonArray method2256 = Method2256(file);
-            if (Config.overwriteFriends.getValue()) {
+            if (Config.Field1792.getValue()) {
                 final JsonObject jsonObject = new JsonObject();
                 jsonObject.add("Friends", (JsonElement)Method2245());
                 method2256.set(3, (JsonElement)jsonObject);

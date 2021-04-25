@@ -7,20 +7,20 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={SPacketEntityVelocity.class})
 public interface ISPacketEntityVelocity {
     @Accessor(value="motionX")
-    int getMotionX();
+    int Method75();
 
     @Accessor(value="motionX")
-    void setMotionX(int var1);
+    void Method76(int var1);
 
     @Accessor(value="motionY")
-    int getMotionY();
+    int Method77();
 
     @Accessor(value="motionY")
-    void setMotionY(int var1);
+    void Method78(int var1);
 
     @Accessor(value="motionZ")
-    int getMotionZ();
+    int Method79();
 
     @Accessor(value="motionZ")
-    void setMotionZ(int var1);
+    void Method80(int var1);
 }

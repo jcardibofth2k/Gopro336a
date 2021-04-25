@@ -29,7 +29,7 @@ extends Element {
     @Override
     public void onRender2D() {
         super.onRender2D();
-        int n = ((IInventoryPlayer) Totems.mc.player.inventory).getAllInventories().stream().mapToInt(Totems::Method1811).sum();
+        int n = ((IInventoryPlayer) Totems.mc.player.inventory).Method27().stream().mapToInt(Totems::Method1811).sum();
         String string = n + " Totems";
         float f = Math.max(5.0f, Class557.Method800(string));
         this.Method2323(f + 1.0f);

@@ -1,8 +1,6 @@
-package me.darki.konas.command.commands;
+package me.darki.konas.command;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.command.Command;
-import me.darki.konas.command.Logger;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class24;

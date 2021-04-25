@@ -24,7 +24,7 @@ extends Module {
             CPacketChatMessage cPacketChatMessage = (CPacketChatMessage)class24.getPacket();
             String string = cPacketChatMessage.getMessage();
             if (this.Field803 != null && this.Field804 && string.split(" ")[0].equalsIgnoreCase("/r") && this.Field805) {
-                ((ICPacketChatMessage)cPacketChatMessage).setMessage("/msg " + this.Field803 + " " + string.substring(3));
+                ((ICPacketChatMessage)cPacketChatMessage).Method0("/msg " + this.Field803 + " " + string.substring(3));
             }
         }
     }

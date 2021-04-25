@@ -68,7 +68,7 @@ extends Module {
                 }
                 GL11.glLineWidth((float)((Float)width.getValue()).floatValue());
                 GL11.glColor4f((float)((float)((ColorValue)this.color.getValue()).Method769() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method770() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method779() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method782() / 255.0f));
-                GlStateManager.translate((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ()));
+                GlStateManager.translate((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
                 EnumFacing enumFacing = rayTraceResult.sideHit;
                 switch (enumFacing) {
                     case NORTH: 
@@ -142,7 +142,7 @@ extends Module {
         GL11.glDisable((int)2896);
         GL11.glLineWidth((float)2.0f);
         GL11.glColor4f((float)((float)color.getRed() / 255.0f), (float)((float)color.getGreen() / 255.0f), (float)((float)color.getBlue() / 255.0f), (float)((float)color.getAlpha() / 255.0f));
-        GL11.glTranslated((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ()));
+        GL11.glTranslated((double)(rayTraceResult.hitVec.x - ((IRenderManager)mc.getRenderManager()).Method69()), (double)(rayTraceResult.hitVec.y - ((IRenderManager)mc.getRenderManager()).Method70()), (double)(rayTraceResult.hitVec.z - ((IRenderManager)mc.getRenderManager()).Method71()));
         switch (rayTraceResult.sideHit) {
             case WEST: {
                 GL11.glRotatef((float)90.0f, (float)0.0f, (float)0.0f, (float)1.0f);

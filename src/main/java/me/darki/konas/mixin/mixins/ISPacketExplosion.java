@@ -7,20 +7,20 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={SPacketExplosion.class})
 public interface ISPacketExplosion {
     @Accessor(value="motionX")
-    float getMotionX();
+    float Method470();
 
     @Accessor(value="motionX")
-    void setMotionX(float var1);
+    void Method471(float var1);
 
     @Accessor(value="motionY")
-    float getMotionY();
+    float Method472();
 
     @Accessor(value="motionY")
-    void setMotionY(float var1);
+    void Method473(float var1);
 
     @Accessor(value="motionZ")
-    float getMotionZ();
+    float Method474();
 
     @Accessor(value="motionZ")
-    void setMotionZ(float var1);
+    void Method475(float var1);
 }

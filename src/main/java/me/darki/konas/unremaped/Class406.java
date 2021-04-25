@@ -75,7 +75,7 @@ extends Module {
         GL11.glColor4f((float)((float)(n >> 16 & 0xFF) / 255.0f), (float)((float)(n >> 8 & 0xFF) / 255.0f), (float)((float)(n & 0xFF) / 255.0f), (float)((float)(n >> 24 & 0xFF) / 255.0f));
         GlStateManager.disableLighting();
         GL11.glLoadIdentity();
-        ((IEntityRenderer)Class406.mc.entityRenderer).orientCamera(mc.getRenderPartialTicks());
+        ((IEntityRenderer)Class406.mc.entityRenderer).Method1909(mc.getRenderPartialTicks());
         GL11.glEnable((int)2848);
         GL11.glBegin((int)1);
         GL11.glVertex3d((double)d, (double)d2, (double)d3);
@@ -101,8 +101,8 @@ extends Module {
             return;
         }
         if (Class406.mc.playerController.getIsHittingBlock()) {
-            float f = ((IPlayerControllerMP)Class406.mc.playerController).getCurBlockDamageMP();
-            BlockPos blockPos = ((IPlayerControllerMP)Class406.mc.playerController).getCurrentBlock();
+            float f = ((IPlayerControllerMP)Class406.mc.playerController).Method295();
+            BlockPos blockPos = ((IPlayerControllerMP)Class406.mc.playerController).Method296();
             AxisAlignedBB axisAlignedBB = Class406.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Class406.mc.world, blockPos).offset(blockPos);
             switch (Class402.Field1230[((Class400)((Object)this.bRenderMove.getValue())).ordinal()]) {
                 case 1: {
@@ -125,10 +125,10 @@ extends Module {
             }
             if (((Boolean)this.bTracer.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).getRenderPosX() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).getRenderPosY() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).getRenderPosZ() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
             }
         }
-        ((IRenderGlobal)Class406.mc.renderGlobal).getDamagedBlocks().forEach(this::Method1171);
+        ((IRenderGlobal)Class406.mc.renderGlobal).Method74().forEach(this::Method1171);
     }
 
     public void Method1171(Integer n, DestroyBlockProgress destroyBlockProgress) {
@@ -145,7 +145,7 @@ extends Module {
             if (!((Boolean)this.pOutline.getValue()).booleanValue()) break block3;
             Class507.Method1386();
             if (((Boolean)this.pWireframe.getValue()).booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).getRenderPosX(), -((IRenderManager)Module.mc.getRenderManager()).getRenderPosY(), -((IRenderManager)Module.mc.getRenderManager()).getRenderPosZ()), ((ColorValue)this.pOutlineColor.getValue()).Method774(), ((Float)this.pWidth.getValue()).floatValue());
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)Module.mc.getRenderManager()).Method69(), -((IRenderManager)Module.mc.getRenderManager()).Method70(), -((IRenderManager)Module.mc.getRenderManager()).Method71()), ((ColorValue)this.pOutlineColor.getValue()).Method774(), ((Float)this.pWidth.getValue()).floatValue());
             } else {
                 Class507.Method1374(axisAlignedBB, ((Float)this.pWidth.getValue()).floatValue(), (ColorValue)this.pOutlineColor.getValue());
             }
@@ -167,7 +167,7 @@ extends Module {
             if (!((Boolean)this.bOutline.getValue()).booleanValue()) break block4;
             Class507.Method1386();
             if (((Boolean)this.bWireframe.getValue()).booleanValue()) {
-                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ()), class4402.Method774(), ((Float)this.bWidth.getValue()).floatValue());
+                Class523.Method1219(axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).Method69(), -((IRenderManager)mc.getRenderManager()).Method70(), -((IRenderManager)mc.getRenderManager()).Method71()), class4402.Method774(), ((Float)this.bWidth.getValue()).floatValue());
             } else {
                 Class507.Method1374(axisAlignedBB, ((Float)this.bWidth.getValue()).floatValue(), class4402);
             }
@@ -190,7 +190,7 @@ extends Module {
         block19: {
             if (destroyBlockProgress == null) break block19;
             BlockPos blockPos = destroyBlockProgress.getPosition();
-            if (Class406.mc.playerController.getIsHittingBlock() && ((IPlayerControllerMP)Class406.mc.playerController).getCurrentBlock().equals((Object)blockPos)) {
+            if (Class406.mc.playerController.getIsHittingBlock() && ((IPlayerControllerMP)Class406.mc.playerController).Method296().equals((Object)blockPos)) {
                 return;
             }
             if (Class406.mc.player.getDistance((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5) > (double)((Float)this.bRange.getValue()).floatValue()) {
@@ -219,10 +219,10 @@ extends Module {
             }
             if (((Boolean)this.bTracer.getValue()).booleanValue()) {
                 Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Class406.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Class406.mc.player.rotationYaw)));
-                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).getRenderPosX() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).getRenderPosY() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).getRenderPosZ() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
+                this.Method732(vec3d.x, vec3d.y + (double)Class406.mc.player.getEyeHeight(), vec3d.z, (double)blockPos.getX() - ((IRenderManager)mc.getRenderManager()).Method69() + 0.5, (double)blockPos.getY() - ((IRenderManager)mc.getRenderManager()).Method70() + 0.5, (double)blockPos.getZ() - ((IRenderManager)mc.getRenderManager()).Method71() + 0.5, ((ColorValue)this.bTracerColor.getValue()).Method774());
             }
             if (((Boolean)this.showName.getValue()).booleanValue()) {
-                int n = ((IDestroyBlockProgress)destroyBlockProgress).getMiningPlayerEntId();
+                int n = ((IDestroyBlockProgress)destroyBlockProgress).Method908();
                 Entity entity = Class406.mc.world.getEntityByID(n);
                 if (entity == null || entity == Class406.mc.player) {
                     return;

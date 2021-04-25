@@ -32,13 +32,13 @@ public class Class540 {
         class68.Method310(class512.Method1305());
         class68.Method304(class512.Method1307());
         class68.Method306(class512.Method1310());
-        ((IMinecraft)Minecraft.getMinecraft()).setSession(new Session(class512.Method1307(), class512.Method1310(), class512.Method1305(), "mojang"));
+        ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(class512.Method1307(), class512.Method1310(), class512.Method1305(), "mojang"));
         return true;
     }
 
     public static boolean Method1094(String string) throws IllegalArgumentException {
         UUID uUID = UUID.nameUUIDFromBytes(("OfflinePlayer:" + string).getBytes(Charsets.UTF_8));
-        ((IMinecraft)Minecraft.getMinecraft()).setSession(new Session(string, uUID.toString(), "invalid", "legacy"));
+        ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(string, uUID.toString(), "invalid", "legacy"));
         return true;
     }
 
@@ -99,7 +99,7 @@ public class Class540 {
         class68.Method306(string4);
         class68.Method310(string5);
         class68.Method304(string3);
-        ((IMinecraft)Minecraft.getMinecraft()).setSession(new Session(string3, string4, string5, string6));
+        ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(string3, string4, string5, string6));
         Field1069.logOut();
         return true;
     }

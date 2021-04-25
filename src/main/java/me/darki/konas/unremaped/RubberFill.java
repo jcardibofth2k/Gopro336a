@@ -1,4 +1,4 @@
-package me.darki.konas.module.exploit;
+package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.PacketEvent;
@@ -9,10 +9,6 @@ import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class346;
-import me.darki.konas.unremaped.Class348;
-import me.darki.konas.unremaped.Class443;
-import me.darki.konas.unremaped.Class566;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.client.gui.GuiDownloadTerrain;
@@ -70,8 +66,8 @@ extends Module {
                 return;
             }
             if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook) || ((Boolean)this.strict.getValue()).booleanValue()) break block1;
-            ((ISPacketPlayerPosLook) packetEvent.getPacket()).setYaw(RubberFill.mc.player.rotationYaw);
-            ((ISPacketPlayerPosLook) packetEvent.getPacket()).setPitch(RubberFill.mc.player.rotationPitch);
+            ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method40(RubberFill.mc.player.rotationYaw);
+            ((ISPacketPlayerPosLook) packetEvent.getPacket()).Method41(RubberFill.mc.player.rotationPitch);
         }
     }
 
@@ -105,12 +101,12 @@ extends Module {
                 EnumFacing enumFacing = EnumFacing.UP;
                 Vec3d vec3d = new Vec3d((Vec3i)blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
                 if (((Boolean)this.rotate.getValue()).booleanValue()) {
-                    if (((IEntityPlayerSP) RubberFill.mc.player).getLastReportedPitch() < 0.0f) {
+                    if (((IEntityPlayerSP) RubberFill.mc.player).Method240() < 0.0f) {
                         RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(RubberFill.mc.player.rotationYaw, 0.0f, true));
                     }
                     RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(RubberFill.mc.player.posX, RubberFill.mc.player.posY, RubberFill.mc.player.posZ, RubberFill.mc.player.rotationYaw, 90.0f, true));
-                    ((IEntityPlayerSP) RubberFill.mc.player).setLastReportedPosY(RubberFill.mc.player.posY + 1.16);
-                    ((IEntityPlayerSP) RubberFill.mc.player).setLastReportedPitch(90.0f);
+                    ((IEntityPlayerSP) RubberFill.mc.player).Method233(RubberFill.mc.player.posY + 1.16);
+                    ((IEntityPlayerSP) RubberFill.mc.player).Method239(90.0f);
                 }
                 float f = (float)(vec3d.x - (double)blockPos.getX());
                 float f2 = (float)(vec3d.y - (double)blockPos.getY());
@@ -142,12 +138,12 @@ extends Module {
             EnumFacing enumFacing = EnumFacing.UP;
             Vec3d vec3d = new Vec3d((Vec3i)blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
             if (((Boolean)this.rotate.getValue()).booleanValue()) {
-                if (((IEntityPlayerSP) RubberFill.mc.player).getLastReportedPitch() < 0.0f) {
+                if (((IEntityPlayerSP) RubberFill.mc.player).Method240() < 0.0f) {
                     RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(RubberFill.mc.player.rotationYaw, 0.0f, true));
                 }
                 RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(RubberFill.mc.player.posX, RubberFill.mc.player.posY, RubberFill.mc.player.posZ, RubberFill.mc.player.rotationYaw, 90.0f, true));
-                ((IEntityPlayerSP) RubberFill.mc.player).setLastReportedPosY(RubberFill.mc.player.posY + 1.16);
-                ((IEntityPlayerSP) RubberFill.mc.player).setLastReportedPitch(90.0f);
+                ((IEntityPlayerSP) RubberFill.mc.player).Method233(RubberFill.mc.player.posY + 1.16);
+                ((IEntityPlayerSP) RubberFill.mc.player).Method239(90.0f);
             }
             RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(RubberFill.mc.player.posX, RubberFill.mc.player.posY + 0.42, RubberFill.mc.player.posZ, false));
             RubberFill.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(RubberFill.mc.player.posX, RubberFill.mc.player.posY + 0.75, RubberFill.mc.player.posZ, false));

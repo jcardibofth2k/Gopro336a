@@ -28,6 +28,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 public class Hud
 extends Module {
+
     public static Setting<Boolean> overlap = new Setting<>("Overlap", true);
     public static Setting<Boolean> potionIcons = new Setting<>("PotionIcons", false);
     public static Setting<Boolean> blur = new Setting<>("Blur", false);
@@ -42,6 +43,8 @@ extends Module {
     public static Setting<Boolean> health = new Setting<>("Health", true);
     public static Setting<Boolean> food = new Setting<>("Food", true);
     public static Setting<Boolean> crosshair = new Setting<>("Crosshair", true);
+
+  
     public static CfontRenderer Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
 
     @Subscriber

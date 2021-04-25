@@ -7,29 +7,29 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={CPacketPlayer.class})
 public interface ICPacketPlayer {
     @Accessor(value="yaw")
-    float getYaw();
+    float Method1694();
 
     @Accessor(value="yaw")
-    void setYaw(float var1);
+    void Method1695(float var1);
 
     @Accessor(value="pitch")
-    float getPitch();
+    float Method1696();
 
     @Accessor(value="pitch")
-    void setPitch(float var1);
+    void Method1697(float var1);
 
     @Accessor(value="y")
-    void setY(double var1);
+    void Method1698(double var1);
 
     @Accessor(value="y")
-    double getY();
+    double Method1699();
 
     @Accessor(value="onGround")
-    void setOnGround(boolean var1);
+    void Method1700(boolean var1);
 
     @Accessor(value="rotating")
-    boolean isRotating();
+    boolean Method1701();
 
     @Accessor(value="moving")
-    boolean isMoving();
+    boolean Method1702();
 }

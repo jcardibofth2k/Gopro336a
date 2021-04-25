@@ -80,8 +80,8 @@ public class PlayerUtil {
     public static void Method1081(Vec3d vec3d) {
         float[] fArray = PlayerUtil.Method1085(vec3d);
         PlayerUtil.mc.player.connection.sendPacket(new CPacketPlayer.Rotation(fArray[0], (float)MathHelper.normalizeAngle((int)fArray[1], 360), PlayerUtil.mc.player.onGround));
-        ((IEntityPlayerSP) PlayerUtil.mc.player).setLastReportedYaw(fArray[0]);
-        ((IEntityPlayerSP) PlayerUtil.mc.player).setLastReportedPitch(MathHelper.normalizeAngle((int)fArray[1], 360));
+        ((IEntityPlayerSP) PlayerUtil.mc.player).Method237(fArray[0]);
+        ((IEntityPlayerSP) PlayerUtil.mc.player).Method239(MathHelper.normalizeAngle((int)fArray[1], 360));
     }
 
     public static double Method1082(float f) {
@@ -231,6 +231,6 @@ public class PlayerUtil {
     }
 
     public static void Method1091(boolean bl) {
-        ((IEntity) PlayerUtil.mc.player).setFlag(7, bl);
+        ((IEntity) PlayerUtil.mc.player).Method43(7, bl);
     }
 }

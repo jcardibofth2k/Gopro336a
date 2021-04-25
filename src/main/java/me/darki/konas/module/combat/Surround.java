@@ -146,8 +146,8 @@ extends Module {
                     if (rotate.getValue().booleanValue()) {
                         Object object = RotationUtil.Method1946(Surround.mc.player.getPositionEyes(mc.getRenderPartialTicks()), blockPos.getPositionEyes(mc.getRenderPartialTicks()));
                         Surround.mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float)object[0], (float)MathHelper.normalizeAngle((int)object[1], 360), Surround.mc.player.onGround));
-                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedYaw((float)object[0]);
-                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedPitch(MathHelper.normalizeAngle((int)object[1], 360));
+                        ((IEntityPlayerSP)Surround.mc.player).Method237((float)object[0]);
+                        ((IEntityPlayerSP)Surround.mc.player).Method239(MathHelper.normalizeAngle((int)object[1], 360));
                     }
                     mc.getConnection().sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                     mc.getConnection().sendPacket(new CPacketUseEntity((Entity)blockPos));
@@ -316,7 +316,7 @@ extends Module {
         if (!force.getValue().booleanValue()) {
             this.Field2442.put(blockPos, System.currentTimeMillis());
         }
-        ((IMinecraft)mc).setRightClickDelayTimer(0);
+        ((IMinecraft)mc).Method57(0);
         return bl4 || bl3;
     }
 

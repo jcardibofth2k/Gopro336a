@@ -60,7 +60,7 @@ extends Element {
 
     public String calcSpeed() {
         double d;
-        float f = ((ITimer)((IMinecraft)mc).getTimer()).getTickLength() / 1000.0f;
+        float f = ((ITimer)((IMinecraft)mc).Method56()).Method96() / 1000.0f;
         double d2 = 1.0;
         if (kilometers.getValue()) {
             d2 = 3.6;

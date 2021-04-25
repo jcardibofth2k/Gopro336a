@@ -8,8 +8,8 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={GuiTextField.class})
 public interface IGuiTextField {
     @Accessor(value="fontRenderer")
-    FontRenderer getFontRenderer();
+    FontRenderer Method1603();
 
     @Accessor(value="maxStringLength")
-    void setMaxStringLength(int var1);
+    void Method1604(int var1);
 }

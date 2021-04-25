@@ -37,7 +37,7 @@ extends Module {
                 case 3: {
                     if (!(Class265.mc.player.fallDistance > Math.min(3.0f, (float)((Integer)fallDistance.getValue()).intValue()))) break;
                     if (((CPacketPlayer)class24.getPacket()).getY(Class265.mc.player.posY) < this.Field2019) {
-                        ((ICPacketPlayer)class24.getPacket()).setY(Class265.mc.player.posY + (double)Math.min(3.0f, (float)((Integer)fallDistance.getValue()).intValue()));
+                        ((ICPacketPlayer)class24.getPacket()).Method1698(Class265.mc.player.posY + (double)Math.min(3.0f, (float)((Integer)fallDistance.getValue()).intValue()));
                         this.Field2019 = ((CPacketPlayer)class24.getPacket()).getY(Class265.mc.player.posY);
                         break;
                     }
@@ -47,7 +47,7 @@ extends Module {
                 }
                 case 4: {
                     if (!(Class265.mc.player.fallDistance > (float)((Integer)fallDistance.getValue()).intValue())) break;
-                    ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
+                    ((ICPacketPlayer)class24.getPacket()).Method1700(true);
                     break;
                 }
             }
@@ -119,8 +119,8 @@ extends Module {
                         this.Field2020 = ((SPacketPlayerPosLook) packetEvent.getPacket()).getTeleportId();
                     } else {
                         SPacketPlayerPosLook sPacketPlayerPosLook = (SPacketPlayerPosLook) packetEvent.getPacket();
-                        ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setYaw(Class265.mc.player.rotationYaw);
-                        ((ISPacketPlayerPosLook)sPacketPlayerPosLook).setPitch(Class265.mc.player.rotationPitch);
+                        ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method40(Class265.mc.player.rotationYaw);
+                        ((ISPacketPlayerPosLook)sPacketPlayerPosLook).Method41(Class265.mc.player.rotationPitch);
                     }
                 }
             } else {

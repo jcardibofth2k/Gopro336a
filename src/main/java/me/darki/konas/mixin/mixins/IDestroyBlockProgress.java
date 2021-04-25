@@ -7,5 +7,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(value={DestroyBlockProgress.class})
 public interface IDestroyBlockProgress {
     @Accessor(value="miningPlayerEntId")
-    int getMiningPlayerEntId();
+    int Method908();
 }
