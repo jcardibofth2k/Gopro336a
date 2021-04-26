@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
@@ -9,6 +9,10 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class490;
+import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Class50;
+import me.darki.konas.unremaped.Class566;
 import net.minecraft.block.BlockEnderChest;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
@@ -74,9 +78,8 @@ extends Module {
                 this.Field1730.Method739();
             }
         } else if (this.Field1729.Method737(350.0)) {
-            Object object;
             this.Field1729.Method739();
-            if (AutoObsidian.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? (object = (ItemBlock) AutoObsidian.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
+            if (AutoObsidian.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? ((ItemBlock)AutoObsidian.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
                 return;
             }
             for (BlockPos blockPos2 : AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0)) {

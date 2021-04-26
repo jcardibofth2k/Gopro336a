@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import java.io.IOException;
 
 import me.darki.konas.util.RenderUtil2;
-import me.darki.konas.command.commands.Party;
+import me.darki.konas.command.commands.PartyCommand;
 import me.darki.konas.module.client.NewGui;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -26,7 +26,7 @@ extends GuiScreen {
             Vec3d vec3d = new Vec3d(this.Field2011.lastTickPosX + (this.Field2011.posX - this.Field2011.lastTickPosX) * (double)this.mc.getRenderPartialTicks(), this.Field2011.lastTickPosY + (this.Field2011.posY - this.Field2011.lastTickPosY) * (double)this.mc.getRenderPartialTicks(), this.Field2011.lastTickPosZ + (this.Field2011.posZ - this.Field2011.lastTickPosZ) * (double)this.mc.getRenderPartialTicks()).add(0.0, (double)this.Field2011.height, 0.0);
             Vec3d vec3d2 = NewGui.INSTANCE.Field1137.Method2026(vec3d);
             boolean bl = Class492.Method1989(this.Field2011.getName());
-            boolean bl2 = Party.Field2509.contains(this.Field2011.getName());
+            boolean bl2 = PartyCommand.Field2509.contains(this.Field2011.getName());
             boolean bl3 = false;
             if (this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp")) {
                 bl3 = true;
@@ -60,7 +60,7 @@ extends GuiScreen {
                     Vec3d vec3d2 = new Vec3d(this.Field2011.lastTickPosX + (this.Field2011.posX - this.Field2011.lastTickPosX) * (double)this.mc.getRenderPartialTicks(), this.Field2011.lastTickPosY + (this.Field2011.posY - this.Field2011.lastTickPosY) * (double)this.mc.getRenderPartialTicks(), this.Field2011.lastTickPosZ + (this.Field2011.posZ - this.Field2011.lastTickPosZ) * (double)this.mc.getRenderPartialTicks()).add(0.0, (double)this.Field2011.height, 0.0);
                     vec3d = NewGui.INSTANCE.Field1137.Method2026(vec3d2);
                     bl3 = Class492.Method1989(this.Field2011.getName());
-                    bl2 = Party.Field2509.contains(this.Field2011.getName());
+                    bl2 = PartyCommand.Field2509.contains(this.Field2011.getName());
                     bl = false;
                     if (this.mc.getCurrentServerData() != null && this.mc.getCurrentServerData().serverIP != null && this.mc.getCurrentServerData().serverIP.contains("pvp")) {
                         bl = true;
@@ -78,9 +78,9 @@ extends GuiScreen {
                 }
                 if (!Class262.Method1842(n, n2, (float)vec3d.x - Class557.Method800(bl2 ? "Unparty" : "Party") / 2.0f, (float)vec3d.y + 4.0f + Class557.Method799(bl3 ? "Unfriend" : "Friend"), Class557.Method800(bl2 ? "Unparty" : "Party"), Class557.Method799(bl2 ? "Unparty" : "Party"))) break block7;
                 if (bl2) {
-                    Party.Field2509.remove(this.Field2011.getName());
+                    PartyCommand.Field2509.remove(this.Field2011.getName());
                 } else {
-                    Party.Field2509.add(this.Field2011.getName());
+                    PartyCommand.Field2509.add(this.Field2011.getName());
                 }
                 this.mc.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
                 this.mc.displayGuiScreen(null);

@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.TickEvent;

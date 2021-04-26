@@ -7,8 +7,8 @@ import me.darki.konas.command.commands.SeisureCommand;
 import me.darki.konas.command.commands.SpammerCommand;
 import me.darki.konas.command.SpectateCommand;
 import me.darki.konas.command.Command;
-import me.darki.konas.command.commands.HClip;
-import me.darki.konas.command.commands.Party;
+import me.darki.konas.command.commands.HClipCommand;
+import me.darki.konas.command.commands.PartyCommand;
 import me.darki.konas.command.commands.backupCommand;
 import me.darki.konas.command.commands.bindCommand;
 import me.darki.konas.command.commands.bookCommand;
@@ -57,7 +57,7 @@ public class Class603 {
         Field130.add(new Class586());
         Field130.add(new Class590());
         Field130.add(new Class591());
-        Field130.add(new HClip());
+        Field130.add(new HClipCommand());
         Field130.add(new Class581());
         Field130.add(new fovCommand());
         Field130.add(new grabCommand());
@@ -68,7 +68,7 @@ public class Class603 {
         Field130.add(new SpammerCommand());
         Field130.add(new xrayCommand());
         Field130.add(new bookCommand());
-        Field130.add(new Party());
+        Field130.add(new PartyCommand());
         Field130.add(new backupCommand());
         Field130.add(new muteCommand());
         Field130.add(new moduleConfigCommand());

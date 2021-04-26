@@ -12,7 +12,7 @@ import java.util.Random;
 
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.command.Command;
-import me.darki.konas.command.commands.Party;
+import me.darki.konas.command.commands.PartyCommand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.NewGui;
@@ -94,7 +94,7 @@ extends Module {
         }
         if (((Boolean)this.partyChat.getValue()).booleanValue() && !class648.Method1201().startsWith(Command.Method190()) && !class648.Method1201().startsWith("/")) {
             class648.Cancel();
-            for (String string : Party.Field2509) {
+            for (String string : PartyCommand.Field2509) {
                 Class645 class645 = new Class645(string, class648.Method1201());
                 EventDispatcher.Companion.dispatch(class645);
             }
@@ -161,7 +161,7 @@ extends Module {
             if (((Boolean)global.getValue()).booleanValue()) {
                 ExtraChat.mc.player.sendChatMessage(string);
             } else {
-                for (String string2 : Party.Field2509) {
+                for (String string2 : PartyCommand.Field2509) {
                     Class645 class645 = new Class645(string2, string);
                     EventDispatcher.Companion.dispatch(class645);
                 }

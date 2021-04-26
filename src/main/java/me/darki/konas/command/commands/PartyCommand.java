@@ -6,7 +6,7 @@ import me.darki.konas.unremaped.Class602;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
-public class Party
+public class PartyCommand
 extends Command {
     public static ArrayList<String> Field2509 = new ArrayList();
 
@@ -19,7 +19,7 @@ extends Command {
                         if (!Field2509.isEmpty()) {
                             StringBuilder stringBuilder = new StringBuilder();
                             stringBuilder.append("\nParty List:\n");
-                            Field2509.stream().forEach(arg_0 -> Party.Method175(stringBuilder, arg_0));
+                            Field2509.stream().forEach(arg_0 -> PartyCommand.Method175(stringBuilder, arg_0));
                             Logger.Method1118(stringBuilder.toString());
                         } else {
                             Logger.Method1118("There is no one in your party");
@@ -61,7 +61,7 @@ extends Command {
         }
     }
 
-    public Party() {
+    public PartyCommand() {
         super("party", "Add or Remove People to/from your party", new Class602("<add/del/clear/list>"), new Class595("[name]"));
     }
 

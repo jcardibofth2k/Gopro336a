@@ -5,9 +5,9 @@ import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
-public class HClip
+public class HClipCommand
 extends Command {
-    public HClip() {
+    public HClipCommand() {
         super("HClip", "Teleport you horizontally", new String[]{"PosH"}, new SyntaxChunk("<Distance>"));
     }
 
@@ -22,25 +22,25 @@ extends Command {
                     block54: {
                         block53: {
                             if (var1_1.length != 2) break block56;
-                            v0 = HClip.Field123.player.rotationYaw;
+                            v0 = HClipCommand.Field123.player.rotationYaw;
                             v1 = PlayerUtil.Method1089(v0);
                             var2_2 = v1;
-                            v2 = HClip.Field123.player;
+                            v2 = HClipCommand.Field123.player;
                             v3 = v2.getRidingEntity();
                             if (v3 == null) ** GOTO lbl49
-                            v4 = HClip.Field123.player;
+                            v4 = HClipCommand.Field123.player;
                             v5 = v4.getRidingEntity();
-                            v6 = HClip.Field123.player;
+                            v6 = HClipCommand.Field123.player;
                             v7 = v6.getRidingEntity();
                             v8 = v7.posX;
                             v9 = var2_2[0];
                             v10 = var1_1[1];
                             v11 = Double.parseDouble(v10);
                             v12 = v8 + v9 * v11;
-                            v13 = HClip.Field123.player;
+                            v13 = HClipCommand.Field123.player;
                             v14 = v13.getRidingEntity();
                             v15 = v14.posY;
-                            v16 = HClip.Field123.player;
+                            v16 = HClipCommand.Field123.player;
                             v17 = v16.getRidingEntity();
                             v18 = v17.posZ;
                             v19 = var2_2[1];
@@ -52,14 +52,14 @@ extends Command {
 lbl49:
                             // 1 sources
 
-                            v23 = HClip.Field123.player;
-                            v24 = HClip.Field123.player.posX;
+                            v23 = HClipCommand.Field123.player;
+                            v24 = HClipCommand.Field123.player.posX;
                             v25 = var2_2[0];
                             v26 = var1_1[1];
                             v27 = Double.parseDouble(v26);
                             v28 = v24 + v25 * v27;
-                            v29 = HClip.Field123.player.posY;
-                            v30 = HClip.Field123.player.posZ;
+                            v29 = HClipCommand.Field123.player.posY;
+                            v30 = HClipCommand.Field123.player.posZ;
                             v31 = var2_2[1];
                             v32 = var1_1[1];
                             v33 = Double.parseDouble(v32);

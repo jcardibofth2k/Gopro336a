@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.combat;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.NewGui;
-import me.darki.konas.module.combat.PistonAura;
 import me.darki.konas.module.movement.PacketFly;
+import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.command.Logger;

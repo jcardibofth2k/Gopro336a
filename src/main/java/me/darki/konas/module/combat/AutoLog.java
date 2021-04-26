@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.combat;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.TrayIcon;
@@ -9,7 +9,12 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.misc.AutoReconnect;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class300;
+import me.darki.konas.unremaped.Class475;
+import me.darki.konas.unremaped.Class492;
+import me.darki.konas.unremaped.Class546;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -66,7 +71,7 @@ extends Module {
                 return;
             }
             float f = 0.0f;
-            List list = AutoLog.mc.world.loadedEntityList.stream().filter(AutoLog::Method513).filter(this::Method386).collect(Collectors.toList());
+            List<Entity> list = AutoLog.mc.world.loadedEntityList.stream().filter(AutoLog::Method513).filter(this::Method386).collect(Collectors.toList());
             for (Entity entity : list) {
                 f += Class475.Method2156((EntityEnderCrystal)entity, (Entity) AutoLog.mc.player);
             }

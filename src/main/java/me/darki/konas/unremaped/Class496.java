@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.darki.konas.module.combat.AutoTrap;
 import me.darki.konas.util.RotationUtil;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;

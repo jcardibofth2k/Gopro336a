@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.combat;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.util.RotationUtil;
@@ -263,7 +264,7 @@ extends Module {
             BlockPos blockPos2;
             if (enumFacing == EnumFacing.DOWN || enumFacing == EnumFacing.UP) continue;
             BlockPos blockPos3 = blockPos.offset(enumFacing);
-            if (!(BedAura.mc.player.getDistanceSq(blockPos2) <= Math.pow(((Float)this.placeRange.getValue()).floatValue(), 2.0)) || !BedAura.mc.world.getBlockState(blockPos3).getMaterial().isReplaceable() || BedAura.mc.world.getBlockState(blockPos3.down()).getMaterial().isReplaceable() || ((Boolean)this.rotate.getValue()).booleanValue() && EnumFacing.fromAngle((double)Class545.Method999(blockPos3, EnumFacing.UP, (EntityPlayer) BedAura.mc.player)[0]).getOpposite() != enumFacing) continue;
+            if (!(BedAura.mc.player.getDistanceSq(blockPos2) <= Math.pow(((Float)this.placeRange.getValue()).floatValue(), 2.0)) || !BedAura.mc.world.getBlockState(blockPos3).getMaterial().isReplaceable() || BedAura.mc.world.getBlockState(blockPos3.down()).getMaterial().isReplaceable() || ((Boolean)this.rotate.getValue()).booleanValue() && EnumFacing.fromAngle((double) Class545.Method999(blockPos3, EnumFacing.UP, (EntityPlayer) BedAura.mc.player)[0]).getOpposite() != enumFacing) continue;
             if (((Boolean)this.rayTrace.getValue()).booleanValue()) {
                 if (BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos3.getX() + 0.5, (double)(blockPos3.getY() + 1), (double)blockPos3.getZ() + 0.5)) != null) continue;
             }

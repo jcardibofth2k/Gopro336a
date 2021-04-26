@@ -1,6 +1,7 @@
 package me.darki.konas.unremaped;
 
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.misc.BlockAura;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.Config;
 import me.darki.konas.KonasMod;

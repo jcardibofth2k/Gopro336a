@@ -18,7 +18,7 @@ extends Command {
         if (ModuleManager.getModuleByClass(ExtraChat.class).isEnabled() && ExtraChat.Field1442.getValue().booleanValue()) {
             backupCommand.Field123.player.sendChatMessage(string);
         } else {
-            for (String string2 : Party.Field2509) {
+            for (String string2 : PartyCommand.Field2509) {
                 EventDispatcher.Companion.dispatch(new Class645(string2, string));
             }
         }

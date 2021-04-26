@@ -1,4 +1,4 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.misc;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.List;
@@ -8,6 +8,9 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class276;
+import me.darki.konas.unremaped.Class490;
+import me.darki.konas.unremaped.Class496;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockDeadBush;
