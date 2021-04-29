@@ -58,13 +58,13 @@ extends Module {
                 this.Field2197 = -2;
                 this.Field2199 = 0;
             }
-            if (((IGuiBrewingStand)(guiBrewingStand = (GuiBrewingStand) AutoBrew.mc.currentScreen)).Method21().getField(0) != 0 || this.Field2199 < 5) {
+            if (((IGuiBrewingStand)(guiBrewingStand = (GuiBrewingStand) AutoBrew.mc.currentScreen)).getTileBrewingStand().getField(0) != 0 || this.Field2199 < 5) {
                 return;
             }
             if (this.Field2197 == -2) {
                 for (int i = 0; i < 3; ++i) {
                     AutoBrew.mc.playerController.windowClick(AutoBrew.mc.player.openContainer.windowId, i, 0, ClickType.QUICK_MOVE, AutoBrew.mc.player);
-                    if (((IGuiBrewingStand)guiBrewingStand).Method21().getStackInSlot(i).isEmpty()) continue;
+                    if (((IGuiBrewingStand)guiBrewingStand).getTileBrewingStand().getStackInSlot(i).isEmpty()) continue;
                     this.toggle();
                     return;
                 }

@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
+import me.darki.konas.gui.clickgui.component.Component;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;
@@ -14,7 +15,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 
 public class Class174
-extends Class183 {
+extends Component {
     public Setting Field1467;
     public int Field1468;
     public int Field1469;
@@ -46,26 +47,26 @@ extends Class183 {
             block5: {
                 block4: {
                     block3: {
-                        if (!Class174.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+                        if (!Class174.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
                             return false;
                         }
                         if (n3 != 0) {
                             return false;
                         }
                         if (!this.Method1505()) break block2;
-                        if (!Class174.Method1493(n, n2, this.Field1477, this.Field1478, this.Field1480, this.Field1479 - 1.0f)) break block3;
+                        if (!Class174.isMouseWithinBounds(n, n2, this.Field1477, this.Field1478, this.Field1480, this.Field1479 - 1.0f)) break block3;
                         this.Method1507(n, n2);
                         break block2;
                     }
-                    if (!Class174.Method1493(n, n2, this.Field1474, this.Field1475, this.Field1472 - 2.0f, this.Field1476)) break block4;
+                    if (!Class174.isMouseWithinBounds(n, n2, this.Field1474, this.Field1475, this.Field1472 - 2.0f, this.Field1476)) break block4;
                     this.Method1508(n);
                     break block2;
                 }
-                if (!Class174.Method1493(n, n2, this.Method1475() + this.Method1479() - 11.0f, this.Method1476() + 17.0f, 10.0, 42.0)) break block5;
+                if (!Class174.isMouseWithinBounds(n, n2, this.Method1475() + this.Method1479() - 11.0f, this.Method1476() + 17.0f, 10.0, 42.0)) break block5;
                 this.Method1511(n2);
                 break block2;
             }
-            if (!Class174.Method1493(n, n2, this.Method1475() + 4.0f + this.Field1472, this.Method1476() + 25.0f + (float)(Class548.Method1020() * 3), 8.0, 8.0) || !this.Field1482.Method737(500.0)) break block2;
+            if (!Class174.isMouseWithinBounds(n, n2, this.Method1475() + 4.0f + this.Field1472, this.Method1476() + 25.0f + (float)(Class548.Method1020() * 3), 8.0, 8.0) || !this.Field1482.Method737(500.0)) break block2;
             this.Method1506().Method772();
             this.Field1482.Method739();
         }
@@ -129,7 +130,7 @@ extends Class183 {
 
     @Override
     public boolean Method106(int n, int n2, int n3) {
-        if (Class174.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), 12.0)) {
+        if (Class174.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), 12.0)) {
             if (n3 == 2) {
                 if (ClickGUIModule.Field1521 == -1) {
                     ClickGUIModule.Field1521 = this.Method1506().Method778();
@@ -158,10 +159,10 @@ extends Class183 {
             int n3;
             super.Method105(n, n2, f);
             float[] fArray = Color.RGBtoHSB(this.Field1469, this.Field1470, this.Field1471, null);
-            RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), 12.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+            RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.getXOffset(), 12.0f, ((ColorValue) ClickGUIModule.color.getValue()).Method774());
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), 12.0f, ((ColorValue) ClickGUIModule.secondary.getValue()).Method774());
             int n4 = n3 = this.Method1505() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().darker().getRGB() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class174.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+            if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class174.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
                 n3 = this.Method1505() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().getRGB() : new Color(96, 96, 96, 100).hashCode();
             }
             RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), 12.0f, n3);

@@ -22,7 +22,7 @@ extends Element {
     @Override
     public void onRender2D() {
         super.onRender2D();
-        int n = ((IInventoryPlayer) Crystals.mc.player.inventory).Method27().stream().mapToInt(Crystals::Method1811).sum();
+        int n = ((IInventoryPlayer) Crystals.mc.player.inventory).getAllInventories().stream().mapToInt(Crystals::Method1811).sum();
         String string = n + " Crystals";
         float f = Math.max(5.0f, Class557.Method800(string));
         this.Method2323(f + 1.0f);

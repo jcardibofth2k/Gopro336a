@@ -78,7 +78,7 @@ extends Module {
     public void Method536(Class24 class24) {
         block0: {
             if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field2670) break block0;
-            ((ICPacketPlayer)class24.getPacket()).Method1700(false);
+            ((ICPacketPlayer)class24.getPacket()).setOnGround(false);
         }
     }
 
@@ -108,7 +108,7 @@ extends Module {
                 }
                 break block2;
             }
-            ((IEntity)Class345.mc.player).Method45(false);
+            ((IEntity)Class345.mc.player).setInWeb(false);
         }
     }
 

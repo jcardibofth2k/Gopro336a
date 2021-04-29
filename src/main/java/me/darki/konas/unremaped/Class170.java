@@ -80,13 +80,13 @@ implements GuiListExtended.IGuiListEntry {
         this.Field1540.getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
         File file = new File(this.Field1540.gameDir + File.separator + "exploit.txt");
         if (this.Field1542.Method302()) {
-            ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(this.Field1542.Method309(), this.Field1542.Method305(), this.Field1542.Method312(), "mojang"));
+            ((IMinecraft)Minecraft.getMinecraft()).setSession(new Session(this.Field1542.Method309(), this.Field1542.Method305(), this.Field1542.Method312(), "mojang"));
             bl = !Class540.Method1096() ? Class540.Method1093(this.Field1542, this.Field1542.Method303(), this.Field1542.Method317()) : true;
         } else if (!file.exists() || this.Field1542.Method312().isEmpty() || this.Field1542.Method305().isEmpty()) {
             bl = Class540.Method1097(this.Field1542, this.Field1542.Method303(), this.Field1542.Method317());
         } else {
             bl = true;
-            ((IMinecraft)Minecraft.getMinecraft()).Method59(new Session(this.Field1542.Method309(), this.Field1542.Method305(), this.Field1542.Method312(), "mojang"));
+            ((IMinecraft)Minecraft.getMinecraft()).setSession(new Session(this.Field1542.Method309(), this.Field1542.Method305(), this.Field1542.Method312(), "mojang"));
         }
         if (bl) {
             this.Method1542();

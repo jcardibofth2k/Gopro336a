@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import java.awt.Color;
 
+import me.darki.konas.gui.clickgui.component.Component;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.util.RenderUtil2;
@@ -14,16 +15,16 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundEvent;
 
 public class Class210
-extends Class183 {
+extends Component {
     public Setting<ParentSetting> Field513;
 
     @Override
     public void Method105(int n, int n2, float f) {
         int n3;
         super.Method105(n, n2, f);
-        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.Method1473(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
+        RenderUtil2.Method1338(this.Method1488(), this.Method1476(), this.getXOffset(), this.Method1481(), ((ColorValue) ClickGUIModule.color.getValue()).Method774());
         int n4 = n3 = ((ParentSetting)this.Method583().getValue()).Method1230() ? ((ColorValue) ClickGUIModule.color.getValue()).Method774() : ((ColorValue) ClickGUIModule.secondary.getValue()).Method774();
-        if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class210.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
+        if (((Boolean) ClickGUIModule.hover.getValue()).booleanValue() && Class210.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) {
             n3 = ((ParentSetting)this.Method583().getValue()).Method1230() ? ((ColorValue) ClickGUIModule.color.getValue()).Method775().brighter().hashCode() : new Color(96, 96, 96, 100).hashCode();
         }
         RenderUtil2.Method1338(this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481(), n3);
@@ -34,7 +35,7 @@ extends Class183 {
     @Override
     public boolean Method106(int n, int n2, int n3) {
         super.Method106(n, n2, n3);
-        boolean bl = Class210.Method1493(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
+        boolean bl = Class210.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481());
         if (bl && (n3 == 0 || n3 == 1)) {
             Minecraft.getMinecraft().getSoundHandler().playSound((ISound)PositionedSoundRecord.getMasterRecord((SoundEvent)SoundEvents.UI_BUTTON_CLICK, (float)1.0f));
             ((ParentSetting)this.Method583().getValue()).Method1231(!((ParentSetting)this.Method583().getValue()).Method1230());

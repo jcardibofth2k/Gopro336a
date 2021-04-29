@@ -70,9 +70,9 @@ extends Module {
                 GlStateManager.disableTexture2D();
                 GL11.glEnable((int)2848);
                 GL11.glHint((int)3154, (int)4354);
-                double d2 = ((IRenderManager)mc.getRenderManager()).Method69();
-                double d3 = ((IRenderManager)mc.getRenderManager()).Method70();
-                double d4 = ((IRenderManager)mc.getRenderManager()).Method71();
+                double d2 = ((IRenderManager)mc.getRenderManager()).getRenderPosX();
+                double d3 = ((IRenderManager)mc.getRenderManager()).getRenderPosY();
+                double d4 = ((IRenderManager)mc.getRenderManager()).getRenderPosZ();
                 GlStateManager.translate((double)(-d2), (double)(-d3), (double)(-d4));
                 for (Vec3d vec3d2 : vec3dArray) {
                     Class474.Method2187(vec3d2.subtract(0.0, (double)this.Field2552, 0.0), vec3d2.add(0.0, (double)this.Field2552, 0.0), 0.96f, 0.19f, 0.19f, this.Field2552 / 255.0f / 2.0f + 127.5f);

@@ -11,20 +11,20 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(value={Minecraft.class})
 public interface IMinecraft {
     @Accessor(value="integratedServer")
-    void Method55(IntegratedServer var1);
+    void setIntegratedServer(IntegratedServer var1);
 
     @Accessor(value="timer")
-    Timer Method56();
+    Timer getTimer();
 
     @Accessor(value="rightClickDelayTimer")
-    void Method57(int var1);
+    void setRightClickDelayTimer(int var1);
 
     @Accessor(value="rightClickDelayTimer")
-    int Method58();
+    int getRightClickDelayTimer();
 
     @Accessor(value="session")
-    void Method59(Session var1);
+    void setSession(Session var1);
 
     @Invoker(value="rightClickMouse")
-    void Method60();
+    void rightClickMouse();
 }

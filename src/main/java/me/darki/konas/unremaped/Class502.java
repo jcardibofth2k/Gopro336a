@@ -20,7 +20,7 @@ public class Class502 {
     public static Minecraft Field1356 = Minecraft.getMinecraft();
 
     public static Vec3d Method1389(Vec3d vec3d) {
-        return new Vec3d(vec3d.x, vec3d.y, vec3d.z).subtract(((IRenderManager)Field1356.getRenderManager()).Method69(), ((IRenderManager)Field1356.getRenderManager()).Method70(), ((IRenderManager)Field1356.getRenderManager()).Method71());
+        return new Vec3d(vec3d.x, vec3d.y, vec3d.z).subtract(((IRenderManager)Field1356.getRenderManager()).getRenderPosX(), ((IRenderManager)Field1356.getRenderManager()).getRenderPosY(), ((IRenderManager)Field1356.getRenderManager()).getRenderPosZ());
     }
 
     public static void Method1390(BlockPos blockPos, Float f, Float f2, Float f3, Float f4, Float f5) {
@@ -162,7 +162,7 @@ public class Class502 {
     }
 
     public static Vec3d Method1400(Entity entity, float f) {
-        return Class502.Method1404(entity, f).subtract(((IRenderManager)Field1356.getRenderManager()).Method69(), ((IRenderManager)Field1356.getRenderManager()).Method70(), ((IRenderManager)Field1356.getRenderManager()).Method71());
+        return Class502.Method1404(entity, f).subtract(((IRenderManager)Field1356.getRenderManager()).getRenderPosX(), ((IRenderManager)Field1356.getRenderManager()).getRenderPosY(), ((IRenderManager)Field1356.getRenderManager()).getRenderPosZ());
     }
 
     public static void Method1401(float f, float f2, float f3, float f4, int n) {
@@ -205,7 +205,7 @@ public class Class502 {
 
     public static void Method1405(float f, float f2, float f3) {
         float f4 = 0.02666667f;
-        GlStateManager.translate((double)((double)f - ((IRenderManager)Field1356.getRenderManager()).Method69()), (double)((double)f2 - ((IRenderManager)Field1356.getRenderManager()).Method70()), (double)((double)f3 - ((IRenderManager)Field1356.getRenderManager()).Method71()));
+        GlStateManager.translate((double)((double)f - ((IRenderManager)Field1356.getRenderManager()).getRenderPosX()), (double)((double)f2 - ((IRenderManager)Field1356.getRenderManager()).getRenderPosY()), (double)((double)f3 - ((IRenderManager)Field1356.getRenderManager()).getRenderPosZ()));
         GlStateManager.glNormal3f((float)0.0f, (float)1.0f, (float)0.0f);
         GlStateManager.rotate((float)(-Minecraft.getMinecraft().player.rotationYaw), (float)0.0f, (float)1.0f, (float)0.0f);
         GlStateManager.rotate((float)Minecraft.getMinecraft().player.rotationPitch, (float)(Minecraft.getMinecraft().gameSettings.thirdPersonView == 2 ? -1.0f : 1.0f), (float)0.0f, (float)0.0f);

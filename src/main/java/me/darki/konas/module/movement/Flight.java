@@ -185,7 +185,7 @@ extends Module {
     public void Method536(Class24 class24) {
         block0: {
             if (!(class24.getPacket() instanceof CPacketPlayer) || !this.noFall.getValue().booleanValue()) break block0;
-            ((ICPacketPlayer)class24.getPacket()).Method1700(true);
+            ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
         }
     }
 
