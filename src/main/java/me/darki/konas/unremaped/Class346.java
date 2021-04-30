@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class346
 extends Enum {
     public static Class346 WAITING = new Class346("WAITING", 0);

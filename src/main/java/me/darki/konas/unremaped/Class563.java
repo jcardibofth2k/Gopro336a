@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class563 {
     public long Field658 = System.nanoTime();
 

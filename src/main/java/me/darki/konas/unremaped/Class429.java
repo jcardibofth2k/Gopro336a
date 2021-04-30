@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 
 public class Class429 {

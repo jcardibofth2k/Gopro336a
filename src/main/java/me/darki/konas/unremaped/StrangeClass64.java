@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class StrangeClass64
 extends StrangeClassThatExtendsCancelableEvent {
     public float Field182;

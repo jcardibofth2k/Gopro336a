@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class651 {
     public boolean Field1150;
 

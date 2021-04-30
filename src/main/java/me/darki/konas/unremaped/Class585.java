@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.io.PrintStream;
 
 import me.darki.konas.module.ModuleManager;

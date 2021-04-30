@@ -357,7 +357,7 @@ extends Module {
             GlStateManager.color(1.0f, 1.0f, 1.0f);
             GlStateManager.pushMatrix();
             Vec3d vec3d = new Vec3d(entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).add(new Vec3d((entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()));
-            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).Method69(), vec3d.y - ((IRenderManager)mc.getRenderManager()).Method70(), vec3d.z - ((IRenderManager)mc.getRenderManager()).Method71());
+            GlStateManager.translate(vec3d.x - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), vec3d.y - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), vec3d.z - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
             GlStateManager.glNormal3f(0.0f, 1.0f, 0.0f);
             GlStateManager.rotate(-ESP.mc.getRenderManager().playerViewY, 0.0f, 1.0f, 0.0f);
             Minecraft minecraft = mc;
@@ -534,7 +534,7 @@ extends Module {
             else if (ESP.Field1325.getValue() == Class483.OUTLINE) {
                 for (final BlockPos blockPos2 : this.Field1337) {
                     final AxisAlignedBB offset = ESP.mc.world.getBlockState(blockPos2).getBoundingBox((IBlockAccess)ESP.mc.world, blockPos2).offset(blockPos2);
-                    final AxisAlignedBB offset2 = offset.setMaxY(offset.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    final AxisAlignedBB offset2 = offset.setMaxY(offset.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).getRenderPosX(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosY(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosZ());
                     int n2 = (ESP.Field1327.getValue()).Method774();
                     if (ESP.mc.world.getBlockState(blockPos2.up()).getBlock() == Blocks.AIR) {
                         n2 = (ESP.Field1329.getValue()).Method774();
@@ -547,7 +547,7 @@ extends Module {
             else {
                 for (final BlockPos blockPos3 : this.Field1337) {
                     final AxisAlignedBB offset3 = ESP.mc.world.getBlockState(blockPos3).getBoundingBox((IBlockAccess)ESP.mc.world, blockPos3).offset(blockPos3);
-                    final AxisAlignedBB offset4 = offset3.setMaxY(offset3.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    final AxisAlignedBB offset4 = offset3.setMaxY(offset3.minY + (double)ESP.Field1332.getValue()).offset(-((IRenderManager)ESP.mc.getRenderManager()).getRenderPosX(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosY(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosZ());
                     int n3 = (ESP.Field1326.getValue()).Method774();
                     if (ESP.mc.world.getBlockState(blockPos3.up()).getBlock() == Blocks.AIR) {
                         n3 = (ESP.Field1328.getValue()).Method774();
@@ -626,7 +626,7 @@ extends Module {
                 final BlockPos pos2 = tileEntity2.getPos();
                 final Integer method1332 = this.Method1331(tileEntity2);
                 if (method1332 != null) {
-                    final AxisAlignedBB offset5 = ESP.mc.world.getBlockState(pos2).getBoundingBox((IBlockAccess)ESP.mc.world, pos2).offset(pos2).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    final AxisAlignedBB offset5 = ESP.mc.world.getBlockState(pos2).getBoundingBox((IBlockAccess)ESP.mc.world, pos2).offset(pos2).offset(-((IRenderManager)ESP.mc.getRenderManager()).getRenderPosX(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosY(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosZ());
                     Class523.Method1216();
                     Class523.Method1215(offset5, method1332, (float)ESP.Field1318.getValue());
                     Class523.Method1214();
@@ -638,7 +638,7 @@ extends Module {
                 final BlockPos pos3 = tileEntity3.getPos();
                 final Integer method1333 = this.Method1331(tileEntity3);
                 if (method1333 != null) {
-                    final AxisAlignedBB offset6 = ESP.mc.world.getBlockState(pos3).getBoundingBox((IBlockAccess)ESP.mc.world, pos3).offset(pos3).offset(-((IRenderManager)ESP.mc.getRenderManager()).Method69(), -((IRenderManager)ESP.mc.getRenderManager()).Method70(), -((IRenderManager)ESP.mc.getRenderManager()).Method71());
+                    final AxisAlignedBB offset6 = ESP.mc.world.getBlockState(pos3).getBoundingBox((IBlockAccess)ESP.mc.world, pos3).offset(pos3).offset(-((IRenderManager)ESP.mc.getRenderManager()).getRenderPosX(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosY(), -((IRenderManager)ESP.mc.getRenderManager()).getRenderPosZ());
                     Class523.Method1216();
                     Class523.Method1217(offset6, method1333);
                     Class523.Method1214();
@@ -717,7 +717,7 @@ extends Module {
         GL11.glEnable(2848);
         GL11.glLineWidth(2.0f);
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).Method69(), d2 - ((IRenderManager)mc.getRenderManager()).Method70(), d3 - ((IRenderManager)mc.getRenderManager()).Method71());
+        GlStateManager.translate(d - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), d2 - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), d3 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
         float f2 = entityPlayer.prevRenderYawOffset + (entityPlayer.renderYawOffset - entityPlayer.prevRenderYawOffset) * f;
         GL11.glRotatef(-f2, 0.0f, 1.0f, 0.0f);
         float f3 = entityPlayer.isSneaking() ? 0.6f : 0.75f;

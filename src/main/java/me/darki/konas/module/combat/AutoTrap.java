@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.NewGui;
 import me.darki.konas.module.movement.PacketFly;
+import me.darki.konas.module.render.Waypoints;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.UpdateEvent;
@@ -318,7 +319,7 @@ extends Module {
             if (this.Method1624(blockPos.up().up(), false)) {
                 return blockPos.up().up();
             }
-            BlockPos blockPos4 = blockPos.up().up().offset(EnumFacing.byHorizontalIndex((int)(MathHelper.floor((double)((double)(AutoTrap.mc.player.rotationYaw * 4.0f / 360.0f) + 0.5)) & 3)));
+            BlockPos blockPos4 = blockPos.up().up().offset(EnumFacing.getHorizontal((int)(MathHelper.floor((double)((double)(AutoTrap.mc.player.rotationYaw * 4.0f / 360.0f) + 0.5)) & 3)));
             if (this.Method1624(blockPos4, false)) {
                 return blockPos4;
             }

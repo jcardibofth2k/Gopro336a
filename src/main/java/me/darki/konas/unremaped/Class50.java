@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.event.events.Event;
 
 public class Class50

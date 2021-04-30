@@ -258,9 +258,9 @@ public class AutoCrystal
             final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
             int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             final ArrayList<Vec3d> list = new ArrayList<Vec3d>();
-            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * class89.Method436() - renderManager.Method69();
-            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * class89.Method436() - renderManager.Method70();
-            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.Method71();
+            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * class89.Method436() - renderManager.getRenderPosX();
+            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * class89.Method436() - renderManager.getRenderPosY();
+            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.getRenderPosZ();
             final double n7 = -Math.cos(System.currentTimeMillis() / 1000.0 * (float)AutoCrystal.animSpeed.getValue()) * (this.Field1652.height / 2.0) + this.Field1652.height / 2.0;
             GL11.glLineWidth((float)AutoCrystal.width.getValue());
             GL11.glBegin(1);
@@ -379,13 +379,13 @@ public class AutoCrystal
             }
             if (yawAngle.getValue().floatValue() < 1.0f && yawStep.getValue() != ACYawstepMode.OFF && (this.Field1623 != null || yawStep.getValue() == ACYawstepMode.FULL)) {
                 if (this.Field1654 > 0) {
-                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238();
+                    this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw();
                     this.Field1623 = null;
                     this.Field1624 = null;
                 } else {
-                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).Method238());
+                    float f = MathHelper.wrapDegrees(this.Field1621[0] - ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw());
                     if (Math.abs(f) > 180.0f * yawAngle.getValue().floatValue()) {
-                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).Method238() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
+                        this.Field1621[0] = ((IEntityPlayerSP)AutoCrystal.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                         this.Field1623 = null;
                         this.Field1624 = null;
                         this.Field1654 = yawTicks.getValue();

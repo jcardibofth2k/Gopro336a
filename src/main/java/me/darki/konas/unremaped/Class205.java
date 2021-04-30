@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.command.Logger;
 import me.darki.konas.setting.IRunnable;
 

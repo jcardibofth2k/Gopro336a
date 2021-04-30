@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.util.ArrayList;
 
 import me.darki.konas.setting.ColorValue;

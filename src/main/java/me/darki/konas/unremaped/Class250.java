@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import com.mojang.authlib.GameProfile;
 import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.render.ESP;

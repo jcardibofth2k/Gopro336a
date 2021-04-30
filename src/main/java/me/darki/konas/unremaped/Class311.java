@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class311
 extends Enum {
     public static Class311 DYNAMIC = new Class311("DYNAMIC", 0);

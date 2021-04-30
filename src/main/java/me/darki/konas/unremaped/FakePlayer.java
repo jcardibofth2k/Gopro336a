@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import com.mojang.authlib.GameProfile;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;

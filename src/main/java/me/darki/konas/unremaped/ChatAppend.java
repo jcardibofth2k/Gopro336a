@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.command.Command;
 import me.darki.konas.module.Category;

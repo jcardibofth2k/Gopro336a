@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.settings.GameSettings;

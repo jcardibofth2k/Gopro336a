@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public interface Class135 {
     public void Method485(float var1, float var2);
 

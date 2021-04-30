@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import net.minecraft.network.Packet;

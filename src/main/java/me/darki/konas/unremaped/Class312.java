@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class312
 extends Enum {
     public static Class312 ALL = new Class312("ALL", 0);

@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;

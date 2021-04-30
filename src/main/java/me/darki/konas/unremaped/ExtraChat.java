@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;

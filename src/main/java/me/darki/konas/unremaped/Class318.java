@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class318 {
     public static int[] Field746 = new int[Class324.Method730().length];
 

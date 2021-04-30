@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;

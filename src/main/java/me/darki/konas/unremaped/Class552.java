@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public interface Class552 {
     public float Method830(String var1);
 

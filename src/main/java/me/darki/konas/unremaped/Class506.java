@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class506 {
     public Class498 Field1348;
     public float Field1349;

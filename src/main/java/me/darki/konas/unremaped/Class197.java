@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class197
 extends Enum {
     public static Class197 CUSTOM = new Class197("CUSTOM", 0);

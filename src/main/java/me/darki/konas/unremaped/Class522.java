@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class522
 extends Enum {
     public static Class522 MOUSE = new Class522("MOUSE", 0);

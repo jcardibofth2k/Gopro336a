@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 import java.util.concurrent.ConcurrentHashMap;
@@ -318,7 +319,7 @@ extends Module {
             if (this.Method1624(blockPos.up().up(), false)) {
                 return blockPos.up().up();
             }
-            BlockPos blockPos4 = blockPos.up().up().offset(EnumFacing.byHorizontalIndex((int)(MathHelper.floor((double)((double)(AutoTrap.mc.player.rotationYaw * 4.0f / 360.0f) + 0.5)) & 3)));
+            BlockPos blockPos4 = blockPos.up().up().offset(EnumFacing.getHorizontal((int)(MathHelper.floor((double)((double)(AutoTrap.mc.player.rotationYaw * 4.0f / 360.0f) + 0.5)) & 3)));
             if (this.Method1624(blockPos4, false)) {
                 return blockPos4;
             }
