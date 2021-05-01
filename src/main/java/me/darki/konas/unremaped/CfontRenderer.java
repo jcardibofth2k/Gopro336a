@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.File;
@@ -30,7 +29,7 @@ implements Class552 {
     public int Field811 = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
     public String Field812;
     public float Field813;
-    public static File Field814 = new File(Class589.Field2606, "fonts");
+    public static File Field814 = new File(ConfigUtil.Field2606, "fonts");
     public static Font Field815 = null;
 
     public void Method852() throws IOException, FontFormatException, SlickException {

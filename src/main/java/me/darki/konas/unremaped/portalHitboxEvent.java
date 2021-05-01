@@ -6,7 +6,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
-public class Class52
+public class portalHitboxEvent
 extends CancelableEvent {
     public IBlockState Field218;
     public IBlockAccess Field219;
@@ -20,7 +20,7 @@ extends CancelableEvent {
         return this.Field220;
     }
 
-    public Class52(IBlockState iBlockState, IBlockAccess iBlockAccess, BlockPos blockPos) {
+    public portalHitboxEvent(IBlockState iBlockState, IBlockAccess iBlockAccess, BlockPos blockPos) {
         this.Field218 = iBlockState;
         this.Field219 = iBlockAccess;
         this.Field220 = blockPos;

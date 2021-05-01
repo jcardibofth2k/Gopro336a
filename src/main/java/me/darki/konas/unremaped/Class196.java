@@ -1,7 +1,7 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import me.darki.konas.gui.clickgui.frame.Frame;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;

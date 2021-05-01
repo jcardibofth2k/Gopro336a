@@ -1,6 +1,5 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +10,9 @@ import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.unremaped.Class196;
+import me.darki.konas.unremaped.Class200;
+import me.darki.konas.unremaped.Class92;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;

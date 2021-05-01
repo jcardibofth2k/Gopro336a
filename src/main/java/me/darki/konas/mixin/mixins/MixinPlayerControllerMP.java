@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import me.darki.konas.unremaped.Class1;
-import me.darki.konas.unremaped.Class17;
+import me.darki.konas.unremaped.rightClickBlockEvent;
 import me.darki.konas.unremaped.Class23;
 import me.darki.konas.unremaped.Class39;
 import me.darki.konas.unremaped.Class41;
@@ -141,7 +141,7 @@ public abstract class MixinPlayerControllerMP {
 
     @Inject(method={"processRightClickBlock"}, at={@At(value="HEAD")})
     public void Method1537(EntityPlayerSP player, WorldClient worldIn, BlockPos pos, EnumFacing direction, Vec3d vec, EnumHand hand, CallbackInfoReturnable<EnumActionResult> cir) {
-        Class17 event = new Class17(player, worldIn, pos, direction, vec, hand);
+        rightClickBlockEvent event = new rightClickBlockEvent(player, worldIn, pos, direction, vec, hand);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             event.setCanceled(true);

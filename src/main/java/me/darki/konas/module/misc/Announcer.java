@@ -131,9 +131,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method2137(Class42 class42) {
+    public void Method2137(finishUseItemEvent finishUseItemEvent) {
         block0: {
-            if (class42.Method269() != Announcer.mc.player) break block0;
+            if (finishUseItemEvent.Method269() != Announcer.mc.player) break block0;
             this.Method2135(Class357.EAT);
         }
     }
@@ -168,13 +168,13 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1796(Class15 class15) {
+    public void Method1796(uuidHelper uuidHelper) {
         block1: {
             EntityPlayer entityPlayer;
             if (Announcer.mc.player == null || Announcer.mc.world == null) {
                 return;
             }
-            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class15.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(class15.Method209())) == null) break block1;
+            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || uuidHelper.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(uuidHelper.Method209())) == null) break block1;
             this.Method714(entityPlayer.getName());
             this.Field2492.Method739();
             this.Field2494.Method739();

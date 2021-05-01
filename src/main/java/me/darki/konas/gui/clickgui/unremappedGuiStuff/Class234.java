@@ -1,6 +1,5 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
 import me.darki.konas.module.ModuleManager;
@@ -9,6 +8,7 @@ import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.*;
 
 public class Class234
 extends Class215 {
@@ -112,7 +112,7 @@ extends Class215 {
                 continue;
             }
             if (setting.getValue() instanceof Class520) {
-                class215 = new Class222(setting, this.Method486(), this.Method492(), 16.0f, f6, this.Method489() - 32.0f);
+                class215 = new bindComponent(setting, this.Method486(), this.Method492(), 16.0f, f6, this.Method489() - 32.0f);
                 this.Field2455.add(class215);
                 f6 += class215.Method476() + 16.0f;
                 continue;
@@ -124,7 +124,7 @@ extends Class215 {
                 continue;
             }
             if (setting.getValue() instanceof Number) {
-                class215 = new Class258(setting, this.Method486(), this.Method492(), 16.0f, f6, this.Method489() - 32.0f);
+                class215 = new sliderComponent(setting, this.Method486(), this.Method492(), 16.0f, f6, this.Method489() - 32.0f);
                 this.Field2455.add(class215);
                 f6 += 16.0f + class215.Method476();
                 continue;

@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class42;
+import me.darki.konas.unremaped.finishUseItemEvent;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinItemFood {
     @Inject(method={"onItemUseFinish"}, at={@At(value="INVOKE", target="Lnet/minecraft/entity/player/EntityPlayer;addStat(Lnet/minecraft/stats/StatBase;)V")})
     public void Method65(ItemStack stack, World worldIn, EntityLivingBase entityLiving, CallbackInfoReturnable<ItemStack> cir) {
-        Class42 event = new Class42(stack, (EntityPlayer)entityLiving);
+        finishUseItemEvent event = new finishUseItemEvent(stack, (EntityPlayer)entityLiving);
         EventDispatcher.Companion.dispatch(event);
     }
 }

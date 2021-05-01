@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 
@@ -30,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.MapData;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
-public class Class208
+public class Tooltips
 extends Module {
     public static Setting<Boolean> texture = new Setting<>("Texture", true);
     public static Setting<Boolean> customColor = new Setting<>("CustomColor", false);
@@ -40,7 +39,7 @@ extends Module {
     public int Field551;
     public int Field552;
 
-    public Class208() {
+    public Tooltips() {
         super("Tooltips", "Enchances inventory tooltips", Category.CLIENT, new String[0]);
     }
 
@@ -55,14 +54,14 @@ extends Module {
     @Subscriber
     public void Method625(DrawScreenEvent drawScreenEvent) {
         block3: {
-            if (!((Boolean)maps.getValue()).booleanValue() || !(drawScreenEvent.Method272() instanceof GuiContainer) || !(Class208.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
+            if (!((Boolean)maps.getValue()).booleanValue() || !(drawScreenEvent.Method272() instanceof GuiContainer) || !(Tooltips.mc.player.inventory.getItemStack().getItem() instanceof ItemAir)) break block3;
             Slot slot = ((GuiContainer) drawScreenEvent.Method272()).getSlotUnderMouse();
             if (slot == null || !slot.getHasStack()) {
                 return;
             }
             ItemStack itemStack = slot.getStack();
             if (itemStack.getItem() instanceof ItemMap) {
-                MapData mapData = ((ItemMap)itemStack.getItem()).getMapData(itemStack, (World)Class208.mc.world);
+                MapData mapData = ((ItemMap)itemStack.getItem()).getMapData(itemStack, (World) Tooltips.mc.world);
                 if (mapData == null) {
                     return;
                 }
@@ -79,7 +78,7 @@ extends Module {
                 bufferBuilder.pos(135.0, -7.0, 0.0).tex(1.0, 0.0).endVertex();
                 bufferBuilder.pos(-7.0, -7.0, 0.0).tex(0.0, 0.0).endVertex();
                 tessellator.draw();
-                Class208.mc.entityRenderer.getMapItemRenderer().renderMap(mapData, true);
+                Tooltips.mc.entityRenderer.getMapItemRenderer().renderMap(mapData, true);
                 GlStateManager.enableLighting();
                 GlStateManager.enableDepth();
             }
@@ -107,10 +106,10 @@ extends Module {
             int n4 = n + 12;
             int n5 = n2 - 12;
             int n6 = 48 + Class557.Method802();
-            Class208.mc.getRenderItem().zLevel = 300.0f;
+            Tooltips.mc.getRenderItem().zLevel = 300.0f;
             Color color = (Boolean)customColor.getValue() != false ? new Color(((ColorValue)color.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             this.Method629((double)n4 - 8.5, n5 - 3, 0.0, 0.0, n3 + 3, n6 + 6, color);
-            Class208.mc.fontRenderer.drawString(itemStack.getDisplayName(), n + 8, n2 - 12, 0xFFFFFF);
+            Tooltips.mc.fontRenderer.drawString(itemStack.getDisplayName(), n + 8, n2 - 12, 0xFFFFFF);
             GlStateManager.enableBlend();
             GlStateManager.enableAlpha();
             GlStateManager.enableTexture2D();
@@ -128,18 +127,18 @@ extends Module {
                     n8 = (int)((double)n8 / 0.75);
                     ItemStack itemStack2 = (ItemStack)nonNullList.get(i);
                     mc.getRenderItem().renderItemAndEffectIntoGUI(itemStack2, n7, n8);
-                    mc.getRenderItem().renderItemOverlayIntoGUI(Class208.mc.fontRenderer, itemStack2, n7, n8, null);
+                    mc.getRenderItem().renderItemOverlayIntoGUI(Tooltips.mc.fontRenderer, itemStack2, n7, n8, null);
                 }
             }
             GlStateManager.scale((double)-0.75, (double)-0.75, (double)-0.75);
             RenderHelper.disableStandardItemLighting();
-            Class208.mc.getRenderItem().zLevel = 0.0f;
+            Tooltips.mc.getRenderItem().zLevel = 0.0f;
         } else {
             float f = Math.max(144.0f, Class557.Method800(itemStack.getDisplayName()) + 3.0f);
             int n9 = n + 12;
             int n10 = n2 - 12;
             int n11 = 48 + Class557.Method802();
-            Class208.mc.getRenderItem().zLevel = 300.0f;
+            Tooltips.mc.getRenderItem().zLevel = 300.0f;
             Color color = (Boolean)customColor.getValue() != false ? new Color(((ColorValue)color.getValue()).Method774()) : new Color(((BlockShulkerBox)((ItemShulkerBox)itemStack.getItem()).getBlock()).getColor().getColorValue());
             Color color2 = new Color(color.getRed(), color.getGreen(), color.getBlue(), 150);
             GuiScreen.drawRect((int)(n9 - 3), (int)(n10 - 3), (int)((int)((float)n9 + f + 3.0f)), (int)(n10 + n11 + 3), (int)color2.getRGB());
@@ -169,11 +168,11 @@ extends Module {
                     int n14 = n2 + i / 9 * 16 - 11 + 8;
                     ItemStack itemStack4 = (ItemStack)nonNullList.get(i);
                     mc.getRenderItem().renderItemAndEffectIntoGUI(itemStack4, n13, n14);
-                    mc.getRenderItem().renderItemOverlayIntoGUI(Class208.mc.fontRenderer, itemStack4, n13, n14, null);
+                    mc.getRenderItem().renderItemOverlayIntoGUI(Tooltips.mc.fontRenderer, itemStack4, n13, n14, null);
                 }
             }
             RenderHelper.disableStandardItemLighting();
-            Class208.mc.getRenderItem().zLevel = 0.0f;
+            Tooltips.mc.getRenderItem().zLevel = 0.0f;
         }
         GlStateManager.enableLighting();
         GlStateManager.enableDepth();

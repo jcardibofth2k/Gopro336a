@@ -4,7 +4,7 @@ import me.darki.konas.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
-public class Class42 {
+public class finishUseItemEvent {
     public ItemStack Field156;
     public EntityPlayer Field157;
 
@@ -16,7 +16,7 @@ public class Class42 {
         return this.Field156;
     }
 
-    public Class42(ItemStack itemStack, EntityPlayer entityPlayer) {
+    public finishUseItemEvent(ItemStack itemStack, EntityPlayer entityPlayer) {
         this.Field156 = itemStack;
         this.Field157 = entityPlayer;
     }

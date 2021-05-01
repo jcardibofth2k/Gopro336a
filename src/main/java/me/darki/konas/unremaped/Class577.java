@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.function.Consumer;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -142,7 +141,7 @@ public class Class577 extends Command
     }
     
     static {
-        Class577.Field490 = new File(Class589.Field2606, "breadcrums");
+        Class577.Field490 = new File(ConfigUtil.Field2606, "breadcrums");
     }
     
     public Class577() {

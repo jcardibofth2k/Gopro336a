@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -14,10 +13,10 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.input.Keyboard;
 
-public class Class151
+public class loginScreen
 extends GuiScreen {
     public GuiTextField Field1965;
-    public Class158 Field1966;
+    public altManagerGuiThing Field1966;
     public boolean Field1967;
     public boolean Field1968;
 
@@ -136,7 +135,7 @@ extends GuiScreen {
         ((GuiButton)this.buttonList.get((int)3)).visible = false;
         this.Field1965 = new GuiTextField(2, this.fontRenderer, this.width / 2 - 100, 66, 200, 20);
         ((IGuiTextField)this.Field1965).setMaxStringLength(320);
-        this.Field1966 = new Class158(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);
+        this.Field1966 = new altManagerGuiThing(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);
         this.Field1965.setFocused(true);
     }
 

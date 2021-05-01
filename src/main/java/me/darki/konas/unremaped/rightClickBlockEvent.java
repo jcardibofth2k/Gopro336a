@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 
-public class Class17
+public class rightClickBlockEvent
 extends CancelableEvent {
     public EntityPlayerSP Field140;
     public WorldClient Field141;
@@ -18,7 +18,7 @@ extends CancelableEvent {
     public Vec3d Field144;
     public EnumHand Field145;
 
-    public Class17(EntityPlayerSP entityPlayerSP, WorldClient worldClient, BlockPos blockPos, EnumFacing enumFacing, Vec3d vec3d, EnumHand enumHand) {
+    public rightClickBlockEvent(EntityPlayerSP entityPlayerSP, WorldClient worldClient, BlockPos blockPos, EnumFacing enumFacing, Vec3d vec3d, EnumHand enumHand) {
         this.Field140 = entityPlayerSP;
         this.Field141 = worldClient;
         this.Field142 = blockPos;

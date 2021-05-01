@@ -1,7 +1,7 @@
 package me.darki.konas.settingEnums;
 
 import java.io.IOException;
-import me.darki.konas.unremaped.Class158;
+import me.darki.konas.unremaped.altManagerGuiThing;
 import me.darki.konas.unremaped.Class166;
 import me.darki.konas.unremaped.Class170;
 import me.darki.konas.unremaped.Class68;
@@ -15,7 +15,7 @@ public class AccountLoginScreen
 extends GuiScreen {
     public Class166 Field1658;
     public GuiTextField Field1659;
-    public Class158 Field1660;
+    public altManagerGuiThing Field1660;
     public boolean Field1661;
 
     public void mouseClicked(int n, int n2, int n3) throws IOException {
@@ -106,7 +106,7 @@ extends GuiScreen {
         this.buttonList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 96 + 18, "Login"));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 120 + 18, "Cancel"));
         this.Field1659 = new GuiTextField(2, this.fontRenderer, this.width / 2 - 100, 66, 200, 20);
-        this.Field1660 = new Class158(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);
+        this.Field1660 = new altManagerGuiThing(3, this.fontRenderer, this.width / 2 - 100, 106, 200, 20);
         this.Field1659.setFocused(true);
     }
 }

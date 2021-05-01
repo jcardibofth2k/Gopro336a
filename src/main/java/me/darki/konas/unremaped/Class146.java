@@ -1,10 +1,10 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import net.minecraft.client.resources.I18n;

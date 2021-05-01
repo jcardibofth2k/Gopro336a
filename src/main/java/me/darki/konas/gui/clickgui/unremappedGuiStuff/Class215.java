@@ -1,9 +1,11 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
 import me.darki.konas.*;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.module.client.NewGui;
+import me.darki.konas.unremaped.Class135;
+import me.darki.konas.unremaped.Class241;
 
 public class Class215
 implements Class135 {

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import net.minecraft.client.Minecraft;
@@ -15,7 +14,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.math.MathHelper;
 
-public class Class158
+public class altManagerGuiThing
 extends Gui {
     public int Field1821;
     public FontRenderer Field1822;
@@ -146,7 +145,7 @@ extends Gui {
         return this.Field1828;
     }
 
-    public Class158(int n, FontRenderer fontRenderer, int n2, int n3, int n4, int n5) {
+    public altManagerGuiThing(int n, FontRenderer fontRenderer, int n2, int n3, int n4, int n5) {
         this.Field1821 = n;
         this.Field1822 = fontRenderer;
         this.Field1823 = n2;
@@ -419,8 +418,8 @@ extends Gui {
         block11: {
             if (!this.Method1741()) break block11;
             if (this.Method1712()) {
-                Class158.drawRect((int)(this.Field1823 - 1), (int)(this.Field1824 - 1), (int)(this.Field1823 + this.Field1825 + 1), (int)(this.Field1824 + this.Field1826 + 1), (int)-6250336);
-                Class158.drawRect((int)this.Field1823, (int)this.Field1824, (int)(this.Field1823 + this.Field1825), (int)(this.Field1824 + this.Field1826), (int)-16777216);
+                altManagerGuiThing.drawRect((int)(this.Field1823 - 1), (int)(this.Field1824 - 1), (int)(this.Field1823 + this.Field1825 + 1), (int)(this.Field1824 + this.Field1826 + 1), (int)-6250336);
+                altManagerGuiThing.drawRect((int)this.Field1823, (int)this.Field1824, (int)(this.Field1823 + this.Field1825), (int)(this.Field1824 + this.Field1826), (int)-16777216);
             }
             int n = this.Field1833 ? this.Field1837 : this.Field1838;
             int n2 = this.Field1835 - this.Field1834;

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import me.darki.konas.module.misc.ChatAppend;
 import me.darki.konas.util.LanguageUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

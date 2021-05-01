@@ -11,7 +11,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class526;
 import me.darki.konas.unremaped.Class566;
-import me.darki.konas.unremaped.Class589;
+import me.darki.konas.unremaped.ConfigUtil;
 
 public class Spammer
 extends Module {
@@ -89,7 +89,7 @@ extends Module {
         if (Field796 >= spamFileList.getValue().Method1225().size()) {
             Field796 = 0;
         }
-        Class589.Method2277(spamFileList.getValue().Method1225().get(Field796), true);
+        ConfigUtil.Method2277(spamFileList.getValue().Method1225().get(Field796), true);
     }
 
     public Spammer() {

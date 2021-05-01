@@ -1,8 +1,10 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.io.IOException;
 
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class230;
+import me.darki.konas.module.client.KonasGui;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.gui.GuiScreen;

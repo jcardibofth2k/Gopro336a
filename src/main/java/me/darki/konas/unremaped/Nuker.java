@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.event.events.UpdateEvent;
@@ -199,12 +198,12 @@ extends Module {
     }
 
     @Subscriber
-    public void Method791(Class17 class17) {
+    public void Method791(rightClickBlockEvent rightClickBlockEvent) {
         block0: {
             Block block;
-            if (this.mode.getValue() != Class334.RIGHTCLICK || (block = Nuker.mc.world.getBlockState(class17.Method251()).getBlock()) == this.Field741) break block0;
+            if (this.mode.getValue() != Class334.RIGHTCLICK || (block = Nuker.mc.world.getBlockState(rightClickBlockEvent.Method251()).getBlock()) == this.Field741) break block0;
             this.Field741 = block;
-            class17.setCanceled(true);
+            rightClickBlockEvent.setCanceled(true);
         }
     }
 

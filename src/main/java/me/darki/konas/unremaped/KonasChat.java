@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -17,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.misc.ChatAppend;
 import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;

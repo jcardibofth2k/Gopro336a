@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import me.darki.konas.util.ChatUtil;
 import me.darki.konas.util.SyntaxChunk;
-import me.darki.konas.unremaped.Class589;
+import me.darki.konas.unremaped.ConfigUtil;
 import java.io.File;
 import me.darki.konas.command.Command;
 
@@ -34,7 +34,7 @@ public class bookCommand extends Command
     }
     
     static {
-        bookCommand.Field2501 = new File(Class589.Field2606, "books");
+        bookCommand.Field2501 = new File(ConfigUtil.Field2606, "books");
     }
     
     public bookCommand() {

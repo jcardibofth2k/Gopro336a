@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.event.events.PacketEvent;
@@ -53,14 +52,14 @@ extends Module {
     }
 
     @Subscriber
-    public void Method791(Class17 class17) {
-        if (class17.Method251() != null) {
-            Block block = Class256.mc.world.getBlockState(class17.Method251()).getBlock();
+    public void Method791(rightClickBlockEvent rightClickBlockEvent) {
+        if (rightClickBlockEvent.Method251() != null) {
+            Block block = Class256.mc.world.getBlockState(rightClickBlockEvent.Method251()).getBlock();
             if (block == Blocks.ENDER_CHEST) {
-                float f = (float)(class17.Method252().x - (double)class17.Method251().getX());
-                float f2 = (float)(class17.Method252().y - (double)class17.Method251().getY());
-                float f3 = (float)(class17.Method252().z - (double)class17.Method251().getZ());
-                Class256.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(class17.Method251(), class17.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
+                float f = (float)(rightClickBlockEvent.Method252().x - (double) rightClickBlockEvent.Method251().getX());
+                float f2 = (float)(rightClickBlockEvent.Method252().y - (double) rightClickBlockEvent.Method251().getY());
+                float f3 = (float)(rightClickBlockEvent.Method252().z - (double) rightClickBlockEvent.Method251().getZ());
+                Class256.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(rightClickBlockEvent.Method251(), rightClickBlockEvent.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
                 this.Field2055 = true;
             } else if (block instanceof BlockContainer) {
                 this.Field2055 = false;

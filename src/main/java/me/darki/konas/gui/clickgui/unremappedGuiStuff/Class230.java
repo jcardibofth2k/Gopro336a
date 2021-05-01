@@ -1,11 +1,11 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.util.HashMap;
 
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
+import me.darki.konas.unremaped.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.apache.commons.lang3.StringUtils;

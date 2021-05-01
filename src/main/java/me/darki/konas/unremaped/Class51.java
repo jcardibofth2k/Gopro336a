@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -47,7 +46,7 @@ public class Class51 {
     public void Method352(OpenGuiEvent openGuiEvent) {
         block0: {
             if (!(openGuiEvent.Method1161() instanceof GuiIngameMenu) && !(openGuiEvent.Method1161() instanceof GuiDisconnected)) break block0;
-            Class589.Method2219(Class589.Field2610);
+            ConfigUtil.Method2219(ConfigUtil.Field2610);
         }
     }
 }

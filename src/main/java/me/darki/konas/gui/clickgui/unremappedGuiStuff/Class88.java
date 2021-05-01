@@ -1,6 +1,5 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.util.Collections;
 
 import me.darki.konas.gui.clickgui.frame.Frame;

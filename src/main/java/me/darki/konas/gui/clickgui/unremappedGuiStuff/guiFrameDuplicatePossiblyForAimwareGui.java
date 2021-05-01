@@ -1,7 +1,7 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
 import me.darki.konas.*;
-public abstract class Class90 {
+public abstract class guiFrameDuplicatePossiblyForAimwareGui {
     public String Field852;
     public float Field853;
     public float Field854;
@@ -106,7 +106,7 @@ public abstract class Class90 {
         this.Field855 = f;
     }
 
-    public Class90(String string, float f, float f2, float f3, float f4) {
+    public guiFrameDuplicatePossiblyForAimwareGui(String string, float f, float f2, float f3, float f4) {
         this.Field852 = string;
         this.Field853 = f;
         this.Field854 = f2;

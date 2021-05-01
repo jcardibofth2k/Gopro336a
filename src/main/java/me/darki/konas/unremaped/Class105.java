@@ -1,8 +1,10 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class180;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.guiFrameDuplicatePossiblyForAimwareGui;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
@@ -14,7 +16,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 public class Class105
-extends Class90 {
+extends guiFrameDuplicatePossiblyForAimwareGui {
     public ArrayList<Class183> Field2575 = new ArrayList();
     public int Field2576;
     public int Field2577 = 0;

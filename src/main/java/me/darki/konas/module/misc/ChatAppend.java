@@ -1,11 +1,11 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.module.misc;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.command.Command;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class648;
 
 public class ChatAppend
 extends Module {

@@ -1,12 +1,13 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class247;
+import me.darki.konas.unremaped.Class270;
 import me.darki.konas.util.math.RoundingUtil;
 import net.minecraft.util.math.MathHelper;
 
-public class Class258
+public class sliderComponent
 extends Class215 {
     public Setting<Number> Field2063;
     public boolean Field2064 = false;
@@ -21,11 +22,11 @@ extends Class215 {
                             block5: {
                                 block4: {
                                     block2: {
-                                        if (Class258.Method487(n, n2, this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), this.Method489() - 32.0f, 12.0) && n3 == 0) {
+                                        if (sliderComponent.Method487(n, n2, this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), this.Method489() - 32.0f, 12.0) && n3 == 0) {
                                             this.Field2064 = true;
                                             return true;
                                         }
-                                        if (!Class258.Method487(n, n2, this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block1;
+                                        if (!sliderComponent.Method487(n, n2, this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block1;
                                         if (!(this.Field2063.getValue() instanceof Float)) break block2;
                                         float f = ((Number)this.Field2063.getValue()).floatValue() - ((Number)this.Field2063.Method1176()).floatValue();
                                         this.Field2063.setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f, ((Float)((Number)this.Field2063.Method1176())).floatValue()), 2), (float)((Float)((Number)this.Field2063.Method1187())).floatValue(), (float)((Float)((Number)this.Field2063.Method1182())).floatValue())));
@@ -46,7 +47,7 @@ extends Class215 {
                             this.Field2063.setValue(Long.valueOf(l));
                             break block3;
                         }
-                        if (!Class258.Method487(n, n2, this.Method486() + this.Method489() - 12.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block3;
+                        if (!sliderComponent.Method487(n, n2, this.Method486() + this.Method489() - 12.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0)) break block3;
                         if (!(this.Field2063.getValue() instanceof Float)) break block6;
                         float f = ((Number)this.Field2063.getValue()).floatValue() + ((Number)this.Field2063.Method1176()).floatValue();
                         this.Field2063.setValue(Float.valueOf(MathHelper.clamp((float)RoundingUtil.Method1998(RoundingUtil.Method1999(f, ((Float)((Number)this.Field2063.Method1176())).floatValue()), 2), (float)((Float)((Number)this.Field2063.Method1187())).floatValue(), (float)((Float)((Number)this.Field2063.Method1182())).floatValue())));
@@ -102,17 +103,17 @@ extends Class215 {
             }
         }
         Class270 class2702 = new Class270(this.Method486() + 10.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18), 12.0f + f2, 6.0f, 6.0f);
-        Class247.Method2043(class2702, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
+        Class247.Method2043(class2702, sliderComponent.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class247.Method2042(class2702, Field317, 1.0f);
         Class270 class2703 = new Class270(this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0f, 12.0f, 6.0f);
-        Class247.Method2043(class2703, Class258.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
+        Class247.Method2043(class2703, sliderComponent.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class247.Method2042(class2703, Field317, 1.0f);
         Class247.Field2261.Method863(((Number)this.Field2063.getValue()).toString(), (int)(this.Method486() + 16.0f + f2 - Class247.Field2261.Method830(((Number)this.Field2063.getValue()).toString()) / 2.0f), (int)(this.Method492() + (float)(this.Field2063.hasDescription() ? 48 : 32)), Field324);
         Class247.Field2261.Method863("-", this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("-"), Field324);
         Class247.Field2261.Method863("+", this.Method486() + this.Method489() - Class247.Field2261.Method830("+"), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("+"), Field324);
     }
 
-    public Class258(Setting<Number> setting, float f, float f2, float f3, float f4, float f5) {
+    public sliderComponent(Setting<Number> setting, float f, float f2, float f3, float f4, float f5) {
         super(setting.Method1183(), f, f2, f3, f4, f5, setting.hasDescription() ? 54.0f : 38.0f);
         this.Field2063 = setting;
     }
@@ -120,7 +121,7 @@ extends Class215 {
     @Override
     public boolean Method491(int n, int n2, int n3, long l) {
         block0: {
-            if (Class258.Method487(n, n2, this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), this.Method489() - 32.0f, 12.0)) break block0;
+            if (sliderComponent.Method487(n, n2, this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), this.Method489() - 32.0f, 12.0)) break block0;
             this.Field2064 = false;
         }
         return super.Method491(n, n2, n3, l);

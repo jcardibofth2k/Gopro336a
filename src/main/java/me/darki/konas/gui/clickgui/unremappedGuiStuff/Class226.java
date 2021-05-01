@@ -1,9 +1,11 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.awt.Color;
 
 import me.darki.konas.setting.ColorValue;
+import me.darki.konas.unremaped.Class247;
+import me.darki.konas.unremaped.Class272;
+import me.darki.konas.unremaped.Class516;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;

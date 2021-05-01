@@ -1,8 +1,8 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;

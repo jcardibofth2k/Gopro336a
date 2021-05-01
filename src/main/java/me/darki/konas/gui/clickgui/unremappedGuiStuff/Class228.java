@@ -1,8 +1,10 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class247;
+import me.darki.konas.unremaped.Class264;
+import me.darki.konas.unremaped.Class270;
 
 public class Class228
 extends Class215 {

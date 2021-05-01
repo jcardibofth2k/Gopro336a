@@ -1,9 +1,9 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Module;
