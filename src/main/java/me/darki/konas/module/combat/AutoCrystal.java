@@ -712,8 +712,8 @@ public class AutoCrystal
             this.Field1638.put(sPacketSpawnObject.getEntityID(), System.currentTimeMillis());
             this.Field1648 = new Vec3d(sPacketSpawnObject.getX(), sPacketSpawnObject.getY(), sPacketSpawnObject.getZ());
             CPacketUseEntity cPacketUseEntity = new CPacketUseEntity();
-            ((ICPacketUseEntity)cPacketUseEntity).Method506(sPacketSpawnObject.getEntityID());
-            ((ICPacketUseEntity)cPacketUseEntity).Method507(CPacketUseEntity.Action.ATTACK);
+            ((ICPacketUseEntity)cPacketUseEntity).setEntityId(sPacketSpawnObject.getEntityID());
+            ((ICPacketUseEntity)cPacketUseEntity).setAction(CPacketUseEntity.Action.ATTACK);
             AutoCrystal.mc.player.connection.sendPacket(new CPacketAnimation(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
             AutoCrystal.mc.player.connection.sendPacket(cPacketUseEntity);
             this.Method1559(this.Method538() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
