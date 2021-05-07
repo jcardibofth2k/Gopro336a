@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class548 {
     public static Class552 Field1015 = Class558.Field779;
 

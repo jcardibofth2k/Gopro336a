@@ -76,7 +76,7 @@ extends GuiScreen {
                             break block0;
                         }
                         if (guiButton.id != 1) break block2;
-                        this.mc.displayGuiScreen((GuiScreen)new Class151());
+                        this.mc.displayGuiScreen((GuiScreen)new loginScreen());
                         break block0;
                     }
                     if (guiButton.id != 2) break block3;

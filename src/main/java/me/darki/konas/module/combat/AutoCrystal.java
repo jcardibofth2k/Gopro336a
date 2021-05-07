@@ -94,7 +94,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class AutoCrystal
-extends Module {
+        extends Module {
     public static Setting<ParentSetting> antiCheat = new Setting<>("AntiCheat", new ParentSetting(false));
     public static Setting<ACTiming> timing = new Setting<>("Timing", ACTiming.ADAPTIVE).setParentSetting(antiCheat).setDescription("Changes how AC is timed");
     public static Setting<ACRotateMode> rotate = new Setting<>("Rotate", ACRotateMode.TRACK).setParentSetting(antiCheat).setDescription("Spoof rotations server-side");
@@ -252,19 +252,17 @@ extends Module {
             if (AutoCrystal.depth.getValue()) {
                 GlStateManager.enableDepth();
             }
-
             final IRenderManager renderManager = (IRenderManager)AutoCrystal.mc.getRenderManager();
             final float[] rgBtoHSB = Color.RGBtoHSB((AutoCrystal.targetColor.getValue()).Method769(), (AutoCrystal.targetColor.getValue()).Method770(), (AutoCrystal.targetColor.getValue()).Method779(), null);
             float n2;
             final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
             int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             final ArrayList<Vec3d> list = new ArrayList<Vec3d>();
-            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * class89.Method436() - renderManager.Method69();
-            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * class89.Method436() - renderManager.Method70();
-            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.Method71();
+            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * class89.Method436() - renderManager.getRenderPosX();
+            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * class89.Method436() - renderManager.getRenderPosY();
+            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.getRenderPosZ();
             final double n7 = -Math.cos(System.currentTimeMillis() / 1000.0 * (float)AutoCrystal.animSpeed.getValue()) * (this.Field1652.height / 2.0) + this.Field1652.height / 2.0;
             GL11.glLineWidth((float)AutoCrystal.width.getValue());
-
             GL11.glBegin(1);
             for (int i = 0; i <= 360; ++i) {
                 list.add(new Vec3d(n4 + Math.sin(i * 3.141592653589793 / 180.0) * 0.5, n5 + n7 + 0.01, n6 + Math.cos(i * 3.141592653589793 / 180.0) * 0.5));
@@ -643,8 +641,7 @@ extends Module {
                 this.Field1639.put((EntityPlayer)sPacketEntityStatus.getEntity((World)AutoCrystal.mc.world), new Class566());
             }
         }
-        else if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && (boolean)AutoCrystal.disableOnTP.getValue() && !Class167.Method1610(PacketFly.class).isEnabled()) {
-
+        else if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && (boolean)AutoCrystal.disableOnTP.getValue() && !ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
             this.toggle();
         }
     }

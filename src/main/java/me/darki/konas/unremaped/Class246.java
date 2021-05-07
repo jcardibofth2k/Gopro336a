@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.lang.invoke.LambdaMetafactory;

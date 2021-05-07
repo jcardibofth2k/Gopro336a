@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.module.Module;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;

@@ -24,8 +24,8 @@ public class Class57 {
             }
             if (sPacketPlayerListItem.getAction() != SPacketPlayerListItem.Action.REMOVE_PLAYER) break block2;
             for (SPacketPlayerListItem.AddPlayerData addPlayerData : sPacketPlayerListItem.getEntries()) {
-                Class15 class15 = new Class15(addPlayerData.getProfile().getName(), addPlayerData.getProfile().getId());
-                EventDispatcher.Companion.dispatch(class15);
+                uuidHelper uuidHelper = new uuidHelper(addPlayerData.getProfile().getName(), addPlayerData.getProfile().getId());
+                EventDispatcher.Companion.dispatch(uuidHelper);
             }
         }
     }

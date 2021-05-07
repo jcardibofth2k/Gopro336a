@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Collections;

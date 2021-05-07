@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class107
 extends Enum {
     public static Class107 TOP_RIGHT = new Class107("TOP_RIGHT", 0);

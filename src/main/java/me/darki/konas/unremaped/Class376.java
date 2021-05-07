@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class376
 extends Enum {
     public static Class376 BOUNCE = new Class376("BOUNCE", 0);

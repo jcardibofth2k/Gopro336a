@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.util.internal.ConcurrentSet;
 import java.awt.Color;

@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import com.google.common.base.Charsets;
 import com.mojang.authlib.Agent;
 import com.mojang.authlib.GameProfile;

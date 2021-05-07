@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.util.SyntaxChunk;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

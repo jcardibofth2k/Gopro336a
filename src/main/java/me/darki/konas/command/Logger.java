@@ -1,7 +1,7 @@
 package me.darki.konas.command;
 
 import java.util.ConcurrentModificationException;
-import me.darki.konas.unremaped.Class191;
+import me.darki.konas.unremaped.Macros;
 import me.darki.konas.unremaped.Class532;
 import me.darki.konas.unremaped.Class533;
 import me.darki.konas.unremaped.Class538;
@@ -55,7 +55,7 @@ public class Logger {
         if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
             return;
         }
-        if (Class54.Field201 && Class191.oneLine.getValue().booleanValue()) {
+        if (Class54.Field201 && Macros.oneLine.getValue().booleanValue()) {
             Logger.Method1117(string, 4444);
             return;
         }

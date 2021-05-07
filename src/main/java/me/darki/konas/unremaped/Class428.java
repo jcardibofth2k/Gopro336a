@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class428
 extends Enum {
     public static Class428 CANCEL = new Class428("CANCEL", 0);

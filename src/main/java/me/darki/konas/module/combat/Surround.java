@@ -99,27 +99,27 @@ extends Module {
         this.Field2441 = new ArrayList<Vec3d>();
         if (this.Method539()) {
             if (full.getValue().booleanValue()) {
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, 0.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, 0.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 0.0, 1.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 0.0, -1.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
             }
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, 1.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, 1.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 1.0, 1.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 1.0, -1.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 1.0, 0.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 1.0, 0.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 1.0, 1.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 1.0, -1.0));
         } else {
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, -1.0, 0.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, 0.0));
             if (full.getValue().booleanValue()) {
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, -1.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, -1.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, -1.0, 1.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, -1.0, -1.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, -1.0, 0.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, -1.0, 0.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, 1.0));
+                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, -1.0));
             }
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(1.0, 0.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(-1.0, 0.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 0.0, 1.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().add(0.0, 0.0, -1.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
+            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
         }
         ArrayList<BlockPos> arrayList = new ArrayList<BlockPos>();
         for (Vec3d vec3d : this.Field2441) {
@@ -220,7 +220,7 @@ extends Module {
     }
 
     public boolean Method519() {
-        Block block = Surround.mc.world.getBlockState(new BlockPos(Surround.mc.player.getPositionVector().add(0.0, 0.2, 0.0))).getBlock();
+        Block block = Surround.mc.world.getBlockState(new BlockPos(Surround.mc.player.getPositionVector().addVector(0.0, 0.2, 0.0))).getBlock();
         return block == Blocks.OBSIDIAN || block == Blocks.ENDER_CHEST;
     }
 
@@ -293,8 +293,8 @@ extends Module {
         double d = 69420.0;
         for (EnumFacing enumFacing3 : Class496.Method1963(blockPos, strict.getValue(), false)) {
             blockPos2 = blockPos.offset(enumFacing3);
-            Vec3d vec3d = new Vec3d(blockPos2).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
-            if (!(Surround.mc.player.getPositionVector().add(0.0, (double)Surround.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < d)) continue;
+            Vec3d vec3d = new Vec3d(blockPos2).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
+            if (!(Surround.mc.player.getPositionVector().addVector(0.0, (double)Surround.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < d)) continue;
             enumFacing2 = enumFacing3;
         }
         if (enumFacing2 == null) {
@@ -302,7 +302,7 @@ extends Module {
         }
         BlockPos blockPos3 = blockPos.offset(enumFacing2);
         enumFacing3 = enumFacing2.getOpposite();
-        blockPos2 = new Vec3d(blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
+        blockPos2 = new Vec3d(blockPos3).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
         if (!Surround.mc.player.isSneaking() && Class545.Method1004(blockPos3)) {
             Surround.mc.player.connection.sendPacket(new CPacketEntityAction(Surround.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             Surround.mc.player.setSneaking(true);

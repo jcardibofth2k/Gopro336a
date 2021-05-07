@@ -305,7 +305,7 @@ extends Module {
 
     public static EnumFacing Method1520(BlockPos blockPos) {
         Vec3d vec3d = new Vec3d(Auto32k.mc.player.posX, Auto32k.mc.player.posY + (double) Auto32k.mc.player.getEyeHeight(), Auto32k.mc.player.posZ);
-        Vec3d vec3d2 = new Vec3d(blockPos).add(0.5, 0.5, 0.5).add(new Vec3d(EnumFacing.DOWN.getDirectionVec()).scale(0.5));
+        Vec3d vec3d2 = new Vec3d(blockPos).addVector(0.5, 0.5, 0.5).add(new Vec3d(EnumFacing.DOWN.getDirectionVec()).scale(0.5));
         double d = vec3d2.x - vec3d.x;
         double d2 = vec3d2.z - vec3d.z;
         float f = (float)Math.toDegrees(Math.atan2(d2, d)) - 90.0f;
@@ -319,7 +319,7 @@ extends Module {
                 return EnumFacing.DOWN;
             }
         }
-        return EnumFacing.byHorizontalIndex((int)(MathHelper.floor((double)(f2 * 4.0f / 360.0f) + 0.5) & 3)).getOpposite();
+        return EnumFacing.getHorizontal((int)(MathHelper.floor((double)(f2 * 4.0f / 360.0f) + 0.5) & 3)).getOpposite();
     }
 
     public boolean Method1521(Entity entity, double d, double d2, double d3) {

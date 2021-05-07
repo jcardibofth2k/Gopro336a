@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import org.lwjgl.util.vector.Vector2f;
 
 public class Class272

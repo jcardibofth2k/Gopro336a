@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class400
 extends Enum {
     public static Class400 GROW = new Class400("GROW", 0);

@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class364
 extends Enum {
     public static Class364 SPIN = new Class364("SPIN", 0);

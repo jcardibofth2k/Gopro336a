@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class52;
+import me.darki.konas.unremaped.portalHitboxEvent;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -18,7 +18,7 @@ public class MixinBlockPortal {
 
     @Inject(method={"getBoundingBox"}, at={@At(value="HEAD")}, cancellable=true)
     private void Method147(IBlockState state, IBlockAccess source, BlockPos pos, CallbackInfoReturnable<AxisAlignedBB> cir) {
-        Class52 event = new Class52(state, source, pos);
+        portalHitboxEvent event = new portalHitboxEvent(state, source, pos);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             cir.setReturnValue(Field114);

@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.nio.ByteBuffer;
 
 import me.darki.konas.util.ShaderUtil;

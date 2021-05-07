@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class114
 extends Enum {
     public static Class114 TEXTURE = new Class114("TEXTURE", 0);

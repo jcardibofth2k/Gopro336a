@@ -10,7 +10,10 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
+import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.player.FastUse;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -38,11 +41,8 @@ import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
+import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 public class PistonAura
@@ -161,104 +161,103 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
-        block26: {
-            AxisAlignedBB axisAlignedBB;
-            BlockPos blockPos;
-            if (this.Field373 == null || this.Field374 == null) {
-                return;
-            }
-            if (this.Field383.Method737(1000.0)) {
-                return;
-            }
-            if (current.getValue().booleanValue()) {
-                blockPos = null;
-                switch (Class216.Field286[this.Field372.ordinal()]) {
-                    case 1: {
-                        blockPos = this.Field373.down().offset(this.Field374, 2);
-                        break;
-                    }
-                    case 2: 
-                    case 4: {
-                        blockPos = this.Field373.down().offset(this.Field374, 1);
-                        break;
-                    }
-                    case 3: {
-                        blockPos = this.Field373.down().offset(this.Field374, 3);
-                    }
-                }
-                if (blockPos != null) {
-                    axisAlignedBB = PistonAura.mc.world.getBlockState(blockPos).getBoundingBox(PistonAura.mc.world, blockPos).offset(blockPos);
-                    axisAlignedBB = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                    Class523.Method1216();
-                    Class523.Method1217(axisAlignedBB, colorC.getValue().Method774());
-                    Class523.Method1214();
-                    Class523.Method1216();
-                    Class523.Method1215(axisAlignedBB, outlineC.getValue().Method774(), 1.5f);
-                    Class523.Method1214();
-                }
-            }
-            if (full.getValue().booleanValue()) {
-                blockPos = null;
-                switch (this.Field374) {
-                    case NORTH: {
-                        blockPos = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 1.0, -3.0).offset(this.Field373.down());
-                        break;
-                    }
-                    case SOUTH: {
-                        blockPos = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 1.0, 3.0).offset(this.Field373.down());
-                        break;
-                    }
-                    case EAST: {
-                        blockPos = new AxisAlignedBB(0.0, 0.0, 0.0, 3.0, 1.0, 1.0).offset(this.Field373.down());
-                        break;
-                    }
-                    case WEST: {
-                        blockPos = new AxisAlignedBB(0.0, 0.0, 0.0, -3.0, 1.0, 1.0).offset(this.Field373.down());
-                    }
-                }
-                if (blockPos != null) {
-                    blockPos = blockPos.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-                    Class523.Method1216();
-                    Class523.Method1217((AxisAlignedBB)blockPos, colorF.getValue().Method774());
-                    Class523.Method1214();
-                    Class523.Method1216();
-                    Class523.Method1215((AxisAlignedBB)blockPos, outlineF.getValue().Method774(), 1.5f);
-                    Class523.Method1214();
-                }
-            }
-            if (!arrow.getValue().booleanValue()) break block26;
-            blockPos = null;
-            axisAlignedBB = null;
-            Vec3d vec3d = null;
-            BlockPos blockPos2 = this.Field373.offset(this.Field374, 2);
-            Vec3d vec3d2 = new Vec3d((double)blockPos2.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), (double)(blockPos2.getY() + 1) - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), (double)blockPos2.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
-            switch (this.Field374) {
-                case NORTH: {
-                    blockPos = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z - 0.5);
-                    axisAlignedBB = new Vec3d(vec3d2.x, vec3d2.y, vec3d2.z + 0.5);
-                    vec3d = new Vec3d(vec3d2.x + 0.5, vec3d2.y, vec3d2.z - 0.5);
+    public void Method139(final Class89 class89) {
+        if (this.Field373 == null || this.Field374 == null) {
+            return;
+        }
+        if (this.Field383.Method737(1000.0)) {
+            return;
+        }
+        if (current.getValue()) {
+            BlockPos blockPos = null;
+            switch (Class216.Field286[this.Field372.ordinal()]) {
+                case 1: {
+                    blockPos = this.Field373.down().offset(this.Field374, 2);
                     break;
                 }
-                case SOUTH: {
-                    blockPos = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z + 0.5);
-                    axisAlignedBB = new Vec3d(vec3d2.x, vec3d2.y, vec3d2.z - 0.5);
-                    vec3d = new Vec3d(vec3d2.x + 0.5, vec3d2.y, vec3d2.z + 0.5);
+                case 2:
+                case 4: {
+                    blockPos = this.Field373.down().offset(this.Field374, 1);
                     break;
                 }
-                case EAST: {
-                    blockPos = new Vec3d(vec3d2.x + 0.5, vec3d2.y, vec3d2.z - 0.5);
-                    axisAlignedBB = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z);
-                    vec3d = new Vec3d(vec3d2.x + 0.5, vec3d2.y, vec3d2.z + 0.5);
+                case 3: {
+                    blockPos = this.Field373.down().offset(this.Field374, 3);
                     break;
-                }
-                case WEST: {
-                    blockPos = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z - 0.5);
-                    axisAlignedBB = new Vec3d(vec3d2.x + 0.5, vec3d2.y, vec3d2.z);
-                    vec3d = new Vec3d(vec3d2.x - 0.5, vec3d2.y, vec3d2.z + 0.5);
                 }
             }
             if (blockPos != null) {
+                final AxisAlignedBB offset = mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)mc.world, blockPos).offset(blockPos).offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+                Class523.Method1216();
+                Class523.Method1217(offset, (colorC.getValue()).Method774());
+                Class523.Method1214();
+                Class523.Method1216();
+                Class523.Method1215(offset, (outlineC.getValue()).Method774(), 1.5f);
+                Class523.Method1214();
+            }
+        }
+        if (full.getValue()) {
+            AxisAlignedBB axisAlignedBB = null;
+            switch (Class216.Field287[this.Field374.ordinal()]) {
+                case 1: {
+                    axisAlignedBB = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 1.0, -3.0).offset(this.Field373.down());
+                    break;
+                }
+                case 2: {
+                    axisAlignedBB = new AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 1.0, 3.0).offset(this.Field373.down());
+                    break;
+                }
+                case 3: {
+                    axisAlignedBB = new AxisAlignedBB(0.0, 0.0, 0.0, 3.0, 1.0, 1.0).offset(this.Field373.down());
+                    break;
+                }
+                case 4: {
+                    axisAlignedBB = new AxisAlignedBB(0.0, 0.0, 0.0, -3.0, 1.0, 1.0).offset(this.Field373.down());
+                    break;
+                }
+            }
+            if (axisAlignedBB != null) {
+                final AxisAlignedBB offset2 = axisAlignedBB.offset(-((IRenderManager)mc.getRenderManager()).getRenderPosX(), -((IRenderManager)mc.getRenderManager()).getRenderPosY(), -((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+                Class523.Method1216();
+                Class523.Method1217(offset2, (colorF.getValue()).Method774());
+                Class523.Method1214();
+                Class523.Method1216();
+                Class523.Method1215(offset2, (outlineF.getValue()).Method774(), 1.5f);
+                Class523.Method1214();
+            }
+        }
+        if (arrow.getValue()) {
+            Vec3d vec3d = null;
+            Vec3d vec3d2 = null;
+            Vec3d vec3d3 = null;
+            final BlockPos offset3 = this.Field373.offset(this.Field374, 2);
+            final Vec3d vec3d4 = new Vec3d(offset3.getX() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosX(), offset3.getY() + 1 - ((IRenderManager)mc.getRenderManager()).getRenderPosY(), offset3.getZ() + 0.5 - ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+            switch (Class216.Field287[this.Field374.ordinal()]) {
+                case 1: {
+                    vec3d = new Vec3d(vec3d4.x - 0.5, vec3d4.y, vec3d4.z - 0.5);
+                    vec3d2 = new Vec3d(vec3d4.x, vec3d4.y, vec3d4.z + 0.5);
+                    vec3d3 = new Vec3d(vec3d4.x + 0.5, vec3d4.y, vec3d4.z - 0.5);
+                    break;
+                }
+                case 2: {
+                    vec3d = new Vec3d(vec3d4.x - 0.5, vec3d4.y, vec3d4.z + 0.5);
+                    vec3d2 = new Vec3d(vec3d4.x, vec3d4.y, vec3d4.z - 0.5);
+                    vec3d3 = new Vec3d(vec3d4.x + 0.5, vec3d4.y, vec3d4.z + 0.5);
+                    break;
+                }
+                case 3: {
+                    vec3d = new Vec3d(vec3d4.x + 0.5, vec3d4.y, vec3d4.z - 0.5);
+                    vec3d2 = new Vec3d(vec3d4.x - 0.5, vec3d4.y, vec3d4.z);
+                    vec3d3 = new Vec3d(vec3d4.x + 0.5, vec3d4.y, vec3d4.z + 0.5);
+                    break;
+                }
+                case 4: {
+                    vec3d = new Vec3d(vec3d4.x - 0.5, vec3d4.y, vec3d4.z - 0.5);
+                    vec3d2 = new Vec3d(vec3d4.x + 0.5, vec3d4.y, vec3d4.z);
+                    vec3d3 = new Vec3d(vec3d4.x - 0.5, vec3d4.y, vec3d4.z + 0.5);
+                    break;
+                }
+            }
+            if (vec3d != null) {
                 Class523.Method1216();
                 GL11.glPushMatrix();
                 GL11.glEnable(3042);
@@ -269,25 +268,25 @@ extends Module {
                 GL11.glDisable(2929);
                 GL11.glDepthMask(false);
                 GL11.glLineWidth(5.0f);
-                GL11.glColor4f((float)(arrowColor.getValue().Method774() >> 16 & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() >> 8 & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() & 0xFF) / 255.0f, (float)(arrowColor.getValue().Method774() >> 24 & 0xFF) / 255.0f);
-                if (top.getValue().booleanValue()) {
-                    GL11.glBegin(1);
-                    GL11.glVertex3d(blockPos.x, blockPos.y, blockPos.z);
-                    GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
-                    GL11.glEnd();
+                GL11.glColor4f(((arrowColor.getValue()).Method774() >> 16 & 0xFF) / 255.0f, ((arrowColor.getValue()).Method774() >> 8 & 0xFF) / 255.0f, ((arrowColor.getValue()).Method774() & 0xFF) / 255.0f, ((arrowColor.getValue()).Method774() >> 24 & 0xFF) / 255.0f);
+                if (top.getValue()) {
                     GL11.glBegin(1);
                     GL11.glVertex3d(vec3d.x, vec3d.y, vec3d.z);
-                    GL11.glVertex3d((double)axisAlignedBB.x, (double)axisAlignedBB.y, (double)axisAlignedBB.z);
+                    GL11.glVertex3d(vec3d2.x, vec3d2.y, vec3d2.z);
+                    GL11.glEnd();
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(vec3d3.x, vec3d3.y, vec3d3.z);
+                    GL11.glVertex3d(vec3d2.x, vec3d2.y, vec3d2.z);
                     GL11.glEnd();
                 }
-                if (bottom.getValue().booleanValue()) {
-                    GL11.glBegin(1);
-                    GL11.glVertex3d(blockPos.x, blockPos.y - 1.0, blockPos.z);
-                    GL11.glVertex3d((double)axisAlignedBB.x, (double)(axisAlignedBB.y - 1.0), (double)axisAlignedBB.z);
-                    GL11.glEnd();
+                if (bottom.getValue()) {
                     GL11.glBegin(1);
                     GL11.glVertex3d(vec3d.x, vec3d.y - 1.0, vec3d.z);
-                    GL11.glVertex3d((double)axisAlignedBB.x, (double)(axisAlignedBB.y - 1.0), (double)axisAlignedBB.z);
+                    GL11.glVertex3d(vec3d2.x, vec3d2.y - 1.0, vec3d2.z);
+                    GL11.glEnd();
+                    GL11.glBegin(1);
+                    GL11.glVertex3d(vec3d3.x, vec3d3.y - 1.0, vec3d3.z);
+                    GL11.glVertex3d(vec3d2.x, vec3d2.y - 1.0, vec3d2.z);
                     GL11.glEnd();
                 }
                 GL11.glLineWidth(1.0f);
@@ -331,7 +330,7 @@ extends Module {
         RayTraceResult rayTraceResult = PistonAura.mc.world.rayTraceBlocks(new Vec3d(PistonAura.mc.player.posX, PistonAura.mc.player.posY + (double) PistonAura.mc.player.getEyeHeight(), PistonAura.mc.player.posZ), new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() - 0.5, (double)this.Field375.getZ() + 0.5));
         EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
         FastUse.Field1871 = true;
-        Class545.Method996(this.Field375, PistonAura.mc.player.getPositionVector().add(0.0, (double) PistonAura.mc.player.getEyeHeight(), 0.0), this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, enumFacing, true);
+        Class545.Method996(this.Field375, PistonAura.mc.player.getPositionVector().addVector(0.0, (double) PistonAura.mc.player.getEyeHeight(), 0.0), this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, enumFacing, true);
         this.Field372 = Class220.REDSTONE;
         this.Field379.Method738(0L);
     }
@@ -422,7 +421,7 @@ extends Module {
     }
 
     public PistonAura() {
-        super("PistonAura", "Automatically faceplaces people using pistons", mode, new String[0]);
+        super("PistonAura", "Automatically faceplaces people using pistons", Category.COMBAT, new String[0]);
     }
 
     public void Method523(int n, Class490 class490, BlockPos blockPos, EnumFacing enumFacing) {
@@ -533,7 +532,7 @@ extends Module {
             for (double d2 = 0.1; d2 < 0.9; d2 += 0.1) {
                 for (double d3 = 0.1; d3 < 0.9; d3 += 0.1) {
                     Vec3d vec3d = new Vec3d(PistonAura.mc.player.posX, PistonAura.mc.player.getEntityBoundingBox().minY + (double) PistonAura.mc.player.getEyeHeight(), PistonAura.mc.player.posZ);
-                    Vec3d vec3d2 = new Vec3d(blockPos).add(d, d2, d3);
+                    Vec3d vec3d2 = new Vec3d(blockPos).addVector(d, d2, d3);
                     double d4 = vec3d.distanceTo(vec3d2);
                     double d5 = vec3d2.x - vec3d.x;
                     double d6 = vec3d2.y - vec3d.y;
@@ -545,7 +544,7 @@ extends Module {
                     float f3 = -MathHelper.cos((float)(-dArray[1] * 0.01745329238474369));
                     float f4 = MathHelper.sin((float)(-dArray[1] * 0.01745329238474369));
                     Vec3d vec3d3 = new Vec3d(f2 * f3, f4, f * f3);
-                    Vec3d vec3d4 = vec3d.add(vec3d3.x * d4, vec3d3.y * d4, vec3d3.z * d4);
+                    Vec3d vec3d4 = vec3d.addVector(vec3d3.x * d4, vec3d3.y * d4, vec3d3.z * d4);
                     RayTraceResult rayTraceResult = PistonAura.mc.world.rayTraceBlocks(vec3d, vec3d4, false, false, false);
                     if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK || !rayTraceResult.getBlockPos().equals(blockPos)) continue;
                     return true;
@@ -599,7 +598,7 @@ extends Module {
                             boolean bl2 = PistonAura.mc.player.inventory.currentItem != n;
                             boolean bl3 = PistonAura.mc.player.isSprinting();
                             boolean bl4 = Class545.Method1004(this.Field376);
-                            Vec3d vec3d = new Vec3d(this.Field376).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field377.getDirectionVec()).scale(0.5));
+                            Vec3d vec3d = new Vec3d(this.Field376).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field377.getDirectionVec()).scale(0.5));
                             if (bl) {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                 Class550.Method883(fArray[0], fArray[1]);
@@ -619,7 +618,7 @@ extends Module {
                             if (this.Field379.Method737(1000.0)) {
                                 RayTraceResult rayTraceResult = PistonAura.mc.world.rayTraceBlocks(new Vec3d(PistonAura.mc.player.posX, PistonAura.mc.player.posY + (double) PistonAura.mc.player.getEyeHeight(), PistonAura.mc.player.posZ), new Vec3d((double)this.Field378.getX() + 0.5, (double)this.Field378.getY() + 0.5, (double)this.Field378.getZ() + 0.5));
                                 EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
-                                Vec3d vec3d = new Vec3d(this.Field378).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
+                                Vec3d vec3d = new Vec3d(this.Field378).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5));
                                 if (bl) {
                                     float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                     Class550.Method883(fArray[0], fArray[1]);
@@ -678,7 +677,7 @@ extends Module {
                             boolean bl5 = PistonAura.mc.player.inventory.currentItem != n;
                             int n2 = PistonAura.mc.player.isSprinting();
                             int n3 = Class545.Method1004(optional.get().Field1089);
-                            enumFacing = new Vec3d(optional.get().Field1089).add(0.5, 0.5, 0.5).add(new Vec3d(optional.get().Field1090.getDirectionVec()).scale(0.5));
+                            enumFacing = new Vec3d(optional.get().Field1089).addVector(0.5, 0.5, 0.5).add(new Vec3d(optional.get().Field1090.getDirectionVec()).scale(0.5));
                             if (bl) {
                                 object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), (Vec3d)enumFacing);
                                 Class550.Method883((float)object[0], (float)object[1]);
@@ -689,6 +688,23 @@ extends Module {
                             this.Field384 = () -> this.Method525(bl5, n, n2 != 0, n3 != 0, (Optional)object, (Vec3d)enumFacing);
                             return;
                         }
+                        /*if (optional.isPresent()) {
+                            final boolean b3 = mc.player.inventory.currentItem != n;
+                            final boolean sprinting2 = mc.player.isSprinting();
+                            final boolean method531 = Class545.Method1004(optional.get().Field1089);
+                            final Vec3d add3 = new Vec3d((Vec3i)optional.get().Field1089).addVector(0.5, 0.5, 0.5).add(new Vec3d(optional.get().Field1090.getDirectionVec()).scale(0.5));
+                            if (bl) {
+                                final float[] method532 = RotationUtil.Method1946(mc.player.getPositionEyes(mc.getRenderPartialTicks()), add3);
+                                Class550.Method883(method532[0], method532[1]);
+                            }
+                            else {
+                                NewGui.INSTANCE.Field1139.Method1942((Vec3d)add3);
+                            }
+                            object = optional;
+                            this.Field384 = () -> this.Method525(b3, n, sprinting2 != 0, n3 != 0, (Optional)object, (Vec3d)enumFacing);
+                            //this.Field384 = this::Method525;
+                            return;
+                        }*/
                         this.Field372 = Class220.BREAKING;
                         return;
                     }

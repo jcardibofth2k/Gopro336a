@@ -1,7 +1,7 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.unremaped.Class52;
+import me.darki.konas.unremaped.portalHitboxEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IEntity;
 import me.darki.konas.module.Category;
@@ -17,10 +17,10 @@ extends Module {
     public boolean Field2266 = false;
 
     @Subscriber
-    public void Method2044(Class52 class52) {
+    public void Method2044(portalHitboxEvent portalHitboxEvent) {
         block0: {
             if (!noHitbox.getValue().booleanValue()) break block0;
-            class52.Cancel();
+            portalHitboxEvent.Cancel();
         }
     }
 

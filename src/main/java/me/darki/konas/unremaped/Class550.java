@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;

@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class410
 extends Enum {
     public static Class410 SEQUENTIAL = new Class410("SEQUENTIAL", 0);

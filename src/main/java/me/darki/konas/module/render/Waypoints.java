@@ -55,14 +55,14 @@ extends Module {
     public DecimalFormat Field1920 = new DecimalFormat("#.##");
 
     @Subscriber
-    public void Method1796(Class15 class15) {
+    public void Method1796(uuidHelper uuidHelper) {
         if (Waypoints.mc.player == null || Waypoints.mc.world == null) {
             return;
         }
         if (!this.renderLogouts.getValue().booleanValue()) {
             return;
         }
-        EntityPlayer entityPlayer = Waypoints.mc.world.getPlayerEntityByUUID(class15.Method209());
+        EntityPlayer entityPlayer = Waypoints.mc.world.getPlayerEntityByUUID(uuidHelper.Method209());
         if (entityPlayer != null) {
             this.Field1919.put(entityPlayer, System.currentTimeMillis());
         }

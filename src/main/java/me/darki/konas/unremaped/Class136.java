@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import net.minecraft.item.ItemStack;
 
 public class Class136 {

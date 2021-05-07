@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class220
 extends Enum {
     public static Class220 SEARCHING = new Class220("SEARCHING", 0);

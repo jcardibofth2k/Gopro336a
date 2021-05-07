@@ -3,6 +3,8 @@ package me.darki.konas.gui.clickgui.frame;
 import java.util.ArrayList;
 
 import me.darki.konas.gui.clickgui.component.Component;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class180;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.RenderUtil2;

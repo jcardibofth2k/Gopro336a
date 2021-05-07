@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.awt.Color;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;

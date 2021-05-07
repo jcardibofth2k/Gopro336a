@@ -1,6 +1,7 @@
 package me.darki.konas.unremaped;
 
 import cookiedragon.eventsystem.Subscriber;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.module.Module;
@@ -40,7 +41,7 @@ public class Class54 {
             if (object.Method1630() || object.Method1646() != class653.Method1164()) continue;
             object.toggle();
         }
-        if (ModuleManager.getModuleByClass(Class191.class).isEnabled()) {
+        if (ModuleManager.getModuleByClass(Macros.class).isEnabled()) {
             for (Class152 class152 : Class157.Method1704()) {
                 if (class152.Method1757() != class653.Method1164()) continue;
                 Field201 = true;

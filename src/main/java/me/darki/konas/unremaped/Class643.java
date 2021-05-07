@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;

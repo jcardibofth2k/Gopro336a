@@ -1,5 +1,6 @@
 package me.darki.konas.gui.protocol;
 
+import me.darki.konas.*;
 import com.viaversion.viafabric.ViaFabric;
 import com.viaversion.viafabric.protocol.ProtocolCollection;
 import net.minecraft.client.Minecraft;

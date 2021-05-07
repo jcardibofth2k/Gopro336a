@@ -6,6 +6,8 @@ import java.util.Map;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.render.Waypoints;
 import me.darki.konas.unremaped.Class559;
 import me.darki.konas.unremaped.Class561;
 import me.darki.konas.unremaped.Class562;

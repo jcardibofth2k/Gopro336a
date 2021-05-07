@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class499 {
     public double[][] Field2076 = new double[10][2];
     public int Field2077 = 0;

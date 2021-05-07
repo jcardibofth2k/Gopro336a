@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 import java.util.Objects;
 
 import net.minecraft.client.Minecraft;

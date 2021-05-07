@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.*;
 public class Class566 {
     public long Field676 = System.currentTimeMillis();
 

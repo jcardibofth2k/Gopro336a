@@ -3,6 +3,8 @@ package me.darki.konas.module;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.unremaped.Class28;
+import me.darki.konas.unremaped.Class566;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.entity.player.EntityPlayer;
