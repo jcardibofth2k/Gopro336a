@@ -4,6 +4,7 @@ import cookiedragon.eventsystem.Subscriber;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import me.darki.konas.config.Config;
 import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.event.events.TickEvent;
 import net.minecraft.client.Minecraft;
@@ -46,7 +47,7 @@ public class Class51 {
     public void Method352(OpenGuiEvent openGuiEvent) {
         block0: {
             if (!(openGuiEvent.Method1161() instanceof GuiIngameMenu) && !(openGuiEvent.Method1161() instanceof GuiDisconnected)) break block0;
-            ConfigUtil.Method2219(ConfigUtil.Field2610);
+            Config.Method2219(Config.currentConfig);
         }
     }
 }

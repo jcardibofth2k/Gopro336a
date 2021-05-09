@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.darki.konas.config.Config;
 import me.darki.konas.util.ColorUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -29,7 +30,7 @@ implements Class552 {
     public int Field811 = new ScaledResolution(Minecraft.getMinecraft()).getScaleFactor();
     public String Field812;
     public float Field813;
-    public static File Field814 = new File(ConfigUtil.Field2606, "fonts");
+    public static File Field814 = new File(Config.KONAS_FOLDER, "fonts");
     public static Font Field815 = null;
 
     public void Method852() throws IOException, FontFormatException, SlickException {

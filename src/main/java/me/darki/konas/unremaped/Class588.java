@@ -1,9 +1,11 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.config.Config;
+
 public class Class588
 extends Thread {
     @Override
     public void run() {
-        ConfigUtil.Method2219(ConfigUtil.Field2610);
+        Config.Method2219(Config.currentConfig);
     }
 }

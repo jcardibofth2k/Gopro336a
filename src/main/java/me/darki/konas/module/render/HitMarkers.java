@@ -106,7 +106,7 @@ extends Module {
 
     public HitMarkers() {
         super("HitMarkers", Category.RENDER);
-        this.Field1278 = new File(HitMarkers.mc.gameDir + File.separator + "Konas" + File.separator + "hitmarker.wav");
+        this.Field1278 = new File(HitMarkers.mc.mcDataDir + File.separator + "Konas" + File.separator + "hitmarker.wav");
         try {
             if (!this.Field1278.exists()) {
                 InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("assets/sounds/hitmarker.wav");

@@ -3,7 +3,7 @@ package me.darki.konas.command.commands;
 import java.io.File;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.ChatUtil;
-import me.darki.konas.unremaped.ConfigUtil;
+import me.darki.konas.config.Config;
 import me.darki.konas.unremaped.Class605;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
@@ -20,9 +20,9 @@ extends Command {
             ChatUtil.Method1034(this.Method191());
             return;
         }
-        File file = new File(ConfigUtil.Field2608, stringArray[3] + ".json");
+        File file = new File(Config.CONFIGS, stringArray[3] + ".json");
         if (stringArray[3].equalsIgnoreCase("default")) {
-            file = ConfigUtil.Field2607;
+            file = Config.CONFIG;
         }
         switch (stringArray[1].toLowerCase()) {
             case "save": {
@@ -31,14 +31,14 @@ extends Command {
                     return;
                 }
                 if (stringArray[2].equalsIgnoreCase("friends")) {
-                    ConfigUtil.Method2279(file);
+                    Config.Method2279(file);
                     ChatUtil.Method1033("Saved Friends to Config (h)%s", stringArray[3]);
                     break;
                 }
                 if (ModuleManager.Method1612(stringArray[2]) == null) {
                     ChatUtil.Method1034("Module (h)%s(r) is invalid!", stringArray[2]);
                 }
-                ConfigUtil.Method2241(ModuleManager.Method1612(stringArray[2]), file);
+                Config.Method2241(ModuleManager.Method1612(stringArray[2]), file);
                 ChatUtil.Method1033("Saved Module (h)%s(r) to Config (h)%s", stringArray[2], stringArray[3]);
                 break;
             }
@@ -48,14 +48,14 @@ extends Command {
                     return;
                 }
                 if (stringArray[2].equalsIgnoreCase("friends")) {
-                    ConfigUtil.Method2247(file);
+                    Config.Method2247(file);
                     ChatUtil.Method1033("Loaded Friends from Config (h)%s", stringArray[3]);
                     break;
                 }
                 if (ModuleManager.Method1612(stringArray[2]) == null) {
                     ChatUtil.Method1034("Module (h)%s(r) is invalid", stringArray[2]);
                 }
-                ConfigUtil.Method2265(ModuleManager.Method1612(stringArray[2]), file);
+                Config.Method2265(ModuleManager.Method1612(stringArray[2]), file);
                 ChatUtil.Method1033("Loaded Module (h)%s(r) from Config (h)%s", stringArray[2], stringArray[3]);
                 break;
             }
