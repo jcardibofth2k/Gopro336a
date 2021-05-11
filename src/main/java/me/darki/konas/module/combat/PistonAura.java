@@ -630,7 +630,7 @@ extends Module {
                             return;
                         }
                         if (!this.Method519()) {
-                            int n = Class475.Method2147();
+                            int n = Class475.getSlotEndCrystal();
                             if (n == -1) {
                                 Logger.Method1119("No crystals found!");
                                 this.toggle();

@@ -122,7 +122,7 @@ public class Class475
         return Method2148(vec3d, vec3d2, false, false, false);
     }
     
-    public static int Method2147() {
+    public static int getSlotEndCrystal() {
         int currentItem = -1;
         if (Module.mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL) {
             currentItem = Module.mc.player.inventory.currentItem;
