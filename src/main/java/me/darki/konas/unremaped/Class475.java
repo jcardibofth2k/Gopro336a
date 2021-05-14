@@ -355,7 +355,7 @@ public class Class475
         return false;
     }
     
-    public static float Method2152(final BlockPos blockPos, final Entity entity) {
+    public static float calculateDamageEndCrystalBlockPos(final BlockPos blockPos, final Entity entity) {
         return Method2150(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5, entity);
     }
     
@@ -408,7 +408,7 @@ public class Class475
         return 0.0f;
     }
     
-    public static float Method2156(final EntityEnderCrystal entityEnderCrystal, final Entity entity) {
+    public static float CalculateDamageEndCrystal(final EntityEnderCrystal entityEnderCrystal, final Entity entity) {
         return Method2150(entityEnderCrystal.posX, entityEnderCrystal.posY, entityEnderCrystal.posZ, entity);
     }
 }
