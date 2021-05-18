@@ -3,7 +3,7 @@ package me.darki.konas.unremaped;
 import me.darki.konas.*;
 import me.darki.konas.event.CancelableEvent;
 
-public class Class21
+public class EntityTravelEvent
 extends CancelableEvent {
     public float Field133;
     public float Field134;
@@ -13,7 +13,7 @@ extends CancelableEvent {
         return this.Field134;
     }
 
-    public Class21(float f, float f2, float f3) {
+    public EntityTravelEvent(float f, float f2, float f3) {
         this.Field133 = f;
         this.Field134 = f2;
         this.Field135 = f3;

@@ -1,17 +1,20 @@
-package me.darki.konas.unremaped;
+package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
+import me.darki.konas.unremaped.Class115;
+import me.darki.konas.unremaped.Class557;
+import me.darki.konas.unremaped.Class84;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import net.minecraft.client.gui.Gui;
 
-public class Class71
+public class
+Class71
 extends Gui {
     public float Field537 = Class557.Method802() + 4;
     public ArrayList<Module> Field538;
@@ -133,7 +136,7 @@ extends Gui {
             RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, nArray[0], Class557.Method802() + 3, new Color(43, 43, 43, 200).hashCode());
             int n2 = 65;
             if (this.Field545 == arrayList.indexOf(module)) {
-                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue)Class115.selected.getValue()).Method774());
+                RenderUtil2.Method1338(f + 61.0f, f2 + this.Field539, 2.0f, Class557.Method802() + 2, ((ColorValue) Class115.selected.getValue()).Method774());
                 n2 = 67;
             }
             if (module.isEnabled()) {

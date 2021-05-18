@@ -34,7 +34,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class AutoTrap
 extends Module {
-    public static Setting<Float> targetRange = new Setting<>("TargetRange", Float.valueOf(4.5f), Float.valueOf(16.0f), Float.valueOf(1.0f), Float.valueOf(0.1f));
+    public static Setting<Float> targetRange = new Setting<>("TargetRange", 4.5f, 16.0f, 1.0f, 0.1f);
     public static Setting<Integer> actionShift = new Setting<>("ActionShift", 3, 8, 1, 1);
     public static Setting<Integer> actionInterval = new Setting<>("ActionInterval", 0, 10, 0, 1);
     public static Setting<Boolean> top = new Setting<>("Top", true);
@@ -138,14 +138,14 @@ extends Module {
         this.Field1707 = new BlockPos(entityPlayer.posX, entityPlayer.posY, entityPlayer.posZ);
         BlockPos blockPos = this.Method1626(this.Field1707);
         if (blockPos != null) {
-            this.Field1708 = Class496.Method1962(blockPos, (Boolean)rotate.getValue());
+            this.Field1708 = Class496.Method1962(blockPos, rotate.getValue());
             if (this.Field1708 != null) {
                 Field1711.put(blockPos, System.currentTimeMillis());
                 this.Field1706 = 0;
                 this.Field1705 = blockPos;
                 this.Field1704.Method739();
             }
-        } else if (((Boolean)disableWhenDone.getValue()).booleanValue()) {
+        } else if ((Boolean) disableWhenDone.getValue()) {
             this.toggle();
             return;
         }
@@ -179,7 +179,7 @@ extends Module {
 
     public EntityPlayer Method1623() {
         Waypoints waypoints = (Waypoints) ModuleManager.getModuleByClass(Waypoints.class);
-        Stream stream = AutoTrap.mc.world.playerEntities.stream();
+        Stream<EntityPlayer> stream = AutoTrap.mc.world.playerEntities.stream();
         if (((Boolean)logoutSpots.getValue()).booleanValue()) {
             stream = Stream.concat(AutoTrap.mc.world.playerEntities.stream(), waypoints.Method1799().keySet().stream());
         }
@@ -276,52 +276,56 @@ extends Module {
         }
     }
 
-    public BlockPos Method1626(BlockPos blockPos) {
-        BlockPos blockPos2;
-        double d;
-        double d2;
-        BlockPos blockPos3;
-        for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
-            blockPos3 = null;
-            d2 = 0.0;
-            if (this.Method1624(blockPos.offset(enumFacing).down(), true) && (d = AutoTrap.mc.player.getDistance((double)(blockPos2 = blockPos.offset(enumFacing).down()).getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5)) >= d2) {
-                blockPos3 = blockPos2;
-                d2 = d;
+    public BlockPos Method1626(final BlockPos blockPos) {
+        for (final EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
+            BlockPos blockPos2 = null;
+            final double n = 0.0;
+            if (this.Method1624(blockPos.offset(enumFacing).down(), true)) {
+                final BlockPos down = blockPos.offset(enumFacing).down();
+                if (mc.player.getDistance(down.getX() + 0.5, down.getY() + 0.5, down.getZ() + 0.5) >= n) {
+                    blockPos2 = down;
+                }
             }
-            if (blockPos3 == null) continue;
-            return blockPos3;
+            if (blockPos2 != null) {
+                return blockPos2;
+            }
         }
-        for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
-            blockPos3 = null;
-            d2 = 0.0;
-            if (this.Method1624(blockPos.offset(enumFacing), false) && (d = AutoTrap.mc.player.getDistance((double)(blockPos2 = blockPos.offset(enumFacing)).getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5)) >= d2) {
-                blockPos3 = blockPos2;
-                d2 = d;
+        for (final EnumFacing enumFacing2 : EnumFacing.HORIZONTALS) {
+            BlockPos blockPos3 = null;
+            final double n2 = 0.0;
+            if (this.Method1624(blockPos.offset(enumFacing2), false)) {
+                final BlockPos offset = blockPos.offset(enumFacing2);
+                if (mc.player.getDistance(offset.getX() + 0.5, offset.getY() + 0.5, offset.getZ() + 0.5) >= n2) {
+                    blockPos3 = offset;
+                }
             }
-            if (blockPos3 == null) continue;
-            return blockPos3;
+            if (blockPos3 != null) {
+                return blockPos3;
+            }
         }
-        Block block = EnumFacing.HORIZONTALS;
-        int n = ((EnumFacing[])block).length;
-        for (int i = 0; i < n; ++i) {
-            EnumFacing enumFacing;
-            enumFacing = block[i];
-            blockPos3 = null;
-            d2 = 0.0;
-            if (this.Method1624(blockPos.up().offset(enumFacing), false) && (!((Boolean)piston.getValue()).booleanValue() || this.Method1572(blockPos.up(), enumFacing)) && (d = AutoTrap.mc.player.getDistance((double)(blockPos2 = blockPos.up().offset(enumFacing)).getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5)) >= d2) {
-                blockPos3 = blockPos2;
-                d2 = d;
+        for (final EnumFacing enumFacing3 : EnumFacing.HORIZONTALS) {
+            BlockPos blockPos4 = null;
+            final double n3 = 0.0;
+            if (this.Method1624(blockPos.up().offset(enumFacing3), false) && (!(boolean)piston.getValue() || this.Method1572(blockPos.up(), enumFacing3))) {
+                final BlockPos offset2 = blockPos.up().offset(enumFacing3);
+                if (mc.player.getDistance(offset2.getX() + 0.5, offset2.getY() + 0.5, offset2.getZ() + 0.5) >= n3) {
+                    blockPos4 = offset2;
+                }
             }
-            if (blockPos3 == null) continue;
-            return blockPos3;
-        }
-        if (((Boolean)top.getValue()).booleanValue() && ((block = AutoTrap.mc.world.getBlockState(blockPos.up().up()).getBlock()) instanceof BlockAir || block instanceof BlockLiquid)) {
-            if (this.Method1624(blockPos.up().up(), false)) {
-                return blockPos.up().up();
-            }
-            BlockPos blockPos4 = blockPos.up().up().offset(EnumFacing.getHorizontal((int)(MathHelper.floor((double)((double)(AutoTrap.mc.player.rotationYaw * 4.0f / 360.0f) + 0.5)) & 3)));
-            if (this.Method1624(blockPos4, false)) {
+            if (blockPos4 != null) {
                 return blockPos4;
+            }
+        }
+        if (top.getValue()) {
+            final Block block = mc.world.getBlockState(blockPos.up().up()).getBlock();
+            if (block instanceof BlockAir || block instanceof BlockLiquid) {
+                if (this.Method1624(blockPos.up().up(), false)) {
+                    return blockPos.up().up();
+                }
+                final BlockPos offset3 = blockPos.up().up().offset(EnumFacing.getHorizontal(MathHelper.floor(mc.player.rotationYaw * 4.0f / 360.0f + 0.5) & 0x3));
+                if (this.Method1624(offset3, false)) {
+                    return offset3;
+                }
             }
         }
         return null;

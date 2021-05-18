@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -186,7 +185,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1224(Class21 class21) {
+    public void Method1224(EntityTravelEvent entityTravelEvent) {
         block15: {
             if (Class405.mc.player == null || Class405.mc.world == null) {
                 this.toggle();
@@ -234,7 +233,7 @@ extends Module {
                 ++this.Field1241;
                 Class405.mc.player.connection.sendPacket((Packet)new CPacketConfirmTeleport(this.Field1241));
             }
-            class21.setCanceled(true);
+            entityTravelEvent.setCanceled(true);
         }
     }
 }
