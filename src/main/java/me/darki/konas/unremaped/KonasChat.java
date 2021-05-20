@@ -249,7 +249,7 @@ extends Module {
         if (class324 == Class324.PROTOCOL) {
             if (!Field645 && !this.Field644.Method737(10000.0)) {
                 Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.Method736()) / 1000L - 10L) + " seconds, before you enable this setting again!");
-                this.Field650.Method1153();
+                this.Field650.Cancel();
             } else {
                 if (this.Field649 == null) {
                     this.Field649 = Class509.Method1340();

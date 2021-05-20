@@ -6,7 +6,7 @@ import java.util.Comparator;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class477;
 import me.darki.konas.unremaped.Class496;
@@ -89,7 +89,7 @@ extends Module {
                 }
                 this.Field1951 = false;
                 if (this.lookdown.getValue().booleanValue()) {
-                    NewGui.INSTANCE.Field1139.Method1937(AutoMend.mc.player.rotationYaw, 90.0f);
+                    KonasGlobals.INSTANCE.Field1139.Method1937(AutoMend.mc.player.rotationYaw, 90.0f);
                 }
                 if (!this.armor.getValue().booleanValue()) break block11;
                 ItemStack[] itemStackArray = new ItemStack[]{AutoMend.mc.player.inventory.getStackInSlot(39), AutoMend.mc.player.inventory.getStackInSlot(38), AutoMend.mc.player.inventory.getStackInSlot(37), AutoMend.mc.player.inventory.getStackInSlot(36)};

@@ -8,7 +8,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.network.play.client.CPacketUpdateSign;
 
-public class Class251
+public class ColorSigns
 extends Module {
     public Setting<Class254> mode = new Setting<>("Mode", Class254.VANILLA);
 
@@ -30,7 +30,7 @@ extends Module {
         }
     }
 
-    public Class251() {
+    public ColorSigns() {
         super("ColorSigns", "Lets you use color codes on signs", -7213820, Category.EXPLOIT, new String[0]);
     }
 }

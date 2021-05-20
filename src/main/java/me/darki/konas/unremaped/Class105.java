@@ -9,7 +9,7 @@ import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.ClickGUIModule;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Mouse;
@@ -124,7 +124,7 @@ extends guiFrameDuplicatePossiblyForAimwareGui {
     @Override
     public void Method712() {
         float f = this.Method911();
-        for (Element element : NewGui.INSTANCE.Field1136.Method2196()) {
+        for (Element element : KonasGlobals.INSTANCE.Field1136.Method2196()) {
             this.Method2208().add(new Class180(element, this.Method922(), this.Method921(), 2.0f, f, this.Method910() - 4.0f, 12.0f));
             f += 12.0f;
         }

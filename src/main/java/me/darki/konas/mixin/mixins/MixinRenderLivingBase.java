@@ -2,7 +2,7 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import me.darki.konas.unremaped.Class122;
-import me.darki.konas.unremaped.Class129;
+import me.darki.konas.unremaped.RenderLivingBaseEvent;
 import me.darki.konas.unremaped.Class139;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.render.Chams;
@@ -42,7 +42,7 @@ extends Render {
 
     @Redirect(method={"doRender"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/renderer/entity/RenderLivingBase;renderModel(Lnet/minecraft/entity/EntityLivingBase;FFFFFF)V"))
     public void Method36(RenderLivingBase renderLivingBase, T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
-        Class129 pre = new Class129(renderLivingBase.getMainModel(), (Entity)entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
+        RenderLivingBaseEvent pre = new RenderLivingBaseEvent(renderLivingBase.getMainModel(), (Entity)entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor);
         if (!ESP.Field1342) {
             EventDispatcher.Companion.dispatch(pre);
         }

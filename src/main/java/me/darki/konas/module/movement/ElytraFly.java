@@ -10,6 +10,7 @@ import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
@@ -100,11 +101,11 @@ extends Module {
             Field1000 = false;
         }
         if (this.Field1009.Method737(1500.0) && !this.Field1009.Method737(2000.0)) {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
         if (!ElytraFly.mc.player.isElytraFlying() && mode.getValue() != Class403.PACKET) {
             if (this.Field1011 && timer.getValue() != timer.getValue() && !ElytraFly.mc.player.onGround) {
-                NewGui.INSTANCE.Field1134.Method746(this, 25, 0.3f);
+                KonasGlobals.INSTANCE.Field1134.Method746(this, 25, 0.3f);
             }
             if (!ElytraFly.mc.player.onGround && instantFly.getValue().booleanValue() && ElytraFly.mc.player.motionY < 0.0) {
                 if (!this.Field1006.Method737(1000.0f * timeout.getValue().floatValue())) {
@@ -141,7 +142,7 @@ extends Module {
                 break block6;
             }
             if (!(packetEvent.getPacket() instanceof SPacketEntityMetadata) || (sPacketEntityMetadata = (SPacketEntityMetadata) packetEvent.getPacket()).getEntityId() != ElytraFly.mc.player.getEntityId()) break block6;
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
             if (mode.getValue() == Class403.PACKET) {
                 packetEvent.Cancel();
             }
@@ -343,14 +344,14 @@ extends Module {
             if (!ElytraFly.mc.player.isElytraFlying()) {
                 if (mode.getValue() == Class403.BOOST) {
                     if (!this.Field1006.Method737(2000.0f * limit.getValue().floatValue()) && better.getValue().booleanValue() && !ElytraFly.mc.player.onGround) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 20, 0.1f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 20, 0.1f);
                         return;
                     }
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                 }
                 return;
             }
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
             if (mode.getValue() == Class403.PACKET || mode.getValue() == Class403.FIREWORK) {
                 return;
             }
@@ -591,7 +592,7 @@ extends Module {
             }
             ElytraFly.mc.player.capabilities.isFlying = false;
         }
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
         Field1000 = false;
     }
 

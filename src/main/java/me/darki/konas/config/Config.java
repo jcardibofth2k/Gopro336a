@@ -5,7 +5,7 @@ import me.darki.konas.gui.clickgui.frame.CategoryFrame;
 import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.ClickGUIModule;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.misc.Spammer;
 import me.darki.konas.module.render.Hud;
 import me.darki.konas.setting.ColorValue;
@@ -75,7 +75,7 @@ public class Config
     
     public static JsonArray Method2218() {
         final JsonArray jsonArray = new JsonArray();
-        for (final Frame class90 : NewGui.INSTANCE.Field1130.Method119()) {
+        for (final Frame class90 : KonasGlobals.INSTANCE.Field1130.Method119()) {
             if (class90 instanceof Class88) {
                 continue;
             }
@@ -128,7 +128,7 @@ public class Config
                 jsonObject9.add("Muted", (JsonElement)Method2275());
                 jsonArray.add((JsonElement)jsonObject9);
                 final JsonObject jsonObject10 = new JsonObject();
-                jsonObject10.addProperty("Watermark", KonasMod.Field732);
+                jsonObject10.addProperty("Watermark", KonasMod.NAME);
                 jsonArray.add((JsonElement)jsonObject10);
                 final FileWriter fileWriter = new FileWriter(file);
                 new GsonBuilder().setPrettyPrinting().create().toJson((JsonElement)jsonArray, (Appendable)fileWriter);
@@ -390,7 +390,7 @@ public class Config
                 class561 = class562;
             }
         }
-        NewGui.INSTANCE.Field1138.Method760(new Class559(jsonObject.get("Name").getAsString(), jsonObject.get("X").getAsDouble(), jsonObject.get("Y").getAsDouble(), jsonObject.get("Z").getAsDouble(), jsonObject.get("Dimension").getAsInt(), jsonObject.get("Server").getAsString(), class561));
+        KonasGlobals.INSTANCE.Field1138.Method760(new Class559(jsonObject.get("Name").getAsString(), jsonObject.get("X").getAsDouble(), jsonObject.get("Y").getAsDouble(), jsonObject.get("Z").getAsDouble(), jsonObject.get("Dimension").getAsInt(), jsonObject.get("Server").getAsString(), class561));
     }
     
     public static void Method2232() {
@@ -403,7 +403,7 @@ public class Config
             final Gson create = new GsonBuilder().setPrettyPrinting().create();
             final FileWriter fileWriter = new FileWriter(Config.ACCOUNTS);
             final JsonArray jsonArray = new JsonArray();
-            final Iterator<Class170> iterator = (Iterator<Class170>) NewGui.INSTANCE.Field1132.Field1739.iterator();
+            final Iterator<Class170> iterator = (Iterator<Class170>) KonasGlobals.INSTANCE.Field1132.Field1739.iterator();
             while (iterator.hasNext()) {
                 final Class68 field1542 = iterator.next().Field1542;
                 final JsonObject jsonObject = new JsonObject();
@@ -520,7 +520,7 @@ public class Config
     
     public static void Method2243(final JsonObject jsonObject) {
         try {
-            KonasMod.Field732 = jsonObject.get("Watermark").getAsString();
+            KonasMod.NAME = jsonObject.get("Watermark").getAsString();
         }
         catch (NullPointerException ex) {}
     }
@@ -589,7 +589,7 @@ public class Config
     }
     
     public static void Method2250(final JsonObject jsonObject) throws NullPointerException {
-        final Element element = NewGui.INSTANCE.Field1136.Method2196().stream().filter(Config::Method2269).findFirst().orElse(null);
+        final Element element = KonasGlobals.INSTANCE.Field1136.Method2196().stream().filter(Config::Method2269).findFirst().orElse(null);
         if (element != null) {
             final JsonObject asJsonObject = jsonObject.getAsJsonObject(element.Method2316());
             try {
@@ -800,7 +800,7 @@ public class Config
     
     public static JsonArray Method2257() {
         final JsonArray jsonArray = new JsonArray();
-        for (final Class559 class559 : NewGui.INSTANCE.Field1138.Method758()) {
+        for (final Class559 class559 : KonasGlobals.INSTANCE.Field1138.Method758()) {
             final JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("Name", class559.Method819());
             jsonObject.addProperty("X", (Number)class559.Method821());
@@ -819,7 +819,7 @@ public class Config
     }
     
     public static void Method2259(final JsonObject jsonObject) throws NullPointerException {
-        final Frame class90 = NewGui.INSTANCE.Field1130.Method119().stream().filter(Config::Method2237).findFirst().orElse(null);
+        final Frame class90 = KonasGlobals.INSTANCE.Field1130.Method119().stream().filter(Config::Method2237).findFirst().orElse(null);
         if (class90 instanceof Class88) {
             return;
         }
@@ -1010,7 +1010,7 @@ public class Config
                         class68.Method318(asLong);
                         class68.Method306(asString4);
                         class68.Method310(asString5);
-                        NewGui.INSTANCE.Field1132.Field1739.add(new Class170(class68));
+                        KonasGlobals.INSTANCE.Field1132.Field1739.add(new Class170(class68));
                         continue;
                     }
                     catch (NullPointerException ex2) {
@@ -1067,7 +1067,7 @@ public class Config
     
     public static JsonArray Method2273() {
         final JsonArray jsonArray = new JsonArray();
-        for (final Element element : NewGui.INSTANCE.Field1136.Method2196()) {
+        for (final Element element : KonasGlobals.INSTANCE.Field1136.Method2196()) {
             final JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("A", (Number)element.Method2317());
             jsonObject.addProperty("X", (Number)element.Method2336());
@@ -1311,7 +1311,7 @@ public class Config
                     asJsonArray5.forEach((Consumer) Config::Method2222);
                 }
                 if (asJsonArray6 != null) {
-                    NewGui.INSTANCE.Field1138.Method765();
+                    KonasGlobals.INSTANCE.Field1138.Method765();
                     asJsonArray6.forEach((Consumer) Config::Method2239);
                 }
                 if (asJsonArray4 != null) {
@@ -1324,7 +1324,7 @@ public class Config
                 if (jsonObject2 != null) {
                     Method2236(jsonObject2);
                 }
-                NewGui.INSTANCE.Field1130.Method119().forEach(Config::Method2278);
+                KonasGlobals.INSTANCE.Field1130.Method119().forEach(Config::Method2278);
                 if (asJsonArray7 != null) {
                     Class484.Method2070();
                     asJsonArray7.forEach((Consumer) Config::Method2267);

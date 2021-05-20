@@ -10,7 +10,7 @@ import me.darki.konas.unremaped.NoDesync;
 import me.darki.konas.unremaped.Class46;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.unremaped.Class50;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class550;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.unremaped.Class648;
@@ -86,18 +86,18 @@ extends EntityPlayer {
             UpdateEvent event = UpdateEvent.Method273(this.Field2379.player.posX, this.Field2379.player.getEntityBoundingBox().minY, this.Field2379.player.posY, this.Field2379.player.rotationYaw, this.Field2379.player.rotationPitch, this.Field2379.player.onGround);
             NoDesync.Field883 = true;
             EventDispatcher.Companion.dispatch(event);
-            if (NewGui.INSTANCE.Field1139.Method1940()) {
+            if (KonasGlobals.INSTANCE.Field1139.Method1940()) {
                 ci.cancel();
                 NoDesync.Field882.Method739();
                 if (this.isRiding()) {
-                    this.Field2380.sendPacket(new CPacketPlayer.Rotation(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944(), this.onGround));
+                    this.Field2380.sendPacket(new CPacketPlayer.Rotation(KonasGlobals.INSTANCE.Field1139.Method1945(), KonasGlobals.INSTANCE.Field1139.Method1944(), this.onGround));
                     this.Field2380.sendPacket(new CPacketInput(this.moveStrafing, this.moveForward, this.Field2381.jump, this.Field2381.sneak));
                     Entity entity = this.getLowestRidingEntity();
                     if (entity != this && entity.canPassengerSteer()) {
                         this.Field2380.sendPacket(new CPacketVehicleMove(entity));
                     }
                 } else {
-                    Class550.Method883(NewGui.INSTANCE.Field1139.Method1945(), NewGui.INSTANCE.Field1139.Method1944());
+                    Class550.Method883(KonasGlobals.INSTANCE.Field1139.Method1945(), KonasGlobals.INSTANCE.Field1139.Method1944());
                 }
                 Class50 postEvent = Class50.Method346(this.Field2379.player.posX, this.Field2379.player.posY, this.Field2379.player.posY, this.Field2379.player.rotationYaw, this.Field2379.player.rotationPitch, this.Field2379.player.onGround);
                 EventDispatcher.Companion.dispatch(postEvent);
@@ -105,7 +105,7 @@ extends EntityPlayer {
                 NoDesync.Field883 = false;
             }
         }
-        NewGui.INSTANCE.Field1139.Method1938();
+        KonasGlobals.INSTANCE.Field1139.Method1938();
     }
 
     @Inject(method={"displayGUIChest"}, at={@At(value="HEAD")}, cancellable=true)

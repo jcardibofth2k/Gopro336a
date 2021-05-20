@@ -10,7 +10,7 @@ import me.darki.konas.unremaped.*;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.client.ClickGUIModule;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Mouse;
@@ -124,7 +124,7 @@ extends Frame {
     @Override
     public void Method712() {
         float f = this.getHeight();
-        for (Element element : NewGui.INSTANCE.Field1136.Method2196()) {
+        for (Element element : KonasGlobals.INSTANCE.Field1136.Method2196()) {
             this.getComponents().add(new Class180(element, this.getPosX(), this.Method921(), 2.0f, f, this.getWidth() - 4.0f, 12.0f));
             f += 12.0f;
         }

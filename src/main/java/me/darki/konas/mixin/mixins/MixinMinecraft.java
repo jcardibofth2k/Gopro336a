@@ -85,7 +85,7 @@ public class MixinMinecraft {
             ViaFabric.getInstance().start();
         }
         catch (Exception e) {
-            KonasMod.Field733.error("Error starting ViaVersion");
+            KonasMod.LOGGER.error("Error starting ViaVersion");
         }
     }
 }

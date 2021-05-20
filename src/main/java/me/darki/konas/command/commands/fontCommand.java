@@ -33,7 +33,7 @@ extends Command {
         Class425.Field957 = new CfontRenderer(stringArray[1], 20.0f);
         Class425.Field958 = new CfontRenderer(stringArray[1], 60.0f);
         Class425.Method955(Class425.Field954.getValue());
-        Class247.Field2262 = new CfontRenderer(stringArray[1], 18.0f);
-        Class247.Field2261 = new CfontRenderer(stringArray[1], 16.0f);
+        Class247.cfontRenderer = new CfontRenderer(stringArray[1], 18.0f);
+        Class247.smallCFontRenderer = new CfontRenderer(stringArray[1], 16.0f);
     }
 }

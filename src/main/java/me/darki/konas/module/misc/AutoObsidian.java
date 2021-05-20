@@ -6,7 +6,7 @@ import java.util.Comparator;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class490;
@@ -71,7 +71,7 @@ extends Module {
                     return;
                 }
                 EnumFacing enumFacing = AutoObsidian.mc.player.getHorizontalFacing().getOpposite();
-                NewGui.INSTANCE.Field1139.Method1942(new Vec3d((double)blockPos.getX() + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5));
+                KonasGlobals.INSTANCE.Field1139.Method1942(new Vec3d((double)blockPos.getX() + 0.5 + (double)enumFacing.getDirectionVec().getX() * 0.5, (double)blockPos.getY() + 0.5 + (double)enumFacing.getDirectionVec().getY() * 0.5, (double)blockPos.getZ() + 0.5 + (double)enumFacing.getDirectionVec().getZ() * 0.5));
                 AutoObsidian.mc.player.swingArm(EnumHand.MAIN_HAND);
                 AutoObsidian.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, enumFacing));
                 AutoObsidian.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, enumFacing));

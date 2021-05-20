@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.BiConsumer;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.ModuleManager;
@@ -39,7 +38,7 @@ import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class502;
 import me.darki.konas.unremaped.Class507;
 import me.darki.konas.setting.ParentSetting;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class545;
@@ -54,9 +53,6 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.util.ThreadUtil;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -392,7 +388,7 @@ public class AutoCrystal
                     }
                 }
             }
-            NewGui.INSTANCE.Field1139.Method1937(this.Field1621[0], this.Field1621[1]);
+            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1621[0], this.Field1621[1]);
         }
     }
 
@@ -946,7 +942,7 @@ public class AutoCrystal
             }
         }
         if (entityPlayer != null && blockPos != null) {
-            NewGui.INSTANCE.Field1133.Method430(entityPlayer);
+            KonasGlobals.INSTANCE.Field1133.Method430(entityPlayer);
             this.Method1645(entityPlayer.getName());
             this.Field1652 = entityPlayer;
             this.Field1653.Method739();

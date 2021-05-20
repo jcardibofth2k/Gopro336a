@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
@@ -16,7 +15,7 @@ import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.PartyCommand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.text.ITextComponent;
@@ -109,11 +108,11 @@ extends Module {
         if (ExtraChat.mc.player == null || ExtraChat.mc.world == null) {
             return;
         }
-        if (((Boolean)this.autoGroom.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.groomDelay.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null && !Class492.Method1989(entity.getName())) {
+        if (((Boolean)this.autoGroom.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.groomDelay.getValue()).floatValue() * 1000.0f) && (entity = KonasGlobals.INSTANCE.Field1133.Method421()) != null && !Class492.Method1989(entity.getName())) {
             class645 = new Class645(entity.getName(), Field1464.get(this.Field1462.nextInt(Field1464.size())).replaceAll("<player>", entity.getName()));
             EventDispatcher.Companion.dispatch(class645);
         }
-        if (((Boolean)this.taunt.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.tauntDelay.getValue()).floatValue() * 1000.0f) && (entity = NewGui.INSTANCE.Field1133.Method421()) != null) {
+        if (((Boolean)this.taunt.getValue()).booleanValue() && Class51.Field222.isEmpty() && Class51.Field223.Method737(((Float)this.tauntDelay.getValue()).floatValue() * 1000.0f) && (entity = KonasGlobals.INSTANCE.Field1133.Method421()) != null) {
             if (!Class492.Method1989(entity.getName())) {
                 class645 = new Class645(entity.getName(), Field1463.get(this.Field1462.nextInt(Field1463.size())).replaceAll("<player>", entity.getName()));
                 EventDispatcher.Companion.dispatch(class645);

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import cookiedragon.eventsystem.Subscriber;
 import java.math.BigDecimal;
@@ -17,7 +16,7 @@ import me.darki.konas.command.Command;
 import me.darki.konas.command.commands.fontCommand;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -191,7 +190,7 @@ extends Module {
 
     public void Method954(Vec3d vec3d, Entity entity) {
         Vec3d vec3d2 = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.height + (Double)yOffset.getValue(), 0.0);
-        Vec3d vec3d3 = NewGui.INSTANCE.Field1137.Method2026(vec3d2);
+        Vec3d vec3d3 = KonasGlobals.INSTANCE.Field1137.Method2026(vec3d2);
         this.Method958(entity, vec3d3, vec3d, vec3d2);
     }
 
@@ -346,9 +345,9 @@ lbl78:
         if (((Boolean)waypoints.getValue()).booleanValue() && (waypoints = (Waypoints)ModuleManager.getModuleByClass(Waypoints.class)) != null && waypoints.Method1651()) {
 
             EntityPlayer entityPlayer;
-            for (Class559 object : NewGui.INSTANCE.Field1138.Method759()) {
+            for (Class559 object : KonasGlobals.INSTANCE.Field1138.Method759()) {
                 entityPlayer = new Vec3d(object.Method821(), object.Method820(), object.Method818()).add(0.5, 2.2, 0.5);
-                Vec3d vec3d2 = NewGui.INSTANCE.Field1137.Method2026((Vec3d)entityPlayer);
+                Vec3d vec3d2 = KonasGlobals.INSTANCE.Field1137.Method2026((Vec3d)entityPlayer);
                 String string = object.Method819();
                 if (((Boolean)coords.getValue()).booleanValue()) {
                     DecimalFormat decimalFormat = new DecimalFormat("#.#");
@@ -369,7 +368,7 @@ lbl78:
                 double d4 = Double.parseDouble(this.Field955.format(entityPlayer.posY));
                 double d5 = Double.parseDouble(this.Field955.format(entityPlayer.posZ));
                 Vec3d vec3d3 = new Vec3d(d, d4, d5).add(0.0, (double)entityPlayer.height + (Double)yOffset.getValue(), 0.0);
-                Vec3d vec3d4 = NewGui.INSTANCE.Field1137.Method2026(vec3d3);
+                Vec3d vec3d4 = KonasGlobals.INSTANCE.Field1137.Method2026(vec3d3);
                 String string = entityPlayer.getName();
                 if (((Boolean)coords.getValue()).booleanValue()) {
                     string = string + " " + d + ", " + d4 + ", " + d5;

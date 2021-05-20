@@ -5,14 +5,14 @@ import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 
-public class Class248
+public class DualUse
 extends Module {
-    public Class248() {
-        super("LiquidInteract", Category.EXPLOIT, "LiquidPlace");
+    @Subscriber
+    public void Method1895(Class651 class651) {
+        class651.Method1156(false);
     }
 
-    @Subscriber
-    public void Method2010(Class655 class655) {
-        class655.Cancel();
+    public DualUse() {
+        super("DualUse", Category.EXPLOIT, new String[0]);
     }
 }

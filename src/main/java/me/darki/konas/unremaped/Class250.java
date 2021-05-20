@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import com.mojang.authlib.GameProfile;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
+import me.darki.konas.module.render.Chams;
 import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.render.ESP;
 import me.darki.konas.setting.Setting;

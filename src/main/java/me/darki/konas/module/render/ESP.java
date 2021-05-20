@@ -15,7 +15,7 @@ import me.darki.konas.mixin.mixins.IShaderGroup;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -67,7 +67,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
-import me.darki.konas.*;
 
 public class ESP
 extends Module {
@@ -136,8 +135,8 @@ extends Module {
 
     public Integer Method1315(Entity entity) {
         if (entity instanceof EntityPlayer) {
-            if (show_targets.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
-                int n = NewGui.INSTANCE.Field1133.Method428(entity);
+            if (show_targets.getValue().booleanValue() && KonasGlobals.INSTANCE.Field1133.Method423(entity)) {
+                int n = KonasGlobals.INSTANCE.Field1133.Method428(entity);
                 return new Color(255, n / 5, (int)((double)n / 1.0493)).hashCode();
             }
             return playerColor.getValue().Method774();
@@ -226,19 +225,19 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1319(Class129 class129) {
+    public void Method1319(RenderLivingBaseEvent renderLivingBaseEvent) {
         block1: {
             if (ESP.mc.world == null || ESP.mc.player == null) {
                 return;
             }
-            if (mode.getValue() != Class486.OUTLINE || !this.Method386(class129.Method2040())) break block1;
+            if (mode.getValue() != Class486.OUTLINE || !this.Method386(renderLivingBaseEvent.Method2040())) break block1;
             Class519.Method1299(width.getValue().intValue());
-            class129.Method2041().render(class129.Method2040(), class129.Method260(), class129.Method1108(), class129.Method213(), class129.Method214(), class129.Method258(), class129.Method340());
+            renderLivingBaseEvent.Method2041().render(renderLivingBaseEvent.Method2040(), renderLivingBaseEvent.Method260(), renderLivingBaseEvent.Method1108(), renderLivingBaseEvent.Method213(), renderLivingBaseEvent.Method214(), renderLivingBaseEvent.Method258(), renderLivingBaseEvent.Method340());
             Class519.Method1295();
-            class129.Method2041().render(class129.Method2040(), class129.Method260(), class129.Method1108(), class129.Method213(), class129.Method214(), class129.Method258(), class129.Method340());
+            renderLivingBaseEvent.Method2041().render(renderLivingBaseEvent.Method2040(), renderLivingBaseEvent.Method260(), renderLivingBaseEvent.Method1108(), renderLivingBaseEvent.Method213(), renderLivingBaseEvent.Method214(), renderLivingBaseEvent.Method258(), renderLivingBaseEvent.Method340());
             Class519.Method1293();
-            Class519.Method1294(this.Method1315(class129.Method2040()), 3.0f);
-            class129.Method2041().render(class129.Method2040(), class129.Method260(), class129.Method1108(), class129.Method213(), class129.Method214(), class129.Method258(), class129.Method340());
+            Class519.Method1294(this.Method1315(renderLivingBaseEvent.Method2040()), 3.0f);
+            renderLivingBaseEvent.Method2041().render(renderLivingBaseEvent.Method2040(), renderLivingBaseEvent.Method260(), renderLivingBaseEvent.Method1108(), renderLivingBaseEvent.Method213(), renderLivingBaseEvent.Method214(), renderLivingBaseEvent.Method258(), renderLivingBaseEvent.Method340());
             Class519.Method1300(3.0f);
         }
     }

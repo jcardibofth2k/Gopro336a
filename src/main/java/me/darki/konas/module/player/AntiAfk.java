@@ -10,6 +10,7 @@ import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
@@ -136,7 +137,7 @@ extends Module {
                 float f2 = 5.0f;
                 float f3 = (float)(Math.random() * (double)(f2 - f + 1.0f) + (double)f);
                 float f4 = (float)(Math.random() * (double)(f2 - f + 1.0f) + (double)f);
-                NewGui.INSTANCE.Field1139.Method1937(AntiAfk.mc.player.rotationYaw + f4, AntiAfk.mc.player.rotationPitch + f3);
+                KonasGlobals.INSTANCE.Field1139.Method1937(AntiAfk.mc.player.rotationYaw + f4, AntiAfk.mc.player.rotationPitch + f3);
                 this.Field2232.Method739();
             }
         } else {
@@ -144,7 +145,7 @@ extends Module {
         }
     }
 
-    @Override
+    //@Override
     public boolean Method396() {
         return this.autoReply.getValue();
     }

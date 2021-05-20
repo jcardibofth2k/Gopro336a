@@ -32,12 +32,12 @@ extends Class215 {
         super.Method497(n, n2, f);
         Class270 class270 = new Class270(this.Method486(), this.Method492() + (float)(this.Field2634.hasDescription() ? 34 : 18), 132.0f, 20.0f, 3.0f);
         Class247.Method2043(class270, bindComponent.Method487(n, n2, this.Method486(), this.Method492() + (float)(this.Field2634.hasDescription() ? 34 : 18), 132.0, 20.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
-        Class247.Field2262.Method863(this.Field2634.Method1183(), this.Method486(), this.Method492(), Field324);
+        Class247.cfontRenderer.Method863(this.Field2634.Method1183(), this.Method486(), this.Method492(), Field324);
         if (this.Field2634.hasDescription()) {
-            Class247.Field2261.Method863(this.Field2634.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
+            Class247.smallCFontRenderer.Method863(this.Field2634.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
         }
         String string = this.Field2635 ? "Press a key..." : GameSettings.getKeyDisplayString((int)((Class520)this.Field2634.getValue()).Method851());
-        Class247.Field2262.Method863(string, (int)(this.Method486() + 66.0f - Class247.Field2262.Method830(string) / 2.0f), (int)(this.Method492() + (this.Field2634.hasDescription() ? 43.5f : 27.5f) - Class247.Field2262.Method831(string) / 2.0f), Field325);
+        Class247.cfontRenderer.Method863(string, (int)(this.Method486() + 66.0f - Class247.cfontRenderer.Method830(string) / 2.0f), (int)(this.Method492() + (this.Field2634.hasDescription() ? 43.5f : 27.5f) - Class247.cfontRenderer.Method831(string) / 2.0f), Field325);
     }
 
     @Override

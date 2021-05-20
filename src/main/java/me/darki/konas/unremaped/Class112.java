@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import com.google.common.primitives.Ints;
 import java.awt.Color;
 import java.text.DecimalFormat;
@@ -10,7 +9,7 @@ import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -97,7 +96,7 @@ extends Element {
         if (Class112.mc.player == null || Class112.mc.world == null) {
             return;
         }
-        EntityPlayer entityPlayer = NewGui.INSTANCE.Field1133.Method429().stream().filter(Class112::Method2100).min(Comparator.comparing(Class112::Method2097)).orElse(null);
+        EntityPlayer entityPlayer = KonasGlobals.INSTANCE.Field1133.Method429().stream().filter(Class112::Method2100).min(Comparator.comparing(Class112::Method2097)).orElse(null);
         if (entityPlayer == null) {
             return;
         }

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.lang.reflect.Field;
@@ -110,7 +109,7 @@ lbl28:
         this.Field2569.add(new Clock());
         this.Field2569.add(new ItemGrid());
         this.Field2569.add(new Class112());
-        this.Field2569.add(new Class120());
+        this.Field2569.add(new LagNotifier());
         this.Field2569.add(new Crystals());
         this.Field2569.add(new Class150());
         this.Field2569.add(new Gapples());

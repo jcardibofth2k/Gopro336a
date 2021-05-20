@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ import me.darki.konas.module.combat.AutoTrap;
 import me.darki.konas.util.RotationUtil;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockDeadBush;
@@ -65,7 +64,7 @@ public class Class496 {
         if (!bl) {
             return true;
         }
-        return !NewGui.INSTANCE.Field1139.Method1940();
+        return !KonasGlobals.INSTANCE.Field1139.Method1940();
     }
 
     public static boolean Method1960(BlockPos blockPos) {
@@ -139,7 +138,7 @@ public class Class496 {
                 ((IEntityPlayerSP)Class496.Field2166.player).Method237((float)object[0]);
                 ((IEntityPlayerSP)Class496.Field2166.player).Method239((float)object[1]);
             } else {
-                NewGui.INSTANCE.Field1139.Method1937((float)object[0], (float)object[1]);
+                KonasGlobals.INSTANCE.Field1139.Method1937((float)object[0], (float)object[1]);
             }
         }
         return new Class490(blockPos2, enumFacing3, vec3d, (float)object[0], (float)object[1]);
@@ -150,7 +149,7 @@ public class Class496 {
     }
 
     public static boolean Method1966() {
-        return !NewGui.INSTANCE.Field1139.Method1940();
+        return !KonasGlobals.INSTANCE.Field1139.Method1940();
     }
 
     public static boolean Method1967(BlockPos blockPos, boolean bl) {

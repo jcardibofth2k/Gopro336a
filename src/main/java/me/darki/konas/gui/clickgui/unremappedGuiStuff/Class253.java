@@ -53,7 +53,7 @@ extends Class215 {
                 boolean bl = i == ((Enum[])((Enum)this.Field2173.getValue()).getClass().getEnumConstants()).length - 1 || i == ((Enum[])((Enum)this.Field2173.getValue()).getClass().getEnumConstants()).length - 2 && ((Enum[])((Enum)this.Field2173.getValue()).getClass().getEnumConstants())[i + 1].name().equalsIgnoreCase(((Enum)this.Field2173.getValue()).toString());
                 Class270 class270 = new Class270(this.Method486(), this.Method492() + f2, this.Method489(), 20.0f, 3.0f, 25, bl ? 12 : 0);
                 Class247.Method2043(class270, Class253.Method487(n, n2, this.Method486(), this.Method492() + f2, this.Method489(), 20.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
-                Class247.Field2262.Method863(enum_.name(), this.Method486() + 6.0f, (int)(this.Method492() + f2 + 9.5f - Class247.Field2262.Method831(enum_.name()) / 2.0f), Field325);
+                Class247.cfontRenderer.Method863(enum_.name(), this.Method486() + 6.0f, (int)(this.Method492() + f2 + 9.5f - Class247.cfontRenderer.Method831(enum_.name()) / 2.0f), Field325);
                 f2 += 20.0f;
             }
         }
@@ -75,10 +75,10 @@ extends Class215 {
         Class247.Method2043(class270, Class253.Method487(n, n2, this.Method486(), this.Method492() + (float)(this.Field2173.hasDescription() ? 34 : 18), this.Method489(), 20.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class267 class267 = new Class267(this.Method486() + this.Method489() - 17.0f, this.Method492() + (float)(this.Field2173.hasDescription() ? 41 : 25), 10.0f, 6.0f, this.Field2174);
         Class247.Method2042(class267, Field325, 3.0f);
-        Class247.Field2262.Method863(this.Field2173.Method1183(), this.Method486(), this.Method492(), Field324);
+        Class247.cfontRenderer.Method863(this.Field2173.Method1183(), this.Method486(), this.Method492(), Field324);
         if (this.Field2173.hasDescription()) {
-            Class247.Field2261.Method863(this.Field2173.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
+            Class247.smallCFontRenderer.Method863(this.Field2173.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
         }
-        Class247.Field2262.Method863(((Enum)this.Field2173.getValue()).toString(), (int)(this.Method486() + 6.0f), (int)(this.Method492() + (this.Field2173.hasDescription() ? 43.5f : 27.5f) - Class247.Field2262.Method831(((Enum)this.Field2173.getValue()).toString()) / 2.0f), Field325);
+        Class247.cfontRenderer.Method863(((Enum)this.Field2173.getValue()).toString(), (int)(this.Method486() + 6.0f), (int)(this.Method492() + (this.Field2173.hasDescription() ? 43.5f : 27.5f) - Class247.cfontRenderer.Method831(((Enum)this.Field2173.getValue()).toString()) / 2.0f), Field325);
     }
 }

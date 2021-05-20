@@ -4,7 +4,7 @@ import java.util.Collections;
 
 import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.gui.hud.Element;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.render.Hud;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -20,7 +20,7 @@ extends Frame {
 
     public void Method439(float f, float f2) {
         if (!((Boolean) Hud.overlap.getValue()).booleanValue()) {
-            for (Element element : NewGui.INSTANCE.Field1136.Method2196()) {
+            for (Element element : KonasGlobals.INSTANCE.Field1136.Method2196()) {
                 if (element.equals(this.Field268) || !(f > element.Method2320()) || !(f < element.Method2320() + element.Method2329()) || !(f2 > element.Method2324()) || !(f2 < element.Method2324() + element.Method2322())) continue;
                 return;
             }
@@ -109,7 +109,7 @@ extends Frame {
                 }
             }
             if (!bl) break block5;
-            Collections.swap(NewGui.INSTANCE.Field1136.Method2196(), NewGui.INSTANCE.Field1136.Method2196().indexOf(this.Field268), NewGui.INSTANCE.Field1136.Method2196().size() - 1);
+            Collections.swap(KonasGlobals.INSTANCE.Field1136.Method2196(), KonasGlobals.INSTANCE.Field1136.Method2196().indexOf(this.Field268), KonasGlobals.INSTANCE.Field1136.Method2196().size() - 1);
         }
         return bl;
     }

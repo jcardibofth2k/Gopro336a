@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -28,8 +28,8 @@ extends GuiScreen {
     @Inject(method={"actionPerformed"}, at={@At(value="RETURN")})
     public void Method22(GuiButton button, CallbackInfo ci) {
         if (button.id == 8) {
-            NewGui.INSTANCE.Field1132.Method1660(this);
-            Minecraft.getMinecraft().displayGuiScreen(NewGui.INSTANCE.Field1132);
+            KonasGlobals.INSTANCE.Field1132.Method1660(this);
+            Minecraft.getMinecraft().displayGuiScreen(KonasGlobals.INSTANCE.Field1132);
         } else if (button.id == 69420 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(new URI("https://discord.gg/gpVZ4Y6cpq"));

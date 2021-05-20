@@ -17,7 +17,7 @@ extends Command {
             Logger.Method1118(this.Method191());
             return;
         }
-        KonasMod.Field732 = stringArray[1];
+        KonasMod.NAME = stringArray[1];
         Logger.Method1118("Set Watermark to &b" + stringArray[1]);
     }
 }

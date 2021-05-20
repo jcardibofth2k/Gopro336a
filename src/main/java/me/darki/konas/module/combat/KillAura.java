@@ -21,7 +21,7 @@ import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class496;
 import me.darki.konas.unremaped.Class507;
 import me.darki.konas.setting.ParentSetting;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class545;
 import me.darki.konas.unremaped.Class566;
 import me.darki.konas.event.events.TickEvent;
@@ -55,7 +55,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 public class KillAura
@@ -198,7 +197,7 @@ extends Module {
                     Field480 = ((IEntityPlayerSP)KillAura.mc.player).getLastReportedYaw() + f * (180.0f * yawAngle.getValue().floatValue() / Math.abs(f));
                     bl = false;
                 }
-                NewGui.INSTANCE.Field1139.Method1937((float)Field480, (float)Field481);
+                KonasGlobals.INSTANCE.Field1139.Method1937((float)Field480, (float)Field481);
             }
             if (!bl) break block15;
             this.Method557();

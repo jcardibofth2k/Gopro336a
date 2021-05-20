@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
@@ -8,7 +7,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -58,7 +57,7 @@ extends Module {
         } else if (this.Field2534 < -89.0f) {
             this.Field2534 = -89.0f;
         }
-        NewGui.INSTANCE.Field1139.Method1937(this.Field2533, this.Field2534);
+        KonasGlobals.INSTANCE.Field1139.Method1937(this.Field2533, this.Field2534);
     }
 
     public static boolean Method132(EntityPlayer entityPlayer) {

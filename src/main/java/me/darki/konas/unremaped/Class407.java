@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -12,7 +11,7 @@ import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
@@ -119,7 +118,7 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         if (packetEvent.getPacket() instanceof SPacketPlayerPosLook) {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
             this.Field1182 = 0.0;
             this.Field1185 = 4;
             this.Field1183 = 0.0;

@@ -19,7 +19,7 @@ extends Setting {
     }
 
     @Override
-    public void setValue(T value) {
+    public void setValue(Object value) {
         T object = getValue();
         super.setValue(value);
         run.run(value);

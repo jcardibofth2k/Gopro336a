@@ -43,7 +43,7 @@ extends Module {
     @Override
     public void onEnable() {
         this.toggle();
-        mc.displayGuiScreen(NewGui.INSTANCE.Field1131);
+        mc.displayGuiScreen(KonasGlobals.INSTANCE.Field1131);
     }
 
     public KonasGui() {

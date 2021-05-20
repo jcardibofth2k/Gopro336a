@@ -1,13 +1,12 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBow;
@@ -80,7 +79,7 @@ extends Module {
         d3 = d5 / 2.0 * d3 * (Class317.mc.player.isSprinting() ? 1.3 : 1.1);
         d4 = d5 / 2.0 * d4 * (Class317.mc.player.isSprinting() ? 1.3 : 1.1);
         float f3 = (float)Math.toDegrees(Math.atan2(entityPlayer.posZ + d4 - Class317.mc.player.posZ, entityPlayer.posX + d3 - Class317.mc.player.posX)) - 90.0f;
-        NewGui.INSTANCE.Field1139.Method1937(f3, f);
+        KonasGlobals.INSTANCE.Field1139.Method1937(f3, f);
         Class317.Method559(f3, f);
         Field763.Method739();
     }

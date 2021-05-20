@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 
 import me.darki.konas.setting.ColorValue;
@@ -26,7 +25,7 @@ extends Element {
         super.onRender2D();
         switch (Class118.Field2446[((Class144)((Object)mode.getValue())).ordinal()]) {
             case 1: {
-                String string = KonasMod.Field732 + " " + "0.10.2";
+                String string = KonasMod.NAME + " " + "0.10.2";
                 this.Method2319(Class557.Method799(string) + 1.0f);
                 this.Method2323(Class557.Method800(string) + 1.0f);
                 Class557.Method801(string, (int)this.Method2320(), (int)this.Method2324(), ((ColorValue)this.textColor.getValue()).Method774());

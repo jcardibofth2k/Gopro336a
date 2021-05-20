@@ -7,7 +7,7 @@ import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -187,7 +187,7 @@ extends Module {
             }
             if (this.Field744.Method737(350.0)) break block7;
             if (((Boolean)this.rotate.getValue()).booleanValue()) {
-                NewGui.INSTANCE.Field1139.Method1937(this.Field742, this.Field743);
+                KonasGlobals.INSTANCE.Field1139.Method1937(this.Field742, this.Field743);
             }
         }
     }

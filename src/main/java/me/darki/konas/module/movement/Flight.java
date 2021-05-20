@@ -7,6 +7,7 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class24;
 import me.darki.konas.unremaped.Class418;
@@ -159,7 +160,7 @@ extends Module {
         }
     }
 
-    @Override
+    //@Override
     public boolean Method396() {
         return this.glide.getValue() != Class447.OFF;
     }
@@ -178,7 +179,7 @@ extends Module {
 
     @Override
     public void onDisable() {
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     @Subscriber
@@ -192,9 +193,9 @@ extends Module {
     @Subscriber
     public void Method462(TickEvent tickEvent) {
         if (this.useTimer.getValue().booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 10, 1.088f);
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 10, 1.088f);
         } else {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
     }
 }

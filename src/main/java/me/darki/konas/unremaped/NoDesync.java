@@ -1,13 +1,12 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Locale;
 
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -53,9 +52,9 @@ extends Module {
                 }
                 f /= f2;
                 if ((f = Math.max(f, 0.5f)) < 0.9f) {
-                    NewGui.INSTANCE.Field1134.Method746(this, 1000, f);
+                    KonasGlobals.INSTANCE.Field1134.Method746(this, 1000, f);
                 } else {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                 }
             }
         }

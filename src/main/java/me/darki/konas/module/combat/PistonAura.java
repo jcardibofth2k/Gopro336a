@@ -12,7 +12,7 @@ import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.FastUse;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
@@ -519,7 +519,7 @@ extends Module {
             return;
         }
         if (this.Field372 == Class220.BREAKING) {
-            NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
+            KonasGlobals.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
         }
         if (this.Field385 < actionInterval.getValue()) {
             return;
@@ -603,7 +603,7 @@ extends Module {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                 Class550.Method883(fArray[0], fArray[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942(vec3d);
+                                KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
                             }
                             this.Field384 = () -> this.Method516(bl2, n, bl3, bl4, vec3d);
                             return;
@@ -623,7 +623,7 @@ extends Module {
                                     float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                     Class550.Method883(fArray[0], fArray[1]);
                                 } else {
-                                    NewGui.INSTANCE.Field1139.Method1942(vec3d);
+                                    KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
                                 }
                                 this.Field384 = () -> this.Method529(enumFacing);
                             }
@@ -649,7 +649,7 @@ extends Module {
                             float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
                             Class550.Method883(fArray[0], fArray[1]);
                         } else {
-                            NewGui.INSTANCE.Field1139.Method1942(new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
+                            KonasGlobals.INSTANCE.Field1139.Method1942(new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
                         }
                         this.Field384 = this::Method517;
                         return;
@@ -682,7 +682,7 @@ extends Module {
                                 object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), (Vec3d)enumFacing);
                                 Class550.Method883((float)object[0], (float)object[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942((Vec3d)enumFacing);
+                                KonasGlobals.INSTANCE.Field1139.Method1942((Vec3d)enumFacing);
                             }
                             object = optional;
                             this.Field384 = () -> this.Method525(bl5, n, n2 != 0, n3 != 0, (Optional)object, (Vec3d)enumFacing);
@@ -721,7 +721,7 @@ extends Module {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), entity.getPositionVector());
                                 Class550.Method883(fArray[0], fArray[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942(entity.getPositionVector());
+                                KonasGlobals.INSTANCE.Field1139.Method1942(entity.getPositionVector());
                             }
                             this.Field384 = () -> this.Method518(entity);
                             break;
@@ -731,7 +731,7 @@ extends Module {
                             Class550.Method883(fArray[0], fArray[1]);
                             break;
                         }
-                        NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
+                        KonasGlobals.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
                         break;
                     }
                 }

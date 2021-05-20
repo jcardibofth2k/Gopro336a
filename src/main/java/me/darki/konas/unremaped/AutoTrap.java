@@ -1,13 +1,12 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Stream;
 
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.combat.PistonAura;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.util.PlayerUtil;
@@ -131,7 +130,7 @@ extends Module {
         }
         if (this.Field1706 < (Integer)actionInterval.getValue()) {
             if (this.Field1709 != null && !this.Field1710.Method737(650.0)) {
-                NewGui.INSTANCE.Field1139.Method1937(this.Field1709.Method1979(), this.Field1709.Method1978());
+                KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1709.Method1979(), this.Field1709.Method1978());
             }
             return;
         }

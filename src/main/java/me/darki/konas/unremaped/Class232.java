@@ -7,7 +7,7 @@ import me.darki.konas.module.ModuleManager;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.opengl.GL11;
@@ -30,7 +30,7 @@ extends Class215 {
         super.Method497(n, n2, f);
         if (this.Field2544 == null) {
             this.Field2544 = this.Field2543.get(0).Method534();
-            NewGui.INSTANCE.Field1131.Method1828().Method2170(this.Field2544);
+            KonasGlobals.INSTANCE.Field1131.Method1828().Method2170(this.Field2544);
         }
         if (this.Method501(n, n2)) {
             if (Field327 > 0) {
@@ -52,7 +52,7 @@ extends Class215 {
         if (this.Field2544 == null) {
             this.Field2544 = this.Field2543.get(0).Method534();
         }
-        NewGui.INSTANCE.Field1131.Method1828().Method2170(this.Field2544);
+        KonasGlobals.INSTANCE.Field1131.Method1828().Method2170(this.Field2544);
     }
 
     public Module Method2179() {
@@ -99,7 +99,7 @@ extends Class215 {
 
     public void Method2170(Module module) {
         this.Field2544 = module;
-        NewGui.INSTANCE.Field1131.Method1828().Method2170(module);
+        KonasGlobals.INSTANCE.Field1131.Method1828().Method2170(module);
     }
 
     public void Method2183(int n, int n2, float f, Class217 class217) {

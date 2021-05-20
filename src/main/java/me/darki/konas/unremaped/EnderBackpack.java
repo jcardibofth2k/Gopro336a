@@ -20,7 +20,7 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock;
 import net.minecraft.network.play.server.SPacketCloseWindow;
 import net.minecraft.util.EnumHand;
 
-public class Class256
+public class EnderBackpack
 extends Module {
     public GuiContainer Field2054;
     public boolean Field2055;
@@ -45,8 +45,8 @@ extends Module {
 
     @Subscriber
     public void Method130(Class19 class19) {
-        if (this.Field2055 && this.Field2056 && Class256.mc.currentScreen instanceof GuiContainer && !(Class256.mc.currentScreen instanceof GuiInventory)) {
-            Class256.mc.currentScreen = null;
+        if (this.Field2055 && this.Field2056 && EnderBackpack.mc.currentScreen instanceof GuiContainer && !(EnderBackpack.mc.currentScreen instanceof GuiInventory)) {
+            EnderBackpack.mc.currentScreen = null;
             this.Field2056 = false;
         }
     }
@@ -54,12 +54,12 @@ extends Module {
     @Subscriber
     public void Method791(rightClickBlockEvent rightClickBlockEvent) {
         if (rightClickBlockEvent.Method251() != null) {
-            Block block = Class256.mc.world.getBlockState(rightClickBlockEvent.Method251()).getBlock();
+            Block block = EnderBackpack.mc.world.getBlockState(rightClickBlockEvent.Method251()).getBlock();
             if (block == Blocks.ENDER_CHEST) {
                 float f = (float)(rightClickBlockEvent.Method252().x - (double) rightClickBlockEvent.Method251().getX());
                 float f2 = (float)(rightClickBlockEvent.Method252().y - (double) rightClickBlockEvent.Method251().getY());
                 float f3 = (float)(rightClickBlockEvent.Method252().z - (double) rightClickBlockEvent.Method251().getZ());
-                Class256.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(rightClickBlockEvent.Method251(), rightClickBlockEvent.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
+                EnderBackpack.mc.player.connection.sendPacket((Packet)new CPacketPlayerTryUseItemOnBlock(rightClickBlockEvent.Method251(), rightClickBlockEvent.Method250(), EnumHand.MAIN_HAND, f, f2, f3));
                 this.Field2055 = true;
             } else if (block instanceof BlockContainer) {
                 this.Field2055 = false;
@@ -80,14 +80,14 @@ extends Module {
         }
     }
 
-    public Class256() {
+    public EnderBackpack() {
         super("EnderBackpack", "Closes your enderchest GUI and allows you to open it whenever you want", Category.EXPLOIT, new String[0]);
     }
 
     @Override
     public void onDisable() {
-        if (Class256.mc.world != null) {
-            Class256.mc.player.connection.sendPacket((Packet)new CPacketCloseWindow(Class256.mc.player.inventoryContainer.windowId));
+        if (EnderBackpack.mc.world != null) {
+            EnderBackpack.mc.player.connection.sendPacket((Packet)new CPacketCloseWindow(EnderBackpack.mc.player.inventoryContainer.windowId));
             this.Field2055 = false;
             this.Field2056 = false;
             this.Field2054 = null;

@@ -1,13 +1,12 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.mixin.mixins.ITimer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 
 public class Timer
@@ -31,10 +30,10 @@ extends Module {
             return;
         }
         if (((Boolean)this.tpsSync.getValue()).booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method748(true);
+            KonasGlobals.INSTANCE.Field1134.Method748(true);
             this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).getTimer()).getTickLength() * 100.0f) / 100.0f + "");
         } else {
-            NewGui.INSTANCE.Field1134.Method748(false);
+            KonasGlobals.INSTANCE.Field1134.Method748(false);
             float f = ((Float)this.timerSpeed.getValue()).floatValue();
             if (((Boolean)this.switch.getValue()).booleanValue()) {
                 if (this.Field2567 > (Integer)this.active.getValue() + (Integer)this.inactive.getValue()) {
@@ -44,7 +43,7 @@ extends Module {
                     f = ((Float)this.inactiveSpeed.getValue()).floatValue();
                 }
             }
-            NewGui.INSTANCE.Field1134.Method746(this, 5, f);
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 5, f);
             this.Method1645((float)Math.round(50.0f / ((ITimer)((IMinecraft)mc).getTimer()).getTickLength() * 100.0f) / 100.0f + "");
             ++this.Field2567;
         }
@@ -56,8 +55,8 @@ extends Module {
 
     @Override
     public void onDisable() {
-        NewGui.INSTANCE.Field1134.Method749(this);
-        NewGui.INSTANCE.Field1134.Method748(false);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method748(false);
     }
 
     @Override

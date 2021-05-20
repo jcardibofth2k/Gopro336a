@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -27,45 +26,45 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import org.lwjgl.opengl.GL11;
 
-public class Class229
+public class Blink
 extends Module {
     public Setting<Boolean> pulse = new Setting<>("Pulse", false);
     public Setting<Boolean> strict = new Setting<>("Strict", false);
-    public Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
+    public Setting<Float> factor = new Setting<>("Factor", 1.0f, 10.0f, 0.1f, 0.1f);
     public static Setting<Boolean> render = new Setting<>("Render", true);
-    public static Setting<Boolean> fill = new Setting<>("Fill", true).visibleIf(Field2616::getValue);
-    public static Setting<Float> width = new Setting<>("Width", Float.valueOf(2.5f), Float.valueOf(5.0f), Float.valueOf(0.1f), Float.valueOf(0.1f)).visibleIf(Field2616::getValue);
-    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(869950564, true)).visibleIf(Field2616::getValue);
+    public static Setting<Boolean> fill = new Setting<>("Fill", true).visibleIf(render::getValue);
+    public static Setting<Float> width = new Setting<>("Width", 2.5f, 5.0f, 0.1f, 0.1f).visibleIf(render::getValue);
+    public static Setting<ColorValue> color = new Setting<>("Color", new ColorValue(869950564, true)).visibleIf(render::getValue);
     public Queue<Packet> Field2620 = new LinkedList<Packet>();
     public Vec3d Field2621 = new Vec3d((Vec3i)BlockPos.ORIGIN);
     public AtomicBoolean Field2622 = new AtomicBoolean(false);
 
     @Override
     public void onEnable() {
-        if (Class229.mc.player == null || Class229.mc.world == null || mc.isIntegratedServerRunning()) {
+        if (Blink.mc.player == null || Blink.mc.world == null || mc.isIntegratedServerRunning()) {
             this.toggle();
             return;
         }
-        this.Field2621 = Class229.mc.player.getPositionVector();
+        this.Field2621 = Blink.mc.player.getPositionVector();
         this.Field2622.set(false);
         this.Field2620.clear();
         this.Method124();
     }
 
-    public Class229() {
+    public Blink() {
         super("Blink", Category.EXPLOIT, "FakeLag", "InstantMove");
     }
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
         block1: {
-            if (!((Boolean)this.pulse.getValue()).booleanValue() || tickEvent.Method324() != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || Class229.mc.player == null || Class229.mc.world == null || !((float)this.Field2620.size() >= ((Float)this.factor.getValue()).floatValue() * 10.0f)) break block1;
+            if (!((Boolean)this.pulse.getValue()).booleanValue() || tickEvent.Method324() != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || Blink.mc.player == null || Blink.mc.world == null || !((float)this.Field2620.size() >= ((Float)this.factor.getValue()).floatValue() * 10.0f)) break block1;
             this.Field2622.set(true);
             while (!this.Field2620.isEmpty()) {
                 Packet packet = this.Field2620.poll();
-                Class229.mc.player.connection.sendPacket(packet);
+                Blink.mc.player.connection.sendPacket(packet);
                 if (!(packet instanceof CPacketPlayer)) continue;
-                this.Field2621 = new Vec3d(((CPacketPlayer)packet).getX(Class229.mc.player.posX), ((CPacketPlayer)packet).getY(Class229.mc.player.posY), ((CPacketPlayer)packet).getZ(Class229.mc.player.posZ));
+                this.Field2621 = new Vec3d(((CPacketPlayer)packet).getX(Blink.mc.player.posX), ((CPacketPlayer)packet).getY(Blink.mc.player.posY), ((CPacketPlayer)packet).getZ(Blink.mc.player.posZ));
             }
             this.Field2622.set(false);
             this.Field2620.clear();
@@ -80,7 +79,7 @@ extends Module {
             int n2;
             int n3;
             float f;
-            if (Class229.mc.player == null || Class229.mc.world == null) {
+            if (Blink.mc.player == null || Blink.mc.world == null) {
                 return;
             }
             if (!((Boolean)render.getValue()).booleanValue() || this.Field2621 == null) break block9;
@@ -171,9 +170,9 @@ extends Module {
                     this.Field2622.set(true);
                     while (!this.Field2620.isEmpty()) {
                         Packet packet2 = this.Field2620.poll();
-                        Class229.mc.player.connection.sendPacket(packet2);
+                        Blink.mc.player.connection.sendPacket(packet2);
                         if (!(packet2 instanceof CPacketPlayer)) continue;
-                        this.Field2621 = new Vec3d(((CPacketPlayer)packet2).getX(Class229.mc.player.posX), ((CPacketPlayer)packet2).getY(Class229.mc.player.posY), ((CPacketPlayer)packet2).getZ(Class229.mc.player.posZ));
+                        this.Field2621 = new Vec3d(((CPacketPlayer)packet2).getX(Blink.mc.player.posX), ((CPacketPlayer)packet2).getY(Blink.mc.player.posY), ((CPacketPlayer)packet2).getZ(Blink.mc.player.posZ));
                     }
                     this.Field2622.set(false);
                     this.Field2620.clear();
@@ -194,11 +193,11 @@ extends Module {
 
     @Override
     public void onDisable() {
-        if (Class229.mc.world == null || Class229.mc.player == null) {
+        if (Blink.mc.world == null || Blink.mc.player == null) {
             return;
         }
         while (!this.Field2620.isEmpty()) {
-            Class229.mc.player.connection.sendPacket(this.Field2620.poll());
+            Blink.mc.player.connection.sendPacket(this.Field2620.poll());
         }
     }
 }

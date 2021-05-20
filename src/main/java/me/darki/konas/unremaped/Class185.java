@@ -33,7 +33,7 @@ extends Module {
     public static Setting<Integer> minHeight = new Setting<>("MinHeight", 2, 5, 2, 1);
     public static Setting<Integer> range = new Setting<>("Range", 2, 5, 1, 1);
     public static Setting<Integer> interval = new Setting<>("Interval", 0, 20, 0, 1);
-    public static Setting<Double> range = new Setting<>("Range", 4.0, 6.0, 1.0, 0.1);
+    public static Setting<Double> range2 = new Setting<>("Range", 4.0, 6.0, 1.0, 0.1);
     public int Field1385 = 0;
     public Class490 Field1386 = null;
     public int Field1387 = -1;
@@ -140,7 +140,7 @@ extends Module {
     }
 
     public static boolean Method126(EntityPlayer entityPlayer) {
-        return (double)Class185.mc.player.getDistance((Entity)entityPlayer) < (Double)range.getValue();
+        return (double)Class185.mc.player.getDistance((Entity)entityPlayer) < (Double)range2.getValue();
     }
 
     public static boolean Method128(EntityPlayer entityPlayer) {
@@ -176,7 +176,7 @@ extends Module {
     }
 
     public EntityPlayer Method1453() {
-        Stream stream = Class185.mc.world.playerEntities.stream();
+        Stream<EntityPlayer> stream = Class185.mc.world.playerEntities.stream();
         return stream.filter(Class185::Method122).filter(Class185::Method141).filter(Class185::Method128).filter(Class185::Method126).filter(this::Method138).min(Comparator.comparing(Class185::Method1452)).orElse(null);
     }
 }

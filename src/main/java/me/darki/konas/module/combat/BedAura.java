@@ -14,7 +14,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -28,7 +28,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.ItemBed;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
 import net.minecraft.potion.Potion;
@@ -42,10 +41,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 public class BedAura
 extends Module {
@@ -192,7 +188,7 @@ extends Module {
             }
         }
         if (Field1681) {
-            NewGui.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
+            KonasGlobals.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
         }
         if (this.Field1680.Method737(450.0)) {
             Field1681 = false;

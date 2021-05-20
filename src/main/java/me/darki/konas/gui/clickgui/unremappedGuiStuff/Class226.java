@@ -56,9 +56,9 @@ extends Class215 {
     public void Method497(int n, int n2, float f) {
         block20: {
             super.Method497(n, n2, f);
-            Class247.Field2262.Method863(this.Field2579.Method1183(), this.Method486(), this.Method492(), Field324);
+            Class247.cfontRenderer.Method863(this.Field2579.Method1183(), this.Method486(), this.Method492(), Field324);
             if (this.Field2579.hasDescription()) {
-                Class247.Field2261.Method863(this.Field2579.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
+                Class247.smallCFontRenderer.Method863(this.Field2579.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
             }
             RenderUtil2.Method1338(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, ((ColorValue)this.Field2579.getValue()).Method774());
             RenderUtil2.Method1336(this.Method486() + 240.0f, this.Method492(), 24.0f, 12.0f, 1.0f, ((ColorValue)this.Field2579.getValue()).Method784(255).Method774());
@@ -241,11 +241,11 @@ extends Class215 {
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f + 35.0f, 40.0f * ((float)this.Field2584 / 255.0f), 17.5f, 0x440000FF);
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Method492() + 6.0f + 52.5f, 40.0f * ((float)this.Field2581 / 255.0f), 17.5f, 0x44FFFFFF);
             RenderUtil2.Method1338(this.Method486() + 350.0f - (float)(this.Field2590 ? 108 : 0), this.Field2588, 40.0f, this.Field2589, ((ColorValue)this.Field2579.getValue()).Method783() ? ((ColorValue)this.Field2579.getValue()).Method784(50).Method774() : 0);
-            Class247.Field2262.Method863("R" + this.Field2582, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 8.75f - Class247.Field2262.Method831("R") / 2.0f), Field324);
-            Class247.Field2262.Method863("G" + this.Field2583, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)((double)(this.Method492() + 6.0f) + 26.25 - (double)(Class247.Field2262.Method831("G") / 2.0f)), Field324);
-            Class247.Field2262.Method863("B" + this.Field2584, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 43.75f - Class247.Field2262.Method831("B") / 2.0f), Field324);
-            Class247.Field2262.Method863("A" + this.Field2581, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 61.25f - Class247.Field2262.Method831("A") / 2.0f), Field324);
-            Class247.Field2262.Method863("Cycle", this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Field2588 + this.Field2589 / 2.0f - Class247.Field2262.Method831("Cycle") / 2.0f), Field324);
+            Class247.cfontRenderer.Method863("R" + this.Field2582, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 8.75f - Class247.cfontRenderer.Method831("R") / 2.0f), Field324);
+            Class247.cfontRenderer.Method863("G" + this.Field2583, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)((double)(this.Method492() + 6.0f) + 26.25 - (double)(Class247.cfontRenderer.Method831("G") / 2.0f)), Field324);
+            Class247.cfontRenderer.Method863("B" + this.Field2584, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 43.75f - Class247.cfontRenderer.Method831("B") / 2.0f), Field324);
+            Class247.cfontRenderer.Method863("A" + this.Field2581, this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Method492() + 6.0f + 61.25f - Class247.cfontRenderer.Method831("A") / 2.0f), Field324);
+            Class247.cfontRenderer.Method863("Cycle", this.Method486() + 352.0f - (float)(this.Field2590 ? 108 : 0), (int)(this.Field2588 + this.Field2589 / 2.0f - Class247.cfontRenderer.Method831("Cycle") / 2.0f), Field324);
         }
     }
 

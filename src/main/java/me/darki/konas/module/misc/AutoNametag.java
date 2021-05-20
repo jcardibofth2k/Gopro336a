@@ -6,7 +6,7 @@ import java.util.Comparator;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class496;
 import me.darki.konas.unremaped.Class50;
@@ -115,7 +115,7 @@ extends Module {
                 this.Field1928.Method739();
             }
             if (!rotate.getValue().booleanValue() || this.Field1928.Method737(350.0)) break block7;
-            NewGui.INSTANCE.Field1139.Method1937(this.Field1929, this.Field1930);
+            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1929, this.Field1930);
         }
     }
 }

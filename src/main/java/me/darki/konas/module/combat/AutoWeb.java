@@ -8,7 +8,7 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -193,7 +193,7 @@ extends Module {
             }
             if (this.Field1759 < (Integer)actionInterval.getValue()) {
                 if (this.Field1762 != null && !this.Field1763.Method737(650.0)) {
-                    NewGui.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
+                    KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
                 }
                 return;
             }

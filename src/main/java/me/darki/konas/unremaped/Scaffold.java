@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +12,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -73,7 +72,7 @@ extends Module {
     public void Method135(UpdateEvent updateEvent) {
         block0: {
             if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Class496.Method1966()) break block0;
-            NewGui.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
+            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
         }
     }
 
@@ -91,7 +90,7 @@ extends Module {
 
     @Override
     public void onDisable() {
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public double[] Method943(double d, double d2, double d3, double d4, float f) {
@@ -480,7 +479,7 @@ extends Module {
                 this.Field891 = this.Method945((BlockPos)object);
                 if (this.Field891 != null) {
                     float[] fArray = RotationUtil.Method1946(Scaffold.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field891.Field566.getX() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getX() * 0.5, (double)this.Field891.Field566.getY() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getY() * 0.5, (double)this.Field891.Field566.getZ() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getZ() * 0.5));
-                    NewGui.INSTANCE.Field1139.Method1937(fArray[0], fArray[1]);
+                    KonasGlobals.INSTANCE.Field1139.Method1937(fArray[0], fArray[1]);
                     this.Field906 = fArray[0];
                     this.Field907 = fArray[1];
                     this.Field905.Method739();
@@ -509,25 +508,25 @@ extends Module {
                         return;
                     }
                     if (tower.getValue() == Class307.FAST) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 25, Scaffold.mc.player.ticksExisted % 10 == 0 ? 1.0f : 1.5782f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 25, Scaffold.mc.player.ticksExisted % 10 == 0 ? 1.0f : 1.5782f);
                     }
                     Scaffold.mc.player.motionY = 0.42f;
                     Scaffold.mc.player.motionZ = 0.0;
                     Scaffold.mc.player.motionX = 0.0;
                     if (this.Field890.Method737(1500.0)) {
-                        NewGui.INSTANCE.Field1134.Method749(this);
+                        KonasGlobals.INSTANCE.Field1134.Method749(this);
                         this.Field890.Method739();
                         Scaffold.mc.player.motionY = -0.28;
                     }
                 } else {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                     this.Field890.Method739();
                     if (this.Field909 && ((Boolean) center.getValue()).booleanValue()) {
                         this.Field909 = false;
                     }
                 }
             } else {
-                NewGui.INSTANCE.Field1134.Method749(this);
+                KonasGlobals.INSTANCE.Field1134.Method749(this);
             }
             if (Scaffold.mc.playerController.processRightClickBlock(Scaffold.mc.player, Scaffold.mc.world, this.Field891.Field566, this.Field891.Field567, new Vec3d((double)this.Field891.Field566.getX() + Math.random(), (double)this.Field891.Field566.getY() + Math.random(), (double)this.Field891.Field566.getZ() + Math.random()), EnumHand.MAIN_HAND) != EnumActionResult.FAIL) {
                 if (((Boolean) swing.getValue()).booleanValue()) {

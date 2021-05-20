@@ -1,8 +1,7 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import me.darki.konas.command.Logger;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.IRunnable;
 
 public class Class181
@@ -18,14 +17,14 @@ implements IRunnable {
     }
 
     public void Method631(Boolean bl) {
-        if (NewGui.INSTANCE.Field1140 == null) {
+        if (KonasGlobals.INSTANCE.Field1140 == null) {
             return;
         }
         if (!Class202.Field678 && !Class202.Method741(this.Field1407).Method737(10000.0)) {
             Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - Class202.Method741(this.Field1407).Method736()) / 1000L - 10L) + " seconds, before you enable this setting again!");
-            Class202.Method740(this.Field1407).Method1153();
+            Class202.Method740(this.Field1407).Cancel();
         } else {
-            NewGui.INSTANCE.Field1140.Method591(bl);
+            KonasGlobals.INSTANCE.Field1140.Method591(bl);
             Class202.Method741(this.Field1407).Method739();
         }
     }

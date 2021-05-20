@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,7 +13,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -192,7 +191,7 @@ extends Module {
             }
         }
         if (Field1681) {
-            NewGui.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
+            KonasGlobals.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
         }
         if (this.Field1680.Method737(450.0)) {
             Field1681 = false;

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockAir;
@@ -223,7 +222,7 @@ extends Module {
             }
             if (!((Boolean)this.rotate.getValue()).booleanValue() || this.Field71 == null) break block13;
             Vec3d vec3d = new Vec3d((Vec3i)this.Field71).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field72.getDirectionVec()).scale(0.5));
-            NewGui.INSTANCE.Field1139.Method1942(vec3d);
+            KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
         }
     }
 

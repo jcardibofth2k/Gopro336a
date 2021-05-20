@@ -14,7 +14,7 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.*;
 import me.darki.konas.unremaped.*;
@@ -319,9 +319,9 @@ extends Module {
             this.toggle();
         }
         if (boost.getValue().booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 9, 1.088f);
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 9, 1.088f);
         } else {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
     }
 
@@ -380,7 +380,7 @@ extends Module {
         if (PacketFly.mc.player != null) {
             PacketFly.mc.player.setVelocity(0.0, 0.0, 0.0);
         }
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public void Method124() {
