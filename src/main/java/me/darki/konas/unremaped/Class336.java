@@ -1,6 +1,10 @@
 package me.darki.konas.unremaped;
 
 import me.darki.konas.*;
+
+/**
+ * I like the name of this class -Gopro
+ */
 public class Class336 {
     public static int[] Field328 = new int[Class334.Method567().length];
 

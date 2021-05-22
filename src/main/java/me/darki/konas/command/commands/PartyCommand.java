@@ -2,7 +2,7 @@ package me.darki.konas.command.commands;
 
 import java.util.ArrayList;
 import me.darki.konas.unremaped.Class595;
-import me.darki.konas.unremaped.Class602;
+import me.darki.konas.unremaped.PartyUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 
@@ -62,7 +62,7 @@ extends Command {
     }
 
     public PartyCommand() {
-        super("party", "Add or Remove People to/from your party", new Class602("<add/del/clear/list>"), new Class595("[name]"));
+        super("party", "Add or Remove People to/from your party", new PartyUtil("<add/del/clear/list>"), new Class595("[name]"));
     }
 
     public static void Method175(StringBuilder stringBuilder, String string) {

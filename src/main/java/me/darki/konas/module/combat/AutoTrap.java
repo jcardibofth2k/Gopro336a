@@ -45,13 +45,13 @@ extends Module {
     public static Setting<Boolean> disableWhenDone = new Setting<>("DisableWhenDone", false);
     public static Setting<Boolean> logoutSpots = new Setting<>("LogoutSpots", false);
     public int Field1703;
-    public Class566 Field1704 = new Class566();
+    public TimerUtil Field1704 = new TimerUtil();
     public BlockPos Field1705;
     public int Field1706 = 0;
     public BlockPos Field1707 = null;
     public Class490 Field1708;
     public Class490 Field1709;
-    public Class566 Field1710 = new Class566();
+    public TimerUtil Field1710 = new TimerUtil();
     public static ConcurrentHashMap<BlockPos, Long> Field1711 = new ConcurrentHashMap();
 
     public int Method464() {
@@ -67,7 +67,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block1: {
             if (AutoTrap.mc.world == null || AutoTrap.mc.player == null) {
                 return;
@@ -107,7 +107,7 @@ extends Module {
         this.Field1707 = null;
         int n2 = Class475.Method2142();
         Field1711.forEach((arg_0, arg_1) -> AutoTrap.Method1052(n2, arg_0, arg_1));
-        if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)rotate.getValue())) {
+        if (updateEvent.isCanceled() || !Rotation.Method1959((Boolean)rotate.getValue())) {
             return;
         }
         if (!(!((Boolean)strict.getValue()).booleanValue() || AutoTrap.mc.player.onGround && AutoTrap.mc.player.collidedVertically)) {
@@ -138,7 +138,7 @@ extends Module {
         this.Field1707 = new BlockPos(entityPlayer.posX, entityPlayer.posY, entityPlayer.posZ);
         BlockPos blockPos = this.Method1626(this.Field1707);
         if (blockPos != null) {
-            this.Field1708 = Class496.Method1962(blockPos, rotate.getValue());
+            this.Field1708 = Rotation.Method1962(blockPos, rotate.getValue());
             if (this.Field1708 != null) {
                 Field1711.put(blockPos, System.currentTimeMillis());
                 this.Field1706 = 0;
@@ -209,7 +209,7 @@ extends Module {
     }
 
     public boolean Method1624(BlockPos blockPos, boolean bl) {
-        return Class496.Method1967(blockPos, bl) && !Field1711.containsKey(blockPos);
+        return Rotation.Method1967(blockPos, bl) && !Field1711.containsKey(blockPos);
     }
 
     public static boolean Method141(EntityPlayer entityPlayer) {
@@ -242,15 +242,15 @@ extends Module {
             if (bl3) {
                 AutoTrap.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoTrap.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
-            Class496.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
+            Rotation.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
             for (int i = 0; i < (Integer)actionShift.getValue() - 1; ++i) {
                 BlockPos blockPos = this.Method1626(this.Field1707);
                 if (blockPos != null) {
-                    Class490 class490 = Class496.Method1961(blockPos, (Boolean)rotate.getValue(), true);
+                    Class490 class490 = Rotation.Method1961(blockPos, (Boolean)rotate.getValue(), true);
                     if (class490 == null) break;
                     this.Field1708 = class490;
                     Field1711.put(blockPos, System.currentTimeMillis());
-                    Class496.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
+                    Rotation.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
                     this.Field1705 = blockPos;
                     this.Field1704.Method739();
                     continue;

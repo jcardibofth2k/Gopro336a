@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -11,7 +10,7 @@ extends Module {
     public static float Field1084 = 0.0f;
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
     }
 
     public static void Method1113(float f) {

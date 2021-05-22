@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.render.Render;
@@ -180,11 +179,11 @@ public class Class523 {
         if (Module.mc.world == null) {
             return;
         }
-        if (!ModuleManager.getModuleByClass(Class406.class).isEnabled()) {
+        if (!ModuleManager.getModuleByClass(Interactions.class).isEnabled()) {
             return;
         }
         AxisAlignedBB axisAlignedBB = Module.mc.world.getBlockState(blockPos).getBoundingBox((IBlockAccess)Module.mc.world, blockPos).offset(blockPos);
-        ((Class406) ModuleManager.getModuleByClass(Class406.class)).Method1172(axisAlignedBB);
+        ((Interactions) ModuleManager.getModuleByClass(Interactions.class)).Method1172(axisAlignedBB);
     }
 
     public static void Method1219(AxisAlignedBB axisAlignedBB, int n, float f) {

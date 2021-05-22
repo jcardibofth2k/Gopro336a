@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
 import me.darki.konas.module.Module;
@@ -76,7 +75,7 @@ public class Class423 {
         this.Field1061 = trajectories;
         this.Field1051 = entityLivingBase;
         this.Field1060 = class420;
-        this.Method1059(this.Field1051.posX, this.Field1051.posY + (double)this.Field1051.getEyeHeight(), this.Field1051.posZ, Trajectories.Method651(this.Field1051) ? (float)Class317.Field764 : this.Field1051.rotationYaw, Trajectories.Method651(this.Field1051) ? (float)Class317.Field765 : this.Field1051.rotationPitch);
+        this.Method1059(this.Field1051.posX, this.Field1051.posY + (double)this.Field1051.getEyeHeight(), this.Field1051.posZ, Trajectories.Method651(this.Field1051) ? (float) BowAim.Field764 : this.Field1051.rotationYaw, Trajectories.Method651(this.Field1051) ? (float) BowAim.Field765 : this.Field1051.rotationPitch);
         this.Field1056 = class420 == Class420.EXPERIENCE ? -20.0f : 0.0f;
         Vec3d vec3d = new Vec3d((double)(MathHelper.cos((float)(this.Field1054 / 180.0f * (float)Math.PI)) * 0.16f), 0.1, (double)(MathHelper.sin((float)(this.Field1054 / 180.0f * (float)Math.PI)) * 0.16f));
         this.Field1052 = this.Field1052.subtract(vec3d);

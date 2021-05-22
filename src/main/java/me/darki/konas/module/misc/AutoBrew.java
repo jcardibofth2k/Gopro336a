@@ -40,7 +40,7 @@ extends Module {
     public int Field2197;
     public boolean Field2198;
     public int Field2199;
-    public Class566 Field2200 = new Class566();
+    public TimerUtil Field2200 = new TimerUtil();
     public boolean Field2201 = false;
     public boolean Field2202 = false;
 

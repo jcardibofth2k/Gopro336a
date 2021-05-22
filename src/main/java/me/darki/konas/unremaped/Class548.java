@@ -1,19 +1,18 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 public class Class548 {
-    public static Class552 Field1015 = Class558.Field779;
+    public static fontHelper Field1015 = FontUtil.Field779;
 
     public static void Method1016(String string, float f, float f2, int n) {
         Field1015.Method826(string, f, f2, n);
     }
 
-    public static Class552 Method1017() {
+    public static fontHelper Method1017() {
         return Field1015;
     }
 
-    public static void Method1018(Class552 class552) {
-        Field1015 = class552;
+    public static void Method1018(fontHelper fontHelper) {
+        Field1015 = fontHelper;
     }
 
     public static void Method1019(String string, float f, float f2, int n) {

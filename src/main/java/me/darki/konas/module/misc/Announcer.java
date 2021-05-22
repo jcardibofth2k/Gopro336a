@@ -29,9 +29,9 @@ extends Module {
     public static ArrayList<String> arrayList1 = new ArrayList();
     public Random random = new Random();
     public Random random1 = new Random();
-    public Class566 Field2492 = new Class566();
-    public Class566 Field2493 = new Class566();
-    public Class566 Field2494 = new Class566();
+    public TimerUtil Field2492 = new TimerUtil();
+    public TimerUtil Field2493 = new TimerUtil();
+    public TimerUtil Field2494 = new TimerUtil();
     public LinkedHashMap<Class357, Integer> Field2495 = new LinkedHashMap();
     public static double Field2496;
     public static double Field2497;
@@ -47,17 +47,17 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block1: {
             CPacketPlayerDigging cPacketPlayerDigging;
             block2: {
                 block0: {
-                    if (!(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock)) break block0;
+                    if (!(sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock)) break block0;
                     this.Method2135(Class357.PLACE);
                     break block1;
                 }
-                if (!(class24.getPacket() instanceof CPacketPlayerDigging)) break block1;
-                cPacketPlayerDigging = (CPacketPlayerDigging)class24.getPacket();
+                if (!(sendPacketEvent.getPacket() instanceof CPacketPlayerDigging)) break block1;
+                cPacketPlayerDigging = (CPacketPlayerDigging) sendPacketEvent.getPacket();
                 if (cPacketPlayerDigging.getAction() != CPacketPlayerDigging.Action.DROP_ALL_ITEMS && cPacketPlayerDigging.getAction() != CPacketPlayerDigging.Action.DROP_ITEM) break block2;
                 this.Method2135(Class357.DROP);
                 break block1;

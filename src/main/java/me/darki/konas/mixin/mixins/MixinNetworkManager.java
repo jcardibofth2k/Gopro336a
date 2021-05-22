@@ -3,7 +3,7 @@ package me.darki.konas.mixin.mixins;
 import cookiedragon.eventsystem.EventDispatcher;
 import io.netty.channel.ChannelHandlerContext;
 import me.darki.konas.event.events.PacketEvent;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class419;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinNetworkManager {
     @Inject(method={"sendPacket(Lnet/minecraft/network/Packet;)V"}, at={@At(value="HEAD")}, cancellable=true)
     private void Method766(Packet<?> packet, CallbackInfo callbackInfo) {
-        Class24 event = new Class24(packet);
+        SendPacketEvent event = new SendPacketEvent(packet);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             callbackInfo.cancel();

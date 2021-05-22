@@ -10,7 +10,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class45;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.OpenGuiEvent;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.entity.Entity;
@@ -31,7 +31,7 @@ extends Module {
     public static ArrayList<String> Field1979 = new ArrayList();
     public static ArrayList<String> Field1980 = new ArrayList();
     public Random Field1981 = new Random();
-    public Class566 Field1982 = new Class566();
+    public TimerUtil Field1982 = new TimerUtil();
 
     public AutoGG() {
         super("AutoGG", Category.MISC);

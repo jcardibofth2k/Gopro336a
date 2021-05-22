@@ -26,13 +26,13 @@ extends Module {
     public Setting<Boolean> weapons = new Setting<>("Weapons", true);
     public Setting<Class389> mining = new Setting<>("Mining", Class389.NORMAL);
     public Setting<Boolean> strict = new Setting<>("Strict", true);
-    public Class566 Field2025 = new Class566();
+    public TimerUtil Field2025 = new TimerUtil();
     public boolean Field2026 = false;
     public int Field2027 = -1;
 
     @Subscriber
-    public void Method1845(Class652 class652) {
-        if (AutoTool.mc.player == null || AutoTool.mc.world == null || class652.Method597() != AutoTool.mc.player) {
+    public void Method1845(ClickBlockEvent clickBlockEvent) {
+        if (AutoTool.mc.player == null || AutoTool.mc.world == null || clickBlockEvent.Method597() != AutoTool.mc.player) {
             return;
         }
         if (this.mining.getValue() == Class389.NONE || this.mining.getValue() == Class389.SILENT) {
@@ -41,7 +41,7 @@ extends Module {
         if (this.mining.getValue() == Class389.RETURN && this.Field2026) {
             return;
         }
-        this.Method1851(AutoTool.Method1850(class652.Method1149()), false);
+        this.Method1851(AutoTool.Method1850(clickBlockEvent.Method1149()), false);
     }
 
     @Subscriber

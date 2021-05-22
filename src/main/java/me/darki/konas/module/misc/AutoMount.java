@@ -8,9 +8,9 @@ import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class50;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;
@@ -38,8 +38,8 @@ extends Module {
     public static Setting<Boolean> donkeys = new Setting<>("Donkeys", true);
     public static Setting<Boolean> pigs = new Setting<>("Pigs", false);
     public static Setting<Boolean> llamas = new Setting<>("Llamas", false);
-    public Class566 Field1889 = new Class566();
-    public Class566 Field1890 = new Class566();
+    public TimerUtil Field1889 = new TimerUtil();
+    public TimerUtil Field1890 = new TimerUtil();
     public float Field1891 = 0.0f;
     public float Field1892 = 0.0f;
     public Entity Field1893 = null;
@@ -103,24 +103,24 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block4: {
             CPacketPlayer cPacketPlayer;
             if (AutoMount.mc.world == null || AutoMount.mc.player == null) {
                 return;
             }
-            if (class24.getPacket() instanceof CPacketPlayer && !this.Field1890.Method737(350.0)) {
-                cPacketPlayer = (CPacketPlayer)class24.getPacket();
-                if (class24.getPacket() instanceof CPacketPlayer.Position) {
-                    class24.setCanceled(true);
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer && !this.Field1890.Method737(350.0)) {
+                cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
+                if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
+                    sendPacketEvent.setCanceled(true);
                     AutoMount.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(cPacketPlayer.getX(AutoMount.mc.player.posX), cPacketPlayer.getY(AutoMount.mc.player.posY), cPacketPlayer.getZ(AutoMount.mc.player.posZ), this.Field1891, this.Field1892, cPacketPlayer.isOnGround()));
                 } else {
                     ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field1891);
                     ((ICPacketPlayer)cPacketPlayer).setPitch(this.Field1892);
                 }
             }
-            if (!bypass.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity)class24.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
-            class24.Cancel();
+            if (!bypass.getValue().booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity) sendPacketEvent.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
+            sendPacketEvent.Cancel();
         }
     }
 

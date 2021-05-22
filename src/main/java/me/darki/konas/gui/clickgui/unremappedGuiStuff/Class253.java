@@ -2,7 +2,7 @@ package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class247;
+import me.darki.konas.util.Class247;
 import me.darki.konas.unremaped.Class267;
 import me.darki.konas.unremaped.Class270;
 

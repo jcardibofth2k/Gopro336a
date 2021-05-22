@@ -25,7 +25,7 @@ extends Module {
     public static Setting<Boolean> use = new Setting<>("Use", false);
     public static Setting<Class312> mode = new Setting<>("Mode", Class312.FOOD).visibleIf(Field879::getValue);
     public static Setting<Class531> items = new Setting<>("Items", new Class531(new String[0]));
-    public static Class566 Field882 = new Class566();
+    public static TimerUtil Field882 = new TimerUtil();
     public static boolean Field883 = false;
     public long Field884 = -1L;
     public float[] Field885 = new float[22];
@@ -65,12 +65,12 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
-        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
+        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
             Field882.Method738(0L);
             NoDesync.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(NoDesync.mc.player.rotationYaw, NoDesync.mc.player.rotationPitch, NoDesync.mc.player.onGround));
         }
-        if (class24.getPacket() instanceof CPacketPlayer) {
+        if (sendPacketEvent.getPacket() instanceof CPacketPlayer) {
             if (((Boolean)limit.getValue()).booleanValue()) {
                 if (this.Field884 != -1L) {
                     float f;

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -16,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL13;
 
 public class Class554
-extends Class564 {
+extends FrameBuffer {
     public int Field821 = this.Method692("DiffuseSamper");
     public int Field822 = this.Method692("TexelSize");
     public int Field823 = this.Method692("Color");
@@ -26,14 +25,14 @@ extends Class564 {
     public int Field827 = this.Method692("OutlineFade");
 
     @Override
-    public Class564 Method689() {
+    public FrameBuffer Method689() {
         if (this.Field634 == -1 || this.Field635 == -1 || this.Field638 == -1) {
             throw new RuntimeException("Invalid IDs!");
         }
         EXTFramebufferObject.glBindFramebufferEXT((int)36160, (int)this.Field634);
         int n = Math.max(Minecraft.getDebugFPS(), 30);
         GL11.glClear((int)16640);
-        ((IEntityRenderer)Class554.Field626.entityRenderer).updateFogColor(((IEntityRenderer)Class554.Field626.entityRenderer).getRenderEndNanoTime() + (long)(1000000000 / n));
+        ((IEntityRenderer)Class554.mc.entityRenderer).updateFogColor(((IEntityRenderer)Class554.mc.entityRenderer).getRenderEndNanoTime() + (long)(1000000000 / n));
         ARBShaderObjects.glUseProgramObjectARB((int)this.Field638);
         ARBShaderObjects.glUniform1iARB((int)this.Field821, (int)0);
         GL13.glActiveTexture((int)33984);

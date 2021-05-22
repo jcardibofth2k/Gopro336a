@@ -26,8 +26,8 @@ import net.minecraft.util.math.Vec3d;
 public class AutoObsidian
 extends Module {
     public static Setting<Integer> range = new Setting<>("Range", 2, 3, 1, 1);
-    public Class566 Field1729 = new Class566();
-    public Class566 Field1730 = new Class566();
+    public TimerUtil Field1729 = new TimerUtil();
+    public TimerUtil Field1730 = new TimerUtil();
     public Class490 Field1731 = null;
 
     public boolean Method394() {
@@ -45,7 +45,7 @@ extends Module {
     @Subscriber(priority=5)
     public void Method135(UpdateEvent updateEvent) {
         this.Field1731 = null;
-        if (updateEvent.isCanceled() || !Class496.Method1966()) {
+        if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
         BlockPos blockPos = AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0).stream().filter(AutoObsidian::Method512).min(Comparator.comparing(AutoObsidian::Method1653)).orElse(null);
@@ -80,7 +80,7 @@ extends Module {
                 return;
             }
             for (BlockPos blockPos2 : AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0)) {
-                Class490 class490 = Class496.Method1962(blockPos2, true);
+                Class490 class490 = Rotation.Method1962(blockPos2, true);
                 if (class490 == null) continue;
                 this.Field1731 = class490;
             }
@@ -105,7 +105,7 @@ extends Module {
     public void Method123(Class50 class50) {
         block0: {
             if (this.Field1731 == null) break block0;
-            Class496.Method1958(this.Field1731, EnumHand.MAIN_HAND, false);
+            Rotation.Method1958(this.Field1731, EnumHand.MAIN_HAND, false);
             this.Field1730.Method738(0L);
         }
     }

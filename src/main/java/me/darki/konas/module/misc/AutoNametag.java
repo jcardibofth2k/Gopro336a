@@ -8,9 +8,9 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Rotation;
 import me.darki.konas.unremaped.Class50;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -32,7 +32,7 @@ extends Module {
     public static Setting<Boolean> withers = new Setting<>("Withers", true);
     public static Setting<Boolean> mobs = new Setting<>("Mobs", false);
     public static Setting<Boolean> animals = new Setting<>("Animals", false);
-    public Class566 Field1928 = new Class566();
+    public TimerUtil Field1928 = new TimerUtil();
     public float Field1929;
     public float Field1930;
     public EntityLivingBase Field1931 = null;
@@ -84,7 +84,7 @@ extends Module {
         block7: {
             ItemStack itemStack;
             this.Field1931 = null;
-            if (updateEvent.isCanceled() || !Class496.Method1966()) {
+            if (updateEvent.isCanceled() || !Rotation.Method1966()) {
                 return;
             }
             this.Field1932 = AutoNametag.mc.player.inventory.currentItem;

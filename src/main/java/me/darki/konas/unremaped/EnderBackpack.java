@@ -27,13 +27,13 @@ extends Module {
     public boolean Field2056 = false;
 
     @Subscriber
-    public void Method536(Class24 class24) {
-        if (class24.getPacket() instanceof CPacketCloseWindow) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
+        if (sendPacketEvent.getPacket() instanceof CPacketCloseWindow) {
             if (this.Field2054 != null && this.Field2055) {
-                class24.setCanceled(true);
+                sendPacketEvent.setCanceled(true);
             }
-        } else if (class24.getPacket() instanceof CPacketClickWindow) {
-            CPacketClickWindow cPacketClickWindow = (CPacketClickWindow)class24.getPacket();
+        } else if (sendPacketEvent.getPacket() instanceof CPacketClickWindow) {
+            CPacketClickWindow cPacketClickWindow = (CPacketClickWindow) sendPacketEvent.getPacket();
             if (cPacketClickWindow.getClickType().equals((Object)ClickType.THROW) && this.Field2055 && this.Field2054 != null) {
                 this.Field2056 = true;
             } else if (cPacketClickWindow.getClickType().equals((Object)ClickType.THROW) && !this.Field2055) {

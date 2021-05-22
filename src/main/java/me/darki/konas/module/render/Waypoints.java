@@ -108,14 +108,14 @@ extends Module {
                 }
             }
             if (class4402 != null) {
-                Class507.Method1386();
-                Class507.Method1379(axisAlignedBB, class4402);
-                Class507.Method1385();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1379(axisAlignedBB, class4402);
+                EspRenderUtil.Method1385();
             }
             if (colorValue != null) {
-                Class507.Method1386();
-                Class507.Method1374(axisAlignedBB, 1.5, colorValue);
-                Class507.Method1385();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1374(axisAlignedBB, 1.5, colorValue);
+                EspRenderUtil.Method1385();
             }
             if (class4403 == null) break block13;
             Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Waypoints.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Waypoints.mc.player.rotationYaw)));
@@ -125,7 +125,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (Waypoints.mc.world == null || Waypoints.mc.player == null) {
             return;
         }

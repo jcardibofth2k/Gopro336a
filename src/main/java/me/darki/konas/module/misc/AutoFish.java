@@ -8,7 +8,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class376;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.init.Items;
 import net.minecraft.network.play.server.SPacketSoundEffect;
@@ -20,7 +20,7 @@ extends Module {
     public static Setting<Boolean> cast = new Setting<>("Cast", true);
     public boolean Field2086 = false;
     public boolean Field2087 = false;
-    public Class566 Field2088 = new Class566();
+    public TimerUtil Field2088 = new TimerUtil();
 
     public AutoFish() {
         super("AutoFish", Category.MISC, "AutoCaster");

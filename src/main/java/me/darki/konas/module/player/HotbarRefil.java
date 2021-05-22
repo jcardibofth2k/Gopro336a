@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class24;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.SendPacketEvent;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -33,7 +33,7 @@ extends Module {
     public static Setting<Boolean> others = new Setting<>("Others", false);
     public ConcurrentHashMap<ItemStack, Integer> Field1962 = new ConcurrentHashMap();
     public int Field1963 = 0;
-    public Class566 Field1964 = new Class566();
+    public TimerUtil Field1964 = new TimerUtil();
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
@@ -87,9 +87,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketClickWindow)) break block0;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketClickWindow)) break block0;
             this.Field1964.Method739();
         }
     }

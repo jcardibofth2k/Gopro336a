@@ -60,9 +60,9 @@ extends Module {
     public Setting<ParentSetting> misc = new Setting<>("Misc", new ParentSetting(false));
     public Setting<Boolean> swap = new Setting<>("Swap", true).setParentSetting(this.misc);
     public Setting<Boolean> autoMove = new Setting<>("AutoMove", true).setParentSetting(this.misc);
-    public Class566 Field1678 = new Class566();
-    public Class566 Field1679 = new Class566();
-    public Class566 Field1680 = new Class566();
+    public TimerUtil Field1678 = new TimerUtil();
+    public TimerUtil Field1679 = new TimerUtil();
+    public TimerUtil Field1680 = new TimerUtil();
     public static boolean Field1681;
     public static double Field1682;
     public static double Field1683;
@@ -144,7 +144,7 @@ extends Module {
                         }
                         this.Field1684 = null;
                         this.Field1685 = null;
-                        if (updateEvent.isCanceled() || !Class496.Method1959(this.rotate.getValue())) {
+                        if (updateEvent.isCanceled() || !Rotation.Method1959(this.rotate.getValue())) {
                             return;
                         }
                         if (BedAura.mc.player.dimension == 0) {
@@ -309,7 +309,7 @@ extends Module {
     public void Method124() {
         Vec3d vec3d = new Vec3d(this.Field1685.down()).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1686.getOpposite().getDirectionVec()).scale(0.5));
         BedAura.mc.player.connection.sendPacket(new CPacketEntityAction(BedAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
-        Class496.Method1969(this.Field1685.down(), vec3d, this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, EnumFacing.UP, true, this.swing.getValue());
+        Rotation.Method1969(this.Field1685.down(), vec3d, this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, EnumFacing.UP, true, this.swing.getValue());
         BedAura.mc.player.connection.sendPacket(new CPacketEntityAction(BedAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         this.Field1679.Method739();
         this.Field1685 = null;
@@ -367,7 +367,7 @@ extends Module {
         RayTraceResult rayTraceResult = this.strictDirection.getValue() != false ? BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5)) : null;
         Vec3d vec3d = new Vec3d(blockPos).add(0.5, 0.5, 0.5);
         EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
-        Class496.Method1969(blockPos, vec3d, EnumHand.MAIN_HAND, enumFacing, true, this.swing.getValue());
+        Rotation.Method1969(blockPos, vec3d, EnumHand.MAIN_HAND, enumFacing, true, this.swing.getValue());
         this.Field1678.Method739();
     }
 

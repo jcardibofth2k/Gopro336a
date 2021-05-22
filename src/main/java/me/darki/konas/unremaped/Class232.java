@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.util.Class247;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

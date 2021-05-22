@@ -2,7 +2,7 @@ package me.darki.konas.command.commands;
 
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.movement.AutoWalk;
-import me.darki.konas.unremaped.Class501;
+import me.darki.konas.unremaped.BlockUtil;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
@@ -21,8 +21,8 @@ extends Command {
             String string;
             BlockPos blockPos;
             BlockPos blockPos2;
-            Class501 class501;
-            Class501 class5012;
+            BlockUtil blockUtil;
+            BlockUtil class5012;
             if (stringArray.length != this.Method189().size() + 1) {
                 Logger.Method1118(this.Method191());
                 return;
@@ -39,10 +39,10 @@ extends Command {
             autoWalk.Field1814 = false;
             try {
                 BlockPos blockPos3;
-                Class501 class5013;
+                BlockUtil class5013;
                 AutoWalk class3992 = autoWalk;
                 class5012 = class5013;
-                class501 = class5013;
+                blockUtil = class5013;
                 blockPos2 = blockPos3;
                 blockPos = blockPos3;
                 string = stringArray[1];
@@ -59,7 +59,7 @@ extends Command {
             blockPos2(n, n2, n3);
             String string4 = "GOTO-WALK";
             class5012(blockPos, string4);
-            class3992.Field1812 = class501;
+            class3992.Field1812 = blockUtil;
             autoWalk.Field1812.Method1422();
             autoWalk.pathFind.setValue(Boolean.valueOf(true));
             if (autoWalk.isEnabled()) break block17;

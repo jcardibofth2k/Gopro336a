@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,7 +64,7 @@ extends Module {
     public boolean Field1784;
     public float Field1785;
     public float Field1786;
-    public Class566 Field1787 = new Class566();
+    public TimerUtil Field1787 = new TimerUtil();
 
     public static Float Method1676(BlockPos blockPos) {
         return Float.valueOf(MathHelper.sqrt((double) BlockAura.mc.player.getDistanceSq(blockPos)));
@@ -76,15 +75,15 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block3: {
             if (BlockAura.mc.world == null || BlockAura.mc.player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field1784) break block3;
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
-            if (class24.getPacket() instanceof CPacketPlayer.Position) {
-                class24.setCanceled(true);
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || !this.Field1784) break block3;
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
+                sendPacketEvent.setCanceled(true);
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(BlockAura.mc.player.posX), cPacketPlayer.getY(BlockAura.mc.player.posY), cPacketPlayer.getZ(BlockAura.mc.player.posZ), this.Field1785, this.Field1786, cPacketPlayer.isOnGround()));
             } else {
                 ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field1785);

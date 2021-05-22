@@ -57,7 +57,7 @@ extends Module {
     public double Field2343 = 0.0;
     public double Field2344 = 0.0;
     public int Field2345 = 0;
-    public Class566 Field2346 = new Class566();
+    public TimerUtil Field2346 = new TimerUtil();
     public static Random Field2347 = new Random();
 
     public void Method2053(double d, double d2, double d3, PacketFlyMode packetFlyMode, boolean bl) {
@@ -246,18 +246,18 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block2: {
-            if (class24.getPacket() instanceof CPacketPlayer && !(class24.getPacket() instanceof CPacketPlayer.Position)) {
-                class24.Cancel();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer && !(sendPacketEvent.getPacket() instanceof CPacketPlayer.Position)) {
+                sendPacketEvent.Cancel();
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer)) break block2;
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer)) break block2;
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
             if (this.Field2333.contains(cPacketPlayer)) {
                 this.Field2333.remove(cPacketPlayer);
                 return;
             }
-            class24.Cancel();
+            sendPacketEvent.Cancel();
         }
     }
 

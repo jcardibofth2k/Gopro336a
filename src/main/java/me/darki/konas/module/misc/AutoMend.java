@@ -9,7 +9,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class477;
-import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Rotation;
 import me.darki.konas.event.events.Event;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
@@ -84,7 +84,7 @@ extends Module {
                 this.Field1953 = AutoMend.mc.player.getHealth() + AutoMend.mc.player.getAbsorptionAmount();
                 if (AutoMend.mc.player.getHeldItem(EnumHand.MAIN_HAND).getItem() != Items.EXPERIENCE_BOTTLE && (!this.autoSwitch.getValue().booleanValue() || this.Method464() == -1)) break block11;
                 if (!(event instanceof UpdateEvent)) break block12;
-                if (event.isCanceled() || !Class496.Method1966()) {
+                if (event.isCanceled() || !Rotation.Method1966()) {
                     return;
                 }
                 this.Field1951 = false;

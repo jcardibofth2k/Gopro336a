@@ -6,7 +6,7 @@ import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class41;
 import me.darki.konas.unremaped.Class443;
 import net.minecraft.item.Item;
@@ -60,22 +60,22 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block4: {
             block3: {
                 if (FastUse.mc.player == null || FastUse.mc.world == null) {
                     return;
                 }
                 if (!ghostFix.getValue().booleanValue() || !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle) && !(FastUse.mc.player.getHeldItemMainhand().getItem() instanceof ItemBoat)) break block3;
-                if (!(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock)) break block4;
-                class24.Cancel();
+                if (!(sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock)) break block4;
+                sendPacketEvent.Cancel();
                 break block4;
             }
-            if (!noCrystalPlace.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) || !(FastUse.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal)) break block4;
+            if (!noCrystalPlace.getValue().booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) || !(FastUse.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock) sendPacketEvent.getPacket()).getHand()).getItem() instanceof ItemEndCrystal)) break block4;
             if (Field1871) {
                 Field1871 = false;
             } else {
-                class24.setCanceled(true);
+                sendPacketEvent.setCanceled(true);
             }
         }
     }

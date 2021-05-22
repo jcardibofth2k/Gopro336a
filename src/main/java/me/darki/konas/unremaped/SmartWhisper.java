@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.mixin.mixins.ICPacketChatMessage;
@@ -16,13 +15,13 @@ extends Module {
     public boolean Field805;
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block2: {
             if (SmartWhisper.mc.world == null || SmartWhisper.mc.player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketChatMessage)) break block2;
-            CPacketChatMessage cPacketChatMessage = (CPacketChatMessage)class24.getPacket();
+            if (!(sendPacketEvent.getPacket() instanceof CPacketChatMessage)) break block2;
+            CPacketChatMessage cPacketChatMessage = (CPacketChatMessage) sendPacketEvent.getPacket();
             String string = cPacketChatMessage.getMessage();
             if (this.Field803 != null && this.Field804 && string.split(" ")[0].equalsIgnoreCase("/r") && this.Field805) {
                 ((ICPacketChatMessage)cPacketChatMessage).setMessage("/msg " + this.Field803 + " " + string.substring(3));

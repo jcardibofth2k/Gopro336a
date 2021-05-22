@@ -17,7 +17,7 @@ import net.minecraftforge.event.world.WorldEvent;
 public class Class51 {
     public static Class51 Field221 = new Class51();
     public static Queue<Class301> Field222 = new LinkedList<Class301>();
-    public static Class566 Field223 = new Class566();
+    public static TimerUtil Field223 = new TimerUtil();
     public Minecraft Field224 = Minecraft.getMinecraft();
 
     @Subscriber

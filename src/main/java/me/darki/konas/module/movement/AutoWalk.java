@@ -7,8 +7,8 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.event.events.InputUpdateEvent;
 import me.darki.konas.unremaped.Class498;
-import me.darki.konas.unremaped.Class501;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.BlockUtil;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.util.math.BlockPos;
 
@@ -17,11 +17,11 @@ extends Module {
     public Setting<Boolean> pathFind = new Setting<>("PathFind", true);
     public Setting<Boolean> jump = new Setting<>("Jump", true);
     public Setting<Boolean> timeout = new Setting<>("Timeout", true);
-    public Class501 Field1812 = null;
+    public BlockUtil Field1812 = null;
     public int Field1813 = 0;
     public boolean Field1814 = false;
-    public Class566 Field1815 = new Class566();
-    public Class566 Field1816 = new Class566();
+    public TimerUtil Field1815 = new TimerUtil();
+    public TimerUtil Field1816 = new TimerUtil();
     public BlockPos Field1817 = null;
 
     public AutoWalk() {

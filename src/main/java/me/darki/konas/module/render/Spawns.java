@@ -13,9 +13,9 @@ import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class442;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
@@ -60,7 +60,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         for (Class442 class442 : this.Field755) {
             int n;
             if ((float)(System.currentTimeMillis() - Class442.Method722(class442)) > 1000.0f * duration.getValue().floatValue()) {
@@ -140,9 +140,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
-        if (class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && onlyOwn.getValue().booleanValue() && Spawns.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getHand()).getItem() instanceof ItemEndCrystal) {
-            this.Field756.put(((CPacketPlayerTryUseItemOnBlock)class24.getPacket()).getPos(), System.currentTimeMillis());
+    public void Method536(SendPacketEvent sendPacketEvent) {
+        if (sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock && onlyOwn.getValue().booleanValue() && Spawns.mc.player.getHeldItem(((CPacketPlayerTryUseItemOnBlock) sendPacketEvent.getPacket()).getHand()).getItem() instanceof ItemEndCrystal) {
+            this.Field756.put(((CPacketPlayerTryUseItemOnBlock) sendPacketEvent.getPacket()).getPos(), System.currentTimeMillis());
         }
     }
 }

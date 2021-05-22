@@ -22,7 +22,7 @@ import org.newdawn.slick.UnicodeFont;
 import org.newdawn.slick.font.effects.ColorEffect;
 
 public class CfontRenderer
-implements Class552 {
+implements fontHelper {
     public int Field807 = 9;
     public Map<String, Float> Field808 = new HashMap<String, Float>();
     public float Field809;

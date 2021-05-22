@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import me.darki.konas.module.Category;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class147;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
-import me.darki.konas.unremaped.Class24;
-import me.darki.konas.unremaped.Class262;
+import me.darki.konas.unremaped.SendPacketEvent;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class262;
 import me.darki.konas.unremaped.Class356;
 import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.event.events.TickEvent;
@@ -38,9 +38,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block3: {
-            if (!this.strict.getValue().booleanValue() || !(class24.getPacket() instanceof CPacketClickWindow)) break block3;
+            if (!this.strict.getValue().booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketClickWindow)) break block3;
             if (GuiMove.mc.player.isActiveItemStackBlocking()) {
                 GuiMove.mc.playerController.onStoppedUsingItem(GuiMove.mc.player);
             }

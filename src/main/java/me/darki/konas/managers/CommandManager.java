@@ -13,7 +13,7 @@ public class CommandManager {
 
     public static void Method206() {
         commands.add(new bindCommand());
-        commands.add(new Class574());
+        commands.add(new commandsCommand());
         commands.add(new drawCommand());
         commands.add(new languageCommand());
         commands.add(new Class580());
@@ -29,7 +29,7 @@ public class CommandManager {
         commands.add(new noDesyncCommand());
         commands.add(new gotoCommand());
         commands.add(new Class586());
-        commands.add(new Class590());
+        commands.add(new entityDesyncCommand());
         commands.add(new Class591());
         commands.add(new HClip());
         commands.add(new Class581());
@@ -46,7 +46,7 @@ public class CommandManager {
         commands.add(new backupCommand());
         commands.add(new muteCommand());
         commands.add(new moduleConfigCommand());
-        commands.add(new Class575());
+        commands.add(new disconectCommand());
         commands.add(new Class600());
         commands.add(new SeisureCommand());
         commands.add(new Class577());

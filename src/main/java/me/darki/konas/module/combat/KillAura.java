@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class308;
 import me.darki.konas.unremaped.Class311;
 import me.darki.konas.unremaped.Class327;
@@ -18,14 +18,14 @@ import me.darki.konas.setting.ColorValue;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.unremaped.Class473;
 import me.darki.konas.unremaped.Class492;
-import me.darki.konas.unremaped.Class496;
-import me.darki.konas.unremaped.Class507;
+import me.darki.konas.unremaped.Rotation;
+import me.darki.konas.unremaped.EspRenderUtil;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Module;
@@ -109,7 +109,7 @@ extends Module {
     public long Field482 = 0L;
     public int Field483 = -1;
     public Entity Field484 = null;
-    public Class566 Field485 = new Class566();
+    public TimerUtil Field485 = new TimerUtil();
 
     @Override
     public void onDisable() {
@@ -125,16 +125,16 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block2: {
             if (KillAura.mc.world == null || KillAura.mc.player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer) || rotate.getValue() == Class308.NONE || this.Field484 == null || timing.getValue() != Class330.VANILLA) break block2;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || rotate.getValue() == Class308.NONE || this.Field484 == null || timing.getValue() != Class330.VANILLA) break block2;
             this.Method561(this.Field484);
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
-            if (class24.getPacket() instanceof CPacketPlayer.Position) {
-                class24.setCanceled(true);
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
+                sendPacketEvent.setCanceled(true);
                 KillAura.mc.player.connection.sendPacket(new CPacketPlayer.PositionRotation(cPacketPlayer.getX(KillAura.mc.player.posX), cPacketPlayer.getY(KillAura.mc.player.posY), cPacketPlayer.getZ(KillAura.mc.player.posZ), (float)Field480, (float)Field481, cPacketPlayer.isOnGround()));
             }
         }
@@ -159,7 +159,7 @@ extends Module {
     @Subscriber(priority=1)
     public void Method135(UpdateEvent updateEvent) {
         block15: {
-            if (updateEvent.isCanceled() || !Class496.Method1959(rotate.getValue() != Class308.NONE) || timing.getValue() == Class330.VANILLA) {
+            if (updateEvent.isCanceled() || !Rotation.Method1959(rotate.getValue() != Class308.NONE) || timing.getValue() == Class330.VANILLA) {
                 return;
             }
             if (KillAura.mc.world == null || KillAura.mc.player == null) {
@@ -502,13 +502,13 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(final Class89 class89) {
+    public void Method139(final Render3DEvent render3DEvent) {
         if (KillAura.mc.player == null || KillAura.mc.world == null) {
             return;
         }
         if (KillAura.targetRender.getValue() && this.Field484 != null && (!(boolean)KillAura.onlyWhenHitting.getValue() || !this.Field485.Method737(3500.0))) {
             GlStateManager.pushMatrix();
-            Class507.Method1386();
+            EspRenderUtil.Method1386();
             if (KillAura.depth.getValue()) {
                 GlStateManager.enableDepth();
             }
@@ -518,9 +518,9 @@ extends Module {
             final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
             int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             final ArrayList<Vec3d> list = new ArrayList<Vec3d>();
-            final double n4 = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * class89.Method436() - renderManager.getRenderPosX();
-            final double n5 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * class89.Method436() - renderManager.getRenderPosY();
-            final double n6 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * class89.Method436() - renderManager.getRenderPosZ();
+            final double n4 = this.Field484.lastTickPosX + (this.Field484.posX - this.Field484.lastTickPosX) * render3DEvent.Method436() - renderManager.getRenderPosX();
+            final double n5 = this.Field484.lastTickPosY + (this.Field484.posY - this.Field484.lastTickPosY) * render3DEvent.Method436() - renderManager.getRenderPosY();
+            final double n6 = this.Field484.lastTickPosZ + (this.Field484.posZ - this.Field484.lastTickPosZ) * render3DEvent.Method436() - renderManager.getRenderPosZ();
             final double n7 = -Math.cos((System.currentTimeMillis() - this.Field482) / 1000.0 * (float)KillAura.animSpeed.getValue()) * (this.Field484.height / 2.0) + this.Field484.height / 2.0;
             GL11.glLineWidth((float)KillAura.width.getValue());
             GL11.glBegin(1);
@@ -565,7 +565,7 @@ extends Module {
                 GL11.glEnd();
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-            Class507.Method1385();
+            EspRenderUtil.Method1385();
             GlStateManager.popMatrix();
         }
     }

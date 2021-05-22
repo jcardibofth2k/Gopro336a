@@ -4,6 +4,7 @@ import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.module.client.KonasGlobals;
+import me.darki.konas.util.Class247;
 
 public class Class213
 extends Class215 {

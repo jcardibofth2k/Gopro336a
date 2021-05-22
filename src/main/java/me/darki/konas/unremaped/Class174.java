@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 
 import me.darki.konas.gui.clickgui.component.Component;
@@ -32,7 +31,7 @@ extends Component {
     public float Field1479 = 26.0f;
     public float Field1480 = 44.0f;
     public boolean Field1481 = false;
-    public Class566 Field1482 = new Class566();
+    public TimerUtil Field1482 = new TimerUtil();
 
     public Class174(Setting setting, float f, float f2, float f3, float f4, float f5, float f6) {
         super(setting.Method1183(), f, f2, f3, f4, f5, f6);

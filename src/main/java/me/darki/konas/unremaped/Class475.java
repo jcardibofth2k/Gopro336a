@@ -14,7 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.Explosion;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.math.RayTraceResult$Type;
+import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -43,7 +43,7 @@ public class Class475
     public static List<Block> Field2500;
     
     public static float Method2140(final float n) {
-        final int id = Class475.Field2499.world.getDifficulty().getId();
+        final int id = Class475.Field2499.world.getDifficulty().getDifficultyId();
         return n * ((id == 0) ? 0.0f : ((id == 2) ? 1.0f : ((id == 1) ? 0.5f : 1.5f)));
     }
     
@@ -263,7 +263,7 @@ public class Class475
                                 continue;
                             }
                             else {
-                                rayTraceResult = new RayTraceResult(RayTraceResult$Type.MISS, vec3d, enumFacing, blockPos2);
+                                rayTraceResult = new RayTraceResult(RayTraceResult.Type.MISS, vec3d, enumFacing, blockPos2);
                             }
                             continue;
                         }
@@ -327,7 +327,7 @@ public class Class475
             for (double n4 = n2; n4 <= n3; n4 += n) {
                 for (double n5 = n2; n5 <= n3; n5 += n) {
                     for (double n6 = n2; n6 <= n3; n6 += n) {
-                        final Vec3d add = new Vec3d((Vec3i)blockPos).add(n4, n5, n6);
+                        final Vec3d add = new Vec3d((Vec3i)blockPos).addVector(n4, n5, n6);
                         final double distanceTo = vec3d.distanceTo(add);
                         final double x = add.x - vec3d.x;
                         final double y = add.y - vec3d.y;
@@ -337,8 +337,8 @@ public class Class475
                         final float sin = MathHelper.sin((float)(-array[0] * 0.01745329238474369 - 3.1415927410125732));
                         final float n7 = -MathHelper.cos((float)(-array[1] * 0.01745329238474369));
                         final Vec3d vec3d2 = new Vec3d((double)(sin * n7), (double)MathHelper.sin((float)(-array[1] * 0.01745329238474369)), (double)(cos * n7));
-                        final RayTraceResult rayTraceBlocks = Class475.Field2499.world.rayTraceBlocks(vec3d, vec3d.add(vec3d2.x * distanceTo, vec3d2.y * distanceTo, vec3d2.z * distanceTo), false, false, false);
-                        if (rayTraceBlocks != null && rayTraceBlocks.typeOfHit == RayTraceResult$Type.BLOCK && rayTraceBlocks.getBlockPos().equals((Object)blockPos)) {
+                        final RayTraceResult rayTraceBlocks = Class475.Field2499.world.rayTraceBlocks(vec3d, vec3d.addVector(vec3d2.x * distanceTo, vec3d2.y * distanceTo, vec3d2.z * distanceTo), false, false, false);
+                        if (rayTraceBlocks != null && rayTraceBlocks.typeOfHit == RayTraceResult.Type.BLOCK && rayTraceBlocks.getBlockPos().equals((Object)blockPos)) {
                             return true;
                         }
                     }
@@ -348,7 +348,7 @@ public class Class475
         }
         for (final EnumFacing enumFacing : EnumFacing.values()) {
             final RayTraceResult rayTraceBlocks2 = Class475.Field2499.world.rayTraceBlocks(new Vec3d(Class475.Field2499.player.posX, Class475.Field2499.player.posY + Class475.Field2499.player.getEyeHeight(), Class475.Field2499.player.posZ), new Vec3d(blockPos.getX() + 0.5 + enumFacing.getDirectionVec().getX() * 0.5, blockPos.getY() + 0.5 + enumFacing.getDirectionVec().getY() * 0.5, blockPos.getZ() + 0.5 + enumFacing.getDirectionVec().getZ() * 0.5), false, true, false);
-            if (rayTraceBlocks2 != null && rayTraceBlocks2.typeOfHit.equals((Object)RayTraceResult$Type.BLOCK) && rayTraceBlocks2.getBlockPos().equals((Object)blockPos)) {
+            if (rayTraceBlocks2 != null && rayTraceBlocks2.typeOfHit.equals((Object)RayTraceResult.Type.BLOCK) && rayTraceBlocks2.getBlockPos().equals((Object)blockPos)) {
                 return true;
             }
         }

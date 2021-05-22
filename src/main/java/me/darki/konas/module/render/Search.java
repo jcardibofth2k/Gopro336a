@@ -37,7 +37,7 @@ extends Module {
     public static Setting<Boolean> outline = new Setting<>("Outline", true);
     public static Setting<Boolean> softReload = new Setting<>("SoftReload", true);
     public static Setting<Boolean> slowRender = new Setting<>("SlowRender", false);
-    public Class566 Field675 = new Class566();
+    public TimerUtil Field675 = new TimerUtil();
 
     @Override
     public void onEnable() {
@@ -98,7 +98,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         BlockPos blockPos;
         if (Search.mc.world == null || Search.mc.player == null || this.copyOnWriteArrayList.isEmpty()) {
             return;
@@ -112,14 +112,14 @@ extends Module {
                 blockPos = new BlockPos(class448.Field615, class448.Field616, class448.Field617);
                 AxisAlignedBB axisAlignedBB = Search.mc.world.getBlockState(blockPos).getBoundingBox(Search.mc.world, blockPos).offset(blockPos);
                 if (fill.getValue().booleanValue()) {
-                    Class507.Method1386();
-                    Class507.Method1379(axisAlignedBB, color.getValue());
-                    Class507.Method1385();
+                    EspRenderUtil.Method1386();
+                    EspRenderUtil.Method1379(axisAlignedBB, color.getValue());
+                    EspRenderUtil.Method1385();
                 }
                 if (!outline.getValue().booleanValue()) continue;
-                Class507.Method1386();
-                Class507.Method1374(axisAlignedBB, 1.5, color.getValue());
-                Class507.Method1385();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1374(axisAlignedBB, 1.5, color.getValue());
+                EspRenderUtil.Method1385();
             }
         }
         if (tracers.getValue().booleanValue()) {

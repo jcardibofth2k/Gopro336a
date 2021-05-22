@@ -8,7 +8,6 @@ import net.minecraft.util.MovementInputFromOptions;
 
 public class Class392
 extends MovementInputFromOptions {
-    public Freecam Field1986;
 
     public void updatePlayerMoveState() {
         if (!PlayerUtil.Method1087(((Class537)Freecam.control.getValue()).Method851())) {
@@ -25,8 +24,7 @@ extends MovementInputFromOptions {
         }
     }
 
-    public Class392(Freecam freecam, GameSettings gameSettings) {
-        this.Field1986 = freecam;
+    public Class392(GameSettings gameSettings) {
         super(gameSettings);
     }
 }

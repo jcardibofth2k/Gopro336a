@@ -8,7 +8,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class19;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.event.events.EntityUseItemEvent;
 import me.darki.konas.settingEnums.StrafeMode;
 import me.darki.konas.unremaped.Class347;
@@ -17,7 +17,7 @@ import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.util.PlayerUtil;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
@@ -69,8 +69,8 @@ extends Module {
     public int Field417 = 0;
     public boolean Field418;
     public double Field419 = 0.0;
-    public Class566 Field420 = new Class566();
-    public Class566 Field421 = new Class566();
+    public TimerUtil Field420 = new TimerUtil();
+    public TimerUtil Field421 = new TimerUtil();
     public int Field422;
     public double Field423;
     public boolean Field424;
@@ -189,11 +189,11 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field427) break block0;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || !this.Field427) break block0;
             this.Field427 = false;
-            ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
+            ((ICPacketPlayer) sendPacketEvent.getPacket()).setOnGround(true);
         }
     }
 

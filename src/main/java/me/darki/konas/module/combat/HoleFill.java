@@ -17,12 +17,12 @@ import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.unremaped.Class475;
 import me.darki.konas.unremaped.Class490;
 import me.darki.konas.unremaped.Class492;
-import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Rotation;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class523;
 import me.darki.konas.unremaped.Class545;
 import me.darki.konas.unremaped.Class546;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -72,7 +72,7 @@ extends Module {
     }
 
     public static boolean Method512(BlockPos blockPos) {
-        return Class496.Method1970(blockPos, strictDirection.getValue(), rayTrace.getValue(), true);
+        return Rotation.Method1970(blockPos, strictDirection.getValue(), rayTrace.getValue(), true);
     }
 
     public static Float Method1051(EntityPlayer entityPlayer, BlockPos blockPos) {
@@ -103,7 +103,7 @@ extends Module {
                 if (jumpDisable.getValue().booleanValue() && HoleFill.mc.player.prevPosY < HoleFill.mc.player.posY) {
                     this.toggle();
                 }
-                if (updateEvent.isCanceled() || !Class496.Method1959(rotate.getValue())) {
+                if (updateEvent.isCanceled() || !Rotation.Method1959(rotate.getValue())) {
                     return;
                 }
                 if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
@@ -128,7 +128,7 @@ extends Module {
                 }
                 BlockPos blockPos = StreamSupport.stream(this.Field1048.spliterator(), false).filter(this::Method515).filter(HoleFill::Method526).filter(HoleFill::Method512).min(Comparator.comparing(HoleFill::Method1055)).orElse(null);
                 if (blockPos == null) break block7;
-                this.Field1046 = Class496.Method1964(blockPos, rotate.getValue(), false, strictDirection.getValue(), rayTrace.getValue());
+                this.Field1046 = Rotation.Method1964(blockPos, rotate.getValue(), false, strictDirection.getValue(), rayTrace.getValue());
                 if (this.Field1046 == null) break block8;
                 this.Field1050 = 0;
                 this.Field1047 = n;
@@ -180,7 +180,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (HoleFill.mc.world == null || HoleFill.mc.player == null) {
             return;
         }
@@ -228,7 +228,7 @@ extends Module {
             }
             //Vec3d vec3d = new Vec3d((Vec3i)this.Field1046.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
             Vec3d vec3d = new Vec3d(this.Field1046.Method1982()).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1046.Method1980().getDirectionVec()).scale(0.5));
-            Class496.Method1969(this.Field1046.Method1982(), vec3d, EnumHand.MAIN_HAND, this.Field1046.Method1980(), true, swing.getValue());
+            Rotation.Method1969(this.Field1046.Method1982(), vec3d, EnumHand.MAIN_HAND, this.Field1046.Method1980(), true, swing.getValue());
             double d = HoleFill.mc.player.posX - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosX();
             double d2 = HoleFill.mc.player.posY - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosY();
             double d3 = HoleFill.mc.player.posZ - ((IEntityPlayerSP)HoleFill.mc.player).getLastReportedPosZ();
@@ -237,10 +237,10 @@ extends Module {
                 Class490 class490;
                 EntityPlayer entityPlayer = this.Method1054();
                 BlockPos blockPos = StreamSupport.stream(this.Field1048.spliterator(), false).filter(this::Method515).min(Comparator.comparing(arg_0 -> HoleFill.Method1051(entityPlayer, arg_0))).orElse(null);
-                if (blockPos == null || !Class496.Method1967(blockPos, strictDirection.getValue()) || (class490 = Class496.Method1968(blockPos, rotate.getValue(), true, strictDirection.getValue())) == null) break;
+                if (blockPos == null || !Rotation.Method1967(blockPos, strictDirection.getValue()) || (class490 = Rotation.Method1968(blockPos, rotate.getValue(), true, strictDirection.getValue())) == null) break;
                 //Vec3d vec3d2 = new Vec3d((Vec3i)class490.Method1982()).add(0.5, 0.5, 0.5).add(new Vec3d(class490.Method1980().getDirectionVec()).scale(0.5));
                 Vec3d vec3d2 = new Vec3d(class490.Method1982()).addVector(0.5, 0.5, 0.5).add(new Vec3d(class490.Method1980().getDirectionVec()).scale(0.5));
-                Class496.Method1969(class490.Method1982(), vec3d2, EnumHand.MAIN_HAND, class490.Method1980(), true, swing.getValue());
+                Rotation.Method1969(class490.Method1982(), vec3d2, EnumHand.MAIN_HAND, class490.Method1980(), true, swing.getValue());
                 this.Field1049.put(blockPos, System.currentTimeMillis());
                 this.Field1045.put(blockPos, System.currentTimeMillis());
             }

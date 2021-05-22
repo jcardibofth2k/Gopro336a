@@ -137,15 +137,15 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block17: {
             block18: {
                 if (Jesus.mc.world == null || Jesus.mc.player == null) {
                     return;
                 }
                 if (mode.getValue() != Class435.SOLID) break block17;
-                if (!(class24.getPacket() instanceof CPacketPlayer) || Jesus.mc.player.ticksExisted <= 20 || !mode.getValue().equals(Class435.SOLID) || Jesus.mc.player.getRidingEntity() != null || Jesus.mc.gameSettings.keyBindJump.isKeyDown() || !(Jesus.mc.player.fallDistance < 3.0f)) break block18;
-                CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
+                if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || Jesus.mc.player.ticksExisted <= 20 || !mode.getValue().equals(Class435.SOLID) || Jesus.mc.player.getRidingEntity() != null || Jesus.mc.gameSettings.keyBindJump.isKeyDown() || !(Jesus.mc.player.fallDistance < 3.0f)) break block18;
+                CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
                 if (!Jesus.Method393() || Jesus.Method394()) break block17;
                 ((ICPacketPlayer)cPacketPlayer).setOnGround(false);
                 if (strict.getValue().booleanValue()) {
@@ -159,8 +159,8 @@ extends Module {
                 }
                 break block17;
             }
-            if (!(class24.getPacket() instanceof CPacketVehicleMove) || !strict.getValue().booleanValue() || !entityJesus.getValue().booleanValue()) break block17;
-            CPacketVehicleMove cPacketVehicleMove = (CPacketVehicleMove)class24.getPacket();
+            if (!(sendPacketEvent.getPacket() instanceof CPacketVehicleMove) || !strict.getValue().booleanValue() || !entityJesus.getValue().booleanValue()) break block17;
+            CPacketVehicleMove cPacketVehicleMove = (CPacketVehicleMove) sendPacketEvent.getPacket();
             if (Jesus.Method393() && Jesus.mc.player.fallDistance < 3.0f && !Jesus.mc.player.movementInput.jump && !Jesus.Method394() && !Jesus.mc.player.isSneaking()) {
                 double d = cPacketVehicleMove.getY();
                 if (Jesus.mc.player.ticksExisted % 3 == 0) {

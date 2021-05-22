@@ -9,6 +9,7 @@ import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.Class247;
 
 public class Class234
 extends Class215 {

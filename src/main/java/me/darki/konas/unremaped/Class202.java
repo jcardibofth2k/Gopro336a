@@ -8,7 +8,7 @@ import me.darki.konas.module.client.KonasGlobals;
 
 public class Class202
 extends Module {
-    public Class566 Field677 = new Class566();
+    public TimerUtil Field677 = new TimerUtil();
     public static boolean Field678 = true;
     public ListenableSettingDecorator<Boolean> Field679 = new ListenableSettingDecorator("Cute", false, new Class181(this));
     public ListenableSettingDecorator<Boolean> Field680 = new ListenableSettingDecorator("Invite", true, new Class205(this));
@@ -25,7 +25,7 @@ extends Module {
         return class202.Field679;
     }
 
-    public static Class566 Method741(Class202 class202) {
+    public static TimerUtil Method741(Class202 class202) {
         return class202.Field677;
     }
 

@@ -2,7 +2,7 @@ package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -23,17 +23,17 @@ extends Module {
      * edited by Gopro336
      */
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         CPacketEntityAction cPacketEntityAction = null;
-        if (class24.getPacket() instanceof CPacketEntityAction) {
-            cPacketEntityAction = (CPacketEntityAction)class24.getPacket();
+        if (sendPacketEvent.getPacket() instanceof CPacketEntityAction) {
+            cPacketEntityAction = (CPacketEntityAction) sendPacketEvent.getPacket();
             if (sprint.getValue().booleanValue() && (cPacketEntityAction.getAction() == CPacketEntityAction.Action.START_SPRINTING || cPacketEntityAction.getAction() == CPacketEntityAction.Action.STOP_SPRINTING)) {
-                class24.setCanceled(true);
+                sendPacketEvent.setCanceled(true);
             }
         }
-        if (class24.getPacket() instanceof CPacketPlayer) {
+        if (sendPacketEvent.getPacket() instanceof CPacketPlayer) {
             CPacketPlayer cPacketPlayer;
-            cPacketPlayer = (CPacketPlayer)class24.getPacket();
+            cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
             boolean bl = AntiHunger.mc.player.onGround;
             if (ground.getValue().booleanValue() && this.Field2015 && bl) {
                 if (cPacketPlayer.getY(0.0) == (!((ICPacketPlayer)cPacketEntityAction).isMoving() ? 0.0 : AntiHunger.mc.player.posY)) {

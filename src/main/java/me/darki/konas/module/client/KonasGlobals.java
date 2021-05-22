@@ -13,6 +13,7 @@ import me.darki.konas.event.EventProcessor;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class147;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class193;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class230;
+import me.darki.konas.managers.CommandManager;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.CommandUtil;
@@ -34,11 +35,11 @@ public class KonasGlobals {
     public Class487 Field1137;
     public Class562 Field1138;
     public RotationUtil Field1139;
-    public Class573 Field1140;
+    public DiscordRpcUtil Field1140;
 
     public void init() {
         ModuleManager.Method1620();
-        Class603.Method206();
+        CommandManager.Method206();
         (this.Field1136 = new Class109()).Method2200();
         try {
             final Field declaredField = Unsafe.class.getDeclaredField("theUnsafe");
@@ -85,7 +86,7 @@ public class KonasGlobals {
         Runtime.getRuntime().addShutdownHook(new Class588());
         try {
             if (!System.getProperty("os.arch").equals("aarch64")) {
-                this.Field1140 = new Class573();
+                this.Field1140 = new DiscordRpcUtil();
             }
             else {
                 this.Field1140 = null;

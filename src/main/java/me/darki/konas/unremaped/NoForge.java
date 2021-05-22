@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.buffer.Unpooled;
 import me.darki.konas.mixin.mixins.ICPacketCustomPayload;
@@ -12,16 +11,16 @@ import net.minecraft.network.play.client.CPacketCustomPayload;
 public class NoForge
 extends Module {
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
             block1: {
                 if (mc.isIntegratedServerRunning()) break block0;
-                if (!class24.getPacket().getClass().getName().equals("net.minecraftforge.fml.common.network.internal.FMLProxyPacket")) break block1;
-                class24.setCanceled(true);
+                if (!sendPacketEvent.getPacket().getClass().getName().equals("net.minecraftforge.fml.common.network.internal.FMLProxyPacket")) break block1;
+                sendPacketEvent.setCanceled(true);
                 break block0;
             }
-            if (!(class24.getPacket() instanceof CPacketCustomPayload) || !((CPacketCustomPayload)class24.getPacket()).getChannelName().equalsIgnoreCase("MC|Brand")) break block0;
-            ((ICPacketCustomPayload)class24.getPacket()).setData(new PacketBuffer(Unpooled.buffer()).writeString("vanilla"));
+            if (!(sendPacketEvent.getPacket() instanceof CPacketCustomPayload) || !((CPacketCustomPayload) sendPacketEvent.getPacket()).getChannelName().equalsIgnoreCase("MC|Brand")) break block0;
+            ((ICPacketCustomPayload) sendPacketEvent.getPacket()).setData(new PacketBuffer(Unpooled.buffer()).writeString("vanilla"));
         }
     }
 

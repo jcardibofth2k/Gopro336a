@@ -14,9 +14,9 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.misc.AutoMend;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class482;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -43,9 +43,9 @@ extends Module {
     public static Setting<Boolean> pauseWhenSafe = new Setting<>("PauseWhenSafe", false);
     public static Setting<Float> depletion = new Setting<>("Depletion", Float.valueOf(0.75f), Float.valueOf(0.95f), Float.valueOf(0.5f), Float.valueOf(0.05f)).visibleIf(armorSaver::getValue);
     public static Setting<Boolean> allowMend = new Setting<>("AllowMend", false);
-    public Class566 Field2041 = new Class566();
+    public TimerUtil Field2041 = new TimerUtil();
     public boolean Field2042;
-    public Class566 Field2043 = new Class566();
+    public TimerUtil Field2043 = new TimerUtil();
 
     public static boolean Method1855(Class482 class482) {
         return ((ItemArmor)class482.Field2350.getItem()).armorType.equals(EntityEquipmentSlot.LEGS);
@@ -269,9 +269,9 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketClickWindow)) break block0;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketClickWindow)) break block0;
             this.Field2043.Method739();
         }
     }

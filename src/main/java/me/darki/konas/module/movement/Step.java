@@ -11,7 +11,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.StepMode;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.exploit.RubberFill;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
@@ -31,7 +31,7 @@ extends Module {
     public boolean Field2157 = false;
     public int Field2158 = 0;
     public int Field2159 = 0;
-    public Class566 Field2160 = new Class566();
+    public TimerUtil Field2160 = new TimerUtil();
     public double Field2161 = 0.0;
     public static double[] Field2162 = new double[]{0.42, 0.753};
     public static double[] Field2163 = new double[]{0.42, 0.75, 1.0, 1.16, 1.23, 1.2};

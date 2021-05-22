@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 import me.darki.konas.unremaped.Class77;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
@@ -23,7 +23,7 @@ extends Module {
     public Setting<ColorValue> color = new Setting<>("Color", new ColorValue(Color.WHITE.hashCode()));
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (BreadCrums.mc.player == null || BreadCrums.mc.world == null) {
             return;
         }
@@ -45,9 +45,9 @@ extends Module {
         GL11.glHint(3154, 4354);
         GlStateManager.depthMask(false);
         GlStateManager.color((float) this.color.getValue().Method775().getRed() / 255.0f, (float) this.color.getValue().Method775().getGreen() / 255.0f, (float) this.color.getValue().Method775().getBlue() / 255.0f, (float) this.color.getValue().Method775().getAlpha() / 255.0f);
-        double d = BreadCrums.mc.player.lastTickPosX + (BreadCrums.mc.player.posX - BreadCrums.mc.player.lastTickPosX) * (double)class89.Method436();
-        double d2 = BreadCrums.mc.player.lastTickPosY + (BreadCrums.mc.player.posY - BreadCrums.mc.player.lastTickPosY) * (double)class89.Method436();
-        double d3 = BreadCrums.mc.player.lastTickPosZ + (BreadCrums.mc.player.posZ - BreadCrums.mc.player.lastTickPosZ) * (double)class89.Method436();
+        double d = BreadCrums.mc.player.lastTickPosX + (BreadCrums.mc.player.posX - BreadCrums.mc.player.lastTickPosX) * (double) render3DEvent.Method436();
+        double d2 = BreadCrums.mc.player.lastTickPosY + (BreadCrums.mc.player.posY - BreadCrums.mc.player.lastTickPosY) * (double) render3DEvent.Method436();
+        double d3 = BreadCrums.mc.player.lastTickPosZ + (BreadCrums.mc.player.posZ - BreadCrums.mc.player.lastTickPosZ) * (double) render3DEvent.Method436();
         GL11.glBegin(3);
         for (Vec3d vec3d : arrayList) {
             Vec3d vec3d2 = vec3d.subtract(d, d2, d3);

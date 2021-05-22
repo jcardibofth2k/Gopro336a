@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.Class217;
-import me.darki.konas.unremaped.Class247;
+import me.darki.konas.util.Class247;
 import me.darki.konas.unremaped.Class272;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.Module;

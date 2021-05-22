@@ -2,9 +2,9 @@ package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.unremaped.Class478;
+import me.darki.konas.unremaped.EnchantColor;
 import me.darki.konas.module.render.ESP;
-import me.darki.konas.unremaped.Class569;
+import me.darki.konas.unremaped.RenderArmorEvent;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.layers.LayerArmorBase;
 import net.minecraft.entity.EntityLivingBase;
@@ -23,7 +23,7 @@ public class MixinLayerArmorBase {
             ci.cancel();
             return;
         }
-        Class569 event = Class569.Method664(slotIn);
+        RenderArmorEvent event = RenderArmorEvent.Method664(slotIn);
         EventDispatcher.Companion.dispatch(event);
         if (event.isCanceled()) {
             ci.cancel();
@@ -32,8 +32,8 @@ public class MixinLayerArmorBase {
 
     @Redirect(method={"renderEnchantedGlint"}, at=@At(value="INVOKE", target="Lnet/minecraft/client/renderer/GlStateManager;color(FFFF)V"))
     private static void Method893(float colorRed, float colorGreen, float colorBlue, float colorAlpha) {
-        if (colorBlue == 0.608f && ModuleManager.getModuleByClass(Class478.class).isEnabled()) {
-            GlStateManager.color((float) Class478.enchantColor.getValue().Method769() / 255.0f, (float) Class478.enchantColor.getValue().Method770() / 255.0f, (float) Class478.enchantColor.getValue().Method779() / 255.0f, (float) Class478.enchantColor.getValue().Method782() / 255.0f);
+        if (colorBlue == 0.608f && ModuleManager.getModuleByClass(EnchantColor.class).isEnabled()) {
+            GlStateManager.color((float) EnchantColor.enchantColor.getValue().Method769() / 255.0f, (float) EnchantColor.enchantColor.getValue().Method770() / 255.0f, (float) EnchantColor.enchantColor.getValue().Method779() / 255.0f, (float) EnchantColor.enchantColor.getValue().Method782() / 255.0f);
         } else {
             GlStateManager.color(colorRed, colorGreen, colorBlue, colorAlpha);
         }

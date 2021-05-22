@@ -9,7 +9,7 @@ import me.darki.konas.unremaped.Class41;
 import me.darki.konas.unremaped.Class571;
 import me.darki.konas.unremaped.Class644;
 import me.darki.konas.unremaped.Class646;
-import me.darki.konas.unremaped.Class652;
+import me.darki.konas.unremaped.ClickBlockEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
@@ -65,7 +65,7 @@ public abstract class MixinPlayerControllerMP {
 
     @Inject(method={"clickBlock"}, at={@At(value="HEAD")}, cancellable=true)
     private void Method1529(BlockPos posBlock, EnumFacing directionFacing, CallbackInfoReturnable<Boolean> cir) {
-        Class652 clickEvent = new Class652(this.Field1519.player, posBlock, directionFacing, ForgeHooks.rayTraceEyeHitVec(this.Field1519.player, this.Method1527() + 1.0f));
+        ClickBlockEvent clickEvent = new ClickBlockEvent(this.Field1519.player, posBlock, directionFacing, ForgeHooks.rayTraceEyeHitVec(this.Field1519.player, this.Method1527() + 1.0f));
         EventDispatcher.Companion.dispatch(clickEvent);
         if (clickEvent.isCanceled()) {
             cir.setReturnValue(false);

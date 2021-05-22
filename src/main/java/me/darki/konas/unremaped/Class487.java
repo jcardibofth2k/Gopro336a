@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.nio.FloatBuffer;
 
@@ -79,7 +78,7 @@ public class Class487 {
     }
 
     @Subscriber
-    public void Method2027(Class89 class89) {
+    public void Method2027(Render3DEvent render3DEvent) {
         if (this.Field2237.getRenderViewEntity() == null) {
             return;
         }

@@ -73,7 +73,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block9: {
             int n;
             int n2;
@@ -156,17 +156,17 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block5: {
             Packet packet;
             block4: {
-                packet = class24.getPacket();
+                packet = sendPacketEvent.getPacket();
                 if (this.Field2622.get()) {
                     return;
                 }
                 if (!((Boolean)this.pulse.getValue()).booleanValue()) break block4;
-                if (!(class24.getPacket() instanceof CPacketPlayer)) break block5;
-                if (((Boolean)this.strict.getValue()).booleanValue() && !((CPacketPlayer)class24.getPacket()).isOnGround()) {
+                if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer)) break block5;
+                if (((Boolean)this.strict.getValue()).booleanValue() && !((CPacketPlayer) sendPacketEvent.getPacket()).isOnGround()) {
                     this.Field2622.set(true);
                     while (!this.Field2620.isEmpty()) {
                         Packet packet2 = this.Field2620.poll();
@@ -178,15 +178,15 @@ extends Module {
                     this.Field2620.clear();
                     this.Method124();
                 } else {
-                    class24.Cancel();
-                    this.Field2620.add(class24.getPacket());
+                    sendPacketEvent.Cancel();
+                    this.Field2620.add(sendPacketEvent.getPacket());
                     this.Method124();
                 }
                 break block5;
             }
             if (packet instanceof CPacketChatMessage || packet instanceof CPacketConfirmTeleport || packet instanceof CPacketKeepAlive || packet instanceof CPacketTabComplete || packet instanceof CPacketClientStatus) break block5;
-            class24.Cancel();
-            this.Field2620.add(class24.getPacket());
+            sendPacketEvent.Cancel();
+            this.Field2620.add(sendPacketEvent.getPacket());
             this.Method124();
         }
     }

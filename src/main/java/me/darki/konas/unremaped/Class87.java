@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Collections;
@@ -22,7 +21,7 @@ import net.minecraft.world.World;
 public class Class87 {
     public Map<Entity, Long> Field261 = new ConcurrentHashMap<Entity, Long>();
     public static HashMap<String, Integer> Field262;
-    public Class566 Field263 = new Class566();
+    public TimerUtil Field263 = new TimerUtil();
     public static boolean Field264;
 
     public void Method420(Entity entity, Long l) {
@@ -60,13 +59,13 @@ public class Class87 {
     }
 
     @Subscriber
-    public void Method424(Class24 class24) {
+    public void Method424(SendPacketEvent sendPacketEvent) {
         block2: {
             CPacketUseEntity cPacketUseEntity;
             if (Minecraft.getMinecraft().world == null || Minecraft.getMinecraft().player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketUseEntity) || !(cPacketUseEntity = (CPacketUseEntity)class24.getPacket()).getAction().equals((Object)CPacketUseEntity.Action.ATTACK) || !(cPacketUseEntity.getEntityFromWorld((World)Minecraft.getMinecraft().world) instanceof EntityPlayer)) break block2;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketUseEntity) || !(cPacketUseEntity = (CPacketUseEntity) sendPacketEvent.getPacket()).getAction().equals((Object)CPacketUseEntity.Action.ATTACK) || !(cPacketUseEntity.getEntityFromWorld((World)Minecraft.getMinecraft().world) instanceof EntityPlayer)) break block2;
             EntityPlayer entityPlayer = (EntityPlayer)cPacketUseEntity.getEntityFromWorld((World)Minecraft.getMinecraft().world);
             if (!Field264 && entityPlayer == null) {
                 throw new AssertionError();

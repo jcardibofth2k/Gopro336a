@@ -6,6 +6,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.Class247;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +23,7 @@ extends Class215 {
     public Class270 Field2521;
     public boolean Field2522 = false;
     public String Field2523;
-    public Class566 Field2524 = new Class566();
+    public TimerUtil Field2524 = new TimerUtil();
     public int Field2525 = (Boolean) KonasGui.singleColumn.getValue() != false ? 65 : 75;
     public int Field2526 = (Boolean) KonasGui.singleColumn.getValue() != false ? 16 : 56;
     public Class213[] Field2527 = new Class213[]{new Class213(Category.COMBAT, this.Method486(), this.Method492(), this.Field2526, 8.0f, this.Field2525, 38.0f, 1), new Class213(Category.MOVEMENT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.PLAYER, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 2, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.RENDER, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 3, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.MISC, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 4, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.EXPLOIT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 5, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.CLIENT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 6, 8.0f, this.Field2525, 38.0f, 2)};

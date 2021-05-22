@@ -77,16 +77,16 @@ extends Module {
     public BlockPos Field376;
     public EnumFacing Field377;
     public BlockPos Field378;
-    public Class566 Field379 = new Class566();
+    public TimerUtil Field379 = new TimerUtil();
     public boolean Field380;
-    public Class566 Field381 = new Class566();
+    public TimerUtil Field381 = new TimerUtil();
     public int Field382;
-    public Class566 Field383 = new Class566();
+    public TimerUtil Field383 = new TimerUtil();
     public Runnable Field384 = null;
     public int Field385 = 0;
     public BlockPos Field386 = null;
-    public Class566 Field387 = new Class566();
-    public Class566 Field388 = new Class566();
+    public TimerUtil Field387 = new TimerUtil();
+    public TimerUtil Field388 = new TimerUtil();
 
     public boolean Method138(EntityPlayer entityPlayer) {
         if (this.Method527() == -1) {
@@ -161,7 +161,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(final Class89 class89) {
+    public void Method139(final Render3DEvent render3DEvent) {
         if (this.Field373 == null || this.Field374 == null) {
             return;
         }
@@ -432,7 +432,7 @@ extends Module {
                 PistonAura.mc.player.inventory.currentItem = n;
                 PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
-            Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
+            Rotation.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field386 = blockPos.offset(enumFacing);
             this.Field387.Method739();
             if (!bl) break block1;
@@ -515,7 +515,7 @@ extends Module {
         if (this.Field385 < actionInterval.getValue()) {
             ++this.Field385;
         }
-        if (updateEvent.isCanceled() || !Class496.Method1966()) {
+        if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
         if (this.Field372 == Class220.BREAKING) {
@@ -758,16 +758,16 @@ extends Module {
                 if (this.antiSuicide.getValue().booleanValue() && blockPos.equals(new BlockPos(PistonAura.mc.player))) continue;
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     if (!(PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase) && (this.Field387.Method737(Class475.Method2142() + 150) || !blockPos.offset(enumFacing).equals(this.Field386)) || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase && !(object = PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getValue((IProperty)BlockDirectional.FACING)).equals(enumFacing.getOpposite())) continue;
-                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), this.rayTrace.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.rayTrace.getValue())) == null) break block8;
+                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Rotation.Method1967(blockPos.offset(enumFacing, 2), this.rayTrace.getValue()) || (object = Rotation.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.rayTrace.getValue())) == null) break block8;
                     this.Field384 = () -> this.Method530(n4, (Class490)object);
                     return;
                 }
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     Class490 class490;
-                    if (!Class496.Method1967(blockPos.offset(enumFacing), this.rayTrace.getValue()) || !(this.rayTrace.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
+                    if (!Rotation.Method1967(blockPos.offset(enumFacing), this.rayTrace.getValue()) || !(this.rayTrace.getValue() != false ? Rotation.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
                     object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.offset(enumFacing).getX() + 0.5, (double)blockPos.offset(enumFacing).getY() + 1.0, (double)blockPos.offset(enumFacing).getZ() + 0.5));
                     EnumFacing enumFacing2 = EnumFacing.fromAngle((double)object[0]);
-                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, this.rayTrace.getValue())) == null) continue;
+                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Rotation.Method1968(blockPos.offset(enumFacing), true, bl, this.rayTrace.getValue())) == null) continue;
                     this.Field384 = () -> this.Method523(n, class490, blockPos, enumFacing);
                     return;
                 }
@@ -793,7 +793,7 @@ extends Module {
                 PistonAura.mc.player.inventory.currentItem = n;
                 PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
-            Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
+            Rotation.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field381.Method739();
             this.Field382 = Class475.Method2142() + 150;
             if (bl) {

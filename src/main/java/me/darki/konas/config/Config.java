@@ -1257,8 +1257,8 @@ public class Config
                             fontCommand.Field1351 = jsonArray.get(8).getAsString();
                             Hud.Field1405 = new CfontRenderer(fontCommand.Field1351, 18.0f);
                             ClickGUIModule.Field1536 = new CfontRenderer(fontCommand.Field1351, 17.0f);
-                            Class425.Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
-                            Class425.Field958 = new CfontRenderer(fontCommand.Field1351, 60.0f);
+                            NameTags.Field957 = new CfontRenderer(fontCommand.Field1351, 20.0f);
+                            NameTags.Field958 = new CfontRenderer(fontCommand.Field1351, 60.0f);
                             break Label_0896;
                         }
                         catch (Exception ex12) {
@@ -1299,7 +1299,7 @@ public class Config
                     }
                     err11.println(x11);
                 }
-                Class425.Method955((Class427)Class425.Field954.getValue());
+                NameTags.Method955((Class427) NameTags.Field954.getValue());
                 if (asJsonArray2 != null) {
                     asJsonArray2.forEach((Consumer) Config::Method2229);
                 }

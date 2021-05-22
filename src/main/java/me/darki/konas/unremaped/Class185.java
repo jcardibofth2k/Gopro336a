@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Comparator;
 import java.util.stream.Stream;
@@ -52,7 +51,7 @@ extends Module {
                 Class185.mc.player.inventory.currentItem = this.Field1387;
                 Class185.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1387));
             }
-            Class496.Method1958(this.Field1386, EnumHand.MAIN_HAND, true);
+            Rotation.Method1958(this.Field1386, EnumHand.MAIN_HAND, true);
             this.Field1385 = 0;
             if (bl) {
                 Class185.mc.player.inventory.currentItem = n;
@@ -76,7 +75,7 @@ extends Module {
     public void Method135(UpdateEvent updateEvent) {
         this.Field1386 = null;
         this.Field1387 = -1;
-        if (updateEvent.isCanceled() || !Class496.Method1966()) {
+        if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
         if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
@@ -93,7 +92,7 @@ extends Module {
             return;
         }
         if (((Boolean)pressurePlates.getValue()).booleanValue() && !(Class185.mc.world.getBlockState(new BlockPos((Entity)entityPlayer)).getBlock() instanceof BlockPressurePlate)) {
-            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer), true);
+            this.Field1386 = Rotation.Method1962(new BlockPos((Entity)entityPlayer), true);
             if (this.Field1386 != null) {
                 int n = this.Method464();
                 if (n == -1) {
@@ -107,7 +106,7 @@ extends Module {
             }
         }
         for (int i = 0; i < (Integer)range.getValue(); ++i) {
-            this.Field1386 = Class496.Method1962(new BlockPos((Entity)entityPlayer).up((Integer)minHeight.getValue() + i), true);
+            this.Field1386 = Rotation.Method1962(new BlockPos((Entity)entityPlayer).up((Integer)minHeight.getValue() + i), true);
             if (this.Field1386 == null) continue;
             int n = this.Method524();
             if (n == -1) {

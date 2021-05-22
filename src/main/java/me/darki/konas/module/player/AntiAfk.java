@@ -27,10 +27,10 @@ extends Module {
     public Setting<Boolean> friendCoords = new Setting<>("FriendCoords", false).visibleIf(this::Method396);
     public Setting<Float> delay = new Setting<>("Delay", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(1.0f), Float.valueOf(1.0f));
     public static Setting<Boolean> safe = new Setting<>("Safe", true);
-    public Class566 Field2231 = new Class566();
-    public Class566 Field2232 = new Class566();
-    public Class566 Field2233 = new Class566();
-    public Class566 Field2234 = new Class566();
+    public TimerUtil Field2231 = new TimerUtil();
+    public TimerUtil Field2232 = new TimerUtil();
+    public TimerUtil Field2233 = new TimerUtil();
+    public TimerUtil Field2234 = new TimerUtil();
     public boolean Field2235 = false;
     public boolean Field2236 = true;
 
@@ -116,7 +116,7 @@ extends Module {
 
     @Subscriber
     public void Method135(UpdateEvent updateEvent) {
-        if (updateEvent.isCanceled() || !Class496.Method1966()) {
+        if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
         if (AntiAfk.mc.player == null || AntiAfk.mc.world == null) {

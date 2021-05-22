@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 import java.util.Collection;
 import java.util.Collections;
@@ -38,7 +37,7 @@ public class Class516 {
             AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
             AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d, axisAlignedBB.minY - entity.posY + d2, axisAlignedBB.minZ - entity.posZ + d3, axisAlignedBB.maxX - entity.posX + d, axisAlignedBB.maxY - entity.posY + d2, axisAlignedBB.maxZ - entity.posZ + d3);
             if (entity == Class516.Field1284.player) break block0;
-            float[] fArray = Class556.Method806(n);
+            float[] fArray = RainbowUtil.Method806(n);
             Class516.Method1283(axisAlignedBB2.grow((double)0.002f), fArray[0], fArray[1], fArray[2], fArray[3]);
         }
     }
@@ -467,7 +466,7 @@ public class Class516 {
         AxisAlignedBB axisAlignedBB = entity.getEntityBoundingBox();
         AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB(axisAlignedBB.minX - entity.posX + d2, axisAlignedBB.minY - entity.posY + d3, axisAlignedBB.minZ - entity.posZ + d4, axisAlignedBB.maxX - entity.posX + d2, axisAlignedBB.maxY - entity.posY + d3, axisAlignedBB.maxZ - entity.posZ + d4);
         GL11.glBlendFunc((int)770, (int)771);
-        float[] fArray = Class556.Method806(n);
+        float[] fArray = RainbowUtil.Method806(n);
         GL11.glColor4f((float)fArray[0], (float)fArray[1], (float)fArray[2], (float)fArray[3]);
         Class516.Method1286(axisAlignedBB2);
     }

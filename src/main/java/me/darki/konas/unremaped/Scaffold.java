@@ -39,7 +39,7 @@ import org.lwjgl.input.Keyboard;
 public class Scaffold
 extends Module {
     public List<Block> Field889 = Arrays.asList(Blocks.ANVIL, Blocks.AIR, Blocks.WEB, Blocks.WATER, Blocks.FIRE, Blocks.FLOWING_WATER, Blocks.LAVA, Blocks.FLOWING_WATER, Blocks.CHEST, Blocks.ENCHANTING_TABLE, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.GRAVEL, Blocks.LADDER, Blocks.VINE, Blocks.BEACON, Blocks.JUKEBOX, Blocks.ACACIA_DOOR, Blocks.BIRCH_DOOR, Blocks.DARK_OAK_DOOR, Blocks.IRON_DOOR, Blocks.JUNGLE_DOOR, Blocks.OAK_DOOR, Blocks.SPRUCE_DOOR, Blocks.IRON_TRAPDOOR, Blocks.TRAPDOOR, Blocks.BLACK_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.SILVER_SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX);
-    public Class566 Field890 = new Class566();
+    public TimerUtil Field890 = new TimerUtil();
     public Class325 Field891;
     public static Setting<Class443> customBlocks = new Setting<>("CustomBlocks", new Class443(new String[0]));
     public static Setting<Class322> filter = new Setting<>("Filter", Class322.NONE);
@@ -54,7 +54,7 @@ extends Module {
     public static Setting<Boolean> down = new Setting<>("Down", true);
     public static Setting<Boolean> swing = new Setting<>("Swing", false);
     public int Field904;
-    public Class566 Field905 = new Class566();
+    public TimerUtil Field905 = new TimerUtil();
     public float Field906;
     public float Field907;
     public BlockPos Field908;
@@ -71,7 +71,7 @@ extends Module {
     @Subscriber(priority=3)
     public void Method135(UpdateEvent updateEvent) {
         block0: {
-            if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Class496.Method1966()) break block0;
+            if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Rotation.Method1966()) break block0;
             KonasGlobals.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
         }
     }
@@ -427,7 +427,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block0: {
             if (this.Field891 == null || this.Field891.Field566 == null) break block0;
             Class523.Method1218(this.Field891.Field566);

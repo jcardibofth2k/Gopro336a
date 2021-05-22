@@ -293,7 +293,7 @@ extends Module {
         this.Field1341.Method689();
         this.Field1340.unbindFramebuffer();
         mc.getFramebuffer().bindFramebuffer(true);
-        GL11.glScaled(1.0 / Class564.Field627, 1.0 / Class564.Field627, 1.0 / Class564.Field627);
+        GL11.glScaled(1.0 / FrameBuffer.Field627, 1.0 / FrameBuffer.Field627, 1.0 / FrameBuffer.Field627);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glEnable(3553);
         GL11.glBindTexture(3553, this.Field1341.Method685());
@@ -311,7 +311,7 @@ extends Module {
         GL11.glTexCoord2d(0.0, 1.0);
         GL11.glVertex2d(0.0, 0.0);
         GL11.glEnd();
-        GL11.glScaled(Class564.Field627, Class564.Field627, Class564.Field627);
+        GL11.glScaled(FrameBuffer.Field627, FrameBuffer.Field627, FrameBuffer.Field627);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         mc.getFramebuffer().bindFramebuffer(false);
         RenderHelper.enableStandardItemLighting();
@@ -424,7 +424,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(final Class89 class89) {
+    public void Method139(final Render3DEvent render3DEvent) {
         if (ESP.mc.world == null || ESP.mc.player == null) {
             return;
         }
@@ -437,10 +437,10 @@ extends Module {
             GlStateManager.disableDepth();
             for (final Entity entity : ESP.mc.world.loadedEntityList) {
                 if (entity instanceof EntityEnderPearl && ESP.mc.getRenderViewEntity().getDistance(entity) < 250.0) {
-                    Class516.Method1280(entity, (ESP.Field1312.getValue()).Method774(), class89.Method436());
+                    Class516.Method1280(entity, (ESP.Field1312.getValue()).Method774(), render3DEvent.Method436());
                     GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                     GlStateManager.glLineWidth(1.0f);
-                    Class516.Method1257(entity, (ESP.Field1312.getValue()).Method774(), class89.Method436());
+                    Class516.Method1257(entity, (ESP.Field1312.getValue()).Method774(), render3DEvent.Method436());
                 }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -467,10 +467,10 @@ extends Module {
             GlStateManager.disableDepth();
             for (final Entity entity2 : ESP.mc.world.loadedEntityList) {
                 if (entity2 != ESP.mc.player && this.Method386(entity2)) {
-                    Class516.Method1280(entity2, this.Method1315(entity2), class89.Method436());
+                    Class516.Method1280(entity2, this.Method1315(entity2), render3DEvent.Method436());
                     GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                     GlStateManager.glLineWidth(1.0f);
-                    Class516.Method1257(entity2, this.Method1315(entity2), class89.Method436());
+                    Class516.Method1257(entity2, this.Method1315(entity2), render3DEvent.Method436());
                 }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -490,10 +490,10 @@ extends Module {
             GlStateManager.disableDepth();
             for (final Entity entity3 : ESP.mc.world.loadedEntityList) {
                 if (entity3 != ESP.mc.player && entity3 instanceof EntityItem) {
-                    Class516.Method1280(entity3, this.Method1315(entity3), class89.Method436());
+                    Class516.Method1280(entity3, this.Method1315(entity3), render3DEvent.Method436());
                     GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
                     GlStateManager.glLineWidth(1.0f);
-                    Class516.Method1257(entity3, this.Method1315(entity3), class89.Method436());
+                    Class516.Method1257(entity3, this.Method1315(entity3), render3DEvent.Method436());
                 }
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
@@ -580,7 +580,7 @@ extends Module {
                 final AxisAlignedBB axisAlignedBB2 = new AxisAlignedBB((double)class90.Method2109(), 0.0, (double)class90.Method2107(), (double)(class90.Method2109() + 16), 0.0, (double)(class90.Method2107() + 16));
                 GlStateManager.pushMatrix();
                 if (ESP.Field1336.isBoundingBoxInFrustum(axisAlignedBB2)) {
-                    Class502.Method1414(axisAlignedBB2.offset(-(ESP.mc.getRenderViewEntity().lastTickPosX + (ESP.mc.getRenderViewEntity().posX - ESP.mc.getRenderViewEntity().lastTickPosX) * class89.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosY + (ESP.mc.getRenderViewEntity().posY - ESP.mc.getRenderViewEntity().lastTickPosY) * class89.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosZ + (ESP.mc.getRenderViewEntity().posZ - ESP.mc.getRenderViewEntity().lastTickPosZ) * class89.Method436())), 3, (ESP.Field1334.getValue()).Method774());
+                    RenderUtil3D.Method1414(axisAlignedBB2.offset(-(ESP.mc.getRenderViewEntity().lastTickPosX + (ESP.mc.getRenderViewEntity().posX - ESP.mc.getRenderViewEntity().lastTickPosX) * render3DEvent.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosY + (ESP.mc.getRenderViewEntity().posY - ESP.mc.getRenderViewEntity().lastTickPosY) * render3DEvent.Method436()), -(ESP.mc.getRenderViewEntity().lastTickPosZ + (ESP.mc.getRenderViewEntity().posZ - ESP.mc.getRenderViewEntity().lastTickPosZ) * render3DEvent.Method436())), 3, (ESP.Field1334.getValue()).Method774());
                 }
                 GlStateManager.popMatrix();
             }

@@ -10,7 +10,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class526;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.config.Config;
 
 public class Spammer
@@ -20,7 +20,7 @@ extends Module {
     public static Setting<Class526> spamFileList = new Setting<>("SpamFileList", new Class526());
     public Setting<Boolean> random = new Setting<>("Random", true);
     public Setting<Boolean> antiAntiSpam = new Setting<>("AntiAntiSpam", false);
-    public Class566 Field794 = new Class566();
+    public TimerUtil Field794 = new TimerUtil();
     public static ArrayList<String> arrayList = new ArrayList();
     public static int Field796 = 0;
     public static ArrayList<Integer> arrayList1 = new ArrayList();

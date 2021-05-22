@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.List;
 
@@ -129,24 +128,24 @@ extends Module {
             }
             int n = 0;
             for (BlockPos blockPos : Class276.Method1765()) {
-                if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
-                Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
+                if (!Rotation.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Rotation.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
+                Rotation.Method1957(class490, EnumHand.MAIN_HAND, false);
                 if (++n < (Integer)actionShift.getValue()) continue;
                 this.Field1805 = true;
                 return;
             }
             if (this.Field1799) {
                 for (BlockPos blockPos : Class276.Method1766()) {
-                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
-                    Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
+                    if (!Rotation.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Rotation.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
+                    Rotation.Method1957(class490, EnumHand.MAIN_HAND, false);
                     if (++n < (Integer)actionShift.getValue()) continue;
                     this.Field1805 = true;
                     return;
                 }
             } else if (this.Field1800) {
                 for (BlockPos blockPos : Class276.Method1767()) {
-                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
-                    Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
+                    if (!Rotation.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Rotation.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
+                    Rotation.Method1957(class490, EnumHand.MAIN_HAND, false);
                     if (++n < (Integer)actionShift.getValue()) continue;
                     this.Field1805 = true;
                     return;
@@ -162,16 +161,16 @@ extends Module {
             if (this.Field1799) {
                 for (BlockPos blockPos : Class276.Method1769()) {
                     Class490 class490;
-                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
-                    Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
+                    if (!Rotation.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Rotation.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
+                    Rotation.Method1957(class490, EnumHand.MAIN_HAND, false);
                     if (++n < (Integer)actionShift.getValue()) continue;
                     return;
                 }
             } else if (this.Field1800) {
                 for (BlockPos blockPos : Class276.Method1768()) {
                     Class490 class490;
-                    if (!Class496.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Class496.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
-                    Class496.Method1957(class490, EnumHand.MAIN_HAND, false);
+                    if (!Rotation.Method1965(this.Field1798.add((Vec3i)blockPos), false, true) || (class490 = Rotation.Method1961(this.Field1798.add((Vec3i)blockPos), (Boolean)this.rotate.getValue(), true)) == null) continue;
+                    Rotation.Method1957(class490, EnumHand.MAIN_HAND, false);
                     if (++n < (Integer)actionShift.getValue()) continue;
                     return;
                 }

@@ -3,7 +3,7 @@ package me.darki.konas.module.misc;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Random;
 import me.darki.konas.module.Category;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
@@ -17,7 +17,7 @@ public class ChestStealer
 extends Module {
     public Setting<Integer> delay = new Setting<>("Delay", 100, 1000, 1, 1);
     public Setting<Boolean> random = new Setting<>("Random", false);
-    public Class566 Field2177 = new Class566();
+    public TimerUtil Field2177 = new TimerUtil();
 
     public boolean Method1975(Container container) {
         int n;

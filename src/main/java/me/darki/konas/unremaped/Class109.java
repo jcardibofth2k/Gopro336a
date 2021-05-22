@@ -15,7 +15,7 @@ import net.minecraft.network.play.server.SPacketChat;
 
 public class Class109 {
     public java.util.ArrayList<Element> Field2569 = new java.util.ArrayList();
-    public static Class566 Field2570 = new Class566();
+    public static TimerUtil Field2570 = new TimerUtil();
 
     public java.util.ArrayList<Element> Method2196() {
         return this.Field2569;

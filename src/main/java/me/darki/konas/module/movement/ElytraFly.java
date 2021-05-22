@@ -72,10 +72,10 @@ extends Module {
     public double Field1003;
     public double Field1004;
     public Random Field1005 = new Random();
-    public Class566 Field1006 = new Class566();
-    public Class566 Field1007 = new Class566();
-    public Class566 Field1008 = new Class566();
-    public Class566 Field1009 = new Class566();
+    public TimerUtil Field1006 = new TimerUtil();
+    public TimerUtil Field1007 = new TimerUtil();
+    public TimerUtil Field1008 = new TimerUtil();
+    public TimerUtil Field1009 = new TimerUtil();
     public boolean Field1010 = false;
     public boolean Field1011 = false;
 
@@ -287,14 +287,14 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block2: {
-            if (!(class24.getPacket() instanceof CPacketPlayer) || strict.getValue() != Class426.NCP || mode.getValue() != Class403.PACKET || this.Field1001 || !(Math.abs(ElytraFly.mc.player.motionX) >= 0.05) && !(Math.abs(ElytraFly.mc.player.motionZ) >= 0.05)) break block2;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || strict.getValue() != Class426.NCP || mode.getValue() != Class403.PACKET || this.Field1001 || !(Math.abs(ElytraFly.mc.player.motionX) >= 0.05) && !(Math.abs(ElytraFly.mc.player.motionZ) >= 0.05)) break block2;
             double d = 1.0E-8 + 1.0E-8 * (1.0 + (double)this.Field1005.nextInt(1 + (this.Field1005.nextBoolean() ? this.Field1005.nextInt(34) : this.Field1005.nextInt(43))));
             if (ElytraFly.mc.player.onGround || ElytraFly.mc.player.ticksExisted % 2 == 0) {
-                ((ICPacketPlayer)class24.getPacket()).setY(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) + d);
+                ((ICPacketPlayer) sendPacketEvent.getPacket()).setY(((CPacketPlayer) sendPacketEvent.getPacket()).getY(ElytraFly.mc.player.posY) + d);
             } else {
-                ((ICPacketPlayer)class24.getPacket()).setY(((CPacketPlayer)class24.getPacket()).getY(ElytraFly.mc.player.posY) - d);
+                ((ICPacketPlayer) sendPacketEvent.getPacket()).setY(((CPacketPlayer) sendPacketEvent.getPacket()).getY(ElytraFly.mc.player.posY) - d);
             }
         }
     }

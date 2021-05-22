@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 import java.util.ArrayList;
 
@@ -24,7 +23,7 @@ public class Class201
 extends Component {
     public Module Field620;
     public ArrayList<Component> Field621 = new ArrayList();
-    public Class566 Field622 = new Class566();
+    public TimerUtil Field622 = new TimerUtil();
 
     public Module Method146() {
         return this.Field620;

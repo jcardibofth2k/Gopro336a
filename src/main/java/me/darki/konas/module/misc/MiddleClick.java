@@ -4,13 +4,13 @@ import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.unremaped.Class262;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class262;
 import me.darki.konas.unremaped.ExtraChat;
 import me.darki.konas.unremaped.Class306;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class645;
 import me.darki.konas.unremaped.Class653;
@@ -38,7 +38,7 @@ extends Module {
     public Setting<Boolean> eP = new Setting<>("EP", false);
     public Setting<Boolean> xP = new Setting<>("XP", false);
     public Setting<Boolean> xPInHoles = new Setting<>("XPInHoles", false).visibleIf(this.Field965::getValue);
-    public Class566 Field967 = new Class566();
+    public TimerUtil Field967 = new TimerUtil();
     public int Field968 = -1;
     public boolean Field969 = true;
 

@@ -66,7 +66,7 @@ extends Module {
     public int Field1510;
     public int Field1511;
     public int Field1512;
-    public Class566 Field1513 = new Class566();
+    public TimerUtil Field1513 = new TimerUtil();
 
     @Subscriber
     public void onTickEvent(TickEvent tickEvent) {
@@ -151,17 +151,17 @@ extends Module {
         Auto32k.mc.player.inventory.currentItem = n2;
     }
 
-    public void Method1515(Entity entity, Class89 class89) {
+    public void Method1515(Entity entity, Render3DEvent render3DEvent) {
         int n;
-        Class507.Method1386();
+        EspRenderUtil.Method1386();
         IRenderManager iRenderManager = (IRenderManager)mc.getRenderManager();
         float[] fArray = Color.RGBtoHSB(color.getValue().Method769(), color.getValue().Method770(), color.getValue().Method779(), null);
         float f = (float)(System.currentTimeMillis() % 7200L) / 7200.0f;
         int n2 = Color.getHSBColor(f, fArray[1], fArray[2]).getRGB();
         ArrayList<Vec3d> arrayList = new ArrayList<Vec3d>();
-        double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)class89.Method436() - iRenderManager.getRenderPosX();
-        double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)class89.Method436() - iRenderManager.getRenderPosY();
-        double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)class89.Method436() - iRenderManager.getRenderPosZ();
+        double d = entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double) render3DEvent.Method436() - iRenderManager.getRenderPosX();
+        double d2 = entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double) render3DEvent.Method436() - iRenderManager.getRenderPosY();
+        double d3 = entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double) render3DEvent.Method436() - iRenderManager.getRenderPosZ();
         GL11.glLineWidth(width.getValue().floatValue());
         GL11.glBegin(1);
         for (n = 0; n <= 360; ++n) {
@@ -185,7 +185,7 @@ extends Module {
             n2 = Color.getHSBColor(f += 0.0027777778f, fArray[1], fArray[2]).getRGB();
         }
         GL11.glEnd();
-        Class507.Method1385();
+        EspRenderUtil.Method1385();
     }
 
     public List<EntityPlayer> Method1516(boolean bl) {
@@ -217,16 +217,16 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block2: {
             if (Auto32k.mc.player == null || Auto32k.mc.world == null) {
                 return;
             }
             if (!rangeCircles.getValue().booleanValue()) break block2;
             for (Entity entity : this.Method1516(true)) {
-                this.Method1515(entity, class89);
+                this.Method1515(entity, render3DEvent);
             }
-            this.Method1515(Auto32k.mc.player, class89);
+            this.Method1515(Auto32k.mc.player, render3DEvent);
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
@@ -344,7 +344,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1523(Class89 class89) {
+    public void Method1523(Render3DEvent render3DEvent) {
         block1: {
             if (Auto32k.mc.player == null || Auto32k.mc.world == null) {
                 return;

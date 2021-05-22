@@ -1,7 +1,7 @@
 package me.darki.konas.module.player;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class395;
 import me.darki.konas.mixin.mixins.ICPacketAnimation;
 import me.darki.konas.module.Category;
@@ -34,29 +34,29 @@ extends Module {
      * Enabled aggressive exception aggregation
      */
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         CPacketAnimation cPacketAnimation;
         if (Swing.mc.player == null) return;
         if (Swing.mc.world == null) {
             return;
         }
-        if (!(class24.getPacket() instanceof CPacketAnimation)) return;
+        if (!(sendPacketEvent.getPacket() instanceof CPacketAnimation)) return;
         if (this.mode.getValue() == Class395.CANCEL) {
             if (!this.strict.getValue().booleanValue() || Swing.mc.playerController.getIsHittingBlock()) {
-                class24.Cancel();
+                sendPacketEvent.Cancel();
             }
         } else if (this.mode.getValue() == Class395.OFFHAND) {
-            cPacketAnimation = (CPacketAnimation)class24.getPacket();
+            cPacketAnimation = (CPacketAnimation) sendPacketEvent.getPacket();
             ((ICPacketAnimation)cPacketAnimation).setHand(EnumHand.OFF_HAND);
         } else if (this.mode.getValue() == Class395.MAINHAND) {
-            cPacketAnimation = (CPacketAnimation)class24.getPacket();
+            cPacketAnimation = (CPacketAnimation) sendPacketEvent.getPacket();
             ((ICPacketAnimation)cPacketAnimation).setHand(EnumHand.MAIN_HAND);
         } else if (this.mode.getValue() == Class395.OPPOSITE) {
-            cPacketAnimation = (CPacketAnimation)class24.getPacket();
+            cPacketAnimation = (CPacketAnimation) sendPacketEvent.getPacket();
             ((ICPacketAnimation)cPacketAnimation).setHand(cPacketAnimation.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
         }
         if (this.render.getValue() == false) return;
-        cPacketAnimation = ((CPacketAnimation)class24.getPacket()).getHand();
+        cPacketAnimation = ((CPacketAnimation) sendPacketEvent.getPacket()).getHand();
         try {
             if (Swing.mc.player.isSwingInProgress && Swing.mc.player.swingProgressInt < this.Method464() / 2) {
                 if (Swing.mc.player.swingProgressInt >= 0) return;

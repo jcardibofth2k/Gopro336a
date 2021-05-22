@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.buffer.Unpooled;
 import me.darki.konas.module.Category;
@@ -15,18 +14,18 @@ extends Module {
     public boolean Field2630 = true;
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         if (Class223.mc.world == null || Class223.mc.player == null) {
             return;
         }
-        if (class24.getPacket() instanceof CPacketCustomPayload && ((CPacketCustomPayload)class24.getPacket()).getChannelName().equals("MC|Beacon")) {
+        if (sendPacketEvent.getPacket() instanceof CPacketCustomPayload && ((CPacketCustomPayload) sendPacketEvent.getPacket()).getChannelName().equals("MC|Beacon")) {
             if (this.Field2630) {
                 this.Field2630 = false;
-                CPacketCustomPayload cPacketCustomPayload = (CPacketCustomPayload)class24.getPacket();
+                CPacketCustomPayload cPacketCustomPayload = (CPacketCustomPayload) sendPacketEvent.getPacket();
                 PacketBuffer packetBuffer = cPacketCustomPayload.getBufferData();
                 int n = packetBuffer.readInt();
                 int n2 = packetBuffer.readInt();
-                class24.setCanceled(true);
+                sendPacketEvent.setCanceled(true);
                 PacketBuffer packetBuffer2 = new PacketBuffer(Unpooled.buffer());
                 packetBuffer2.writeInt(Field2629);
                 packetBuffer2.writeInt(n2);
