@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -85,7 +84,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (Class517.mc.player == null || Class517.mc.world == null) {
             return;
         }
@@ -107,9 +106,9 @@ extends Module {
         GL11.glHint((int)3154, (int)4354);
         GlStateManager.depthMask((boolean)false);
         GlStateManager.color((float)((float)((ColorValue)this.color.getValue()).Method775().getRed() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getGreen() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getBlue() / 255.0f), (float)((float)((ColorValue)this.color.getValue()).Method775().getAlpha() / 255.0f));
-        double d = Class517.mc.player.lastTickPosX + (Class517.mc.player.posX - Class517.mc.player.lastTickPosX) * (double)class89.Method436();
-        double d2 = Class517.mc.player.lastTickPosY + (Class517.mc.player.posY - Class517.mc.player.lastTickPosY) * (double)class89.Method436();
-        double d3 = Class517.mc.player.lastTickPosZ + (Class517.mc.player.posZ - Class517.mc.player.lastTickPosZ) * (double)class89.Method436();
+        double d = Class517.mc.player.lastTickPosX + (Class517.mc.player.posX - Class517.mc.player.lastTickPosX) * (double) render3DEvent.Method436();
+        double d2 = Class517.mc.player.lastTickPosY + (Class517.mc.player.posY - Class517.mc.player.lastTickPosY) * (double) render3DEvent.Method436();
+        double d3 = Class517.mc.player.lastTickPosZ + (Class517.mc.player.posZ - Class517.mc.player.lastTickPosZ) * (double) render3DEvent.Method436();
         this.Field1280.forEach((arg_0, arg_1) -> Class517.Method1254(d, d2, d3, arg_0, arg_1));
         GL11.glPopMatrix();
         GlStateManager.enableCull();

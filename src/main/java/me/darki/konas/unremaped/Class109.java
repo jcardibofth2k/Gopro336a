@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.lang.reflect.Field;
@@ -16,7 +15,7 @@ import net.minecraft.network.play.server.SPacketChat;
 
 public class Class109 {
     public java.util.ArrayList<Element> Field2569 = new java.util.ArrayList();
-    public static Class566 Field2570 = new Class566();
+    public static TimerUtil Field2570 = new TimerUtil();
 
     public java.util.ArrayList<Element> Method2196() {
         return this.Field2569;
@@ -110,7 +109,7 @@ lbl28:
         this.Field2569.add(new Clock());
         this.Field2569.add(new ItemGrid());
         this.Field2569.add(new Class112());
-        this.Field2569.add(new Class120());
+        this.Field2569.add(new LagNotifier());
         this.Field2569.add(new Crystals());
         this.Field2569.add(new Class150());
         this.Field2569.add(new Gapples());

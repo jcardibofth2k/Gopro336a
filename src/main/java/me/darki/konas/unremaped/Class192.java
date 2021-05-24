@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.BlockAir;
@@ -52,14 +51,14 @@ extends Module {
     public Setting<ColorValue> ready = new Setting<>("Ready", new ColorValue(0x5500FF00)).setParentSetting(this.Field62);
     public Setting<ColorValue> readyOutline = new Setting<>("ReadyOutline", new ColorValue(Color.GREEN.hashCode())).setParentSetting(this.Field62);
     public Setting<Float> width = new Setting<>("Width", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).setParentSetting(this.Field62);
-    public Class566 Field69 = new Class566();
+    public TimerUtil Field69 = new TimerUtil();
     public BlockPos Field70;
     public BlockPos Field71;
     public EnumFacing Field72;
     public float Field73;
-    public Class566 Field74 = new Class566();
+    public TimerUtil Field74 = new TimerUtil();
     public boolean Field75;
-    public Class566 Field76 = new Class566();
+    public TimerUtil Field76 = new TimerUtil();
     public Runnable Field77 = null;
     public int Field78 = -1;
 
@@ -182,7 +181,7 @@ extends Module {
             ArrayList<BlockPos> arrayList;
             BlockPos blockPos;
             EntityPlayer entityPlayer;
-            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)this.rotate.getValue())) {
+            if (updateEvent.isCanceled() || !Rotation.Method1959((Boolean)this.rotate.getValue())) {
                 return;
             }
             if (this.Field71 != null) {
@@ -223,7 +222,7 @@ extends Module {
             }
             if (!((Boolean)this.rotate.getValue()).booleanValue() || this.Field71 == null) break block13;
             Vec3d vec3d = new Vec3d((Vec3i)this.Field71).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field72.getDirectionVec()).scale(0.5));
-            NewGui.INSTANCE.Field1139.Method1942(vec3d);
+            KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
         }
     }
 
@@ -243,7 +242,7 @@ extends Module {
      * Unable to fully structure code
      */
     @Subscriber
-    public void Method139(Class89 var1_1) {
+    public void Method139(Render3DEvent var1_1) {
         block31: {
             block32: {
                 if (this.Field71 == null) break block31;
@@ -261,7 +260,7 @@ extends Module {
                 v10 = this.Field71;
                 v11 = v9.offset(v10);
                 var2_2 = v11;
-                Class507.Method1386();
+                EspRenderUtil.Method1386();
                 v12 = var2_2;
                 v13 = true;
                 v14 = 1.0;
@@ -280,7 +279,7 @@ lbl46:
                 // 2 sources
 
                 v20 = 63;
-                Class507.Method1371(v12, v13, v14, v17, v20);
+                EspRenderUtil.Method1371(v12, v13, v14, v17, v20);
                 v21 = var2_2;
                 v22 = this.Field68;
                 v23 = v22.getValue();
@@ -299,9 +298,9 @@ lbl67:
                 v31 = v30.getValue();
                 v29 = (ColorValue)v31;
             }
-            Class507.Method1374(v21, v26, v29);
+            EspRenderUtil.Method1374(v21, v26, v29);
             try {
-                Class507.Method1385();
+                EspRenderUtil.Method1385();
             }
             catch (NullPointerException var2_3) {
                 // empty catch block
@@ -320,14 +319,14 @@ lbl67:
                 Vec3d vec3d2 = new Vec3d((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 0.5, (double)blockPos.getZ() + 0.5);
                 IBlockState iBlockState = Class192.mc.world.getBlockState(blockPos);
                 boolean bl2 = iBlockState.getBlock() == Blocks.AIR || iBlockState.isFullBlock();
-                list.addAll(Class496.Method1971(vec3d.x - vec3d2.x, EnumFacing.WEST, EnumFacing.EAST, !bl2));
-                list.addAll(Class496.Method1971(vec3d.y - vec3d2.y, EnumFacing.DOWN, EnumFacing.UP, true));
-                list.addAll(Class496.Method1971(vec3d.z - vec3d2.z, EnumFacing.NORTH, EnumFacing.SOUTH, !bl2));
+                list.addAll(Rotation.Method1971(vec3d.x - vec3d2.x, EnumFacing.WEST, EnumFacing.EAST, !bl2));
+                list.addAll(Rotation.Method1971(vec3d.y - vec3d2.y, EnumFacing.DOWN, EnumFacing.UP, true));
+                list.addAll(Rotation.Method1971(vec3d.z - vec3d2.z, EnumFacing.NORTH, EnumFacing.SOUTH, !bl2));
                 list = list.stream().filter(arg_0 -> Class192.Method136(vec3d, blockPos, arg_0)).collect(Collectors.toList());
                 if (!list.isEmpty()) break block1;
-                list.addAll(Class496.Method1971(vec3d.x - vec3d2.x, EnumFacing.WEST, EnumFacing.EAST, !bl2));
-                list.addAll(Class496.Method1971(vec3d.y - vec3d2.y, EnumFacing.DOWN, EnumFacing.UP, true));
-                list.addAll(Class496.Method1971(vec3d.z - vec3d2.z, EnumFacing.NORTH, EnumFacing.SOUTH, !bl2));
+                list.addAll(Rotation.Method1971(vec3d.x - vec3d2.x, EnumFacing.WEST, EnumFacing.EAST, !bl2));
+                list.addAll(Rotation.Method1971(vec3d.y - vec3d2.y, EnumFacing.DOWN, EnumFacing.UP, true));
+                list.addAll(Rotation.Method1971(vec3d.z - vec3d2.z, EnumFacing.NORTH, EnumFacing.SOUTH, !bl2));
                 break block1;
             }
             list = Arrays.asList(EnumFacing.values());

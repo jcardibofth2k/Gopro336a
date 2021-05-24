@@ -51,8 +51,8 @@ extends Module {
     public static Setting<Float> vectorWidth = new Setting<>("VectorWidth", Float.valueOf(1.5f), Float.valueOf(10.0f), Float.valueOf(0.1f), Float.valueOf(0.1f));
     public CopyOnWriteArrayList<Vec3d> Field611 = new CopyOnWriteArrayList();
 
-    public void Method650(Class89 class89, EntityLivingBase entityLivingBase) {
-        this.Method654(entityLivingBase, class89.Method436());
+    public void Method650(Render3DEvent render3DEvent, EntityLivingBase entityLivingBase) {
+        this.Method654(entityLivingBase, render3DEvent.Method436());
     }
 
     public Trajectories() {
@@ -62,7 +62,7 @@ extends Module {
     public static boolean Method651(EntityLivingBase entityLivingBase) {
         Module module = ModuleManager.Method1612("BowAim");
         if (entityLivingBase == Trajectories.mc.player && module != null) {
-            return module.isEnabled() && !Class317.Field763.Method737(350.0);
+            return module.isEnabled() && !BowAim.Field763.Method737(350.0);
         }
         return false;
     }
@@ -203,11 +203,11 @@ extends Module {
                         }
                     }
                 }
-                Class507.Method1386();
-                Class507.Method1381(axisAlignedBB, true, 1.0, entityLivingBase == Trajectories.mc.player ? selfFill.getValue() : fill.getValue(), entityLivingBase == Trajectories.mc.player ? selfFill.getValue().Method782() : fill.getValue().Method782(), 63);
-                Class507.Method1374(axisAlignedBB, outlineWidth.getValue().floatValue(), entityLivingBase == Trajectories.mc.player ? selfOutline.getValue() : outline.getValue());
-                Class507.Method1385();
-                Class468.Field2604.Method739();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1381(axisAlignedBB, true, 1.0, entityLivingBase == Trajectories.mc.player ? selfFill.getValue() : fill.getValue(), entityLivingBase == Trajectories.mc.player ? selfFill.getValue().Method782() : fill.getValue().Method782(), 63);
+                EspRenderUtil.Method1374(axisAlignedBB, outlineWidth.getValue().floatValue(), entityLivingBase == Trajectories.mc.player ? selfOutline.getValue() : outline.getValue());
+                EspRenderUtil.Method1385();
+                BlockHighlight.Field2604.Method739();
             }
         }
     }
@@ -256,8 +256,8 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
-        Trajectories.mc.world.loadedEntityList.stream().filter(Trajectories::Method513).map(Trajectories::Method656).forEach(arg_0 -> this.Method650(class89, arg_0));
+    public void Method139(Render3DEvent render3DEvent) {
+        Trajectories.mc.world.loadedEntityList.stream().filter(Trajectories::Method513).map(Trajectories::Method656).forEach(arg_0 -> this.Method650(render3DEvent, arg_0));
     }
 
     public static EntityLivingBase Method656(Entity entity) {

@@ -7,9 +7,10 @@ import java.util.Random;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class45;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.OpenGuiEvent;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.entity.Entity;
@@ -30,7 +31,7 @@ extends Module {
     public static ArrayList<String> Field1979 = new ArrayList();
     public static ArrayList<String> Field1980 = new ArrayList();
     public Random Field1981 = new Random();
-    public Class566 Field1982 = new Class566();
+    public TimerUtil Field1982 = new TimerUtil();
 
     public AutoGG() {
         super("AutoGG", Category.MISC);
@@ -81,7 +82,7 @@ extends Module {
         if (packetEvent.getPacket() instanceof SPacketPlayerListItem && (sPacketPlayerListItem = (SPacketPlayerListItem) packetEvent.getPacket()).getAction() == SPacketPlayerListItem.Action.REMOVE_PLAYER) {
             for (SPacketPlayerListItem.AddPlayerData addPlayerData : sPacketPlayerListItem.getEntries()) {
                 EntityPlayer entityPlayer = AutoGG.mc.world.getPlayerEntityByUUID(addPlayerData.getProfile().getId());
-                if (entityPlayer == null || !log.getValue().booleanValue() || AutoGG.mc.player.ticksExisted <= 100 || !NewGui.INSTANCE.Field1133.Method423((Entity)entityPlayer)) continue;
+                if (entityPlayer == null || !log.getValue().booleanValue() || AutoGG.mc.player.ticksExisted <= 100 || !KonasGlobals.INSTANCE.Field1133.Method423((Entity)entityPlayer)) continue;
                 this.Method1809(entityPlayer);
             }
         }
@@ -113,7 +114,7 @@ extends Module {
             EntityPlayer entityPlayer;
             Entity entity;
             SPacketEntityStatus sPacketEntityStatus;
-            if (!(packetEvent.getPacket() instanceof SPacketEntityStatus) || (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() != 35 || !((entity = sPacketEntityStatus.getEntity(AutoGG.mc.world)) instanceof EntityPlayer) || !NewGui.INSTANCE.Field1133.Method423((Entity)(entityPlayer = (EntityPlayer)entity)) || !pops.getValue().booleanValue()) break block0;
+            if (!(packetEvent.getPacket() instanceof SPacketEntityStatus) || (sPacketEntityStatus = (SPacketEntityStatus) packetEvent.getPacket()).getOpCode() != 35 || !((entity = sPacketEntityStatus.getEntity(AutoGG.mc.world)) instanceof EntityPlayer) || !KonasGlobals.INSTANCE.Field1133.Method423((Entity)(entityPlayer = (EntityPlayer)entity)) || !pops.getValue().booleanValue()) break block0;
             this.Method1810(entityPlayer);
         }
     }

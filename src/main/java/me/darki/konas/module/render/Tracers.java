@@ -7,10 +7,10 @@ import me.darki.konas.module.Category;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.unremaped.Class460;
 import me.darki.konas.unremaped.Class492;
-import me.darki.konas.unremaped.Class502;
+import me.darki.konas.unremaped.RenderUtil3D;
 import me.darki.konas.unremaped.Class516;
-import me.darki.konas.module.client.NewGui;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.module.client.KonasGlobals;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.unremaped.Class91;
 import me.darki.konas.mixin.mixins.IEntityRenderer;
 import me.darki.konas.mixin.mixins.IRenderManager;
@@ -62,11 +62,11 @@ extends Module {
             int n;
             Vec3d vec3d;
             Vec3d vec3d2;
-            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= range.getValue().floatValue()) || (vec3d2 = NewGui.INSTANCE.Field1137.Method2026(vec3d = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.getEyeHeight(), 0.0))) == null || this.Method467(vec3d2) || Class516.Method1288(entity) && !visible.getValue().booleanValue()) continue;
+            if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= range.getValue().floatValue()) || (vec3d2 = KonasGlobals.INSTANCE.Field1137.Method2026(vec3d = new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * (double)mc.getRenderPartialTicks(), entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * (double)mc.getRenderPartialTicks(), entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * (double)mc.getRenderPartialTicks()).add(0.0, (double)entity.getEyeHeight(), 0.0))) == null || this.Method467(vec3d2) || Class516.Method1288(entity) && !visible.getValue().booleanValue()) continue;
             GL11.glPushMatrix();
             int n2 = -1;
-            if (showTargets.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
-                n = NewGui.INSTANCE.Field1133.Method428(entity);
+            if (showTargets.getValue().booleanValue() && KonasGlobals.INSTANCE.Field1133.Method423(entity)) {
+                n = KonasGlobals.INSTANCE.Field1133.Method428(entity);
                 n2 = new Color(255, n, n).hashCode();
             } else {
                 n2 = Class492.Method1989(entity.getName()) && showFriends.getValue() != false ? Color.CYAN.hashCode() : (showDistanceColor.getValue() != false ? this.Method468(entity.getDistance(Tracers.mc.player)) : color.getValue().Method774());
@@ -125,7 +125,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (Tracers.mc.world == null || Tracers.mc.player == null) {
             return;
         }
@@ -135,7 +135,7 @@ extends Module {
         for (Entity entity : Tracers.mc.world.loadedEntityList) {
             int n;
             if (!(entity instanceof EntityPlayer) || entity == Tracers.mc.player || !(Tracers.mc.player.getDistance(entity) <= range.getValue().floatValue())) continue;
-            Vec3d vec3d = Class502.Method1393(entity, class89.Method436()).subtract(((IRenderManager)mc.getRenderManager()).getRenderPosX(), ((IRenderManager)mc.getRenderManager()).getRenderPosY(), ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
+            Vec3d vec3d = RenderUtil3D.Method1393(entity, render3DEvent.Method436()).subtract(((IRenderManager)mc.getRenderManager()).getRenderPosX(), ((IRenderManager)mc.getRenderManager()).getRenderPosY(), ((IRenderManager)mc.getRenderManager()).getRenderPosZ());
             GL11.glBlendFunc(770, 771);
             GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             GlStateManager.glLineWidth(width.getValue().floatValue());
@@ -149,18 +149,18 @@ extends Module {
             GlStateManager.color(1.0f, 1.0f, 1.0f);
             boolean bl = Tracers.mc.gameSettings.viewBobbing;
             Tracers.mc.gameSettings.viewBobbing = false;
-            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(class89.Method436(), 0);
+            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(render3DEvent.Method436(), 0);
             Vec3d vec3d2 = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Tracers.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Tracers.mc.player.rotationYaw)));
-            if (showTargets.getValue().booleanValue() && NewGui.INSTANCE.Field1133.Method423(entity)) {
-                int n2 = NewGui.INSTANCE.Field1133.Method428(entity);
+            if (showTargets.getValue().booleanValue() && KonasGlobals.INSTANCE.Field1133.Method423(entity)) {
+                int n2 = KonasGlobals.INSTANCE.Field1133.Method428(entity);
                 n = new Color(255, n2, n2).hashCode();
             } else {
                 n = Class492.Method1989(entity.getName()) && showFriends.getValue() != false ? Color.CYAN.hashCode() : (showDistanceColor.getValue() != false ? this.Method468(entity.getDistance(Tracers.mc.player)) : color.getValue().Method774());
             }
-            Class502.Method1408((float)vec3d2.x, (float)vec3d2.y + Tracers.mc.player.getEyeHeight(), (float)vec3d2.z, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z, width.getValue().floatValue(), n);
-            Class502.Method1408((float)vec3d.x, (float)vec3d.y, (float)vec3d.z, (float)vec3d.x, (float)vec3d.y + entity.getEyeHeight(), (float)vec3d.z, width.getValue().floatValue(), n);
+            RenderUtil3D.Method1408((float)vec3d2.x, (float)vec3d2.y + Tracers.mc.player.getEyeHeight(), (float)vec3d2.z, (float)vec3d.x, (float)vec3d.y, (float)vec3d.z, width.getValue().floatValue(), n);
+            RenderUtil3D.Method1408((float)vec3d.x, (float)vec3d.y, (float)vec3d.z, (float)vec3d.x, (float)vec3d.y + entity.getEyeHeight(), (float)vec3d.z, width.getValue().floatValue(), n);
             Tracers.mc.gameSettings.viewBobbing = bl;
-            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(class89.Method436(), 0);
+            ((IEntityRenderer)Tracers.mc.entityRenderer).setupCameraTransform(render3DEvent.Method436(), 0);
             GlStateManager.enableCull();
             GlStateManager.depthMask(true);
             GlStateManager.enableTexture2D();

@@ -14,7 +14,7 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.*;
 import me.darki.konas.unremaped.*;
@@ -57,7 +57,7 @@ extends Module {
     public double Field2343 = 0.0;
     public double Field2344 = 0.0;
     public int Field2345 = 0;
-    public Class566 Field2346 = new Class566();
+    public TimerUtil Field2346 = new TimerUtil();
     public static Random Field2347 = new Random();
 
     public void Method2053(double d, double d2, double d3, PacketFlyMode packetFlyMode, boolean bl) {
@@ -246,18 +246,18 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block2: {
-            if (class24.getPacket() instanceof CPacketPlayer && !(class24.getPacket() instanceof CPacketPlayer.Position)) {
-                class24.Cancel();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer && !(sendPacketEvent.getPacket() instanceof CPacketPlayer.Position)) {
+                sendPacketEvent.Cancel();
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer)) break block2;
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer)) break block2;
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
             if (this.Field2333.contains(cPacketPlayer)) {
                 this.Field2333.remove(cPacketPlayer);
                 return;
             }
-            class24.Cancel();
+            sendPacketEvent.Cancel();
         }
     }
 
@@ -319,9 +319,9 @@ extends Module {
             this.toggle();
         }
         if (boost.getValue().booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 9, 1.088f);
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 9, 1.088f);
         } else {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
     }
 
@@ -380,7 +380,7 @@ extends Module {
         if (PacketFly.mc.player != null) {
             PacketFly.mc.player.setVelocity(0.0, 0.0, 0.0);
         }
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public void Method124() {

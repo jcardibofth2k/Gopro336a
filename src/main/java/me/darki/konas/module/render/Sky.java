@@ -44,7 +44,7 @@ extends Module {
     public void Method873(FogColorsEvent fogColorsEvent) {
         block0: {
             if (!colorize.getValue().booleanValue()) break block0;
-            float[] fArray = Class556.Method806(color.getValue().Method774());
+            float[] fArray = RainbowUtil.Method806(color.getValue().Method774());
             fogColorsEvent.Method341(fArray[0]);
             fogColorsEvent.Method294(fArray[1]);
             fogColorsEvent.Method344(fArray[2]);

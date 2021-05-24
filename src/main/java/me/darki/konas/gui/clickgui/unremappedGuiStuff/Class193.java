@@ -9,7 +9,7 @@ import me.darki.konas.gui.clickgui.frame.CategoryFrame;
 import me.darki.konas.gui.clickgui.frame.Frame;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.module.Category;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class196;
 import me.darki.konas.unremaped.Class200;
 import me.darki.konas.unremaped.Class92;
@@ -136,7 +136,7 @@ extends GuiScreen {
             n += 110;
         }
         this.Method119().add(new CategoryFrame(300.0f, n2, 95.0f, 14.0f));
-        for (Element element : NewGui.INSTANCE.Field1136.Method2196()) {
+        for (Element element : KonasGlobals.INSTANCE.Field1136.Method2196()) {
             this.Method119().add(new Class88(element));
         }
         this.Method119().add(new Class196());

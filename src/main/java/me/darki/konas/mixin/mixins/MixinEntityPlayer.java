@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import cookiedragon.eventsystem.EventDispatcher;
-import me.darki.konas.unremaped.Class21;
+import me.darki.konas.unremaped.EntityTravelEvent;
 import me.darki.konas.unremaped.Class4;
 import me.darki.konas.unremaped.Class53;
 import net.minecraft.client.Minecraft;
@@ -21,7 +21,7 @@ extends MixinEntityLivingBase {
     @Inject(method={"travel"}, at={@At(value="HEAD")}, cancellable=true)
     public void Method183(float strafe, float vertical, float forward, CallbackInfo info) {
         if (this.equals(Minecraft.getMinecraft().player)) {
-            Class21 event = new Class21(strafe, vertical, forward);
+            EntityTravelEvent event = new EntityTravelEvent(strafe, vertical, forward);
             EventDispatcher.Companion.dispatch(event);
             if (event.isCanceled()) {
                 this.Method10(MoverType.SELF, this.Field10, this.Field11, this.Field12);

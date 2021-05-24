@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.MoveEvent;
@@ -19,7 +18,7 @@ public class Class225
 extends Module {
     public Setting<Boolean> float = new Setting<>("Float", false);
     public boolean Field2641 = true;
-    public Class566 Field2642 = new Class566();
+    public TimerUtil Field2642 = new TimerUtil();
 
     /*
      * Enabled aggressive block sorting

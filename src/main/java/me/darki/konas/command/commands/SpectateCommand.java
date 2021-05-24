@@ -5,7 +5,7 @@ import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class595;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.play.client.CPacketAnimation;
@@ -32,7 +32,7 @@ extends Command {
     }
 
     @Subscriber
-    public void Method509(Class24 class24) {
+    public void Method509(SendPacketEvent sendPacketEvent) {
         block2: {
             if (SpectateCommand.Field123.world == null || SpectateCommand.Field123.player == null) {
                 return;
@@ -40,8 +40,8 @@ extends Command {
             if (!this.Field348) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer.PositionRotation) && !(class24.getPacket() instanceof CPacketPlayer.Position) && !(class24.getPacket() instanceof CPacketPlayer.Rotation) && (!(class24.getPacket() instanceof CPacketAnimation) || !this.Field348)) break block2;
-            class24.setCanceled(true);
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer.PositionRotation) && !(sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) && !(sendPacketEvent.getPacket() instanceof CPacketPlayer.Rotation) && (!(sendPacketEvent.getPacket() instanceof CPacketAnimation) || !this.Field348)) break block2;
+            sendPacketEvent.setCanceled(true);
         }
     }
 

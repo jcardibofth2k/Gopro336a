@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 
 import me.darki.konas.event.events.Event;
 import me.darki.konas.event.events.OpenGuiEvent;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class534;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.event.events.UpdateEvent;
@@ -68,7 +68,7 @@ extends Module {
     public boolean Field1784;
     public float Field1785;
     public float Field1786;
-    public Class566 Field1787 = new Class566();
+    public TimerUtil Field1787 = new TimerUtil();
 
     public static Float Method1676(BlockPos blockPos) {
         return Float.valueOf(MathHelper.sqrt((double) BlockAura.mc.player.getDistanceSq(blockPos)));
@@ -79,15 +79,15 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block3: {
             if (BlockAura.mc.world == null || BlockAura.mc.player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field1784) break block3;
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
-            if (class24.getPacket() instanceof CPacketPlayer.Position) {
-                class24.setCanceled(true);
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || !this.Field1784) break block3;
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
+                sendPacketEvent.setCanceled(true);
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(BlockAura.mc.player.posX), cPacketPlayer.getY(BlockAura.mc.player.posY), cPacketPlayer.getZ(BlockAura.mc.player.posZ), this.Field1785, this.Field1786, cPacketPlayer.isOnGround()));
             } else {
                 ((ICPacketPlayer)cPacketPlayer).Method1695(this.Field1785);

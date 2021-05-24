@@ -6,7 +6,7 @@ import java.util.Map;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.render.Waypoints;
 import me.darki.konas.unremaped.Class559;
 import me.darki.konas.unremaped.Class561;
@@ -24,7 +24,7 @@ extends Command {
         if (stringArray.length == 2) {
             if (stringArray[1].equalsIgnoreCase("list")) {
                 StringBuilder stringBuilder = new StringBuilder();
-                for (Class559 class559 : NewGui.INSTANCE.Field1138.Method759()) {
+                for (Class559 class559 : KonasGlobals.INSTANCE.Field1138.Method759()) {
                     stringBuilder.append(" ").append(class559.Method819());
                 }
                 for (Map.Entry<EntityPlayer, Long> entry : waypoints.Method1799().entrySet()) {
@@ -38,7 +38,7 @@ extends Command {
             }
         } else if (stringArray.length == 3) {
             if (stringArray[1].equalsIgnoreCase("get")) {
-                for (Class559 class559 : NewGui.INSTANCE.Field1138.Method759()) {
+                for (Class559 class559 : KonasGlobals.INSTANCE.Field1138.Method759()) {
                     if (!class559.Method819().equalsIgnoreCase(stringArray[2])) continue;
                     Logger.Method1118(class559.toString());
                 }
@@ -48,19 +48,19 @@ extends Command {
                     Logger.Method1118("Waypoint: {name=" + entityPlayer.getName() + ", x=" + entityPlayer.posX + ", y=" + entityPlayer.posY + ", z=" + entityPlayer.posZ + ", dimension =" + WaypointCommand.Field123.player.dimension + '}');
                 }
             } else if (stringArray[1].equalsIgnoreCase("del")) {
-                for (Class559 class559 : NewGui.INSTANCE.Field1138.Method759()) {
+                for (Class559 class559 : KonasGlobals.INSTANCE.Field1138.Method759()) {
                     if (!class559.Method819().equalsIgnoreCase(stringArray[2])) continue;
-                    NewGui.INSTANCE.Field1138.Method763(stringArray[2]);
+                    KonasGlobals.INSTANCE.Field1138.Method763(stringArray[2]);
                     Logger.Method1118("Deleted Waypoint &b" + stringArray[2]);
                 }
                 waypoints.Method1799().forEach((arg_0, arg_1) -> WaypointCommand.Method2178(stringArray, waypoints, arg_0, arg_1));
             } else if (stringArray[1].equalsIgnoreCase("add")) {
-                if (NewGui.INSTANCE.Field1138.Method761(stringArray[2]) != null) {
+                if (KonasGlobals.INSTANCE.Field1138.Method761(stringArray[2]) != null) {
                     Logger.Method1119("A Waypoint with this name already exists on this server!");
                     return;
                 }
                 Class559 class559 = new Class559(stringArray[2], Double.parseDouble(this.Field2540.format(WaypointCommand.Field123.player.posX)), Double.parseDouble(this.Field2540.format(WaypointCommand.Field123.player.posY)), Double.parseDouble(this.Field2540.format(WaypointCommand.Field123.player.posZ)), WaypointCommand.Field123.player.dimension, Class561.CUSTOM);
-                NewGui.INSTANCE.Field1138.Method760(class559);
+                KonasGlobals.INSTANCE.Field1138.Method760(class559);
                 Logger.Method1118("Added Waypoint " + class559.Method819() + " at " + class559.Method821() + ", " + class559.Method820() + ", " + class559.Method818());
             } else {
                 Logger.Method1119(this.Method191());
@@ -70,7 +70,7 @@ extends Command {
                 StringBuilder stringBuilder;
                 Class559 class559;
                 block77: {
-                    Class562 class562 = NewGui.INSTANCE.Field1138;
+                    Class562 class562 = KonasGlobals.INSTANCE.Field1138;
                     String string = stringArray[2];
                     Class559 class5592 = class562.Method761(string);
                     if (class5592 == null) break block77;
@@ -91,7 +91,7 @@ extends Command {
                 Class561 class561 = Class561.CUSTOM;
                 class5593(string, d, d2, d3, n, class561);
                 Class559 class5595 = class5594;
-                Class562 class562 = NewGui.INSTANCE.Field1138;
+                Class562 class562 = KonasGlobals.INSTANCE.Field1138;
                 Class559 class5596 = class5595;
                 class562.Method760(class5596);
                 StringBuilder stringBuilder2 = stringBuilder;

@@ -36,7 +36,7 @@ import net.minecraftforge.client.event.ClientChatEvent;
 
 public class KonasChat
 extends Module {
-    public Class566 Field644;
+    public TimerUtil Field644;
     public static boolean Field645 = true;
     public Socket Field646;
     public DataInputStream Field647;
@@ -226,7 +226,7 @@ extends Module {
 
     public KonasChat() {
         super("KonasChat", "Encrypt chat messages among Konas Users", Category.MISC, new String[0]);
-        this.Field644 = new Class566();
+        this.Field644 = new TimerUtil();
         this.Field649 = null;
         this.Field650 = new ListenableSettingDecorator("Mode", Class324.ROT13, this::Method718);
         this.Field651 = new Setting<>("Encrypt", true);
@@ -249,7 +249,7 @@ extends Module {
         if (class324 == Class324.PROTOCOL) {
             if (!Field645 && !this.Field644.Method737(10000.0)) {
                 Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.Method736()) / 1000L - 10L) + " seconds, before you enable this setting again!");
-                this.Field650.Method1153();
+                this.Field650.Cancel();
             } else {
                 if (this.Field649 == null) {
                     this.Field649 = Class509.Method1340();

@@ -13,7 +13,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class438;
 import me.darki.konas.unremaped.Class441;
 import me.darki.konas.unremaped.Class459;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
 
@@ -27,7 +27,7 @@ extends Module {
     public static Setting<Boolean> disableStrafe = new Setting<>("DisableStrafe", true);
     public static Setting<Class438> groundCheck = new Setting<>("GroundCheck", Class438.NORMAL);
     public static Setting<Boolean> autoDisable = new Setting<>("AutoDisable", false);
-    public Class566 Field337 = new Class566();
+    public TimerUtil Field337 = new TimerUtil();
     public boolean Field338;
     public boolean Field339;
     public int Field340 = 0;

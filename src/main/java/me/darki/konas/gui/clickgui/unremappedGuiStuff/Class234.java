@@ -9,6 +9,7 @@ import me.darki.konas.setting.PlayerPreview;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.Class247;
 
 public class Class234
 extends Class215 {
@@ -67,9 +68,9 @@ extends Class215 {
         super.Method497(n, n2, f);
         Class270 class270 = new Class270(this.Method486(), this.Method492(), this.Method489(), this.Method476(), 3.0f);
         Class247.Method2043(class270, Field319);
-        Class247.Field2262.Method863(this.Method483(), this.Method486() + 16.0f, this.Method492() + 16.0f, Field324);
+        Class247.cfontRenderer.Method863(this.Method483(), this.Method486() + 16.0f, this.Method492() + 16.0f, Field324);
         if (this.Field2454 == null && !this.Field2453.getDescription().isEmpty()) {
-            Class247.Field2261.Method863(this.Field2453.getDescription(), this.Method486() + 16.0f, this.Method492() + 32.0f, Field326);
+            Class247.smallCFontRenderer.Method863(this.Field2453.getDescription(), this.Method486() + 16.0f, this.Method492() + 32.0f, Field326);
         }
         this.Field2455.forEach(arg_0 -> Class234.Method2117(n, n2, f, arg_0));
     }

@@ -7,11 +7,12 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class418;
 import me.darki.konas.unremaped.Class447;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.math.Interpolation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -42,7 +43,7 @@ extends Module {
     public Setting<Boolean> inAir = new Setting<>("InAir", true);
     public Setting<Boolean> inWater = new Setting<>("InWater", true);
     public Setting<Boolean> inLava = new Setting<>("InLava", true);
-    public Class566 Field700 = new Class566();
+    public TimerUtil Field700 = new TimerUtil();
     public long Field701 = -1L;
     public int Field702 = 0;
     public int Field703 = 0;
@@ -159,7 +160,7 @@ extends Module {
         }
     }
 
-    @Override
+    //@Override
     public boolean Method396() {
         return this.glide.getValue() != Class447.OFF;
     }
@@ -178,23 +179,23 @@ extends Module {
 
     @Override
     public void onDisable() {
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.noFall.getValue().booleanValue()) break block0;
-            ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || !this.noFall.getValue().booleanValue()) break block0;
+            ((ICPacketPlayer) sendPacketEvent.getPacket()).setOnGround(true);
         }
     }
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
         if (this.useTimer.getValue().booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 10, 1.088f);
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 10, 1.088f);
         } else {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
     }
 }

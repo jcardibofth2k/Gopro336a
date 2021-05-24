@@ -3,7 +3,8 @@ package me.darki.konas.unremaped;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.client.KonasGui;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
+import me.darki.konas.util.Class247;
 
 public class Class213
 extends Class215 {
@@ -21,7 +22,7 @@ extends Class215 {
     @Override
     public boolean Method494(int n, int n2, int n3) {
         if (this.Method501(n, n2)) {
-            NewGui.INSTANCE.Field1131.Method1828().Method2174(this.Field491);
+            KonasGlobals.INSTANCE.Field1131.Method1828().Method2174(this.Field491);
             return true;
         }
         return super.Method494(n, n2, n3);
@@ -37,7 +38,7 @@ extends Class215 {
     public void Method497(int n, int n2, float f) {
         boolean bl;
         super.Method497(n, n2, f);
-        boolean bl2 = bl = NewGui.INSTANCE.Field1131.Method1828().Method2173() == this.Field491;
+        boolean bl2 = bl = KonasGlobals.INSTANCE.Field1131.Method1828().Method2173() == this.Field491;
         if (bl) {
             Class247.Method2043(this.Field494, this.Method501(n, n2) ? Field315.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field315);
             Class247.Method2042(this.Field494, Field317, 1.0f);
@@ -48,6 +49,6 @@ extends Class215 {
         if (string.equals("MOVEMENT")) {
             string = "TRAVEL";
         }
-        Class247.Field2262.Method863(string, (int)(this.Method486() + this.Method489() / 2.0f - Class247.Field2262.Method830(string) / 2.0f), (int)(this.Method492() + this.Method476() / 2.0f - Class247.Field2262.Method831(this.Method483()) / 2.0f), Field324);
+        Class247.cfontRenderer.Method863(string, (int)(this.Method486() + this.Method489() / 2.0f - Class247.cfontRenderer.Method830(string) / 2.0f), (int)(this.Method492() + this.Method476() / 2.0f - Class247.cfontRenderer.Method831(this.Method483()) / 2.0f), Field324);
     }
 }

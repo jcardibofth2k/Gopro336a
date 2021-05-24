@@ -7,7 +7,7 @@ import me.darki.konas.mixin.mixins.ICPacketPlayer;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -35,7 +35,7 @@ extends Module {
     public Block Field741 = null;
     public float Field742;
     public float Field743;
-    public Class566 Field744 = new Class566();
+    public TimerUtil Field744 = new TimerUtil();
     public BlockPos Field745 = null;
 
     public void Method789(BlockPos blockPos) {
@@ -131,15 +131,15 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block3: {
             if (Nuker.mc.world == null || Nuker.mc.player == null) {
                 return;
             }
-            if (!(class24.getPacket() instanceof CPacketPlayer) || this.Field744.Method737(350.0) || !((Boolean)this.rotate.getValue()).booleanValue() || this.timing.getValue() != Class410.VANILLA) break block3;
-            CPacketPlayer cPacketPlayer = (CPacketPlayer)class24.getPacket();
-            if (class24.getPacket() instanceof CPacketPlayer.Position) {
-                class24.setCanceled(true);
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || this.Field744.Method737(350.0) || !((Boolean)this.rotate.getValue()).booleanValue() || this.timing.getValue() != Class410.VANILLA) break block3;
+            CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
+                sendPacketEvent.setCanceled(true);
                 Nuker.mc.player.connection.sendPacket((Packet)new CPacketPlayer.PositionRotation(cPacketPlayer.getX(Nuker.mc.player.posX), cPacketPlayer.getY(Nuker.mc.player.posY), cPacketPlayer.getZ(Nuker.mc.player.posZ), this.Field742, this.Field743, cPacketPlayer.isOnGround()));
             } else {
                 ((ICPacketPlayer)cPacketPlayer).setYaw(this.Field742);
@@ -187,7 +187,7 @@ extends Module {
             }
             if (this.Field744.Method737(350.0)) break block7;
             if (((Boolean)this.rotate.getValue()).booleanValue()) {
-                NewGui.INSTANCE.Field1139.Method1937(this.Field742, this.Field743);
+                KonasGlobals.INSTANCE.Field1139.Method1937(this.Field742, this.Field743);
             }
         }
     }

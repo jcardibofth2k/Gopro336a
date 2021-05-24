@@ -3,10 +3,12 @@ package me.darki.konas.unremaped;
 import me.darki.konas.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 import me.darki.konas.mixin.mixins.IMinecraft;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -46,7 +48,7 @@ implements GuiListExtended.IGuiListEntry {
     public void Method1539(boolean bl, int n) {
         if (bl) {
             Minecraft.getMinecraft().displayGuiScreen((GuiScreen)new GuiScreenWorking());
-            NewGui.INSTANCE.Field1132.Method1659().Method1673(this);
+            KonasGlobals.INSTANCE.Field1132.Method1659().Method1673(this);
         }
         this.Field1540.displayGuiScreen((GuiScreen)this.Field1541);
     }
@@ -98,7 +100,7 @@ implements GuiListExtended.IGuiListEntry {
     }
 
     public Class170(Class68 class68) {
-        this.Field1541 = NewGui.INSTANCE.Field1132;
+        this.Field1541 = KonasGlobals.INSTANCE.Field1132;
         this.Field1542 = class68;
         this.Field1540 = Minecraft.getMinecraft();
         if (!this.Field1542.Method315()) {
@@ -125,8 +127,12 @@ implements GuiListExtended.IGuiListEntry {
         Class170 class170 = this;
         String string2 = string;
         InputStream inputStream = Class509.Method1348(string2);
-        BufferedImage bufferedImage = ImageIO.read(inputStream);
-        class170.Field1546 = bufferedImage;
+        //fixed by Gopro336
+        try {
+            BufferedImage bufferedImage = ImageIO.read(inputStream);
+            class170.Field1546 = bufferedImage;
+        }catch (IOException ignored){}
+
         BufferedImage bufferedImage2 = this.Field1546;
         int n = bufferedImage2.getWidth();
         boolean bl = n == 64;
@@ -147,7 +153,7 @@ implements GuiListExtended.IGuiListEntry {
     }
 
     public boolean mousePressed(int n, int n2, int n3, int n4, int n5, int n6) {
-        NewGui.INSTANCE.Field1132.Method1659().Method1666(n);
+        KonasGlobals.INSTANCE.Field1132.Method1659().Method1666(n);
         if (n5 <= 32 && n5 < 32) {
             this.Method1543();
             return true;

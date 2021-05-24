@@ -14,7 +14,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -28,7 +28,6 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.item.ItemBed;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketEntityAction;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
 import net.minecraft.potion.Potion;
@@ -42,10 +41,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 public class BedAura
 extends Module {
@@ -64,9 +60,9 @@ extends Module {
     public Setting<ParentSetting> misc = new Setting<>("Misc", new ParentSetting(false));
     public Setting<Boolean> swap = new Setting<>("Swap", true).setParentSetting(this.misc);
     public Setting<Boolean> autoMove = new Setting<>("AutoMove", true).setParentSetting(this.misc);
-    public Class566 Field1678 = new Class566();
-    public Class566 Field1679 = new Class566();
-    public Class566 Field1680 = new Class566();
+    public TimerUtil Field1678 = new TimerUtil();
+    public TimerUtil Field1679 = new TimerUtil();
+    public TimerUtil Field1680 = new TimerUtil();
     public static boolean Field1681;
     public static double Field1682;
     public static double Field1683;
@@ -105,7 +101,7 @@ extends Module {
     }
 
     public static float Method1587(float f) {
-        int n = Minecraft.getMinecraft().world.getDifficulty().getId();
+        int n = Minecraft.getMinecraft().world.getDifficulty().getDifficultyId();
         return f * (n == 0 ? 0.0f : (n == 2 ? 1.0f : (n == 1 ? 0.5f : 1.5f)));
     }
 
@@ -119,14 +115,14 @@ extends Module {
         if (this.Field1687 != -1) {
             if (!this.Method519()) {
                 BedAura.mc.player.inventory.currentItem = this.Field1687;
-                BedAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field1687));
+                BedAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(this.Field1687));
                 this.Field1687 = -1;
             }
         }
     }
 
     public boolean Method512(BlockPos blockPos) {
-        return (double)(BedAura.mc.player.getHealth() + BedAura.mc.player.getAbsorptionAmount() - BedAura.Method1590((double)blockPos.getX() + 0.5, blockPos.getY() + 1, (double)blockPos.getZ() + 0.5, (Entity) BedAura.mc.player)) > 0.5;
+        return (double)(BedAura.mc.player.getHealth() + BedAura.mc.player.getAbsorptionAmount() - BedAura.Method1590((double)blockPos.getX() + 0.5, blockPos.getY() + 1, (double)blockPos.getZ() + 0.5, BedAura.mc.player)) > 0.5;
     }
 
     public static double Method1588(BlockPos blockPos) {
@@ -148,25 +144,25 @@ extends Module {
                         }
                         this.Field1684 = null;
                         this.Field1685 = null;
-                        if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)this.rotate.getValue())) {
+                        if (updateEvent.isCanceled() || !Rotation.Method1959(this.rotate.getValue())) {
                             return;
                         }
                         if (BedAura.mc.player.dimension == 0) {
                             return;
                         }
-                        if (this.Field1678.Method737(1000 - (Integer)this.breakSpeed.getValue() * 50)) {
+                        if (this.Field1678.Method737(1000 - this.breakSpeed.getValue() * 50)) {
                             this.Field1684 = this.Method1593();
                         }
-                        if (this.Field1684 != null || !this.Field1679.Method737(1000 - (Integer)this.placeSpeed.getValue() * 50)) break block9;
+                        if (this.Field1684 != null || !this.Field1679.Method737(1000 - this.placeSpeed.getValue() * 50)) break block9;
                         if (BedAura.mc.player.inventory.getCurrentItem().getItem() != Items.BED && !this.Method519()) break block10;
                         this.Method517();
                         break block11;
                     }
-                    if (this.Method1553().isEmpty() || !((Boolean)this.swap.getValue()).booleanValue() || this.Method519()) break block11;
+                    if (this.Method1553().isEmpty() || !this.swap.getValue() || this.Method519()) break block11;
                     break block12;
                 }
                 if (this.Field1684 == null) break block11;
-                double[] dArray = PlayerUtil.Method1088((double)this.Field1684.getX() + 0.5, (double)this.Field1684.getY() + 0.5, (double)this.Field1684.getZ() + 0.5, (EntityPlayer) BedAura.mc.player);
+                double[] dArray = PlayerUtil.Method1088((double)this.Field1684.getX() + 0.5, (double)this.Field1684.getY() + 0.5, (double)this.Field1684.getZ() + 0.5, BedAura.mc.player);
                 Field1682 = dArray[0];
                 Field1683 = dArray[1];
                 Field1681 = true;
@@ -174,25 +170,25 @@ extends Module {
                 break block11;
             }
             for (n = 0; n < 9; ++n) {
-                ItemStack itemStack = (ItemStack) BedAura.mc.player.inventory.mainInventory.get(n);
+                ItemStack itemStack = BedAura.mc.player.inventory.mainInventory.get(n);
                 if (itemStack.getItem() != Items.BED) continue;
                 this.Field1687 = BedAura.mc.player.inventory.currentItem;
                 BedAura.mc.player.inventory.currentItem = n;
-                BedAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
+                BedAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
                 this.Method517();
                 break;
             }
-            if (((Boolean)this.autoMove.getValue()).booleanValue() && BedAura.mc.player.inventory.getCurrentItem().getItem() != Items.BED) {
+            if (this.autoMove.getValue().booleanValue() && BedAura.mc.player.inventory.getCurrentItem().getItem() != Items.BED) {
                 for (n = 9; n <= 35; ++n) {
                     if (BedAura.mc.player.inventory.getStackInSlot(n).getItem() != Items.BED) continue;
-                    BedAura.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, (EntityPlayer) BedAura.mc.player);
-                    BedAura.mc.playerController.windowClick(0, BedAura.mc.player.inventory.currentItem < 9 ? BedAura.mc.player.inventory.currentItem + 36 : BedAura.mc.player.inventory.currentItem, 0, ClickType.PICKUP, (EntityPlayer) BedAura.mc.player);
-                    BedAura.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, (EntityPlayer) BedAura.mc.player);
+                    BedAura.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, BedAura.mc.player);
+                    BedAura.mc.playerController.windowClick(0, BedAura.mc.player.inventory.currentItem < 9 ? BedAura.mc.player.inventory.currentItem + 36 : BedAura.mc.player.inventory.currentItem, 0, ClickType.PICKUP, BedAura.mc.player);
+                    BedAura.mc.playerController.windowClick(0, n, 0, ClickType.PICKUP, BedAura.mc.player);
                 }
             }
         }
         if (Field1681) {
-            NewGui.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
+            KonasGlobals.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
         }
         if (this.Field1680.Method737(450.0)) {
             Field1681 = false;
@@ -206,7 +202,7 @@ extends Module {
     public boolean Method522(BlockPos blockPos) {
         IBlockState iBlockState = BedAura.mc.world.getBlockState(blockPos.up());
         if (iBlockState.getBlock() == Blocks.AIR) {
-            return BedAura.mc.world.getBlockState(blockPos).isSideSolid((IBlockAccess) BedAura.mc.world, blockPos, EnumFacing.UP);
+            return BedAura.mc.world.getBlockState(blockPos).isSideSolid(BedAura.mc.world, blockPos, EnumFacing.UP);
         }
         return false;
     }
@@ -220,7 +216,7 @@ extends Module {
         float f2 = (int)((d6 * d6 + d6) / 2.0 * 7.0 * 12.0 + 1.0);
         double d7 = 1.0;
         if (entity instanceof EntityLivingBase) {
-            d7 = BedAura.Method1597((EntityLivingBase)entity, BedAura.Method1587(f2), new Explosion((World)Minecraft.getMinecraft().world, (Entity)null, d, d2, d3, 6.0f, false, true));
+            d7 = BedAura.Method1597((EntityLivingBase)entity, BedAura.Method1587(f2), new Explosion(Minecraft.getMinecraft().world, null, d, d2, d3, 6.0f, false, true));
         }
         return (float)d7;
     }
@@ -238,22 +234,22 @@ extends Module {
     }
 
     public static Float Method1056(EntityPlayer entityPlayer) {
-        return Float.valueOf(BedAura.mc.player.getDistance((Entity)entityPlayer));
+        return Float.valueOf(BedAura.mc.player.getDistance(entityPlayer));
     }
 
     public void Method1591(BlockPos blockPos, boolean bl) {
         if (BedAura.mc.world.getBlockState(blockPos).getBlock() == Blocks.BED) {
             return;
         }
-        float f = this.Method1595(blockPos, (Entity) BedAura.mc.player);
+        float f = this.Method1595(blockPos, BedAura.mc.player);
         if ((double)f > (double) BedAura.mc.player.getHealth() + (double) BedAura.mc.player.getAbsorptionAmount() + 0.5) {
-            if (bl && ((Boolean)this.airPlace.getValue()).booleanValue()) {
+            if (bl && this.airPlace.getValue()) {
                 this.Method1591(blockPos.up(), false);
             }
             return;
         }
         if (!BedAura.mc.world.getBlockState(blockPos).getMaterial().isReplaceable()) {
-            if (bl && ((Boolean)this.airPlace.getValue()).booleanValue()) {
+            if (bl && this.airPlace.getValue()) {
                 this.Method1591(blockPos.up(), false);
             }
             return;
@@ -264,24 +260,24 @@ extends Module {
             BlockPos blockPos2;
             if (enumFacing == EnumFacing.DOWN || enumFacing == EnumFacing.UP) continue;
             BlockPos blockPos3 = blockPos.offset(enumFacing);
-            if (!(BedAura.mc.player.getDistanceSq(blockPos2) <= Math.pow(((Float)this.placeRange.getValue()).floatValue(), 2.0)) || !BedAura.mc.world.getBlockState(blockPos3).getMaterial().isReplaceable() || BedAura.mc.world.getBlockState(blockPos3.down()).getMaterial().isReplaceable() || ((Boolean)this.rotate.getValue()).booleanValue() && EnumFacing.fromAngle((double) Class545.Method999(blockPos3, EnumFacing.UP, (EntityPlayer) BedAura.mc.player)[0]).getOpposite() != enumFacing) continue;
-            if (((Boolean)this.rayTrace.getValue()).booleanValue()) {
-                if (BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos3.getX() + 0.5, (double)(blockPos3.getY() + 1), (double)blockPos3.getZ() + 0.5)) != null) continue;
+            if (!(BedAura.mc.player.getDistanceSq(blockPos2) <= Math.pow(this.placeRange.getValue().floatValue(), 2.0)) || !BedAura.mc.world.getBlockState(blockPos3).getMaterial().isReplaceable() || BedAura.mc.world.getBlockState(blockPos3.down()).getMaterial().isReplaceable() || this.rotate.getValue().booleanValue() && EnumFacing.fromAngle(Class545.Method999(blockPos3, EnumFacing.UP, BedAura.mc.player)[0]).getOpposite() != enumFacing) continue;
+            if (this.rayTrace.getValue().booleanValue()) {
+                if (BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos3.getX() + 0.5, blockPos3.getY() + 1, (double)blockPos3.getZ() + 0.5)) != null) continue;
             }
             arrayList.add(blockPos3);
             hashMap.put(blockPos3, enumFacing.getOpposite());
         }
         if (arrayList.isEmpty()) {
-            if (bl && ((Boolean)this.airPlace.getValue()).booleanValue()) {
+            if (bl && this.airPlace.getValue().booleanValue()) {
                 this.Method1591(blockPos.up(), false);
             }
             return;
         }
         arrayList.sort(Comparator.comparingDouble(BedAura::Method1588));
-        this.Field1685 = (BlockPos)arrayList.get(0);
-        this.Field1686 = (EnumFacing)hashMap.get(this.Field1685);
-        if (((Boolean)this.rotate.getValue()).booleanValue()) {
-            float[] fArray = RotationUtil.Method1946(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)this.Field1685.down().getX() + 0.5, (double)(this.Field1685.down().getY() + 1), (double)this.Field1685.down().getZ() + 0.5));
+        this.Field1685 = arrayList.get(0);
+        this.Field1686 = hashMap.get(this.Field1685);
+        if (this.rotate.getValue().booleanValue()) {
+            float[] fArray = RotationUtil.Method1946(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)this.Field1685.down().getX() + 0.5, this.Field1685.down().getY() + 1, (double)this.Field1685.down().getZ() + 0.5));
             Field1682 = fArray[0];
             Field1683 = fArray[1];
             Field1681 = true;
@@ -295,11 +291,11 @@ extends Module {
     }
 
     public static Double Method1592(TileEntity tileEntity) {
-        return BedAura.mc.player.getDistance((double)tileEntity.getPos().getX(), (double)tileEntity.getPos().getY(), (double)tileEntity.getPos().getZ());
+        return BedAura.mc.player.getDistance(tileEntity.getPos().getX(), tileEntity.getPos().getY(), tileEntity.getPos().getZ());
     }
 
     public BlockPos Method1593() {
-        TileEntityBed tileEntityBed = BedAura.mc.world.loadedTileEntityList.stream().filter(BedAura::Method1589).filter(BedAura::Method1586).filter(this::Method1600).filter(this::Method1594).min(Comparator.comparing(BedAura::Method1592)).orElse(null);
+        TileEntityBed tileEntityBed = (TileEntityBed) BedAura.mc.world.loadedTileEntityList.stream().filter(BedAura::Method1589).filter(BedAura::Method1586).filter(this::Method1600).filter(this::Method1594).min(Comparator.comparing(BedAura::Method1592)).orElse(null);
         if (tileEntityBed != null) {
             return tileEntityBed.getPos();
         }
@@ -311,10 +307,10 @@ extends Module {
     }
 
     public void Method124() {
-        Vec3d vec3d = new Vec3d((Vec3i)this.Field1685.down()).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1686.getOpposite().getDirectionVec()).scale(0.5));
-        BedAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BedAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
-        Class496.Method1969(this.Field1685.down(), vec3d, this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, EnumFacing.UP, true, (Boolean)this.swing.getValue());
-        BedAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BedAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+        Vec3d vec3d = new Vec3d(this.Field1685.down()).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1686.getOpposite().getDirectionVec()).scale(0.5));
+        BedAura.mc.player.connection.sendPacket(new CPacketEntityAction(BedAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
+        Rotation.Method1969(this.Field1685.down(), vec3d, this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, EnumFacing.UP, true, this.swing.getValue());
+        BedAura.mc.player.connection.sendPacket(new CPacketEntityAction(BedAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         this.Field1679.Method739();
         this.Field1685 = null;
     }
@@ -332,28 +328,28 @@ extends Module {
     }
 
     public BedAura() {
-        super("BedAura", Category.COMBAT, new String[0]);
+        super("BedAura", Category.COMBAT);
     }
 
     public static float Method1597(EntityLivingBase entityLivingBase, float f, Explosion explosion) {
         if (entityLivingBase instanceof EntityPlayer) {
             EntityPlayer entityPlayer = (EntityPlayer)entityLivingBase;
-            DamageSource damageSource = DamageSource.causeExplosionDamage((Explosion)explosion);
-            f = CombatRules.getDamageAfterAbsorb((float)f, (float)entityPlayer.getTotalArmorValue(), (float)((float)entityPlayer.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue()));
-            int n = EnchantmentHelper.getEnchantmentModifierDamage((Iterable)entityPlayer.getArmorInventoryList(), (DamageSource)damageSource);
-            float f2 = MathHelper.clamp((float)n, (float)0.0f, (float)20.0f);
+            DamageSource damageSource = DamageSource.causeExplosionDamage(explosion);
+            f = CombatRules.getDamageAfterAbsorb(f, (float)entityPlayer.getTotalArmorValue(), (float)entityPlayer.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue());
+            int n = EnchantmentHelper.getEnchantmentModifierDamage(entityPlayer.getArmorInventoryList(), damageSource);
+            float f2 = MathHelper.clamp((float)n, 0.0f, 20.0f);
             f *= 1.0f - f2 / 25.0f;
-            if (entityLivingBase.isPotionActive(Potion.getPotionById((int)11))) {
+            if (entityLivingBase.isPotionActive(Potion.getPotionById(11))) {
                 f -= f / 4.0f;
             }
             return f;
         }
-        f = CombatRules.getDamageAfterAbsorb((float)f, (float)entityLivingBase.getTotalArmorValue(), (float)((float)entityLivingBase.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue()));
+        f = CombatRules.getDamageAfterAbsorb(f, (float)entityLivingBase.getTotalArmorValue(), (float)entityLivingBase.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).getAttributeValue());
         return f;
     }
 
     public static boolean Method126(EntityPlayer entityPlayer) {
-        return !Class546.Method963((Entity)entityPlayer);
+        return !Class546.Method963(entityPlayer);
     }
 
     public void Method517() {
@@ -361,17 +357,17 @@ extends Module {
         if (list.isEmpty()) {
             return;
         }
-        this.Method1591(new BlockPos((Entity)list.get(0)), true);
+        this.Method1591(new BlockPos(list.get(0)), true);
     }
 
     public void Method1598(BlockPos blockPos) {
         if (blockPos == null) {
             return;
         }
-        RayTraceResult rayTraceResult = (Boolean)this.strictDirection.getValue() != false ? BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.getX() + 0.5, (double)blockPos.getY(), (double)blockPos.getZ() + 0.5)) : null;
-        Vec3d vec3d = new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5);
+        RayTraceResult rayTraceResult = this.strictDirection.getValue() != false ? BedAura.mc.world.rayTraceBlocks(BedAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5)) : null;
+        Vec3d vec3d = new Vec3d(blockPos).add(0.5, 0.5, 0.5);
         EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
-        Class496.Method1969(blockPos, vec3d, EnumHand.MAIN_HAND, enumFacing, true, (Boolean)this.swing.getValue());
+        Rotation.Method1969(blockPos, vec3d, EnumHand.MAIN_HAND, enumFacing, true, this.swing.getValue());
         this.Field1678.Method739();
     }
 
@@ -404,14 +400,14 @@ extends Module {
     }
 
     public boolean Method1600(TileEntity tileEntity) {
-        return BedAura.mc.player.getDistance((double)tileEntity.getPos().getX(), (double)tileEntity.getPos().getY(), (double)tileEntity.getPos().getZ()) <= (double)((Float)this.breakRange.getValue()).floatValue();
+        return BedAura.mc.player.getDistance(tileEntity.getPos().getX(), tileEntity.getPos().getY(), tileEntity.getPos().getZ()) <= (double) this.breakRange.getValue().floatValue();
     }
 
     public boolean Method122(EntityPlayer entityPlayer) {
-        return BedAura.mc.player.getDistance((Entity)entityPlayer) < ((Float)this.placeRange.getValue()).floatValue() + 2.0f;
+        return BedAura.mc.player.getDistance(entityPlayer) < this.placeRange.getValue().floatValue() + 2.0f;
     }
 
     public static boolean Method132(EntityPlayer entityPlayer) {
-        return !Class546.Method963((Entity)entityPlayer);
+        return !Class546.Method963(entityPlayer);
     }
 }

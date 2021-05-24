@@ -8,13 +8,13 @@ import me.darki.konas.module.Category;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class475;
 import me.darki.konas.util.RotationUtil;
-import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Rotation;
 import me.darki.konas.unremaped.Class523;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IMinecraft;
 import me.darki.konas.module.Module;
@@ -57,7 +57,7 @@ extends Module {
     public static Setting<Boolean> autoDisable = new Setting<>("AutoDisable", true);
     public static Setting<Boolean> eChest = new Setting<>("EChest", false);
     public static boolean Field2433 = false;
-    public Class566 Field2434 = new Class566();
+    public TimerUtil Field2434 = new TimerUtil();
     public BlockPos Field2435;
     public int Field2436;
     public boolean Field2437;
@@ -209,7 +209,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block1: {
             if (Surround.mc.world == null || Surround.mc.player == null) {
                 return;
@@ -291,7 +291,7 @@ extends Module {
         boolean bl4 = false;
         EnumFacing enumFacing2 = null;
         double d = 69420.0;
-        for (EnumFacing enumFacing3 : Class496.Method1963(blockPos, strict.getValue(), false)) {
+        for (EnumFacing enumFacing3 : Rotation.Method1963(blockPos, strict.getValue(), false)) {
             blockPos2 = blockPos.offset(enumFacing3);
             Vec3d vec3d = new Vec3d(blockPos2).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
             if (!(Surround.mc.player.getPositionVector().addVector(0.0, (double)Surround.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < d)) continue;
@@ -311,7 +311,7 @@ extends Module {
         if (bl) {
             PlayerUtil.Method1081((Vec3d)blockPos2);
         }
-        Class496.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, swing.getValue());
+        Rotation.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, swing.getValue());
         Surround.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
         if (!force.getValue().booleanValue()) {
             this.Field2442.put(blockPos, System.currentTimeMillis());

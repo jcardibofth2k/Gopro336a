@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.AWTException;
 import java.awt.SystemTray;
@@ -49,7 +48,7 @@ extends Module {
     public Setting<Boolean> sound = new Setting<>("Sound", true);
     public ListenableSettingDecorator<Boolean> Field1419 = new ListenableSettingDecorator("SystemTray", false, this::Method1469);
     public ArrayList<Entity> Field1420 = new ArrayList();
-    public Class566 Field1421 = new Class566();
+    public TimerUtil Field1421 = new TimerUtil();
     public HashMap<Long, Boolean> Field1422 = new Class175(this);
 
     @Subscriber

@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +12,7 @@ import me.darki.konas.util.RotationUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
@@ -40,7 +39,7 @@ import org.lwjgl.input.Keyboard;
 public class Scaffold
 extends Module {
     public List<Block> Field889 = Arrays.asList(Blocks.ANVIL, Blocks.AIR, Blocks.WEB, Blocks.WATER, Blocks.FIRE, Blocks.FLOWING_WATER, Blocks.LAVA, Blocks.FLOWING_WATER, Blocks.CHEST, Blocks.ENCHANTING_TABLE, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.GRAVEL, Blocks.LADDER, Blocks.VINE, Blocks.BEACON, Blocks.JUKEBOX, Blocks.ACACIA_DOOR, Blocks.BIRCH_DOOR, Blocks.DARK_OAK_DOOR, Blocks.IRON_DOOR, Blocks.JUNGLE_DOOR, Blocks.OAK_DOOR, Blocks.SPRUCE_DOOR, Blocks.IRON_TRAPDOOR, Blocks.TRAPDOOR, Blocks.BLACK_SHULKER_BOX, Blocks.BLUE_SHULKER_BOX, Blocks.BROWN_SHULKER_BOX, Blocks.CYAN_SHULKER_BOX, Blocks.GRAY_SHULKER_BOX, Blocks.GREEN_SHULKER_BOX, Blocks.LIGHT_BLUE_SHULKER_BOX, Blocks.LIME_SHULKER_BOX, Blocks.MAGENTA_SHULKER_BOX, Blocks.ORANGE_SHULKER_BOX, Blocks.PINK_SHULKER_BOX, Blocks.PURPLE_SHULKER_BOX, Blocks.RED_SHULKER_BOX, Blocks.SILVER_SHULKER_BOX, Blocks.WHITE_SHULKER_BOX, Blocks.YELLOW_SHULKER_BOX);
-    public Class566 Field890 = new Class566();
+    public TimerUtil Field890 = new TimerUtil();
     public Class325 Field891;
     public static Setting<Class443> customBlocks = new Setting<>("CustomBlocks", new Class443(new String[0]));
     public static Setting<Class322> filter = new Setting<>("Filter", Class322.NONE);
@@ -55,7 +54,7 @@ extends Module {
     public static Setting<Boolean> down = new Setting<>("Down", true);
     public static Setting<Boolean> swing = new Setting<>("Swing", false);
     public int Field904;
-    public Class566 Field905 = new Class566();
+    public TimerUtil Field905 = new TimerUtil();
     public float Field906;
     public float Field907;
     public BlockPos Field908;
@@ -72,8 +71,8 @@ extends Module {
     @Subscriber(priority=3)
     public void Method135(UpdateEvent updateEvent) {
         block0: {
-            if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Class496.Method1966()) break block0;
-            NewGui.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
+            if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Rotation.Method1966()) break block0;
+            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
         }
     }
 
@@ -91,7 +90,7 @@ extends Module {
 
     @Override
     public void onDisable() {
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public double[] Method943(double d, double d2, double d3, double d4, float f) {
@@ -428,7 +427,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block0: {
             if (this.Field891 == null || this.Field891.Field566 == null) break block0;
             Class523.Method1218(this.Field891.Field566);
@@ -480,7 +479,7 @@ extends Module {
                 this.Field891 = this.Method945((BlockPos)object);
                 if (this.Field891 != null) {
                     float[] fArray = RotationUtil.Method1946(Scaffold.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field891.Field566.getX() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getX() * 0.5, (double)this.Field891.Field566.getY() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getY() * 0.5, (double)this.Field891.Field566.getZ() + 0.5 + (double)this.Field891.Field567.getDirectionVec().getZ() * 0.5));
-                    NewGui.INSTANCE.Field1139.Method1937(fArray[0], fArray[1]);
+                    KonasGlobals.INSTANCE.Field1139.Method1937(fArray[0], fArray[1]);
                     this.Field906 = fArray[0];
                     this.Field907 = fArray[1];
                     this.Field905.Method739();
@@ -509,25 +508,25 @@ extends Module {
                         return;
                     }
                     if (tower.getValue() == Class307.FAST) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 25, Scaffold.mc.player.ticksExisted % 10 == 0 ? 1.0f : 1.5782f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 25, Scaffold.mc.player.ticksExisted % 10 == 0 ? 1.0f : 1.5782f);
                     }
                     Scaffold.mc.player.motionY = 0.42f;
                     Scaffold.mc.player.motionZ = 0.0;
                     Scaffold.mc.player.motionX = 0.0;
                     if (this.Field890.Method737(1500.0)) {
-                        NewGui.INSTANCE.Field1134.Method749(this);
+                        KonasGlobals.INSTANCE.Field1134.Method749(this);
                         this.Field890.Method739();
                         Scaffold.mc.player.motionY = -0.28;
                     }
                 } else {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                     this.Field890.Method739();
                     if (this.Field909 && ((Boolean) center.getValue()).booleanValue()) {
                         this.Field909 = false;
                     }
                 }
             } else {
-                NewGui.INSTANCE.Field1134.Method749(this);
+                KonasGlobals.INSTANCE.Field1134.Method749(this);
             }
             if (Scaffold.mc.playerController.processRightClickBlock(Scaffold.mc.player, Scaffold.mc.world, this.Field891.Field566, this.Field891.Field567, new Vec3d((double)this.Field891.Field566.getX() + Math.random(), (double)this.Field891.Field566.getY() + Math.random(), (double)this.Field891.Field566.getZ() + Math.random()), EnumHand.MAIN_HAND) != EnumActionResult.FAIL) {
                 if (((Boolean) swing.getValue()).booleanValue()) {

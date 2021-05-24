@@ -11,7 +11,7 @@ import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -108,14 +108,14 @@ extends Module {
                 }
             }
             if (class4402 != null) {
-                Class507.Method1386();
-                Class507.Method1379(axisAlignedBB, class4402);
-                Class507.Method1385();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1379(axisAlignedBB, class4402);
+                EspRenderUtil.Method1385();
             }
             if (colorValue != null) {
-                Class507.Method1386();
-                Class507.Method1374(axisAlignedBB, 1.5, colorValue);
-                Class507.Method1385();
+                EspRenderUtil.Method1386();
+                EspRenderUtil.Method1374(axisAlignedBB, 1.5, colorValue);
+                EspRenderUtil.Method1385();
             }
             if (class4403 == null) break block13;
             Vec3d vec3d = new Vec3d(0.0, 0.0, 1.0).rotatePitch(-((float)Math.toRadians(Waypoints.mc.player.rotationPitch))).rotateYaw(-((float)Math.toRadians(Waypoints.mc.player.rotationYaw)));
@@ -125,7 +125,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (Waypoints.mc.world == null || Waypoints.mc.player == null) {
             return;
         }
@@ -136,7 +136,7 @@ extends Module {
                 this.Method1797(entityPlayer.getEntityBoundingBox(), Class197.LOGOUT);
             }
         }
-        for (Class559 class559 : NewGui.INSTANCE.Field1138.Method759()) {
+        for (Class559 class559 : KonasGlobals.INSTANCE.Field1138.Method759()) {
             this.Method1797(new AxisAlignedBB(class559.Method821(), class559.Method820(), class559.Method818(), class559.Method821() + 1.0, class559.Method820() + 2.0, class559.Method818() + 1.0), class559.Method815() == Class561.DEATH ? Class197.DEATH : Class197.CUSTOM);
         }
     }
@@ -147,11 +147,11 @@ extends Module {
             this.Field1919.clear();
         } else if (openGuiEvent.Method1161() instanceof GuiGameOver && this.renderDeaths.getValue().booleanValue()) {
             if (this.onlyLast.getValue().booleanValue()) {
-                NewGui.INSTANCE.Field1138.Method764();
+                KonasGlobals.INSTANCE.Field1138.Method764();
             }
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");
             Date date = new Date();
-            NewGui.INSTANCE.Field1138.Method760(new Class559("Death_" + simpleDateFormat.format(date), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posX)), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posY)), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posZ)), Waypoints.mc.player.dimension, Class561.DEATH));
+            KonasGlobals.INSTANCE.Field1138.Method760(new Class559("Death_" + simpleDateFormat.format(date), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posX)), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posY)), Double.parseDouble(this.Field1920.format(Waypoints.mc.player.posZ)), Waypoints.mc.player.dimension, Class561.DEATH));
         }
     }
 

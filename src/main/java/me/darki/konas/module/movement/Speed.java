@@ -8,16 +8,16 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class19;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.event.events.EntityUseItemEvent;
 import me.darki.konas.settingEnums.StrafeMode;
 import me.darki.konas.unremaped.Class347;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.setting.ParentSetting;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.util.PlayerUtil;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;
@@ -69,8 +69,8 @@ extends Module {
     public int Field417 = 0;
     public boolean Field418;
     public double Field419 = 0.0;
-    public Class566 Field420 = new Class566();
-    public Class566 Field421 = new Class566();
+    public TimerUtil Field420 = new TimerUtil();
+    public TimerUtil Field421 = new TimerUtil();
     public int Field422;
     public double Field423;
     public boolean Field424;
@@ -106,7 +106,7 @@ extends Module {
             this.Field411 = Math.sqrt(d * d + d2 * d2);
         }
         if (ModuleManager.getModuleByClass(ElytraFly.class).isEnabled() && ElytraFly.Method976()) {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
             return;
         }
         int n = MathHelper.floor(Speed.mc.player.getEntityBoundingBox().minY - 0.2);
@@ -119,9 +119,9 @@ extends Module {
             return;
         }
         if ((this.Method537() == StrafeMode.STRAFEOLD || this.Method537() == StrafeMode.STRAFE || this.Method537() == StrafeMode.LOWHOP) && this.useTimer.getValue().booleanValue()) {
-            NewGui.INSTANCE.Field1134.Method746(this, 10, 1.08f + 0.008f * this.factor.getValue().floatValue());
+            KonasGlobals.INSTANCE.Field1134.Method746(this, 10, 1.08f + 0.008f * this.factor.getValue().floatValue());
         } else if (this.Method537() != StrafeMode.STRAFESTRICT && this.Method537() != StrafeMode.SMALLHOP) {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
         switch (Class347.Field2591[this.Method537().ordinal()]) {
             case 1: {
@@ -140,11 +140,11 @@ extends Module {
             }
             case 2: {
                 if (!PlayerUtil.Method1080() || Speed.mc.player.collidedHorizontally) {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                     return;
                 }
                 if (Speed.mc.player.onGround) {
-                    NewGui.INSTANCE.Field1134.Method746(this, 10, 1.15f);
+                    KonasGlobals.INSTANCE.Field1134.Method746(this, 10, 1.15f);
                     Speed.mc.player.jump();
                     boolean bl3 = Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockIce || Speed.mc.world.getBlockState(new BlockPos(Speed.mc.player.posX, Speed.mc.player.posY - 1.0, Speed.mc.player.posZ)).getBlock() instanceof BlockPackedIce;
                     double[] dArray = PlayerUtil.Method1086(this.Method541() * this.speed.getValue() + (this.boost.getValue().booleanValue() ? (bl3 ? 0.3 : 0.06 * this.boostFactor.getValue()) : 0.0));
@@ -153,7 +153,7 @@ extends Module {
                     break;
                 }
                 Speed.mc.player.motionY = -1.0;
-                NewGui.INSTANCE.Field1134.Method749(this);
+                KonasGlobals.INSTANCE.Field1134.Method749(this);
                 break;
             }
         }
@@ -189,11 +189,11 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketPlayer) || !this.Field427) break block0;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || !this.Field427) break block0;
             this.Field427 = false;
-            ((ICPacketPlayer)class24.getPacket()).setOnGround(true);
+            ((ICPacketPlayer) sendPacketEvent.getPacket()).setOnGround(true);
         }
     }
 
@@ -218,7 +218,7 @@ extends Module {
         if (this.Method537() == StrafeMode.SMALLHOP) {
             Speed.mc.player.setVelocity(0.0, 0.0, 0.0);
         }
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public boolean Method538() {
@@ -367,9 +367,9 @@ extends Module {
                 ++this.Field415;
                 this.Field415 %= 5;
                 if (this.Field415 != 0) {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                 } else if (PlayerUtil.Method1080()) {
-                    NewGui.INSTANCE.Field1134.Method746(this, 10, 1.3f);
+                    KonasGlobals.INSTANCE.Field1134.Method746(this, 10, 1.3f);
                     Speed.mc.player.motionX *= 1.02f;
                     Speed.mc.player.motionZ *= 1.02f;
                 }
@@ -610,7 +610,7 @@ extends Module {
                     return;
                 }
                 if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook)) break block1;
-                NewGui.INSTANCE.Field1134.Method749(this);
+                KonasGlobals.INSTANCE.Field1134.Method749(this);
                 this.Field408 = 0.0;
                 this.Field410 = 0.0;
                 this.Field409 = 0.0;

@@ -1,13 +1,11 @@
 package me.darki.konas.module;
 
 import cookiedragon.eventsystem.Subscriber;
-import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class28;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ClickType;
 import net.minecraft.util.EnumHand;
@@ -16,7 +14,7 @@ public class StrictTotem
 extends Module {
     public static Setting<Integer> delay = new Setting<>("Delay", 0, 20, 0, 1);
     public static Setting<Boolean> cancelMotion = new Setting<>("CancelMotion", false);
-    public Class566 Field2555 = new Class566();
+    public TimerUtil Field2555 = new TimerUtil();
     public boolean Field2556 = false;
 
     @Subscriber

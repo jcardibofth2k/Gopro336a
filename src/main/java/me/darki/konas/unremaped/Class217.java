@@ -3,7 +3,8 @@ package me.darki.konas.unremaped;
 import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class215;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
+import me.darki.konas.util.Class247;
 
 public class Class217
 extends Class215 {
@@ -27,7 +28,7 @@ extends Class215 {
                 return true;
             }
             if (n3 == 1) {
-                NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2170(this.Field390);
+                KonasGlobals.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2170(this.Field390);
             }
         }
         return super.Method494(n, n2, n3);
@@ -44,10 +45,10 @@ extends Class215 {
         } else if (this.Method501(n, n2)) {
             Class247.Method2043(class272, Field319.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()));
         }
-        if (NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179() != null && NewGui.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179().equals(this.Field390)) {
+        if (KonasGlobals.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179() != null && KonasGlobals.INSTANCE.Field1131.Method1828().Method2175().get((Object)this.Field390.getCategory()).Method2179().equals(this.Field390)) {
             Class247.Method2043(class2722, Field315);
             Class247.Method2042(class2722, Field317, 1.0f);
         }
-        Class247.Field2262.Method863(this.Method483(), this.Method486() + 12.0f, (int)(this.Method492() + this.Method476() / 2.0f - Class247.Field2262.Method831(this.Method483()) / 2.0f), Field324);
+        Class247.cfontRenderer.Method863(this.Method483(), this.Method486() + 12.0f, (int)(this.Method492() + this.Method476() / 2.0f - Class247.cfontRenderer.Method831(this.Method483()) / 2.0f), Field324);
     }
 }

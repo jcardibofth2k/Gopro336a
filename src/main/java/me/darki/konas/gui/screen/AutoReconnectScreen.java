@@ -1,7 +1,7 @@
 package me.darki.konas.gui.screen;
 
 import java.util.List;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.mixin.mixins.IGuiDisconnected;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDisconnected;
@@ -19,7 +19,7 @@ extends GuiScreen {
     public GuiScreen Field1846;
     public int Field1847;
     public ServerData Field1848;
-    public Class566 Field1849;
+    public TimerUtil Field1849;
     public int Field1850;
 
     public void Method613() {
@@ -73,7 +73,7 @@ extends GuiScreen {
         this.Field1843 = ((IGuiDisconnected)guiDisconnected).getReason();
         this.Field1844 = ((IGuiDisconnected)guiDisconnected).getMessage();
         this.Field1848 = serverData;
-        this.Field1849 = new Class566();
+        this.Field1849 = new TimerUtil();
         this.Field1850 = n;
     }
 }

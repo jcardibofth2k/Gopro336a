@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
@@ -27,7 +26,7 @@ extends Module {
     public static Setting<Boolean> rearrange = new Setting<>("Rearrange", false);
     public static Setting<Boolean> noGapSwitch = new Setting<>("NoGapSwitch", false);
     public static Setting<Integer> minHealth = new Setting<>("MinHealth", 20, 36, 0, 1);
-    public Class566 Field2480 = new Class566();
+    public TimerUtil Field2480 = new TimerUtil();
     public boolean Field2481 = false;
 
     @Subscriber(priority=98)
@@ -37,7 +36,7 @@ extends Module {
                 if (Class233.mc.player == null || Class233.mc.world == null) {
                     return;
                 }
-                if (updateEvent.isCanceled() || !Class496.Method1966()) {
+                if (updateEvent.isCanceled() || !Rotation.Method1966()) {
                     return;
                 }
                 if (!this.Field2480.Method737(2500.0)) {

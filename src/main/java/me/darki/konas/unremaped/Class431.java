@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import io.netty.util.internal.ConcurrentSet;
 import java.awt.Color;
@@ -37,7 +36,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (mc.getRenderViewEntity() == null) {
             return;
         }
@@ -53,10 +52,10 @@ extends Module {
             AxisAlignedBB axisAlignedBB = new AxisAlignedBB((double)chunkPos.getXStart(), 0.0, (double)chunkPos.getZStart(), (double)chunkPos.getXEnd(), 0.0, (double)chunkPos.getZEnd());
             GlStateManager.pushMatrix();
             if (this.Field799.isBoundingBoxInFrustum(axisAlignedBB)) {
-                double d = Class431.mc.player.lastTickPosX + (Class431.mc.player.posX - Class431.mc.player.lastTickPosX) * (double)class89.Method436();
-                double d2 = Class431.mc.player.lastTickPosY + (Class431.mc.player.posY - Class431.mc.player.lastTickPosY) * (double)class89.Method436();
-                double d3 = Class431.mc.player.lastTickPosZ + (Class431.mc.player.posZ - Class431.mc.player.lastTickPosZ) * (double)class89.Method436();
-                Class502.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)this.color.getValue()).Method774());
+                double d = Class431.mc.player.lastTickPosX + (Class431.mc.player.posX - Class431.mc.player.lastTickPosX) * (double) render3DEvent.Method436();
+                double d2 = Class431.mc.player.lastTickPosY + (Class431.mc.player.posY - Class431.mc.player.lastTickPosY) * (double) render3DEvent.Method436();
+                double d3 = Class431.mc.player.lastTickPosZ + (Class431.mc.player.posZ - Class431.mc.player.lastTickPosZ) * (double) render3DEvent.Method436();
+                RenderUtil3D.Method1414(axisAlignedBB.offset(-d, -d2, -d3), 3, ((ColorValue)this.color.getValue()).Method774());
             }
             GlStateManager.popMatrix();
         }

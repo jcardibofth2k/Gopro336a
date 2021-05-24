@@ -14,7 +14,6 @@ import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.PlayerSPPushOutOfBlocksEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderTooltipEvent;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -130,13 +129,13 @@ public class EventProcessor {
     }
 
     @SubscribeEvent
-    public void Method1787(RenderWorldLastEvent renderWorldLastEvent) {
+    public void Method1787(net.minecraftforge.client.event.RenderWorldLastEvent renderWorldLastEvent) {
         if (renderWorldLastEvent.isCanceled()) {
             return;
         }
         Minecraft.getMinecraft().profiler.startSection("konas");
-        Render3DEvent render3DEvent = new Render3DEvent(renderWorldLastEvent.getPartialTicks());
-        EventDispatcher.Companion.dispatch(render3DEvent);
+        RenderWorldLastEvent renderWorldLast = new RenderWorldLastEvent(renderWorldLastEvent.getPartialTicks());
+        EventDispatcher.Companion.dispatch(renderWorldLast);
         Minecraft.getMinecraft().profiler.endSection();
     }
 

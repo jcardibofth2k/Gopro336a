@@ -1,13 +1,12 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.util.Locale;
 
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -26,7 +25,7 @@ extends Module {
     public static Setting<Boolean> use = new Setting<>("Use", false);
     public static Setting<Class312> mode = new Setting<>("Mode", Class312.FOOD).visibleIf(Field879::getValue);
     public static Setting<Class531> items = new Setting<>("Items", new Class531(new String[0]));
-    public static Class566 Field882 = new Class566();
+    public static TimerUtil Field882 = new TimerUtil();
     public static boolean Field883 = false;
     public long Field884 = -1L;
     public float[] Field885 = new float[22];
@@ -53,9 +52,9 @@ extends Module {
                 }
                 f /= f2;
                 if ((f = Math.max(f, 0.5f)) < 0.9f) {
-                    NewGui.INSTANCE.Field1134.Method746(this, 1000, f);
+                    KonasGlobals.INSTANCE.Field1134.Method746(this, 1000, f);
                 } else {
-                    NewGui.INSTANCE.Field1134.Method749(this);
+                    KonasGlobals.INSTANCE.Field1134.Method749(this);
                 }
             }
         }
@@ -66,12 +65,12 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
-        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && class24.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
+        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
             Field882.Method738(0L);
             NoDesync.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(NoDesync.mc.player.rotationYaw, NoDesync.mc.player.rotationPitch, NoDesync.mc.player.onGround));
         }
-        if (class24.getPacket() instanceof CPacketPlayer) {
+        if (sendPacketEvent.getPacket() instanceof CPacketPlayer) {
             if (((Boolean)limit.getValue()).booleanValue()) {
                 if (this.Field884 != -1L) {
                     float f;

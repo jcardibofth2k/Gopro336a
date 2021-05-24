@@ -15,7 +15,7 @@ import javax.sound.sampled.FloatControl;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class480;
 import me.darki.konas.unremaped.Class522;
 import me.darki.konas.unremaped.Class91;
@@ -221,7 +221,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block19: {
             if (HitMarkers.mc.player == null) {
                 return;
@@ -229,10 +229,10 @@ extends Module {
             if (mode.getValue() == Class522.MOUSE) {
                 return;
             }
-            Class24 class242 = class24;
+            SendPacketEvent class242 = sendPacketEvent;
             Packet packet = class242.getPacket();
             if (!(packet instanceof CPacketUseEntity)) break block19;
-            Class24 class243 = class24;
+            SendPacketEvent class243 = sendPacketEvent;
             Packet packet2 = class243.getPacket();
             CPacketUseEntity cPacketUseEntity = (CPacketUseEntity)packet2;
             CPacketUseEntity.Action action = cPacketUseEntity.getAction();

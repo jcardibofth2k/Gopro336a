@@ -6,12 +6,12 @@ import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.StepMode;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.exploit.RubberFill;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
@@ -31,7 +31,7 @@ extends Module {
     public boolean Field2157 = false;
     public int Field2158 = 0;
     public int Field2159 = 0;
-    public Class566 Field2160 = new Class566();
+    public TimerUtil Field2160 = new TimerUtil();
     public double Field2161 = 0.0;
     public static double[] Field2162 = new double[]{0.42, 0.753};
     public static double[] Field2163 = new double[]{0.42, 0.75, 1.0, 1.16, 1.23, 1.2};
@@ -52,12 +52,12 @@ extends Module {
         }
         if (useTimer.getValue().booleanValue()) {
             if (this.Field2158 == 0) {
-                NewGui.INSTANCE.Field1134.Method749(this);
+                KonasGlobals.INSTANCE.Field1134.Method749(this);
             } else {
                 --this.Field2158;
             }
         } else {
-            NewGui.INSTANCE.Field1134.Method749(this);
+            KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
     }
 
@@ -96,7 +96,7 @@ extends Module {
     @Override
     public void onDisable() {
         Step.mc.player.stepHeight = 0.5f;
-        NewGui.INSTANCE.Field1134.Method749(this);
+        KonasGlobals.INSTANCE.Field1134.Method749(this);
     }
 
     public double Method463() {
@@ -233,7 +233,7 @@ extends Module {
                         Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
                     if (useTimer.getValue().booleanValue()) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 15, 0.6f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 15, 0.6f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 1.0, Step.mc.player.posZ);
                     this.Field2158 = 1;
@@ -243,7 +243,7 @@ extends Module {
                         Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
                     if (useTimer.getValue().booleanValue()) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 15, 0.35f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 15, 0.35f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 1.5, Step.mc.player.posZ);
                     this.Field2158 = 1;
@@ -253,7 +253,7 @@ extends Module {
                         Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
                     if (useTimer.getValue().booleanValue()) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 15, 0.25f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 15, 0.25f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 2.0, Step.mc.player.posZ);
                     this.Field2158 = 2;
@@ -263,7 +263,7 @@ extends Module {
                         Step.mc.player.connection.sendPacket(new CPacketPlayer.Position(Step.mc.player.posX, Step.mc.player.posY + d, Step.mc.player.posZ, Step.mc.player.onGround));
                     }
                     if (useTimer.getValue().booleanValue()) {
-                        NewGui.INSTANCE.Field1134.Method746(this, 15, 0.15f);
+                        KonasGlobals.INSTANCE.Field1134.Method746(this, 15, 0.15f);
                     }
                     Step.mc.player.setPosition(Step.mc.player.posX, Step.mc.player.posY + 2.5, Step.mc.player.posZ);
                     this.Field2158 = 2;

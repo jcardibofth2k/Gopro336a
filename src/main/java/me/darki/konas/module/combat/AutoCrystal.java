@@ -18,7 +18,7 @@ import me.darki.konas.settingEnums.ACComfirmMode;
 import me.darki.konas.settingEnums.ACInteractMode;
 import me.darki.konas.settingEnums.ACRotateMode;
 import me.darki.konas.settingEnums.ACDamageMode;
-import me.darki.konas.unremaped.Class24;
+import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.settingEnums.ACSyncMode;
 import me.darki.konas.settingEnums.ACTiming;
@@ -26,26 +26,26 @@ import me.darki.konas.settingEnums.ACTargetMode;
 import me.darki.konas.settingEnums.ACSwapMode;
 import me.darki.konas.settingEnums.ACYawstepMode;
 import me.darki.konas.module.player.FastUse;
-import me.darki.konas.unremaped.Class425;
+import me.darki.konas.unremaped.NameTags;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.unremaped.Class473;
 import me.darki.konas.unremaped.Class475;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.util.RotationUtil;
-import me.darki.konas.unremaped.Class496;
+import me.darki.konas.unremaped.Rotation;
 import me.darki.konas.unremaped.Class50;
-import me.darki.konas.unremaped.Class502;
-import me.darki.konas.unremaped.Class507;
+import me.darki.konas.unremaped.RenderUtil3D;
+import me.darki.konas.unremaped.EspRenderUtil;
 import me.darki.konas.setting.ParentSetting;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class545;
 import me.darki.konas.unremaped.Class546;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.mixin.mixins.ICPacketUseEntity;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.mixin.mixins.IRenderManager;
@@ -174,37 +174,37 @@ public class AutoCrystal
 
     public Vec3d lookingAt = null;
     public float[] pitchYawValues = new float[]{0.0f, 0.0f};
-    public Class566 Field1622 = new Class566();
+    public TimerUtil Field1622 = new Class566();
     public EntityEnderCrystal bestBreak;
     public BlockPos bestPlace;
     public EnumFacing facingBestPlace;
     public RayTraceResult Field1627;
-    public Class566 Field1628 = new Class566();
-    public Class566 Field1629 = new Class566();
-    public Class566 Field1630 = new Class566();
+    public TimerUtil Field1628 = new TimerUtil();
+    public TimerUtil Field1629 = new TimerUtil();
+    public TimerUtil Field1630 = new TimerUtil();
     public BlockPos Field1631;
     public float Field1632 = 0.0f;
-    public Class566 Field1633 = new Class566();
+    public TimerUtil Field1633 = new TimerUtil();
     public BlockPos Field1634;
-    public Class566 Field1635 = new Class566();
+    public TimerUtil Field1635 = new TimerUtil();
     public boolean Field1636 = false;
-    public ConcurrentHashMap<BlockPos, Long> listCrystalsPlaced = new ConcurrentHashMap();
-    public ConcurrentHashMap<Integer, Long> listCrystals = new ConcurrentHashMap();
-    public Map<EntityPlayer, Class566> Field1639 = new ConcurrentHashMap<EntityPlayer, Class566>();
+    public ConcurrentHashMap<BlockPos, Long> Field1637 = new ConcurrentHashMap();
+    public ConcurrentHashMap<Integer, Long> Field1638 = new ConcurrentHashMap();
+    public Map<EntityPlayer, TimerUtil> Field1639 = new ConcurrentHashMap<EntityPlayer, TimerUtil>();
     public List<BlockPos> listCrystalsBroken = new CopyOnWriteArrayList<BlockPos>();
     public AtomicBoolean Field1641 = new AtomicBoolean(false);
-    public Class566 Field1642 = new Class566();
-    public Class566 Field1643 = new Class566();
+    public TimerUtil Field1642 = new TimerUtil();
+    public TimerUtil Field1643 = new TimerUtil();
     public BlockPos Field1644 = null;
-    public Class566 Field1645 = new Class566();
+    public TimerUtil Field1645 = new TimerUtil();
     public EntityEnderCrystal Field1646 = null;
-    public Class566 Field1647 = new Class566();
+    public TimerUtil Field1647 = new TimerUtil();
     public Vec3d Field1648 = null;
     public Thread Field1649;
     public AtomicBoolean Field1650 = new AtomicBoolean(false);
     public AtomicBoolean Field1651 = new AtomicBoolean(false);
     public EntityPlayer Field1652;
-    public Class566 Field1653 = new Class566();
+    public TimerUtil Field1653 = new TimerUtil();
     public int Field1654;
     public boolean Field1655 = false;
     public int oldSlot = -1;
@@ -237,13 +237,13 @@ public class AutoCrystal
     }
 
     @Subscriber
-    public void onWorldRender(final Class89 class89) {
+    public void onWorldRender(final Render3DEvent render3DEvent) {
         if (AutoCrystal.mc.player == null || AutoCrystal.mc.world == null) {
             return;
         }
         if (AutoCrystal.targetRender.getValue() && this.Field1652 != null && !this.Field1653.Method737(3500.0)) {
             GlStateManager.pushMatrix();
-            Class507.Method1386();
+            EspRenderUtil.Method1386();
             if (AutoCrystal.depth.getValue()) {
                 GlStateManager.enableDepth();
             }
@@ -253,9 +253,9 @@ public class AutoCrystal
             final float n = n2 = System.currentTimeMillis() % 7200L / 7200.0f;
             int n3 = Color.getHSBColor(n2, rgBtoHSB[1], rgBtoHSB[2]).getRGB();
             final ArrayList<Vec3d> list = new ArrayList<Vec3d>();
-            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * class89.Method436() - renderManager.getRenderPosX();
-            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * class89.Method436() - renderManager.getRenderPosY();
-            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * class89.Method436() - renderManager.getRenderPosZ();
+            final double n4 = this.Field1652.lastTickPosX + (this.Field1652.posX - this.Field1652.lastTickPosX) * render3DEvent.Method436() - renderManager.getRenderPosX();
+            final double n5 = this.Field1652.lastTickPosY + (this.Field1652.posY - this.Field1652.lastTickPosY) * render3DEvent.Method436() - renderManager.getRenderPosY();
+            final double n6 = this.Field1652.lastTickPosZ + (this.Field1652.posZ - this.Field1652.lastTickPosZ) * render3DEvent.Method436() - renderManager.getRenderPosZ();
             final double n7 = -Math.cos(System.currentTimeMillis() / 1000.0 * (float)AutoCrystal.animSpeed.getValue()) * (this.Field1652.height / 2.0) + this.Field1652.height / 2.0;
             GL11.glLineWidth((float)AutoCrystal.width.getValue());
             GL11.glBegin(1);
@@ -300,7 +300,7 @@ public class AutoCrystal
                 GL11.glEnd();
             }
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-            Class507.Method1385();
+            EspRenderUtil.Method1385();
             GlStateManager.popMatrix();
         }
     }
@@ -387,6 +387,7 @@ public class AutoCrystal
                     this.Field1654 = yawTicks.getValue();
                 }
             }
+            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1621[0], this.Field1621[1]);
         }
         NewGui.INSTANCE.Field1139.Method1937(this.pitchYawValues[0], this.pitchYawValues[1]);
 
@@ -635,7 +636,7 @@ public class AutoCrystal
         else if (packetEvent.getPacket() instanceof SPacketEntityStatus) {
             final SPacketEntityStatus sPacketEntityStatus = (SPacketEntityStatus)packetEvent.getPacket();
             if (sPacketEntityStatus.getOpCode() == 35 && sPacketEntityStatus.getEntity((World)AutoCrystal.mc.world) instanceof EntityPlayer) {
-                this.Field1639.put((EntityPlayer)sPacketEntityStatus.getEntity((World)AutoCrystal.mc.world), new Class566());
+                this.Field1639.put((EntityPlayer)sPacketEntityStatus.getEntity((World)AutoCrystal.mc.world), new TimerUtil());
             }
         }
         else if (packetEvent.getPacket() instanceof SPacketPlayerPosLook && (boolean)AutoCrystal.disableOnTP.getValue() && !ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
@@ -670,8 +671,9 @@ public class AutoCrystal
             if (!bl4) {
                 Class566 class566 = this.Field1647;
                 try {
-                    class566.Method739();
-                } catch (ConcurrentModificationException ignored) {
+                    timerUtil.Method739();
+                }
+                catch (ConcurrentModificationException concurrentModificationException) {
                     // empty catch block
                 }
             }
@@ -793,7 +795,7 @@ public class AutoCrystal
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         if (AutoCrystal.mc.world == null || AutoCrystal.mc.player == null) {
             return;
         }
@@ -809,12 +811,12 @@ public class AutoCrystal
             if (offset == null) {
                 return;
             }
-            Class507.Method1386();
-            Class507.Method1379(offset, ((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1633.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
+            EspRenderUtil.Method1386();
+            EspRenderUtil.Method1379(offset, ((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1633.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
             if ((float)AutoCrystal.outlineWidth.getValue() > 0.0f) {
-                Class507.Method1374(offset, (float)AutoCrystal.outlineWidth.getValue(), ((ColorValue)AutoCrystal.outline.getValue()).Method784((int)(((ColorValue)AutoCrystal.outline.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1633.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
+                EspRenderUtil.Method1374(offset, (float)AutoCrystal.outlineWidth.getValue(), ((ColorValue)AutoCrystal.outline.getValue()).Method784((int)(((ColorValue)AutoCrystal.outline.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1633.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
             }
-            Class507.Method1385();
+            EspRenderUtil.Method1385();
         }
         if ((boolean)AutoCrystal.breaking.getValue() && this.Field1634 != null) {
             if (!this.Field1635.Method737(1000.0)) {
@@ -827,12 +829,12 @@ public class AutoCrystal
                     if (offset2 == null) {
                         return;
                     }
-                    Class507.Method1386();
-                    Class507.Method1379(offset2, ((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method782() * 0.5)).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1635.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
+                    EspRenderUtil.Method1386();
+                    EspRenderUtil.Method1379(offset2, ((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method784((int)(((ColorValue)AutoCrystal.color.getValue()).Method782() * 0.5)).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1635.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
                     if ((float)AutoCrystal.outlineWidth.getValue() > 0.0f) {
-                        Class507.Method1374(offset2, (float)AutoCrystal.outlineWidth.getValue(), ((ColorValue)AutoCrystal.outline.getValue()).Method784((int)(((ColorValue)AutoCrystal.outline.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1635.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
+                        EspRenderUtil.Method1374(offset2, (float)AutoCrystal.outlineWidth.getValue(), ((ColorValue)AutoCrystal.outline.getValue()).Method784((int)(((ColorValue)AutoCrystal.outline.getValue()).Method782() * (1.0f - Math.max(0L, System.currentTimeMillis() - this.Field1635.Method736() - 150L) / 850.0f * (float)AutoCrystal.fade.getValue()))));
                     }
-                    Class507.Method1385();
+                    EspRenderUtil.Method1385();
                 }
             }
         }
@@ -843,7 +845,7 @@ public class AutoCrystal
                 }
                 GlStateManager.pushMatrix();
                 try {
-                    Class502.Method1395(this.Field1631.getX() + 0.5f, this.Field1631.getY() + 0.5f, this.Field1631.getZ() + 0.5f, (EntityPlayer)AutoCrystal.mc.player, 1.0f);
+                    RenderUtil3D.Method1395(this.Field1631.getX() + 0.5f, this.Field1631.getY() + 0.5f, this.Field1631.getZ() + 0.5f, (EntityPlayer)AutoCrystal.mc.player, 1.0f);
                 }
                 catch (Exception ex3) {}
                 final String string = ((Math.floor(this.Field1632) == this.Field1632) ? Integer.valueOf((int)this.Field1632) : String.format("%.1f", this.Field1632)) + "";
@@ -856,10 +858,10 @@ public class AutoCrystal
                 if (AutoCrystal.customFont.getValue()) {
                     GlStateManager.scale(0.3, 0.3, 1.0);
                     if (AutoCrystal.damage.getValue() == ACDamageMode.SHADED) {
-                        Class425.Field958.Method826(string, (float)(-(Class425.Field958.Method830(string) / 2.0)), (float)(int)(-Class425.Field958.Method831(string) / 2.0f), -1);
+                        NameTags.Field958.Method826(string, (float)(-(NameTags.Field958.Method830(string) / 2.0)), (float)(int)(-NameTags.Field958.Method831(string) / 2.0f), -1);
                     }
                     else {
-                        Class425.Field958.Method828(string, (float)(-(Class425.Field958.Method830(string) / 2.0)), (float)(int)(-Class425.Field958.Method831(string) / 2.0f), -1);
+                        NameTags.Field958.Method828(string, (float)(-(NameTags.Field958.Method830(string) / 2.0)), (float)(int)(-NameTags.Field958.Method831(string) / 2.0f), -1);
                     }
                     GlStateManager.scale(3.3333333333333335, 3.3333333333333335, 1.0);
                 }
@@ -943,7 +945,7 @@ public class AutoCrystal
             }
         }
         if (entityPlayer != null && blockPos != null) {
-            NewGui.INSTANCE.Field1133.Method430(entityPlayer);
+            KonasGlobals.INSTANCE.Field1133.Method430(entityPlayer);
             this.Method1645(entityPlayer.getName());
             this.Field1652 = entityPlayer;
             this.Field1653.Method739();
@@ -964,9 +966,9 @@ public class AutoCrystal
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketHeldItemChange)) break block0;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketHeldItemChange)) break block0;
             this.Field1630.Method739();
         }
     }
@@ -1007,7 +1009,7 @@ public class AutoCrystal
                 AutoCrystal.mc.player.connection.sendPacket(new CPacketAnimation(this.hasEndCrystalInOffahand() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND));
             }
             if (this.Field1655 && this.Field1652 != null) {
-                this.Field1639.put(this.Field1652, new Class566());
+                this.Field1639.put(this.Field1652, new TimerUtil());
             }
             this.Field1636 = false;
             this.listCrystalsPlaced.put(blockPos, System.currentTimeMillis());
@@ -1251,8 +1253,8 @@ public class AutoCrystal
 
     public boolean Method1576(EntityPlayer entityPlayer, float f) {
         if (entityPlayer.getHealth() + entityPlayer.getAbsorptionAmount() <= 2.0f && (double)f > (double)entityPlayer.getHealth() + (double)entityPlayer.getAbsorptionAmount() + 0.5 && f <= 4.0f) {
-            Class566 class566 = this.Field1639.get(entityPlayer);
-            return class566 == null || class566.Method737(500.0);
+            TimerUtil timerUtil = this.Field1639.get(entityPlayer);
+            return timerUtil == null || timerUtil.Method737(500.0);
         }
         return false;
     }

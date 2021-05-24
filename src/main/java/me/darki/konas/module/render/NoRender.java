@@ -14,7 +14,7 @@ import me.darki.konas.event.events.RenderBlockOverlayEvent;
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.unremaped.Class417;
 import me.darki.konas.setting.ListenableSettingDecorator;
-import me.darki.konas.unremaped.Class569;
+import me.darki.konas.unremaped.RenderArmorEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class642;
 import me.darki.konas.unremaped.Class79;
@@ -88,31 +88,31 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1127(Class569 class569) {
+    public void Method1127(RenderArmorEvent renderArmorEvent) {
         block1: {
             block4: {
                 block3: {
                     block2: {
                         block0: {
                             if (this.armor.getValue() != Class417.ALL) break block0;
-                            class569.Cancel();
+                            renderArmorEvent.Cancel();
                             break block1;
                         }
                         if (this.armor.getValue() != Class417.SELECT) break block1;
-                        if (class569.Method663() != EntityEquipmentSlot.HEAD || !this.head.getValue().booleanValue()) break block2;
-                        class569.Cancel();
+                        if (renderArmorEvent.Method663() != EntityEquipmentSlot.HEAD || !this.head.getValue().booleanValue()) break block2;
+                        renderArmorEvent.Cancel();
                         break block1;
                     }
-                    if (class569.Method663() != EntityEquipmentSlot.CHEST || !this.chestplate.getValue().booleanValue()) break block3;
-                    class569.Cancel();
+                    if (renderArmorEvent.Method663() != EntityEquipmentSlot.CHEST || !this.chestplate.getValue().booleanValue()) break block3;
+                    renderArmorEvent.Cancel();
                     break block1;
                 }
-                if (class569.Method663() != EntityEquipmentSlot.LEGS || !this.leggings.getValue().booleanValue()) break block4;
-                class569.Cancel();
+                if (renderArmorEvent.Method663() != EntityEquipmentSlot.LEGS || !this.leggings.getValue().booleanValue()) break block4;
+                renderArmorEvent.Cancel();
                 break block1;
             }
-            if (class569.Method663() != EntityEquipmentSlot.FEET || !this.boots.getValue().booleanValue()) break block1;
-            class569.Cancel();
+            if (renderArmorEvent.Method663() != EntityEquipmentSlot.FEET || !this.boots.getValue().booleanValue()) break block1;
+            renderArmorEvent.Cancel();
         }
     }
 

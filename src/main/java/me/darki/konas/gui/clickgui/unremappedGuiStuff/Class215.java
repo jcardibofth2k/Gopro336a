@@ -1,9 +1,8 @@
 package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
-import me.darki.konas.*;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.module.client.KonasGui;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class135;
 import me.darki.konas.unremaped.Class241;
 
@@ -146,10 +145,10 @@ implements Class135 {
     }
 
     public static void Method500() {
-        float f = NewGui.INSTANCE.Field1131.Method1828().Method486();
-        float f2 = NewGui.INSTANCE.Field1131.Method1828().Method492();
-        float f3 = NewGui.INSTANCE.Field1131.Method1828().Method489();
-        float f4 = NewGui.INSTANCE.Field1131.Method1828().Method476();
+        float f = KonasGlobals.INSTANCE.Field1131.Method1828().Method486();
+        float f2 = KonasGlobals.INSTANCE.Field1131.Method1828().Method492();
+        float f3 = KonasGlobals.INSTANCE.Field1131.Method1828().Method489();
+        float f4 = KonasGlobals.INSTANCE.Field1131.Method1828().Method476();
         Field314 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.mainStart.getValue(), (ColorValue) KonasGui.mainEnd.getValue());
         Field315 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.accentStart.getValue(), (ColorValue) KonasGui.accentEnd.getValue());
         Field316 = new Class241(f, f2, f3, f4, (ColorValue) KonasGui.categoryStart.getValue(), (ColorValue) KonasGui.categoryEnd.getValue());

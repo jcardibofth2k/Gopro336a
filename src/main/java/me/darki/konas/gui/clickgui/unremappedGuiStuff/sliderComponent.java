@@ -2,7 +2,7 @@ package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class247;
+import me.darki.konas.util.Class247;
 import me.darki.konas.unremaped.Class270;
 import me.darki.konas.util.math.RoundingUtil;
 import net.minecraft.util.math.MathHelper;
@@ -73,9 +73,9 @@ extends Class215 {
     @Override
     public void Method497(int n, int n2, float f) {
         super.Method497(n, n2, f);
-        Class247.Field2262.Method863(this.Field2063.Method1183(), this.Method486(), this.Method492(), Field324);
+        Class247.cfontRenderer.Method863(this.Field2063.Method1183(), this.Method486(), this.Method492(), Field324);
         if (this.Field2063.hasDescription()) {
-            Class247.Field2261.Method863(this.Field2063.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
+            Class247.smallCFontRenderer.Method863(this.Field2063.Method1192(), this.Method486(), (int)(this.Method492() + 18.0f), Field326);
         }
         Class270 class270 = new Class270(this.Method486() + 16.0f, this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18), this.Method489() - 32.0f, 6.0f, 3.0f);
         Class247.Method2043(class270, Field321);
@@ -108,9 +108,9 @@ extends Class215 {
         Class270 class2703 = new Class270(this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0f, 12.0f, 6.0f);
         Class247.Method2043(class2703, sliderComponent.Method487(n, n2, this.Method486() + 10.0f + f2, this.Method492() + (float)(this.Field2063.hasDescription() ? 31 : 15), 12.0, 12.0) ? Field320.Method2048(((Float) KonasGui.highlight.getValue()).floatValue()) : Field320);
         Class247.Method2042(class2703, Field317, 1.0f);
-        Class247.Field2261.Method863(((Number)this.Field2063.getValue()).toString(), (int)(this.Method486() + 16.0f + f2 - Class247.Field2261.Method830(((Number)this.Field2063.getValue()).toString()) / 2.0f), (int)(this.Method492() + (float)(this.Field2063.hasDescription() ? 48 : 32)), Field324);
-        Class247.Field2261.Method863("-", this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("-"), Field324);
-        Class247.Field2261.Method863("+", this.Method486() + this.Method489() - Class247.Field2261.Method830("+"), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.Field2261.Method831("+"), Field324);
+        Class247.smallCFontRenderer.Method863(((Number)this.Field2063.getValue()).toString(), (int)(this.Method486() + 16.0f + f2 - Class247.smallCFontRenderer.Method830(((Number)this.Field2063.getValue()).toString()) / 2.0f), (int)(this.Method492() + (float)(this.Field2063.hasDescription() ? 48 : 32)), Field324);
+        Class247.smallCFontRenderer.Method863("-", this.Method486(), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.smallCFontRenderer.Method831("-"), Field324);
+        Class247.smallCFontRenderer.Method863("+", this.Method486() + this.Method489() - Class247.smallCFontRenderer.Method830("+"), this.Method492() + (float)(this.Field2063.hasDescription() ? 34 : 18) + 3.0f - Class247.smallCFontRenderer.Method831("+"), Field324);
     }
 
     public sliderComponent(Setting<Number> setting, float f, float f2, float f3, float f4, float f5) {

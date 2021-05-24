@@ -48,7 +48,7 @@ extends Module {
     public Setting<Boolean> notFromHotbar = new Setting<>("NotFromHotbar", true);
     public Setting<Class326> defaultItem = new Setting<>("DefaultItem", Class326.TOTEM);
     public Queue<Integer> Field249 = new LinkedList<Integer>();
-    public Class566 Field250 = new Class566();
+    public TimerUtil Field250 = new TimerUtil();
 
     public boolean Method383(Item item) {
         return item == Items.DIAMOND_SWORD || item == Items.IRON_SWORD || item == Items.GOLDEN_SWORD || item == Items.STONE_SWORD || item == Items.WOODEN_SWORD;
@@ -141,8 +141,8 @@ extends Module {
                     return;
                 }
                 int n = this.Field249.poll();
-                Class566 class566 = this.Field250;
-                class566.Method739();
+                TimerUtil timerUtil = this.Field250;
+                timerUtil.Method739();
                 PlayerControllerMP playerControllerMP = Offhand.mc.playerController;
                 int n2 = Offhand.mc.player.inventoryContainer.windowId;
                 int n3 = n;

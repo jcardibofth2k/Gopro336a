@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -28,10 +27,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!((Boolean)this.cPacketInput.getValue() != false && class24.getPacket() instanceof CPacketInput || (Boolean)this.cPacketPlayer.getValue() != false && class24.getPacket() instanceof CPacketPlayer && PacketCanceller.mc.player.getRidingEntity() == null || (Boolean)this.cPacketEntityAction.getValue() != false && class24.getPacket() instanceof CPacketEntityAction || (Boolean)this.cPacketUseEntity.getValue() != false && class24.getPacket() instanceof CPacketUseEntity) && (!((Boolean)this.cPacketVehicleMove.getValue()).booleanValue() || !(class24.getPacket() instanceof CPacketVehicleMove))) break block0;
-            class24.Cancel();
+            if (!((Boolean)this.cPacketInput.getValue() != false && sendPacketEvent.getPacket() instanceof CPacketInput || (Boolean)this.cPacketPlayer.getValue() != false && sendPacketEvent.getPacket() instanceof CPacketPlayer && PacketCanceller.mc.player.getRidingEntity() == null || (Boolean)this.cPacketEntityAction.getValue() != false && sendPacketEvent.getPacket() instanceof CPacketEntityAction || (Boolean)this.cPacketUseEntity.getValue() != false && sendPacketEvent.getPacket() instanceof CPacketUseEntity) && (!((Boolean)this.cPacketVehicleMove.getValue()).booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketVehicleMove))) break block0;
+            sendPacketEvent.Cancel();
             ++this.Field1860;
             this.Method1645(Integer.toString(this.Field1860));
         }

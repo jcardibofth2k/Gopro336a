@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.Color;
 import java.lang.invoke.LambdaMetafactory;
@@ -10,7 +9,7 @@ import me.darki.konas.setting.ColorValue;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
 import net.minecraft.block.state.IBlockState;
@@ -45,7 +44,7 @@ extends Module {
     public float Field2283;
     public int Field2284;
     public Class249 Field2285;
-    public Class566 Field2286 = new Class566();
+    public TimerUtil Field2286 = new TimerUtil();
     public Runnable Field2287;
     public LinkedList<Class249> Field2288 = new LinkedList();
 
@@ -121,7 +120,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         LinkedList linkedList = (LinkedList)this.Field2288.clone();
         if (this.Field2285 != null) {
             linkedList.add(this.Field2285);
@@ -130,10 +129,10 @@ extends Module {
             Class249 class249 = (Class249)linkedList.poll();
             AxisAlignedBB axisAlignedBB = Class246.mc.world.getBlockState(class249.Method2002()).getBoundingBox((IBlockAccess)Class246.mc.world, class249.Method2002()).offset(class249.Method2002());
             if (axisAlignedBB == null) continue;
-            Class507.Method1386();
-            Class507.Method1371(axisAlignedBB, true, 1.0, this.Method2047(class249), 63);
-            Class507.Method1374(axisAlignedBB, ((Float)this.width.getValue()).floatValue(), this.Method2046(class249));
-            Class507.Method1385();
+            EspRenderUtil.Method1386();
+            EspRenderUtil.Method1371(axisAlignedBB, true, 1.0, this.Method2047(class249), 63);
+            EspRenderUtil.Method1374(axisAlignedBB, ((Float)this.width.getValue()).floatValue(), this.Method2046(class249));
+            EspRenderUtil.Method1385();
         }
     }
 
@@ -160,7 +159,7 @@ extends Module {
         block9: {
             block8: {
                 block7: {
-                    if (!Class496.Method1959((Boolean)Class246.rotate.getValue())) {
+                    if (!Rotation.Method1959((Boolean)Class246.rotate.getValue())) {
                         return;
                     }
                     if (this.Field2285 == null) break block7;
@@ -205,7 +204,7 @@ extends Module {
                 }
             }
             if (!((Boolean)Class246.rotate.getValue()).booleanValue() || this.Field2285 == null) break block9;
-            NewGui.INSTANCE.Field1139.Method1942(new Vec3d((Vec3i)this.Field2285.Method2002()).add(new Vec3d(this.Field2285.Method2000().getDirectionVec()).scale(0.5)));
+            KonasGlobals.INSTANCE.Field1139.Method1942(new Vec3d((Vec3i)this.Field2285.Method2002()).add(new Vec3d(this.Field2285.Method2000().getDirectionVec()).scale(0.5)));
         }
     }
 

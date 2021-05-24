@@ -3,7 +3,7 @@ package me.darki.konas.module.movement;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.unremaped.Class412;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.Class566;
+import me.darki.konas.unremaped.TimerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
@@ -18,7 +18,7 @@ extends Module {
     public static Setting<Boolean> pitchTrigger = new Setting<>("PitchTrigger", false);
     public static Setting<Integer> pitch = new Setting<>("Pitch", 0, 90, -90, 1).visibleIf(pitchTrigger::getValue);
     public static Setting<Boolean> turnOffAfter = new Setting<>("TurnOffAfter", true);
-    public Class566 Field1260 = new Class566();
+    public TimerUtil Field1260 = new TimerUtil();
 
     @Subscriber
     public void Method503(MoveEvent moveEvent) {

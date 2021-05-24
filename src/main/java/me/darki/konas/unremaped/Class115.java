@@ -1,8 +1,8 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class71;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.gui.hud.Element;
 import me.darki.konas.setting.Setting;

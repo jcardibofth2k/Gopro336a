@@ -12,7 +12,7 @@ import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.mixin.mixins.IRenderManager;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.FastUse;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
@@ -77,16 +77,16 @@ extends Module {
     public BlockPos Field376;
     public EnumFacing Field377;
     public BlockPos Field378;
-    public Class566 Field379 = new Class566();
+    public TimerUtil Field379 = new TimerUtil();
     public boolean Field380;
-    public Class566 Field381 = new Class566();
+    public TimerUtil Field381 = new TimerUtil();
     public int Field382;
-    public Class566 Field383 = new Class566();
+    public TimerUtil Field383 = new TimerUtil();
     public Runnable Field384 = null;
     public int Field385 = 0;
     public BlockPos Field386 = null;
-    public Class566 Field387 = new Class566();
-    public Class566 Field388 = new Class566();
+    public TimerUtil Field387 = new TimerUtil();
+    public TimerUtil Field388 = new TimerUtil();
 
     public boolean Method138(EntityPlayer entityPlayer) {
         if (this.Method527() == -1) {
@@ -161,7 +161,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(final Class89 class89) {
+    public void Method139(final Render3DEvent render3DEvent) {
         if (this.Field373 == null || this.Field374 == null) {
             return;
         }
@@ -432,7 +432,7 @@ extends Module {
                 PistonAura.mc.player.inventory.currentItem = n;
                 PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
-            Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
+            Rotation.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field386 = blockPos.offset(enumFacing);
             this.Field387.Method739();
             if (!bl) break block1;
@@ -515,11 +515,11 @@ extends Module {
         if (this.Field385 < actionInterval.getValue()) {
             ++this.Field385;
         }
-        if (updateEvent.isCanceled() || !Class496.Method1966()) {
+        if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
         if (this.Field372 == Class220.BREAKING) {
-            NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
+            KonasGlobals.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
         }
         if (this.Field385 < actionInterval.getValue()) {
             return;
@@ -603,7 +603,7 @@ extends Module {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                 Class550.Method883(fArray[0], fArray[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942(vec3d);
+                                KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
                             }
                             this.Field384 = () -> this.Method516(bl2, n, bl3, bl4, vec3d);
                             return;
@@ -623,7 +623,7 @@ extends Module {
                                     float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), vec3d);
                                     Class550.Method883(fArray[0], fArray[1]);
                                 } else {
-                                    NewGui.INSTANCE.Field1139.Method1942(vec3d);
+                                    KonasGlobals.INSTANCE.Field1139.Method1942(vec3d);
                                 }
                                 this.Field384 = () -> this.Method529(enumFacing);
                             }
@@ -649,7 +649,7 @@ extends Module {
                             float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
                             Class550.Method883(fArray[0], fArray[1]);
                         } else {
-                            NewGui.INSTANCE.Field1139.Method1942(new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
+                            KonasGlobals.INSTANCE.Field1139.Method1942(new Vec3d((double)this.Field375.getX() + 0.5, (double)this.Field375.getY() + 0.5, (double)this.Field375.getZ() + 0.5));
                         }
                         this.Field384 = this::Method517;
                         return;
@@ -682,7 +682,7 @@ extends Module {
                                 object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), (Vec3d)enumFacing);
                                 Class550.Method883((float)object[0], (float)object[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942((Vec3d)enumFacing);
+                                KonasGlobals.INSTANCE.Field1139.Method1942((Vec3d)enumFacing);
                             }
                             object = optional;
                             this.Field384 = () -> this.Method525(bl5, n, n2 != 0, n3 != 0, (Optional)object, (Vec3d)enumFacing);
@@ -721,7 +721,7 @@ extends Module {
                                 float[] fArray = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(mc.getRenderPartialTicks()), entity.getPositionVector());
                                 Class550.Method883(fArray[0], fArray[1]);
                             } else {
-                                NewGui.INSTANCE.Field1139.Method1942(entity.getPositionVector());
+                                KonasGlobals.INSTANCE.Field1139.Method1942(entity.getPositionVector());
                             }
                             this.Field384 = () -> this.Method518(entity);
                             break;
@@ -731,7 +731,7 @@ extends Module {
                             Class550.Method883(fArray[0], fArray[1]);
                             break;
                         }
-                        NewGui.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
+                        KonasGlobals.INSTANCE.Field1139.Method1941((double)this.Field373.getX() + 0.5, this.Field373.getY(), (double)this.Field373.getZ() + 0.5);
                         break;
                     }
                 }
@@ -758,16 +758,16 @@ extends Module {
                 if (this.antiSuicide.getValue().booleanValue() && blockPos.equals(new BlockPos(PistonAura.mc.player))) continue;
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     if (!(PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase) && (this.Field387.Method737(Class475.Method2142() + 150) || !blockPos.offset(enumFacing).equals(this.Field386)) || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockPistonBase && !(object = PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing)).getValue((IProperty)BlockDirectional.FACING)).equals(enumFacing.getOpposite())) continue;
-                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Class496.Method1967(blockPos.offset(enumFacing, 2), this.rayTrace.getValue()) || (object = Class496.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.rayTrace.getValue())) == null) break block8;
+                    if (PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_BLOCK || PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.REDSTONE_TORCH || !Rotation.Method1967(blockPos.offset(enumFacing, 2), this.rayTrace.getValue()) || (object = Rotation.Method1968(blockPos.offset(enumFacing, 2), true, bl, this.rayTrace.getValue())) == null) break block8;
                     this.Field384 = () -> this.Method530(n4, (Class490)object);
                     return;
                 }
                 for (EnumFacing enumFacing : EnumFacing.HORIZONTALS) {
                     Class490 class490;
-                    if (!Class496.Method1967(blockPos.offset(enumFacing), this.rayTrace.getValue()) || !(this.rayTrace.getValue() != false ? Class496.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
+                    if (!Rotation.Method1967(blockPos.offset(enumFacing), this.rayTrace.getValue()) || !(this.rayTrace.getValue() != false ? Rotation.Method1967(blockPos.offset(enumFacing, 2), true) : PistonAura.mc.world.getBlockState(blockPos.offset(enumFacing, 2)).getBlock() == Blocks.AIR)) continue;
                     object = RotationUtil.Method1946(PistonAura.mc.player.getPositionEyes(1.0f), new Vec3d((double)blockPos.offset(enumFacing).getX() + 0.5, (double)blockPos.offset(enumFacing).getY() + 1.0, (double)blockPos.offset(enumFacing).getZ() + 0.5));
                     EnumFacing enumFacing2 = EnumFacing.fromAngle((double)object[0]);
-                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Class496.Method1968(blockPos.offset(enumFacing), true, bl, this.rayTrace.getValue())) == null) continue;
+                    if (Math.abs((float)object[1]) > 55.0f || enumFacing2 != enumFacing || (class490 = Rotation.Method1968(blockPos.offset(enumFacing), true, bl, this.rayTrace.getValue())) == null) continue;
                     this.Field384 = () -> this.Method523(n, class490, blockPos, enumFacing);
                     return;
                 }
@@ -793,7 +793,7 @@ extends Module {
                 PistonAura.mc.player.inventory.currentItem = n;
                 PistonAura.mc.player.connection.sendPacket(new CPacketHeldItemChange(n));
             }
-            Class496.Method1958(class490, EnumHand.MAIN_HAND, true);
+            Rotation.Method1958(class490, EnumHand.MAIN_HAND, true);
             this.Field381.Method739();
             this.Field382 = Class475.Method2142() + 150;
             if (bl) {

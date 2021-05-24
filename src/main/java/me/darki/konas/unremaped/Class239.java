@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Category;
@@ -11,7 +10,7 @@ import net.minecraft.network.play.client.CPacketPlayer;
 
 public class Class239
 extends Module {
-    public Class566 Field2447 = new Class566();
+    public TimerUtil Field2447 = new TimerUtil();
     public int Field2448 = 0;
 
     @Override
@@ -36,12 +35,12 @@ extends Module {
     }
 
     @Subscriber
-    public void Method536(Class24 class24) {
+    public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
-            if (!(class24.getPacket() instanceof CPacketConfirmTeleport)) break block0;
-            this.Field2448 = ((CPacketConfirmTeleport)class24.getPacket()).getTeleportId();
+            if (!(sendPacketEvent.getPacket() instanceof CPacketConfirmTeleport)) break block0;
+            this.Field2448 = ((CPacketConfirmTeleport) sendPacketEvent.getPacket()).getTeleportId();
             this.Field2447.Method739();
-            class24.setCanceled(true);
+            sendPacketEvent.setCanceled(true);
         }
     }
 

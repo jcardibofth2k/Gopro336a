@@ -11,12 +11,12 @@ import me.darki.konas.unremaped.Class40;
 import me.darki.konas.ViewPort;
 import me.darki.konas.unremaped.Class46;
 import me.darki.konas.unremaped.Class5;
-import me.darki.konas.unremaped.Class507;
+import me.darki.konas.unremaped.EspRenderUtil;
 import me.darki.konas.unremaped.Class61;
 import me.darki.konas.unremaped.Class67;
 import me.darki.konas.unremaped.Class75;
 import me.darki.konas.unremaped.Class76;
-import me.darki.konas.unremaped.Class89;
+import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.unremaped.Class93;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -50,9 +50,9 @@ public class MixinEntityRenderer {
     @Inject(method={"renderWorldPass"}, at={@At(value="INVOKE", target="Lnet/minecraft/client/renderer/GlStateManager;clear(I)V", ordinal=1, shift=At.Shift.BEFORE)})
     private void Method156(int pass, float partialTicks, long finishTimeNano, CallbackInfo ci) {
         if (Display.isActive() || Display.isVisible()) {
-            Class507.Method1386();
-            Class507.Method1385();
-            Class89 event = Class89.Method437(partialTicks);
+            EspRenderUtil.Method1386();
+            EspRenderUtil.Method1385();
+            Render3DEvent event = Render3DEvent.Method437(partialTicks);
             EventDispatcher.Companion.dispatch(event);
             GlStateManager.resetColor();
             GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);

@@ -6,7 +6,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import me.darki.konas.mixin.mixins.IGuiTextField;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
@@ -28,7 +28,7 @@ extends GuiScreen {
     public void actionPerformed(GuiButton guiButton) {
         if (guiButton.enabled) {
             if (guiButton.id == 1) {
-                this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                this.mc.displayGuiScreen((GuiScreen) KonasGlobals.INSTANCE.Field1132);
             } else if (guiButton.id == 0) {
                 Class170 class170;
                 if (this.Field1965.getText().isEmpty()) {
@@ -47,8 +47,8 @@ extends GuiScreen {
                     }
                     class170.Method1542();
                 }
-                NewGui.INSTANCE.Field1132.Method1659().Method1669(class170);
-                this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                KonasGlobals.INSTANCE.Field1132.Method1659().Method1669(class170);
+                this.mc.displayGuiScreen((GuiScreen) KonasGlobals.INSTANCE.Field1132);
             } else if (guiButton.id == 3) {
                 if (this.Field1965.getText().isEmpty()) {
                     return;
@@ -64,8 +64,8 @@ extends GuiScreen {
                         return;
                     }
                     class170.Method1542();
-                    NewGui.INSTANCE.Field1132.Method1659().Method1669(class170);
-                    this.mc.displayGuiScreen((GuiScreen) NewGui.INSTANCE.Field1132);
+                    KonasGlobals.INSTANCE.Field1132.Method1659().Method1669(class170);
+                    this.mc.displayGuiScreen((GuiScreen) KonasGlobals.INSTANCE.Field1132);
                 }
             } else if (guiButton.id == 5 && Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 URI uRI;

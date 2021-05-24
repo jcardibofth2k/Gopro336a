@@ -6,7 +6,7 @@ import me.darki.konas.unremaped.Class107;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
-import me.darki.konas.unremaped.Class556;
+import me.darki.konas.unremaped.RainbowUtil;
 import me.darki.konas.unremaped.Class557;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;
@@ -128,9 +128,9 @@ extends Element {
         }
         if (this.pulse.getValue().booleanValue()) {
             if (this.lineColor.getValue().Method783()) {
-                return Class556.Method807(300 * n, fArray);
+                return RainbowUtil.Method807(300 * n, fArray);
             }
-            return Class556.Method805(n, fArray, this.spread.getValue().floatValue(), this.speed.getValue().floatValue(), this.range.getValue().floatValue());
+            return RainbowUtil.Method805(n, fArray, this.spread.getValue().floatValue(), this.speed.getValue().floatValue(), this.range.getValue().floatValue());
         }
         return this.lineColor.getValue().Method774();
     }

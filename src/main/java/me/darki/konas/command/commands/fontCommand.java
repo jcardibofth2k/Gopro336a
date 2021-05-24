@@ -2,8 +2,8 @@ package me.darki.konas.command.commands;
 
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.module.render.Hud;
-import me.darki.konas.unremaped.Class247;
-import me.darki.konas.unremaped.Class425;
+import me.darki.konas.util.Class247;
+import me.darki.konas.unremaped.NameTags;
 import me.darki.konas.unremaped.Class548;
 import me.darki.konas.unremaped.CfontRenderer;
 import me.darki.konas.unremaped.Class557;
@@ -30,10 +30,10 @@ extends Command {
         Class557.Method796(Hud.Field1405);
         ClickGUIModule.Field1536 = new CfontRenderer(stringArray[1], 17.0f);
         Class548.Method1018(ClickGUIModule.Field1536);
-        Class425.Field957 = new CfontRenderer(stringArray[1], 20.0f);
-        Class425.Field958 = new CfontRenderer(stringArray[1], 60.0f);
-        Class425.Method955(Class425.Field954.getValue());
-        Class247.Field2262 = new CfontRenderer(stringArray[1], 18.0f);
-        Class247.Field2261 = new CfontRenderer(stringArray[1], 16.0f);
+        NameTags.Field957 = new CfontRenderer(stringArray[1], 20.0f);
+        NameTags.Field958 = new CfontRenderer(stringArray[1], 60.0f);
+        NameTags.Method955(NameTags.Field954.getValue());
+        Class247.cfontRenderer = new CfontRenderer(stringArray[1], 18.0f);
+        Class247.smallCFontRenderer = new CfontRenderer(stringArray[1], 16.0f);
     }
 }

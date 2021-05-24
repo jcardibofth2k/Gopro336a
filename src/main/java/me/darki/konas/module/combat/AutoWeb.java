@@ -8,7 +8,7 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
@@ -37,13 +37,13 @@ extends Module {
     public static Setting<Boolean> rotate = new Setting<>("Rotate", true);
     public static Setting<Boolean> switchBack = new Setting<>("SwitchBack", false);
     public int Field1756;
-    public Class566 Field1757 = new Class566();
+    public TimerUtil Field1757 = new TimerUtil();
     public BlockPos Field1758;
     public int Field1759 = 0;
     public BlockPos Field1760 = null;
     public Class490 Field1761;
     public Class490 Field1762;
-    public Class566 Field1763 = new Class566();
+    public TimerUtil Field1763 = new TimerUtil();
 
     public static boolean Method128(EntityPlayer entityPlayer) {
         return AutoWeb.mc.player.getDistance((Entity)entityPlayer) < Math.max(((Float)targetRange.getValue()).floatValue() - 1.0f, 1.0f);
@@ -126,13 +126,13 @@ extends Module {
             if (bl3) {
                 AutoWeb.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) AutoWeb.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
-            Class496.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
-            if ((Integer)actionShift.getValue() == 2 && ((Boolean)top.getValue()).booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
-                this.Field1761 = Class496.Method1961(this.Field1760.up(), (Boolean)rotate.getValue(), true);
+            Rotation.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
+            if ((Integer)actionShift.getValue() == 2 && ((Boolean)top.getValue()).booleanValue() && Rotation.Method1965(this.Field1760.up(), false, false)) {
+                this.Field1761 = Rotation.Method1961(this.Field1760.up(), (Boolean)rotate.getValue(), true);
                 if (this.Field1761 != null) {
                     this.Field1758 = this.Field1760;
                     this.Field1757.Method739();
-                    Class496.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
+                    Rotation.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
                 }
             }
             if (bl3) {
@@ -153,7 +153,7 @@ extends Module {
     }
 
     @Subscriber
-    public void Method139(Class89 class89) {
+    public void Method139(Render3DEvent render3DEvent) {
         block1: {
             if (AutoWeb.mc.world == null || AutoWeb.mc.player == null) {
                 return;
@@ -176,7 +176,7 @@ extends Module {
             if (this.Field1757.Method737(350.0)) {
                 this.Field1758 = null;
             }
-            if (updateEvent.isCanceled() || !Class496.Method1959((Boolean)rotate.getValue())) {
+            if (updateEvent.isCanceled() || !Rotation.Method1959((Boolean)rotate.getValue())) {
                 return;
             }
             if (ModuleManager.getModuleByClass(PacketFly.class).isEnabled()) {
@@ -193,7 +193,7 @@ extends Module {
             }
             if (this.Field1759 < (Integer)actionInterval.getValue()) {
                 if (this.Field1762 != null && !this.Field1763.Method737(650.0)) {
-                    NewGui.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
+                    KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
                 }
                 return;
             }
@@ -205,10 +205,10 @@ extends Module {
                 return;
             }
             this.Field1756 = n;
-            if (Class496.Method1965(this.Field1760, false, false)) {
-                this.Field1761 = Class496.Method1962(this.Field1760, (Boolean)rotate.getValue());
-            } else if (((Boolean)top.getValue()).booleanValue() && Class496.Method1965(this.Field1760.up(), false, false)) {
-                this.Field1761 = Class496.Method1962(this.Field1760.up(), (Boolean)rotate.getValue());
+            if (Rotation.Method1965(this.Field1760, false, false)) {
+                this.Field1761 = Rotation.Method1962(this.Field1760, (Boolean)rotate.getValue());
+            } else if (((Boolean)top.getValue()).booleanValue() && Rotation.Method1965(this.Field1760.up(), false, false)) {
+                this.Field1761 = Rotation.Method1962(this.Field1760.up(), (Boolean)rotate.getValue());
             }
             if (this.Field1761 == null) break block13;
             this.Field1759 = 0;

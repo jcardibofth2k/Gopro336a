@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.awt.Color;
 
 import me.darki.konas.gui.hud.Element;
@@ -34,7 +33,7 @@ extends Element {
                 n = (int)(this.Method2324() + 1.0f + (float)(n4 * 18));
                 if (this.background.getValue() != Class114.OUTLINE) continue;
                 Gui.drawRect((int)(n2 - 1), (int)(n - 1), (int)(n2 - 1 + 18), (int)(n - 1 + 18), (int)new Color(26, 26, 26, 40).hashCode());
-                Class516.Method1278(n2 - 1, n - 1, n2 - 1 + 18, n - 1 + 18, 2.0f, Class556.Method807(300, new float[]{1.0f, 1.0f, 1.0f}));
+                Class516.Method1278(n2 - 1, n - 1, n2 - 1 + 18, n - 1 + 18, 2.0f, RainbowUtil.Method807(300, new float[]{1.0f, 1.0f, 1.0f}));
             }
         }
         n4 = Class111.mc.player.inventory.mainInventory.size();

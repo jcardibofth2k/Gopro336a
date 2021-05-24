@@ -6,6 +6,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.Class247;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.apache.commons.lang3.StringUtils;
@@ -22,7 +23,7 @@ extends Class215 {
     public Class270 Field2521;
     public boolean Field2522 = false;
     public String Field2523;
-    public Class566 Field2524 = new Class566();
+    public TimerUtil Field2524 = new TimerUtil();
     public int Field2525 = (Boolean) KonasGui.singleColumn.getValue() != false ? 65 : 75;
     public int Field2526 = (Boolean) KonasGui.singleColumn.getValue() != false ? 16 : 56;
     public Class213[] Field2527 = new Class213[]{new Class213(Category.COMBAT, this.Method486(), this.Method492(), this.Field2526, 8.0f, this.Field2525, 38.0f, 1), new Class213(Category.MOVEMENT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.PLAYER, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 2, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.RENDER, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 3, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.MISC, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 4, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.EXPLOIT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 5, 8.0f, this.Field2525, 38.0f, 0), new Class213(Category.CLIENT, this.Method486(), this.Method492(), this.Field2526 + this.Field2525 * 6, 8.0f, this.Field2525, 38.0f, 2)};
@@ -165,16 +166,16 @@ extends Class215 {
         }
         Class247.Method2042(this.Field2517, Field317, 1.0f);
         if (this.Field2522 || this.Field2516 != null) {
-            Class247.Field2262.Method863(this.Field2523, this.Method486() + 599.0f, (int)(this.Method492() + 24.0f - Class247.Field2262.Method831(this.Field2523) / 2.0f), Field325);
+            Class247.cfontRenderer.Method863(this.Field2523, this.Method486() + 599.0f, (int)(this.Method492() + 24.0f - Class247.cfontRenderer.Method831(this.Field2523) / 2.0f), Field325);
             if (this.Field2524.Method737(500.0)) {
-                Class272 object = new Class272(this.Method486() + 599.0f + (this.Field2523.equals("") ? 0.0f : Class247.Field2262.Method830(this.Field2523)) + 1.0f, this.Method492() + 24.0f - (this.Field2523.equals("") ? Class247.Field2262.Method831("Search features") : Class247.Field2262.Method831(this.Field2523)) / 2.0f, 1.0f, this.Field2523.equals("") ? Class247.Field2262.Method831("Search features") : Class247.Field2262.Method831(this.Field2523));
+                Class272 object = new Class272(this.Method486() + 599.0f + (this.Field2523.equals("") ? 0.0f : Class247.cfontRenderer.Method830(this.Field2523)) + 1.0f, this.Method492() + 24.0f - (this.Field2523.equals("") ? Class247.cfontRenderer.Method831("Search features") : Class247.cfontRenderer.Method831(this.Field2523)) / 2.0f, 1.0f, this.Field2523.equals("") ? Class247.cfontRenderer.Method831("Search features") : Class247.cfontRenderer.Method831(this.Field2523));
                 Class247.Method2043(object, Field325);
                 if (this.Field2524.Method737(1000.0)) {
                     this.Field2524.Method739();
                 }
             }
         } else if (!((Boolean) KonasGui.singleColumn.getValue()).booleanValue()) {
-            Class247.Field2262.Method863("Search features", this.Method486() + 599.0f, (int)(this.Method492() + 24.0f - Class247.Field2262.Method831("Search features") / 2.0f), Field325);
+            Class247.cfontRenderer.Method863("Search features", this.Method486() + 599.0f, (int)(this.Method492() + 24.0f - Class247.cfontRenderer.Method831("Search features") / 2.0f), Field325);
         }
         for (Class213 class213 : this.Field2527) {
             class213.Method497(n, n2, f);
@@ -185,8 +186,8 @@ extends Class215 {
             this.Field2528.get((Object)this.Field2514).Method497(n, n2, f);
         }
         this.Field2515.Method497(n, n2, f);
-        Class247.Field2262.Method863("0.10.2 for Minecraft 1.12.2", this.Method486() + 8.0f, (int)(this.Method492() + this.Method476() - 12.0f - Class247.Field2262.Method831("konasclient.com") / 2.0f), Field324);
-        Class247.Field2262.Method863("konasclient.com", this.Method486() + this.Method489() - 8.0f - Class247.Field2262.Method830("konasclient.com"), (int)(this.Method492() + this.Method476() - 12.0f - Class247.Field2262.Method831("konasclient.com") / 2.0f), Field324);
+        Class247.cfontRenderer.Method863("0.10.2 for Minecraft 1.12.2", this.Method486() + 8.0f, (int)(this.Method492() + this.Method476() - 12.0f - Class247.cfontRenderer.Method831("konasclient.com") / 2.0f), Field324);
+        Class247.cfontRenderer.Method863("konasclient.com", this.Method486() + this.Method489() - 8.0f - Class247.cfontRenderer.Method830("konasclient.com"), (int)(this.Method492() + this.Method476() - 12.0f - Class247.cfontRenderer.Method831("konasclient.com") / 2.0f), Field324);
     }
 
     @Override

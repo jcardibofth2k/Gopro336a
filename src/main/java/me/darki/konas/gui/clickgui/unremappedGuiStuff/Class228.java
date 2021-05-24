@@ -2,7 +2,7 @@ package me.darki.konas.gui.clickgui.unremappedGuiStuff;
 
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.setting.Setting;
-import me.darki.konas.unremaped.Class247;
+import me.darki.konas.util.Class247;
 import me.darki.konas.unremaped.Class264;
 import me.darki.konas.unremaped.Class270;
 
@@ -20,9 +20,9 @@ extends Class215 {
             Class264 class264 = new Class264(this.Method486(), this.Method492(), 18.0f, 18.0f);
             Class247.Method2042(class264, Field324, 2.0f);
         }
-        Class247.Field2262.Method863(this.Field2624.Method1183(), this.Method486() + 26.0f, (int)(this.Method492() + (9.0f - Class247.Field2262.Method831(this.Field2624.Method1183()) / 2.0f)), Field324);
+        Class247.cfontRenderer.Method863(this.Field2624.Method1183(), this.Method486() + 26.0f, (int)(this.Method492() + (9.0f - Class247.cfontRenderer.Method831(this.Field2624.Method1183()) / 2.0f)), Field324);
         if (this.Field2624.hasDescription()) {
-            Class247.Field2261.Method863(this.Field2624.Method1192(), this.Method486(), (int)(this.Method492() + 26.0f), Field326);
+            Class247.smallCFontRenderer.Method863(this.Field2624.Method1192(), this.Method486(), (int)(this.Method492() + 26.0f), Field326);
         }
     }
 

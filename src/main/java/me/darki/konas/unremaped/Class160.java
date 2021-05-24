@@ -1,12 +1,11 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
-import me.darki.konas.module.client.NewGui;
+import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiListExtended;
@@ -151,7 +150,7 @@ extends GuiListExtended {
 
     public void Method1669(Class170 class170) {
         this.Field1766.add(class170);
-        NewGui.INSTANCE.Field1132.Field1739.add(class170);
+        KonasGlobals.INSTANCE.Field1132.Field1739.add(class170);
     }
 
     public void Method1670(float f, double d, double d2, double d3) {
