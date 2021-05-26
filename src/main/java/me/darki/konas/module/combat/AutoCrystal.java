@@ -174,7 +174,7 @@ public class AutoCrystal
 
     public Vec3d lookingAt = null;
     public float[] pitchYawValues = new float[]{0.0f, 0.0f};
-    public TimerUtil Field1622 = new Class566();
+    public TimerUtil Field1622 = new TimerUtil();
     public EntityEnderCrystal bestBreak;
     public BlockPos bestPlace;
     public EnumFacing facingBestPlace;
@@ -188,8 +188,8 @@ public class AutoCrystal
     public BlockPos Field1634;
     public TimerUtil Field1635 = new TimerUtil();
     public boolean Field1636 = false;
-    public ConcurrentHashMap<BlockPos, Long> Field1637 = new ConcurrentHashMap();
-    public ConcurrentHashMap<Integer, Long> Field1638 = new ConcurrentHashMap();
+    public ConcurrentHashMap<BlockPos, Long> listCrystalsPlaced = new ConcurrentHashMap();
+    public ConcurrentHashMap<Integer, Long> listCrystals = new ConcurrentHashMap();
     public Map<EntityPlayer, TimerUtil> Field1639 = new ConcurrentHashMap<EntityPlayer, TimerUtil>();
     public List<BlockPos> listCrystalsBroken = new CopyOnWriteArrayList<BlockPos>();
     public AtomicBoolean Field1641 = new AtomicBoolean(false);
@@ -359,7 +359,7 @@ public class AutoCrystal
             }
             this.Field1648 = null;
         }
-        if (updateEvent.isCanceled() || !Class496.Method1959(rotate.getValue() != ACRotateMode.OFF)) {
+        if (updateEvent.isCanceled() || !Rotation.Method1959(rotate.getValue() != ACRotateMode.OFF)) {
             return;
         }
         this.bestBreak = null;
@@ -387,9 +387,9 @@ public class AutoCrystal
                     this.Field1654 = yawTicks.getValue();
                 }
             }
-            KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1621[0], this.Field1621[1]);
+
         }
-        NewGui.INSTANCE.Field1139.Method1937(this.pitchYawValues[0], this.pitchYawValues[1]);
+        KonasGlobals.INSTANCE.Field1139.Method1937(this.pitchYawValues[0], this.pitchYawValues[1]);
 
     }
 
@@ -669,9 +669,9 @@ public class AutoCrystal
             Boolean bl3 = (Boolean) t2;
             boolean bl4 = bl3;
             if (!bl4) {
-                Class566 class566 = this.Field1647;
+                TimerUtil class566 = this.Field1647;
                 try {
-                    timerUtil.Method739();
+                    TimerUtil.Method739();
                 }
                 catch (ConcurrentModificationException concurrentModificationException) {
                     // empty catch block
