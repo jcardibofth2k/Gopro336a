@@ -122,7 +122,7 @@ public class Class475
         return Method2148(vec3d, vec3d2, false, false, false);
     }
     
-    public static int Method2147() {
+    public static int getSlotEndCrystal() {
         int currentItem = -1;
         if (Module.mc.player.getHeldItemMainhand().getItem() == Items.END_CRYSTAL) {
             currentItem = Module.mc.player.inventory.currentItem;
@@ -355,7 +355,7 @@ public class Class475
         return false;
     }
     
-    public static float Method2152(final BlockPos blockPos, final Entity entity) {
+    public static float calculateDamageEndCrystalBlockPos(final BlockPos blockPos, final Entity entity) {
         return Method2150(blockPos.getX() + 0.5, blockPos.getY() + 1, blockPos.getZ() + 0.5, entity);
     }
     
@@ -408,7 +408,7 @@ public class Class475
         return 0.0f;
     }
     
-    public static float Method2156(final EntityEnderCrystal entityEnderCrystal, final Entity entity) {
+    public static float CalculateDamageEndCrystal(final EntityEnderCrystal entityEnderCrystal, final Entity entity) {
         return Method2150(entityEnderCrystal.posX, entityEnderCrystal.posY, entityEnderCrystal.posZ, entity);
     }
 }

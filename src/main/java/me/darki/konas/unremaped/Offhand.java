@@ -179,7 +179,7 @@ extends Module {
                     float f = 0.0f;
                     List<Entity> list = Offhand.mc.world.loadedEntityList.stream().filter(Offhand::Method392).filter(this::Method395).collect(Collectors.toList());
                     for (Object entity : list) {
-                        f += Class475.Method2156((EntityEnderCrystal)entity, (Entity) Offhand.mc.player);
+                        f += Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, (Entity) Offhand.mc.player);
                     }
                     if (Offhand.mc.player.getHealth() + Offhand.mc.player.getAbsorptionAmount() - f <= ((Float)this.totemHealth.getValue()).floatValue()) {
                         this.Method387(Items.TOTEM_OF_UNDYING);

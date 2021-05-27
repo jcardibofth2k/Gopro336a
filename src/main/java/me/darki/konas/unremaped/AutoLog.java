@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import cookiedragon.eventsystem.Subscriber;
 import java.awt.TrayIcon;
 import java.util.List;
@@ -69,7 +68,7 @@ extends Module {
             float f = 0.0f;
             List list = AutoLog.mc.world.loadedEntityList.stream().filter(AutoLog::Method513).filter(this::Method386).collect(Collectors.toList());
             for (Entity entity : list) {
-                f += Class475.Method2156((EntityEnderCrystal)entity, (Entity) AutoLog.mc.player);
+                f += Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, (Entity) AutoLog.mc.player);
             }
             if (!(AutoLog.mc.player.getHealth() + AutoLog.mc.player.getAbsorptionAmount() <= f)) break block4;
             this.Method134();

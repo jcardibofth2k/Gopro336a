@@ -630,7 +630,7 @@ extends Module {
                             return;
                         }
                         if (!this.Method519()) {
-                            int n = Class475.Method2147();
+                            int n = Class475.getSlotEndCrystal();
                             if (n == -1) {
                                 Logger.Method1119("No crystals found!");
                                 this.toggle();
@@ -711,7 +711,7 @@ extends Module {
                     case 4: {
                         Entity entity = PistonAura.mc.world.loadedEntityList.stream().filter(PistonAura::Method513).filter(this::Method386).min(Comparator.comparing(PistonAura::Method514)).orElse(null);
                         if (entity != null) {
-                            if (this.antiSuicide.getValue().booleanValue() && Class475.Method2156((EntityEnderCrystal)entity, PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
+                            if (this.antiSuicide.getValue().booleanValue() && Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, PistonAura.mc.player) >= PistonAura.mc.player.getHealth() + PistonAura.mc.player.getAbsorptionAmount()) {
                                 return;
                             }
                             this.Field381.Method739();
