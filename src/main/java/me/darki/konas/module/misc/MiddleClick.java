@@ -82,7 +82,7 @@ extends Module {
 
     @Subscriber
     public void Method123(Class50 class50) {
-        if (GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock) && this.Field967.Method737(350.0)) {
+        if (GameSettings.isKeyDown(MiddleClick.mc.gameSettings.keyBindPickBlock) && this.Field967.GetDifferenceTiming(350.0)) {
             if (this.xP.getValue().booleanValue() && (!this.xPInHoles.getValue().booleanValue() || Class545.Method1009(new BlockPos(MiddleClick.mc.player)))) {
                 int n = this.Method524();
                 if (this.Field969) {
@@ -141,12 +141,12 @@ extends Module {
                     }
                     Logger.Method1118("Added \u00c2\u00a7b" + entity.getName() + "\u00c2\u00a7r as a friend!");
                 }
-                this.Field967.Method739();
+                this.Field967.UpdateCurrentTime();
                 return;
             }
         }
         if (this.rocket.getValue().booleanValue() && this.Method969() != -1) {
-            this.Field967.Method739();
+            this.Field967.UpdateCurrentTime();
             int n2 = this.Method969();
             n = MiddleClick.mc.player.inventory.currentItem;
             if (n2 != -1) {
@@ -223,7 +223,7 @@ extends Module {
             }
             EntityPlayer entityPlayer = MiddleClick.Method968(range.getValue());
             if (entityPlayer == null) break block5;
-            this.Field967.Method739();
+            this.Field967.UpdateCurrentTime();
             if (MiddleClick.mc.currentScreen == null) {
                 mc.displayGuiScreen(new Class262(entityPlayer));
             }

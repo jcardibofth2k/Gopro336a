@@ -247,15 +247,15 @@ extends Module {
 
     public void Method718(Class324 class324) {
         if (class324 == Class324.PROTOCOL) {
-            if (!Field645 && !this.Field644.Method737(10000.0)) {
-                Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.Method736()) / 1000L - 10L) + " seconds, before you enable this setting again!");
+            if (!Field645 && !this.Field644.GetDifferenceTiming(10000.0)) {
+                Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.GetCurrentTime()) / 1000L - 10L) + " seconds, before you enable this setting again!");
                 this.Field650.Cancel();
             } else {
                 if (this.Field649 == null) {
                     this.Field649 = Class509.Method1340();
                 }
                 this.Method134();
-                this.Field644.Method739();
+                this.Field644.UpdateCurrentTime();
             }
         } else {
             this.Method124();
@@ -271,13 +271,13 @@ extends Module {
             this.Field649 = Class509.Method1340();
         }
         if (this.Field650.getValue() != Class324.PROTOCOL) return;
-        if (!Field645 && !this.Field644.Method737(10000.0)) {
-            Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.Method736()) / 1000L - 10L) + " seconds, before you enable this module again!");
+        if (!Field645 && !this.Field644.GetDifferenceTiming(10000.0)) {
+            Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field644.GetCurrentTime()) / 1000L - 10L) + " seconds, before you enable this module again!");
             this.toggle();
             return;
         }
         this.Method134();
-        this.Field644.Method739();
+        this.Field644.UpdateCurrentTime();
     }
 
     public void Method124() {

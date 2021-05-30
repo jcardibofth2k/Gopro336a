@@ -160,10 +160,10 @@ extends Module {
             if (Announcer.mc.player == null || Announcer.mc.world == null) {
                 return;
             }
-            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class16.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f)) break block1;
+            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || class16.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.GetDifferenceTiming(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.GetDifferenceTiming(this.globalDelay.getValue().floatValue() * 1000.0f)) break block1;
             this.Method2134(class16.Method211());
-            this.Field2492.Method739();
-            this.Field2494.Method739();
+            this.Field2492.UpdateCurrentTime();
+            this.Field2494.UpdateCurrentTime();
         }
     }
 
@@ -174,10 +174,10 @@ extends Module {
             if (Announcer.mc.player == null || Announcer.mc.world == null) {
                 return;
             }
-            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || uuidHelper.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.Method737(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(uuidHelper.Method209())) == null) break block1;
+            if (!this.welcome.getValue().booleanValue() || Announcer.mc.player.ticksExisted <= 100 || uuidHelper.Method209() == Announcer.mc.player.getUniqueID() || !this.Field2492.GetDifferenceTiming(this.welcomeDelay.getValue().floatValue() * 1000.0f) || !this.Field2494.GetDifferenceTiming(this.globalDelay.getValue().floatValue() * 1000.0f) || (entityPlayer = Announcer.mc.world.getPlayerEntityByUUID(uuidHelper.Method209())) == null) break block1;
             this.Method714(entityPlayer.getName());
-            this.Field2492.Method739();
-            this.Field2494.Method739();
+            this.Field2492.UpdateCurrentTime();
+            this.Field2494.UpdateCurrentTime();
         }
     }
 
@@ -186,7 +186,7 @@ extends Module {
         if (Announcer.mc.player == null || Announcer.mc.world == null) {
             return;
         }
-        if (this.announce.getValue().booleanValue() && this.Field2494.Method737(this.globalDelay.getValue().floatValue() * 1000.0f) && this.Field2493.Method737(this.announceDelay.getValue().floatValue() * 1000.0f)) {
+        if (this.announce.getValue().booleanValue() && this.Field2494.GetDifferenceTiming(this.globalDelay.getValue().floatValue() * 1000.0f) && this.Field2493.GetDifferenceTiming(this.announceDelay.getValue().floatValue() * 1000.0f)) {
             double d = this.Method1170(Field2496, Field2497, Field2498);
             if (d > 0.0 && d < 5000.0 && Announcer.mc.player.ticksExisted > 1000) {
                 this.Field2495.put(Class357.WALK, (int)d);
@@ -203,8 +203,8 @@ extends Module {
                 ArrayList<Map.Entry<Class357, Integer>> arrayList = new ArrayList<Map.Entry<Class357, Integer>>(this.Field2495.entrySet());
                 Map.Entry entry = arrayList.get(i);
                 Announcer.mc.player.sendChatMessage(this.Method2133((Class357) entry.getKey(), (Integer)entry.getValue()));
-                this.Field2493.Method739();
-                this.Field2494.Method739();
+                this.Field2493.UpdateCurrentTime();
+                this.Field2494.UpdateCurrentTime();
                 this.Field2495.clear();
             }
         }

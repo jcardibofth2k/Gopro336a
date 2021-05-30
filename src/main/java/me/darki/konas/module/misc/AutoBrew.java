@@ -149,8 +149,8 @@ extends Module {
             }
         } else {
             this.Field2198 = false;
-            if (autoOpen.getValue().booleanValue() && !this.Field2201 && this.Field2200.Method737(150.0)) {
-                this.Field2200.Method739();
+            if (autoOpen.getValue().booleanValue() && !this.Field2201 && this.Field2200.GetDifferenceTiming(150.0)) {
+                this.Field2200.UpdateCurrentTime();
                 List<BlockPos> list = Class545.Method1003(AutoBrew.mc.player.getPosition(), 4);
                 BlockPos blockPos = list.stream().filter(AutoBrew::Method515).min(Comparator.comparing(AutoBrew::Method127)).orElse(null);
                 if (blockPos != null) {

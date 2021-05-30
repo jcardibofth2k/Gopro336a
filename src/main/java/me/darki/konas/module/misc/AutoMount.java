@@ -89,16 +89,16 @@ extends Module {
             if (AutoMount.mc.player.isRiding()) {
                 return;
             }
-            if (!this.Field1889.Method737(delay.getValue().floatValue() * 1000.0f)) {
+            if (!this.Field1889.GetDifferenceTiming(delay.getValue().floatValue() * 1000.0f)) {
                 return;
             }
-            this.Field1889.Method739();
+            this.Field1889.UpdateCurrentTime();
             this.Field1893 = AutoMount.mc.world.loadedEntityList.stream().filter(this::Method384).min(Comparator.comparing(AutoMount::Method389)).orElse(null);
             if (!rotate.getValue().booleanValue() || this.Field1893 == null) break block2;
             double[] dArray = PlayerUtil.Method1088(this.Field1893.posX, this.Field1893.posY, this.Field1893.posZ, AutoMount.mc.player);
             this.Field1891 = (float)dArray[0];
             this.Field1892 = (float)dArray[1];
-            this.Field1890.Method739();
+            this.Field1890.UpdateCurrentTime();
         }
     }
 
@@ -109,7 +109,7 @@ extends Module {
             if (AutoMount.mc.world == null || AutoMount.mc.player == null) {
                 return;
             }
-            if (sendPacketEvent.getPacket() instanceof CPacketPlayer && !this.Field1890.Method737(350.0)) {
+            if (sendPacketEvent.getPacket() instanceof CPacketPlayer && !this.Field1890.GetDifferenceTiming(350.0)) {
                 cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
                 if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
                     sendPacketEvent.setCanceled(true);

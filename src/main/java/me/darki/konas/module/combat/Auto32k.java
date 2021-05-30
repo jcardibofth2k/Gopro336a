@@ -349,10 +349,10 @@ extends Module {
             if (Auto32k.mc.player == null || Auto32k.mc.world == null) {
                 return;
             }
-            if (!killAura.getValue().booleanValue() || !this.Method938(Auto32k.mc.player.getHeldItemMainhand()) || this.Field1506 == null || mode.getValue() != Auto32kMode.ALWAYS || !this.Field1513.Method737(delay.getValue() * 1000.0) || !((double) Auto32k.mc.player.getDistance(this.Field1506) <= attackRange.getValue())) break block1;
+            if (!killAura.getValue().booleanValue() || !this.Method938(Auto32k.mc.player.getHeldItemMainhand()) || this.Field1506 == null || mode.getValue() != Auto32kMode.ALWAYS || !this.Field1513.GetDifferenceTiming(delay.getValue() * 1000.0) || !((double) Auto32k.mc.player.getDistance(this.Field1506) <= attackRange.getValue())) break block1;
             Auto32k.mc.playerController.attackEntity(Auto32k.mc.player, this.Field1506);
             Auto32k.mc.player.swingArm(EnumHand.MAIN_HAND);
-            this.Field1513.Method739();
+            this.Field1513.UpdateCurrentTime();
         }
     }
 

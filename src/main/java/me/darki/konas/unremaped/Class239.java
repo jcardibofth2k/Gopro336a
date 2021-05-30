@@ -28,7 +28,7 @@ extends Module {
         block1: {
             if (this.Field2448 == 0) break block1;
             moveEvent.setCanceled(true);
-            if (this.Field2447.Method737(2850.0)) {
+            if (this.Field2447.GetDifferenceTiming(2850.0)) {
                 this.toggle();
             }
         }
@@ -39,7 +39,7 @@ extends Module {
         block0: {
             if (!(sendPacketEvent.getPacket() instanceof CPacketConfirmTeleport)) break block0;
             this.Field2448 = ((CPacketConfirmTeleport) sendPacketEvent.getPacket()).getTeleportId();
-            this.Field2447.Method739();
+            this.Field2447.UpdateCurrentTime();
             sendPacketEvent.setCanceled(true);
         }
     }

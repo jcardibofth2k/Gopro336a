@@ -44,11 +44,11 @@ extends Module {
             if (Spammer.mc.player == null || Spammer.mc.world == null) {
                 return;
             }
-            if (!this.Field794.Method737(this.delay.getValue().floatValue() * 1000.0f)) break block8;
+            if (!this.Field794.GetDifferenceTiming(this.delay.getValue().floatValue() * 1000.0f)) break block8;
             if (arrayList.isEmpty()) {
                 this.Method124();
                 Logger.Method1119("Caution: Spammer file '" + spamFileList.getValue().Method1225().get(Field796) + "' is empty!");
-                this.Field794.Method739();
+                this.Field794.UpdateCurrentTime();
                 return;
             }
             if (this.random.getValue().booleanValue()) {
@@ -77,7 +77,7 @@ extends Module {
                 string = string + " " + new Random().nextInt(69420);
             }
             Spammer.mc.player.sendChatMessage(string);
-            this.Field794.Method739();
+            this.Field794.UpdateCurrentTime();
         }
     }
 

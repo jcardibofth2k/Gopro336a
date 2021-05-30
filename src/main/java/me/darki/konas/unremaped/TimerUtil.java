@@ -1,22 +1,21 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 public class TimerUtil {
-    public long Field676 = System.currentTimeMillis();
+    public long timeSaved = System.currentTimeMillis();
 
-    public long Method736() {
-        return this.Field676;
+    public long GetCurrentTime() {
+        return this.timeSaved;
     }
 
-    public boolean Method737(double d) {
-        return (double)(System.currentTimeMillis() - this.Field676) >= d;
+    public boolean GetDifferenceTiming(double d) {
+        return (double)(System.currentTimeMillis() - this.timeSaved) >= d;
     }
 
-    public void Method738(long l) {
-        this.Field676 = l;
+    public void SetCurrentTime(long l) {
+        this.timeSaved = l;
     }
 
-    public void Method739() {
-        this.Field676 = System.currentTimeMillis();
+    public void UpdateCurrentTime() {
+        this.timeSaved = System.currentTimeMillis();
     }
 }

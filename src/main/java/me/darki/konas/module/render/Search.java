@@ -194,8 +194,8 @@ extends Module {
             return;
         }
         if (slowRender.getValue().booleanValue()) {
-            if (this.Field675.Method737(1000.0)) {
-                this.Field675.Method739();
+            if (this.Field675.GetDifferenceTiming(1000.0)) {
+                this.Field675.UpdateCurrentTime();
             } else {
                 return;
             }

@@ -39,7 +39,7 @@ extends Module {
                 if (updateEvent.isCanceled() || !Rotation.Method1966()) {
                     return;
                 }
-                if (!this.Field2480.Method737(2500.0)) {
+                if (!this.Field2480.GetDifferenceTiming(2500.0)) {
                     return;
                 }
                 if (Class233.mc.player.getHealth() + Class233.mc.player.getAbsorptionAmount() < (float)((Integer)minHealth.getValue()).intValue()) {
@@ -80,7 +80,7 @@ extends Module {
                     if (((Boolean)toggelable.getValue()).booleanValue()) {
                         this.toggle();
                     }
-                    this.Field2480.Method739();
+                    this.Field2480.UpdateCurrentTime();
                     break block3;
                 }
                 if (Class233.mc.player.getItemInUseMaxCount() != 0) break block3;

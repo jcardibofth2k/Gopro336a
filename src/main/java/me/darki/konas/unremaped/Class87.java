@@ -130,9 +130,9 @@ public class Class87 {
     @Subscriber
     public void Method431(Class19 class19) {
         block0: {
-            if (!this.Field263.Method737(10000.0)) break block0;
+            if (!this.Field263.GetDifferenceTiming(10000.0)) break block0;
             this.Method425();
-            this.Field263.Method739();
+            this.Field263.UpdateCurrentTime();
         }
     }
 

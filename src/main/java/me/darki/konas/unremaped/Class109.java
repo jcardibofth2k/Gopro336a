@@ -83,7 +83,7 @@ lbl28:
     public void Method2199(PacketEvent packetEvent) {
         block0: {
             if (packetEvent.getPacket() instanceof SPacketChat) break block0;
-            Field2570.Method739();
+            Field2570.UpdateCurrentTime();
         }
     }
 

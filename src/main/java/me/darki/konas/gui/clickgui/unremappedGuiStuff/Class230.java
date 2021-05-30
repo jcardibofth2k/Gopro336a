@@ -167,11 +167,11 @@ extends Class215 {
         Class247.Method2042(this.Field2517, Field317, 1.0f);
         if (this.Field2522 || this.Field2516 != null) {
             Class247.cfontRenderer.Method863(this.Field2523, this.Method486() + 599.0f, (int)(this.Method492() + 24.0f - Class247.cfontRenderer.Method831(this.Field2523) / 2.0f), Field325);
-            if (this.Field2524.Method737(500.0)) {
+            if (this.Field2524.GetDifferenceTiming(500.0)) {
                 Class272 object = new Class272(this.Method486() + 599.0f + (this.Field2523.equals("") ? 0.0f : Class247.cfontRenderer.Method830(this.Field2523)) + 1.0f, this.Method492() + 24.0f - (this.Field2523.equals("") ? Class247.cfontRenderer.Method831("Search features") : Class247.cfontRenderer.Method831(this.Field2523)) / 2.0f, 1.0f, this.Field2523.equals("") ? Class247.cfontRenderer.Method831("Search features") : Class247.cfontRenderer.Method831(this.Field2523));
                 Class247.Method2043(object, Field325);
-                if (this.Field2524.Method737(1000.0)) {
-                    this.Field2524.Method739();
+                if (this.Field2524.GetDifferenceTiming(1000.0)) {
+                    this.Field2524.UpdateCurrentTime();
                 }
             }
         } else if (!((Boolean) KonasGui.singleColumn.getValue()).booleanValue()) {

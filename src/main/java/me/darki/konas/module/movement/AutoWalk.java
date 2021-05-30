@@ -40,9 +40,9 @@ extends Module {
         }
         float f2 = f = inputUpdateEvent.Method81().sneak ? 0.3f : 1.0f;
         if (AutoWalk.mc.player.getPosition() != this.Field1817) {
-            this.Field1816.Method739();
+            this.Field1816.UpdateCurrentTime();
         }
-        if (this.Field1816.Method737(5000.0)) {
+        if (this.Field1816.GetDifferenceTiming(5000.0)) {
             Logger.Method1118("Can't find path!");
             this.toggle();
             return;
@@ -74,7 +74,7 @@ extends Module {
             this.toggle();
             return;
         }
-        if (!this.Field1815.Method737(150.0)) {
+        if (!this.Field1815.GetDifferenceTiming(150.0)) {
             inputUpdateEvent.Method81().moveForward = f;
         }
         Class498 class498 = this.Field1812.Method1430().get(this.Field1813);
@@ -104,7 +104,7 @@ extends Module {
         }
         if (blockPos.getX() != class498.getX() || blockPos.getZ() != class498.getZ()) {
             inputUpdateEvent.Method81().moveForward = f;
-            this.Field1815.Method739();
+            this.Field1815.UpdateCurrentTime();
             double[] dArray = PlayerUtil.Method1088((float)class498.getX() + 0.5f, class498.getY(), (float)class498.getZ() + 0.5f, AutoWalk.mc.player);
             AutoWalk.mc.player.rotationYaw = (float)dArray[0];
             if (this.Field1813 <= 0 || !this.Field1812.Method1430().get(this.Field1813 - 1).Method930()) {
@@ -125,6 +125,6 @@ extends Module {
             ++this.Field1813;
         }
         inputUpdateEvent.Method81().moveForward = f;
-        this.Field1815.Method739();
+        this.Field1815.UpdateCurrentTime();
     }
 }

@@ -71,7 +71,7 @@ extends Module {
     @Subscriber(priority=3)
     public void Method135(UpdateEvent updateEvent) {
         block0: {
-            if (this.Field905.Method737(100.0 * (Double) delay.getValue()) || !Rotation.Method1966()) break block0;
+            if (this.Field905.GetDifferenceTiming(100.0 * (Double) delay.getValue()) || !Rotation.Method1966()) break block0;
             KonasGlobals.INSTANCE.Field1139.Method1937(this.Field906, this.Field907);
         }
     }
@@ -405,7 +405,7 @@ extends Module {
     @Override
     public void onEnable() {
         if (Scaffold.mc.world != null) {
-            this.Field890.Method739();
+            this.Field890.UpdateCurrentTime();
             this.Field904 = MathHelper.floor((double) Scaffold.mc.player.posY);
         }
     }
@@ -482,7 +482,7 @@ extends Module {
                     KonasGlobals.INSTANCE.Field1139.Method1937(fArray[0], fArray[1]);
                     this.Field906 = fArray[0];
                     this.Field907 = fArray[1];
-                    this.Field905.Method739();
+                    this.Field905.UpdateCurrentTime();
                 }
             }
         } else if (this.Field891 != null) {
@@ -513,14 +513,14 @@ extends Module {
                     Scaffold.mc.player.motionY = 0.42f;
                     Scaffold.mc.player.motionZ = 0.0;
                     Scaffold.mc.player.motionX = 0.0;
-                    if (this.Field890.Method737(1500.0)) {
+                    if (this.Field890.GetDifferenceTiming(1500.0)) {
                         KonasGlobals.INSTANCE.Field1134.Method749(this);
-                        this.Field890.Method739();
+                        this.Field890.UpdateCurrentTime();
                         Scaffold.mc.player.motionY = -0.28;
                     }
                 } else {
                     KonasGlobals.INSTANCE.Field1134.Method749(this);
-                    this.Field890.Method739();
+                    this.Field890.UpdateCurrentTime();
                     if (this.Field909 && ((Boolean) center.getValue()).booleanValue()) {
                         this.Field909 = false;
                     }

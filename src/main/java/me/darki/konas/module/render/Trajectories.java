@@ -62,7 +62,7 @@ extends Module {
     public static boolean Method651(EntityLivingBase entityLivingBase) {
         Module module = ModuleManager.Method1612("BowAim");
         if (entityLivingBase == Trajectories.mc.player && module != null) {
-            return module.isEnabled() && !BowAim.Field763.Method737(350.0);
+            return module.isEnabled() && !BowAim.Field763.GetDifferenceTiming(350.0);
         }
         return false;
     }
@@ -207,7 +207,7 @@ extends Module {
                 EspRenderUtil.Method1381(axisAlignedBB, true, 1.0, entityLivingBase == Trajectories.mc.player ? selfFill.getValue() : fill.getValue(), entityLivingBase == Trajectories.mc.player ? selfFill.getValue().Method782() : fill.getValue().Method782(), 63);
                 EspRenderUtil.Method1374(axisAlignedBB, outlineWidth.getValue().floatValue(), entityLivingBase == Trajectories.mc.player ? selfOutline.getValue() : outline.getValue());
                 EspRenderUtil.Method1385();
-                BlockHighlight.Field2604.Method739();
+                BlockHighlight.Field2604.UpdateCurrentTime();
             }
         }
     }

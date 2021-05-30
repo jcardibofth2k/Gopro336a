@@ -187,7 +187,7 @@ extends Module {
                     if (this.Field484 != null && this.Field484 instanceof EntityShulkerBullet) {
                         f2 = 0.0f;
                     }
-                    if (this.Field485.Method737(5000.0) || Field480 == 0.0 || mode.getValue() == Class311.DYNAMIC && KillAura.mc.player.getCooledAttackStrength(tPSSync.getValue() != Class327.NONE ? -f : 0.0f) >= f2 || mode.getValue() == Class311.STATIC && this.Field479 >= tickDelay.getValue()) {
+                    if (this.Field485.GetDifferenceTiming(5000.0) || Field480 == 0.0 || mode.getValue() == Class311.DYNAMIC && KillAura.mc.player.getCooledAttackStrength(tPSSync.getValue() != Class327.NONE ? -f : 0.0f) >= f2 || mode.getValue() == Class311.STATIC && this.Field479 >= tickDelay.getValue()) {
                         this.Method561(this.Field484);
                     }
                 } else {
@@ -277,7 +277,7 @@ extends Module {
                 }
                 KillAura.mc.playerController.attackEntity(KillAura.mc.player, this.Field484);
                 KillAura.mc.player.swingArm(EnumHand.MAIN_HAND);
-                this.Field485.Method739();
+                this.Field485.UpdateCurrentTime();
                 this.Field479 = 0;
                 if (bl) {
                     KillAura.mc.player.connection.sendPacket(new CPacketEntityAction(KillAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
@@ -506,7 +506,7 @@ extends Module {
         if (KillAura.mc.player == null || KillAura.mc.world == null) {
             return;
         }
-        if (KillAura.targetRender.getValue() && this.Field484 != null && (!(boolean)KillAura.onlyWhenHitting.getValue() || !this.Field485.Method737(3500.0))) {
+        if (KillAura.targetRender.getValue() && this.Field484 != null && (!(boolean)KillAura.onlyWhenHitting.getValue() || !this.Field485.GetDifferenceTiming(3500.0))) {
             GlStateManager.pushMatrix();
             EspRenderUtil.Method1386();
             if (KillAura.depth.getValue()) {

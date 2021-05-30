@@ -63,7 +63,7 @@ extends Module {
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
         if (packetEvent.getPacket() instanceof SPacketPlayerPosLook) {
-            this.Field700.Method739();
+            this.Field700.UpdateCurrentTime();
             this.Field701 = System.currentTimeMillis();
         }
     }
@@ -75,7 +75,7 @@ extends Module {
     @Subscriber
     public void Method503(MoveEvent moveEvent) {
         AxisAlignedBB axisAlignedBB;
-        if (!this.Field700.Method737(350.0)) {
+        if (!this.Field700.GetDifferenceTiming(350.0)) {
             return;
         }
         AxisAlignedBB axisAlignedBB2 = axisAlignedBB = Flight.mc.player.getRidingEntity() != null ? Flight.mc.player.getRidingEntity().getEntityBoundingBox() : Flight.mc.player.getEntityBoundingBox();

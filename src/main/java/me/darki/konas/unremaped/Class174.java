@@ -66,9 +66,9 @@ extends Component {
                 this.Method1511(n2);
                 break block2;
             }
-            if (!Class174.isMouseWithinBounds(n, n2, this.Method1475() + 4.0f + this.Field1472, this.Method1476() + 25.0f + (float)(Class548.Method1020() * 3), 8.0, 8.0) || !this.Field1482.Method737(500.0)) break block2;
+            if (!Class174.isMouseWithinBounds(n, n2, this.Method1475() + 4.0f + this.Field1472, this.Method1476() + 25.0f + (float)(Class548.Method1020() * 3), 8.0, 8.0) || !this.Field1482.GetDifferenceTiming(500.0)) break block2;
             this.Method1506().Method772();
-            this.Field1482.Method739();
+            this.Field1482.UpdateCurrentTime();
         }
         return true;
     }

@@ -131,7 +131,7 @@ extends Module {
                 this.Field1761 = Rotation.Method1961(this.Field1760.up(), (Boolean)rotate.getValue(), true);
                 if (this.Field1761 != null) {
                     this.Field1758 = this.Field1760;
-                    this.Field1757.Method739();
+                    this.Field1757.UpdateCurrentTime();
                     Rotation.Method1957(this.Field1761, EnumHand.MAIN_HAND, false);
                 }
             }
@@ -169,11 +169,11 @@ extends Module {
             EntityPlayer entityPlayer;
             if (this.Field1761 != null) {
                 this.Field1762 = this.Field1761;
-                this.Field1763.Method739();
+                this.Field1763.UpdateCurrentTime();
             }
             this.Field1760 = null;
             this.Field1761 = null;
-            if (this.Field1757.Method737(350.0)) {
+            if (this.Field1757.GetDifferenceTiming(350.0)) {
                 this.Field1758 = null;
             }
             if (updateEvent.isCanceled() || !Rotation.Method1959((Boolean)rotate.getValue())) {
@@ -192,7 +192,7 @@ extends Module {
                 return;
             }
             if (this.Field1759 < (Integer)actionInterval.getValue()) {
-                if (this.Field1762 != null && !this.Field1763.Method737(650.0)) {
+                if (this.Field1762 != null && !this.Field1763.GetDifferenceTiming(650.0)) {
                     KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1762.Method1979(), this.Field1762.Method1978());
                 }
                 return;
@@ -213,7 +213,7 @@ extends Module {
             if (this.Field1761 == null) break block13;
             this.Field1759 = 0;
             this.Field1758 = this.Field1760;
-            this.Field1757.Method739();
+            this.Field1757.UpdateCurrentTime();
         }
     }
 }

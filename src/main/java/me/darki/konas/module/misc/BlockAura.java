@@ -130,14 +130,14 @@ extends Module {
                             this.Field1784 = true;
                             return;
                         }
-                    } else if (this.Field1787.Method737((Integer)placeDelay.getValue() * 10)) {
+                    } else if (this.Field1787.GetDifferenceTiming((Integer)placeDelay.getValue() * 10)) {
                         this.Field1784 = false;
                         return;
                     }
                 }
                 break block13;
             }
-            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.Method737((Integer)placeDelay.getValue() * 2) || this.Field1783 == -1) break block13;
+            if (this.Field1781 == null || this.Field1782 == null || !this.Field1787.GetDifferenceTiming((Integer)placeDelay.getValue() * 2) || this.Field1783 == -1) break block13;
             boolean bl = BlockAura.mc.player.inventory.currentItem != this.Field1783;
             boolean bl2 = BlockAura.mc.player.isSprinting();
             int n = BlockAura.mc.player.inventory.currentItem;
@@ -164,7 +164,7 @@ extends Module {
                 BlockAura.mc.player.inventory.currentItem = n;
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
             }
-            this.Field1787.Method739();
+            this.Field1787.UpdateCurrentTime();
         }
     }
 

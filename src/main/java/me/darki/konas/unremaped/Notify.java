@@ -186,7 +186,7 @@ extends Module {
     }
 
     public void Method124() {
-        this.Field1421.Method739();
+        this.Field1421.UpdateCurrentTime();
         for (Map.Entry<Long, Boolean> entry : this.Field1422.entrySet()) {
             this.Field1422.put(entry.getKey(), false);
         }
@@ -197,23 +197,23 @@ extends Module {
         if (Notify.mc.player == null || Notify.mc.world == null || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || !((Boolean)this.2b2tKick.getValue()).booleanValue()) {
             return;
         }
-        if (this.Field1421.Method737(2.07E7) && !this.Field1422.get(20700000L).booleanValue()) {
+        if (this.Field1421.GetDifferenceTiming(2.07E7) && !this.Field1422.get(20700000L).booleanValue()) {
             Logger.Method1118("You will get kicked in 15 Minutes!");
             this.Field1422.put(20700000L, true);
         }
-        if (this.Field1421.Method737(2.1E7) && !this.Field1422.get(21000000L).booleanValue()) {
+        if (this.Field1421.GetDifferenceTiming(2.1E7) && !this.Field1422.get(21000000L).booleanValue()) {
             Logger.Method1118("You will get kicked in 10 Minutes!");
             this.Field1422.put(21000000L, true);
         }
-        if (this.Field1421.Method737(2.13E7) && !this.Field1422.get(21300000L).booleanValue()) {
+        if (this.Field1421.GetDifferenceTiming(2.13E7) && !this.Field1422.get(21300000L).booleanValue()) {
             Logger.Method1118("You will get kicked in 5 Minutes!");
             this.Field1422.put(21300000L, true);
         }
-        if (this.Field1421.Method737(2.154E7) && !this.Field1422.get(21540000L).booleanValue()) {
+        if (this.Field1421.GetDifferenceTiming(2.154E7) && !this.Field1422.get(21540000L).booleanValue()) {
             Logger.Method1118("You will get kicked in 1 Minute!");
             this.Field1422.put(21540000L, true);
         }
-        if (this.Field1421.Method737(2.157E7) && !this.Field1422.get(21570000L).booleanValue()) {
+        if (this.Field1421.GetDifferenceTiming(2.157E7) && !this.Field1422.get(21570000L).booleanValue()) {
             Logger.Method1118("You will get kicked in 30 Seconds!");
             this.Field1422.put(21570000L, true);
         }

@@ -29,41 +29,41 @@ extends Module {
     @Subscriber
     public void Method130(Class19 class19) {
         if (AutoFish.mc.player.getHeldItemMainhand().getItem() != Items.FISHING_ROD) {
-            this.Field2088.Method739();
+            this.Field2088.UpdateCurrentTime();
             this.Field2086 = false;
             this.Field2087 = false;
             return;
         }
         if (AutoFish.mc.player.fishEntity == null) {
             if (this.Field2087) {
-                if (this.Field2088.Method737(450.0)) {
+                if (this.Field2088.GetDifferenceTiming(450.0)) {
                     ((IMinecraft)mc).rightClickMouse();
-                    this.Field2088.Method739();
+                    this.Field2088.UpdateCurrentTime();
                     this.Field2086 = false;
                     this.Field2087 = false;
                 }
-            } else if (cast.getValue().booleanValue() && this.Field2088.Method737(4500.0)) {
+            } else if (cast.getValue().booleanValue() && this.Field2088.GetDifferenceTiming(4500.0)) {
                 ((IMinecraft)mc).rightClickMouse();
-                this.Field2088.Method739();
+                this.Field2088.UpdateCurrentTime();
                 this.Field2086 = false;
                 this.Field2087 = false;
             }
         } else if (this.Method394() && this.Method388()) {
             if (this.Field2086) {
-                if (this.Field2088.Method737(350.0)) {
+                if (this.Field2088.GetDifferenceTiming(350.0)) {
                     ((IMinecraft)mc).rightClickMouse();
-                    this.Field2088.Method739();
+                    this.Field2088.UpdateCurrentTime();
                     this.Field2086 = false;
                     this.Field2087 = true;
                 }
             } else if (mode.getValue() != Class376.SPLASH && this.Method393()) {
-                this.Field2088.Method739();
+                this.Field2088.UpdateCurrentTime();
                 this.Field2086 = true;
                 this.Field2087 = false;
             }
         } else if (this.Method394()) {
             ((IMinecraft)mc).rightClickMouse();
-            this.Field2088.Method739();
+            this.Field2088.UpdateCurrentTime();
             this.Field2086 = false;
             this.Field2087 = false;
         }
@@ -94,7 +94,7 @@ extends Module {
         block0: {
             if (!(packetEvent.getPacket() instanceof SPacketSoundEffect) || !((SPacketSoundEffect) packetEvent.getPacket()).getSound().getSoundName().toString().toLowerCase().contains("entity.bobber.splash") || this.Field2087 || !this.Method394() || mode.getValue() == Class376.BOUNCE) break block0;
             this.Field2086 = true;
-            this.Field2088.Method739();
+            this.Field2088.UpdateCurrentTime();
         }
     }
 

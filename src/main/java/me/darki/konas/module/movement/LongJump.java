@@ -124,7 +124,7 @@ extends Module {
             case 2: {
                 if (this.Field338) {
                     if (LongJump.mc.player.onGround) {
-                        this.Field337.Method739();
+                        this.Field337.UpdateCurrentTime();
                     }
                     if (this.Method504(LongJump.mc.player.posY - (double)((int) LongJump.mc.player.posY), 3) == 0.41) {
                         LongJump.mc.player.motionY = 0.0;
@@ -193,34 +193,34 @@ extends Module {
                     --this.Field340;
                 }
                 if (shortJump.getValue().booleanValue()) {
-                    if (this.Field337.Method737(35.0)) {
+                    if (this.Field337.GetDifferenceTiming(35.0)) {
                         this.Field339 = true;
                     }
-                    if (this.Field337.Method737(2490.0)) {
+                    if (this.Field337.GetDifferenceTiming(2490.0)) {
                         this.Field339 = false;
                         this.Field338 = false;
                         LongJump.mc.player.motionX *= 0.0;
                         LongJump.mc.player.motionZ *= 0.0;
                     }
-                    if (!this.Field337.Method737(2820.0)) {
+                    if (!this.Field337.GetDifferenceTiming(2820.0)) {
                         return;
                     }
                     this.Field338 = true;
                     LongJump.mc.player.motionX *= 0.0;
                     LongJump.mc.player.motionZ *= 0.0;
-                    this.Field337.Method739();
+                    this.Field337.UpdateCurrentTime();
                     break;
                 }
-                if (this.Field337.Method737(480.0)) {
+                if (this.Field337.GetDifferenceTiming(480.0)) {
                     LongJump.mc.player.motionX *= 0.0;
                     LongJump.mc.player.motionZ *= 0.0;
                     this.Field338 = false;
                 }
-                if (!this.Field337.Method737(780.0)) break;
+                if (!this.Field337.GetDifferenceTiming(780.0)) break;
                 LongJump.mc.player.motionX *= 0.0;
                 LongJump.mc.player.motionZ *= 0.0;
                 this.Field338 = true;
-                this.Field337.Method739();
+                this.Field337.UpdateCurrentTime();
                 break;
             }
         }

@@ -270,7 +270,7 @@ extends Module {
                     this.Field410 = 1.35 * this.Method541() - 0.01;
                 }
                 this.Field410 = Math.max(this.Field410, this.Method541());
-                if (this.Field419 > 0.0 && this.boost.getValue().booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
+                if (this.Field419 > 0.0 && this.boost.getValue().booleanValue() && !this.Field420.GetDifferenceTiming(75.0) && !Speed.mc.player.collidedHorizontally) {
                     this.Field410 = Math.max(this.Field410, this.Field419);
                 } else if (this.strict.getValue().booleanValue()) {
                     this.Field410 = Math.min(this.Field410, 0.433);
@@ -346,7 +346,7 @@ extends Module {
                     }
                 }
                 this.Field409 = Math.max(this.Field409, this.Method541());
-                if (this.Field419 > 0.0 && this.boost.getValue().booleanValue() && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally) {
+                if (this.Field419 > 0.0 && this.boost.getValue().booleanValue() && !this.Field420.GetDifferenceTiming(75.0) && !Speed.mc.player.collidedHorizontally) {
                     this.Field409 = Math.max(this.Field409, this.Field419);
                 }
                 float f = Speed.mc.player.movementInput.moveForward;
@@ -400,7 +400,7 @@ extends Module {
                     this.Field414 = this.Field411 - this.Field411 / 159.0;
                 }
                 this.Field414 = Math.max(this.Field414, this.Method541());
-                this.Field414 = this.Field419 > 0.0 && this.boost.getValue() != false && !this.Field420.Method737(75.0) && !Speed.mc.player.collidedHorizontally ? Math.max(this.Field414, this.Field419) : Math.min(this.Field414, this.Field417 > 25 ? 0.449 : 0.433);
+                this.Field414 = this.Field419 > 0.0 && this.boost.getValue() != false && !this.Field420.GetDifferenceTiming(75.0) && !Speed.mc.player.collidedHorizontally ? Math.max(this.Field414, this.Field419) : Math.min(this.Field414, this.Field417 > 25 ? 0.449 : 0.433);
                 float f = Speed.mc.player.movementInput.moveForward;
                 float f3 = Speed.mc.player.movementInput.moveStrafe;
                 float f4 = Speed.mc.player.rotationYaw;
@@ -435,7 +435,7 @@ extends Module {
                 break;
             }
             case 6: {
-                if (!this.Field421.Method737(100.0)) {
+                if (!this.Field421.GetDifferenceTiming(100.0)) {
                     return;
                 }
                 double d = 0.0;
@@ -620,7 +620,7 @@ extends Module {
                 this.Field411 = 0.0;
                 this.Field415 = 0;
                 this.Field419 = 0.0;
-                this.Field421.Method739();
+                this.Field421.UpdateCurrentTime();
                 this.Field422 = 4;
                 this.Field425 = 2;
                 this.Field426 = 0.0;
@@ -629,7 +629,7 @@ extends Module {
             if (!(packetEvent.getPacket() instanceof SPacketExplosion)) break block2;
             SPacketExplosion sPacketExplosion = (SPacketExplosion) packetEvent.getPacket();
             this.Field419 = Math.sqrt(sPacketExplosion.getMotionX() * sPacketExplosion.getMotionX() + sPacketExplosion.getMotionZ() * sPacketExplosion.getMotionZ());
-            this.Field420.Method739();
+            this.Field420.UpdateCurrentTime();
         }
     }
 

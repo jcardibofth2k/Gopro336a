@@ -40,9 +40,9 @@ extends Module {
                 Slot slot = guiChest.inventorySlots.getSlot(i);
                 if (!slot.getHasStack()) continue;
                 Random random = new Random();
-                if (!this.Field2177.Method737(this.delay.getValue() + (this.random.getValue() != false ? random.nextInt(this.delay.getValue()) : 0))) continue;
+                if (!this.Field2177.GetDifferenceTiming(this.delay.getValue() + (this.random.getValue() != false ? random.nextInt(this.delay.getValue()) : 0))) continue;
                 ChestStealer.mc.playerController.windowClick(containerChest.windowId, i, 0, ClickType.QUICK_MOVE, ChestStealer.mc.player);
-                this.Field2177.Method739();
+                this.Field2177.UpdateCurrentTime();
             }
             if (this.Method1975(containerChest)) {
                 ChestStealer.mc.player.closeScreen();

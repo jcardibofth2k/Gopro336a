@@ -62,7 +62,7 @@ extends Module {
             if (AutoArmor.mc.world == null || AutoArmor.mc.player == null) {
                 return;
             }
-            if (!this.Field2043.Method737(350.0)) {
+            if (!this.Field2043.GetDifferenceTiming(350.0)) {
                 return;
             }
             if (AutoArmor.mc.player.ticksExisted % (delay.getValue() + 1) != 0) {
@@ -77,7 +77,7 @@ extends Module {
             if (AutoMend.Field1952 && ModuleManager.Method1612("AutoMend").isEnabled()) {
                 return;
             }
-            if (allowMend.getValue().booleanValue() && !this.Field2041.Method737(500.0)) {
+            if (allowMend.getValue().booleanValue() && !this.Field2041.GetDifferenceTiming(500.0)) {
                 for (int i = 0; i < AutoArmor.mc.player.inventory.armorInventory.size(); ++i) {
                     ItemStack itemStack = AutoArmor.mc.player.inventory.armorInventory.get(i);
                     if (itemStack.getEnchantmentTagList() != null) {
@@ -183,7 +183,7 @@ extends Module {
         if (rightClickItem.getItemStack().getItem() != Items.EXPERIENCE_BOTTLE) {
             return;
         }
-        this.Field2041.Method739();
+        this.Field2041.UpdateCurrentTime();
     }
 
     public static boolean Method1862(Class482 class482) {
@@ -272,7 +272,7 @@ extends Module {
     public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
             if (!(sendPacketEvent.getPacket() instanceof CPacketClickWindow)) break block0;
-            this.Field2043.Method739();
+            this.Field2043.UpdateCurrentTime();
         }
     }
 

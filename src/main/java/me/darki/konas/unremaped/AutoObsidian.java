@@ -50,7 +50,7 @@ extends Module {
         }
         BlockPos blockPos = AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0).stream().filter(AutoObsidian::Method512).min(Comparator.comparing(AutoObsidian::Method1653)).orElse(null);
         if (blockPos != null) {
-            if (this.Field1730.Method737(4000.0)) {
+            if (this.Field1730.GetDifferenceTiming(4000.0)) {
                 boolean bl;
                 boolean bl2 = bl = AutoObsidian.mc.player.getHeldItemMainhand().getItem() == Items.DIAMOND_PICKAXE;
                 if (!bl) {
@@ -71,11 +71,11 @@ extends Module {
                 AutoObsidian.mc.player.swingArm(EnumHand.MAIN_HAND);
                 AutoObsidian.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.START_DESTROY_BLOCK, blockPos, enumFacing));
                 AutoObsidian.mc.player.connection.sendPacket((Packet)new CPacketPlayerDigging(CPacketPlayerDigging.Action.STOP_DESTROY_BLOCK, blockPos, enumFacing));
-                this.Field1730.Method739();
+                this.Field1730.UpdateCurrentTime();
             }
-        } else if (this.Field1729.Method737(350.0)) {
+        } else if (this.Field1729.GetDifferenceTiming(350.0)) {
             Object object;
-            this.Field1729.Method739();
+            this.Field1729.UpdateCurrentTime();
             if (AutoObsidian.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? (object = (ItemBlock) AutoObsidian.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
                 return;
             }
@@ -90,7 +90,7 @@ extends Module {
     @Override
     public void onEnable() {
         this.Field1731 = null;
-        this.Field1730.Method738(0L);
+        this.Field1730.SetCurrentTime(0L);
     }
 
     public static Double Method1653(BlockPos blockPos) {
@@ -106,7 +106,7 @@ extends Module {
         block0: {
             if (this.Field1731 == null) break block0;
             Rotation.Method1958(this.Field1731, EnumHand.MAIN_HAND, false);
-            this.Field1730.Method738(0L);
+            this.Field1730.SetCurrentTime(0L);
         }
     }
 

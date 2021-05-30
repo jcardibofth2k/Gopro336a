@@ -112,9 +112,9 @@ extends Module {
                 double[] dArray = PlayerUtil.Method1088(this.Field1931.posX, this.Field1931.posY, this.Field1931.posZ, AutoNametag.mc.player);
                 this.Field1929 = (float)dArray[0];
                 this.Field1930 = (float)dArray[1];
-                this.Field1928.Method739();
+                this.Field1928.UpdateCurrentTime();
             }
-            if (!rotate.getValue().booleanValue() || this.Field1928.Method737(350.0)) break block7;
+            if (!rotate.getValue().booleanValue() || this.Field1928.GetDifferenceTiming(350.0)) break block7;
             KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1929, this.Field1930);
         }
     }

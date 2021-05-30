@@ -153,10 +153,10 @@ extends Module {
                         if (BedAura.mc.player.dimension == 0) {
                             return;
                         }
-                        if (this.Field1678.Method737(1000 - (Integer)this.breakSpeed.getValue() * 50)) {
+                        if (this.Field1678.GetDifferenceTiming(1000 - (Integer)this.breakSpeed.getValue() * 50)) {
                             this.Field1684 = this.Method1593();
                         }
-                        if (this.Field1684 != null || !this.Field1679.Method737(1000 - (Integer)this.placeSpeed.getValue() * 50)) break block9;
+                        if (this.Field1684 != null || !this.Field1679.GetDifferenceTiming(1000 - (Integer)this.placeSpeed.getValue() * 50)) break block9;
                         if (BedAura.mc.player.inventory.getCurrentItem().getItem() != Items.BED && !this.Method519()) break block10;
                         this.Method517();
                         break block11;
@@ -169,7 +169,7 @@ extends Module {
                 Field1682 = dArray[0];
                 Field1683 = dArray[1];
                 Field1681 = true;
-                this.Field1680.Method739();
+                this.Field1680.UpdateCurrentTime();
                 break block11;
             }
             for (n = 0; n < 9; ++n) {
@@ -193,7 +193,7 @@ extends Module {
         if (Field1681) {
             KonasGlobals.INSTANCE.Field1139.Method1937((float)Field1682, (float)Field1683);
         }
-        if (this.Field1680.Method737(450.0)) {
+        if (this.Field1680.GetDifferenceTiming(450.0)) {
             Field1681 = false;
         }
     }
@@ -290,7 +290,7 @@ extends Module {
             Field1683 = fArray[1];
             Field1681 = true;
         }
-        this.Field1680.Method739();
+        this.Field1680.UpdateCurrentTime();
     }
 
     public static Double Method1592(TileEntity tileEntity) {
@@ -314,7 +314,7 @@ extends Module {
         BedAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BedAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
         Rotation.Method1969(this.Field1685.down(), vec3d, this.Method519() ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, EnumFacing.UP, true, (Boolean)this.swing.getValue());
         BedAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BedAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
-        this.Field1679.Method739();
+        this.Field1679.UpdateCurrentTime();
         this.Field1685 = null;
     }
 
@@ -371,7 +371,7 @@ extends Module {
         Vec3d vec3d = new Vec3d((Vec3i)blockPos).add(0.5, 0.5, 0.5);
         EnumFacing enumFacing = rayTraceResult == null || rayTraceResult.sideHit == null ? EnumFacing.UP : rayTraceResult.sideHit;
         Rotation.Method1969(blockPos, vec3d, EnumHand.MAIN_HAND, enumFacing, true, (Boolean)this.swing.getValue());
-        this.Field1678.Method739();
+        this.Field1678.UpdateCurrentTime();
     }
 
     public List<BlockPos> Method1599(BlockPos blockPos, float f, float f2, boolean bl, boolean bl2, int n) {

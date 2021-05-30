@@ -31,7 +31,7 @@ extends Module {
 
     public Class202() {
         super("RPC", "Control your discord rich presence", Category.CLIENT, "Discord", "DiscordRPC");
-        this.Field677.Method738(10000L);
+        this.Field677.SetCurrentTime(10000L);
     }
 
     @Override
@@ -39,12 +39,12 @@ extends Module {
         if (KonasGlobals.INSTANCE.Field1140 == null) {
             return;
         }
-        if (!Field678 && !this.Field677.Method737(10000.0)) {
-            Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field677.Method736()) / 1000L - 10L) + " seconds, before you enable this module again!");
+        if (!Field678 && !this.Field677.GetDifferenceTiming(10000.0)) {
+            Logger.Method1118("Please wait another " + Math.abs((System.currentTimeMillis() - this.Field677.GetCurrentTime()) / 1000L - 10L) + " seconds, before you enable this module again!");
             this.toggle();
         } else {
             KonasGlobals.INSTANCE.Field1140.Method587();
-            this.Field677.Method739();
+            this.Field677.UpdateCurrentTime();
         }
     }
 

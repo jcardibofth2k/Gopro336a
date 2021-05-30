@@ -59,9 +59,9 @@ extends Module {
     @Subscriber
     public void Method1451(OpenGuiEvent openGuiEvent) {
         block0: {
-            if (!(openGuiEvent.Method1161() instanceof GuiGameOver) || !excuses.getValue().booleanValue() || !this.Field1982.Method737(2000.0)) break block0;
+            if (!(openGuiEvent.Method1161() instanceof GuiGameOver) || !excuses.getValue().booleanValue() || !this.Field1982.GetDifferenceTiming(2000.0)) break block0;
             this.Method124();
-            this.Field1982.Method739();
+            this.Field1982.UpdateCurrentTime();
         }
     }
 
