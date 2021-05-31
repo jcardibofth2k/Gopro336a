@@ -107,7 +107,7 @@ extends Module {
                     this.toggle();
                     return;
                 }
-                List<BlockPos> list = AutoCrystal.Method1578(AutoWither.mc.player.getPosition().down(), ((Integer)range.getValue()).intValue(), (Integer)range.getValue(), false, true, 0);
+                List<BlockPos> list = AutoCrystal.getPossiblePlacement(AutoWither.mc.player.getPosition().down(), ((Integer)range.getValue()).intValue(), (Integer)range.getValue(), false, true, 0);
                 boolean bl = true;
                 for (BlockPos blockPos : list) {
                     this.Field1798 = blockPos.down();

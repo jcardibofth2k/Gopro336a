@@ -113,7 +113,7 @@ public class AutoCrystal
     public static Setting<Float> breakSpeed = new Setting<>("BreakSpeed", 20.0f, 20.0f, 1.0f, 0.1f).setParentSetting(speeds).setDescription("Crystal break speed");
     public static Setting<Float> placeSpeed = new Setting<>("PlaceSpeed", 20.0f, 20.0f, 1.0f, 0.1f).setParentSetting(speeds).setDescription("Crystal place speed");
     public static Setting<ACSyncMode> sync = new Setting<>("Sync", ACSyncMode.STRICT).setParentSetting(speeds).setDescription("Syncronizes breaking and placing");
-    public static Setting<Float> offset = new Setting<>("Offset", 0.0f, 0.8f, 0.0f, 0.1f).setParentSetting(speeds).visibleIf(AutoCrystal::Method992).setDescription("Syncronization offset");
+    public static Setting<Float> offset = new Setting<>("Offset", 0.0f, 0.8f, 0.0f, 0.1f).setParentSetting(speeds).visibleIf(AutoCrystal::isSyncMerge).setDescription("Syncronization offset");
 
     public static Setting<ParentSetting> ranges = new Setting<>("Ranges", new ParentSetting(false));
     public static Setting<Float> enemyRange = new Setting<>("EnemyRange", 8.0f, 15.0f, 4.0f, 0.5f).setParentSetting(ranges).setDescription("Range from which to select target(s)");
@@ -212,7 +212,7 @@ public class AutoCrystal
     @Subscriber(priority=20)
     public void Method123(Class50 class50) {
         if (this.bestBreak != null) {
-            if (this.Method1567(this.bestBreak)) {
+            if (this.breakCrystal(this.bestBreak)) {
                 this.breakTimer.UpdateCurrentTime();
                 this.listCrystals.put(this.bestBreak.getEntityId(), System.currentTimeMillis());
                 for (Entity entity : AutoCrystal.mc.world.loadedEntityList) {
@@ -221,7 +221,7 @@ public class AutoCrystal
                 }
                 this.bestBreak = null;
                 if (sync.getValue() == ACSyncMode.MERGE) {
-                    this.Method1580();
+                    this.startThreadingCA();
                 }
             }
         } else if (this.bestPlace != null) {
@@ -391,7 +391,7 @@ public class AutoCrystal
 
     }
 
-    public EntityEnderCrystal Method1554() {
+    public EntityEnderCrystal getBestBreak() {
         return this.bestBreak;
     }
 
@@ -404,7 +404,7 @@ public class AutoCrystal
     }
 
     public List<EntityPlayer> getPossibleTargets() {
-        List<EntityPlayer> list = AutoCrystal.mc.world.playerEntities.stream().filter(AutoCrystal::basicEntityCheck).filter(AutoCrystal::isNotDead).filter(AutoCrystal::Method1577).filter(AutoCrystal::Method126).filter(AutoCrystal::isAlive).filter(AutoCrystal::Method1565).sorted(Comparator.comparing(AutoCrystal::Method1056)).collect(Collectors.toList());
+        List<EntityPlayer> list = AutoCrystal.mc.world.playerEntities.stream().filter(AutoCrystal::basicEntityCheck).filter(AutoCrystal::isNotDead).filter(AutoCrystal::Method1577).filter(AutoCrystal::Method126).filter(AutoCrystal::isAlive).filter(AutoCrystal::isPlayerNear).sorted(Comparator.comparing(AutoCrystal::getDistanceToPlayer)).collect(Collectors.toList());
         if (target.getValue() == ACTargetMode.SMART) {
             List list2 = list.stream().filter(AutoCrystal::positionDirty).sorted(Comparator.comparing(AutoCrystal::getDistance)).collect(Collectors.toList());
             if (list2.size() > 0) {
@@ -519,7 +519,7 @@ public class AutoCrystal
             return;
         }
         List<EntityPlayer> list = this.getPossibleTargets();
-        EntityEnderCrystal entityEnderCrystal = this.Method1575();
+        EntityEnderCrystal entityEnderCrystal = this.gestBestCrystal();
         int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
         if (entityEnderCrystal != null && this.breakTimer.GetDifferenceTiming(1000.0f - breakSpeed.getValue() * 50.0f) && (entityEnderCrystal.ticksExisted >= ticksExisted.getValue() || timing.getValue() == ACTiming.ADAPTIVE)) {
             this.bestBreak = entityEnderCrystal;
@@ -529,14 +529,14 @@ public class AutoCrystal
             BlockPos blockPos;
             if (confirm.getValue() != ACComfirmMode.OFF && this.toConfirmPlace != null && !this.confirmTimer.GetDifferenceTiming(n + 100) && this.canPlaceCrystal(this.toConfirmPlace)) {
                 this.bestPlace = this.toConfirmPlace;
-                this.facingBestPlace = this.Method1574(this.bestPlace);
+                this.facingBestPlace = this.getBestFacingBlock(this.bestPlace);
                 this.hasBroke.set(false);
                 return;
             }
-            List<BlockPos> list2 = this.Method1568();
-            if (!list2.isEmpty() && (blockPos = this.Method1569(list2, list)) != null) {
+            List<BlockPos> list2 = this.getPossiblePlacementPre();
+            if (!list2.isEmpty() && (blockPos = this.calculateBestPlaceWithDamageAndPositions(list2, list)) != null) {
                 this.bestPlace = blockPos;
-                this.facingBestPlace = this.Method1574(this.bestPlace);
+                this.facingBestPlace = this.getBestFacingBlock(this.bestPlace);
             }
         }
         this.hasBroke.set(false);
@@ -552,14 +552,14 @@ public class AutoCrystal
         return autoCrystal.ThreadCA;
     }
 
-    public void Method124() {
+    public void preStartPlacing() {
         BlockPos blockPos;
         List<BlockPos> list;
         if (confirm.getValue() != ACComfirmMode.OFF && (confirm.getValue() != ACComfirmMode.FULL || this.lastBreak == null || (double)this.lastBreak.ticksExisted >= Math.floor(ticksExisted.getValue().intValue()))) {
             int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
             if (this.toConfirmPlace != null && !this.confirmTimer.GetDifferenceTiming(n + 100) && this.canPlaceCrystal(this.toConfirmPlace)) {
                 this.bestPlace = this.toConfirmPlace;
-                this.facingBestPlace = this.Method1574(this.bestPlace);
+                this.facingBestPlace = this.getBestFacingBlock(this.bestPlace);
                 if (this.bestPlace != null) {
                     if (!this.placeCrystal(this.bestPlace, this.facingBestPlace)) {
                         this.bestPlace = null;
@@ -571,9 +571,9 @@ public class AutoCrystal
                 return;
             }
         }
-        if (!(list = this.Method1568()).isEmpty() && (blockPos = this.Method1569(list, this.getPossibleTargets())) != null) {
+        if (!(list = this.getPossiblePlacementPre()).isEmpty() && (blockPos = this.calculateBestPlaceWithDamageAndPositions(list, this.getPossibleTargets())) != null) {
             this.bestPlace = blockPos;
-            this.facingBestPlace = this.Method1574(this.bestPlace);
+            this.facingBestPlace = this.getBestFacingBlock(this.bestPlace);
             if (this.bestPlace != null) {
                 if (!this.placeCrystal(this.bestPlace, this.facingBestPlace)) {
                     this.bestPlace = null;
@@ -586,7 +586,7 @@ public class AutoCrystal
     }
 
     @Subscriber
-    public void Method462(TickEvent tickEvent) {
+    public void onTickEvent(TickEvent tickEvent) {
         this.TickPhase.set(tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START);
     }
 
@@ -598,8 +598,8 @@ public class AutoCrystal
         return entity.getPositionVector().distanceTo(AutoCrystal.mc.player.getPositionEyes(1.0f)) < (double) breakWalls.getValue() || Class475.Method2141(entity.posX, entity.posY, entity.posZ);
     }
 
-    public boolean Method993() {
-        int n = Class475.Method2154();
+    public boolean switchToSword() {
+        int n = Class475.getSwordSlot();
         if (AutoCrystal.mc.player.inventory.currentItem != n && n != -1) {
             if (antiWeakness.getValue() == ACSwapMode.SILENT) {
                 this.oldSlotSword = AutoCrystal.mc.player.inventory.currentItem;
@@ -646,8 +646,8 @@ public class AutoCrystal
         return !Class492.Method1988(entityPlayer.getUniqueID().toString());
     }
 
-    public static void Method1563(AutoCrystal autoCrystal) {
-        autoCrystal.Method124();
+    public static void startPlacingStatic(AutoCrystal autoCrystal) {
+        autoCrystal.preStartPlacing();
     }
 
     public void DestroyCrystal(SPacketSpawnObject sPacketSpawnObject, BlockPos blockPos, Long l) {
@@ -727,7 +727,7 @@ public class AutoCrystal
             this.hasBroke.set(true);
         }
         if (sync.getValue() == ACSyncMode.MERGE) {
-            this.Method1580();
+            this.startThreadingCA();
         }
 
     }
@@ -736,14 +736,14 @@ public class AutoCrystal
         return !entityPlayer.isDead;
     }
 
-    public boolean Method132(EntityPlayer entityPlayer) {
-        if (!armorBreaker.getValue().booleanValue()) {
+    public boolean isEnemyLowArmor(EntityPlayer entityPlayer) {
+        if (!armorBreaker.getValue()) {
             return false;
         }
         for (int i = 3; i >= 0; --i) {
-            double d;
             ItemStack itemStack = entityPlayer.inventory.armorInventory.get(i);
-            if (itemStack == null || !((d = itemStack.getItem().getDurabilityForDisplay(itemStack)) > (double) depletion.getValue().floatValue())) continue;
+            //noinspection ConstantConditions
+            if (itemStack == null || !(itemStack.getItem().getDurabilityForDisplay(itemStack) > (double) depletion.getValue())) continue;
             return true;
         }
         return false;
@@ -753,19 +753,19 @@ public class AutoCrystal
         return entityPlayer != AutoCrystal.mc.player && entityPlayer != mc.getRenderViewEntity();
     }
 
-    public static boolean Method1565(EntityPlayer entityPlayer) {
-        return AutoCrystal.mc.player.getDistance(entityPlayer) < enemyRange.getValue().floatValue();
+    public static boolean isPlayerNear(EntityPlayer entityPlayer) {
+        return AutoCrystal.mc.player.getDistance(entityPlayer) < enemyRange.getValue();
     }
 
-    public void Method1566(Integer n, Long l) {
+    public void updateListCrystalsTimer(Integer n, Long l) {
         if (System.currentTimeMillis() - l > 1000L) {
             this.listCrystals.remove(n);
         }
     }
 
-    public boolean Method1567(EntityEnderCrystal entityEnderCrystal) {
+    public boolean breakCrystal(EntityEnderCrystal entityEnderCrystal) {
         if (entityEnderCrystal != null) {
-            if (antiWeakness.getValue() != ACSwapMode.OFF && AutoCrystal.mc.player.isPotionActive(MobEffects.WEAKNESS) && !(AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && !this.Method993()) {
+            if (antiWeakness.getValue() != ACSwapMode.OFF && AutoCrystal.mc.player.isPotionActive(MobEffects.WEAKNESS) && !(AutoCrystal.mc.player.getHeldItemMainhand().getItem() instanceof ItemSword) && !this.switchToSword()) {
                 return false;
             }
             if (!this.swapTimer.GetDifferenceTiming(swapDelay.getValue().floatValue() * 100.0f)) {
@@ -795,7 +795,7 @@ public class AutoCrystal
     }
 
     @Subscriber
-    public void Method139(Render3DEvent render3DEvent) {
+    public void secondOnWorldRender(Render3DEvent render3DEvent) {
         if (AutoCrystal.mc.world == null || AutoCrystal.mc.player == null) {
             return;
         }
@@ -881,13 +881,13 @@ public class AutoCrystal
         }
     }
 
-    public boolean Method395(Entity entity) {
+    public boolean isCrystalInList(Entity entity) {
         return !this.listCrystals.containsKey(entity.getEntityId()) && (!(entity instanceof EntityEnderCrystal) || entity.ticksExisted > 20);
     }
 
-    public List<BlockPos> Method1568() {
+    public List<BlockPos> getPossiblePlacementPre() {
         NonNullList nonNullList = NonNullList.create();
-        nonNullList.addAll(AutoCrystal.Method1578(new BlockPos(AutoCrystal.mc.player), placeRange.getValue(), placeRange.getValue().intValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
+        nonNullList.addAll(AutoCrystal.getPossiblePlacement(new BlockPos(AutoCrystal.mc.player), placeRange.getValue(), placeRange.getValue().intValue(), false, true, 0).stream().filter(this::canPlaceCrystal).collect(Collectors.toList()));
         return nonNullList;
     }
 
@@ -895,11 +895,11 @@ public class AutoCrystal
         return AutoCrystal.mc.player.getDistance(entityPlayer);
     }
 
-    public static boolean Method992() {
+    public static boolean isSyncMerge() {
         return sync.getValue() == ACSyncMode.MERGE;
     }
 
-    public BlockPos Method1569(List<BlockPos> list, List<EntityPlayer> list2) {
+    public BlockPos calculateBestPlaceWithDamageAndPositions(List<BlockPos> list, List<EntityPlayer> list2) {
         if (list2.isEmpty()) {
             return null;
         }
@@ -915,14 +915,14 @@ public class AutoCrystal
                 entityPlayer2 = list2.get(0);
                 if (entityPlayer2.getDistance((double)blockPos2.getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5) > (double) crystalRange.getValue().floatValue()) continue;
                 float f3 = Class475.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer2);
-                if (this.Method1576(entityPlayer2, f3) && (blockPos == null || entityPlayer2.getDistanceSq(blockPos2) < entityPlayer2.getDistanceSq(blockPos))) {
+                if (this.isPlayerLowHealth(entityPlayer2, f3) && (blockPos == null || entityPlayer2.getDistanceSq(blockPos2) < entityPlayer2.getDistanceSq(blockPos))) {
                     entityPlayer = entityPlayer2;
                     f = f3;
                     blockPos = blockPos2;
                     this.Field1655 = true;
                     continue;
                 }
-                if (this.Field1655 || !(f3 > f) || !(f3 > f2) && !(f3 > entityPlayer2.getHealth() + entityPlayer2.getAbsorptionAmount()) || f3 < minDamage.getValue().floatValue() && entityPlayer2.getHealth() + entityPlayer2.getAbsorptionAmount() > facePlaceHealth.getValue().floatValue() && !PlayerUtil.Method1087(facePlace.getValue().Method851()) && !this.Method132(entityPlayer2)) continue;
+                if (this.Field1655 || !(f3 > f) || !(f3 > f2) && !(f3 > entityPlayer2.getHealth() + entityPlayer2.getAbsorptionAmount()) || f3 < minDamage.getValue().floatValue() && entityPlayer2.getHealth() + entityPlayer2.getAbsorptionAmount() > facePlaceHealth.getValue().floatValue() && !PlayerUtil.Method1087(facePlace.getValue().Method851()) && !this.isEnemyLowArmor(entityPlayer2)) continue;
                 f = f3;
                 entityPlayer = entityPlayer2;
                 blockPos = blockPos2;
@@ -931,19 +931,20 @@ public class AutoCrystal
             for (EntityPlayer entityPlayer3 : list2) {
                 if (entityPlayer3.equals(entityPlayer2) || entityPlayer3.getDistance((double)blockPos2.getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5) > (double) crystalRange.getValue().floatValue()) continue;
                 float f4 = Class475.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer3);
-                if (this.Method1576(entityPlayer3, f4) && (blockPos == null || entityPlayer3.getDistanceSq(blockPos2) < entityPlayer3.getDistanceSq(blockPos))) {
+                if (this.isPlayerLowHealth(entityPlayer3, f4) && (blockPos == null || entityPlayer3.getDistanceSq(blockPos2) < entityPlayer3.getDistanceSq(blockPos))) {
                     entityPlayer = entityPlayer3;
                     f = f4;
                     blockPos = blockPos2;
                     this.Field1655 = true;
                     continue;
                 }
-                if (this.Field1655 || !(f4 > f) || !(f4 > f2) && !(f4 > entityPlayer3.getHealth() + entityPlayer3.getAbsorptionAmount()) || f4 < minDamage.getValue().floatValue() && entityPlayer3.getHealth() + entityPlayer3.getAbsorptionAmount() > facePlaceHealth.getValue().floatValue() && !PlayerUtil.Method1087(facePlace.getValue().Method851()) && !this.Method132(entityPlayer3)) continue;
+                if (this.Field1655 || !(f4 > f) || !(f4 > f2) && !(f4 > entityPlayer3.getHealth() + entityPlayer3.getAbsorptionAmount()) || f4 < minDamage.getValue().floatValue() && entityPlayer3.getHealth() + entityPlayer3.getAbsorptionAmount() > facePlaceHealth.getValue().floatValue() && !PlayerUtil.Method1087(facePlace.getValue().Method851()) && !this.isEnemyLowArmor(entityPlayer3)) continue;
                 f = f4;
                 entityPlayer = entityPlayer3;
                 blockPos = blockPos2;
             }
         }
+        //noinspection ConstantConditions
         if (entityPlayer != null && blockPos != null) {
             KonasGlobals.INSTANCE.Field1133.Method430(entityPlayer);
             this.Method1645(entityPlayer.getName());
@@ -961,22 +962,22 @@ public class AutoCrystal
         return blockPos;
     }
 
-    public static AtomicBoolean Method1570(AutoCrystal autoCrystal) {
+    public static AtomicBoolean getTickPhase(AutoCrystal autoCrystal) {
         return autoCrystal.TickPhase;
     }
 
+    @SuppressWarnings("unused")
     @Subscriber
-    public void Method536(SendPacketEvent sendPacketEvent) {
-        block0: {
-            if (!(sendPacketEvent.getPacket() instanceof CPacketHeldItemChange)) break block0;
+    public void onChangeItem(SendPacketEvent sendPacketEvent) {
+        if (sendPacketEvent.getPacket() instanceof CPacketHeldItemChange)
             this.swapTimer.UpdateCurrentTime();
-        }
     }
 
-    public static Float Method1571(Entity entity) {
-        return Float.valueOf(AutoCrystal.mc.player.getDistance(entity));
+    public static Float getDistanceToPlayer(Entity entity) {
+        return AutoCrystal.mc.player.getDistance(entity);
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean placeCrystal(BlockPos blockPos, EnumFacing enumFacing) {
         if (blockPos != null) {
             if (autoSwap.getValue() != ACSwapMode.OFF && !this.hasCrystal()) {
@@ -1023,7 +1024,7 @@ public class AutoCrystal
         return false;
     }
 
-    public BlockPos Method1573() {
+    public BlockPos getBestPlace() {
         return this.bestPlace;
     }
 
@@ -1031,7 +1032,7 @@ public class AutoCrystal
         return entity instanceof EntityEnderCrystal;
     }
 
-    public EnumFacing Method1574(BlockPos blockPos) {
+    public EnumFacing getBestFacingBlock(BlockPos blockPos) {
         if (blockPos == null || AutoCrystal.mc.player == null)
             return null;
         EnumFacing enumFacing = null;
@@ -1078,7 +1079,7 @@ public class AutoCrystal
                         vec3d3 = new Vec3d(f3 * f2, f, f4 * f2);
                         vec3d2 = vec3d6.addVector(vec3d3.x * d5, vec3d3.y * d5, vec3d3.z * d5);
                         rayTraceResult = AutoCrystal.mc.world.rayTraceBlocks(vec3d6, vec3d2, false, true, false);
-                        if (!(placeWalls.getValue().floatValue() >= placeRange.getValue().floatValue())) {
+                        if (!(placeWalls.getValue() >= placeRange.getValue())) {
                             if (rayTraceResult == null || rayTraceResult.typeOfHit != RayTraceResult.Type.BLOCK || !rayTraceResult.getBlockPos().equals(blockPos)) continue;
                         }
                         vec3d = vec3d4;
@@ -1100,7 +1101,7 @@ public class AutoCrystal
                     }
                 }
             }
-            if (placeWalls.getValue().floatValue() < placeRange.getValue().floatValue() && interact.getValue() == ACInteractMode.STRICT) {
+            if (placeWalls.getValue() < placeRange.getValue() && interact.getValue() == ACInteractMode.STRICT) {
                 if (dArray3 != null && enumFacing != null) {
                     this.rotationTimer.UpdateCurrentTime();
                     this.lookingAt = vec3d5;
@@ -1197,11 +1198,12 @@ public class AutoCrystal
         return EnumFacing.UP;
     }
 
-    public EntityEnderCrystal Method1575() {
-        this.listCrystals.forEach(this::Method1566);
+    public EntityEnderCrystal gestBestCrystal() {
+        this.listCrystals.forEach(this::updateListCrystalsTimer);
         if (sync.getValue() == ACSyncMode.STRICT && !limit.getValue() && this.hasBroke.get()) {
             return null;
         }
+        //noinspection UnusedAssignment
         EntityEnderCrystal entityEnderCrystal = null;
         int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
         if (inhibit.getValue() && !limit.getValue() && !this.breakTimerTwoUh.GetDifferenceTiming(n) && this.lastBreak != null && AutoCrystal.mc.world.getEntityByID(this.lastBreak.getEntityId()) != null && this.canCrystalBeATarget(this.lastBreak)) {
@@ -1212,7 +1214,7 @@ public class AutoCrystal
         if (list2.isEmpty()) {
             return null;
         }
-        entityEnderCrystal = (EntityEnderCrystal) list2.stream().filter(this::Method392).filter(AutoCrystal::isCrystalReachableWall).min(Comparator.comparing(AutoCrystal::Method1571)).orElse(null);
+        entityEnderCrystal = (EntityEnderCrystal) list2.stream().filter(this::calculateEveryDamagesEndCrystalsToEnemy).filter(AutoCrystal::isCrystalReachableWall).min(Comparator.comparing(AutoCrystal::getDistanceToPlayer)).orElse(null);
         return entityEnderCrystal;
     }
 
@@ -1242,14 +1244,14 @@ public class AutoCrystal
         if (placeWalls.getValue() < placeRange.getValue() && ((double)blockPos.getY() > AutoCrystal.mc.player.posY + (double)AutoCrystal.mc.player.getEyeHeight() ? AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue().floatValue() && !Class475.Method2151(blockPos) : AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY() + 1, (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue().floatValue() && !Class475.Method2151(blockPos))) {
             return false;
         }
-        return AutoCrystal.mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(blockPos2, blockPos3.add(1, 1, 1))).stream().noneMatch(this::Method395);
+        return AutoCrystal.mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(blockPos2, blockPos3.add(1, 1, 1))).stream().noneMatch(this::isCrystalInList);
     }
 
-    public boolean Method392(Entity entity) {
+    public boolean calculateEveryDamagesEndCrystalsToEnemy(Entity entity) {
         return this.listCrystalsBroken.contains(new BlockPos(entity.posX, entity.posY - 1.0, entity.posZ)) || Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, AutoCrystal.mc.player) < maxSelfBreak.getValue();
     }
 
-    public boolean Method1576(EntityPlayer entityPlayer, float f) {
+    public boolean isPlayerLowHealth(EntityPlayer entityPlayer, float f) {
         if (entityPlayer.getHealth() + entityPlayer.getAbsorptionAmount() <= 2.0f && (double)f > (double)entityPlayer.getHealth() + (double)entityPlayer.getAbsorptionAmount() + 0.5 && f <= 4.0f) {
             TimerUtil timerUtil = this.popPlayerTimer.get(entityPlayer);
             return timerUtil == null || timerUtil.GetDifferenceTiming(500.0);
@@ -1257,7 +1259,7 @@ public class AutoCrystal
         return false;
     }
 
-    public static Float Method1056(EntityPlayer entityPlayer) {
+    public static Float getDistanceToPlayer(EntityPlayer entityPlayer) {
         return AutoCrystal.mc.player.getDistance(entityPlayer);
     }
 
@@ -1265,7 +1267,7 @@ public class AutoCrystal
         return !Class546.Method963(entityPlayer);
     }
 
-    public static List<BlockPos> Method1578(BlockPos blockPos, float f, int n, boolean bl, boolean bl2, int n2) {
+    public static List<BlockPos> getPossiblePlacement(BlockPos blockPos, float f, int n, boolean bl, boolean bl2, int n2) {
         ArrayList<BlockPos> arrayList = new ArrayList<BlockPos>();
         int n3 = blockPos.getX();
         int n4 = blockPos.getY();
@@ -1293,21 +1295,21 @@ public class AutoCrystal
         return arrayList;
     }
 
-    public static AtomicBoolean Method1579(AutoCrystal autoCrystal) {
+    public static AtomicBoolean isPlacing(AutoCrystal autoCrystal) {
         return autoCrystal.hasPlaced;
     }
 
-    public void Method1580() {
+    public void startThreadingCA() {
         if (offset.getValue() == 0.0f) {
-            this.Method124();
+            this.preStartPlacing();
         } else {
             this.hasPlaced.set(true);
             if (this.ThreadCA == null || this.ThreadCA.isInterrupted() || !this.ThreadCA.isAlive()) {
                 if (this.ThreadCA == null) {
-                    this.ThreadCA = new Thread(ThreadUtil.Method727(this));
+                    this.ThreadCA = new Thread(ThreadUtil.updateThreadCA(this));
                 }
                 if (this.ThreadCA.isInterrupted() || !this.ThreadCA.isAlive()) {
-                    this.ThreadCA = new Thread(ThreadUtil.Method727(this));
+                    this.ThreadCA = new Thread(ThreadUtil.updateThreadCA(this));
                 }
                 if (this.ThreadCA.getState() == Thread.State.NEW) {
                     Thread thread = this.ThreadCA;

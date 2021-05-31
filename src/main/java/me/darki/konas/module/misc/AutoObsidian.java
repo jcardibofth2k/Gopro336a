@@ -52,7 +52,7 @@ extends Module {
         if (updateEvent.isCanceled() || !Rotation.Method1966()) {
             return;
         }
-        BlockPos blockPos = AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0).stream().filter(AutoObsidian::Method512).min(Comparator.comparing(AutoObsidian::Method1653)).orElse(null);
+        BlockPos blockPos = AutoCrystal.getPossiblePlacement(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0).stream().filter(AutoObsidian::Method512).min(Comparator.comparing(AutoObsidian::Method1653)).orElse(null);
         if (blockPos != null) {
             if (this.Field1730.GetDifferenceTiming(4000.0)) {
                 boolean bl;
@@ -82,7 +82,7 @@ extends Module {
             if (AutoObsidian.mc.player.getHeldItemMainhand().getItem() instanceof ItemBlock ? ((ItemBlock)AutoObsidian.mc.player.getHeldItemMainhand().getItem()).getBlock() != Blocks.ENDER_CHEST && !this.Method394() : !this.Method394()) {
                 return;
             }
-            for (BlockPos blockPos2 : AutoCrystal.Method1578(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0)) {
+            for (BlockPos blockPos2 : AutoCrystal.getPossiblePlacement(new BlockPos((Entity) AutoObsidian.mc.player), ((Integer) range.getValue()).intValue(), (Integer) range.getValue(), false, true, 0)) {
                 Class490 class490 = Rotation.Method1962(blockPos2, true);
                 if (class490 == null) continue;
                 this.Field1731 = class490;

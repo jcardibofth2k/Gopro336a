@@ -335,7 +335,7 @@ extends Module {
                         }
                         return false;
                     }
-                    if (autoCrystal.Method1554() != null || autoCrystal.Method1573() != null) {
+                    if (autoCrystal.getBestBreak() != null || autoCrystal.getBestPlace() != null) {
                         this.Field484 = null;
                         if ((boolean)switchBack.getValue() && this.Field483 != -1) {
                             mc.player.inventory.currentItem = this.Field483;
