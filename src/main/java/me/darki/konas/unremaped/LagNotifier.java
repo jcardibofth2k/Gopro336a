@@ -16,12 +16,12 @@ extends Element {
     @Override
     public void onRender2D() {
         block0: {
-            long l = System.currentTimeMillis() - Class109.Field2570.Method736();
+            long l = System.currentTimeMillis() - Class109.Field2570.GetCurrentTime();
             String string = "Server not responding for " + Field2310.format((float)l / 1000.0f) + "s";
             float f = Math.max(5.0f, Class557.Method800(string));
             this.Method2323(f + 1.0f);
             this.Method2319(Class557.Method799(string) + 1.0f);
-            if (!Class109.Field2570.Method737(2500.0) && !(LagNotifier.mc.currentScreen instanceof Class193)) break block0;
+            if (!Class109.Field2570.GetDifferenceTiming(2500.0) && !(LagNotifier.mc.currentScreen instanceof Class193)) break block0;
             Class557.Method801(string, (float)((int)this.Method2320() + (int)this.Method2329()) - Class557.Method800(string), (int)this.Method2324(), ((ColorValue)this.textColor.getValue()).Method774());
         }
     }

@@ -94,7 +94,7 @@ extends Module {
 
     @Subscriber
     public void Method123(Class50 class50) {
-        if (this.Field2287 != null && this.Field2286.Method737(((Float)delay.getValue()).floatValue() * 50.0f)) {
+        if (this.Field2287 != null && this.Field2286.GetDifferenceTiming(((Float)delay.getValue()).floatValue() * 50.0f)) {
             this.Field2287.run();
             this.Field2287 = null;
         }
@@ -193,7 +193,7 @@ extends Module {
                     this.Field2288.poll();
                     this.Field2285 = var2_3;
                     this.Field2283 = 0.0f;
-                    this.Field2286.Method739();
+                    this.Field2286.UpdateCurrentTime();
                     this.Field2287 = (Runnable)LambdaMetafactory.metafactory(null, null, null, ()V, Method124(), ()V)((Class246)this);
                     this.Method134();
                 } else lbl-1000:

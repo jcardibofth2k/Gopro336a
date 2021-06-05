@@ -88,16 +88,16 @@ extends Module {
         }
         if (n != -1) {
             if (((Float)this.delay.getValue()).floatValue() > 0.0f) {
-                if (this.Field250.Method737(((Float)this.delay.getValue()).floatValue() * 100.0f)) {
+                if (this.Field250.GetDifferenceTiming(((Float)this.delay.getValue()).floatValue() * 100.0f)) {
                     Offhand.mc.playerController.windowClick(Offhand.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer) Offhand.mc.player);
-                    this.Field250.Method739();
+                    this.Field250.UpdateCurrentTime();
                 } else {
                     this.Field249.add(n < 9 ? n + 36 : n);
                 }
                 this.Field249.add(45);
                 this.Field249.add(n < 9 ? n + 36 : n);
             } else {
-                this.Field250.Method739();
+                this.Field250.UpdateCurrentTime();
                 Offhand.mc.playerController.windowClick(Offhand.mc.player.inventoryContainer.windowId, n < 9 ? n + 36 : n, 0, ClickType.PICKUP, (EntityPlayer) Offhand.mc.player);
                 PlayerControllerMP playerControllerMP = Offhand.mc.playerController;
                 int n2 = Offhand.mc.player.inventoryContainer.windowId;
@@ -137,12 +137,12 @@ extends Module {
                 }
                 if (Offhand.mc.currentScreen instanceof GuiContainer || Offhand.mc.currentScreen instanceof GuiInventory) break block25;
                 if (this.Field249.isEmpty()) break block26;
-                if (!this.Field250.Method737(((Float)this.delay.getValue()).floatValue() * 100.0f)) {
+                if (!this.Field250.GetDifferenceTiming(((Float)this.delay.getValue()).floatValue() * 100.0f)) {
                     return;
                 }
                 int n = this.Field249.poll();
                 TimerUtil timerUtil = this.Field250;
-                timerUtil.Method739();
+                timerUtil.UpdateCurrentTime();
                 PlayerControllerMP playerControllerMP = Offhand.mc.playerController;
                 int n2 = Offhand.mc.player.inventoryContainer.windowId;
                 int n3 = n;

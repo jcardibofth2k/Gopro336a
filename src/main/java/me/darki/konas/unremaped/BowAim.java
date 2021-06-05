@@ -81,7 +81,7 @@ extends Module {
         float f3 = (float)Math.toDegrees(Math.atan2(entityPlayer.posZ + d4 - BowAim.mc.player.posZ, entityPlayer.posX + d3 - BowAim.mc.player.posX)) - 90.0f;
         KonasGlobals.INSTANCE.Field1139.Method1937(f3, f);
         BowAim.Method559(f3, f);
-        Field763.Method739();
+        Field763.UpdateCurrentTime();
     }
 
     public static boolean Method132(EntityPlayer entityPlayer) {

@@ -49,7 +49,7 @@ extends Module {
                         return;
                     }
                 }
-                if (notWhenTrajectories.getValue() && !Field2604.Method737(75.0)) {
+                if (notWhenTrajectories.getValue() && !Field2604.GetDifferenceTiming(75.0)) {
                     return;
                 }
                 rayTraceResult = BlockHighlight.mc.objectMouseOver;
@@ -109,7 +109,7 @@ extends Module {
         if (BlockHighlight.mc.world == null || BlockHighlight.mc.player == null) {
             return;
         }
-        if (((Boolean)notWhenTrajectories.getValue()).booleanValue() && !Field2604.Method737(75.0)) {
+        if (((Boolean)notWhenTrajectories.getValue()).booleanValue() && !Field2604.GetDifferenceTiming(75.0)) {
             return;
         }
         GlStateManager.pushMatrix();

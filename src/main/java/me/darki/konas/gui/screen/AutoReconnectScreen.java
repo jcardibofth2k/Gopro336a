@@ -60,10 +60,10 @@ extends GuiScreen {
                 n3 += this.fontRenderer.FONT_HEIGHT;
             }
         }
-        if (this.Field1849.Method737(this.Field1850 * 1000)) {
+        if (this.Field1849.GetDifferenceTiming(this.Field1850 * 1000)) {
             this.Method613();
         }
-        float f2 = (float)this.Field1850 - (float)(System.currentTimeMillis() - this.Field1849.Method736()) / 1000.0f;
+        float f2 = (float)this.Field1850 - (float)(System.currentTimeMillis() - this.Field1849.GetCurrentTime()) / 1000.0f;
         this.buttonList.get(1).displayString = "Reconnecting: " + Math.round(f2);
         super.drawScreen(n, n2, f);
     }

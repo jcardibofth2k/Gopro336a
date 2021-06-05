@@ -66,8 +66,8 @@ extends Module {
 
     @Subscriber
     public void Method536(SendPacketEvent sendPacketEvent) {
-        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.Method737(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
-            Field882.Method738(0L);
+        if (((Boolean)rightClick.getValue()).booleanValue() && !Field883 && !Field882.GetDifferenceTiming(1000.0f * ((Float)this.timeout.getValue()).floatValue()) && sendPacketEvent.getPacket() instanceof CPacketPlayerTryUseItemOnBlock) {
+            Field882.SetCurrentTime(0L);
             NoDesync.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Rotation(NoDesync.mc.player.rotationYaw, NoDesync.mc.player.rotationPitch, NoDesync.mc.player.onGround));
         }
         if (sendPacketEvent.getPacket() instanceof CPacketPlayer) {

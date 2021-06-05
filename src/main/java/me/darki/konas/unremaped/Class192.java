@@ -76,7 +76,7 @@ extends Module {
             this.Field77.run();
             this.Field77 = null;
         }
-        if (this.Field78 != -1 && this.Field69.Method737(350.0)) {
+        if (this.Field78 != -1 && this.Field69.GetDifferenceTiming(350.0)) {
             Class192.mc.player.inventory.currentItem = this.Field78;
             Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(this.Field78));
             this.Field78 = -1;
@@ -144,7 +144,7 @@ extends Module {
             Class192.mc.player.inventory.currentItem = n;
             this.Field73 += iBlockState.getPlayerRelativeBlockHardness((EntityPlayer)Class192.mc.player, Class192.mc.player.world, this.Field71);
             Class192.mc.player.inventory.currentItem = n2;
-            this.Field74.Method739();
+            this.Field74.UpdateCurrentTime();
         }
     }
 
@@ -187,7 +187,7 @@ extends Module {
             if (this.Field71 != null) {
                 if (this.Field73 >= 1.0f) {
                     if (this.Field75) {
-                        if (this.Field74.Method737(1500.0)) {
+                        if (this.Field74.GetDifferenceTiming(1500.0)) {
                             this.Field71 = null;
                             this.Field72 = null;
                         }
@@ -198,7 +198,7 @@ extends Module {
                             if (this.swap.getValue() == Class195.SILENT) {
                                 this.Field78 = Class192.mc.player.inventory.currentItem;
                                 Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
-                                this.Field69.Method739();
+                                this.Field69.UpdateCurrentTime();
                             } else {
                                 Class192.mc.player.inventory.currentItem = n;
                                 Class192.mc.player.connection.sendPacket((Packet)new CPacketHeldItemChange(n));
@@ -206,15 +206,15 @@ extends Module {
                         }
                     }
                 }
-            } else if (this.Field76.Method737(((Float)this.delay.getValue()).floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (BlockPos)(arrayList = Class465.Method2284(new BlockPos((Entity)entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, (Boolean)this.strictDirection.getValue())) != null) {
+            } else if (this.Field76.GetDifferenceTiming(((Float)this.delay.getValue()).floatValue() * 1000.0f) && (entityPlayer = this.Method142()) != null && (blockPos = (BlockPos)(arrayList = Class465.Method2284(new BlockPos((Entity)entityPlayer))).stream().min(Comparator.comparing(Class192::Method127)).orElse(null)) != null && (enumFacing = this.Method140(blockPos, (Boolean)this.strictDirection.getValue())) != null) {
                 this.Field71 = blockPos;
                 this.Field72 = enumFacing;
                 this.Field73 = 0.0f;
                 this.Field75 = false;
-                this.Field76.Method739();
+                this.Field76.UpdateCurrentTime();
                 if (((Boolean)this.instant.getValue()).booleanValue() && this.Field71.equals((Object)this.Field70)) {
                     this.Field73 = 1.0f;
-                    this.Field74.Method739();
+                    this.Field74.UpdateCurrentTime();
                     this.Field77 = this::Method124;
                 } else {
                     this.Field77 = this::Method134;

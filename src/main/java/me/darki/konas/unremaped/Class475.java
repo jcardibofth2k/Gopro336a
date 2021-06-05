@@ -36,7 +36,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.block.Block;
 import java.util.List;
 import net.minecraft.client.Minecraft;
-
+// I think this is ca utils
 public class Class475
 {
     public static Minecraft Field2499;
@@ -368,7 +368,7 @@ public class Class475
         Class475.Field2500 = Arrays.asList(Blocks.OBSIDIAN, Blocks.BEDROCK, Blocks.ENDER_CHEST, Blocks.ANVIL);
     }
     
-    public static int Method2154() {
+    public static int getSwordSlot() {
         int currentItem = -1;
         if (Module.mc.player.getHeldItemMainhand().getItem() == Items.DIAMOND_SWORD) {
             currentItem = Module.mc.player.inventory.currentItem;

@@ -88,7 +88,7 @@ extends EntityPlayer {
             EventDispatcher.Companion.dispatch(event);
             if (KonasGlobals.INSTANCE.Field1139.Method1940()) {
                 ci.cancel();
-                NoDesync.Field882.Method739();
+                NoDesync.Field882.UpdateCurrentTime();
                 if (this.isRiding()) {
                     this.Field2380.sendPacket(new CPacketPlayer.Rotation(KonasGlobals.INSTANCE.Field1139.Method1945(), KonasGlobals.INSTANCE.Field1139.Method1944(), this.onGround));
                     this.Field2380.sendPacket(new CPacketInput(this.moveStrafing, this.moveForward, this.Field2381.jump, this.Field2381.sneak));

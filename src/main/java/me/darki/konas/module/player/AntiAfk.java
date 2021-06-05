@@ -38,14 +38,14 @@ extends Module {
     public void Method1709(InputUpdateEvent inputUpdateEvent) {
         block2: {
             if (!this.Field2235) break block2;
-            if (this.move.getValue().booleanValue() && this.Field2233.Method737(this.delay.getValue().floatValue() * 100.0f)) {
+            if (this.move.getValue().booleanValue() && this.Field2233.GetDifferenceTiming(this.delay.getValue().floatValue() * 100.0f)) {
                 inputUpdateEvent.Method81().moveForward = new Random().nextFloat() * 2.0f - 1.0f;
                 inputUpdateEvent.Method81().moveStrafe = new Random().nextFloat() * 2.0f - 1.0f;
-                this.Field2233.Method739();
+                this.Field2233.UpdateCurrentTime();
             }
-            if (this.jump.getValue().booleanValue() && AntiAfk.mc.player.onGround && this.Field2234.Method737(this.delay.getValue().floatValue() * 100.0f)) {
+            if (this.jump.getValue().booleanValue() && AntiAfk.mc.player.onGround && this.Field2234.GetDifferenceTiming(this.delay.getValue().floatValue() * 100.0f)) {
                 inputUpdateEvent.Method81().jump = new Random().nextBoolean();
-                this.Field2234.Method739();
+                this.Field2234.UpdateCurrentTime();
             }
         }
     }
@@ -120,25 +120,25 @@ extends Module {
             return;
         }
         if (AntiAfk.mc.player == null || AntiAfk.mc.world == null) {
-            this.Field2231.Method739();
+            this.Field2231.UpdateCurrentTime();
             return;
         }
         if (this.Field2236) {
-            this.Field2231.Method739();
+            this.Field2231.UpdateCurrentTime();
             this.Field2236 = false;
         }
         if (PlayerUtil.Method1080()) {
-            this.Field2231.Method739();
+            this.Field2231.UpdateCurrentTime();
         }
-        if (this.Field2231.Method737(this.seconds.getValue() * 1000)) {
+        if (this.Field2231.GetDifferenceTiming(this.seconds.getValue() * 1000)) {
             this.Field2235 = true;
-            if (this.rotations.getValue().booleanValue() && this.Field2232.Method737(this.delay.getValue().floatValue() * 100.0f)) {
+            if (this.rotations.getValue().booleanValue() && this.Field2232.GetDifferenceTiming(this.delay.getValue().floatValue() * 100.0f)) {
                 float f = -5.0f;
                 float f2 = 5.0f;
                 float f3 = (float)(Math.random() * (double)(f2 - f + 1.0f) + (double)f);
                 float f4 = (float)(Math.random() * (double)(f2 - f + 1.0f) + (double)f);
                 KonasGlobals.INSTANCE.Field1139.Method1937(AntiAfk.mc.player.rotationYaw + f4, AntiAfk.mc.player.rotationPitch + f3);
-                this.Field2232.Method739();
+                this.Field2232.UpdateCurrentTime();
             }
         } else {
             this.Field2235 = false;
@@ -152,6 +152,6 @@ extends Module {
 
     @Subscriber
     public void Method971(Class653 class653) {
-        this.Field2231.Method739();
+        this.Field2231.UpdateCurrentTime();
     }
 }

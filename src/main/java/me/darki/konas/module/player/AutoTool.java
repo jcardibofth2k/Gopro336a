@@ -55,7 +55,7 @@ extends Module {
                     }
                     return;
                 }
-                if (AutoTool.mc.playerController.getIsHittingBlock() || !this.Field2026 || this.strict.getValue().booleanValue() && !this.Field2025.Method737(100.0)) break block4;
+                if (AutoTool.mc.playerController.getIsHittingBlock() || !this.Field2026 || this.strict.getValue().booleanValue() && !this.Field2025.GetDifferenceTiming(100.0)) break block4;
                 this.Method1851(this.Field2027, true);
                 break block5;
             }
@@ -146,6 +146,6 @@ extends Module {
             AutoTool.mc.player.inventory.currentItem = n;
             AutoTool.mc.player.connection.sendPacket(new CPacketHeldItemChange(AutoTool.mc.player.inventory.currentItem));
         }
-        this.Field2025.Method739();
+        this.Field2025.UpdateCurrentTime();
     }
 }

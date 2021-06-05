@@ -43,7 +43,7 @@ extends GuiScreen {
         if (b) {
             Class557.Method798("Duel", (float)method2026.x - Class557.Method800("Duel") / 2.0f, (float)method2026.y + 4.0f + Class557.Method799(method2027 ? "Unfriend" : "Friend") + 4.0f + Class557.Method799(contains ? "Unparty" : "Party"), -1);
         }
-        if (this.Field2012.Method737(5000.0)) {
+        if (this.Field2012.GetDifferenceTiming(5000.0)) {
             this.mc.displayGuiScreen((GuiScreen)null);
         }
     }
@@ -85,7 +85,7 @@ extends GuiScreen {
 
     public Class262(EntityPlayer entityPlayer) {
         this.Field2011 = entityPlayer;
-        this.Field2012.Method739();
+        this.Field2012.UpdateCurrentTime();
     }
 
     public static boolean Method1842(int n, int n2, double d, double d2, double d3, double d4) {

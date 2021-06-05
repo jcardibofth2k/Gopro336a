@@ -100,7 +100,7 @@ extends Module {
             }
             Field1000 = false;
         }
-        if (this.Field1009.Method737(1500.0) && !this.Field1009.Method737(2000.0)) {
+        if (this.Field1009.GetDifferenceTiming(1500.0) && !this.Field1009.GetDifferenceTiming(2000.0)) {
             KonasGlobals.INSTANCE.Field1134.Method749(this);
         }
         if (!ElytraFly.mc.player.isElytraFlying() && mode.getValue() != Class403.PACKET) {
@@ -108,13 +108,13 @@ extends Module {
                 KonasGlobals.INSTANCE.Field1134.Method746(this, 25, 0.3f);
             }
             if (!ElytraFly.mc.player.onGround && instantFly.getValue().booleanValue() && ElytraFly.mc.player.motionY < 0.0) {
-                if (!this.Field1006.Method737(1000.0f * timeout.getValue().floatValue())) {
+                if (!this.Field1006.GetDifferenceTiming(1000.0f * timeout.getValue().floatValue())) {
                     return;
                 }
-                this.Field1006.Method739();
+                this.Field1006.UpdateCurrentTime();
                 ElytraFly.mc.player.connection.sendPacket(new CPacketEntityAction(ElytraFly.mc.player, CPacketEntityAction.Action.START_FALL_FLYING));
                 this.Field1011 = false;
-                this.Field1009.Method739();
+                this.Field1009.UpdateCurrentTime();
             }
             return;
         }
@@ -134,7 +134,7 @@ extends Module {
                     this.Field1001 = true;
                 }
                 if (ElytraFly.mc.player.isElytraFlying()) {
-                    this.Field1008.Method739();
+                    this.Field1008.UpdateCurrentTime();
                     if (ElytraFly.mc.player != null) {
                         this.Field1004 = ElytraFly.mc.player.posY;
                     }
@@ -203,7 +203,7 @@ extends Module {
                 ElytraFly.mc.player.rotationPitch += (float)d10;
                 ElytraFly.mc.player.prevRotationPitch = ElytraFly.mc.player.rotationPitch;
             }
-            if (!this.Field1008.Method737(1000.0f * factor.getValue().floatValue())) break block13;
+            if (!this.Field1008.GetDifferenceTiming(1000.0f * factor.getValue().floatValue())) break block13;
             d = this.Field1004 - ElytraFly.mc.player.posY;
             boolean bl2 = bl = d > 0.25 && d < 1.0 || d2 < (double) minSpeed.getValue().intValue();
             if (groundSafety.getValue().booleanValue() && (block = ElytraFly.mc.world.getBlockState(new BlockPos(ElytraFly.mc.player).down()).getBlock()) != Blocks.AIR && !(block instanceof BlockLiquid) && ElytraFly.mc.player.getEntityBoundingBox().minY - Math.floor(ElytraFly.mc.player.getEntityBoundingBox().minY) > (double) triggerHeight.getValue().floatValue()) {
@@ -219,7 +219,7 @@ extends Module {
             }
             if (ElytraFly.mc.player.getHeldItemMainhand().getItem() == Items.FIREWORKS && bl) {
                 ElytraFly.mc.player.connection.sendPacket(new CPacketPlayerTryUseItem(EnumHand.MAIN_HAND));
-                this.Field1008.Method739();
+                this.Field1008.UpdateCurrentTime();
             }
         }
     }
@@ -343,7 +343,7 @@ extends Module {
             }
             if (!ElytraFly.mc.player.isElytraFlying()) {
                 if (mode.getValue() == Class403.BOOST) {
-                    if (!this.Field1006.Method737(2000.0f * limit.getValue().floatValue()) && better.getValue().booleanValue() && !ElytraFly.mc.player.onGround) {
+                    if (!this.Field1006.GetDifferenceTiming(2000.0f * limit.getValue().floatValue()) && better.getValue().booleanValue() && !ElytraFly.mc.player.onGround) {
                         KonasGlobals.INSTANCE.Field1134.Method746(this, 20, 0.1f);
                         return;
                     }
@@ -439,7 +439,7 @@ extends Module {
                     d9 = MathHelper.clamp(d10 / 1.7, 0.0, 1.0);
                     d8 = 1.0 - Math.sqrt(d9);
                     d7 = 0.6;
-                    if (d10 >= minUpSpeed.getValue() && this.Field1006.Method737(2000.0f * limit.getValue().floatValue())) {
+                    if (d10 >= minUpSpeed.getValue() && this.Field1006.GetDifferenceTiming(2000.0f * limit.getValue().floatValue())) {
                         double d11 = -((45.0 - d7) * d8 + d7);
                         d6 = (this.Field1004 + 1.0 - ElytraFly.mc.player.posY) * 2.0;
                         double d12 = MathHelper.clamp(Math.abs(d6), 0.0, 1.0);
@@ -485,17 +485,17 @@ extends Module {
                 }
                 float f5 = ElytraFly.mc.player.rotationYaw * ((float)Math.PI / 180);
                 if (f3 > 0.0f && (ElytraFly.mc.player.motionY < 0.0 || bl)) {
-                    if (f != 0.0f && this.Field1006.Method737(2000.0f * limit.getValue().floatValue()) && this.Field1007.Method737(1000.0f * delay.getValue().floatValue())) {
+                    if (f != 0.0f && this.Field1006.GetDifferenceTiming(2000.0f * limit.getValue().floatValue()) && this.Field1007.GetDifferenceTiming(1000.0f * delay.getValue().floatValue())) {
                         if (stopMotion.getValue().booleanValue()) {
                             ElytraFly.mc.player.motionX = 0.0;
                             ElytraFly.mc.player.motionZ = 0.0;
                         }
-                        this.Field1006.Method739();
+                        this.Field1006.UpdateCurrentTime();
                         ElytraFly.mc.player.connection.sendPacket(new CPacketEntityAction(ElytraFly.mc.player, CPacketEntityAction.Action.START_FALL_FLYING));
-                    } else if (!this.Field1006.Method737(2000.0f * limit.getValue().floatValue())) {
+                    } else if (!this.Field1006.GetDifferenceTiming(2000.0f * limit.getValue().floatValue())) {
                         ElytraFly.mc.player.motionX -= (double)f * Math.sin(f5) * (double) factor.getValue().floatValue() / 20.0;
                         ElytraFly.mc.player.motionZ += (double)f * Math.cos(f5) * (double) factor.getValue().floatValue() / 20.0;
-                        this.Field1007.Method739();
+                        this.Field1007.UpdateCurrentTime();
                     }
                 }
                 d6 = Math.sqrt(ElytraFly.mc.player.motionX * ElytraFly.mc.player.motionX + ElytraFly.mc.player.motionZ * ElytraFly.mc.player.motionZ);

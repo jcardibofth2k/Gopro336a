@@ -17,13 +17,13 @@ extends Module {
     @Subscriber
     public void Method390(Class28 class28) {
         block1: {
-            if (!this.Field2211.Method737(delay.getValue().floatValue() * 1000.0f)) break block1;
+            if (!this.Field2211.GetDifferenceTiming(delay.getValue().floatValue() * 1000.0f)) break block1;
             EnumPlayerModelParts[] enumPlayerModelPartsArray = EnumPlayerModelParts.values();
             for (int i = 0; i < enumPlayerModelPartsArray.length; ++i) {
                 EnumPlayerModelParts enumPlayerModelParts = enumPlayerModelPartsArray[i];
                 SkinBlinker.mc.gameSettings.setModelPartEnabled(enumPlayerModelParts, random.getValue().booleanValue() ? Math.random() < 0.5 : !SkinBlinker.mc.gameSettings.getModelParts().contains(enumPlayerModelParts));
             }
-            this.Field2211.Method739();
+            this.Field2211.UpdateCurrentTime();
         }
     }
 

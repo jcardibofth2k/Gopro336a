@@ -48,7 +48,7 @@ extends Module {
             this.toggle();
         }
         if (Step.mc.player.getRidingEntity() != null) {
-            this.Field2160.Method739();
+            this.Field2160.UpdateCurrentTime();
         }
         if (useTimer.getValue().booleanValue()) {
             if (this.Field2158 == 0) {
@@ -181,7 +181,7 @@ extends Module {
             this.toggle();
         }
         if (reverse.getValue().booleanValue() && !ModuleManager.getModuleByClass(RubberFill.class).isEnabled() && this.Field2157 && !Step.mc.player.onGround && Step.mc.player.motionY <= 0.0) {
-            if (!Step.mc.player.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.Method737(1000.0)) {
+            if (!Step.mc.player.world.getCollisionBoxes(Step.mc.player, Step.mc.player.getEntityBoundingBox().offset(0.0, -3.01, 0.0)).isEmpty() && !Step.mc.player.isInWater() && this.Field2160.GetDifferenceTiming(1000.0)) {
                 Step.mc.player.motionY = -3.0;
             }
         }
@@ -190,7 +190,7 @@ extends Module {
             if (mode.getValue() == StepMode.VANILLA) {
                 Step.mc.player.stepHeight = stepHeight.getValue().floatValue();
             } else if (mode.getValue() == StepMode.NORMAL) {
-                if (!this.Field2160.Method737(320.0)) {
+                if (!this.Field2160.GetDifferenceTiming(320.0)) {
                     return;
                 }
                 this.Field2161 = this.Method463();
@@ -278,7 +278,7 @@ extends Module {
     public void onPacket(PacketEvent packetEvent) {
         block1: {
             if (!(packetEvent.getPacket() instanceof SPacketPlayerPosLook)) break block1;
-            this.Field2160.Method739();
+            this.Field2160.UpdateCurrentTime();
             if (autoDisable.getValue().booleanValue()) {
                 this.toggle();
             }

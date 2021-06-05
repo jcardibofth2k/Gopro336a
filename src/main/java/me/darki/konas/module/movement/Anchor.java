@@ -28,7 +28,7 @@ extends Module {
             }
             BlockPos blockPos = new BlockPos(Anchor.mc.player);
             if (this.Method512(blockPos)) {
-                this.Field1260.Method739();
+                this.Field1260.UpdateCurrentTime();
                 if (turnOffAfter.getValue().booleanValue()) {
                     this.toggle();
                 }

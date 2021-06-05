@@ -32,9 +32,9 @@ public class Class51 {
             if (this.Field224.player == null || this.Field224.world == null) {
                 return;
             }
-            if (!Field223.Method737(((Float) ExtraChat.delay.getValue()).floatValue() * 1000.0f) || Field222.isEmpty() || this.Field224.player.connection.getPlayerInfo((class301 = Field222.poll()).Method1072()) == null) break block1;
+            if (!Field223.GetDifferenceTiming(((Float) ExtraChat.delay.getValue()).floatValue() * 1000.0f) || Field222.isEmpty() || this.Field224.player.connection.getPlayerInfo((class301 = Field222.poll()).Method1072()) == null) break block1;
             this.Field224.player.connection.sendPacket((Packet)new CPacketChatMessage("/" + (ExtraChat.mode.getValue() == Class295.MSG ? "msg" : "w") + " " + class301.Method1072() + " " + class301.Method1073()));
-            Field223.Method739();
+            Field223.UpdateCurrentTime();
         }
     }
 

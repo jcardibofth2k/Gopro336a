@@ -72,7 +72,7 @@ extends Module {
             if (AutoTrap.mc.world == null || AutoTrap.mc.player == null) {
                 return;
             }
-            if (this.Field1705 == null || this.Field1704.Method737(500.0)) break block1;
+            if (this.Field1705 == null || this.Field1704.GetDifferenceTiming(500.0)) break block1;
             Class523.Method1218(this.Field1705);
         }
     }
@@ -101,7 +101,7 @@ extends Module {
         int n;
         if (this.Field1708 != null) {
             this.Field1709 = this.Field1708;
-            this.Field1710.Method739();
+            this.Field1710.UpdateCurrentTime();
         }
         this.Field1708 = null;
         this.Field1707 = null;
@@ -130,7 +130,7 @@ extends Module {
             return;
         }
         if (this.Field1706 < (Integer)actionInterval.getValue()) {
-            if (this.Field1709 != null && !this.Field1710.Method737(650.0)) {
+            if (this.Field1709 != null && !this.Field1710.GetDifferenceTiming(650.0)) {
                 KonasGlobals.INSTANCE.Field1139.Method1937(this.Field1709.Method1979(), this.Field1709.Method1978());
             }
             return;
@@ -143,7 +143,7 @@ extends Module {
                 Field1711.put(blockPos, System.currentTimeMillis());
                 this.Field1706 = 0;
                 this.Field1705 = blockPos;
-                this.Field1704.Method739();
+                this.Field1704.UpdateCurrentTime();
             }
         } else if ((Boolean) disableWhenDone.getValue()) {
             this.toggle();
@@ -252,7 +252,7 @@ extends Module {
                     Field1711.put(blockPos, System.currentTimeMillis());
                     Rotation.Method1957(this.Field1708, EnumHand.MAIN_HAND, true);
                     this.Field1705 = blockPos;
-                    this.Field1704.Method739();
+                    this.Field1704.UpdateCurrentTime();
                     continue;
                 }
                 if (!((Boolean)disableWhenDone.getValue()).booleanValue()) break;

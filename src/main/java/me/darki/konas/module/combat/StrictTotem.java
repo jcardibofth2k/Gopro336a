@@ -20,7 +20,7 @@ extends Module {
     @Subscriber
     public void Method390(Class28 class28) {
         if (!this.Field2556) {
-            this.Field2555.Method739();
+            this.Field2555.UpdateCurrentTime();
         }
         if (StrictTotem.mc.player == null || StrictTotem.mc.world == null) {
             return;
@@ -29,7 +29,7 @@ extends Module {
             for (int i = 44; i >= 9; --i) {
                 if (StrictTotem.mc.player.inventoryContainer.getSlot(i).getStack().getItem() != Items.TOTEM_OF_UNDYING) continue;
                 this.Field2556 = true;
-                if (this.Field2555.Method737((float) delay.getValue().intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
+                if (this.Field2555.GetDifferenceTiming((float) delay.getValue().intValue() * 100.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() != Items.TOTEM_OF_UNDYING) {
                     if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
@@ -38,7 +38,7 @@ extends Module {
                     }
                     StrictTotem.mc.playerController.windowClick(0, i, 0, ClickType.PICKUP, StrictTotem.mc.player);
                 }
-                if (this.Field2555.Method737((float) delay.getValue().intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
+                if (this.Field2555.GetDifferenceTiming((float) delay.getValue().intValue() * 200.0f) && StrictTotem.mc.player.inventory.getItemStack().getItem() == Items.TOTEM_OF_UNDYING) {
                     if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                         StrictTotem.mc.player.motionX = 0.0;
                         StrictTotem.mc.player.motionY = 0.0;
@@ -51,7 +51,7 @@ extends Module {
                         return;
                     }
                 }
-                if (!this.Field2555.Method737((float) delay.getValue().intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
+                if (!this.Field2555.GetDifferenceTiming((float) delay.getValue().intValue() * 300.0f) || StrictTotem.mc.player.inventory.getItemStack().isEmpty() || StrictTotem.mc.player.getHeldItem(EnumHand.OFF_HAND).getItem() != Items.TOTEM_OF_UNDYING) continue;
                 if (cancelMotion.getValue().booleanValue() && StrictTotem.mc.player.motionX * StrictTotem.mc.player.motionX + StrictTotem.mc.player.motionY * StrictTotem.mc.player.motionY + StrictTotem.mc.player.motionZ * StrictTotem.mc.player.motionZ >= 9.0E-4) {
                     StrictTotem.mc.player.motionX = 0.0;
                     StrictTotem.mc.player.motionY = 0.0;

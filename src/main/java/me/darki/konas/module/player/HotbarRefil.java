@@ -41,7 +41,7 @@ extends Module {
         if (HotbarRefil.mc.player == null || HotbarRefil.mc.world == null || HotbarRefil.mc.currentScreen instanceof GuiContainer || tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START) {
             return;
         }
-        if (!this.Field1964.Method737(350.0)) {
+        if (!this.Field1964.GetDifferenceTiming(350.0)) {
             return;
         }
         if (itemSaver.getValue().booleanValue()) {
@@ -90,7 +90,7 @@ extends Module {
     public void Method536(SendPacketEvent sendPacketEvent) {
         block0: {
             if (!(sendPacketEvent.getPacket() instanceof CPacketClickWindow)) break block0;
-            this.Field1964.Method739();
+            this.Field1964.UpdateCurrentTime();
         }
     }
 

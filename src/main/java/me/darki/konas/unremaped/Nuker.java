@@ -77,7 +77,7 @@ extends Module {
             if (dArray == null) break block4;
             this.Field742 = (float)dArray[0];
             this.Field743 = (float)dArray[1];
-            this.Field744.Method739();
+            this.Field744.UpdateCurrentTime();
         }
     }
 
@@ -136,7 +136,7 @@ extends Module {
             if (Nuker.mc.world == null || Nuker.mc.player == null) {
                 return;
             }
-            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || this.Field744.Method737(350.0) || !((Boolean)this.rotate.getValue()).booleanValue() || this.timing.getValue() != Class410.VANILLA) break block3;
+            if (!(sendPacketEvent.getPacket() instanceof CPacketPlayer) || this.Field744.GetDifferenceTiming(350.0) || !((Boolean)this.rotate.getValue()).booleanValue() || this.timing.getValue() != Class410.VANILLA) break block3;
             CPacketPlayer cPacketPlayer = (CPacketPlayer) sendPacketEvent.getPacket();
             if (sendPacketEvent.getPacket() instanceof CPacketPlayer.Position) {
                 sendPacketEvent.setCanceled(true);
@@ -185,7 +185,7 @@ extends Module {
             if (((Boolean)this.rotate.getValue()).booleanValue() && this.Field745 != null) {
                 this.Method789(this.Field745);
             }
-            if (this.Field744.Method737(350.0)) break block7;
+            if (this.Field744.GetDifferenceTiming(350.0)) break block7;
             if (((Boolean)this.rotate.getValue()).booleanValue()) {
                 KonasGlobals.INSTANCE.Field1139.Method1937(this.Field742, this.Field743);
             }

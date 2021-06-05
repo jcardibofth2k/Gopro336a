@@ -223,14 +223,14 @@ extends Component {
         block2: {
             block1: {
                 if (!Class201.isMouseWithinBounds(n, n2, this.Method1475(), this.Method1476(), this.Method1479(), this.Method1481())) break block1;
-                if (!this.Field622.Method737(500.0)) break block2;
+                if (!this.Field622.GetDifferenceTiming(500.0)) break block2;
                 Class92.Field861 = this.Method146().getDescription();
                 break block2;
             }
             if (Class92.Field861 != null && Class92.Field861.equals(this.Method146().getDescription())) {
                 Class92.Field861 = null;
             }
-            this.Field622.Method739();
+            this.Field622.UpdateCurrentTime();
         }
     }
 

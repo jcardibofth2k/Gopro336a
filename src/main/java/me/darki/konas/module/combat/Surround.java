@@ -246,7 +246,7 @@ extends Module {
             this.toggle();
             return true;
         }
-        return !this.Field2434.Method737(actionInterval.getValue().floatValue() * 10.0f);
+        return !this.Field2434.GetDifferenceTiming(actionInterval.getValue().floatValue() * 10.0f);
     }
 
     @Override

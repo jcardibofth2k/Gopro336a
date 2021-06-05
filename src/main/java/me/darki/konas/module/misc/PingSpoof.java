@@ -17,7 +17,7 @@ extends Module {
 
     @Subscriber
     public void Method139(Render3DEvent render3DEvent) {
-        if (this.Field775.Method737(this.ss.getValue().intValue()) && this.Field776 != null) {
+        if (this.Field775.GetDifferenceTiming(this.ss.getValue().intValue()) && this.Field776 != null) {
             PingSpoof.mc.player.connection.sendPacket(this.Field776);
             this.Field776 = null;
         }
@@ -34,7 +34,7 @@ extends Module {
             if (!(sendPacketEvent.getPacket() instanceof CPacketKeepAlive) || this.Field776 == sendPacketEvent.getPacket() || this.ss.getValue() == 0) break block0;
             this.Field776 = (CPacketKeepAlive) sendPacketEvent.getPacket();
             sendPacketEvent.Method1235();
-            this.Field775.Method739();
+            this.Field775.UpdateCurrentTime();
         }
     }
 

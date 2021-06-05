@@ -31,7 +31,7 @@ extends Module {
         }
         if (PlayerUtil.Method1084() && Class225.mc.player.posY <= 1.0) {
             if (!this.Field2641) return;
-            if (!this.Field2642.Method737(1000.0)) return;
+            if (!this.Field2642.GetDifferenceTiming(1000.0)) return;
             this.Field2641 = false;
             Class225.mc.player.connection.sendPacket((Packet)new CPacketPlayer.Position(Class225.mc.player.posX, Class225.mc.player.posY + 0.1, Class225.mc.player.posZ, false));
             return;
