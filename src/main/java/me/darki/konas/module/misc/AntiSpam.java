@@ -12,12 +12,12 @@ extends Module {
     public static String[] Field2065 = new String[]{"discord.gg"};
     public static String[] Field2066 = new String[]{".com", ".ru", ".net", ".in", ".ir", ".au", ".uk", ".de", ".br", ".xyz", ".org", ".co", ".cc", ".me", ".tk", ".us", ".bar", ".gq", ".nl", ".space"};
     public static String[] Field2067 = new String[]{"Looking for new anarchy servers?", "I just walked", "I just flew", "I just placed", "I just ate", "I just healed", "I just took", "I just spotted", "I walked", "I flew", "I walked", "I flew", "I placed", "I ate", "I healed", "I took", "I gained", "I mined", "I lost", "I moved"};
-    public static Setting<Boolean> discord Invites = new Setting<>("Discord Invites", true);
+    public static Setting<Boolean> discordInvites = new Setting<>("Discord Invites", true);
     public static Setting<Boolean> domains = new Setting<>("Domains", false);
     public static Setting<Boolean> announcer = new Setting<>("Announcer", true);
 
     public boolean Method1925(String string) {
-        if (discord Invites.getValue().booleanValue()) {
+        if (discordInvites.getValue().booleanValue()) {
             for (String string2 : Field2065) {
                 if (!string.contains(string2)) continue;
                 return true;

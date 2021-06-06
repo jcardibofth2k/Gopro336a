@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class ACDamageMode
-extends Enum {
-    public static ACDamageMode NONE = new ACDamageMode("NONE", 0);
-    public static ACDamageMode FLAT = new ACDamageMode("FLAT", 1);
-    public static ACDamageMode SHADED = new ACDamageMode("SHADED", 2);
+public enum ACDamageMode {
+    NONE("NONE", 0),
+    FLAT("FLAT", 1),
+    SHADED("SHADED", 2);
     public static ACDamageMode[] Field429;
 
     public static ACDamageMode[] Method544() {
@@ -19,9 +18,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACDamageMode() {
-        void var2_-1;
-        void var1_-1;
+    ACDamageMode(String a, int b) {
     }
 
     static {

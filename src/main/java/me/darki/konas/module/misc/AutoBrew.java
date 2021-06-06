@@ -182,7 +182,7 @@ extends Module {
                         if (bl2) {
                             AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.START_SNEAKING));
                         }
-                        AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos3, enumFacing, new Vec3d(blockPos3).add(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
+                        AutoBrew.mc.playerController.processRightClickBlock(AutoBrew.mc.player, AutoBrew.mc.world, blockPos3, enumFacing, new Vec3d(blockPos3).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
                         AutoBrew.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
                         if (bl2) {
                             AutoBrew.mc.player.connection.sendPacket(new CPacketEntityAction(AutoBrew.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
@@ -214,7 +214,7 @@ extends Module {
     }
 
     public AutoBrew() {
-        ("AutoBrew", Category.MISC, new String[0])
+        super("AutoBrew", Category.MISC, new String[0]);
     }
 
     public int Method464() {

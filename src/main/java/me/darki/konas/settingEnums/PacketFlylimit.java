@@ -1,19 +1,16 @@
 package me.darki.konas.settingEnums;
 
-public class PacketFlylimit
-extends Enum {
-    public static PacketFlylimit NONE = new PacketFlylimit("NONE", 0);
-    public static PacketFlylimit STRONG = new PacketFlylimit("STRONG", 1);
-    public static PacketFlylimit STRICT = new PacketFlylimit("STRICT", 2);
+public enum PacketFlylimit {
+    NONE("NONE", 0),
+    STRONG("STRONG", 1),
+    STRICT("STRICT", 2);
     public static PacketFlylimit[] Field2083;
 
     /*
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public PacketFlylimit() {
-        void var2_-1;
-        void var1_-1;
+    PacketFlylimit(String a, int b) {
     }
 
     public static PacketFlylimit Method1935(String string) {

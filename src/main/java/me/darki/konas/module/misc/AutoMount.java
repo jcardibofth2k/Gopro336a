@@ -73,8 +73,7 @@ extends Module {
             return true;
         }
         if (entity instanceof EntityPig && pigs.getValue().booleanValue()) {
-            abstractHorse = (EntityPig)entity;
-            return abstractHorse.getSaddled();
+            return ((EntityPig)entity).getSaddled();
         }
         if (entity instanceof EntityLlama && llamas.getValue().booleanValue()) {
             abstractHorse = (EntityLlama)entity;
@@ -106,6 +105,7 @@ extends Module {
     public void Method536(SendPacketEvent sendPacketEvent) {
         block4: {
             CPacketPlayer cPacketPlayer;
+            CPacketUseEntity useentity;
             if (AutoMount.mc.world == null || AutoMount.mc.player == null) {
                 return;
             }
@@ -119,7 +119,7 @@ extends Module {
                     ((ICPacketPlayer)cPacketPlayer).setPitch(this.Field1892);
                 }
             }
-            if (!bypass.getValue().booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketUseEntity) || !((cPacketPlayer = (CPacketUseEntity) sendPacketEvent.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || cPacketPlayer.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
+            if (!bypass.getValue().booleanValue() || !(sendPacketEvent.getPacket() instanceof CPacketUseEntity) || !((useentity = (CPacketUseEntity) sendPacketEvent.getPacket()).getEntityFromWorld((World) AutoMount.mc.world) instanceof AbstractChestHorse) || useentity.getAction() != CPacketUseEntity.Action.INTERACT_AT) break block4;
             sendPacketEvent.Cancel();
         }
     }

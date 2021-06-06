@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class ChamsGlintMode
-extends Enum {
-    public static ChamsGlintMode NONE = new ChamsGlintMode("NONE", 0);
-    public static ChamsGlintMode VANILLA = new ChamsGlintMode("VANILLA", 1);
-    public static ChamsGlintMode CUSTOM = new ChamsGlintMode("CUSTOM", 2);
+public enum ChamsGlintMode {
+    NONE("NONE", 0),
+    VANILLA("VANILLA", 1),
+    CUSTOM("CUSTOM", 2);
     public static ChamsGlintMode[] Field2178;
 
     static {
@@ -23,8 +22,6 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ChamsGlintMode() {
-        void var2_-1;
-        void var1_-1;
+    ChamsGlintMode(String a, int b) {
     }
 }

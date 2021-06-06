@@ -53,11 +53,7 @@ extends Module {
         }
         if (this.Field2464 != (n = Freecam.mc.player.ticksExisted)) {
             this.Field2464 = n;
-<<<<<<< HEAD
             this.Field2463 = this.isEnabled() ? (PlayerUtil.Method1087(((Class537) control.getValue()).Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
-=======
-            this.Field2463 = this.isEnabled() ? (PlayerUtil.Method1087(Field2458.getValue().Method851()) ? Freecam.mc.player : (mc.getRenderViewEntity() == null ? Freecam.mc.player : mc.getRenderViewEntity())) : Freecam.mc.player;
->>>>>>> f776e1904b63ad8ae23617cc10076a951d8b81da
         }
         return this.Field2463;
     }
@@ -69,7 +65,7 @@ extends Module {
 
     public Freecam() {
         super("Freecam", "Control your camera separately to your body", Category.PLAYER);
-        this.Field2467 = new Class392(this, Freecam.mc.gameSettings);
+        this.Field2467 = new Class392(Freecam.mc.gameSettings);
         this.Field2468 = new Class398(this, Freecam.mc.gameSettings);
     }
 
@@ -83,11 +79,7 @@ extends Module {
         if (Freecam.mc.player == null) {
             return;
         }
-<<<<<<< HEAD
         this.Field2466 = new KonasPlayer((Boolean)this.copyInv.getValue(), (Boolean)this.follow.getValue(), ((Float)this.hSpeed.getValue()).floatValue(), ((Float)this.vSpeed.getValue()).floatValue());
-=======
-        this.Field2466 = new KonasPlayer(this.Field2460.getValue(), this.Field2459.getValue(), this.Field2461.getValue().floatValue(), this.Field2462.getValue().floatValue());
->>>>>>> f776e1904b63ad8ae23617cc10076a951d8b81da
         this.Field2466.movementInput = this.Field2467;
         Freecam.mc.player.movementInput = this.Field2468;
         Freecam.mc.world.addEntityToWorld(-921, this.Field2466);
@@ -101,17 +93,10 @@ extends Module {
         if (Freecam.mc.player == null || Freecam.mc.world == null) {
             return;
         }
-<<<<<<< HEAD
         this.Field2466.Method400((Boolean)this.copyInv.getValue());
         this.Field2466.Method407((Boolean)this.follow.getValue());
         this.Field2466.Method406(((Float)this.hSpeed.getValue()).floatValue());
         this.Field2466.Method402(((Float)this.vSpeed.getValue()).floatValue());
-=======
-        this.Field2466.Method400(this.Field2460.getValue());
-        this.Field2466.Method407(this.Field2459.getValue());
-        this.Field2466.Method406(this.Field2461.getValue().floatValue());
-        this.Field2466.Method402(this.Field2462.getValue().floatValue());
->>>>>>> f776e1904b63ad8ae23617cc10076a951d8b81da
     }
 
     @Subscriber

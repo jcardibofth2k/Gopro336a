@@ -3,6 +3,8 @@ package me.darki.konas.config;
 import me.darki.konas.gui.clickgui.component.Component;
 import me.darki.konas.gui.clickgui.frame.CategoryFrame;
 import me.darki.konas.gui.clickgui.frame.Frame;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class180;
+import me.darki.konas.gui.clickgui.unremappedGuiStuff.Class88;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.module.client.KonasGlobals;
@@ -82,7 +84,7 @@ public class Config
             final JsonObject jsonObject = new JsonObject();
             jsonObject.addProperty("X", (Number)class90.getPosX());
             jsonObject.addProperty("Y", (Number)class90.Method921());
-            jsonObject.addProperty("Extended", Boolean.valueOf(class90.setExtended()));
+            jsonObject.addProperty("Extended", class90.isExtended());
             final JsonObject jsonObject2 = new JsonObject();
             jsonObject2.add(class90.Method920(), (JsonElement)jsonObject);
             jsonArray.add((JsonElement)jsonObject2);
@@ -149,7 +151,7 @@ public class Config
             return null;
         }
         if (Config.CONFIGS.listFiles() != null) {
-            return Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2235).collect((Collector<? super File, ?, List<File>>)Collectors.toList());
+            return Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2235).collect(Collectors.toList());
         }
         return null;
     }
@@ -209,7 +211,7 @@ public class Config
             return Config.CONFIG;
         }
         if (Config.CONFIGS.listFiles() != null) {
-            final List<? super File> list = Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2246).collect((Collector<? super File, ?, List<? super File>>)Collectors.toList());
+            final List<? super File> list = Arrays.stream(Config.CONFIGS.listFiles()).filter(Config::Method2246).collect(Collectors.toList());
             list.add(Config.CONFIG);
             return list.stream().max(Comparator.comparingLong(File::lastModified)).orElse(Config.CONFIG);
         }
@@ -559,7 +561,7 @@ public class Config
             if (me.darki.konas.module.client.Config.overwriteFriends.getValue()) {
                 Class492.Method1986();
             }
-            final Iterator iterator = asJsonArray.iterator();
+            final Iterator<JsonElement> iterator = asJsonArray.iterator();
             while (iterator.hasNext()) {
                 Method2225(iterator.next().getAsJsonObject());
             }
@@ -600,7 +602,7 @@ public class Config
                 element.Method2334(asInt);
                 element.Method2326(asFloat);
                 element.Method2331(asFloat2);
-                if (!Class109.Method2198(element).isEmpty()) {
+                if (Class109.Method2198(element).length > 0) {
                     for (final Setting setting : Class109.Method2198(element)) {
                         if (setting.getValue() instanceof Float) {
                             setting.setValue(asJsonObject.getAsJsonPrimitive(setting.Method1183()).getAsFloat());
@@ -957,7 +959,7 @@ public class Config
                 }
                 err.println(x);
             }
-            final Iterator iterator = asJsonArray.iterator();
+            final Iterator<JsonElement> iterator = asJsonArray.iterator();
             while (iterator.hasNext()) {
                 final JsonObject asJsonObject = iterator.next().getAsJsonObject();
                 if (asJsonObject.getAsJsonObject(module.getName()) != null) {
@@ -1074,7 +1076,7 @@ public class Config
             jsonObject.addProperty("Y", (Number)element.Method2315());
             jsonObject.addProperty("Enabled", Boolean.valueOf(element.Method2338()));
             jsonObject.addProperty("Visible", Boolean.valueOf(element.Method2338()));
-            if (!Class109.Method2198(element).isEmpty()) {
+            if (Class109.Method2198(element).length > 0) {
                 for (final Setting setting : Class109.Method2198(element)) {
                     if (setting.getValue() instanceof Number) {
                         jsonObject.addProperty(setting.Method1183(), (Number)setting.getValue());

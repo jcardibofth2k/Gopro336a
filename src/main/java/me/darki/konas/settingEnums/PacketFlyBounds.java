@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class PacketFlyBounds
-extends Enum {
-    public static PacketFlyBounds NONE = new PacketFlyBounds("NONE", 0);
-    public static PacketFlyBounds WORLD = new PacketFlyBounds("WORLD", 1);
-    public static PacketFlyBounds STRICT = new PacketFlyBounds("STRICT", 2);
+public enum PacketFlyBounds {
+    NONE("NONE", 0),
+    WORLD("WORLD", 1),
+    STRICT("STRICT", 2);
     public static PacketFlyBounds[] Field389;
 
     static {
@@ -23,8 +22,6 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public PacketFlyBounds() {
-        void var2_-1;
-        void var1_-1;
+    PacketFlyBounds(String a, int b) {
     }
 }

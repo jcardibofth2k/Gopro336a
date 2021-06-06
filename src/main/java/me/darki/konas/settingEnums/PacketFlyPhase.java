@@ -1,19 +1,16 @@
 package me.darki.konas.settingEnums;
 
-public class PacketFlyPhase
-extends Enum {
-    public static PacketFlyPhase NONE = new PacketFlyPhase("NONE", 0);
-    public static PacketFlyPhase SLOW = new PacketFlyPhase("SLOW", 1);
-    public static PacketFlyPhase FAST = new PacketFlyPhase("FAST", 2);
+public enum PacketFlyPhase {
+    NONE("NONE", 0),
+    SLOW("SLOW", 1),
+    FAST("FAST", 2);
     public static PacketFlyPhase[] Field2074;
 
     /*
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public PacketFlyPhase() {
-        void var2_-1;
-        void var1_-1;
+    PacketFlyPhase(String a, int b) {
     }
 
     public static PacketFlyPhase Method1929(String string) {

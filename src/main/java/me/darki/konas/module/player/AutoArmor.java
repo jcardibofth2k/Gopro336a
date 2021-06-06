@@ -12,6 +12,7 @@ import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.misc.AutoMend;
+import me.darki.konas.module.movement.ElytraFly;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.SendPacketEvent;
@@ -55,7 +56,7 @@ extends Module {
     public void Method462(TickEvent tickEvent) {
         block21: {
             boolean bl;
-            Object object;
+            List object;
             if (tickEvent.Method324() == net.minecraftforge.fml.common.gameevent.TickEvent.Phase.END) {
                 return;
             }
@@ -103,7 +104,7 @@ extends Module {
             if (AutoArmor.mc.currentScreen instanceof GuiContainer) {
                 return;
             }
-            object = new AtomicBoolean(false);
+            AtomicBoolean b = new AtomicBoolean(false);
             if (this.Field2042) {
                 this.Field2042 = false;
                 return;
@@ -132,20 +133,20 @@ extends Module {
             boolean bl6 = item2.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(38).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(38)) >= (double) depletion.getValue().floatValue();
             boolean bl7 = item3.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(37).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(37)) >= (double) depletion.getValue().floatValue();
             boolean bl8 = bl = item4.equals(Items.AIR) || !bl4 && armorSaver.getValue() != false && AutoArmor.mc.player.inventory.getStackInSlot(36).getItem().getDurabilityForDisplay(AutoArmor.mc.player.inventory.getStackInSlot(36)) >= (double) depletion.getValue().floatValue();
-            if (bl5 && !((AtomicBoolean)object).get()) {
-                list.stream().filter(AutoArmor::Method1864).filter(AutoArmor::Method1871).findFirst().ifPresent(arg_0 -> this.Method1874((AtomicBoolean)object, arg_0));
+            if (bl5 && !((AtomicBoolean)b).get()) {
+                list.stream().filter(AutoArmor::Method1864).filter(AutoArmor::Method1871).findFirst().ifPresent(arg_0 -> this.Method1874((AtomicBoolean)b, arg_0));
             }
-            if (bl3 && !(item2 instanceof ItemElytra) && list2.size() > 0 && !((AtomicBoolean)object).get()) {
-                list2.stream().findFirst().ifPresent(arg_0 -> this.Method1859((AtomicBoolean)object, arg_0));
+            if (bl3 && !(item2 instanceof ItemElytra) && list2.size() > 0 && !((AtomicBoolean)b).get()) {
+                list2.stream().findFirst().ifPresent(arg_0 -> this.Method1859((AtomicBoolean)b, arg_0));
             }
             if (bl6 || !bl3 && item2.equals(Items.ELYTRA) && !((AtomicBoolean)object).get()) {
-                list.stream().filter(AutoArmor::Method1857).filter(AutoArmor::Method1863).findFirst().ifPresent(arg_0 -> this.Method1856((AtomicBoolean)object, arg_0));
+                list.stream().filter(AutoArmor::Method1857).filter(AutoArmor::Method1863).findFirst().ifPresent(arg_0 -> this.Method1856((AtomicBoolean)b, arg_0));
             }
             if (bl7 && !((AtomicBoolean)object).get()) {
-                list.stream().filter(AutoArmor::Method1876).filter(AutoArmor::Method1855).findFirst().ifPresent(arg_0 -> this.Method1868((AtomicBoolean)object, arg_0));
+                list.stream().filter(AutoArmor::Method1876).filter(AutoArmor::Method1855).findFirst().ifPresent(arg_0 -> this.Method1868((AtomicBoolean)b, arg_0));
             }
             if (!bl || ((AtomicBoolean)object).get()) break block21;
-            list.stream().filter(AutoArmor::Method1858).filter(AutoArmor::Method1862).findFirst().ifPresent(arg_0 -> this.Method1865((AtomicBoolean)object, arg_0));
+            list.stream().filter(AutoArmor::Method1858).filter(AutoArmor::Method1862).findFirst().ifPresent(arg_0 -> this.Method1865((AtomicBoolean)b, arg_0));
         }
     }
 

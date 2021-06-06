@@ -62,12 +62,16 @@ repositories {
 
     maven { url = 'https://repo.spongepowered.org/repository/maven-public' }
     maven { url = 'https://jitpack.io'}
+    maven { url = "https://repo.viaversion.com" }
 }
 
 dependencies {
     compile "club.minnced:java-discord-rpc:2.0.1"
     compile "com.mojang:brigadier:1.0.17"
     compile "com.moandjiezana.toml:toml4j:0.7.2"
+    compile "com.viaversion:viaversion:4.0.2-SNAPSHOT"
+    compile "com.viaversion:viabackwards:4.0.2-SNAPSHOT"
+    compile "org.yaml:snakeyaml:1.29"
     compile ('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'

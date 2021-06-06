@@ -1,19 +1,16 @@
 package me.darki.konas.settingEnums;
 
-public class ACYawstepMode
-extends Enum {
-    public static ACYawstepMode OFF = new ACYawstepMode("OFF", 0);
-    public static ACYawstepMode BREAK = new ACYawstepMode("BREAK", 1);
-    public static ACYawstepMode FULL = new ACYawstepMode("FULL", 2);
+public enum ACYawstepMode {
+    OFF("OFF", 0),
+    BREAK("BREAK", 1),
+    FULL("FULL", 2);
     public static ACYawstepMode[] Field1466;
 
     /*
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACYawstepMode() {
-        void var2_-1;
-        void var1_-1;
+    ACYawstepMode(String a, int b) {
     }
 
     static {

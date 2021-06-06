@@ -42,7 +42,7 @@ public class Speed
 extends Module {
     public Setting<Double> speed = new Setting<>("Speed", 1.0, 10.0, 0.0, 0.1);
     public Setting<Boolean> useTimer = new Setting<>("UseTimer", true);
-    public Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(this.Field392::getValue);
+    public Setting<Float> factor = new Setting<>("Factor", Float.valueOf(1.0f), Float.valueOf(10.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(this.useTimer::getValue);
     public Setting<StrafeMode> mode = new Setting<>("Mode", StrafeMode.STRAFE);
     public Setting<Boolean> bypass = new Setting<>("Bypass", false).visibleIf(this::Method396);
     public Setting<Boolean> hypixel = new Setting<>("Hypixel", false).visibleIf(this::Method393);
@@ -53,8 +53,8 @@ extends Module {
     public Setting<Boolean> boost = new Setting<>("Boost", false).visibleIf(this::Method535);
     public Setting<Double> boostFactor = new Setting<>("BoostFactor", 1.0, 10.0, 0.0, 0.1).visibleIf(this::Method519);
     public Setting<ParentSetting> alternative = new Setting<>("Alternative", new ParentSetting(false));
-    public Setting<StrafeMode> altMode = new Setting<>("AltMode", StrafeMode.ONGROUND).setParentSetting(this.Field403);
-    public Setting<Class537> altBind = new Setting<>("AltBind", new Class537(0)).setParentSetting(this.Field403);
+    public Setting<StrafeMode> altMode = new Setting<>("AltMode", StrafeMode.ONGROUND).setParentSetting(this.alternative);
+    public Setting<Class537> altBind = new Setting<>("AltBind", new Class537(0)).setParentSetting(this.alternative);
     public int Field406 = 1;
     public int Field407;
     public double Field408 = 0.0;

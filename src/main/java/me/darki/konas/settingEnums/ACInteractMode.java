@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class ACInteractMode
-extends Enum {
-    public static ACInteractMode VANILLA = new ACInteractMode("VANILLA", 0);
-    public static ACInteractMode NORMAL = new ACInteractMode("NORMAL", 1);
-    public static ACInteractMode STRICT = new ACInteractMode("STRICT", 2);
+public enum ACInteractMode {
+    VANILLA("VANILLA", 0),
+    NORMAL("NORMAL", 1),
+    STRICT("STRICT", 2);
     public static ACInteractMode[] Field613;
 
     public static ACInteractMode Method658(String string) {
@@ -23,8 +22,6 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACInteractMode() {
-        void var2_-1;
-        void var1_-1;
+    ACInteractMode(String a, int b) {
     }
 }

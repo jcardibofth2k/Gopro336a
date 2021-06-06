@@ -1,9 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class ACTiming
-extends Enum {
-    public static ACTiming SEQUENTIAL = new ACTiming("SEQUENTIAL", 0);
-    public static ACTiming ADAPTIVE = new ACTiming("ADAPTIVE", 1);
+public enum ACTiming {
+    SEQUENTIAL("SEQUENTIAL", 0),
+    ADAPTIVE("ADAPTIVE", 1);
     public static ACTiming[] Field1842;
 
     public static ACTiming[] Method1744() {
@@ -22,8 +21,6 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACTiming() {
-        void var2_-1;
-        void var1_-1;
+    ACTiming(String a, int b) {
     }
 }

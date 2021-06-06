@@ -1,14 +1,13 @@
 package me.darki.konas.module;
 
-public class Category
-extends Enum {
-    public static Category COMBAT = new Category("COMBAT", 0);
-    public static Category MOVEMENT = new Category("MOVEMENT", 1);
-    public static Category PLAYER = new Category("PLAYER", 2);
-    public static Category RENDER = new Category("RENDER", 3);
-    public static Category MISC = new Category("MISC", 4);
-    public static Category EXPLOIT = new Category("EXPLOIT", 5);
-    public static Category CLIENT = new Category("CLIENT", 6);
+public enum Category {
+    COMBAT("COMBAT", 0),
+    MOVEMENT("MOVEMENT", 1),
+    PLAYER("PLAYER", 2),
+    RENDER("RENDER", 3),
+    MISC("MISC", 4),
+    EXPLOIT("EXPLOIT", 5),
+    CLIENT("CLIENT", 6);
     public static Category[] Field1872;
 
     public static Category Method1763(String string) {
@@ -23,10 +22,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public Category(String s, int n) {
-        super(s, n);
-        void var2_-1;
-        void var1_-1;
+    Category(String a, int b) {
     }
 
     static {

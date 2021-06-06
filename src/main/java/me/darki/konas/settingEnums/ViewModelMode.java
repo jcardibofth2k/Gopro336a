@@ -1,9 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class ViewModelMode
-extends Enum {
-    public static ViewModelMode MAINHAND = new ViewModelMode("MAINHAND", 0);
-    public static ViewModelMode OFFHAND = new ViewModelMode("OFFHAND", 1);
+public enum ViewModelMode {
+    MAINHAND("MAINHAND", 0),
+    OFFHAND("OFFHAND", 1);
     public static ViewModelMode[] Field1086;
 
     static {
@@ -14,10 +13,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public
-    ViewModelMode() {
-        void var2_-1;
-        void var1_-1;
+    ViewModelMode(String a, int b) {
     }
 
     public static ViewModelMode[] Method1121() {

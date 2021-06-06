@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class ACComfirmMode
-extends Enum {
-    public static ACComfirmMode OFF = new ACComfirmMode("OFF", 0);
-    public static ACComfirmMode SEMI = new ACComfirmMode("SEMI", 1);
-    public static ACComfirmMode FULL = new ACComfirmMode("FULL", 2);
+public enum ACComfirmMode {
+    OFF("OFF", 0),
+    SEMI("SEMI", 1),
+    FULL("FULL", 2);
     public static ACComfirmMode[] Field1406;
 
     public static ACComfirmMode Method1464(String string) {
@@ -19,9 +18,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACComfirmMode() {
-        void var2_-1;
-        void var1_-1;
+    ACComfirmMode(String a, int b) {
     }
 
     static {

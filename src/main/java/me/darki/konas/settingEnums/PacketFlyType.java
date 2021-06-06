@@ -1,21 +1,18 @@
 package me.darki.konas.settingEnums;
 
-public class PacketFlyType
-extends Enum {
-    public static PacketFlyType FACTOR = new PacketFlyType("FACTOR", 0);
-    public static PacketFlyType SETBACK = new PacketFlyType("SETBACK", 1);
-    public static PacketFlyType FAST = new PacketFlyType("FAST", 2);
-    public static PacketFlyType SLOW = new PacketFlyType("SLOW", 3);
-    public static PacketFlyType DESYNC = new PacketFlyType("DESYNC", 4);
+public enum PacketFlyType {
+    FACTOR("FACTOR", 0),
+    SETBACK("SETBACK", 1),
+    FAST("FAST", 2),
+    SLOW("SLOW", 3),
+    DESYNC("DESYNC", 4);
     public static PacketFlyType[] Field2351;
 
     /*
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public PacketFlyType() {
-        void var2_-1;
-        void var1_-1;
+    PacketFlyType(String a, int b) {
     }
 
     static {

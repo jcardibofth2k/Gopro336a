@@ -39,7 +39,7 @@ public class KonasGlobals {
 
     public void init() {
         ModuleManager.Method1620();
-        CommandManager.Method206();
+        CommandManager.add();
         (this.Field1136 = new Class109()).Method2200();
         try {
             final Field declaredField = Unsafe.class.getDeclaredField("theUnsafe");

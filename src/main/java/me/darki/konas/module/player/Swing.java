@@ -56,14 +56,14 @@ extends Module {
             ((ICPacketAnimation)cPacketAnimation).setHand(cPacketAnimation.getHand() == EnumHand.MAIN_HAND ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND);
         }
         if (this.render.getValue() == false) return;
-        cPacketAnimation = ((CPacketAnimation) sendPacketEvent.getPacket()).getHand();
+        cPacketAnimation = ((CPacketAnimation) sendPacketEvent.getPacket());
         try {
             if (Swing.mc.player.isSwingInProgress && Swing.mc.player.swingProgressInt < this.Method464() / 2) {
                 if (Swing.mc.player.swingProgressInt >= 0) return;
             }
             Swing.mc.player.swingProgressInt = -1;
             Swing.mc.player.isSwingInProgress = true;
-            Swing.mc.player.swingingHand = cPacketAnimation;
+            Swing.mc.player.swingingHand = cPacketAnimation.getHand();
             return;
         }
         catch (Exception exception) {

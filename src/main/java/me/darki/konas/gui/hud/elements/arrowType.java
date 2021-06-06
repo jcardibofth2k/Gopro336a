@@ -1,18 +1,21 @@
 package me.darki.konas.gui.hud.elements;
 
-public class arrowType
-extends Enum {
-    public static arrowType ARROW = new arrowType("ARROW", 0);
-    public static arrowType COMPASS = new arrowType("COMPASS", 1);
+public enum arrowType
+{
+    //public static arrowType ARROW = new arrowType("ARROW", 0);
+    //public static arrowType COMPASS = new arrowType("COMPASS", 1);
+    ARROW("Arrow", 0),
+    COMPASS("Compass", 1);
+
     public static arrowType[] Field2058;
 
     /*
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public arrowType() {
-        void var2_-1;
-        void var1_-1;
+
+    arrowType(String a, int b)
+    {
     }
 
     public static arrowType[] Method1918() {

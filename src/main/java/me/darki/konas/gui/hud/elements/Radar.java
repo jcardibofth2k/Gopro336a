@@ -1,6 +1,7 @@
 package me.darki.konas.gui.hud.elements;
 
 import java.awt.Color;
+import java.util.Iterator;
 
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.util.RenderUtil2;
@@ -39,12 +40,12 @@ extends Element {
             GL11.glDisable(3553);
             GL11.glBlendFunc(770, 771);
             GL11.glEnable(3042);
-            Object[][] objectArrayArray = Radar.mc.world.loadedEntityList.iterator();
+            Iterator<Entity> objectArrayArray = Radar.mc.world.loadedEntityList.iterator();
             while (objectArrayArray.hasNext()) {
                 double d;
                 double d2;
                 double d3;
-                Object[][] objectArrayArray2 = (Object[][])objectArrayArray.next();
+                Entity objectArrayArray2 = objectArrayArray.next();
                 if (!this.shouldRender(objectArrayArray2) || !((d3 = Math.sqrt((d2 = Radar.mc.player.posX - objectArrayArray2.posX) * d2 + (d = Radar.mc.player.posZ - objectArrayArray2.posZ) * d)) <= (double)this.Method2329() / 2.0 - (double)this.Method2329() / 50.0)) continue;
                 GL11.glPushMatrix();
                 double d4 = Radar.mc.player.posX - objectArrayArray2.posX + (double)n + (double)(this.Method2329() / 2.0f);
@@ -90,7 +91,7 @@ extends Element {
             GL11.glPopMatrix();
             GL11.glPushMatrix();
             GL11.glEnable(3553);
-            for (Object[] objectArray : objectArrayArray = new Object[][]{{"N", -90.0}, {"S", 90.0}, {"E", 0.0}, {"W", 180.0}}) {
+            for (Object[] objectArray : new Object[][]{{"N", -90.0}, {"S", 90.0}, {"E", 0.0}, {"W", 180.0}}) {
                 if (objectArray.length < 2) {
                     return;
                 }
