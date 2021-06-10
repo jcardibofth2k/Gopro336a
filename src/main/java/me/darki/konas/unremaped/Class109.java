@@ -1,6 +1,5 @@
 package me.darki.konas.unremaped;
 
-import com.viaversion.viaversion.libs.kyori.adventure.util.Listenable;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.lang.reflect.Field;
@@ -30,7 +29,6 @@ public class Class109 {
     /*
      * Unable to fully structure code
      */
-    // 2E = Element
     public static Setting[] Method2198(Element var0) {
         Object var10000 = null;
         Element var1 = (Element)var0.getClass().getSuperclass().cast(var0);
