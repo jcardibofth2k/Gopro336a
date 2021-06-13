@@ -1,9 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class ACSyncMode
-extends Enum {
-    public static ACSyncMode STRICT = new ACSyncMode("STRICT", 0);
-    public static ACSyncMode MERGE = new ACSyncMode("MERGE", 1);
+public enum ACSyncMode {
+    STRICT("STRICT", 0),
+    MERGE("MERGE", 1);
     public static ACSyncMode[] Field1818;
 
     public static ACSyncMode[] Method1710() {
@@ -18,9 +17,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACSyncMode() {
-        void var2_-1;
-        void var1_-1;
+    ACSyncMode(String a, int b) {
     }
 
     public static ACSyncMode Method1711(String string) {

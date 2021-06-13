@@ -1,9 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class SprintMode
-extends Enum {
-    public static SprintMode LEGIT = new SprintMode("LEGIT", 0);
-    public static SprintMode RAGE = new SprintMode("RAGE", 1);
+public enum SprintMode {
+    LEGIT("LEGIT", 0),
+    RAGE("RAGE", 1);
     public static SprintMode[] Field251;
 
     public static SprintMode Method397(String string) {
@@ -14,9 +13,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public SprintMode() {
-        void var2_-1;
-        void var1_-1;
+    SprintMode(String a, int b) {
     }
 
     static {

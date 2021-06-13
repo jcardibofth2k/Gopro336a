@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import cookiedragon.eventsystem.EventDispatcher;
 import cookiedragon.eventsystem.Subscriber;
 import java.lang.reflect.Field;
+import java.util.List;
 
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.gui.hud.Element;
@@ -28,55 +29,49 @@ public class Class109 {
     /*
      * Unable to fully structure code
      */
-    public static java.util.ArrayList<Setting> Method2198(Element var0) {
-        var1_1 = (Element)var0.getClass().getSuperclass().cast(var0);
-        var2_2 = new java.util.ArrayList<Setting>();
-        for (Field var6_6 : var1_1.getClass().getDeclaredFields()) {
-            if (!Setting.class.isAssignableFrom(var6_6.getType())) continue;
-            var6_6.setAccessible(true);
-            v0 = ListenableSettingDecorator.class;
-            v1 = var6_6;
-            v2 = v1.getType();
-            v3 = v0.isAssignableFrom(v2);
-            if (!v3) ** GOTO lbl28
-            v4 = var2_2;
-            v5 = var6_6;
-            v6 = var1_1;
-            v7 = v5.get(v6);
-            v8 = (ListenableSettingDecorator)v7;
-            v4.add(v8);
-            continue;
-lbl28:
-            // 1 sources
+    public static Setting[] Method2198(Element var0) {
+        Object var10000 = null;
+        Element var1 = (Element)var0.getClass().getSuperclass().cast(var0);
+        List<Setting> var2 = new java.util.ArrayList<>();
+        Field[] var3 = var1.getClass().getDeclaredFields();
+        int var4 = var3.length;
 
-            v9 = var2_2;
-            v10 = var6_6;
-            v11 = var1_1;
-            v12 = v10.get(v11);
-            v13 = (Setting)v12;
-            v9.add(v13);
-            try {
-            }
-            catch (IllegalAccessException var7_7) {
-                var7_7.printStackTrace();
-            }
-        }
-        for (Field var6_6 : var1_1.getClass().getSuperclass().getDeclaredFields()) {
-            if (!Setting.class.isAssignableFrom(var6_6.getType())) continue;
-            var6_6.setAccessible(true);
-            v14 = var2_2;
-            v15 = var6_6;
-            v16 = var1_1;
-            v17 = v15.get(v16);
-            v18 = (Setting)v17;
-            v14.add(v18);
-            try {
-            }
-            catch (IllegalAccessException var7_9) {
-                var7_9.printStackTrace();
+        int var5;
+        Field var6;
+        for(var5 = 0; var5 < var4; ++var5) {
+            var6 = var3[var5];
+            if (Setting.class.isAssignableFrom(var6.getType())) {
+                var6.setAccessible(true);
+
+                try {
+                    if (ListenableSettingDecorator.class.isAssignableFrom(var6.getType())) {
+                        var2.add((ListenableSettingDecorator)var6.get(var1));
+                    } else {
+                        var2.add((Setting)var6.get(var1));
+                    }
+                } catch (IllegalAccessException var9) {
+                    var9.printStackTrace();
+                }
             }
         }
-        return var2_2;
+
+        var3 = var1.getClass().getSuperclass().getDeclaredFields();
+        var4 = var3.length;
+
+        for(var5 = 0; var5 < var4; ++var5) {
+            var6 = var3[var5];
+            if (Setting.class.isAssignableFrom(var6.getType())) {
+                var6.setAccessible(true);
+
+                try {
+                    var2.add((Setting)var6.get(var1));
+                } catch (IllegalAccessException var8) {
+                    var8.printStackTrace();
+                }
+            }
+        }
+
+        return (Setting[])var2.toArray();
     }
 
     @Subscriber

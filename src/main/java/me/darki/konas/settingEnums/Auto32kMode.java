@@ -1,9 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class Auto32kMode
-extends Enum {
-    public static Auto32kMode TICK = new Auto32kMode("TICK", 0);
-    public static Auto32kMode ALWAYS = new Auto32kMode("ALWAYS", 1);
+public enum Auto32kMode {
+    TICK("TICK", 0),
+    ALWAYS("ALWAYS", 1);
     public static Auto32kMode[] Field1438;
 
     static {
@@ -18,9 +17,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public Auto32kMode() {
-        void var2_-1;
-        void var1_-1;
+    Auto32kMode(String a, int b) {
     }
 
     public static Auto32kMode Method1497(String string) {

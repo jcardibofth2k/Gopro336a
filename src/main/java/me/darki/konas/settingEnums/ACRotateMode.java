@@ -1,10 +1,8 @@
 package me.darki.konas.settingEnums;
 
-public class ACRotateMode
-extends Enum {
-    public static ACRotateMode OFF = new ACRotateMode("OFF", 0);
-    public static ACRotateMode TRACK = new ACRotateMode("TRACK", 1);
-    public static ACRotateMode INTERACT = new ACRotateMode("INTERACT", 2);
+public enum ACRotateMode {
+    OFF("OFF", 0), TRACK("TRACK", 1), INTERACT("INTERACT", 2);
+
     public static ACRotateMode[] Field536;
 
     public static ACRotateMode Method611(String string) {
@@ -23,8 +21,6 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ACRotateMode() {
-        void var2_-1;
-        void var1_-1;
+    ACRotateMode(String a, int b) {
     }
 }

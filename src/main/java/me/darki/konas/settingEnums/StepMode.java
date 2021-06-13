@@ -1,11 +1,10 @@
 package me.darki.konas.settingEnums;
 
-public class StepMode
-extends Enum {
-    public static StepMode VANILLA = new StepMode("VANILLA", 0);
-    public static StepMode NORMAL = new StepMode("NORMAL", 1);
-    public static StepMode NCP = new StepMode("NCP", 2);
-    public static StepMode MOTION = new StepMode("MOTION", 3);
+public enum StepMode {
+    VANILLA("VANILLA", 0),
+    NORMAL("NORMAL", 1),
+    NCP("NCP", 2),
+    MOTION("MOTION", 3);
     public static StepMode[] Field2075;
 
     static {
@@ -16,9 +15,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public StepMode() {
-        void var2_-1;
-        void var1_-1;
+    StepMode(String a, int b) {
     }
 
     public static StepMode[] Method1931() {

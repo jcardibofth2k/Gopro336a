@@ -1,10 +1,9 @@
 package me.darki.konas.settingEnums;
 
-public class ExtraTabMode
-extends Enum {
-    public static ExtraTabMode VANILLA = new ExtraTabMode("VANILLA", 0);
-    public static ExtraTabMode PING = new ExtraTabMode("PING", 1);
-    public static ExtraTabMode LENGTH = new ExtraTabMode("LENGTH", 2);
+public enum ExtraTabMode {
+    VANILLA("VANILLA", 0),
+    PING("PING", 1),
+    LENGTH("LENGTH", 2);
     public static ExtraTabMode[] Field1291;
 
     public static ExtraTabMode Method1312(String string) {
@@ -15,9 +14,7 @@ extends Enum {
      * WARNING - Possible parameter corruption
      * WARNING - void declaration
      */
-    public ExtraTabMode() {
-        void var2_-1;
-        void var1_-1;
+    ExtraTabMode(String a, int b) {
     }
 
     static {

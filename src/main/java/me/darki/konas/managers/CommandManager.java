@@ -11,7 +11,7 @@ import me.darki.konas.unremaped.*;
 public class CommandManager {
     public static ArrayList<Command> commands = new ArrayList();
 
-    public static void Method206() {
+    public static void add() {
         commands.add(new bindCommand());
         commands.add(new commandsCommand());
         commands.add(new drawCommand());
