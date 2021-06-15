@@ -23,8 +23,8 @@ import net.minecraft.init.Items;
 public class AutoLog
 extends Module {
     public static Setting<Class300> mode = new Setting<>("Mode", Class300.HEALTH);
-    public static Setting<Float> health = new Setting<>("Health", Float.valueOf(10.0f), Float.valueOf(22.0f), Float.valueOf(0.0f), Float.valueOf(0.1f)).visibleIf(AutoLog::Method393);
-    public Setting<Float> crystalRange = new Setting<>("CrystalRange", Float.valueOf(10.0f), Float.valueOf(15.0f), Float.valueOf(1.0f), Float.valueOf(1.0f)).visibleIf(AutoLog::Method394);
+    public static Setting<Float> health = new Setting<>("Health", 10.0f, 22.0f, 0.0f, 0.1f).visibleIf(AutoLog::Method393);
+    public Setting<Float> crystalRange = new Setting<>("CrystalRange", 10.0f, 15.0f, 1.0f, 1.0f).visibleIf(AutoLog::Method394);
     public static Setting<Boolean> ignoreTotem = new Setting<>("IgnoreTotem", true).visibleIf(AutoLog::Method539);
     public Setting<Boolean> notify = new Setting<>("Notify", false).visibleIf(this::Method1632);
 
