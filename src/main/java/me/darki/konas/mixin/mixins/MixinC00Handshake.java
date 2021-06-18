@@ -1,7 +1,7 @@
 package me.darki.konas.mixin.mixins;
 
 import me.darki.konas.module.ModuleManager;
-import me.darki.konas.unremaped.NoForge;
+import me.darki.konas.module.client.NoForge;
 import net.minecraft.network.EnumConnectionState;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.handshake.client.C00Handshake;

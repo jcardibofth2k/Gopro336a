@@ -5,7 +5,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.SendPacketEvent;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.unremaped.Render3DEvent;
 import net.minecraft.network.play.client.CPacketKeepAlive;
 

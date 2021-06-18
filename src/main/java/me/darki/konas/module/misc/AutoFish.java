@@ -8,7 +8,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class19;
 import me.darki.konas.unremaped.Class376;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.init.Items;
 import net.minecraft.network.play.server.SPacketSoundEffect;

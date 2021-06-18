@@ -8,6 +8,7 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;

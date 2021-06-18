@@ -14,6 +14,7 @@ import me.darki.konas.settingEnums.Auto32kMode;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.ShaderUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockShulkerBox;
 import net.minecraft.client.gui.GuiHopper;

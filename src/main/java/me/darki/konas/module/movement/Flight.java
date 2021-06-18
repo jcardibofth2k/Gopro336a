@@ -12,7 +12,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class418;
 import me.darki.konas.unremaped.Class447;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.math.Interpolation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;

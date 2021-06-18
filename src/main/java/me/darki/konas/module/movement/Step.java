@@ -11,7 +11,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.StepMode;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.exploit.RubberFill;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;

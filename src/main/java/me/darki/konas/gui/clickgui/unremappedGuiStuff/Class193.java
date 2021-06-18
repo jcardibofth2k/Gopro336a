@@ -12,7 +12,6 @@ import me.darki.konas.module.Category;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class196;
 import me.darki.konas.unremaped.Class200;
-import me.darki.konas.unremaped.Class92;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;

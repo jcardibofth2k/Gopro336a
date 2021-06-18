@@ -9,7 +9,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class477;
-import me.darki.konas.unremaped.Rotation;
+import me.darki.konas.util.rotation.Rotation;
 import me.darki.konas.event.events.Event;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;

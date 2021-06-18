@@ -10,7 +10,7 @@ import me.darki.konas.module.combat.AutoCrystal;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class276;
 import me.darki.konas.unremaped.Class490;
-import me.darki.konas.unremaped.Rotation;
+import me.darki.konas.util.rotation.Rotation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockDeadBush;

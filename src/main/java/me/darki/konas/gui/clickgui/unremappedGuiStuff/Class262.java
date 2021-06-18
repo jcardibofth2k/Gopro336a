@@ -5,7 +5,7 @@ import java.io.IOException;
 import me.darki.konas.command.commands.Party;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class557;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.audio.ISound;

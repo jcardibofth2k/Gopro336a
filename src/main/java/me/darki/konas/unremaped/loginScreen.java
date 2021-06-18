@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import me.darki.konas.gui.screen.altManagerGuiThing;
 import me.darki.konas.mixin.mixins.IGuiTextField;
 import me.darki.konas.module.client.KonasGlobals;
 import net.minecraft.client.gui.GuiButton;

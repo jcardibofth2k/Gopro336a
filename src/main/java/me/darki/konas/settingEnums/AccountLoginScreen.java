@@ -1,7 +1,7 @@
 package me.darki.konas.settingEnums;
 
 import java.io.IOException;
-import me.darki.konas.unremaped.altManagerGuiThing;
+import me.darki.konas.gui.screen.altManagerGuiThing;
 import me.darki.konas.unremaped.Class166;
 import me.darki.konas.unremaped.Class170;
 import me.darki.konas.unremaped.Class68;

@@ -2,7 +2,7 @@ package me.darki.konas.command.commands;
 
 import java.util.ArrayList;
 import me.darki.konas.unremaped.Class595;
-import me.darki.konas.unremaped.PartyUtil;
+import me.darki.konas.util.PartyUtil;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;
 

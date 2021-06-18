@@ -3,6 +3,7 @@ package me.darki.konas.unremaped;
 import java.util.ArrayList;
 
 import me.darki.konas.module.Module;
+import me.darki.konas.module.combat.BowAim;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;

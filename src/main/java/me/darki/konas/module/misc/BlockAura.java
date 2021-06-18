@@ -13,10 +13,10 @@ import javax.annotation.Nullable;
 
 import me.darki.konas.event.events.Event;
 import me.darki.konas.event.events.OpenGuiEvent;
-import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class534;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.unremaped.SendPacketEvent;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.event.events.UpdateEvent;
@@ -152,7 +152,7 @@ extends Module {
             if (bl3) {
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BlockAura.mc.player, CPacketEntityAction.Action.START_SNEAKING));
             }
-            BlockAura.mc.playerController.processRightClickBlock(BlockAura.mc.player, BlockAura.mc.world, this.Field1781, this.Field1782, new Vec3d((Vec3i)this.Field1781).addVector(0.5, 0.5, 0.5).add(new Vec3d(this.Field1782.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
+            BlockAura.mc.playerController.processRightClickBlock(BlockAura.mc.player, BlockAura.mc.world, this.Field1781, this.Field1782, new Vec3d((Vec3i)this.Field1781).add(0.5, 0.5, 0.5).add(new Vec3d(this.Field1782.getDirectionVec()).scale(0.5)), EnumHand.MAIN_HAND);
             BlockAura.mc.player.connection.sendPacket((Packet)new CPacketAnimation(EnumHand.MAIN_HAND));
             if (bl3) {
                 BlockAura.mc.player.connection.sendPacket((Packet)new CPacketEntityAction((Entity) BlockAura.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));

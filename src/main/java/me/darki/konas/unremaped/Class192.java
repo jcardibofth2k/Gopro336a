@@ -17,6 +17,8 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.player.AutoTool;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
+import me.darki.konas.util.rotation.Rotation;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

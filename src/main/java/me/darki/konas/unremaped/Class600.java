@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
+import me.darki.konas.module.misc.Scaffold;
 import me.darki.konas.util.SyntaxChunk;
 import me.darki.konas.command.Command;
 import me.darki.konas.command.Logger;

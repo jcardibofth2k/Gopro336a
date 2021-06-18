@@ -11,6 +11,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.setting.ColorValue;
+import me.darki.konas.util.RainbowUtil;
 
 public class Sky
 extends Module {

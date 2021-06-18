@@ -3,7 +3,7 @@ package me.darki.konas.module.movement;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.unremaped.Class412;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;

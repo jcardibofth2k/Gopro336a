@@ -13,14 +13,14 @@ import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.module.player.FastUse;
+import me.darki.konas.module.render.NameTags;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.*;
 import me.darki.konas.unremaped.*;
-import me.darki.konas.util.PlayerUtil;
-import me.darki.konas.util.RotationUtil;
-import me.darki.konas.util.ThreadUtil;
+import me.darki.konas.util.*;
+import me.darki.konas.util.rotation.Rotation;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -391,7 +391,7 @@ public class AutoCrystal
         if (this.listCrystals.containsKey(entityEnderCrystal.getEntityId()) && entityEnderCrystal.ticksExisted > ticksExisted.getValue() + attackTicks.getValue()) {
             return false;
         }
-        return !(Class475.CalculateDamageEndCrystal(entityEnderCrystal, AutoCrystal.mc.player) + 2.0f >= AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount());
+        return !(CrystalUtils.CalculateDamageEndCrystal(entityEnderCrystal, AutoCrystal.mc.player) + 2.0f >= AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount());
     }
 
     public void visualSwingHand(EnumHand enumHand) {
@@ -440,7 +440,7 @@ public class AutoCrystal
                         double d11 = vec3d3.y - vec3d.y;
                         double d12 = vec3d3.z - vec3d.z;
                         double[] dArray2 = new double[]{MathHelper.wrapDegrees((float)Math.toDegrees(Math.atan2(d12, d10)) - 90.0f), MathHelper.wrapDegrees((float)(-Math.toDegrees(Math.atan2(d11, Math.sqrt(d10 * d10 + d12 * d12)))))};
-                        boolean bl2 = interact.getValue() == ACInteractMode.VANILLA || Class475.Method2143(vec3d3);
+                        boolean bl2 = interact.getValue() == ACInteractMode.VANILLA || CrystalUtils.Method2143(vec3d3);
                         if (vec3d2 != null && dArray != null) {
                             if (!bl2 && bl || !(AutoCrystal.mc.player.getPositionVector().addVector(0.0, AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d3) < AutoCrystal.mc.player.getPositionVector().addVector(0.0, AutoCrystal.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d2))) continue;
                             vec3d2 = vec3d3;
@@ -484,12 +484,12 @@ public class AutoCrystal
         }
         List<EntityPlayer> list = this.getPossibleTargets();
         EntityEnderCrystal entityEnderCrystal = this.gestBestCrystal();
-        int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
+        int n = (int)Math.max(100.0f, (float)(CrystalUtils.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
         if (entityEnderCrystal != null && this.breakTimer.GetDifferenceTiming(1000.0f - breakSpeed.getValue() * 50.0f) && (entityEnderCrystal.ticksExisted >= ticksExisted.getValue() || timing.getValue() == ACTiming.ADAPTIVE)) {
             this.bestBreak = entityEnderCrystal;
             this.rotateTo(this.bestBreak.posX, this.bestBreak.posY, this.bestBreak.posZ);
         }
-        if (entityEnderCrystal == null && (confirm.getValue() != ACComfirmMode.FULL || this.lastBreak == null || (double)this.lastBreak.ticksExisted >= Math.floor(ticksExisted.getValue())) && (sync.getValue() != ACSyncMode.STRICT || this.breakTimer.GetDifferenceTiming(950.0f - breakSpeed.getValue() * 50.0f - (float)Class475.Method2142())) && this.placeTimer.GetDifferenceTiming(1000.0f - placeSpeed.getValue() * 50.0f) && (timing.getValue() == ACTiming.SEQUENTIAL || this.SequentialTimer.GetDifferenceTiming((float) ticksExisted.getValue() * 5.0f))) {
+        if (entityEnderCrystal == null && (confirm.getValue() != ACComfirmMode.FULL || this.lastBreak == null || (double)this.lastBreak.ticksExisted >= Math.floor(ticksExisted.getValue())) && (sync.getValue() != ACSyncMode.STRICT || this.breakTimer.GetDifferenceTiming(950.0f - breakSpeed.getValue() * 50.0f - (float) CrystalUtils.Method2142())) && this.placeTimer.GetDifferenceTiming(1000.0f - placeSpeed.getValue() * 50.0f) && (timing.getValue() == ACTiming.SEQUENTIAL || this.SequentialTimer.GetDifferenceTiming((float) ticksExisted.getValue() * 5.0f))) {
             BlockPos blockPos;
             if (confirm.getValue() != ACComfirmMode.OFF && this.toConfirmPlace != null && !this.confirmTimer.GetDifferenceTiming(n + 100) && this.canPlaceCrystal(this.toConfirmPlace)) {
                 this.bestPlace = this.toConfirmPlace;
@@ -520,7 +520,7 @@ public class AutoCrystal
         BlockPos blockPos;
         List<BlockPos> list;
         if (confirm.getValue() != ACComfirmMode.OFF && (confirm.getValue() != ACComfirmMode.FULL || this.lastBreak == null || (double)this.lastBreak.ticksExisted >= Math.floor(ticksExisted.getValue()))) {
-            int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
+            int n = (int)Math.max(100.0f, (float)(CrystalUtils.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
             if (this.toConfirmPlace != null && !this.confirmTimer.GetDifferenceTiming(n + 100) && this.canPlaceCrystal(this.toConfirmPlace)) {
                 this.bestPlace = this.toConfirmPlace;
                 this.facingBestPlace = this.getBestFacingBlock(this.bestPlace);
@@ -559,11 +559,11 @@ public class AutoCrystal
     }
 
     public static boolean isCrystalReachableWall(Entity entity) {
-        return entity.getPositionVector().distanceTo(AutoCrystal.mc.player.getPositionEyes(1.0f)) < (double) breakWalls.getValue() || Class475.Method2141(entity.posX, entity.posY, entity.posZ);
+        return entity.getPositionVector().distanceTo(AutoCrystal.mc.player.getPositionEyes(1.0f)) < (double) breakWalls.getValue() || CrystalUtils.Method2141(entity.posX, entity.posY, entity.posZ);
     }
 
     public boolean switchToSword() {
-        int n = Class475.getSwordSlot();
+        int n = CrystalUtils.getSwordSlot();
         if (AutoCrystal.mc.player.inventory.currentItem != n && n != -1) {
             if (antiWeakness.getValue() == ACSwapMode.SILENT) {
                 this.oldSlotSword = AutoCrystal.mc.player.inventory.currentItem;
@@ -666,7 +666,7 @@ public class AutoCrystal
         if (!this.breakTimer.GetDifferenceTiming(1000.0f - breakSpeed.getValue() * 50.0f)) {
             return;
         }
-        if (Class475.Method2150(sPacketSpawnObject.getX(), sPacketSpawnObject.getY(), sPacketSpawnObject.getZ(), AutoCrystal.mc.player) + 2.0f >= AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount()) {
+        if (CrystalUtils.Method2150(sPacketSpawnObject.getX(), sPacketSpawnObject.getY(), sPacketSpawnObject.getZ(), AutoCrystal.mc.player) + 2.0f >= AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount()) {
             return;
         }
         this.listCrystals.put(sPacketSpawnObject.getEntityID(), System.currentTimeMillis());
@@ -871,12 +871,12 @@ public class AutoCrystal
         this.Field1655 = false;
         EntityPlayer entityPlayer2 = null;
         for (BlockPos blockPos2 : list) {
-            float f2 = Class475.calculateDamageEndCrystalBlockPos(blockPos2, AutoCrystal.mc.player);
+            float f2 = CrystalUtils.calculateDamageEndCrystalBlockPos(blockPos2, AutoCrystal.mc.player);
             if (!((double)f2 + 2.0 < (double)(AutoCrystal.mc.player.getHealth() + AutoCrystal.mc.player.getAbsorptionAmount())) || !(f2 <= maxSelfPlace.getValue())) continue;
             if (target.getValue() != ACTargetMode.ALL) {
                 entityPlayer2 = list2.get(0);
                 if (entityPlayer2.getDistance((double)blockPos2.getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5) > (double) crystalRange.getValue()) continue;
-                float f3 = Class475.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer2);
+                float f3 = CrystalUtils.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer2);
                 if (this.isPlayerLowHealth(entityPlayer2, f3) && (blockPos == null || entityPlayer2.getDistanceSq(blockPos2) < entityPlayer2.getDistanceSq(blockPos))) {
                     entityPlayer = entityPlayer2;
                     f = f3;
@@ -892,7 +892,7 @@ public class AutoCrystal
             }
             for (EntityPlayer entityPlayer3 : list2) {
                 if (entityPlayer3.equals(entityPlayer2) || entityPlayer3.getDistance((double)blockPos2.getX() + 0.5, (double)blockPos2.getY() + 0.5, (double)blockPos2.getZ() + 0.5) > (double) crystalRange.getValue()) continue;
-                float f4 = Class475.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer3);
+                float f4 = CrystalUtils.calculateDamageEndCrystalBlockPos(blockPos2, entityPlayer3);
                 if (this.isPlayerLowHealth(entityPlayer3, f4) && (blockPos == null || entityPlayer3.getDistanceSq(blockPos2) < entityPlayer3.getDistanceSq(blockPos))) {
                     entityPlayer = entityPlayer3;
                     f = f4;
@@ -1167,7 +1167,7 @@ public class AutoCrystal
         }
         //noinspection UnusedAssignment
         EntityEnderCrystal entityEnderCrystal = null;
-        int n = (int)Math.max(100.0f, (float)(Class475.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
+        int n = (int)Math.max(100.0f, (float)(CrystalUtils.Method2142() + 50) / (Class473.Field2557.Method2190() / 20.0f)) + 150;
         if (inhibit.getValue() && !limit.getValue() && !this.breakTimerTwoUh.GetDifferenceTiming(n) && this.lastBreak != null && AutoCrystal.mc.world.getEntityByID(this.lastBreak.getEntityId()) != null && this.canCrystalBeATarget(this.lastBreak)) {
             entityEnderCrystal = this.lastBreak;
             return entityEnderCrystal;
@@ -1197,20 +1197,20 @@ public class AutoCrystal
             AutoCrystal.mc.world.getBlockState(blockPos2).getBlock();
             return false;
         }
-        if (check.getValue() && !Class475.Method2141((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 1.0, (double)blockPos.getZ() + 0.5)) {
+        if (check.getValue() && !CrystalUtils.Method2141((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 1.0, (double)blockPos.getZ() + 0.5)) {
             Vec3d vec3d = new Vec3d((double)blockPos.getX() + 0.5, (double)blockPos.getY() + 1.0, (double)blockPos.getZ() + 0.5);
             if (AutoCrystal.mc.player.getPositionEyes(1.0f).distanceTo(vec3d) > (double) breakWalls.getValue()) {
                 return false;
             }
         }
-        if (placeWalls.getValue() < placeRange.getValue() && ((double)blockPos.getY() > AutoCrystal.mc.player.posY + (double)AutoCrystal.mc.player.getEyeHeight() ? AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue() && !Class475.Method2151(blockPos) : AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY() + 1, (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue() && !Class475.Method2151(blockPos))) {
+        if (placeWalls.getValue() < placeRange.getValue() && ((double)blockPos.getY() > AutoCrystal.mc.player.posY + (double)AutoCrystal.mc.player.getEyeHeight() ? AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY(), (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue() && !CrystalUtils.Method2151(blockPos) : AutoCrystal.mc.player.getDistance((double)blockPos.getX() + 0.5, blockPos.getY() + 1, (double)blockPos.getZ() + 0.5) > (double) placeWalls.getValue() && !CrystalUtils.Method2151(blockPos))) {
             return false;
         }
         return AutoCrystal.mc.world.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(blockPos2, blockPos3.add(1, 1, 1))).stream().noneMatch(this::isCrystalInList);
     }
 
     public boolean calculateEveryDamagesEndCrystalsToEnemy(Entity entity) {
-        return this.listCrystalsBroken.contains(new BlockPos(entity.posX, entity.posY - 1.0, entity.posZ)) || Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, AutoCrystal.mc.player) < maxSelfBreak.getValue();
+        return this.listCrystalsBroken.contains(new BlockPos(entity.posX, entity.posY - 1.0, entity.posZ)) || CrystalUtils.CalculateDamageEndCrystal((EntityEnderCrystal)entity, AutoCrystal.mc.player) < maxSelfBreak.getValue();
     }
 
     public boolean isPlayerLowHealth(EntityPlayer entityPlayer, float f) {
@@ -1298,7 +1298,7 @@ public class AutoCrystal
         if (this.hasEndCrystalInOffahand()) {
             return true;
         }
-        int n = Class475.getSlotEndCrystal();
+        int n = CrystalUtils.getSlotEndCrystal();
         if (n == -1) {
             return false;
         }

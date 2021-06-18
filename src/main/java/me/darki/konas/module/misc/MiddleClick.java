@@ -10,7 +10,7 @@ import me.darki.konas.unremaped.Class306;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Class645;
 import me.darki.konas.unremaped.Class653;

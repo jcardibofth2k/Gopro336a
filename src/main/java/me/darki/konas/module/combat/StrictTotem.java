@@ -3,7 +3,7 @@ package me.darki.konas.module;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class28;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.init.Items;

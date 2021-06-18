@@ -5,6 +5,7 @@ import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
+import me.darki.konas.util.TimerUtil;
 
 public class Class202
 extends Module {

@@ -17,7 +17,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class482;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

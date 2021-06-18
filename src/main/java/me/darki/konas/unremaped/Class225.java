@@ -9,6 +9,7 @@ import me.darki.konas.mixin.mixins.ISPacketPlayerPosLook;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.CPacketPlayer;

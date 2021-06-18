@@ -6,6 +6,8 @@ import me.darki.konas.mixin.mixins.IEntityPlayerSP;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
+import me.darki.konas.util.rotation.Rotation;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;

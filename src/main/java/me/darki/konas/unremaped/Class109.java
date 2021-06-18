@@ -10,6 +10,7 @@ import me.darki.konas.gui.hud.Element;
 import me.darki.konas.gui.hud.elements.*;
 import me.darki.konas.setting.ListenableSettingDecorator;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.network.play.server.SPacketChat;
@@ -88,7 +89,7 @@ public class Class109 {
         this.Field2569.add(new ArrayList());
         this.Field2569.add(new PlayerViewer());
         this.Field2569.add(new Class115());
-        this.Field2569.add(new Class111());
+        this.Field2569.add(new Inventory());
         this.Field2569.add(new Class141());
         this.Field2569.add(new Coords());
         this.Field2569.add(new TPS());

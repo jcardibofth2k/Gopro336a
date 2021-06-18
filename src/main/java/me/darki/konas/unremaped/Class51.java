@@ -7,6 +7,7 @@ import java.util.Queue;
 import me.darki.konas.config.Config;
 import me.darki.konas.event.events.OpenGuiEvent;
 import me.darki.konas.event.events.TickEvent;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiIngameMenu;

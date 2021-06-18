@@ -1,5 +1,6 @@
 package me.darki.konas.unremaped;
 
+import me.darki.konas.module.render.NameTags;
 import me.darki.konas.setting.IRunnable;
 
 public class Class404

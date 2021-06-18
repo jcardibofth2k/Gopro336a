@@ -19,6 +19,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.settingEnums.*;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.PlayerUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiDownloadTerrain;
 import net.minecraft.client.gui.GuiMainMenu;

@@ -14,10 +14,10 @@ import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.unremaped.Class305;
 import me.darki.konas.unremaped.Class443;
 import me.darki.konas.event.events.UpdateEvent;
-import me.darki.konas.unremaped.Class475;
+import me.darki.konas.util.CrystalUtils;
 import me.darki.konas.unremaped.Class490;
 import me.darki.konas.unremaped.Class492;
-import me.darki.konas.unremaped.Rotation;
+import me.darki.konas.util.rotation.Rotation;
 import me.darki.konas.unremaped.Class50;
 import me.darki.konas.unremaped.Class523;
 import me.darki.konas.unremaped.Class545;
@@ -121,7 +121,7 @@ extends Module {
                     return;
                 }
                 this.Field1048 = Lists.newArrayList(BlockPos.getAllInBox(HoleFill.mc.player.getPosition().add(-range.getValue().doubleValue(), -range.getValue().doubleValue(), -range.getValue().doubleValue()), HoleFill.mc.player.getPosition().add(range.getValue().doubleValue(), range.getValue().doubleValue(), range.getValue().doubleValue())));
-                int n2 = Class475.Method2142();
+                int n2 = CrystalUtils.Method2142();
                 this.Field1049.forEach((arg_0, arg_1) -> this.Method1052(n2, arg_0, arg_1));
                 if (smart.getValue() == Class305.TARGET && this.Method1054() == null) {
                     return;

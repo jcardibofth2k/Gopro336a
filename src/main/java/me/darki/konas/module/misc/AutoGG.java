@@ -10,7 +10,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class45;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.event.events.OpenGuiEvent;
 import net.minecraft.client.gui.GuiGameOver;
 import net.minecraft.entity.Entity;

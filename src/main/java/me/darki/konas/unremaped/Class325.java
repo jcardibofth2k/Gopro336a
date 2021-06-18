@@ -1,6 +1,6 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
+import me.darki.konas.module.misc.Scaffold;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 

@@ -12,7 +12,7 @@ import me.darki.konas.module.ModuleManager;
 import me.darki.konas.module.misc.AutoReconnect;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class300;
-import me.darki.konas.unremaped.Class475;
+import me.darki.konas.util.CrystalUtils;
 import me.darki.konas.unremaped.Class492;
 import me.darki.konas.unremaped.Class546;
 import net.minecraft.entity.Entity;
@@ -73,7 +73,7 @@ extends Module {
             float f = 0.0f;
             List<Entity> list = AutoLog.mc.world.loadedEntityList.stream().filter(AutoLog::Method513).filter(this::Method386).collect(Collectors.toList());
             for (Entity entity : list) {
-                f += Class475.CalculateDamageEndCrystal((EntityEnderCrystal)entity, (Entity) AutoLog.mc.player);
+                f += CrystalUtils.CalculateDamageEndCrystal((EntityEnderCrystal)entity, (Entity) AutoLog.mc.player);
             }
             if (!(AutoLog.mc.player.getHealth() + AutoLog.mc.player.getAbsorptionAmount() <= f)) break block4;
             this.Method134();

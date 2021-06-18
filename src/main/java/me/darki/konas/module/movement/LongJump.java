@@ -13,7 +13,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.Class438;
 import me.darki.konas.unremaped.Class441;
 import me.darki.konas.unremaped.Class459;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.play.server.SPacketPlayerPosLook;
 

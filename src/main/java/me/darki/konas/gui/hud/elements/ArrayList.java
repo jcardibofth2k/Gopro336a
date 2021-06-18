@@ -6,7 +6,7 @@ import me.darki.konas.unremaped.Class107;
 import me.darki.konas.module.ModuleManager;
 import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
-import me.darki.konas.unremaped.RainbowUtil;
+import me.darki.konas.util.RainbowUtil;
 import me.darki.konas.unremaped.Class557;
 import me.darki.konas.command.Command;
 import me.darki.konas.gui.hud.Element;

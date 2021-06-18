@@ -7,6 +7,7 @@ import me.darki.konas.setting.ColorValue;
 import me.darki.konas.util.RenderUtil2;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;

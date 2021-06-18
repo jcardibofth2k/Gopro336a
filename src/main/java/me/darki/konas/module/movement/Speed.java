@@ -17,7 +17,7 @@ import me.darki.konas.setting.ParentSetting;
 import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.unremaped.Class537;
 import me.darki.konas.util.PlayerUtil;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.event.events.MoveEvent;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.mixin.mixins.ICPacketPlayer;

@@ -8,7 +8,7 @@ import me.darki.konas.setting.Setting;
 import me.darki.konas.event.events.InputUpdateEvent;
 import me.darki.konas.unremaped.Class498;
 import me.darki.konas.unremaped.BlockUtil;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.util.math.BlockPos;
 

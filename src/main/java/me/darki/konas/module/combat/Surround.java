@@ -2,17 +2,18 @@ package me.darki.konas.module.combat;
 
 import cookiedragon.eventsystem.Subscriber;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import me.darki.konas.module.Category;
 import me.darki.konas.event.events.PacketEvent;
-import me.darki.konas.unremaped.Class475;
+import me.darki.konas.util.CrystalUtils;
 import me.darki.konas.util.RotationUtil;
-import me.darki.konas.unremaped.Rotation;
+import me.darki.konas.util.rotation.Rotation;
 import me.darki.konas.unremaped.Class523;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.unremaped.Class545;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.event.events.TickEvent;
 import me.darki.konas.unremaped.Render3DEvent;
 import me.darki.konas.mixin.mixins.IEntityPlayerSP;
@@ -22,7 +23,6 @@ import me.darki.konas.setting.Setting;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEnderChest;
 import net.minecraft.block.BlockObsidian;
-import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityEnderCrystal;
 import net.minecraft.entity.item.EntityItem;
@@ -36,10 +36,7 @@ import net.minecraft.network.play.client.CPacketUseEntity;
 import net.minecraft.network.play.server.SPacketBlockChange;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 
 public class Surround
 extends Module {
@@ -75,14 +72,14 @@ extends Module {
         int n2 = -1;
         if (eChest.getValue().booleanValue()) {
             for (n = 0; n < 9; ++n) {
-                itemStack = Surround.mc.player.inventory.getStackInSlot(n);
+                itemStack = mc.player.inventory.getStackInSlot(n);
                 if (itemStack == ItemStack.EMPTY || !(itemStack.getItem() instanceof ItemBlock) || !((block = ((ItemBlock)itemStack.getItem()).getBlock()) instanceof BlockEnderChest)) continue;
                 n2 = n;
                 return n2;
             }
         }
         for (n = 0; n < 9; ++n) {
-            itemStack = Surround.mc.player.inventory.getStackInSlot(n);
+            itemStack = mc.player.inventory.getStackInSlot(n);
             if (itemStack == ItemStack.EMPTY || !(itemStack.getItem() instanceof ItemBlock) || !((block = ((ItemBlock)itemStack.getItem()).getBlock()) instanceof BlockObsidian)) continue;
             n2 = n;
             break;
@@ -99,62 +96,81 @@ extends Module {
         this.Field2441 = new ArrayList<Vec3d>();
         if (this.Method539()) {
             if (full.getValue().booleanValue()) {
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
             }
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 1.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 1.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 1.0, 1.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 1.0, -1.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(1.0, 1.0, 0.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(-1.0, 1.0, 0.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 1.0, 1.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 1.0, -1.0));
         } else {
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, 0.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(0.0, -1.0, 0.0));
             if (full.getValue().booleanValue()) {
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, -1.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, -1.0, 0.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, 1.0));
-                this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, -1.0, -1.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(1.0, -1.0, 0.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(-1.0, -1.0, 0.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(0.0, -1.0, 1.0));
+                this.Field2441.add(mc.player.getPositionVector().addVector(0.0, -1.0, -1.0));
             }
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
-            this.Field2441.add(Surround.mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(1.0, 0.0, 0.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(-1.0, 0.0, 0.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 0.0, 1.0));
+            this.Field2441.add(mc.player.getPositionVector().addVector(0.0, 0.0, -1.0));
         }
-        ArrayList<BlockPos> arrayList = new ArrayList<BlockPos>();
-        for (Vec3d vec3d : this.Field2441) {
-            blockPos = new BlockPos(vec3d);
-            if (Surround.mc.world.getBlockState(blockPos).getBlock() != Blocks.AIR) continue;
-            arrayList.add(blockPos);
+        final ArrayList<BlockPos> list = new ArrayList<BlockPos>();
+        final Iterator<Vec3d> iterator = this.Field2441.iterator();
+        while (iterator.hasNext()) {
+            final BlockPos blockPos3 = new BlockPos((Vec3d)iterator.next());
+            if (mc.world.getBlockState(blockPos3).getBlock() == Blocks.AIR) {
+                list.add(blockPos3);
+            }
         }
-        if (arrayList.isEmpty()) {
+        if (list.isEmpty()) {
             return;
         }
-        for (BlockPos blockPos2 : arrayList) {
-            if (this.Field2438 > actionShift.getValue()) {
+        for (final BlockPos blockPos2 : list) {
+            if (this.Field2438 > (int)actionShift.getValue()) {
                 return;
             }
-            if (this.Field2442.containsKey(blockPos2) || this.Method512(blockPos2)) continue;
+            if (this.Field2442.containsKey(blockPos2)) {
+                continue;
+            }
+            if (this.Method512(blockPos2)) {
+                continue;
+            }
             if (this.Method526(blockPos2)) {
-                if (!clear.getValue().booleanValue()) continue;
-                blockPos = null;
-                for (Entity entity : Surround.mc.world.loadedEntityList) {
-                    if (entity == null || (double)Surround.mc.player.getDistance(entity) > 2.4 || !(entity instanceof EntityEnderCrystal) || entity.isDead) continue;
-                    blockPos = (EntityEnderCrystal)entity;
+                if (!clear.getValue()) {
+                    continue;
                 }
-                if (blockPos != null) {
-                    if (rotate.getValue().booleanValue()) {
-                        Object object = RotationUtil.Method1946(Surround.mc.player.getPositionEyes(mc.getRenderPartialTicks()), blockPos.getPositionEyes(mc.getRenderPartialTicks()));
-                        Surround.mc.player.connection.sendPacket(new CPacketPlayer.Rotation((float)object[0], (float)MathHelper.normalizeAngle((int)object[1], 360), Surround.mc.player.onGround));
-                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedYaw((float)object[0]);
-                        ((IEntityPlayerSP)Surround.mc.player).setLastReportedPitch(MathHelper.normalizeAngle((int)object[1], 360));
+                Object o = null;
+                for (final Entity entity : mc.world.loadedEntityList) {
+                    if (entity == null) {
+                        continue;
+                    }
+                    if (mc.player.getDistance(entity) > 2.4) {
+                        continue;
+                    }
+                    if (!(entity instanceof EntityEnderCrystal)) {
+                        continue;
+                    }
+                    if (entity.isDead) {
+                        continue;
+                    }
+                    o = entity;
+                }
+                if (o != null) {
+                    if (rotate.getValue()) {
+                        final float[] method1946 = RotationUtil.Method1946(mc.player.getPositionEyes(mc.getRenderPartialTicks()), ((EntityEnderCrystal)o).getPositionEyes(mc.getRenderPartialTicks()));
+                        mc.player.connection.sendPacket(new CPacketPlayer.Rotation(method1946[0], (float)MathHelper.normalizeAngle((int)method1946[1], 360), mc.player.onGround));
+                        ((IEntityPlayerSP)mc.player).setLastReportedYaw(method1946[0]);
+                        ((IEntityPlayerSP)mc.player).setLastReportedPitch((float)MathHelper.normalizeAngle((int)method1946[1], 360));
                     }
                     mc.getConnection().sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
-                    mc.getConnection().sendPacket(new CPacketUseEntity((Entity)blockPos));
+                    mc.getConnection().sendPacket(new CPacketUseEntity((Entity)o));
                 }
             }
-            this.Field2443 = blockPos2;
-            this.Method789(blockPos2);
+            this.Method789(this.Field2443 = blockPos2);
             ++this.Field2438;
         }
     }
@@ -165,24 +181,24 @@ extends Module {
 
     @Subscriber
     public void Method131(PacketEvent packetEvent) {
-        if (Surround.mc.world == null || Surround.mc.player == null) {
+        if (mc.world == null || mc.player == null) {
             return;
         }
         if (packetEvent.getPacket() instanceof SPacketBlockChange && queue.getValue().booleanValue()) {
             SPacketBlockChange sPacketBlockChange = (SPacketBlockChange) packetEvent.getPacket();
-            if (sPacketBlockChange.blockState.getBlock() == Blocks.AIR && Surround.mc.player.getDistance(sPacketBlockChange.getBlockPosition().getX(), sPacketBlockChange.getBlockPosition().getY(), sPacketBlockChange.getBlockPosition().getZ()) < 1.75) {
+            if (sPacketBlockChange.blockState.getBlock() == Blocks.AIR && mc.player.getDistance(sPacketBlockChange.getBlockPosition().getX(), sPacketBlockChange.getBlockPosition().getY(), sPacketBlockChange.getBlockPosition().getZ()) < 1.75) {
                 mc.addScheduledTask(this::Method124);
             }
         }
     }
 
     public boolean Method539() {
-        return !this.Method519() && this.Method386(Surround.mc.player);
+        return !this.Method519() && this.Method386(mc.player);
     }
 
     @Override
     public void onDisable() {
-        if (Surround.mc.player == null || Surround.mc.world == null) {
+        if (mc.player == null || mc.world == null) {
             return;
         }
         this.Field2443 = null;
@@ -195,7 +211,7 @@ extends Module {
     }
 
     public boolean Method512(BlockPos blockPos) {
-        for (Entity entity : Surround.mc.world.loadedEntityList) {
+        for (Entity entity : mc.world.loadedEntityList) {
             if (entity instanceof EntityEnderCrystal || entity instanceof EntityItem || !new AxisAlignedBB(blockPos).intersects(entity.getEntityBoundingBox())) continue;
             return true;
         }
@@ -203,7 +219,7 @@ extends Module {
     }
 
     public void Method792(BlockPos blockPos, Long l) {
-        if (System.currentTimeMillis() - l > (long)(Class475.Method2142() + 40)) {
+        if (System.currentTimeMillis() - l > (long)(CrystalUtils.Method2142() + 40)) {
             this.Field2442.remove(blockPos);
         }
     }
@@ -211,7 +227,7 @@ extends Module {
     @Subscriber
     public void Method139(Render3DEvent render3DEvent) {
         block1: {
-            if (Surround.mc.world == null || Surround.mc.player == null) {
+            if (mc.world == null || mc.player == null) {
                 return;
             }
             if (this.Field2443 == null) break block1;
@@ -220,12 +236,12 @@ extends Module {
     }
 
     public boolean Method519() {
-        Block block = Surround.mc.world.getBlockState(new BlockPos(Surround.mc.player.getPositionVector().addVector(0.0, 0.2, 0.0))).getBlock();
+        Block block = mc.world.getBlockState(new BlockPos(mc.player.getPositionVector().addVector(0.0, 0.2, 0.0))).getBlock();
         return block == Blocks.OBSIDIAN || block == Blocks.ENDER_CHEST;
     }
 
     public boolean Method980() {
-        if (Surround.mc.player == null || Surround.mc.world == null) {
+        if (mc.player == null || mc.world == null) {
             return true;
         }
         Field2433 = false;
@@ -239,10 +255,10 @@ extends Module {
             return true;
         }
         this.Field2437 = this.Method2105(this.Field2437);
-        if (Surround.mc.player.inventory.currentItem != this.Field2436 && Surround.mc.player.inventory.currentItem != this.Field2439) {
-            this.Field2436 = Surround.mc.player.inventory.currentItem;
+        if (mc.player.inventory.currentItem != this.Field2436 && mc.player.inventory.currentItem != this.Field2439) {
+            this.Field2436 = mc.player.inventory.currentItem;
         }
-        if (autoDisable.getValue().booleanValue() && !this.Field2435.equals(new BlockPos(Surround.mc.player))) {
+        if (autoDisable.getValue().booleanValue() && !this.Field2435.equals(new BlockPos(mc.player))) {
             this.toggle();
             return true;
         }
@@ -251,12 +267,12 @@ extends Module {
 
     @Override
     public void onEnable() {
-        if (Surround.mc.player == null || Surround.mc.world == null) {
+        if (mc.player == null || mc.world == null) {
             this.toggle();
             return;
         }
-        this.Field2436 = Surround.mc.player.inventory.currentItem;
-        this.Field2435 = new BlockPos(Surround.mc.player);
+        this.Field2436 = mc.player.inventory.currentItem;
+        this.Field2435 = new BlockPos(mc.player);
         if (center.getValue().booleanValue()) {
             PlayerUtil.Method1083();
         }
@@ -269,7 +285,7 @@ extends Module {
 
     @Subscriber
     public void Method462(TickEvent tickEvent) {
-        if (Surround.mc.player == null || Surround.mc.world == null) {
+        if (mc.player == null || mc.world == null) {
             this.toggle();
             return;
         }
@@ -279,93 +295,73 @@ extends Module {
 
     public boolean Method2105(boolean bl) {
         block0: {
-            if (!bl || Surround.mc.player == null) break block0;
-            Surround.mc.player.connection.sendPacket(new CPacketEntityAction(Surround.mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
+            if (!bl || mc.player == null) break block0;
+            mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.STOP_SNEAKING));
         }
         return false;
     }
 
-    public boolean Method2106(BlockPos blockPos, EnumHand enumHand, boolean bl, boolean bl2, boolean bl3) {
-        BlockPos blockPos2;
-        EnumFacing enumFacing3;
-        boolean bl4 = false;
-        EnumFacing enumFacing2 = null;
-        double d = 69420.0;
-        for (EnumFacing enumFacing3 : Rotation.Method1963(blockPos, strict.getValue(), false)) {
-            blockPos2 = blockPos.offset(enumFacing3);
-            Vec3d vec3d = new Vec3d(blockPos2).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
-            if (!(Surround.mc.player.getPositionVector().addVector(0.0, (double)Surround.mc.player.getEyeHeight(), 0.0).distanceTo(vec3d) < d)) continue;
-            enumFacing2 = enumFacing3;
+
+
+
+
+    public boolean Method2106(final BlockPos key, final EnumHand enumHand, final boolean b, final boolean b2, final boolean b3) {
+        boolean b4 = false;
+        EnumFacing down = null;
+        final double n = 69420.0;
+        for (final EnumFacing enumFacing : Rotation.Method1963(key, (boolean)strict.getValue(), false)) {
+            if (mc.player.getPositionVector().addVector(0.0, (double)mc.player.getEyeHeight(), 0.0).distanceTo(new Vec3d((Vec3i)key.offset(enumFacing)).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing.getDirectionVec()).scale(0.5))) < n) {
+                down = enumFacing;
+            }
         }
-        if (enumFacing2 == null) {
-            enumFacing2 = EnumFacing.DOWN;
+        if (down == null) {
+            down = EnumFacing.DOWN;
         }
-        BlockPos blockPos3 = blockPos.offset(enumFacing2);
-        enumFacing3 = enumFacing2.getOpposite();
-        blockPos2 = new Vec3d(blockPos3).addVector(0.5, 0.5, 0.5).add(new Vec3d(enumFacing3.getDirectionVec()).scale(0.5));
-        if (!Surround.mc.player.isSneaking() && Class545.Method1004(blockPos3)) {
-            Surround.mc.player.connection.sendPacket(new CPacketEntityAction(Surround.mc.player, CPacketEntityAction.Action.START_SNEAKING));
-            Surround.mc.player.setSneaking(true);
-            bl4 = true;
+        final BlockPos offset = key.offset(down);
+        final EnumFacing opposite = down.getOpposite();
+        final Vec3d add = new Vec3d((Vec3i)offset).addVector(0.5, 0.5, 0.5).add(new Vec3d(opposite.getDirectionVec()).scale(0.5));
+        if (!mc.player.isSneaking() && Class545.Method1004(offset)) {
+            mc.player.connection.sendPacket(new CPacketEntityAction((Entity)mc.player, CPacketEntityAction.Action.START_SNEAKING));
+            mc.player.setSneaking(true);
+            b4 = true;
         }
-        if (bl) {
-            PlayerUtil.Method1081((Vec3d)blockPos2);
+        if (b) {
+            PlayerUtil.Method1081(add);
         }
-        Rotation.Method1969(blockPos3, (Vec3d)blockPos2, enumHand, enumFacing3, bl2, swing.getValue());
-        Surround.mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
-        if (!force.getValue().booleanValue()) {
-            this.Field2442.put(blockPos, System.currentTimeMillis());
+        Rotation.Method1969(offset, add, enumHand, opposite, b2, (boolean)swing.getValue());
+        mc.player.connection.sendPacket(new CPacketAnimation(EnumHand.MAIN_HAND));
+        if (!(boolean)force.getValue()) {
+            this.Field2442.put(key, System.currentTimeMillis());
         }
         ((IMinecraft)mc).setRightClickDelayTimer(0);
-        return bl4 || bl3;
+        return b4 || b3;
     }
 
-    public boolean Method386(Entity entity) {
-        BlockPos blockPos = new BlockPos(entity.posX, entity.posY, entity.posZ);
-        return Surround.mc.world.getBlockState(blockPos).getBlock().equals(Blocks.OBSIDIAN) || Surround.mc.world.getBlockState(blockPos).getBlock().equals(Blocks.ENDER_CHEST);
+    public boolean Method386(final Entity entity) {
+        final BlockPos blockPos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+        return mc.world.getBlockState(blockPos).getBlock().equals(Blocks.OBSIDIAN) || mc.world.getBlockState(blockPos).getBlock().equals(Blocks.ENDER_CHEST);
     }
 
-    public void Method789(BlockPos blockPos) {
-        int n;
-        block17: {
-            n = Surround.mc.player.inventory.currentItem;
-            if (this.Field2439 != -1) break block17;
-            Surround surround = this;
-            surround.toggle();
-            return;
-        }
-        Field2433 = true;
-        Surround.mc.player.inventory.currentItem = this.Field2439;
-        PlayerControllerMP playerControllerMP = Surround.mc.playerController;
-        playerControllerMP.updateController();
-        Surround surround = this;
-        Surround surround2 = this;
-        BlockPos blockPos2 = blockPos;
-        EnumHand enumHand = this.Field2440 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND;
-        Setting<Boolean> setting = Field2420;
-        Object t = setting.getValue();
-        Boolean bl = (Boolean)t;
-        boolean bl2 = bl;
-        Setting<Boolean> setting2 = Field2422;
-        Object t2 = setting2.getValue();
-        Boolean bl3 = (Boolean)t2;
-        boolean bl4 = bl3;
-        boolean bl5 = this.Field2437;
-        boolean bl6 = surround2.Method2106(blockPos2, enumHand, bl2, bl4, bl5);
-        surround.Field2437 = bl6;
-        Surround.mc.player.inventory.currentItem = n;
-        PlayerControllerMP playerControllerMP2 = Surround.mc.playerController;
+    public void Method789(final BlockPos blockPos) {
         try {
-            playerControllerMP2.updateController();
+            final int currentItem = mc.player.inventory.currentItem;
+            if (this.Field2439 == -1) {
+                this.toggle();
+                return;
+            }
+            Field2433 = true;
+            mc.player.inventory.currentItem = this.Field2439;
+            mc.playerController.updateController();
+            this.Field2437 = this.Method2106(blockPos, this.Field2440 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND, (boolean)rotate.getValue(), (boolean)packet.getValue(), this.Field2437);
+            mc.player.inventory.currentItem = currentItem;
+            mc.playerController.updateController();
         }
-        catch (Exception exception) {
-            // empty catch block
-        }
+        catch (Exception ex) {}
     }
 
     public boolean Method526(BlockPos blockPos) {
-        for (Entity entity : Surround.mc.world.loadedEntityList) {
-            if (!(entity instanceof EntityEnderCrystal) || entity.equals(Surround.mc.player) || entity instanceof EntityItem || !new AxisAlignedBB(blockPos).intersects(entity.getEntityBoundingBox())) continue;
+        for (Entity entity : mc.world.loadedEntityList) {
+            if (!(entity instanceof EntityEnderCrystal) || entity.equals(mc.player) || entity instanceof EntityItem || !new AxisAlignedBB(blockPos).intersects(entity.getEntityBoundingBox())) continue;
             return true;
         }
         return false;

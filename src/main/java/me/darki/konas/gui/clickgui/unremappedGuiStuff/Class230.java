@@ -7,6 +7,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.module.client.KonasGui;
 import me.darki.konas.unremaped.*;
 import me.darki.konas.util.Class247;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.apache.commons.lang3.StringUtils;

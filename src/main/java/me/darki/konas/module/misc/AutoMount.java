@@ -10,7 +10,7 @@ import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import me.darki.konas.unremaped.SendPacketEvent;
 import me.darki.konas.unremaped.Class50;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.util.PlayerUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityBoat;

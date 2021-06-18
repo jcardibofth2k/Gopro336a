@@ -1,8 +1,8 @@
 package me.darki.konas.unremaped;
 
-import me.darki.konas.*;
 import java.util.ArrayList;
 
+import me.darki.konas.util.CrystalUtils;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockObsidian;
 import net.minecraft.client.Minecraft;
@@ -29,11 +29,11 @@ public class Class465 {
                 return new ArrayList<BlockPos>();
             }
             if (!(Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing)).getBlock() instanceof BlockObsidian)) continue;
-            if (Class475.Method2145(blockPos.offset(enumFacing, 2).down()) && Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing)).getBlock() != Blocks.AIR) {
+            if (CrystalUtils.Method2145(blockPos.offset(enumFacing, 2).down()) && Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing)).getBlock() != Blocks.AIR) {
                 arrayList.add(blockPos.offset(enumFacing));
                 continue;
             }
-            if (!Class475.Method2145(blockPos.offset(enumFacing)) || Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing)).getBlock() == Blocks.AIR || Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing).down()).getBlock() != Blocks.BEDROCK && Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing).down()).getBlock() != Blocks.OBSIDIAN) continue;
+            if (!CrystalUtils.Method2145(blockPos.offset(enumFacing)) || Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing)).getBlock() == Blocks.AIR || Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing).down()).getBlock() != Blocks.BEDROCK && Class465.Field2632.world.getBlockState(blockPos.offset(enumFacing).down()).getBlock() != Blocks.OBSIDIAN) continue;
             arrayList.add(blockPos.offset(enumFacing));
         }
         return arrayList;

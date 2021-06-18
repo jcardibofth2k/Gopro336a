@@ -10,12 +10,15 @@ import me.darki.konas.module.client.KonasGlobals;
 import me.darki.konas.module.movement.PacketFly;
 import me.darki.konas.module.render.Waypoints;
 import me.darki.konas.unremaped.*;
+import me.darki.konas.util.CrystalUtils;
 import me.darki.konas.util.PlayerUtil;
 import me.darki.konas.event.events.UpdateEvent;
 import me.darki.konas.command.Logger;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
+import me.darki.konas.util.rotation.Rotation;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockAir;
 import net.minecraft.block.BlockLiquid;
@@ -105,7 +108,7 @@ extends Module {
         }
         this.Field1708 = null;
         this.Field1707 = null;
-        int n2 = Class475.Method2142();
+        int n2 = CrystalUtils.Method2142();
         Field1711.forEach((arg_0, arg_1) -> AutoTrap.Method1052(n2, arg_0, arg_1));
         if (updateEvent.isCanceled() || !Rotation.Method1959((Boolean)rotate.getValue())) {
             return;

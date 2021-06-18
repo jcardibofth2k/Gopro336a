@@ -6,7 +6,7 @@ import java.util.Set;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class106;
 import me.darki.konas.event.events.EventIdkPlsRename;
-import me.darki.konas.unremaped.Class13;
+import me.darki.konas.unremaped.ParticalEffectAddEvent;
 import me.darki.konas.unremaped.Class131;
 import me.darki.konas.unremaped.Class137;
 import me.darki.konas.unremaped.Class142;
@@ -261,10 +261,10 @@ extends Module {
     }
 
     @Subscriber
-    public void Method1135(Class13 class13) {
+    public void Method1135(ParticalEffectAddEvent particalEffectAddEvent) {
         block0: {
-            if (!this.fireworks.getValue().booleanValue() || !(class13.Method261() instanceof ParticleFirework.Overlay) && !(class13.Method261() instanceof ParticleFirework.Spark) && !(class13.Method261() instanceof ParticleFirework.Starter)) break block0;
-            class13.setCanceled(true);
+            if (!this.fireworks.getValue().booleanValue() || !(particalEffectAddEvent.Method261() instanceof ParticleFirework.Overlay) && !(particalEffectAddEvent.Method261() instanceof ParticleFirework.Spark) && !(particalEffectAddEvent.Method261() instanceof ParticleFirework.Starter)) break block0;
+            particalEffectAddEvent.setCanceled(true);
         }
     }
 

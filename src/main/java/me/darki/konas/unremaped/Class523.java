@@ -2,6 +2,7 @@ package me.darki.konas.unremaped;
 
 import me.darki.konas.module.Module;
 import me.darki.konas.module.ModuleManager;
+import me.darki.konas.module.render.Interactions;
 import me.darki.konas.module.render.Render;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;

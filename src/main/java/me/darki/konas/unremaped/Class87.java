@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 import me.darki.konas.event.events.PacketEvent;
 import me.darki.konas.event.events.TickEvent;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;

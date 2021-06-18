@@ -3,7 +3,7 @@ package me.darki.konas.command.commands;
 import me.darki.konas.module.client.ClickGUIModule;
 import me.darki.konas.module.render.Hud;
 import me.darki.konas.util.Class247;
-import me.darki.konas.unremaped.NameTags;
+import me.darki.konas.module.render.NameTags;
 import me.darki.konas.unremaped.Class548;
 import me.darki.konas.unremaped.CfontRenderer;
 import me.darki.konas.unremaped.Class557;

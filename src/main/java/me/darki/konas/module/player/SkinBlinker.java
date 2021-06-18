@@ -3,7 +3,7 @@ package me.darki.konas.module.player;
 import cookiedragon.eventsystem.Subscriber;
 import me.darki.konas.module.Category;
 import me.darki.konas.unremaped.Class28;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
 import net.minecraft.entity.player.EnumPlayerModelParts;

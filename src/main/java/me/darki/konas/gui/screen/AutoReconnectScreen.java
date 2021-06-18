@@ -1,7 +1,7 @@
 package me.darki.konas.gui.screen;
 
 import java.util.List;
-import me.darki.konas.unremaped.TimerUtil;
+import me.darki.konas.util.TimerUtil;
 import me.darki.konas.mixin.mixins.IGuiDisconnected;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDisconnected;

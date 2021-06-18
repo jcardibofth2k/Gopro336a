@@ -28,6 +28,7 @@ import me.darki.konas.mixin.mixins.ISPacketChat;
 import me.darki.konas.module.Category;
 import me.darki.konas.module.Module;
 import me.darki.konas.setting.Setting;
+import me.darki.konas.util.TimerUtil;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.ChatLine;
 import net.minecraft.network.play.server.SPacketChat;
