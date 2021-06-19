@@ -60,9 +60,9 @@ public class Setting<T> {
         return this.name;
     }
 
-    public Setting(String string, T t) {
+    public Setting(String string, T value) {
         this.name = string;
-        this.value = t;
+        this.value = value;
     }
 
     public int getMaxProtocol() {
@@ -101,12 +101,12 @@ public class Setting<T> {
         }
     }
 
-    public Setting(String string, T t, T t2, T t3, T t4) {
+    public Setting(String string, T value, T max, T min, T steps) {
         this.name = string;
-        this.value = t;
-        this.maximum = t2;
-        this.minimum = t3;
-        this.increment = t4;
+        this.value = value;
+        this.maximum = max;
+        this.minimum = min;
+        this.increment = steps;
     }
 
     public int getMinProtocol() {
