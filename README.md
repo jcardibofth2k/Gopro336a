@@ -42,15 +42,13 @@ Skiding is cringe
 
 Any contributions to this deobf+remap will be GREATLY apperciated. This deobf has many, many, other classes, methods, and fields that still use the Gerneric names. Manually remapping an entire client like this is alot for 1 person to do (I have a life), and can become dulling. Contributions can consist of refactoring of Classes, Fields, and Methods to names that make sense. Intelij Idea's refactoring tool works well for this.
 
-The reason this is a gradle project even though it is not meant to be built is because that was the easiest way to setup an environment with all the dependencies. The deobfuscated files are excluded from the build process.
-
 Read at contribution notes
 
 # What is manual remapping?
 
 Some obfuscators will rename classes, fields(variables), and methods to different names, in order to impede readablility of the code. Sometimes, obfuscators will even rename names to names that are illegal in java, but perfectly legal in bytecode (such as names starting in numbers). Sometimes obfuscators will use a feature called method overloading to overload unrelated methods in order to obfuscate. This can be overcome by renaming all classes, methods, and fields to generic, legal names. Once this is done, readability can be improved by "Manually remaping" these classes, methods, and fields to common sense names that make it look more like a client. Example: ClassXXX, contains string "AutoCrystal" in its super constructor, so the class is renamed to AutoCrystal, and moved to directory "me/darki/konas/module/combat"
 
-# To Darkii, GL_DONT_CARE
+# To Darki, GL_DONT_CARE
 
 No disrespect, but when theres obf, I gotta deobf. 
 
