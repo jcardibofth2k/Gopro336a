@@ -33,6 +33,8 @@ If u can't instantly just copy and paste the module into ur oyvey base and have 
 
 It is NOT buildable.
 
+Keep in mind, any code you copy from this repo is property of the Konas devs
+
 As stated earlier, minecraft mappings have already been applied. Don't get the renamed "Field*****" names confused with the minecraft mapping names, or else you will look really dumb.
 
 Skiding is cringe
