@@ -1,5 +1,6 @@
 # Konas-Deobf-Remap
-Konas Client
+This project doesent really have a purpose anymore now that the real source code has leaked (this is a higher version tho)
+
 
 Deobfuscated and partialy remapped manually
 
